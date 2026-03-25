@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combat Guide | WAFT</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="archive-bg">
+
+<header class="main-header">
+  <a href="index.html" class="logo">WAFT</a>
+  <nav class="nav-links">
+    <a href="archive.html">Archive</a>
+    <a href="combat-guide.html">Combat Guide</a>
+  </nav>
+</header>
+
+<section class="archive-page">
+  <h1>WAFT Combat Guide</h1>
+  <p class="archive-subtitle">Core combat systems, stats and biome rules</p>
+
+  <div class="guide-wrapper">
+
+    <div class="guide-section">
+      <h2>Combat Attributes</h2>
+      <p>Each fighter is defined by 8 core attributes:</p>
+      <ul>
+        <li><strong>Life:</strong> Determines total health points in combat.</li>
+        <li><strong>Attack:</strong> Determines base offensive damage.</li>
+        <li><strong>Defense:</strong> Reduces incoming damage.</li>
+        <li><strong>Resistance:</strong> Determines maximum stamina and fatigue tolerance.</li>
+        <li><strong>Speed:</strong> Determines turn priority and slightly affects accuracy and evasion.</li>
+        <li><strong>Agility:</strong> Main evasive stat.</li>
+        <li><strong>Technique:</strong> Main precision stat and core of refined attacks.</li>
+        <li><strong>Explosiveness:</strong> Determines critical potential and explosive attack power.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>Life System</h2>
+      <p>Life is converted directly into combat health points with a simple rule:</p>
+      <div class="guide-formula">
+        <p><strong>Total HP = Life × 10</strong></p>
+      </div>
+      <p>Example: a fighter with <strong>87 Life</strong> will enter combat with <strong>870 HP</strong>.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Initiative</h2>
+      <p>Speed determines who acts first each turn.</p>
+      <p>If one fighter has higher Speed, that fighter begins the turn unless:</p>
+      <ul>
+        <li>the opponent uses <strong>Quick Attack</strong>, or</li>
+        <li>the opponent uses <strong>Concentration</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>Damage Formula</h2>
+      <div class="guide-formula">
+        <p><strong>D = Attack − Defense</strong></p>
+        <p><strong>Multiplier (%) = 75 + (D ÷ 4)</strong></p>
+        <p><strong>Damage = Attack × (Multiplier ÷ 100)</strong></p>
+      </div>
+      <p>When Attack and Defense are equal, the attacker deals <strong>75% of its Attack stat</strong> as damage.</p>
+      <p>This creates a balanced baseline where neither equal Attack nor equal Defense completely cancels the exchange.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Accuracy and Evasion</h2>
+      <div class="guide-formula">
+        <p><strong>Precision = Technique × 0.9 + Speed × 0.1</strong></p>
+        <p><strong>Evasion = Agility × 0.9 + Speed × 0.1</strong></p>
+        <p><strong>D = Precision − Evasion</strong></p>
+        <p><strong>Base Hit Chance (%) = 60 + (D × 0.8)</strong></p>
+      </div>
+      <p>Final rules:</p>
+      <ul>
+        <li>If hit chance drops below <strong>20%</strong>, uses <strong>20%</strong>.</li>
+        <li>If hit chance rises above <strong>100%</strong>, uses <strong>100%</strong>.</li>
+        <li>If Precision and Evasion are equal, the base chance to hit is <strong>60%</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>Stamina and Fatigue</h2>
+      <div class="guide-formula">
+        <p><strong>Maximum Stamina = Resistance × 10</strong></p>
+      </div>
+      <p>Fatigue affects the following stats:</p>
+      <ul>
+        <li>Damage</li>
+        <li>Precision</li>
+        <li>Evasion</li>
+        <li>Defense</li>
+        <li>Speed</li>
+      </ul>
+
+      <h3>Fatigue Thresholds</h3>
+      <ul>
+        <li><strong>Above 50% stamina:</strong> no penalty</li>
+        <li><strong>50% stamina or below:</strong> −10%</li>
+        <li><strong>25% stamina or below:</strong> −20%</li>
+        <li><strong>0 stamina:</strong> −30%</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>Explosiveness and Criticals</h2>
+      <div class="guide-formula">
+        <p><strong>Critical Chance (%) = Explosiveness × 0.4</strong></p>
+        <p><strong>Critical Damage = Final Damage × 1.5</strong></p>
+      </div>
+      <p>Explosiveness is an offensive risk stat: it increases damage ceiling but not consistency.</p>
+      <p><strong>Explosive Attack</strong> grants <strong>+20% critical chance</strong> on top of the base value.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Combat Actions</h2>
+
+      <div class="guide-action">
+        <h3>Normal Attack</h3>
+        <p><strong>Cost:</strong> 5 stamina</p>
+        <p><strong>Precision:</strong> Technique × 0.9 + Speed × 0.1</p>
+        <p><strong>Effect:</strong> no special bonus</p>
+      </div>
+
+      <div class="guide-action">
+        <h3>Quick Attack</h3>
+        <p><strong>Cost:</strong> 15 stamina</p>
+        <p><strong>Precision:</strong> Agility × 0.6 + Technique × 0.3 + Speed × 0.1</p>
+        <p><strong>Effect:</strong> acts first</p>
+      </div>
+
+      <div class="guide-action">
+        <h3>Precise Attack</h3>
+        <p><strong>Cost:</strong> 15 stamina</p>
+        <p><strong>Precision:</strong> Technique × 0.9 + Speed × 0.1</p>
+        <p><strong>Effect:</strong> +15% final hit chance</p>
+      </div>
+
+      <div class="guide-action">
+        <h3>Explosive Attack</h3>
+        <p><strong>Cost:</strong> 20 stamina</p>
+        <p><strong>Precision:</strong> Explosiveness × 0.6 + Technique × 0.3 + Speed × 0.1</p>
+        <p><strong>Effect:</strong> +20% critical chance</p>
+      </div>
+
+      <div class="guide-action">
+        <h3>Concentration</h3>
+        <p><strong>Cost:</strong> 0 stamina</p>
+        <p><strong>Effects:</strong></p>
+        <ul>
+          <li>+10% Defense</li>
+          <li>+20 Stamina</li>
+          <li>+20 Life</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 turn</p>
+        <p>The fighter does not attack that turn.</p>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Biome System</h2>
+      <p>Every fighter is assigned 6 biome affinities:</p>
+      <ul>
+        <li><strong>2 favorable biomes</strong></li>
+        <li><strong>2 neutral biomes</strong></li>
+        <li><strong>2 unfavorable biomes</strong></li>
+      </ul>
+
+      <p>Before each combat:</p>
+      <ol>
+        <li>One biome is selected at random.</li>
+        <li>One combat stat is selected at random.</li>
+      </ol>
+
+      <p>The selected stat is modified depending on biome affinity:</p>
+      <ul>
+        <li><strong>Favorable:</strong> +10%</li>
+        <li><strong>Neutral:</strong> 0%</li>
+        <li><strong>Unfavorable:</strong> −10%</li>
+      </ul>
+
+      <p><strong>Life</strong> and <strong>Resistance</strong> are never affected by biome modifiers.</p>
+      <p>The biome can affect only these stats:</p>
+      <ul>
+        <li>Attack</li>
+        <li>Defense</li>
+        <li>Speed</li>
+        <li>Agility</li>
+        <li>Technique</li>
+        <li>Explosiveness</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>Biomes</h2>
+      <div class="biome-tags">
+        <span class="biome-tag"><img src="images/icons/biomes/arctic.png" alt="Arctic" class="biome-icon-img"> Arctic</span>
+        <span class="biome-tag"><img src="images/icons/biomes/desert.png" alt="Desert" class="biome-icon-img"> Desert</span>
+        <span class="biome-tag"><img src="images/icons/biomes/jungle.png" alt="Jungle" class="biome-icon-img"> Jungle</span>
+        <span class="biome-tag"><img src="images/icons/biomes/forest.png" alt="Forest" class="biome-icon-img"> Forest</span>
+        <span class="biome-tag"><img src="images/icons/biomes/marine.png" alt="Marine" class="biome-icon-img"> Marine</span>
+        <span class="biome-tag"><img src="images/icons/biomes/mountain.png" alt="Mountain" class="biome-icon-img"> Mountain</span>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Combat Philosophy</h2>
+      <p>
+        WAFT is built around contrast, adaptation and identity. A fighter is not defined only by raw numbers,
+        but by the relationship between creature biology, martial style, biome affinity and combat role.
+        Some fighters dominate through precision, others through endurance, others through speed, explosiveness
+        or situational advantage. The system is designed so that specialization matters.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
