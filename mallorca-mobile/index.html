@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WAFT Adventure 0.5 — Mallorca</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <div id="hud">
+    <div class="hud-title">WAFT ADVENTURE 0.5</div>
+    <div id="chunkLabel">Mallorca</div>
+    <div id="fpsLabel">Cargando terreno...</div>
+  </div>
+  <div id="mobileControls">
+    <div id="joystickZone"><div id="joystickKnob"></div></div>
+    <div id="actionButtons">
+      <button id="runButton">CORRER</button>
+      <button id="interactButton">ACCIÓN</button>
+    </div>
+  </div>
+  <div id="loadingScreen">
+    <div class="loading-logo">WAFT</div>
+    <div class="loading-text">Generando Mallorca real...</div>
+  </div>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="mallorca-terrain-data.js"></script>
+  <script src="adventure-config.js"></script>
+  <script src="world.js"></script>
+  <script src="player-controller.js"></script>
+  <script src="npc-controller.js"></script>
+  <script src="animal-ai.js"></script>
+  <script src="interaction-system.js"></script>
+  <script src="battle-bridge.js"></script>
+  <script src="adventure-main.js"></script>
+</body>
+</html>
