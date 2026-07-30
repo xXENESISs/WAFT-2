@@ -4,46 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
   <meta name="theme-color" content="#07161d">
-  <title>WAFT Adventure 0.15 Preview</title>
+  <title>WAFT Adventure</title>
   <style>
     html,body{margin:0;background:#07161d;color:#e7bd63;font:700 18px system-ui;min-height:100%;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}
+    a{display:inline-block;margin-top:18px;padding:14px 18px;border:1px solid #e7bd63;border-radius:12px;color:#07161d;background:#e7bd63;text-decoration:none}
+    small{display:block;max-width:520px;color:#d8cfb8;line-height:1.45;font-weight:500}
   </style>
 </head>
 <body>
-  Cargando WAFT Adventure 0.15…
-  <script src="v15s-0.js?v=15"></script>
-  <script src="v15s-1.js?v=15"></script>
-  <script src="v15s-2.js?v=15"></script>
-  <script>
-    (async()=>{
-      try{
-        const packed=window.WAFT15_HTML||'';
-        if(!packed) throw Error('El paquete 0.15 está vacío o no se ha descargado.');
-        if(typeof DecompressionStream==='undefined') throw Error('Este navegador no admite la descompresión necesaria.');
-
-        const bytes=Uint8Array.from(atob(packed),c=>c.charCodeAt(0));
-        const reader=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip')).getReader();
-        const decoder=new TextDecoder();
-        let html='';
-
-        for(;;){
-          const result=await reader.read();
-          if(result.done) break;
-          html+=decoder.decode(result.value,{stream:true});
-        }
-        html+=decoder.decode();
-
-        if(!html.trim().startsWith('<!doctype html>')&&!html.includes('<html')){
-          throw Error('El paquete 0.15 se descomprimió, pero no contiene una página HTML válida.');
-        }
-
-        document.open();
-        document.write(html);
-        document.close();
-      }catch(error){
-        document.body.textContent='Error al cargar WAFT 0.15: '+(error&&error.message?error.message:String(error));
-      }
-    })();
-  </script>
+  <main>
+    <div>La vista previa 0.15 estaba incompleta y ha sido retirada.</div>
+    <small>La versión estable 0.14 sigue intacta. No se publicará otra vista previa hasta que el paquete haya sido reconstruido y validado.</small>
+    <a href="./?v=14">Abrir WAFT Adventure 0.14</a>
+  </main>
 </body>
 </html>
