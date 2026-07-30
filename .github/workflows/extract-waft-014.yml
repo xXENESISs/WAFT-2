@@ -1,0 +1,37 @@
+name: Extract WAFT 0.14 source
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/waft-015-coast-foundation
+    paths:
+      - tools/extract-waft-014.js
+      - .github/workflows/extract-waft-014.yml
+      - mallorca-mobile/v13s-*.js
+      - mallorca-mobile/v14p-*.js
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/waft-015-coast-foundation
+      - name: Reconstruct verified 0.14 source
+        run: node tools/extract-waft-014.js
+      - name: Commit reconstructed source
+        run: |
+          if git diff --quiet -- mallorca-mobile/source-014.html mallorca-mobile/source-014-terrain-report.txt; then
+            echo "Source already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/source-014.html mallorca-mobile/source-014-terrain-report.txt
+          git commit -m "Extract readable WAFT 0.14 source"
+          git push
