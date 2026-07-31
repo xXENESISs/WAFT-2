@@ -539,7 +539,7 @@ placeUrbanSet('hotel','Porto Cristo',[[3.3470,39.5450,.60,-.08],[3.3540,39.5520,
 placeUrbanSet('hotel','Sa Coma',[[3.3540,39.5680,.60,.08],[3.3650,39.5720,.65,.02],[3.3760,39.5780,.68,-.04],[3.3860,39.5840,.60,-.10]]);
 placeUrbanSet('hotel','Cala Millor',[[3.3660,39.5920,.62,.08],[3.3750,39.5980,.68,.04],[3.3840,39.6040,.73,0],[3.3930,39.6090,.70,-.05],[3.4020,39.6140,.65,-.10],[3.4100,39.6190,.58,-.14]]);
 placeUrbanSet('hotel','Cala Bona',[[3.3790,39.6195,.60,.06],[3.3890,39.6250,.66,0],[3.3990,39.6300,.62,-.06],[3.4080,39.6350,.56,-.12]]);
-place(capdeperaObj,capdeperaPoint,1.12,1.12,1.12,-.18,0,{shape:'box',hx:6.10,hz:4.85,height:5.95,standable:true});
+place(capdeperaObj,capdeperaPoint,1.12,1.12,1.12,-.18,0,{shape:'box',hx:6.10,hz:4.85,height:5.95,standable:true});urbanSites.push({kind:'castle',name:'Castell de Capdepera',x:capdeperaPoint.x,y:capdeperaPoint.y,z:capdeperaPoint.z,r:7.15,top:capdeperaPoint.y+6.66});
 placeUrbanSet('house','Capdepera',[[3.4100,39.6940,.62,.12],[3.4200,39.7000,.66,-.08],[3.4300,39.7110,.61,.18],[3.4400,39.7140,.64,-.16],[3.4470,39.7030,.67,.04],[3.4180,39.7160,.59,-.02]]);
 placeUrbanSet('hotel','Cala Rajada',[[3.4430,39.7010,.58,.08],[3.4530,39.7070,.64,.03],[3.4630,39.7130,.69,-.03],[3.4730,39.7190,.64,-.08],[3.4820,39.7250,.57,-.13]]);
 
@@ -590,7 +590,7 @@ let cameraYaw=.88,pitch=.50,radius=13.2,desiredYaw=cameraYaw,desiredPitch=pitch,
 let joyX=0,joyY=0,joyMagnitude=0,autoRun=false,jumpPointer=null,pendingJump=null,currentInteractable=null,dialogueOpen=false,lastAutoSave=performance.now(),fastTravelTarget=null;
 const keys=new Set();
 
-function cameraPointBlocked(x,y,z){for(const o of colliders)if(y>o.bottom-.20&&y<o.top+.30&&shapeContains(o,x,z,.20))return true;return false}
+function cameraPointBlocked(x,y,z){for(const o of colliders){const broad=o.shape==='box'?(o.hx>.72&&o.hz>.62):o.r>.72;if(broad&&y>o.bottom-.20&&y<o.top+.30&&shapeContains(o,x,z,.20))return true}return false}
 function eye(){const cp=Math.cos(pitch),desired=[target[0]+radius*cp*Math.sin(cameraYaw),target[1]+radius*Math.sin(pitch),target[2]+radius*cp*Math.cos(cameraYaw)];if(!followMode)return desired;const dx=desired[0]-target[0],dy=desired[1]-target[1],dz=desired[2]-target[2],steps=Math.max(14,Math.ceil(Math.hypot(dx,dy,dz)*3.2));let safe=[target[0],target[1]+.08,target[2]];for(let i=1;i<=steps;i++){const t=i/steps,p=[target[0]+dx*t,target[1]+dy*t,target[2]+dz*t],floor=terrainHeight(p[0],p[2])??WATER_Y;p[1]=Math.max(p[1],floor+.65);if(cameraPointBlocked(p[0],p[1],p[2]))break;safe=p}return safe}
 function resize(){const d=Math.min(devicePixelRatio||1,1.55),w=Math.floor(innerWidth*d),h=Math.floor(innerHeight*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h)}}
 function bindAttrib(buffer,loc){gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0)}
