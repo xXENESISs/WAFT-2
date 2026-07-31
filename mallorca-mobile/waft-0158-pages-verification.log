@@ -1,5 +1,3 @@
 attempt=1 http=200 bytes=166924
 
 added 1 package in 2s
-Error: Expected at least 30 hotels, got 29
-    at /home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/verify-waft-0158.cjs:77:36

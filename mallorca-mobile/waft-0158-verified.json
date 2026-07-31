@@ -1,0 +1,38 @@
+{
+  "version": "0.15.8",
+  "verified": true,
+  "pages_url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0158.html?v=9942deb37b431167e8da38b8f8f7b97e831e6724",
+  "trigger_commit": "9942deb37b431167e8da38b8f8f7b97e831e6724",
+  "verified_at": "2026-07-31T17:09:58.287Z",
+  "checks": {
+    "http_200": true,
+    "pages_matches_main": true,
+    "javascript_syntax": true,
+    "startup_completed": true,
+    "webgl_context": true,
+    "no_page_errors": true,
+    "urban_buildings": 54,
+    "hotels": 29,
+    "houses": 24,
+    "capdepera_castle": 1,
+    "all_urban_sites_on_land": true,
+    "minimum_urban_clearance": 1.1684688670028636,
+    "player_building_collision": true,
+    "vulture_building_collision": true,
+    "camera_building_collision": true,
+    "cathedral_bellver_distance": 40.75842692771545,
+    "landmarks": [
+      "catedral",
+      "bellver",
+      "drach",
+      "lluc",
+      "formentor",
+      "salines",
+      "manacor",
+      "puntaamer",
+      "capdepera",
+      "capdeperafar"
+    ],
+    "collider_count": 532
+  }
+}
