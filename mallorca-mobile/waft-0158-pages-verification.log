@@ -1,28 +1,5 @@
-attempt=1 http=200 bytes=166921
-pages_ok=1
-url=https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0158.html?v=96bc14be8b06342507b18804c83e4a6d43b441cf
-Wrote to /tmp/waft-browser-check/package.json:
+attempt=1 http=200 bytes=166924
 
-{
-  "name": "waft-browser-check",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-
-
-
-
-added 1 package, and audited 2 packages in 1s
-
-found 0 vulnerabilities
-chrome=/usr/bin/google-chrome
-Error: Urban buildings overlap: clearance -6.096500000000001
-    at /tmp/waft-browser-check/verify.cjs:76:39
-browser_ok=0
+added 1 package in 2s
+Error: Expected at least 30 hotels, got 29
+    at /home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/verify-waft-0158.cjs:77:36
