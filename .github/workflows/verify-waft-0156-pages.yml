@@ -1,0 +1,151 @@
+name: Verify WAFT 0.15.6 Pages
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-waft-0156-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Wait for the real GitHub Pages file
+        id: pages
+        shell: bash
+        run: |
+          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0156.html?v=${GITHUB_SHA}"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          ok=0
+          for attempt in $(seq 1 120); do
+            if curl -fsSL --max-time 25 "$url" -o /tmp/waft-0156-pages.html; then
+              if grep -Fq '<title>WAFT Adventure 0.15.6 · Mallorca habitable</title>' /tmp/waft-0156-pages.html \
+                && grep -Fq 'WAFT ADVENTURE 0.15.6 · MALLORCA HABITABLE' /tmp/waft-0156-pages.html \
+                && grep -Fq 'Campanar de Manacor' /tmp/waft-0156-pages.html \
+                && grep -Fq 'Castell de sa Punta de n Amer' /tmp/waft-0156-pages.html; then
+                ok=1
+                break
+              fi
+            fi
+            sleep 5
+          done
+          if [ "$ok" != "1" ]; then
+            echo "GitHub Pages did not serve the complete WAFT 0.15.6 build" >&2
+            exit 1
+          fi
+          cmp -s /tmp/waft-0156-pages.html mallorca-mobile/waft-0156.html
+
+      - name: Install browser verifier
+        shell: bash
+        run: |
+          mkdir -p /tmp/waft-browser-check
+          cd /tmp/waft-browser-check
+          npm init -y >/dev/null 2>&1
+          npm install playwright-core@latest >/dev/null 2>&1
+          command -v google-chrome >/tmp/waft-chrome-path || command -v chromium >/tmp/waft-chrome-path || command -v chromium-browser >/tmp/waft-chrome-path
+
+      - name: Open public build and validate startup
+        env:
+          WAFT_URL: ${{ steps.pages.outputs.url }}
+        shell: bash
+        run: |
+          cat > /tmp/waft-browser-check/verify.cjs <<'NODE'
+          const fs = require('fs');
+          const { chromium } = require('playwright-core');
+
+          (async () => {
+            const executablePath = fs.readFileSync('/tmp/waft-chrome-path', 'utf8').trim();
+            const browser = await chromium.launch({
+              executablePath,
+              headless: true,
+              args: [
+                '--use-gl=swiftshader',
+                '--enable-webgl',
+                '--ignore-gpu-blocklist',
+                '--disable-gpu-sandbox',
+                '--disable-dev-shm-usage'
+              ]
+            });
+            const page = await browser.newPage({ viewport: { width: 412, height: 915 }, deviceScaleFactor: 1 });
+            const pageErrors = [];
+            page.on('pageerror', error => pageErrors.push(String(error && error.stack || error)));
+            const response = await page.goto(process.env.WAFT_URL, { waitUntil: 'domcontentloaded', timeout: 90000 });
+            if (!response || response.status() !== 200) throw new Error(`Unexpected HTTP status: ${response && response.status()}`);
+            await page.waitForFunction(() => {
+              const loading = document.querySelector('#loading');
+              return Boolean(window.WAFT_DEBUG && loading && loading.classList.contains('hidden'));
+            }, null, { timeout: 120000 });
+            await page.waitForTimeout(3500);
+            const state = await page.evaluate(() => {
+              const error = document.querySelector('#error');
+              const canvas = document.querySelector('#view');
+              const debug = window.WAFT_DEBUG;
+              return {
+                title: document.title,
+                hud: document.querySelector('#hud h1')?.textContent || '',
+                errorVisible: Boolean(error && getComputedStyle(error).display !== 'none'),
+                errorText: document.querySelector('#errorText')?.textContent || '',
+                loadingHidden: document.querySelector('#loading')?.classList.contains('hidden') || false,
+                webgl: Boolean(canvas && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))),
+                pigs: Array.isArray(debug?.pigs) ? debug.pigs.length : -1,
+                cows: Array.isArray(debug?.cows) ? debug.cows.length : -1,
+                landmarks: Array.isArray(debug?.landmarks) ? debug.landmarks.map(item => item.id) : [],
+                colliderCount: Array.isArray(debug?.colliders) ? debug.colliders.length : -1
+              };
+            });
+            if (state.title !== 'WAFT Adventure 0.15.6 · Mallorca habitable') throw new Error(`Wrong title: ${state.title}`);
+            if (!state.hud.includes('0.15.6 · MALLORCA HABITABLE')) throw new Error(`Wrong HUD: ${state.hud}`);
+            if (!state.loadingHidden) throw new Error('Loading screen did not finish');
+            if (state.errorVisible) throw new Error(`Game error screen visible: ${state.errorText}`);
+            if (!state.webgl) throw new Error('WebGL context unavailable');
+            if (state.pigs !== 5) throw new Error(`Expected 5 Mallorcan black pigs, got ${state.pigs}`);
+            if (state.cows !== 5) throw new Error(`Expected 5 Menorcan cows, got ${state.cows}`);
+            if (!state.landmarks.includes('manacor') || !state.landmarks.includes('puntaamer')) throw new Error(`Missing new landmarks: ${state.landmarks.join(',')}`);
+            if (state.colliderCount < 20) throw new Error(`Collider set looks incomplete: ${state.colliderCount}`);
+            if (pageErrors.length) throw new Error(`Page errors: ${pageErrors.join('\n')}`);
+            const report = {
+              version: '0.15.6',
+              verified: true,
+              pages_url: process.env.WAFT_URL,
+              trigger_commit: process.env.GITHUB_SHA,
+              verified_at: new Date().toISOString(),
+              checks: {
+                http_200: true,
+                pages_matches_main: true,
+                javascript_syntax: true,
+                startup_completed: true,
+                webgl_context: true,
+                no_page_errors: true,
+                new_landmarks_loaded: state.landmarks,
+                mallorcan_black_pigs: state.pigs,
+                menorcan_cows: state.cows,
+                collider_count: state.colliderCount
+              }
+            };
+            fs.writeFileSync(process.env.GITHUB_WORKSPACE + '/mallorca-mobile/waft-0156-verified.json', JSON.stringify(report, null, 2) + '\n');
+            await browser.close();
+          })().catch(error => {
+            console.error(error && error.stack || error);
+            process.exit(1);
+          });
+          NODE
+          cd /tmp/waft-browser-check
+          GITHUB_SHA="$GITHUB_SHA" GITHUB_WORKSPACE="$GITHUB_WORKSPACE" node verify.cjs
+
+      - name: Commit verification report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/waft-0156-verified.json
+          git commit -m "Verify WAFT Adventure 0.15.6 on Pages"
+          git push origin HEAD:main
