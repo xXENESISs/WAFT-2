@@ -9,6 +9,10 @@ const match = loader.match(/const packed = '([A-Za-z0-9+/=]+)'/);
 if (!match) throw new Error('Packed WAFT 0.15.6 builder payload not found');
 let source = gunzipSync(Buffer.from(match[1], 'base64')).toString('utf8');
 source = source.replace("String.raw`function actorShapes()", "`function actorShapes()");
+source = source.replace(
+  "replaceRegex(/const cows=Array\\.from\\(\\{length:5\\}.*?\\);/s, cowsAndPigs, 'cow and pig initialization');",
+  "replaceRegex(/const cows=Array\\.from\\(\\{length:5\\}[\\s\\S]*?\\nconst birdHomes=/, `${cowsAndPigs}\\nconst birdHomes=`, 'cow and pig initialization');"
+);
 const temporary = path.resolve('mallorca-mobile/.build-waft-0156-fixed.mjs');
 fs.writeFileSync(temporary, source);
 try {
