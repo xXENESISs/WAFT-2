@@ -1,0 +1,28 @@
+{
+  "version": "0.15.6",
+  "verified": true,
+  "pages_url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0156.html?v=d2818d537ded1778d92a7368c60ead933921c316",
+  "trigger_commit": "d2818d537ded1778d92a7368c60ead933921c316",
+  "verified_at": "2026-07-31T16:09:51.252Z",
+  "checks": {
+    "http_200": true,
+    "pages_matches_main": true,
+    "javascript_syntax": true,
+    "startup_completed": true,
+    "webgl_context": true,
+    "no_page_errors": true,
+    "new_landmarks_loaded": [
+      "catedral",
+      "bellver",
+      "drach",
+      "lluc",
+      "formentor",
+      "salines",
+      "manacor",
+      "puntaamer"
+    ],
+    "mallorcan_black_pigs": 5,
+    "menorcan_cows": 5,
+    "collider_count": 535
+  }
+}
