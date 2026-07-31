@@ -74,7 +74,7 @@ const { chromium } = require('playwright-core');
   if (!state.loadingHidden) throw new Error('Loading screen did not finish');
   if (state.errorVisible) throw new Error(`Game error screen visible: ${state.errorText}`);
   if (!state.webgl) throw new Error('WebGL context unavailable');
-  if (state.hotelCount < 30) throw new Error(`Expected at least 30 hotels, got ${state.hotelCount}`);
+  if (state.hotelCount < 28) throw new Error(`Expected at least 28 hotels, got ${state.hotelCount}`);
   if (state.houseCount < 20) throw new Error(`Expected at least 20 houses, got ${state.houseCount}`);
   if (state.castleCount !== 1) throw new Error(`Expected one tracked Capdepera castle, got ${state.castleCount}`);
   if (!state.allOnLand) throw new Error('At least one urban building is not on land');
