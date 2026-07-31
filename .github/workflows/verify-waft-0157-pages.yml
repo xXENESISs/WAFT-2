@@ -1,0 +1,199 @@
+name: Verify WAFT 0.15.7 Pages
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-waft-0157-pages.yml
+      - mallorca-mobile/waft-0157.html
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-waft-0157-pages
+  cancel-in-progress: true
+
+jobs:
+  verify-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Wait for exact GitHub Pages build
+        id: pages
+        shell: bash
+        run: |
+          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0157.html?v=${GITHUB_SHA}"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          : > mallorca-mobile/waft-0157-pages-verification.log
+          ok=0
+          for attempt in $(seq 1 72); do
+            code=$(curl -sS -L --max-time 25 -o /tmp/waft-0157-pages.html -w '%{http_code}' "$url" || true)
+            printf 'attempt=%s http=%s bytes=%s\n' "$attempt" "${code:-000}" "$(wc -c </tmp/waft-0157-pages.html 2>/dev/null || echo 0)" | tee -a mallorca-mobile/waft-0157-pages-verification.log
+            if [ "$code" = "200" ] \
+              && grep -Fq '<title>WAFT Adventure 0.15.7 · Geografía de Llevant</title>' /tmp/waft-0157-pages.html \
+              && grep -Fq 'WAFT ADVENTURE 0.15.7 · GEOGRAFÍA DE LLEVANT' /tmp/waft-0157-pages.html \
+              && grep -Fq 'MONTAR PORC NEGRE' /tmp/waft-0157-pages.html \
+              && cmp -s /tmp/waft-0157-pages.html mallorca-mobile/waft-0157.html; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          echo "pages_ok=$ok" >> "$GITHUB_OUTPUT"
+          printf 'pages_ok=%s\nurl=%s\n' "$ok" "$url" >> mallorca-mobile/waft-0157-pages-verification.log
+
+      - name: Open public build on mobile viewport
+        id: browser
+        env:
+          WAFT_URL: ${{ steps.pages.outputs.url }}
+          PAGES_OK: ${{ steps.pages.outputs.pages_ok }}
+        shell: bash
+        run: |
+          ok=0
+          if [ "$PAGES_OK" = "1" ]; then
+            set +e
+            mkdir -p /tmp/waft-browser-check
+            cd /tmp/waft-browser-check
+            npm init -y >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0157-pages-verification.log" 2>&1
+            npm install playwright-core@latest >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0157-pages-verification.log" 2>&1
+            chrome=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+            printf 'chrome=%s\n' "$chrome" >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0157-pages-verification.log"
+            cat > verify.cjs <<'NODE'
+          const fs = require('fs');
+          const { chromium } = require('playwright-core');
+          (async () => {
+            const browser = await chromium.launch({
+              executablePath: process.env.CHROME_PATH,
+              headless: true,
+              args: ['--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist','--disable-gpu-sandbox','--disable-dev-shm-usage']
+            });
+            const page = await browser.newPage({ viewport: { width: 915, height: 412 }, deviceScaleFactor: 1 });
+            const pageErrors = [];
+            page.on('pageerror', error => pageErrors.push(String(error && error.stack || error)));
+            const response = await page.goto(process.env.WAFT_URL, { waitUntil: 'domcontentloaded', timeout: 90000 });
+            if (!response || response.status() !== 200) throw new Error(`Unexpected HTTP status: ${response && response.status()}`);
+            await page.waitForFunction(() => {
+              const loading = document.querySelector('#loading');
+              return Boolean(window.WAFT_DEBUG && loading && loading.classList.contains('hidden'));
+            }, null, { timeout: 120000 });
+            await page.waitForTimeout(3500);
+            const state = await page.evaluate(() => {
+              const d = window.WAFT_DEBUG;
+              const distance = (a,b) => Math.hypot(a.x-b.x,a.z-b.z);
+              const layeredBellver = d.colliders.filter(c => c.standMin != null && distance(c,d.bellverPoint) < 18);
+              d.mountAnimal('pig',0);
+              const pigMounted = d.player.mount === 'pig' && d.pigs[0].mounted === true;
+              const pigButton = document.querySelector('#jumpBtn')?.textContent || '';
+              d.dismountAnimal(false);
+              const error = document.querySelector('#error');
+              const canvas = document.querySelector('#view');
+              return {
+                title: document.title,
+                hud: document.querySelector('#hud h1')?.textContent || '',
+                errorVisible: Boolean(error && getComputedStyle(error).display !== 'none'),
+                errorText: document.querySelector('#errorText')?.textContent || '',
+                loadingHidden: document.querySelector('#loading')?.classList.contains('hidden') || false,
+                webgl: Boolean(canvas && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))),
+                pigs: d.pigs.length,
+                cows: d.cows.length,
+                pigMounted,
+                pigButton,
+                layeredBellver: layeredBellver.map(c => ({top:c.top,standMin:c.standMin,r:c.r})),
+                palmaDistance: distance(d.cathedralPoint,d.bellverPoint),
+                manacorPorto: distance(d.manacorPoint,d.portoCristoPoint),
+                portoSaComa: distance(d.portoCristoPoint,d.saComaPoint),
+                saComaCala: distance(d.saComaPoint,d.calaMillorPoint),
+                puntaFromSaComa: distance(d.saComaPoint,d.puntaAmerPoint),
+                puntaFromCala: distance(d.calaMillorPoint,d.puntaAmerPoint),
+                colliderCount: d.colliders.length
+              };
+            });
+            if (state.title !== 'WAFT Adventure 0.15.7 · Geografía de Llevant') throw new Error(`Wrong title: ${state.title}`);
+            if (!state.hud.includes('0.15.7 · GEOGRAFÍA DE LLEVANT')) throw new Error(`Wrong HUD: ${state.hud}`);
+            if (!state.loadingHidden) throw new Error('Loading screen did not finish');
+            if (state.errorVisible) throw new Error(`Game error screen visible: ${state.errorText}`);
+            if (!state.webgl) throw new Error('WebGL context unavailable');
+            if (state.pigs !== 5 || state.cows !== 5) throw new Error(`Unexpected fauna counts: pigs=${state.pigs}, cows=${state.cows}`);
+            if (!state.pigMounted || state.pigButton !== 'EMBESTIR') throw new Error(`Pig mount failed: mounted=${state.pigMounted}, button=${state.pigButton}`);
+            if (state.layeredBellver.length !== 4) throw new Error(`Expected four height-gated Bellver tower platforms, got ${state.layeredBellver.length}`);
+            if (!state.layeredBellver.every(c => c.standMin < c.top && c.r > 2)) throw new Error(`Invalid Bellver collision layers: ${JSON.stringify(state.layeredBellver)}`);
+            if (state.palmaDistance < 16) throw new Error(`Cathedral and Bellver remain too close: ${state.palmaDistance}`);
+            if (state.manacorPorto < 40 || state.portoSaComa < 18 || state.saComaCala < 12) throw new Error(`Llevant settlements are not separated: ${JSON.stringify(state)}`);
+            if (!(state.puntaFromSaComa < state.saComaCala && state.puntaFromCala < state.saComaCala)) throw new Error('Punta de n Amer is not between Sa Coma and Cala Millor');
+            if (state.colliderCount < 20) throw new Error(`Collider set looks incomplete: ${state.colliderCount}`);
+            if (pageErrors.length) throw new Error(`Page errors: ${pageErrors.join('\n')}`);
+            const report = {
+              version: '0.15.7',
+              verified: true,
+              pages_url: process.env.WAFT_URL,
+              trigger_commit: process.env.GITHUB_SHA,
+              verified_at: new Date().toISOString(),
+              checks: {
+                http_200: true,
+                pages_matches_main: true,
+                startup_completed: true,
+                webgl_context: true,
+                no_page_errors: true,
+                pig_mount_and_charge_ui: true,
+                bellver_layered_colliders: state.layeredBellver,
+                palma_landmark_distance: state.palmaDistance,
+                llevant_distances: {
+                  manacor_porto_cristo: state.manacorPorto,
+                  porto_cristo_sa_coma: state.portoSaComa,
+                  sa_coma_cala_millor: state.saComaCala,
+                  sa_coma_punta_amer: state.puntaFromSaComa,
+                  cala_millor_punta_amer: state.puntaFromCala
+                },
+                mallorcan_black_pigs: state.pigs,
+                menorcan_cows: state.cows,
+                collider_count: state.colliderCount
+              }
+            };
+            fs.writeFileSync(process.env.GITHUB_WORKSPACE + '/mallorca-mobile/waft-0157-verified.json', JSON.stringify(report, null, 2) + '\n');
+            await browser.close();
+          })().catch(error => { console.error(error && error.stack || error); process.exit(1); });
+          NODE
+            CHROME_PATH="$chrome" GITHUB_SHA="$GITHUB_SHA" GITHUB_WORKSPACE="$GITHUB_WORKSPACE" WAFT_URL="$WAFT_URL" node verify.cjs >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0157-pages-verification.log" 2>&1
+            code=$?
+            if [ "$code" = "0" ]; then ok=1; fi
+            set -e
+          fi
+          echo "browser_ok=$ok" >> "$GITHUB_OUTPUT"
+          printf 'browser_ok=%s\n' "$ok" >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0157-pages-verification.log"
+
+      - name: Record public verification result
+        env:
+          WAFT_URL: ${{ steps.pages.outputs.url }}
+          PAGES_OK: ${{ steps.pages.outputs.pages_ok }}
+          BROWSER_OK: ${{ steps.browser.outputs.browser_ok }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          result = {
+            'version': '0.15.7',
+            'trigger_commit': os.environ['GITHUB_SHA'],
+            'pages_url': os.environ['WAFT_URL'],
+            'pages_ok': os.environ['PAGES_OK'] == '1',
+            'browser_ok': os.environ['BROWSER_OK'] == '1'
+          }
+          with open('mallorca-mobile/waft-0157-verification-status.json','w',encoding='utf-8') as f:
+            json.dump(result,f,ensure_ascii=False,indent=2)
+            f.write('\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/waft-0157-pages-verification.log mallorca-mobile/waft-0157-verification-status.json
+          if [ -f mallorca-mobile/waft-0157-verified.json ]; then git add mallorca-mobile/waft-0157-verified.json; fi
+          git commit -m "Record WAFT Adventure 0.15.7 Pages verification"
+          git push origin HEAD:main
+
+      - name: Require successful public verification
+        if: steps.pages.outputs.pages_ok != '1' || steps.browser.outputs.browser_ok != '1'
+        run: exit 1
