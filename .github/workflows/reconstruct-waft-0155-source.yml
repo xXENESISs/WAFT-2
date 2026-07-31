@@ -1,0 +1,57 @@
+name: Reconstruct WAFT 0.15.5 editable source
+
+on:
+  push:
+    paths:
+      - .github/workflows/reconstruct-waft-0155-source.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Reconstruct verified HTML
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const zlib = require('zlib');
+          let packed = '';
+          for (let i = 0; i < 7; i++) {
+            const path = `mallorca-mobile/v155direct2-${String(i).padStart(2, '0')}.js`;
+            const source = fs.readFileSync(path, 'utf8').trim();
+            const match = source.match(/window\.WAFT155DIRECT2(?:\s*\+)?=\s*'([A-Za-z0-9+/=]+)'\s*;?/);
+            if (!match) throw new Error(`Formato inesperado en ${path}`);
+            packed += match[1];
+          }
+          if (packed.length !== 72436) {
+            throw new Error(`Base64 incompleto: ${packed.length}/72436`);
+          }
+          const html = zlib.gunzipSync(Buffer.from(packed, 'base64')).toString('utf8');
+          if (!html.includes('WAFT Adventure 0.15.5 · Pulido de islas')) {
+            throw new Error('No aparece el título esperado de WAFT 0.15.5');
+          }
+          if (!html.includes('WAFT ADVENTURE 0.15.5 · PULIDO DE ISLAS')) {
+            throw new Error('No aparece la cabecera esperada de WAFT 0.15.5');
+          }
+          fs.writeFileSync('mallorca-mobile/waft-0155-source.html', html);
+          console.log(`Fuente reconstruida: ${Buffer.byteLength(html)} bytes`);
+          NODE
+
+      - name: Commit editable source copy
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/waft-0155-source.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Reconstruct editable WAFT 0.15.5 source"
+          git push origin HEAD:main
