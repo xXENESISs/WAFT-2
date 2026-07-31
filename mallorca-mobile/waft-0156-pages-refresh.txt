@@ -1,0 +1,2 @@
+WAFT Adventure 0.15.6 direct build
+Source build commit: 4bf1ca47b2897880a7687c8c6c62d885ffc573a1
