@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/build-waft-0158.yml
       - mallorca-mobile/build-waft-0158.mjs
+      - mallorca-mobile/run-build-waft-0158.mjs
   workflow_dispatch:
 
 permissions:
@@ -29,7 +30,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          node mallorca-mobile/build-waft-0158.mjs > mallorca-mobile/waft-0158-build.log 2>&1
+          node mallorca-mobile/run-build-waft-0158.mjs > mallorca-mobile/waft-0158-build.log 2>&1
           code=$?
           if [ "$code" = "0" ]; then echo ok > mallorca-mobile/waft-0158-build-status.txt; else echo failed > mallorca-mobile/waft-0158-build-status.txt; fi
           cat mallorca-mobile/waft-0158-build.log
@@ -46,6 +47,7 @@ jobs:
           grep -Fq "id:'capdepera'" mallorca-mobile/waft-0158.html
           grep -Fq "placeUrbanSet('hotel','Port d Alcúdia'" mallorca-mobile/waft-0158.html
           grep -Fq "placeUrbanSet('hotel','Cala Rajada'" mallorca-mobile/waft-0158.html
+          grep -Fq "kind:'castle',name:'Castell de Capdepera'" mallorca-mobile/waft-0158.html
           grep -Fq 'cameraPointBlocked' mallorca-mobile/waft-0158.html
           grep -Fq 'moveFlightHorizontal' mallorca-mobile/waft-0158.html
           if grep -Eqi '<script[^>]+src=' mallorca-mobile/waft-0158.html; then
