@@ -1,0 +1,67 @@
+name: Build WAFT 0.15.7
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-waft-0157.yml
+      - mallorca-mobile/build-waft-0157.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-waft-0157
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Build direct self-contained HTML
+        id: build
+        shell: bash
+        run: |
+          set +e
+          node mallorca-mobile/build-waft-0157.mjs > mallorca-mobile/waft-0157-build.log 2>&1
+          code=$?
+          if [ "$code" = "0" ]; then echo ok > mallorca-mobile/waft-0157-build-status.txt; else echo failed > mallorca-mobile/waft-0157-build-status.txt; fi
+          cat mallorca-mobile/waft-0157-build.log
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate direct build structure
+        if: steps.build.outputs.code == '0'
+        shell: bash
+        run: |
+          test -s mallorca-mobile/waft-0157.html
+          grep -Fq '<title>WAFT Adventure 0.15.7 · Geografía de Llevant</title>' mallorca-mobile/waft-0157.html
+          grep -Fq 'WAFT ADVENTURE 0.15.7 · GEOGRAFÍA DE LLEVANT' mallorca-mobile/waft-0157.html
+          grep -Fq 'MONTAR PORC NEGRE' mallorca-mobile/waft-0157.html
+          grep -Fq 'portoCristoPoint=geoExact(3.33639,39.54167)' mallorca-mobile/waft-0157.html
+          grep -Fq 'standMin' mallorca-mobile/waft-0157.html
+          if grep -Eqi '<script[^>]+src=' mallorca-mobile/waft-0157.html; then
+            echo 'The build has an external script dependency' >&2
+            exit 1
+          fi
+
+      - name: Commit build result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/waft-0157-build.log mallorca-mobile/waft-0157-build-status.txt
+          if [ -f mallorca-mobile/waft-0157.html ]; then git add mallorca-mobile/waft-0157.html; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Build WAFT Adventure 0.15.7"
+          git push origin HEAD:main
+
+      - name: Require successful build
+        if: steps.build.outputs.code != '0'
+        run: exit 1
