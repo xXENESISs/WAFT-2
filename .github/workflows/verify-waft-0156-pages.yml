@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: verify-waft-0156-pages
+  cancel-in-progress: true
+
 jobs:
   verify-pages:
     runs-on: ubuntu-latest
@@ -25,55 +29,49 @@ jobs:
         run: |
           url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0156.html?v=${GITHUB_SHA}"
           echo "url=$url" >> "$GITHUB_OUTPUT"
+          : > mallorca-mobile/waft-0156-pages-verification.log
           ok=0
-          for attempt in $(seq 1 120); do
-            if curl -fsSL --max-time 25 "$url" -o /tmp/waft-0156-pages.html; then
-              if grep -Fq '<title>WAFT Adventure 0.15.6 · Mallorca habitable</title>' /tmp/waft-0156-pages.html \
-                && grep -Fq 'WAFT ADVENTURE 0.15.6 · MALLORCA HABITABLE' /tmp/waft-0156-pages.html \
-                && grep -Fq 'Campanar de Manacor' /tmp/waft-0156-pages.html \
-                && grep -Fq 'Castell de sa Punta de n Amer' /tmp/waft-0156-pages.html; then
-                ok=1
-                break
-              fi
+          for attempt in $(seq 1 72); do
+            code=$(curl -sS -L --max-time 25 -o /tmp/waft-0156-pages.html -w '%{http_code}' "$url" || true)
+            printf 'attempt=%s http=%s bytes=%s\n' "$attempt" "${code:-000}" "$(wc -c </tmp/waft-0156-pages.html 2>/dev/null || echo 0)" | tee -a mallorca-mobile/waft-0156-pages-verification.log
+            if [ "$code" = "200" ] \
+              && grep -Fq '<title>WAFT Adventure 0.15.6 · Mallorca habitable</title>' /tmp/waft-0156-pages.html \
+              && grep -Fq 'WAFT ADVENTURE 0.15.6 · MALLORCA HABITABLE' /tmp/waft-0156-pages.html \
+              && grep -Fq 'Campanar de Manacor' /tmp/waft-0156-pages.html \
+              && grep -Fq 'Castell de sa Punta de n Amer' /tmp/waft-0156-pages.html \
+              && cmp -s /tmp/waft-0156-pages.html mallorca-mobile/waft-0156.html; then
+              ok=1
+              break
             fi
             sleep 5
           done
-          if [ "$ok" != "1" ]; then
-            echo "GitHub Pages did not serve the complete WAFT 0.15.6 build" >&2
-            exit 1
-          fi
-          cmp -s /tmp/waft-0156-pages.html mallorca-mobile/waft-0156.html
-
-      - name: Install browser verifier
-        shell: bash
-        run: |
-          mkdir -p /tmp/waft-browser-check
-          cd /tmp/waft-browser-check
-          npm init -y >/dev/null 2>&1
-          npm install playwright-core@latest >/dev/null 2>&1
-          command -v google-chrome >/tmp/waft-chrome-path || command -v chromium >/tmp/waft-chrome-path || command -v chromium-browser >/tmp/waft-chrome-path
+          echo "pages_ok=$ok" >> "$GITHUB_OUTPUT"
+          printf 'pages_ok=%s\nurl=%s\n' "$ok" "$url" >> mallorca-mobile/waft-0156-pages-verification.log
 
       - name: Open public build and validate startup
+        id: browser
         env:
           WAFT_URL: ${{ steps.pages.outputs.url }}
+          PAGES_OK: ${{ steps.pages.outputs.pages_ok }}
         shell: bash
         run: |
-          cat > /tmp/waft-browser-check/verify.cjs <<'NODE'
+          ok=0
+          if [ "$PAGES_OK" = "1" ]; then
+            set +e
+            mkdir -p /tmp/waft-browser-check
+            cd /tmp/waft-browser-check
+            npm init -y >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0156-pages-verification.log" 2>&1
+            npm install playwright-core@latest >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0156-pages-verification.log" 2>&1
+            chrome=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+            printf 'chrome=%s\n' "$chrome" >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0156-pages-verification.log"
+            cat > verify.cjs <<'NODE'
           const fs = require('fs');
           const { chromium } = require('playwright-core');
-
           (async () => {
-            const executablePath = fs.readFileSync('/tmp/waft-chrome-path', 'utf8').trim();
             const browser = await chromium.launch({
-              executablePath,
+              executablePath: process.env.CHROME_PATH,
               headless: true,
-              args: [
-                '--use-gl=swiftshader',
-                '--enable-webgl',
-                '--ignore-gpu-blocklist',
-                '--disable-gpu-sandbox',
-                '--disable-dev-shm-usage'
-              ]
+              args: ['--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist','--disable-gpu-sandbox','--disable-dev-shm-usage']
             });
             const page = await browser.newPage({ viewport: { width: 412, height: 915 }, deviceScaleFactor: 1 });
             const pageErrors = [];
@@ -133,19 +131,43 @@ jobs:
             };
             fs.writeFileSync(process.env.GITHUB_WORKSPACE + '/mallorca-mobile/waft-0156-verified.json', JSON.stringify(report, null, 2) + '\n');
             await browser.close();
-          })().catch(error => {
-            console.error(error && error.stack || error);
-            process.exit(1);
-          });
+          })().catch(error => { console.error(error && error.stack || error); process.exit(1); });
           NODE
-          cd /tmp/waft-browser-check
-          GITHUB_SHA="$GITHUB_SHA" GITHUB_WORKSPACE="$GITHUB_WORKSPACE" node verify.cjs
+            CHROME_PATH="$chrome" GITHUB_SHA="$GITHUB_SHA" GITHUB_WORKSPACE="$GITHUB_WORKSPACE" WAFT_URL="$WAFT_URL" node verify.cjs >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0156-pages-verification.log" 2>&1
+            code=$?
+            if [ "$code" = "0" ]; then ok=1; fi
+            set -e
+          fi
+          echo "browser_ok=$ok" >> "$GITHUB_OUTPUT"
+          printf 'browser_ok=%s\n' "$ok" >>"$GITHUB_WORKSPACE/mallorca-mobile/waft-0156-pages-verification.log"
 
-      - name: Commit verification report
+      - name: Record public verification result
+        env:
+          WAFT_URL: ${{ steps.pages.outputs.url }}
+          PAGES_OK: ${{ steps.pages.outputs.pages_ok }}
+          BROWSER_OK: ${{ steps.browser.outputs.browser_ok }}
         shell: bash
         run: |
+          python - <<'PY'
+          import json, os
+          result = {
+            'version': '0.15.6',
+            'trigger_commit': os.environ['GITHUB_SHA'],
+            'pages_url': os.environ['WAFT_URL'],
+            'pages_ok': os.environ['PAGES_OK'] == '1',
+            'browser_ok': os.environ['BROWSER_OK'] == '1'
+          }
+          with open('mallorca-mobile/waft-0156-verification-status.json','w',encoding='utf-8') as f:
+            json.dump(result,f,ensure_ascii=False,indent=2)
+            f.write('\n')
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mallorca-mobile/waft-0156-verified.json
-          git commit -m "Verify WAFT Adventure 0.15.6 on Pages"
+          git add mallorca-mobile/waft-0156-pages-verification.log mallorca-mobile/waft-0156-verification-status.json
+          if [ -f mallorca-mobile/waft-0156-verified.json ]; then git add mallorca-mobile/waft-0156-verified.json; fi
+          git commit -m "Record WAFT Adventure 0.15.6 Pages verification"
           git push origin HEAD:main
+
+      - name: Require successful public verification
+        if: steps.pages.outputs.pages_ok != '1' || steps.browser.outputs.browser_ok != '1'
+        run: exit 1
