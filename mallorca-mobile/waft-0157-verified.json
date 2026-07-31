@@ -1,0 +1,48 @@
+{
+  "version": "0.15.7",
+  "verified": true,
+  "pages_url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0157.html?v=637083406b68c130c135c1dc819b7a78e4cf76f7",
+  "trigger_commit": "637083406b68c130c135c1dc819b7a78e4cf76f7",
+  "verified_at": "2026-07-31T16:38:33.311Z",
+  "checks": {
+    "http_200": true,
+    "pages_matches_main": true,
+    "startup_completed": true,
+    "webgl_context": true,
+    "no_page_errors": true,
+    "pig_mount_and_charge_ui": true,
+    "bellver_layered_colliders": [
+      {
+        "top": 13.222081224560164,
+        "standMin": 11.302081224560164,
+        "r": 2.546
+      },
+      {
+        "top": 13.222081224560164,
+        "standMin": 11.302081224560164,
+        "r": 2.546
+      },
+      {
+        "top": 13.222081224560164,
+        "standMin": 11.302081224560164,
+        "r": 2.546
+      },
+      {
+        "top": 17.50208122456016,
+        "standMin": 12.882081224560164,
+        "r": 3.154
+      }
+    ],
+    "palma_landmark_distance": 17.234991958005388,
+    "llevant_distances": {
+      "manacor_porto_cristo": 51.81648038786471,
+      "porto_cristo_sa_coma": 23.958487810601056,
+      "sa_coma_cala_millor": 15.787461976266535,
+      "sa_coma_punta_amer": 8.276450873072905,
+      "cala_millor_punta_amer": 13.880384361766732
+    },
+    "mallorcan_black_pigs": 5,
+    "menorcan_cows": 5,
+    "collider_count": 513
+  }
+}

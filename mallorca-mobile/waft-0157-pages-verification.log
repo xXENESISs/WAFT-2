@@ -1,0 +1,26 @@
+attempt=1 http=200 bytes=162743
+pages_ok=1
+url=https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0157.html?v=637083406b68c130c135c1dc819b7a78e4cf76f7
+Wrote to /tmp/waft-browser-check/package.json:
+
+{
+  "name": "waft-browser-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+
+
+added 1 package, and audited 2 packages in 1s
+
+found 0 vulnerabilities
+chrome=/usr/bin/google-chrome
+browser_ok=1
