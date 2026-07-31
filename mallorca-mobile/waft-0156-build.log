@@ -1,8 +1,8 @@
-/tmp/waft-0156-main.js:485
-function actorShapes(){return[{x:npcPoint.x,z:npcPoint.z,r:.40,top:npcPoint.y+1.78,standable:false},{x:lizard.x,z:lizard.z,r:.20,top:lizard.y+.18,standable:true},{x:gineta.x,z:gineta.z,r:.46,top:gineta.y+.92,standable:true},...herd.map(a=>({x:a.x,z:a.z,r:.56,top:a.y+1.78,standable:true})),...goats.filter((a,i)=>!(player.mount==='goat'&&player.mountId===i)).map(a=>({x:a.x,z:a.z,r:.58,top:a.y+1.52,standable:true})),...cows.filter((a,i)=>!(player.mount==='cow'&&player.mountId===i)).map(a=>({x:a.x,z:a.z,r:.98,top:a.y+2.62,standable:true})),...pigs.map(a=>({x:a.x,z:a.z,r:.64,top:a.y+1.16,standable:false}))]}\nfunction dynamicBlocked(x,z,y){return actorShapes().some(a=>(x-a.x)**2+(z-a.z)**2<(a.r+.08)**2&&y<a.top-.08)}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+/tmp/waft-0156-main.js:651
+})();
+^
 
-SyntaxError: Invalid or unexpected token
+SyntaxError: Unexpected token '}'
     at wrapSafe (node:internal/modules/cjs/loader:1713:18)
     at checkSyntax (node:internal/main/check_syntax:78:3)
 
@@ -16,14 +16,14 @@ Error: Command failed: /usr/local/bin/node --check /tmp/waft-0156-main.js
     at wrappedFn (node:internal/errors:537:14)
     at checkExecSyncError (node:child_process:916:11)
     at execFileSync (node:child_process:952:15)
-    at file:///home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/.build-waft-0156-unpacked.mjs?run=1785513521744:111:1
+    at file:///home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/.build-waft-0156-fixed.mjs?run=1785513617328:111:1
     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    at async file:///home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/build-waft-0156.mjs:11:3 {
+    at async file:///home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/run-build-waft-0156.mjs:15:3 {
   status: 1,
   signal: null,
   output: [ null, null, null ],
-  pid: 2373,
+  pid: 2267,
   stdout: null,
   stderr: null
 }
