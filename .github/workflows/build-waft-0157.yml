@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/build-waft-0157.yml
       - mallorca-mobile/build-waft-0157.mjs
+      - mallorca-mobile/run-build-waft-0157.mjs
   workflow_dispatch:
 
 permissions:
@@ -29,7 +30,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          node mallorca-mobile/build-waft-0157.mjs > mallorca-mobile/waft-0157-build.log 2>&1
+          node mallorca-mobile/run-build-waft-0157.mjs > mallorca-mobile/waft-0157-build.log 2>&1
           code=$?
           if [ "$code" = "0" ]; then echo ok > mallorca-mobile/waft-0157-build-status.txt; else echo failed > mallorca-mobile/waft-0157-build-status.txt; fi
           cat mallorca-mobile/waft-0157-build.log
