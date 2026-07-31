@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/build-waft-0156.yml
       - mallorca-mobile/build-waft-0156.mjs
+      - mallorca-mobile/run-build-waft-0156.mjs
   workflow_dispatch:
 
 permissions:
@@ -25,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          node mallorca-mobile/build-waft-0156.mjs > mallorca-mobile/waft-0156-build.log 2>&1
+          node mallorca-mobile/run-build-waft-0156.mjs > mallorca-mobile/waft-0156-build.log 2>&1
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           cat mallorca-mobile/waft-0156-build.log
