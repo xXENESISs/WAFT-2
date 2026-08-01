@@ -11,7 +11,7 @@ Collecting urllib3<3,>=1.26 (from requests->osmium)
 Collecting certifi>=2023.5.7 (from requests->osmium)
   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
 Downloading osmium-4.3.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 17.1 MB/s  0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 8.3 MB/s  0:00:00
 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
 Downloading charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (224 kB)
 Downloading idna-3.18-py3-none-any.whl (65 kB)
@@ -237,3 +237,110 @@ Successfully installed certifi-2026.7.22 charset_normalizer-3.4.9 idna-3.18 osmi
     "maximumBuildingsInSector": 140
   }
 }
+{
+  "activeSectors": 44,
+  "files": 9,
+  "landCells": 12901,
+  "outputDirectory": "../../../../../tmp/waft-osm-a",
+  "packageBytes": 626300,
+  "regionId": "baleares"
+}
+{
+  "fallbackElevationCells": 0,
+  "maximumElevationMeters": 1261,
+  "meanElevationMeters": 135.794,
+  "minimumElevationMeters": 0,
+  "packageDirectory": "../../../../../tmp/waft-osm-a",
+  "realElevationCells": 12901,
+  "regionId": "baleares"
+}
+{
+  "classDistribution": {
+    "0": 118171,
+    "1": 28,
+    "2": 8,
+    "3": 1008,
+    "4": 4803,
+    "5": 2343,
+    "6": 3,
+    "7": 585,
+    "8": 588,
+    "9": 3535
+  },
+  "fallbackLandCells": 0,
+  "packageDirectory": "../../../../../tmp/waft-osm-a",
+  "realClassifiedLandCells": 12901,
+  "regionId": "baleares"
+}
+{
+  "discardedBuildings": {
+    "duplicate": 92894,
+    "invalid": 14795,
+    "protectedZone": 2535,
+    "sectorLimit": 189117,
+    "water": 7
+  },
+  "generatedBuildings": 5866,
+  "hotels": 2663,
+  "landmarks": 90,
+  "packageBytes": 39253849,
+  "packageDirectory": "../../../../../tmp/waft-osm-a",
+  "ports": 146,
+  "regionId": "baleares",
+  "roads": 43994,
+  "settlements": 70
+}
+{
+  "activeSectors": 44,
+  "files": 9,
+  "landCells": 12901,
+  "outputDirectory": "../../../../../tmp/waft-osm-b",
+  "packageBytes": 626300,
+  "regionId": "baleares"
+}
+{
+  "fallbackElevationCells": 0,
+  "maximumElevationMeters": 1261,
+  "meanElevationMeters": 135.794,
+  "minimumElevationMeters": 0,
+  "packageDirectory": "../../../../../tmp/waft-osm-b",
+  "realElevationCells": 12901,
+  "regionId": "baleares"
+}
+{
+  "classDistribution": {
+    "0": 118171,
+    "1": 28,
+    "2": 8,
+    "3": 1008,
+    "4": 4803,
+    "5": 2343,
+    "6": 3,
+    "7": 585,
+    "8": 588,
+    "9": 3535
+  },
+  "fallbackLandCells": 0,
+  "packageDirectory": "../../../../../tmp/waft-osm-b",
+  "realClassifiedLandCells": 12901,
+  "regionId": "baleares"
+}
+{
+  "discardedBuildings": {
+    "duplicate": 92894,
+    "invalid": 14795,
+    "protectedZone": 2535,
+    "sectorLimit": 189117,
+    "water": 7
+  },
+  "generatedBuildings": 5866,
+  "hotels": 2663,
+  "landmarks": 90,
+  "packageBytes": 39253849,
+  "packageDirectory": "../../../../../tmp/waft-osm-b",
+  "ports": 146,
+  "regionId": "baleares",
+  "roads": 43994,
+  "settlements": 70
+}
+Deterministic rebuild comparison passed byte for byte.
