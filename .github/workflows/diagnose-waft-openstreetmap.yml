@@ -9,6 +9,9 @@ on:
 permissions:
   contents: write
 
+env:
+  DIAGNOSTIC_VERSION: '2'
+
 jobs:
   diagnose:
     runs-on: ubuntu-latest
@@ -52,7 +55,7 @@ jobs:
             node world-generator/scripts/verify-openstreetmap.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1
             verify_code=$?
           fi
-          printf '{\n  "install": %s,\n  "import": %s,\n  "build": %s,\n  "verify": %s\n}\n' "$install_code" "$import_code" "$build_code" "$verify_code" > world-generator/baleares-openstreetmap-diagnostic-status.json
+          printf '{\n  "diagnosticVersion": %s,\n  "install": %s,\n  "import": %s,\n  "build": %s,\n  "verify": %s\n}\n' "$DIAGNOSTIC_VERSION" "$install_code" "$import_code" "$build_code" "$verify_code" > world-generator/baleares-openstreetmap-diagnostic-status.json
           cat world-generator/baleares-openstreetmap-diagnostic.log
           echo "verify_code=$verify_code" >> "$GITHUB_OUTPUT"
           exit 0
