@@ -2,17 +2,19 @@
   "formatVersion": 1,
   "regionId": "baleares",
   "valid": true,
-  "generationStage": "openstreetmap-physical-network",
+  "generationStage": "wikidata-ranked-landmarks",
   "pipeline": [
     "build-region",
     "apply-copernicus-dem",
     "apply-esa-worldcover",
-    "apply-openstreetmap"
+    "apply-openstreetmap",
+    "apply-wikidata-landmarks"
   ],
   "buildsCompared": 2,
   "comparison": "recursive byte-for-byte",
   "identical": true,
   "verifiedPackageFiles": 9,
-  "packageBytes": 39253849,
-  "openStreetMapSnapshotSha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c"
+  "packageBytes": 39409942,
+  "openStreetMapSnapshotSha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c",
+  "wikidataSnapshotSha256": "c7bb4f8f6b73049c3059d53ee17280c9555ad5308f0b21b010e1bf4a37e96e0d"
 }
