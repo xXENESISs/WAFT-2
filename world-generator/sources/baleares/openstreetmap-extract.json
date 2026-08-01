@@ -1,0 +1,34 @@
+{
+  "attribution": "© OpenStreetMap contributors",
+  "counts": {
+    "buildings": 305214,
+    "hotels": 3952,
+    "landmarks": 5409,
+    "ports": 146,
+    "roads": 145578,
+    "settlements": 7689
+  },
+  "dataset": "OpenStreetMap regional extract",
+  "distribution": "Geofabrik",
+  "formatVersion": 1,
+  "httpLastModified": "Fri, 31 Jul 2026 23:05:17 GMT",
+  "license": "ODbL 1.0",
+  "osmTimestamp": "2026-07-31T20:21:56Z",
+  "parserStatistics": {
+    "areasSeen": 500453,
+    "invalidGeometries": 0,
+    "nodesSeen": 5254156,
+    "relationsSeen": 8536,
+    "waysSeen": 735769
+  },
+  "pbfBytes": 46061737,
+  "pbfSha256": "3297fa2dbe3de62b447f3dced1a4b501676bee83d73f0d2a05d254fe72db40db",
+  "provider": "OpenStreetMap contributors",
+  "regionId": "baleares",
+  "retrievedOn": "2026-08-01",
+  "snapshotBytes": 33417430,
+  "snapshotFile": "openstreetmap-extract.json.gz",
+  "snapshotSha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c",
+  "sourceUrl": "https://download.geofabrik.de/europe/spain/islas-baleares-latest.osm.pbf",
+  "uncompressedBytes": 178212991
+}
