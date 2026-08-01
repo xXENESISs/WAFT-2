@@ -592,9 +592,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 282,
-        "mean": 112.05,
-        "min": 6
+        "max": 83,
+        "mean": 33.05,
+        "min": 1
       },
       "geographicBounds": {
         "east": 3.8489770116438047,
@@ -640,9 +640,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 455,
-        "mean": 247.89,
-        "min": 1
+        "max": 219,
+        "mean": 79.74,
+        "min": 4
       },
       "geographicBounds": {
         "east": 4.045332512475505,
@@ -690,9 +690,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 391,
-        "mean": 169.55,
-        "min": 1
+        "max": 211,
+        "mean": 43.89,
+        "min": 0
       },
       "geographicBounds": {
         "east": 4.241688013307205,
@@ -1201,9 +1201,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 798,
-        "mean": 261.8,
-        "min": 6
+        "max": 877,
+        "mean": 284.29,
+        "min": 0
       },
       "geographicBounds": {
         "east": 2.867199507485303,
@@ -1253,9 +1253,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 767,
-        "mean": 240.14,
-        "min": 6
+        "max": 809,
+        "mean": 254.05,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -1310,9 +1310,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 277,
-        "mean": 57.48,
-        "min": 6
+        "max": 295,
+        "mean": 67.87,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.2599105091487037,
@@ -1458,9 +1458,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 185,
-        "mean": 75.71,
-        "min": 1
+        "max": 26,
+        "mean": 11.07,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.8489770116438047,
@@ -1509,9 +1509,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 522,
-        "mean": 314.01,
-        "min": 1
+        "max": 163,
+        "mean": 60.31,
+        "min": 0
       },
       "geographicBounds": {
         "east": 4.045332512475505,
@@ -1562,9 +1562,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 438,
-        "mean": 310.16,
-        "min": 4
+        "max": 228,
+        "mean": 84.34,
+        "min": 0
       },
       "geographicBounds": {
         "east": 4.241688013307205,
@@ -1619,9 +1619,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 311,
-        "mean": 118,
-        "min": 1
+        "max": 73,
+        "mean": 38.29,
+        "min": 5
       },
       "geographicBounds": {
         "east": 4.438043514138906,
@@ -2041,9 +2041,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 906,
-        "mean": 378.26,
-        "min": 6
+        "max": 956,
+        "mean": 395.63,
+        "min": 1
       },
       "geographicBounds": {
         "east": 2.6708440066536028,
@@ -2096,8 +2096,8 @@
         ]
       },
       "elevationMeters": {
-        "max": 1198,
-        "mean": 466.37,
+        "max": 1261,
+        "mean": 487.16,
         "min": 7
       },
       "geographicBounds": {
@@ -2151,9 +2151,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 929,
-        "mean": 174.89,
-        "min": 6
+        "max": 995,
+        "mean": 182.72,
+        "min": 3
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -2206,9 +2206,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 150,
-        "mean": 41.82,
-        "min": 6
+        "max": 168,
+        "mean": 45.79,
+        "min": 1
       },
       "geographicBounds": {
         "east": 3.2599105091487037,
@@ -2262,9 +2262,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 394,
-        "mean": 142.51,
-        "min": 6
+        "max": 426,
+        "mean": 152.11,
+        "min": 1
       },
       "geographicBounds": {
         "east": 3.456266009980404,
@@ -2315,9 +2315,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 22,
-        "mean": 13.85,
-        "min": 6
+        "max": 29,
+        "mean": 11.46,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.6526215108121045,
@@ -2460,9 +2460,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 223,
-        "mean": 72.85,
-        "min": 1
+        "max": 64,
+        "mean": 31.59,
+        "min": 3
       },
       "geographicBounds": {
         "east": 4.241688013307205,
@@ -2511,9 +2511,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 278,
-        "mean": 116.83,
-        "min": 3
+        "max": 67,
+        "mean": 42.33,
+        "min": 9
       },
       "geographicBounds": {
         "east": 4.438043514138906,
@@ -2885,9 +2885,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 756,
-        "mean": 194.42,
-        "min": 6
+        "max": 758,
+        "mean": 203.81,
+        "min": 2
       },
       "geographicBounds": {
         "east": 2.4744885058219026,
@@ -2945,9 +2945,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 755,
-        "mean": 237.15,
-        "min": 6
+        "max": 821,
+        "mean": 248.1,
+        "min": 1
       },
       "geographicBounds": {
         "east": 2.6708440066536028,
@@ -3001,9 +3001,9 @@
         ]
       },
       "elevationMeters": {
-        "max": 450,
-        "mean": 103.36,
-        "min": 6
+        "max": 473,
+        "mean": 107.02,
+        "min": 1
       },
       "geographicBounds": {
         "east": 2.867199507485303,
@@ -3053,9 +3053,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 238,
-        "mean": 122.4,
-        "min": 47
+        "max": 258,
+        "mean": 129.59,
+        "min": 50
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -3106,9 +3106,9 @@
         ]
       },
       "elevationMeters": {
-        "max": 346,
-        "mean": 97.78,
-        "min": 39
+        "max": 363,
+        "mean": 103.13,
+        "min": 41
       },
       "geographicBounds": {
         "east": 3.2599105091487037,
@@ -3160,9 +3160,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 335,
-        "mean": 96.53,
-        "min": 6
+        "max": 347,
+        "mean": 100.04,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.456266009980404,
@@ -3771,9 +3771,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 159,
-        "mean": 34.66,
-        "min": 6
+        "max": 173,
+        "mean": 36.84,
+        "min": 0
       },
       "geographicBounds": {
         "east": 2.4744885058219026,
@@ -3823,9 +3823,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 224,
-        "mean": 44.34,
-        "min": 6
+        "max": 205,
+        "mean": 45.42,
+        "min": 0
       },
       "geographicBounds": {
         "east": 2.6708440066536028,
@@ -3875,9 +3875,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 228,
-        "mean": 92.7,
-        "min": 6
+        "max": 252,
+        "mean": 97.61,
+        "min": 1
       },
       "geographicBounds": {
         "east": 2.867199507485303,
@@ -3927,9 +3927,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 408,
-        "mean": 111.2,
-        "min": 6
+        "max": 459,
+        "mean": 114.63,
+        "min": 7
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -3977,8 +3977,8 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 340,
-        "mean": 106.38,
+        "max": 352,
+        "mean": 110.91,
         "min": 6
       },
       "geographicBounds": {
@@ -4029,9 +4029,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 175,
-        "mean": 41.84,
-        "min": 6
+        "max": 173,
+        "mean": 43.52,
+        "min": 2
       },
       "geographicBounds": {
         "east": 3.456266009980404,
@@ -4733,9 +4733,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 101,
-        "mean": 55.15,
-        "min": 6
+        "max": 104,
+        "mean": 58.34,
+        "min": 7
       },
       "geographicBounds": {
         "east": 2.867199507485303,
@@ -4785,9 +4785,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 68,
-        "mean": 21.15,
-        "min": 6
+        "max": 72,
+        "mean": 20.57,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -4837,9 +4837,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 179,
-        "mean": 47.04,
-        "min": 6
+        "max": 168,
+        "mean": 47.51,
+        "min": 0
       },
       "geographicBounds": {
         "east": 3.2599105091487037,
@@ -5259,9 +5259,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 157,
-        "mean": 52.47,
-        "min": 1
+        "max": 167,
+        "mean": 77.76,
+        "min": 10
       },
       "geographicBounds": {
         "east": 1.4927110016634006,
@@ -5311,9 +5311,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 256,
-        "mean": 73.7,
-        "min": 1
+        "max": 242,
+        "mean": 82.2,
+        "min": 0
       },
       "geographicBounds": {
         "east": 1.689066502495101,
@@ -5645,9 +5645,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 251,
-        "mean": 127.56,
-        "min": 7
+        "max": 118,
+        "mean": 47.09,
+        "min": 1
       },
       "geographicBounds": {
         "east": 3.0635550083170036,
@@ -6068,9 +6068,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 331,
-        "mean": 126.18,
-        "min": 9
+        "max": 184,
+        "mean": 51.15,
+        "min": 1
       },
       "geographicBounds": {
         "east": 1.2963555008317003,
@@ -6117,8 +6117,8 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 591,
-        "mean": 366.12,
+        "max": 336,
+        "mean": 126.68,
         "min": 1
       },
       "geographicBounds": {
@@ -6170,9 +6170,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 431,
-        "mean": 218.38,
-        "min": 1
+        "max": 340,
+        "mean": 99.65,
+        "min": 0
       },
       "geographicBounds": {
         "east": 1.689066502495101,
@@ -6925,9 +6925,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 340,
-        "mean": 161.56,
-        "min": 1
+        "max": 384,
+        "mean": 167.93,
+        "min": 19
       },
       "geographicBounds": {
         "east": 1.2963555008317003,
@@ -6978,9 +6978,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 378,
-        "mean": 195.12,
-        "min": 1
+        "max": 326,
+        "mean": 88.57,
+        "min": 0
       },
       "geographicBounds": {
         "east": 1.4927110016634006,
@@ -7032,9 +7032,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 24,
-        "mean": 13,
-        "min": 2
+        "max": 37,
+        "mean": 22.5,
+        "min": 8
       },
       "geographicBounds": {
         "east": 1.689066502495101,
@@ -7827,9 +7827,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 175,
-        "mean": 88.93,
-        "min": 1
+        "max": 99,
+        "mean": 23.18,
+        "min": 0
       },
       "geographicBounds": {
         "east": 1.4927110016634006,
@@ -7879,9 +7879,9 @@
         "spawnPoints": []
       },
       "elevationMeters": {
-        "max": 137,
-        "mean": 58.94,
-        "min": 1
+        "max": 178,
+        "mean": 92.34,
+        "min": 0
       },
       "geographicBounds": {
         "east": 1.689066502495101,

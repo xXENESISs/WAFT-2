@@ -1,0 +1,9 @@
+{
+  "fallbackElevationCells": 0,
+  "maximumElevationMeters": 1261,
+  "meanElevationMeters": 135.794,
+  "minimumElevationMeters": 0,
+  "packageDirectory": "regions/baleares",
+  "realElevationCells": 12901,
+  "regionId": "baleares"
+}

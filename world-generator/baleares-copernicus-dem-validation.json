@@ -1,0 +1,26 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "dataset": "Copernicus DEM GLO-30 Public",
+  "datasetRelease": "2021",
+  "sourceTiles": [
+    "Copernicus_DSM_COG_10_N38_00_E001_00_DEM",
+    "Copernicus_DSM_COG_10_N39_00_E001_00_DEM",
+    "Copernicus_DSM_COG_10_N39_00_E002_00_DEM",
+    "Copernicus_DSM_COG_10_N39_00_E003_00_DEM",
+    "Copernicus_DSM_COG_10_N39_00_E004_00_DEM",
+    "Copernicus_DSM_COG_10_N40_00_E003_00_DEM",
+    "Copernicus_DSM_COG_10_N40_00_E004_00_DEM"
+  ],
+  "snapshotBytes": 262208,
+  "snapshotSha256": "ae980a95e5ffbf068aec81704124d11e8d65170ca25dd511146c2ec9614e0d17",
+  "landCells": 12901,
+  "realElevationCells": 12901,
+  "fallbackElevationCells": 0,
+  "realCoverageRatio": 1,
+  "minimumElevationMeters": 0,
+  "maximumElevationMeters": 1261,
+  "meanElevationMeters": 135.794,
+  "externalDemStagePending": false
+}

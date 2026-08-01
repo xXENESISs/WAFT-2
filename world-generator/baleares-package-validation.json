@@ -3,12 +3,12 @@
   "regionId": "baleares",
   "valid": true,
   "generationStage": "terrain-landcover-sectors-bootstrap",
-  "packageBytes": 626268,
+  "packageBytes": 628600,
   "terrain": {
     "columns": 512,
     "rows": 256,
     "landCells": 12901,
-    "maximumElevation": 1198
+    "maximumElevation": 1261
   },
   "landcoverClassesUsed": [
     0,

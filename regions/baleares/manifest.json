@@ -20,7 +20,7 @@
     {
       "bytes": 262208,
       "path": "terrain.bin",
-      "sha256": "71b560a924a0c71c195c9dc8973d91f2aeb375b80dfa0c5e09d34064ba12e0ee"
+      "sha256": "5fdb1be2fa48647a114ff31f843713348a6b8f76ad5f778fc8d83b982809d4c5"
     },
     {
       "bytes": 131136,
@@ -28,14 +28,14 @@
       "sha256": "5156f8578946646cece70beee3b9d5d49e02b7f660a4e6185d640238d418ab8a"
     },
     {
-      "bytes": 203688,
+      "bytes": 203683,
       "path": "sectors.json",
-      "sha256": "eacba086be4d389f8e1680b5010d9d2517c9239a090f19ace2c9bf7193607b5a"
+      "sha256": "80e1258c319be189693bb41aa796036536f001a8039a00b9f5db8a7aa9345b58"
     },
     {
-      "bytes": 2000,
+      "bytes": 2002,
       "path": "settlements.json",
-      "sha256": "18c032d091fef4af8d3d5ce0f27c8bd8d5176929589a9f9a22bcea87861cd95d"
+      "sha256": "d7f5e353236d2455a60e5f351a90f2aafb347600d149b3e024a1645b1bcd2aa5"
     },
     {
       "bytes": 1655,
@@ -43,9 +43,9 @@
       "sha256": "aa6168f18369aa20e6eff45c9ff06f806535736a682ebb0eec00311bba1182a9"
     },
     {
-      "bytes": 3233,
+      "bytes": 3237,
       "path": "landmarks.json",
-      "sha256": "3c42704157ab54152ae5332e04da3019a70624abff710ad1e9089975f711a69d"
+      "sha256": "9f8df74b5d65af22cc7a7089cd60696292ac98c24e67b220ddbe8666ee1392b4"
     },
     {
       "bytes": 13322,
@@ -53,9 +53,9 @@
       "sha256": "6bd93b39bd48d4cdae5a517162c2c4d848c36254fd597e48a0ea9dc32296ebe6"
     },
     {
-      "bytes": 2746,
+      "bytes": 2747,
       "path": "routes.json",
-      "sha256": "b18766ca7ce92475ae844483d8a78f22bb501e9d2cd06758e03d83a7cee56880"
+      "sha256": "c64f1f45fada8ec51c386a645010764c385ec02607bcf1622a7b6411f16d3d24"
     }
   ],
   "formatVersion": 1,
@@ -118,9 +118,8 @@
     "format": "WAFTLCV1",
     "quality": "deterministic-bootstrap"
   },
-  "packageBytesWithoutManifest": 619988,
+  "packageBytesWithoutManifest": 619990,
   "pendingStages": [
-    "external-dem-ingestion",
     "esa-worldcover-ingestion",
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -169,6 +168,11 @@
       "path": "world-generator/configs/baleares.region.json",
       "sha256": "dfb1375d511d7ed10961c86cf196589c950e025f4050e82c15d2f5b97e1462d1"
     },
+    "demSnapshot": {
+      "metadataPath": "world-generator/sources/baleares/copernicus-dem-glo30.json",
+      "path": "world-generator/sources/baleares/copernicus-dem-glo30.bin",
+      "sha256": "ae980a95e5ffbf068aec81704124d11e8d65170ca25dd511146c2ec9614e0d17"
+    },
     "generatorSourcesSha256": "ba2168d643b585fc7862b6f3219f9aae4fcd1f3ad7554558e525cccff87db0de",
     "overrides": {
       "path": "world-generator/overrides/baleares.overrides.json",
@@ -196,12 +200,59 @@
   "terrain": {
     "cells": 131072,
     "columns": 512,
+    "elevationSource": {
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "Copernicus DEM GLO-30 Public",
+      "datasetRelease": "2021",
+      "distribution": "Registry of Open Data on AWS",
+      "license": "Copernicus data policy",
+      "mode": "copernicus-dem-glo30",
+      "nominalResolutionMeters": 30,
+      "provider": "Copernicus Programme",
+      "retrievedOn": "2026-08-01",
+      "snapshotSha256": "ae980a95e5ffbf068aec81704124d11e8d65170ca25dd511146c2ec9614e0d17",
+      "tiles": [
+        {
+          "bytes": 2345157,
+          "id": "Copernicus_DSM_COG_10_N38_00_E001_00_DEM",
+          "sha256": "6d3ce0ad8f68b9757d8fd4cc2d275222512b0a7fc7c34035468873d26b9f007b"
+        },
+        {
+          "bytes": 1423898,
+          "id": "Copernicus_DSM_COG_10_N39_00_E001_00_DEM",
+          "sha256": "fc55a7492d1eddfd4f2775f601bd246deff55c297a4b59e14837eb1ebd70b137"
+        },
+        {
+          "bytes": 10131396,
+          "id": "Copernicus_DSM_COG_10_N39_00_E002_00_DEM",
+          "sha256": "26bce19901034e8c109ef0fc3cc9c3c23305ffd83106fdd443f770664806e52b"
+        },
+        {
+          "bytes": 9557701,
+          "id": "Copernicus_DSM_COG_10_N39_00_E003_00_DEM",
+          "sha256": "5163e18c62f47d53979f004c0fd18d7f38e0fb66954c28bca76b19b5c2f071c1"
+        },
+        {
+          "bytes": 2139508,
+          "id": "Copernicus_DSM_COG_10_N39_00_E004_00_DEM",
+          "sha256": "f524e10820a1fedc53da03dc9ab81eeffffc9980483958726116225171a176f9"
+        },
+        {
+          "bytes": 656353,
+          "id": "Copernicus_DSM_COG_10_N40_00_E003_00_DEM",
+          "sha256": "5054d8627e0e47481d0d224ffb1627b7b1968aa0018ba178994c26427987c050"
+        },
+        {
+          "bytes": 709498,
+          "id": "Copernicus_DSM_COG_10_N40_00_E004_00_DEM",
+          "sha256": "1fdad8de6b93193f98a9d5ac48dadda65dd0b385aa760e8acabb9c8ce729d0d5"
+        }
+      ]
+    },
+    "fallbackElevationCells": 0,
     "format": "WAFTHGT1",
     "landCells": 12901,
-    "landRatio": 0.098427,
-    "nodataElevation": -32768,
-    "rows": 256,
-    "source": {
+    "landMaskSource": {
       "extraIslands": [
         {
           "maxHeightMeters": 461.89062500000006,
@@ -245,6 +296,13 @@
       },
       "type": "legacy-bootstrap"
     },
+    "landRatio": 0.098427,
+    "maximumElevationMeters": 1261,
+    "meanElevationMeters": 135.794,
+    "minimumElevationMeters": 0,
+    "nodataElevation": -32768,
+    "realElevationCells": 12901,
+    "rows": 256,
     "sourceCounts": {
       "legacy-mallorca-dem": 9390,
       "procedural-cabrera": 34,
