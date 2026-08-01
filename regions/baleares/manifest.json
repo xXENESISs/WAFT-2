@@ -25,12 +25,12 @@
     {
       "bytes": 131136,
       "path": "landcover.bin",
-      "sha256": "5156f8578946646cece70beee3b9d5d49e02b7f660a4e6185d640238d418ab8a"
+      "sha256": "0032ebabb8464e7d4e388f4edda4d6a376682d6bac2051fff1ec83c37b194a1c"
     },
     {
-      "bytes": 203683,
+      "bytes": 204343,
       "path": "sectors.json",
-      "sha256": "80e1258c319be189693bb41aa796036536f001a8039a00b9f5db8a7aa9345b58"
+      "sha256": "8b9de3e41733f281ef75cb82101e952dee74d719fb884536e50b8611000f5a9c"
     },
     {
       "bytes": 2002,
@@ -48,9 +48,9 @@
       "sha256": "9f8df74b5d65af22cc7a7089cd60696292ac98c24e67b220ddbe8666ee1392b4"
     },
     {
-      "bytes": 13322,
+      "bytes": 12733,
       "path": "fauna.json",
-      "sha256": "6bd93b39bd48d4cdae5a517162c2c4d848c36254fd597e48a0ea9dc32296ebe6"
+      "sha256": "8cb49e97b18b1d1baa125c5633b8554976cd1ccec7afb975667c53f3d1912c61"
     },
     {
       "bytes": 2747,
@@ -62,6 +62,18 @@
   "generationStage": "terrain-landcover-sectors-bootstrap",
   "generatorVersion": "0.1.0",
   "landcover": {
+    "classDistribution": {
+      "0": 118171,
+      "1": 28,
+      "2": 8,
+      "3": 1008,
+      "4": 4803,
+      "5": 2343,
+      "6": 3,
+      "7": 585,
+      "8": 588,
+      "9": 3535
+    },
     "classes": [
       {
         "id": 0,
@@ -114,13 +126,49 @@
         "walkable": true
       }
     ],
-    "externalWorldCoverImportPending": true,
+    "externalWorldCoverImportPending": false,
+    "fallbackLandCells": 0,
     "format": "WAFTLCV1",
-    "quality": "deterministic-bootstrap"
+    "quality": "esa-worldcover-2021-v200",
+    "realClassifiedLandCells": 12901,
+    "source": {
+      "algorithmVersion": "v200",
+      "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium",
+      "dataset": "ESA WorldCover 10 m 2021 v200",
+      "datasetYear": 2021,
+      "distribution": "Registry of Open Data on AWS",
+      "doi": "10.5281/zenodo.7254221",
+      "license": "CC BY 4.0",
+      "nominalResolutionMeters": 10,
+      "provider": "European Space Agency WorldCover project",
+      "retrievedOn": "2026-08-01",
+      "snapshotSha256": "aaa86ccb1ec8b6463e73306379311ad61c306f120dc11016abe6352d81bc33ed",
+      "tiles": [
+        {
+          "bytes": 29636760,
+          "id": "N36E000",
+          "sha256": "4871385ecb4fe2e811a295f4e5ec4d8b0c411da13e72479490bf7667cf5a8ec8"
+        },
+        {
+          "bytes": 42828862,
+          "id": "N36E003",
+          "sha256": "a33a6372b5db9f073cacfde741d409e0e3ad4830a415137901edacf7bc0cfde0"
+        },
+        {
+          "bytes": 54214296,
+          "id": "N39E000",
+          "sha256": "6e30666f95174faebf25815f76634300eeb53c805ac1f300a31f58bee871dca3"
+        },
+        {
+          "bytes": 7681487,
+          "id": "N39E003",
+          "sha256": "b2992a5222bafe90f2bdfb3cd8a565d08567d65308d37604eb4073aa64b4522c"
+        }
+      ]
+    }
   },
-  "packageBytesWithoutManifest": 619990,
+  "packageBytesWithoutManifest": 620061,
   "pendingStages": [
-    "esa-worldcover-ingestion",
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
     "gbif-fauna-candidates",
@@ -177,6 +225,11 @@
     "overrides": {
       "path": "world-generator/overrides/baleares.overrides.json",
       "sha256": "4d8a0d19f1d66ac1df0a827f330862330ff7ddccdd6e7978849232dee25e5a78"
+    },
+    "worldCoverSnapshot": {
+      "metadataPath": "world-generator/sources/baleares/esa-worldcover-2021-v200.json",
+      "path": "world-generator/sources/baleares/esa-worldcover-2021-v200.bin",
+      "sha256": "aaa86ccb1ec8b6463e73306379311ad61c306f120dc11016abe6352d81bc33ed"
     }
   },
   "region": {

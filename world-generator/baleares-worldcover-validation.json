@@ -1,0 +1,41 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "dataset": "ESA WorldCover 10 m 2021 v200",
+  "sourceTiles": [
+    "N36E000",
+    "N36E003",
+    "N39E000",
+    "N39E003"
+  ],
+  "snapshotBytes": 131136,
+  "snapshotSha256": "aaa86ccb1ec8b6463e73306379311ad61c306f120dc11016abe6352d81bc33ed",
+  "sourceClasses": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    90
+  ],
+  "realClassifiedLandCells": 12901,
+  "fallbackLandCells": 0,
+  "realCoverageRatio": 1,
+  "waftClassDistribution": {
+    "0": 118171,
+    "1": 28,
+    "2": 8,
+    "3": 1008,
+    "4": 4803,
+    "5": 2343,
+    "6": 3,
+    "7": 585,
+    "8": 588,
+    "9": 3535
+  },
+  "externalWorldCoverStagePending": false
+}

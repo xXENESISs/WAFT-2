@@ -1,0 +1,122 @@
+{
+  "algorithmVersion": "v200",
+  "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium",
+  "binaryBytes": 131136,
+  "binaryFile": "esa-worldcover-2021-v200.bin",
+  "binarySha256": "aaa86ccb1ec8b6463e73306379311ad61c306f120dc11016abe6352d81bc33ed",
+  "bucket": "s3://esa-worldcover/v200/2021/map",
+  "classDistribution": {
+    "0": {
+      "cells": 66028,
+      "name": "No data",
+      "ratio": 0.50375366
+    },
+    "10": {
+      "cells": 4850,
+      "name": "Tree cover",
+      "ratio": 0.03700256
+    },
+    "20": {
+      "cells": 977,
+      "name": "Shrubland",
+      "ratio": 0.00745392
+    },
+    "30": {
+      "cells": 3616,
+      "name": "Grassland",
+      "ratio": 0.02758789
+    },
+    "40": {
+      "cells": 2361,
+      "name": "Cropland",
+      "ratio": 0.018013
+    },
+    "50": {
+      "cells": 603,
+      "name": "Built-up",
+      "ratio": 0.00460052
+    },
+    "60": {
+      "cells": 99,
+      "name": "Bare or sparse vegetation",
+      "ratio": 0.00075531
+    },
+    "80": {
+      "cells": 52489,
+      "name": "Permanent water bodies",
+      "ratio": 0.40045929
+    },
+    "90": {
+      "cells": 49,
+      "name": "Herbaceous wetland",
+      "ratio": 0.00037384
+    }
+  },
+  "classifiedCells": 65044,
+  "dataset": "ESA WorldCover 10 m 2021 v200",
+  "datasetYear": 2021,
+  "distribution": "Registry of Open Data on AWS",
+  "doi": "10.5281/zenodo.7254221",
+  "formatVersion": 1,
+  "license": "CC BY 4.0",
+  "nodataCells": 66028,
+  "nominalResolutionMeters": 10,
+  "provider": "European Space Agency WorldCover project",
+  "regionId": "baleares",
+  "retrievedOn": "2026-08-01",
+  "sourceDocumentation": "https://esa-worldcover.org/en/data-access",
+  "targetGrid": {
+    "bounds": {
+      "east": 4.5,
+      "north": 40.15,
+      "south": 38.55,
+      "west": 1.1
+    },
+    "columns": 512,
+    "resampling": "nearest",
+    "rows": 256
+  },
+  "tiles": [
+    {
+      "bytes": 29636760,
+      "crs": "EPSG:4326",
+      "filename": "ESA_WorldCover_10m_2021_v200_N36E000_Map.tif",
+      "height": 36000,
+      "id": "N36E000",
+      "sha256": "4871385ecb4fe2e811a295f4e5ec4d8b0c411da13e72479490bf7667cf5a8ec8",
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N36E000_Map.tif",
+      "width": 36000
+    },
+    {
+      "bytes": 42828862,
+      "crs": "EPSG:4326",
+      "filename": "ESA_WorldCover_10m_2021_v200_N36E003_Map.tif",
+      "height": 36000,
+      "id": "N36E003",
+      "sha256": "a33a6372b5db9f073cacfde741d409e0e3ad4830a415137901edacf7bc0cfde0",
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N36E003_Map.tif",
+      "width": 36000
+    },
+    {
+      "bytes": 54214296,
+      "crs": "EPSG:4326",
+      "filename": "ESA_WorldCover_10m_2021_v200_N39E000_Map.tif",
+      "height": 36000,
+      "id": "N39E000",
+      "sha256": "6e30666f95174faebf25815f76634300eeb53c805ac1f300a31f58bee871dca3",
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N39E000_Map.tif",
+      "width": 36000
+    },
+    {
+      "bytes": 7681487,
+      "crs": "EPSG:4326",
+      "filename": "ESA_WorldCover_10m_2021_v200_N39E003_Map.tif",
+      "height": 36000,
+      "id": "N39E003",
+      "sha256": "b2992a5222bafe90f2bdfb3cd8a565d08567d65308d37604eb4073aa64b4522c",
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N39E003_Map.tif",
+      "width": 36000
+    }
+  ],
+  "unavailableIntersectingTiles": []
+}

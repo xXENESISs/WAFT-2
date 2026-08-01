@@ -610,11 +610,12 @@
       "landCells": 59,
       "landRatio": 0.078667,
       "landcover": {
-        "beach": 9,
-        "coastal-rock": 18,
-        "mediterranean-scrub": 11,
-        "pasture": 21,
-        "water": 691
+        "agricultural": 2,
+        "mediterranean-forest": 7,
+        "pasture": 38,
+        "urban": 8,
+        "water": 691,
+        "wetland": 4
       },
       "localBounds": {
         "maxX": 309.30902616912226,
@@ -658,13 +659,13 @@
       "landCells": 288,
       "landRatio": 0.397241,
       "landcover": {
-        "beach": 21,
-        "coastal-rock": 36,
-        "mediterranean-forest": 50,
-        "mediterranean-scrub": 63,
-        "mountain-rock": 26,
-        "pasture": 92,
-        "water": 437
+        "agricultural": 58,
+        "mediterranean-forest": 105,
+        "mediterranean-scrub": 30,
+        "pasture": 88,
+        "urban": 3,
+        "water": 437,
+        "wetland": 4
       },
       "localBounds": {
         "maxX": 373.30902616912226,
@@ -708,13 +709,14 @@
       "landCells": 232,
       "landRatio": 0.309333,
       "landcover": {
-        "beach": 29,
-        "coastal-rock": 39,
-        "mediterranean-forest": 7,
-        "mediterranean-scrub": 75,
-        "mountain-rock": 1,
-        "pasture": 81,
-        "water": 518
+        "agricultural": 38,
+        "beach": 2,
+        "mediterranean-forest": 72,
+        "mediterranean-scrub": 15,
+        "pasture": 77,
+        "urban": 5,
+        "water": 518,
+        "wetland": 23
       },
       "localBounds": {
         "maxX": 437.30902616912226,
@@ -1219,12 +1221,11 @@
       "landCells": 51,
       "landRatio": 0.073276,
       "landcover": {
-        "beach": 4,
-        "coastal-rock": 27,
         "mediterranean-forest": 10,
-        "mediterranean-scrub": 1,
-        "mountain-rock": 9,
-        "water": 645
+        "mediterranean-scrub": 8,
+        "pasture": 21,
+        "water": 645,
+        "wetland": 12
       },
       "localBounds": {
         "maxX": -10.690973830877738,
@@ -1271,13 +1272,14 @@
       "landCells": 346,
       "landRatio": 0.480556,
       "landcover": {
-        "agricultural": 62,
-        "beach": 10,
-        "coastal-rock": 51,
-        "mediterranean-forest": 86,
-        "mediterranean-scrub": 94,
-        "mountain-rock": 43,
-        "water": 374
+        "agricultural": 13,
+        "coastal-rock": 1,
+        "mediterranean-forest": 153,
+        "mediterranean-scrub": 33,
+        "pasture": 118,
+        "urban": 5,
+        "water": 374,
+        "wetland": 23
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -1328,14 +1330,15 @@
       "landCells": 195,
       "landRatio": 0.280172,
       "landcover": {
-        "agricultural": 28,
-        "beach": 52,
-        "coastal-rock": 74,
-        "mediterranean-forest": 8,
-        "mediterranean-scrub": 15,
-        "urban": 13,
+        "agricultural": 8,
+        "beach": 1,
+        "coastal-rock": 1,
+        "mediterranean-forest": 69,
+        "mediterranean-scrub": 22,
+        "pasture": 36,
+        "urban": 9,
         "water": 501,
-        "wetland": 5
+        "wetland": 49
       },
       "localBounds": {
         "maxX": 117.30902616912226,
@@ -1476,11 +1479,14 @@
       "landCells": 41,
       "landRatio": 0.056944,
       "landcover": {
-        "beach": 11,
-        "coastal-rock": 12,
-        "mediterranean-scrub": 7,
-        "pasture": 11,
-        "water": 679
+        "agricultural": 3,
+        "beach": 1,
+        "coastal-rock": 1,
+        "mediterranean-forest": 7,
+        "pasture": 15,
+        "urban": 4,
+        "water": 679,
+        "wetland": 10
       },
       "localBounds": {
         "maxX": 309.30902616912226,
@@ -1527,13 +1533,14 @@
       "landCells": 329,
       "landRatio": 0.472701,
       "landcover": {
-        "beach": 20,
-        "coastal-rock": 38,
-        "mediterranean-forest": 112,
-        "mediterranean-scrub": 46,
-        "mountain-rock": 50,
-        "pasture": 63,
-        "water": 367
+        "agricultural": 47,
+        "beach": 2,
+        "mediterranean-forest": 129,
+        "mediterranean-scrub": 23,
+        "pasture": 107,
+        "urban": 4,
+        "water": 367,
+        "wetland": 17
       },
       "localBounds": {
         "maxX": 373.30902616912226,
@@ -1580,13 +1587,13 @@
       "landCells": 630,
       "landRatio": 0.875,
       "landcover": {
-        "beach": 13,
-        "coastal-rock": 36,
-        "mediterranean-forest": 200,
-        "mediterranean-scrub": 119,
-        "mountain-rock": 81,
-        "pasture": 181,
-        "water": 90
+        "agricultural": 80,
+        "mediterranean-forest": 243,
+        "mediterranean-scrub": 51,
+        "pasture": 218,
+        "urban": 16,
+        "water": 90,
+        "wetland": 22
       },
       "localBounds": {
         "maxX": 437.30902616912226,
@@ -1637,12 +1644,14 @@
       "landCells": 155,
       "landRatio": 0.222701,
       "landcover": {
-        "beach": 25,
-        "coastal-rock": 34,
-        "mediterranean-scrub": 25,
-        "pasture": 42,
-        "urban": 29,
-        "water": 541
+        "agricultural": 6,
+        "beach": 1,
+        "mediterranean-forest": 71,
+        "mediterranean-scrub": 12,
+        "pasture": 38,
+        "urban": 19,
+        "water": 541,
+        "wetland": 8
       },
       "localBounds": {
         "maxX": 501.30902616912226,
@@ -2059,13 +2068,12 @@
       "landCells": 165,
       "landRatio": 0.229167,
       "landcover": {
-        "agricultural": 3,
-        "beach": 17,
-        "coastal-rock": 33,
-        "mediterranean-forest": 48,
-        "mediterranean-scrub": 13,
-        "mountain-rock": 51,
-        "water": 555
+        "mediterranean-forest": 100,
+        "mediterranean-scrub": 19,
+        "pasture": 20,
+        "urban": 3,
+        "water": 555,
+        "wetland": 23
       },
       "localBounds": {
         "maxX": -74.69097383087774,
@@ -2114,13 +2122,14 @@
       "landCells": 645,
       "landRatio": 0.926724,
       "landcover": {
-        "agricultural": 40,
-        "beach": 6,
-        "coastal-rock": 26,
-        "mediterranean-forest": 276,
-        "mediterranean-scrub": 101,
-        "mountain-rock": 196,
-        "water": 51
+        "agricultural": 13,
+        "mediterranean-forest": 408,
+        "mediterranean-scrub": 56,
+        "mountain-rock": 3,
+        "pasture": 141,
+        "urban": 11,
+        "water": 51,
+        "wetland": 13
       },
       "localBounds": {
         "maxX": -10.690973830877738,
@@ -2169,13 +2178,13 @@
       "landCells": 705,
       "landRatio": 0.979167,
       "landcover": {
-        "agricultural": 207,
-        "coastal-rock": 2,
-        "mediterranean-forest": 178,
-        "mediterranean-scrub": 209,
-        "mountain-rock": 51,
+        "agricultural": 152,
+        "mediterranean-forest": 283,
+        "mediterranean-scrub": 64,
+        "pasture": 169,
+        "urban": 36,
         "water": 15,
-        "wetland": 58
+        "wetland": 1
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -2224,14 +2233,15 @@
       "landCells": 355,
       "landRatio": 0.510057,
       "landcover": {
-        "agricultural": 103,
-        "beach": 16,
-        "coastal-rock": 15,
-        "mediterranean-forest": 46,
-        "mediterranean-scrub": 84,
-        "urban": 8,
+        "agricultural": 88,
+        "beach": 3,
+        "coastal-rock": 1,
+        "mediterranean-forest": 136,
+        "mediterranean-scrub": 24,
+        "pasture": 73,
+        "urban": 18,
         "water": 341,
-        "wetland": 83
+        "wetland": 12
       },
       "localBounds": {
         "maxX": 117.30902616912226,
@@ -2280,13 +2290,13 @@
       "landCells": 317,
       "landRatio": 0.440278,
       "landcover": {
-        "agricultural": 81,
-        "beach": 25,
-        "coastal-rock": 40,
-        "mediterranean-forest": 54,
-        "mediterranean-scrub": 116,
-        "mountain-rock": 1,
-        "water": 403
+        "agricultural": 6,
+        "mediterranean-forest": 132,
+        "mediterranean-scrub": 50,
+        "pasture": 104,
+        "urban": 6,
+        "water": 403,
+        "wetland": 19
       },
       "localBounds": {
         "maxX": 181.30902616912226,
@@ -2333,11 +2343,11 @@
       "landCells": 13,
       "landRatio": 0.018678,
       "landcover": {
-        "agricultural": 3,
-        "beach": 7,
+        "beach": 1,
         "mediterranean-forest": 2,
-        "mediterranean-scrub": 1,
-        "water": 683
+        "urban": 2,
+        "water": 683,
+        "wetland": 8
       },
       "localBounds": {
         "maxX": 245.30902616912226,
@@ -2478,11 +2488,14 @@
       "landCells": 27,
       "landRatio": 0.0375,
       "landcover": {
-        "beach": 8,
-        "coastal-rock": 10,
-        "mediterranean-scrub": 3,
+        "agricultural": 1,
+        "beach": 2,
+        "mediterranean-forest": 6,
+        "mediterranean-scrub": 5,
         "pasture": 6,
-        "water": 693
+        "urban": 4,
+        "water": 693,
+        "wetland": 3
       },
       "localBounds": {
         "maxX": 437.30902616912226,
@@ -2529,10 +2542,12 @@
       "landCells": 40,
       "landRatio": 0.057471,
       "landcover": {
-        "beach": 4,
-        "coastal-rock": 16,
-        "mediterranean-scrub": 7,
-        "pasture": 13,
+        "agricultural": 1,
+        "beach": 1,
+        "mediterranean-forest": 20,
+        "mediterranean-scrub": 3,
+        "pasture": 9,
+        "urban": 6,
         "water": 656
       },
       "localBounds": {
@@ -2903,13 +2918,13 @@
       "landCells": 291,
       "landRatio": 0.418103,
       "landcover": {
-        "agricultural": 40,
-        "beach": 24,
-        "coastal-rock": 47,
-        "mediterranean-forest": 74,
-        "mediterranean-scrub": 96,
-        "mountain-rock": 10,
-        "water": 405
+        "agricultural": 7,
+        "mediterranean-forest": 153,
+        "mediterranean-scrub": 14,
+        "pasture": 79,
+        "urban": 5,
+        "water": 405,
+        "wetland": 33
       },
       "localBounds": {
         "maxX": -138.69097383087774,
@@ -2963,14 +2978,14 @@
       "landCells": 687,
       "landRatio": 0.954167,
       "landcover": {
-        "agricultural": 91,
+        "agricultural": 45,
         "beach": 1,
-        "coastal-rock": 18,
-        "mediterranean-forest": 205,
-        "mediterranean-scrub": 214,
-        "mountain-rock": 53,
-        "urban": 105,
-        "water": 33
+        "mediterranean-forest": 417,
+        "mediterranean-scrub": 59,
+        "pasture": 87,
+        "urban": 69,
+        "water": 33,
+        "wetland": 9
       },
       "localBounds": {
         "maxX": -74.69097383087774,
@@ -3019,12 +3034,13 @@
       "landCells": 690,
       "landRatio": 0.991379,
       "landcover": {
-        "agricultural": 263,
-        "mediterranean-forest": 143,
-        "mediterranean-scrub": 239,
-        "mountain-rock": 1,
-        "urban": 44,
-        "water": 6
+        "agricultural": 167,
+        "mediterranean-forest": 183,
+        "mediterranean-scrub": 75,
+        "pasture": 183,
+        "urban": 80,
+        "water": 6,
+        "wetland": 2
       },
       "localBounds": {
         "maxX": -10.690973830877738,
@@ -3071,9 +3087,11 @@
       "landCells": 720,
       "landRatio": 1,
       "landcover": {
-        "agricultural": 309,
-        "mediterranean-forest": 148,
-        "mediterranean-scrub": 263
+        "agricultural": 276,
+        "mediterranean-forest": 172,
+        "mediterranean-scrub": 32,
+        "pasture": 223,
+        "urban": 17
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -3124,10 +3142,11 @@
       "landCells": 696,
       "landRatio": 1,
       "landcover": {
-        "agricultural": 252,
-        "mediterranean-forest": 139,
-        "mediterranean-scrub": 272,
-        "urban": 33
+        "agricultural": 209,
+        "mediterranean-forest": 157,
+        "mediterranean-scrub": 44,
+        "pasture": 264,
+        "urban": 22
       },
       "localBounds": {
         "maxX": 117.30902616912226,
@@ -3178,13 +3197,14 @@
       "landCells": 567,
       "landRatio": 0.7875,
       "landcover": {
-        "agricultural": 198,
-        "beach": 21,
-        "coastal-rock": 17,
-        "mediterranean-forest": 99,
-        "mediterranean-scrub": 212,
-        "urban": 20,
-        "water": 153
+        "agricultural": 51,
+        "beach": 2,
+        "mediterranean-forest": 185,
+        "mediterranean-scrub": 61,
+        "pasture": 227,
+        "urban": 25,
+        "water": 153,
+        "wetland": 16
       },
       "localBounds": {
         "maxX": 181.30902616912226,
@@ -3789,12 +3809,12 @@
       "landCells": 68,
       "landRatio": 0.097701,
       "landcover": {
-        "agricultural": 10,
-        "beach": 21,
-        "coastal-rock": 14,
-        "mediterranean-forest": 9,
-        "mediterranean-scrub": 14,
-        "water": 628
+        "mediterranean-forest": 22,
+        "mediterranean-scrub": 2,
+        "pasture": 3,
+        "urban": 10,
+        "water": 628,
+        "wetland": 31
       },
       "localBounds": {
         "maxX": -138.69097383087774,
@@ -3841,12 +3861,14 @@
       "landCells": 151,
       "landRatio": 0.209722,
       "landcover": {
-        "agricultural": 53,
-        "beach": 24,
-        "coastal-rock": 20,
-        "mediterranean-forest": 20,
-        "mediterranean-scrub": 34,
-        "water": 569
+        "agricultural": 14,
+        "beach": 1,
+        "mediterranean-forest": 65,
+        "mediterranean-scrub": 6,
+        "pasture": 18,
+        "urban": 25,
+        "water": 569,
+        "wetland": 22
       },
       "localBounds": {
         "maxX": -74.69097383087774,
@@ -3893,12 +3915,14 @@
       "landCells": 474,
       "landRatio": 0.681034,
       "landcover": {
-        "agricultural": 164,
-        "beach": 20,
-        "coastal-rock": 22,
-        "mediterranean-forest": 98,
-        "mediterranean-scrub": 170,
-        "water": 222
+        "agricultural": 121,
+        "beach": 2,
+        "mediterranean-forest": 130,
+        "mediterranean-scrub": 77,
+        "pasture": 108,
+        "urban": 24,
+        "water": 222,
+        "wetland": 12
       },
       "localBounds": {
         "maxX": -10.690973830877738,
@@ -3945,10 +3969,11 @@
       "landCells": 720,
       "landRatio": 1,
       "landcover": {
-        "agricultural": 270,
-        "mediterranean-forest": 153,
-        "mediterranean-scrub": 295,
-        "mountain-rock": 2
+        "agricultural": 312,
+        "mediterranean-forest": 155,
+        "mediterranean-scrub": 60,
+        "pasture": 179,
+        "urban": 14
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -3995,10 +4020,12 @@
       "landCells": 696,
       "landRatio": 1,
       "landcover": {
-        "agricultural": 277,
-        "beach": 2,
-        "mediterranean-forest": 133,
-        "mediterranean-scrub": 284
+        "agricultural": 223,
+        "mediterranean-forest": 202,
+        "mediterranean-scrub": 45,
+        "pasture": 215,
+        "urban": 10,
+        "wetland": 1
       },
       "localBounds": {
         "maxX": 117.30902616912226,
@@ -4047,12 +4074,13 @@
       "landCells": 130,
       "landRatio": 0.180556,
       "landcover": {
-        "agricultural": 37,
-        "beach": 24,
-        "coastal-rock": 8,
-        "mediterranean-forest": 20,
-        "mediterranean-scrub": 41,
-        "water": 590
+        "agricultural": 16,
+        "mediterranean-forest": 53,
+        "mediterranean-scrub": 15,
+        "pasture": 25,
+        "urban": 6,
+        "water": 590,
+        "wetland": 15
       },
       "localBounds": {
         "maxX": 181.30902616912226,
@@ -4751,12 +4779,13 @@
       "landCells": 79,
       "landRatio": 0.113506,
       "landcover": {
-        "agricultural": 18,
-        "beach": 12,
-        "coastal-rock": 21,
-        "mediterranean-forest": 9,
+        "agricultural": 17,
+        "mediterranean-forest": 16,
         "mediterranean-scrub": 19,
-        "water": 617
+        "pasture": 15,
+        "urban": 3,
+        "water": 617,
+        "wetland": 9
       },
       "localBounds": {
         "maxX": -10.690973830877738,
@@ -4803,12 +4832,14 @@
       "landCells": 299,
       "landRatio": 0.415278,
       "landcover": {
-        "agricultural": 108,
-        "beach": 37,
-        "coastal-rock": 5,
-        "mediterranean-forest": 51,
-        "mediterranean-scrub": 98,
-        "water": 421
+        "agricultural": 101,
+        "beach": 1,
+        "mediterranean-forest": 64,
+        "mediterranean-scrub": 18,
+        "pasture": 85,
+        "urban": 13,
+        "water": 421,
+        "wetland": 17
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -4856,11 +4887,13 @@
       "landRatio": 0.474138,
       "landcover": {
         "agricultural": 123,
-        "beach": 32,
-        "coastal-rock": 12,
-        "mediterranean-forest": 57,
-        "mediterranean-scrub": 106,
-        "water": 366
+        "beach": 1,
+        "mediterranean-forest": 83,
+        "mediterranean-scrub": 6,
+        "pasture": 77,
+        "urban": 15,
+        "water": 366,
+        "wetland": 25
       },
       "localBounds": {
         "maxX": 117.30902616912226,
@@ -5277,12 +5310,10 @@
       "landCells": 17,
       "landRatio": 0.022667,
       "landcover": {
-        "agricultural": 2,
-        "beach": 6,
-        "coastal-rock": 7,
-        "mediterranean-forest": 1,
-        "mediterranean-scrub": 1,
-        "water": 733
+        "mediterranean-forest": 8,
+        "pasture": 7,
+        "water": 733,
+        "wetland": 2
       },
       "localBounds": {
         "maxX": -458.69097383087774,
@@ -5329,12 +5360,12 @@
       "landCells": 50,
       "landRatio": 0.068966,
       "landcover": {
-        "agricultural": 7,
-        "beach": 14,
-        "coastal-rock": 16,
-        "mediterranean-forest": 3,
-        "mediterranean-scrub": 10,
-        "water": 675
+        "agricultural": 1,
+        "mediterranean-forest": 29,
+        "mediterranean-scrub": 1,
+        "pasture": 7,
+        "water": 675,
+        "wetland": 12
       },
       "localBounds": {
         "maxX": -394.69097383087774,
@@ -5663,10 +5694,12 @@
       "landCells": 34,
       "landRatio": 0.045333,
       "landcover": {
-        "beach": 5,
-        "coastal-rock": 27,
-        "mediterranean-scrub": 2,
-        "water": 716
+        "mediterranean-forest": 15,
+        "mediterranean-scrub": 7,
+        "pasture": 2,
+        "urban": 1,
+        "water": 716,
+        "wetland": 9
       },
       "localBounds": {
         "maxX": 53.30902616912226,
@@ -6086,12 +6119,13 @@
       "landCells": 71,
       "landRatio": 0.098611,
       "landcover": {
-        "agricultural": 6,
-        "beach": 11,
-        "coastal-rock": 26,
-        "mediterranean-forest": 11,
-        "mediterranean-scrub": 17,
-        "water": 649
+        "agricultural": 9,
+        "beach": 1,
+        "mediterranean-forest": 24,
+        "pasture": 21,
+        "urban": 5,
+        "water": 649,
+        "wetland": 11
       },
       "localBounds": {
         "maxX": -522.6909738308777,
@@ -6135,13 +6169,14 @@
       "landCells": 654,
       "landRatio": 0.908333,
       "landcover": {
-        "agricultural": 25,
-        "beach": 17,
-        "coastal-rock": 40,
-        "mediterranean-forest": 321,
-        "mediterranean-scrub": 128,
-        "mountain-rock": 123,
-        "water": 66
+        "agricultural": 66,
+        "coastal-rock": 1,
+        "mediterranean-forest": 328,
+        "mediterranean-scrub": 19,
+        "pasture": 198,
+        "urban": 30,
+        "water": 66,
+        "wetland": 12
       },
       "localBounds": {
         "maxX": -458.69097383087774,
@@ -6188,13 +6223,13 @@
       "landCells": 276,
       "landRatio": 0.396552,
       "landcover": {
-        "agricultural": 29,
-        "beach": 23,
-        "coastal-rock": 34,
-        "mediterranean-forest": 69,
-        "mediterranean-scrub": 116,
-        "mountain-rock": 5,
-        "water": 420
+        "agricultural": 24,
+        "mediterranean-forest": 145,
+        "mediterranean-scrub": 11,
+        "pasture": 68,
+        "urban": 15,
+        "water": 420,
+        "wetland": 13
       },
       "localBounds": {
         "maxX": -394.69097383087774,
@@ -6943,12 +6978,13 @@
       "landCells": 117,
       "landRatio": 0.1625,
       "landcover": {
-        "agricultural": 13,
-        "beach": 15,
-        "coastal-rock": 24,
-        "mediterranean-forest": 21,
-        "mediterranean-scrub": 44,
-        "water": 603
+        "agricultural": 1,
+        "mediterranean-forest": 75,
+        "mediterranean-scrub": 11,
+        "pasture": 20,
+        "urban": 4,
+        "water": 603,
+        "wetland": 6
       },
       "localBounds": {
         "maxX": -522.6909738308777,
@@ -6996,14 +7032,15 @@
       "landCells": 274,
       "landRatio": 0.380556,
       "landcover": {
-        "agricultural": 23,
-        "beach": 21,
-        "coastal-rock": 41,
-        "mediterranean-forest": 55,
-        "mediterranean-scrub": 111,
-        "mountain-rock": 3,
-        "urban": 20,
-        "water": 446
+        "agricultural": 21,
+        "beach": 2,
+        "coastal-rock": 1,
+        "mediterranean-forest": 121,
+        "mediterranean-scrub": 6,
+        "pasture": 71,
+        "urban": 31,
+        "water": 446,
+        "wetland": 21
       },
       "localBounds": {
         "maxX": -458.69097383087774,
@@ -7050,9 +7087,9 @@
       "landCells": 2,
       "landRatio": 0.002874,
       "landcover": {
-        "beach": 1,
-        "coastal-rock": 1,
-        "water": 694
+        "mediterranean-forest": 1,
+        "water": 694,
+        "wetland": 1
       },
       "localBounds": {
         "maxX": -394.69097383087774,
@@ -7845,12 +7882,14 @@
       "landCells": 165,
       "landRatio": 0.229167,
       "landcover": {
-        "agricultural": 29,
-        "beach": 31,
-        "coastal-rock": 61,
-        "mediterranean-forest": 14,
-        "mediterranean-scrub": 30,
-        "water": 555
+        "agricultural": 15,
+        "beach": 3,
+        "mediterranean-forest": 28,
+        "mediterranean-scrub": 3,
+        "pasture": 63,
+        "urban": 5,
+        "water": 555,
+        "wetland": 48
       },
       "localBounds": {
         "maxX": -458.69097383087774,
@@ -7897,12 +7936,13 @@
       "landCells": 50,
       "landRatio": 0.071839,
       "landcover": {
-        "agricultural": 2,
-        "beach": 11,
-        "coastal-rock": 35,
-        "mediterranean-forest": 1,
-        "mediterranean-scrub": 1,
-        "water": 646
+        "agricultural": 8,
+        "coastal-rock": 2,
+        "mediterranean-forest": 19,
+        "mediterranean-scrub": 2,
+        "pasture": 12,
+        "water": 646,
+        "wetland": 7
       },
       "localBounds": {
         "maxX": -394.69097383087774,

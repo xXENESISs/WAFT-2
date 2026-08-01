@@ -1,0 +1,18 @@
+{
+  "classDistribution": {
+    "0": 118171,
+    "1": 28,
+    "2": 8,
+    "3": 1008,
+    "4": 4803,
+    "5": 2343,
+    "6": 3,
+    "7": 585,
+    "8": 588,
+    "9": 3535
+  },
+  "fallbackLandCells": 0,
+  "packageDirectory": "regions/baleares",
+  "realClassifiedLandCells": 12901,
+  "regionId": "baleares"
+}

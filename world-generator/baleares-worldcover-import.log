@@ -1,0 +1,21 @@
+{
+  "binary": "world-generator/sources/baleares/esa-worldcover-2021-v200.bin",
+  "bytes": 131136,
+  "classes": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    90
+  ],
+  "classifiedCells": 65044,
+  "metadata": "world-generator/sources/baleares/esa-worldcover-2021-v200.json",
+  "mode": "downloaded-and-built",
+  "regionId": "baleares",
+  "sha256": "aaa86ccb1ec8b6463e73306379311ad61c306f120dc11016abe6352d81bc33ed",
+  "tiles": 4
+}
