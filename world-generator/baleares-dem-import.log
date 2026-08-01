@@ -1,10 +1,8 @@
 {
-  "availableCells": 97136,
   "binary": "world-generator/sources/baleares/copernicus-dem-glo30.bin",
   "bytes": 262208,
-  "maximumElevationMeters": 1261,
   "metadata": "world-generator/sources/baleares/copernicus-dem-glo30.json",
-  "mode": "downloaded-and-built",
+  "mode": "reused-existing-snapshot",
   "regionId": "baleares",
   "sha256": "ae980a95e5ffbf068aec81704124d11e8d65170ca25dd511146c2ec9614e0d17",
   "tiles": 7
