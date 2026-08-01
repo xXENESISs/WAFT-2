@@ -1,0 +1,57 @@
+name: Validate WAFT region configs
+
+on:
+  push:
+    paths:
+      - .github/workflows/validate-waft-regions.yml
+      - world-generator/configs/**
+      - world-generator/schema/**
+      - world-generator/scripts/**
+      - world-generator/overrides/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-waft-regions
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Validate region contracts
+        id: validation
+        shell: bash
+        run: |
+          set +e
+          node world-generator/scripts/validate-region.mjs
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Show validation report
+        if: always()
+        run: cat world-generator/validation-report.json
+
+      - name: Commit validation report
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/validation-report.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Validate WAFT region configurations"
+          git push origin HEAD:main
+
+      - name: Require valid configurations
+        if: steps.validation.outputs.code != '0'
+        run: exit 1
