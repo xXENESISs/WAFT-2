@@ -67,6 +67,7 @@ jobs:
           python -m py_compile world-generator/scripts/import-copernicus-dem.py
           python -m py_compile world-generator/scripts/import-esa-worldcover.py
           python -m py_compile world-generator/scripts/import-openstreetmap.py
+          python -m py_compile world-generator/scripts/import-wikidata-landmarks.py
           node --check world-generator/lib/projection.mjs
           node --check world-generator/lib/legacy-baleares-source.mjs
           node --check world-generator/lib/binary-formats.mjs
@@ -74,10 +75,12 @@ jobs:
           node --check world-generator/scripts/apply-copernicus-dem.mjs
           node --check world-generator/scripts/apply-esa-worldcover.mjs
           node --check world-generator/scripts/apply-openstreetmap.mjs
+          node --check world-generator/scripts/apply-wikidata-landmarks.mjs
           node --check world-generator/scripts/verify-region-package.mjs
           node --check world-generator/scripts/verify-copernicus-dem.mjs
           node --check world-generator/scripts/verify-esa-worldcover.mjs
           node --check world-generator/scripts/verify-openstreetmap.mjs
+          node --check world-generator/scripts/verify-wikidata-landmarks.mjs
           node --check world-generator/scripts/validate-region.mjs
 
       - name: Validate region contracts
@@ -112,22 +115,36 @@ jobs:
           python world-generator/scripts/import-openstreetmap.py baleares \
             --retrieved-on "$(date -u +%F)" | tee world-generator/baleares-openstreetmap-import.log
 
-      - name: Build Baleares package
+      - name: Prepare Wikidata landmark snapshot
+        shell: bash
+        run: |
+          python world-generator/scripts/import-wikidata-landmarks.py baleares \
+            --retrieved-on "$(date -u +%F)" | tee world-generator/baleares-wikidata-import.log
+
+      - name: Build Baleares physical package
         shell: bash
         run: |
           node world-generator/scripts/build-region.mjs baleares | tee world-generator/baleares-build.log
           node world-generator/scripts/apply-copernicus-dem.mjs baleares | tee world-generator/baleares-dem-apply.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares | tee world-generator/baleares-worldcover-apply.log
           node world-generator/scripts/apply-openstreetmap.mjs baleares | tee world-generator/baleares-openstreetmap-apply.log
-          sed -i "s#${GITHUB_WORKSPACE}/##g" regions/baleares/manifest.json
 
-      - name: Verify Baleares package
+      - name: Verify physical cartography
         shell: bash
         run: |
           node world-generator/scripts/verify-region-package.mjs baleares
           node world-generator/scripts/verify-copernicus-dem.mjs baleares
           node world-generator/scripts/verify-esa-worldcover.mjs baleares
           node world-generator/scripts/verify-openstreetmap.mjs baleares
+
+      - name: Rank and classify landmarks
+        shell: bash
+        run: |
+          node world-generator/scripts/apply-wikidata-landmarks.mjs baleares | tee world-generator/baleares-wikidata-apply.log
+          sed -i "s#${GITHUB_WORKSPACE}/##g" regions/baleares/manifest.json
+
+      - name: Verify Wikidata landmark ranking
+        run: node world-generator/scripts/verify-wikidata-landmarks.mjs baleares
 
       - name: Verify deterministic rebuild
         shell: bash
@@ -137,10 +154,12 @@ jobs:
           node world-generator/scripts/apply-copernicus-dem.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
           node world-generator/scripts/apply-openstreetmap.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
+          node world-generator/scripts/apply-wikidata-landmarks.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
           node world-generator/scripts/build-region.mjs baleares --output-dir /tmp/waft-region-b >/tmp/waft-region-b.log
           node world-generator/scripts/apply-copernicus-dem.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
           node world-generator/scripts/apply-openstreetmap.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
+          node world-generator/scripts/apply-wikidata-landmarks.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
           sed -i "s#${GITHUB_WORKSPACE}/##g" /tmp/waft-region-a/manifest.json /tmp/waft-region-b/manifest.json
           diff -qr /tmp/waft-region-a /tmp/waft-region-b
           diff -q regions/baleares/terrain.bin /tmp/waft-region-a/terrain.bin
@@ -189,13 +208,16 @@ jobs:
             world-generator/baleares-copernicus-dem-validation.json \
             world-generator/baleares-worldcover-validation.json \
             world-generator/baleares-openstreetmap-validation.json \
+            world-generator/baleares-wikidata-validation.json \
             world-generator/baleares-build.log \
             world-generator/baleares-dem-import.log \
             world-generator/baleares-dem-apply.log \
             world-generator/baleares-worldcover-import.log \
             world-generator/baleares-worldcover-apply.log \
             world-generator/baleares-openstreetmap-import.log \
-            world-generator/baleares-openstreetmap-apply.log
+            world-generator/baleares-openstreetmap-apply.log \
+            world-generator/baleares-wikidata-import.log \
+            world-generator/baleares-wikidata-apply.log
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Generate Baleares with OpenStreetMap"
+          git commit -m "Generate Baleares with Wikidata-ranked landmarks"
           git push origin HEAD:main
