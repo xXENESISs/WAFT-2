@@ -1,0 +1,134 @@
+{
+  "automaticDiscoveryPending": true,
+  "formatVersion": 1,
+  "generationStage": "manual-and-priority-landmarks",
+  "items": [
+    {
+      "assetId": "catedral-mallorca",
+      "id": "catedral-mallorca",
+      "local": {
+        "x": -81.99658238146331,
+        "y": 7,
+        "z": 13.792370255999963
+      },
+      "name": "Catedral de Mallorca",
+      "position": {
+        "lat": 39.56734,
+        "lon": 2.64843
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-07-03",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "castell-bellver",
+      "id": "castell-bellver",
+      "local": {
+        "x": -91.45208524303762,
+        "y": 73,
+        "z": 15.29576395200006
+      },
+      "name": "Castell de Bellver",
+      "position": {
+        "lat": 39.56378,
+        "lon": 2.61942
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-07-03",
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "assetId": "coves-drach",
+      "id": "coves-drach",
+      "local": {
+        "x": 140.32996215174788,
+        "y": 23,
+        "z": 27.077978592001113
+      },
+      "name": "Coves del Drach",
+      "position": {
+        "lat": 39.53588,
+        "lon": 3.33054
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-11-04",
+      "terrainStatus": "exact-cell",
+      "type": "natural_landmark"
+    },
+    {
+      "assetId": "balearic-defence-tower",
+      "id": "castell-punta-amer",
+      "local": {
+        "x": 161.66595723339742,
+        "y": 8,
+        "z": 8.454478032001001
+      },
+      "name": "Castell de sa Punta de n'Amer",
+      "position": {
+        "lat": 39.57998,
+        "lon": 3.396
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-11-03",
+      "terrainStatus": "exact-cell",
+      "type": "tower"
+    },
+    {
+      "assetId": "castell-capdepera",
+      "id": "castell-capdepera",
+      "local": {
+        "x": 173.78764463160326,
+        "y": 90,
+        "z": -44.10517910399864
+      },
+      "name": "Castell de Capdepera",
+      "position": {
+        "lat": 39.70444,
+        "lon": 3.43319
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-11-02",
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "assetId": "mediterranean-lighthouse",
+      "id": "far-formentor",
+      "local": {
+        "x": 97.78182897181306,
+        "y": 96,
+        "z": -149.9170679999987
+      },
+      "name": "Far de Formentor",
+      "position": {
+        "lat": 39.955,
+        "lon": 3.2
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-10-01",
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "assetId": "mediterranean-monastery",
+      "id": "santuari-lluc",
+      "local": {
+        "x": -4.889091448590689,
+        "y": 473,
+        "z": -93.75095520000056
+      },
+      "name": "Santuari de Lluc",
+      "position": {
+        "lat": 39.822,
+        "lon": 2.885
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-09-02",
+      "terrainStatus": "exact-cell",
+      "type": "monastery"
+    }
+  ],
+  "regionId": "baleares"
+}

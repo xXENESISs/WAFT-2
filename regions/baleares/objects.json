@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "generatedBuildingsPending": true,
+  "generationStage": "reserved-zones-only",
+  "items": [],
+  "overrideOperations": [],
+  "regionId": "baleares",
+  "reservedZones": [
+    {
+      "center": {
+        "lat": 39.56378,
+        "lon": 2.61942
+      },
+      "exclude": [
+        "buildings"
+      ],
+      "id": "bellver-park",
+      "localCenter": {
+        "x": -91.45208524303762,
+        "z": 15.29576395200006
+      },
+      "purpose": "Mantener Bellver monumental y separado de edificios",
+      "radiusKm": 0.8
+    },
+    {
+      "center": {
+        "lat": 39.56734,
+        "lon": 2.64843
+      },
+      "exclude": [
+        "buildings",
+        "vegetation"
+      ],
+      "id": "catedral-plaza",
+      "localCenter": {
+        "x": -81.99658238146331,
+        "z": 13.792370255999963
+      },
+      "purpose": "Conservar la plaza y la silueta de la catedral",
+      "radiusKm": 0.35
+    },
+    {
+      "center": {
+        "lat": 39.57998,
+        "lon": 3.396
+      },
+      "exclude": [
+        "buildings"
+      ],
+      "id": "punta-amer-open-space",
+      "localCenter": {
+        "x": 161.66595723339742,
+        "z": 8.454478032001001
+      },
+      "purpose": "Separar el castillo de Sa Coma y Cala Millor",
+      "radiusKm": 0.6
+    },
+    {
+      "center": {
+        "lat": 39.70444,
+        "lon": 3.43319
+      },
+      "exclude": [
+        "buildings",
+        "vegetation"
+      ],
+      "id": "capdepera-hill",
+      "localCenter": {
+        "x": 173.78764463160326,
+        "z": -44.10517910399864
+      },
+      "purpose": "Reservar la ciudad amurallada sobre el monte",
+      "radiusKm": 0.5
+    }
+  ]
+}

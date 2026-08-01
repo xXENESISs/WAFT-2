@@ -1,0 +1,123 @@
+{
+  "connections": [
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "port-alcudia",
+      "id": "baleares-catalunya-sea",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "catalunya-litoral"
+    },
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "port-eivissa",
+      "id": "baleares-valencia-sea",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "valencia-litoral"
+    },
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "air-tramuntana",
+      "id": "baleares-catalunya-air",
+      "requiredCapabilities": [
+        "flight"
+      ],
+      "targetRegionId": "catalunya-litoral"
+    }
+  ],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 10,
+      "id": "port-palma",
+      "local": {
+        "x": -84.74425177557116,
+        "y": 6,
+        "z": 21.1150800000018
+      },
+      "name": "Port de Palma",
+      "position": {
+        "lat": 39.55,
+        "lon": 2.64
+      },
+      "sectorId": "s-07-03",
+      "terrainStatus": "nearest-land-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 205,
+      "id": "port-alcudia",
+      "local": {
+        "x": 78.22546317745044,
+        "y": 9,
+        "z": -101.35238400000084
+      },
+      "name": "Port d'Alcúdia",
+      "position": {
+        "lat": 39.84,
+        "lon": 3.14
+      },
+      "sectorId": "s-10-02",
+      "terrainStatus": "exact-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 260,
+      "id": "port-eivissa",
+      "local": {
+        "x": -475.8715676628231,
+        "y": 4,
+        "z": 291.38810400000204
+      },
+      "name": "Port d'Eivissa",
+      "position": {
+        "lat": 38.91,
+        "lon": 1.44
+      },
+      "sectorId": "s-01-08",
+      "terrainStatus": "nearest-land-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 285,
+      "id": "port-mao",
+      "local": {
+        "x": 453.0558075694001,
+        "y": 1,
+        "z": -122.46746399999964
+      },
+      "name": "Port de Maó",
+      "position": {
+        "lat": 39.89,
+        "lon": 4.29
+      },
+      "sectorId": "s-16-01",
+      "terrainStatus": "exact-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 180,
+      "id": "air-tramuntana",
+      "local": {
+        "x": -65.18788598120855,
+        "y": 0,
+        "z": -126.6904799999988
+      },
+      "name": "Corredor aéreo de Tramuntana",
+      "position": {
+        "lat": 39.9,
+        "lon": 2.7
+      },
+      "sectorId": "s-08-01",
+      "terrainStatus": "nearest-land-cell",
+      "type": "air"
+    }
+  ],
+  "formatVersion": 1,
+  "regionId": "baleares"
+}

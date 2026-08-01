@@ -1,0 +1,258 @@
+{
+  "budgets": {
+    "activeColliders": 800,
+    "downloadMb": 60,
+    "runtimeMemoryMb": 320,
+    "textureMemoryMb": 128,
+    "visibleObjects": 2500,
+    "visibleTriangles": 450000
+  },
+  "content": {
+    "connections": 3,
+    "entryPoints": 5,
+    "faunaSpecies": 9,
+    "generatedBuildings": 0,
+    "landmarks": 7,
+    "settlements": 6
+  },
+  "deterministic": true,
+  "files": [
+    {
+      "bytes": 262208,
+      "path": "terrain.bin",
+      "sha256": "71b560a924a0c71c195c9dc8973d91f2aeb375b80dfa0c5e09d34064ba12e0ee"
+    },
+    {
+      "bytes": 131136,
+      "path": "landcover.bin",
+      "sha256": "5156f8578946646cece70beee3b9d5d49e02b7f660a4e6185d640238d418ab8a"
+    },
+    {
+      "bytes": 203688,
+      "path": "sectors.json",
+      "sha256": "eacba086be4d389f8e1680b5010d9d2517c9239a090f19ace2c9bf7193607b5a"
+    },
+    {
+      "bytes": 2000,
+      "path": "settlements.json",
+      "sha256": "18c032d091fef4af8d3d5ce0f27c8bd8d5176929589a9f9a22bcea87861cd95d"
+    },
+    {
+      "bytes": 1655,
+      "path": "objects.json",
+      "sha256": "aa6168f18369aa20e6eff45c9ff06f806535736a682ebb0eec00311bba1182a9"
+    },
+    {
+      "bytes": 3233,
+      "path": "landmarks.json",
+      "sha256": "3c42704157ab54152ae5332e04da3019a70624abff710ad1e9089975f711a69d"
+    },
+    {
+      "bytes": 13322,
+      "path": "fauna.json",
+      "sha256": "6bd93b39bd48d4cdae5a517162c2c4d848c36254fd597e48a0ea9dc32296ebe6"
+    },
+    {
+      "bytes": 2746,
+      "path": "routes.json",
+      "sha256": "b18766ca7ce92475ae844483d8a78f22bb501e9d2cd06758e03d83a7cee56880"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "terrain-landcover-sectors-bootstrap",
+  "generatorVersion": "0.1.0",
+  "landcover": {
+    "classes": [
+      {
+        "id": 0,
+        "key": "water",
+        "walkable": false
+      },
+      {
+        "id": 1,
+        "key": "beach",
+        "walkable": true
+      },
+      {
+        "id": 2,
+        "key": "coastal-rock",
+        "walkable": true
+      },
+      {
+        "id": 3,
+        "key": "mediterranean-scrub",
+        "walkable": true
+      },
+      {
+        "id": 4,
+        "key": "mediterranean-forest",
+        "walkable": true
+      },
+      {
+        "id": 5,
+        "key": "agricultural",
+        "walkable": true
+      },
+      {
+        "id": 6,
+        "key": "mountain-rock",
+        "walkable": true
+      },
+      {
+        "id": 7,
+        "key": "wetland",
+        "walkable": true
+      },
+      {
+        "id": 8,
+        "key": "urban",
+        "walkable": true
+      },
+      {
+        "id": 9,
+        "key": "pasture",
+        "walkable": true
+      }
+    ],
+    "externalWorldCoverImportPending": true,
+    "format": "WAFTLCV1",
+    "quality": "deterministic-bootstrap"
+  },
+  "packageBytesWithoutManifest": 619988,
+  "pendingStages": [
+    "external-dem-ingestion",
+    "esa-worldcover-ingestion",
+    "openstreetmap-settlements-buildings-and-routes",
+    "wikidata-landmark-ranking",
+    "gbif-fauna-candidates",
+    "procedural-vegetation-and-buildings"
+  ],
+  "projection": {
+    "axis": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "compression": {
+      "anchorIds": [
+        "mallorca",
+        "menorca",
+        "ibiza",
+        "formentera",
+        "cabrera"
+      ],
+      "factor": 0.76,
+      "mode": "anchors",
+      "preserveCoastline": true
+    },
+    "kmPerDegreeLat": 111.132,
+    "kmPerDegreeLon": 85.77353418580084,
+    "localBounds": {
+      "maxX": 521.5030878496692,
+      "maxZ": 443.4166800000018,
+      "minX": -586.6909738308777,
+      "minZ": -232.2658799999988
+    },
+    "origin": {
+      "lat": 39.6,
+      "lon": 2.9
+    },
+    "type": "local-equirectangular",
+    "unitsPerKm": 5
+  },
+  "provenance": {
+    "bootstrapSource": {
+      "path": "mallorca-mobile/waft-0158.html",
+      "sha256": "33859015d4475db2a42a8bc69f27a9204f02b42315c8ae2f77705f087833d619"
+    },
+    "config": {
+      "path": "world-generator/configs/baleares.region.json",
+      "sha256": "dfb1375d511d7ed10961c86cf196589c950e025f4050e82c15d2f5b97e1462d1"
+    },
+    "generatorSourcesSha256": "ba2168d643b585fc7862b6f3219f9aae4fcd1f3ad7554558e525cccff87db0de",
+    "overrides": {
+      "path": "world-generator/overrides/baleares.overrides.json",
+      "sha256": "4d8a0d19f1d66ac1df0a827f330862330ff7ddccdd6e7978849232dee25e5a78"
+    }
+  },
+  "region": {
+    "continent": "Europe",
+    "countryCodes": [
+      "ES"
+    ],
+    "id": "baleares",
+    "name": "Islas Baleares",
+    "status": "prototype",
+    "version": "0.1.0"
+  },
+  "sectors": {
+    "active": 44,
+    "columns": 18,
+    "preloadRadius": 2,
+    "rows": 11,
+    "sizeUnits": 64,
+    "total": 198
+  },
+  "terrain": {
+    "cells": 131072,
+    "columns": 512,
+    "format": "WAFTHGT1",
+    "landCells": 12901,
+    "landRatio": 0.098427,
+    "nodataElevation": -32768,
+    "rows": 256,
+    "source": {
+      "extraIslands": [
+        {
+          "maxHeightMeters": 461.89062500000006,
+          "name": "Menorca"
+        },
+        {
+          "maxHeightMeters": 497.765625,
+          "name": "Ibiza"
+        },
+        {
+          "maxHeightMeters": 201.796875,
+          "name": "Formentera"
+        },
+        {
+          "maxHeightMeters": 264.578125,
+          "name": "Cabrera"
+        },
+        {
+          "maxHeightMeters": 64.575,
+          "name": "Espalmador"
+        },
+        {
+          "maxHeightMeters": 219.73437500000003,
+          "name": "Es Vedrà"
+        }
+      ],
+      "htmlPath": "mallorca-mobile/waft-0158.html",
+      "limitations": [
+        "Mallorca elevation is imported from the proven mobile prototype raster.",
+        "Other islands use their real coast polygons with deterministic bootstrap relief.",
+        "This source will be replaced by the external DEM ingestion stage."
+      ],
+      "mallorcaRaster": {
+        "columns": 256,
+        "east": 3.55,
+        "maxElevationMeters": 1435,
+        "north": 40,
+        "rows": 158,
+        "south": 39.2,
+        "west": 2.25
+      },
+      "type": "legacy-bootstrap"
+    },
+    "sourceCounts": {
+      "legacy-mallorca-dem": 9390,
+      "procedural-cabrera": 34,
+      "procedural-es-vedrà": 2,
+      "procedural-espalmador": 3,
+      "procedural-formentera": 214,
+      "procedural-ibiza": 1457,
+      "procedural-menorca": 1801
+    }
+  }
+}

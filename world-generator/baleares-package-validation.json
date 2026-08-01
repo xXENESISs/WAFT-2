@@ -1,0 +1,38 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "generationStage": "terrain-landcover-sectors-bootstrap",
+  "packageBytes": 626268,
+  "terrain": {
+    "columns": 512,
+    "rows": 256,
+    "landCells": 12901,
+    "maximumElevation": 1198
+  },
+  "landcoverClassesUsed": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "sectors": {
+    "total": 198,
+    "active": 44
+  },
+  "content": {
+    "connections": 3,
+    "entryPoints": 5,
+    "faunaSpecies": 9,
+    "generatedBuildings": 0,
+    "landmarks": 7,
+    "settlements": 6
+  },
+  "fileCount": 9
+}
