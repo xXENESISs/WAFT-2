@@ -1,0 +1,633 @@
+{
+  "$schema": "../schema/region.schema.json",
+  "schemaVersion": 1,
+  "id": "baleares",
+  "name": "Islas Baleares",
+  "version": "0.1.0",
+  "status": "prototype",
+  "continent": "Europe",
+  "countryCodes": ["ES"],
+  "aliases": ["Illes Balears", "Balearic Islands"],
+  "geography": {
+    "bounds": {
+      "west": 1.1,
+      "east": 4.5,
+      "south": 38.55,
+      "north": 40.15
+    },
+    "origin": {
+      "lon": 2.9,
+      "lat": 39.6
+    },
+    "projection": "local-equirectangular",
+    "scale": {
+      "horizontalUnitsPerKm": 5,
+      "verticalExaggeration": 2.2,
+      "emptySpaceCompression": {
+        "mode": "anchors",
+        "factor": 0.76,
+        "preserveCoastline": true,
+        "anchorIds": ["mallorca", "menorca", "ibiza", "formentera", "cabrera"]
+      }
+    },
+    "subregions": [
+      {
+        "id": "mallorca",
+        "name": "Mallorca",
+        "type": "island",
+        "center": {
+          "lon": 2.9,
+          "lat": 39.65
+        },
+        "priority": 100
+      },
+      {
+        "id": "menorca",
+        "name": "Menorca",
+        "type": "island",
+        "center": {
+          "lon": 4.08,
+          "lat": 39.97
+        },
+        "priority": 80
+      },
+      {
+        "id": "ibiza",
+        "name": "Ibiza",
+        "type": "island",
+        "center": {
+          "lon": 1.43,
+          "lat": 38.98
+        },
+        "priority": 80
+      },
+      {
+        "id": "formentera",
+        "name": "Formentera",
+        "type": "island",
+        "center": {
+          "lon": 1.47,
+          "lat": 38.7
+        },
+        "priority": 65
+      },
+      {
+        "id": "cabrera",
+        "name": "Cabrera",
+        "type": "island",
+        "center": {
+          "lon": 2.95,
+          "lat": 39.15
+        },
+        "priority": 45
+      },
+      {
+        "id": "tramuntana",
+        "name": "Serra de Tramuntana",
+        "type": "mountain",
+        "center": {
+          "lon": 2.72,
+          "lat": 39.78
+        },
+        "priority": 95
+      },
+      {
+        "id": "albufera-mallorca",
+        "name": "s'Albufera de Mallorca",
+        "type": "wetland",
+        "center": {
+          "lon": 3.1,
+          "lat": 39.79
+        },
+        "priority": 75
+      }
+    ]
+  },
+  "sources": {
+    "terrain": {
+      "provider": "Copernicus",
+      "dataset": "Copernicus DEM GLO-30",
+      "license": "Copernicus data policy",
+      "attribution": "Contains modified Copernicus DEM data",
+      "resolutionMeters": 30,
+      "cachePolicy": "build-cache"
+    },
+    "cartography": {
+      "provider": "OpenStreetMap contributors",
+      "dataset": "OpenStreetMap",
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "landcover": {
+      "provider": "European Space Agency",
+      "dataset": "ESA WorldCover",
+      "license": "CC BY 4.0",
+      "attribution": "ESA WorldCover project",
+      "resolutionMeters": 10,
+      "cachePolicy": "build-cache"
+    },
+    "climate": {
+      "provider": "WorldClim",
+      "dataset": "WorldClim 2.1",
+      "license": "CC BY 4.0",
+      "attribution": "WorldClim global climate data",
+      "resolutionMeters": 1000,
+      "cachePolicy": "build-cache"
+    },
+    "landmarks": [
+      {
+        "provider": "OpenStreetMap contributors",
+        "dataset": "OpenStreetMap places and features",
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      },
+      {
+        "provider": "Wikidata",
+        "dataset": "Wikidata geographic entities",
+        "license": "CC0 1.0",
+        "attribution": "Wikidata contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ],
+    "fauna": [
+      {
+        "provider": "GBIF",
+        "dataset": "GBIF occurrence records",
+        "license": "Record-dependent open licence",
+        "attribution": "GBIF.org and contributing datasets",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ]
+  },
+  "generation": {
+    "terrain": {
+      "grid": {
+        "columns": 512,
+        "rows": 256
+      },
+      "lods": [0, 1, 2, 3],
+      "smoothingPasses": 4,
+      "coastalFlattening": true,
+      "maxWalkableSlopeDegrees": 48,
+      "seaLevelMeters": 0
+    },
+    "landcover": {
+      "ruleset": "mediterranean-islands-v1",
+      "fallbackBiome": "mediterranean-scrub",
+      "season": "dynamic",
+      "snowlineMeters": null
+    },
+    "transport": {
+      "includeRoadClasses": ["motorway", "trunk", "primary", "secondary", "tertiary", "residential"],
+      "includeRailways": true,
+      "includeTrails": true,
+      "simplificationMeters": 25
+    },
+    "settlements": {
+      "maxCount": 70,
+      "minimumPopulation": 500,
+      "coastalTourismBoost": 2.4,
+      "profiles": ["mallorcan-interior", "balearic-coastal", "mediterranean-city", "tourist-resort"],
+      "manualInclude": [
+        {
+          "id": "palma",
+          "name": "Palma",
+          "position": {
+            "lon": 2.6502,
+            "lat": 39.5696
+          }
+        },
+        {
+          "id": "manacor",
+          "name": "Manacor",
+          "position": {
+            "lon": 3.2107,
+            "lat": 39.5687
+          }
+        },
+        {
+          "id": "alcudia",
+          "name": "Alcúdia",
+          "position": {
+            "lon": 3.1214,
+            "lat": 39.8533
+          }
+        },
+        {
+          "id": "cala-millor",
+          "name": "Cala Millor",
+          "position": {
+            "lon": 3.3848,
+            "lat": 39.6047
+          }
+        },
+        {
+          "id": "mao",
+          "name": "Maó",
+          "position": {
+            "lon": 4.2658,
+            "lat": 39.8885
+          }
+        },
+        {
+          "id": "eivissa",
+          "name": "Eivissa",
+          "position": {
+            "lon": 1.4329,
+            "lat": 38.9089
+          }
+        }
+      ],
+      "manualExcludeIds": []
+    },
+    "buildings": {
+      "useRealFootprints": true,
+      "proceduralFallback": true,
+      "minimumSpacingUnits": 1.2,
+      "maximumPerSector": 140,
+      "roofWalkable": true,
+      "collisionMode": "compound",
+      "architectureProfiles": ["mallorcan-stone", "mediterranean-white", "balearic-hotel", "historic-palma"],
+      "hotelDetection": true
+    },
+    "landmarks": {
+      "maximumCount": 90,
+      "minimumScore": 20,
+      "uniqueModelScore": 85,
+      "archetypeScore": 45,
+      "protectedRadiusUnits": 12,
+      "allowedTypes": [
+        "castle",
+        "fortress",
+        "cathedral",
+        "church",
+        "monastery",
+        "tower",
+        "lighthouse",
+        "palace",
+        "monument",
+        "archaeological_site",
+        "natural_landmark"
+      ],
+      "manualInclude": [
+        {
+          "id": "catedral-mallorca",
+          "name": "Catedral de Mallorca",
+          "type": "cathedral",
+          "position": {
+            "lon": 2.64843,
+            "lat": 39.56734
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "catedral-mallorca"
+        },
+        {
+          "id": "castell-bellver",
+          "name": "Castell de Bellver",
+          "type": "castle",
+          "position": {
+            "lon": 2.61942,
+            "lat": 39.56378
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "castell-bellver"
+        },
+        {
+          "id": "coves-drach",
+          "name": "Coves del Drach",
+          "type": "natural_landmark",
+          "position": {
+            "lon": 3.33054,
+            "lat": 39.53588
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "coves-drach"
+        },
+        {
+          "id": "castell-punta-amer",
+          "name": "Castell de sa Punta de n'Amer",
+          "type": "tower",
+          "position": {
+            "lon": 3.396,
+            "lat": 39.57998
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "balearic-defence-tower"
+        },
+        {
+          "id": "castell-capdepera",
+          "name": "Castell de Capdepera",
+          "type": "castle",
+          "position": {
+            "lon": 3.43319,
+            "lat": 39.70444
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "castell-capdepera"
+        },
+        {
+          "id": "far-formentor",
+          "name": "Far de Formentor",
+          "type": "lighthouse",
+          "position": {
+            "lon": 3.2,
+            "lat": 39.955
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "mediterranean-lighthouse"
+        },
+        {
+          "id": "santuari-lluc",
+          "name": "Santuari de Lluc",
+          "type": "monastery",
+          "position": {
+            "lon": 2.885,
+            "lat": 39.822
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "mediterranean-monastery"
+        }
+      ],
+      "manualExcludeIds": []
+    },
+    "vegetation": {
+      "profiles": ["mediterranean-pine", "holm-oak", "coastal-scrub", "wetland-reeds", "olive-and-almond"],
+      "densityMultiplier": 1,
+      "minimumBuildingClearanceUnits": 1.5,
+      "instancing": true
+    },
+    "fauna": {
+      "ruleset": "baleares-fauna-v1",
+      "maximumSpecies": 45,
+      "maximumActiveAnimals": 120,
+      "recordsSinceYear": 1990,
+      "minimumCoordinatePrecisionMeters": 5000,
+      "manualInclude": [
+        {
+          "scientificName": "Sus scrofa domesticus",
+          "commonName": "Porc negre mallorquí",
+          "role": "mount",
+          "biomes": ["mediterranean-pine", "agricultural"],
+          "minimumCount": 4,
+          "maximumCount": 9
+        },
+        {
+          "scientificName": "Capra hircus",
+          "commonName": "Cabra mallorquina",
+          "role": "mount",
+          "biomes": ["mountain", "mediterranean-scrub"],
+          "minimumCount": 4,
+          "maximumCount": 10
+        },
+        {
+          "scientificName": "Bos taurus",
+          "commonName": "Vaca menorquina",
+          "role": "mount",
+          "biomes": ["pasture", "agricultural"],
+          "minimumCount": 4,
+          "maximumCount": 8
+        },
+        {
+          "scientificName": "Aegypius monachus",
+          "commonName": "Buitre negro",
+          "role": "mount",
+          "biomes": ["mountain", "forest"],
+          "minimumCount": 3,
+          "maximumCount": 7
+        },
+        {
+          "scientificName": "Prionace glauca",
+          "commonName": "Tintorera",
+          "role": "mount",
+          "biomes": ["open-sea"],
+          "minimumCount": 4,
+          "maximumCount": 10
+        },
+        {
+          "scientificName": "Genetta genetta",
+          "commonName": "Gineta",
+          "role": "encounter",
+          "biomes": ["mediterranean-pine", "mediterranean-scrub"],
+          "minimumCount": 2,
+          "maximumCount": 5
+        },
+        {
+          "scientificName": "Curruca balearica",
+          "commonName": "Curruca balear",
+          "role": "ambient",
+          "biomes": ["coastal-scrub", "mediterranean-scrub"],
+          "minimumCount": 8,
+          "maximumCount": 20
+        },
+        {
+          "scientificName": "Podarcis lilfordi",
+          "commonName": "Lagartija balear",
+          "role": "ambient",
+          "biomes": ["coastal-rock", "mediterranean-scrub"],
+          "minimumCount": 8,
+          "maximumCount": 25
+        },
+        {
+          "scientificName": "Myotragus balearicus",
+          "commonName": "Myotragus balearicus",
+          "role": "secret",
+          "biomes": ["mountain", "coastal-rock"],
+          "minimumCount": 3,
+          "maximumCount": 5
+        }
+      ],
+      "manualExcludeScientificNames": []
+    }
+  },
+  "travel": {
+    "entryPoints": [
+      {
+        "id": "port-palma",
+        "name": "Port de Palma",
+        "position": {
+          "lon": 2.64,
+          "lat": 39.55
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 10
+      },
+      {
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "position": {
+          "lon": 3.14,
+          "lat": 39.84
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 205
+      },
+      {
+        "id": "port-eivissa",
+        "name": "Port d'Eivissa",
+        "position": {
+          "lon": 1.44,
+          "lat": 38.91
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 260
+      },
+      {
+        "id": "port-mao",
+        "name": "Port de Maó",
+        "position": {
+          "lon": 4.29,
+          "lat": 39.89
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 285
+      },
+      {
+        "id": "air-tramuntana",
+        "name": "Corredor aéreo de Tramuntana",
+        "position": {
+          "lon": 2.7,
+          "lat": 39.9
+        },
+        "type": "air",
+        "arrivalHeadingDegrees": 180
+      }
+    ],
+    "connections": [
+      {
+        "id": "baleares-catalunya-sea",
+        "targetRegionId": "catalunya-litoral",
+        "entryPointId": "port-alcudia",
+        "requiredCapabilities": ["long_water"],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "baleares-valencia-sea",
+        "targetRegionId": "valencia-litoral",
+        "entryPointId": "port-eivissa",
+        "requiredCapabilities": ["long_water"],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "baleares-catalunya-air",
+        "targetRegionId": "catalunya-litoral",
+        "entryPointId": "air-tramuntana",
+        "requiredCapabilities": ["flight"],
+        "distanceClass": "regional",
+        "enabled": true
+      }
+    ]
+  },
+  "gameplay": {
+    "spawnPoints": [
+      {
+        "id": "mallorca-default",
+        "position": {
+          "lon": 2.78,
+          "lat": 39.62
+        },
+        "role": "default"
+      },
+      {
+        "id": "manacor-mission",
+        "position": {
+          "lon": 3.18,
+          "lat": 39.59
+        },
+        "role": "mission"
+      },
+      {
+        "id": "tramuntana-secret",
+        "position": {
+          "lon": 2.75,
+          "lat": 39.82
+        },
+        "role": "boss"
+      }
+    ],
+    "reservedZones": [
+      {
+        "id": "bellver-park",
+        "center": {
+          "lon": 2.61942,
+          "lat": 39.56378
+        },
+        "radiusKm": 0.8,
+        "purpose": "Mantener Bellver monumental y separado de edificios",
+        "exclude": ["buildings"]
+      },
+      {
+        "id": "catedral-plaza",
+        "center": {
+          "lon": 2.64843,
+          "lat": 39.56734
+        },
+        "radiusKm": 0.35,
+        "purpose": "Conservar la plaza y la silueta de la catedral",
+        "exclude": ["buildings", "vegetation"]
+      },
+      {
+        "id": "punta-amer-open-space",
+        "center": {
+          "lon": 3.396,
+          "lat": 39.57998
+        },
+        "radiusKm": 0.6,
+        "purpose": "Separar el castillo de Sa Coma y Cala Millor",
+        "exclude": ["buildings"]
+      },
+      {
+        "id": "capdepera-hill",
+        "center": {
+          "lon": 3.43319,
+          "lat": 39.70444
+        },
+        "radiusKm": 0.5,
+        "purpose": "Reservar la ciudad amurallada sobre el monte",
+        "exclude": ["buildings", "vegetation"]
+      }
+    ],
+    "contentTargets": {
+      "minimumLandmarks": 18,
+      "minimumFaunaZones": 16,
+      "maximumEmptyTravelSeconds": 22
+    }
+  },
+  "performance": {
+    "targetProfile": "mobile-mid",
+    "sectorSizeUnits": 64,
+    "preloadRadiusSectors": 2,
+    "budgets": {
+      "downloadMb": 60,
+      "runtimeMemoryMb": 320,
+      "visibleTriangles": 450000,
+      "visibleObjects": 2500,
+      "activeColliders": 800,
+      "textureMemoryMb": 128
+    }
+  },
+  "outputs": {
+    "directory": "regions/baleares",
+    "manifest": "manifest.json",
+    "terrain": "terrain.bin",
+    "landcover": "landcover.bin",
+    "sectors": "sectors.json",
+    "settlements": "settlements.json",
+    "objects": "objects.json",
+    "landmarks": "landmarks.json",
+    "fauna": "fauna.json",
+    "routes": "routes.json"
+  },
+  "overrides": {
+    "file": "world-generator/overrides/baleares.overrides.json",
+    "preserveOnRegenerate": true,
+    "failOnUnknownTarget": true
+  }
+}
