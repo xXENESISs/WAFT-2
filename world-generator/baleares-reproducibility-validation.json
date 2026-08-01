@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "generationStage": "openstreetmap-physical-network",
+  "pipeline": [
+    "build-region",
+    "apply-copernicus-dem",
+    "apply-esa-worldcover",
+    "apply-openstreetmap"
+  ],
+  "buildsCompared": 2,
+  "comparison": "recursive byte-for-byte",
+  "identical": true,
+  "verifiedPackageFiles": 9,
+  "packageBytes": 39253849,
+  "openStreetMapSnapshotSha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c"
+}
