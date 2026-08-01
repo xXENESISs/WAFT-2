@@ -55,20 +55,29 @@ jobs:
           path: world-generator/.cache/esa-worldcover
           key: esa-worldcover-2021-v200-baleares-v1
 
+      - name: Cache OpenStreetMap regional extract
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/openstreetmap
+          key: openstreetmap-geofabrik-baleares-v1
+
       - name: Check generator syntax
         shell: bash
         run: |
           python -m py_compile world-generator/scripts/import-copernicus-dem.py
           python -m py_compile world-generator/scripts/import-esa-worldcover.py
+          python -m py_compile world-generator/scripts/import-openstreetmap.py
           node --check world-generator/lib/projection.mjs
           node --check world-generator/lib/legacy-baleares-source.mjs
           node --check world-generator/lib/binary-formats.mjs
           node --check world-generator/scripts/build-region.mjs
           node --check world-generator/scripts/apply-copernicus-dem.mjs
           node --check world-generator/scripts/apply-esa-worldcover.mjs
+          node --check world-generator/scripts/apply-openstreetmap.mjs
           node --check world-generator/scripts/verify-region-package.mjs
           node --check world-generator/scripts/verify-copernicus-dem.mjs
           node --check world-generator/scripts/verify-esa-worldcover.mjs
+          node --check world-generator/scripts/verify-openstreetmap.mjs
           node --check world-generator/scripts/validate-region.mjs
 
       - name: Validate region contracts
@@ -80,6 +89,9 @@ jobs:
           if [ ! -f world-generator/sources/baleares/copernicus-dem-glo30.bin ] || \
              [ ! -f world-generator/sources/baleares/esa-worldcover-2021-v200.bin ]; then
             python -m pip install --disable-pip-version-check numpy rasterio
+          fi
+          if [ ! -f world-generator/sources/baleares/openstreetmap-extract.json.gz ]; then
+            python -m pip install --disable-pip-version-check osmium
           fi
 
       - name: Prepare real Copernicus elevation snapshot
@@ -94,12 +106,19 @@ jobs:
           python world-generator/scripts/import-esa-worldcover.py baleares \
             --retrieved-on "$(date -u +%F)" | tee world-generator/baleares-worldcover-import.log
 
+      - name: Prepare OpenStreetMap regional snapshot
+        shell: bash
+        run: |
+          python world-generator/scripts/import-openstreetmap.py baleares \
+            --retrieved-on "$(date -u +%F)" | tee world-generator/baleares-openstreetmap-import.log
+
       - name: Build Baleares package
         shell: bash
         run: |
           node world-generator/scripts/build-region.mjs baleares | tee world-generator/baleares-build.log
           node world-generator/scripts/apply-copernicus-dem.mjs baleares | tee world-generator/baleares-dem-apply.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares | tee world-generator/baleares-worldcover-apply.log
+          node world-generator/scripts/apply-openstreetmap.mjs baleares | tee world-generator/baleares-openstreetmap-apply.log
           sed -i "s#${GITHUB_WORKSPACE}/##g" regions/baleares/manifest.json
 
       - name: Verify Baleares package
@@ -108,6 +127,7 @@ jobs:
           node world-generator/scripts/verify-region-package.mjs baleares
           node world-generator/scripts/verify-copernicus-dem.mjs baleares
           node world-generator/scripts/verify-esa-worldcover.mjs baleares
+          node world-generator/scripts/verify-openstreetmap.mjs baleares
 
       - name: Verify deterministic rebuild
         shell: bash
@@ -116,15 +136,21 @@ jobs:
           node world-generator/scripts/build-region.mjs baleares --output-dir /tmp/waft-region-a >/tmp/waft-region-a.log
           node world-generator/scripts/apply-copernicus-dem.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
+          node world-generator/scripts/apply-openstreetmap.mjs baleares --output-dir /tmp/waft-region-a >>/tmp/waft-region-a.log
           node world-generator/scripts/build-region.mjs baleares --output-dir /tmp/waft-region-b >/tmp/waft-region-b.log
           node world-generator/scripts/apply-copernicus-dem.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
           node world-generator/scripts/apply-esa-worldcover.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
+          node world-generator/scripts/apply-openstreetmap.mjs baleares --output-dir /tmp/waft-region-b >>/tmp/waft-region-b.log
           sed -i "s#${GITHUB_WORKSPACE}/##g" /tmp/waft-region-a/manifest.json /tmp/waft-region-b/manifest.json
           diff -qr /tmp/waft-region-a /tmp/waft-region-b
           diff -q regions/baleares/terrain.bin /tmp/waft-region-a/terrain.bin
           diff -q regions/baleares/landcover.bin /tmp/waft-region-a/landcover.bin
           diff -q regions/baleares/sectors.json /tmp/waft-region-a/sectors.json
+          diff -q regions/baleares/settlements.json /tmp/waft-region-a/settlements.json
+          diff -q regions/baleares/objects.json /tmp/waft-region-a/objects.json
+          diff -q regions/baleares/landmarks.json /tmp/waft-region-a/landmarks.json
           diff -q regions/baleares/fauna.json /tmp/waft-region-a/fauna.json
+          diff -q regions/baleares/routes.json /tmp/waft-region-a/routes.json
           diff -q regions/baleares/manifest.json /tmp/waft-region-a/manifest.json
 
       - name: Confirm frozen build is untouched
@@ -162,11 +188,14 @@ jobs:
             world-generator/baleares-package-validation.json \
             world-generator/baleares-copernicus-dem-validation.json \
             world-generator/baleares-worldcover-validation.json \
+            world-generator/baleares-openstreetmap-validation.json \
             world-generator/baleares-build.log \
             world-generator/baleares-dem-import.log \
             world-generator/baleares-dem-apply.log \
             world-generator/baleares-worldcover-import.log \
-            world-generator/baleares-worldcover-apply.log
+            world-generator/baleares-worldcover-apply.log \
+            world-generator/baleares-openstreetmap-import.log \
+            world-generator/baleares-openstreetmap-apply.log
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Generate Baleares with real terrain and land cover"
+          git commit -m "Generate Baleares with OpenStreetMap"
           git push origin HEAD:main
