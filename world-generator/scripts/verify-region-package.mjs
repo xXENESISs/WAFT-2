@@ -5,6 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { decodeTerrainHeader, decodeLandcoverHeader, REGION_BINARY_FORMAT } from '../lib/binary-formats.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const GENERATION_STAGES = new Set([
+  'terrain-landcover-sectors-bootstrap',
+  'openstreetmap-physical-network'
+]);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -43,7 +47,7 @@ function verify() {
   const manifest = readJson(manifestPath);
   assert(manifest.region.id === regionId, 'Manifest region id mismatch');
   assert(manifest.deterministic === true, 'Package must be marked deterministic');
-  assert(manifest.generationStage === 'terrain-landcover-sectors-bootstrap', 'Unexpected generation stage');
+  assert(GENERATION_STAGES.has(manifest.generationStage), `Unexpected generation stage: ${manifest.generationStage}`);
 
   let fileBytes = 0;
   for (const record of manifest.files) {
