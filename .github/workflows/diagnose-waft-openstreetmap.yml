@@ -1,0 +1,78 @@
+name: Diagnose WAFT OpenStreetMap
+
+on:
+  push:
+    paths:
+      - .github/workflows/diagnose-waft-openstreetmap.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run diagnostic pipeline
+        id: diagnostic
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/baleares-openstreetmap-diagnostic.log
+          python -m pip install --disable-pip-version-check osmium >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1
+          install_code=$?
+          if [ "$install_code" = "0" ]; then
+            python world-generator/scripts/import-openstreetmap.py baleares --retrieved-on "$(date -u +%F)" >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1
+            import_code=$?
+          else
+            import_code=99
+          fi
+          build_code=99
+          verify_code=99
+          if [ "$import_code" = "0" ]; then
+            node world-generator/scripts/build-region.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/apply-copernicus-dem.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/apply-esa-worldcover.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/apply-openstreetmap.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1
+            build_code=$?
+          fi
+          if [ "$build_code" = "0" ]; then
+            node world-generator/scripts/verify-region-package.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/verify-copernicus-dem.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/verify-esa-worldcover.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1 && \
+            node world-generator/scripts/verify-openstreetmap.mjs baleares >> world-generator/baleares-openstreetmap-diagnostic.log 2>&1
+            verify_code=$?
+          fi
+          printf '{\n  "install": %s,\n  "import": %s,\n  "build": %s,\n  "verify": %s\n}\n' "$install_code" "$import_code" "$build_code" "$verify_code" > world-generator/baleares-openstreetmap-diagnostic-status.json
+          cat world-generator/baleares-openstreetmap-diagnostic.log
+          echo "verify_code=$verify_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit diagnostic result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-openstreetmap-diagnostic.log world-generator/baleares-openstreetmap-diagnostic-status.json
+          if [ -f world-generator/sources/baleares/openstreetmap-extract.json ]; then
+            git add world-generator/sources/baleares/openstreetmap-extract.json world-generator/sources/baleares/openstreetmap-extract.json.gz
+          fi
+          if [ "${{ steps.diagnostic.outputs.verify_code }}" = "0" ]; then
+            git add regions/baleares world-generator/*-validation.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Record OpenStreetMap diagnostic"
+          git push origin HEAD:main
+
+      - name: Require successful diagnostic
+        if: steps.diagnostic.outputs.verify_code != '0'
+        run: exit 1
