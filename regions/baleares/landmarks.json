@@ -1,26 +1,8 @@
 {
-  "automaticDiscoveryPending": true,
+  "automaticDiscoveryPending": false,
   "formatVersion": 1,
-  "generationStage": "manual-and-priority-landmarks",
+  "generationStage": "openstreetmap-landmark-candidates",
   "items": [
-    {
-      "assetId": "catedral-mallorca",
-      "id": "catedral-mallorca",
-      "local": {
-        "x": -81.99658238146331,
-        "y": 11,
-        "z": 13.792370255999963
-      },
-      "name": "Catedral de Mallorca",
-      "position": {
-        "lat": 39.56734,
-        "lon": 2.64843
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-07-03",
-      "terrainStatus": "exact-cell",
-      "type": "cathedral"
-    },
     {
       "assetId": "castell-bellver",
       "id": "castell-bellver",
@@ -35,45 +17,11 @@
         "lon": 2.61942
       },
       "preferredRepresentation": "unique",
+      "protected": true,
       "sectorId": "s-07-03",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
       "type": "castle"
-    },
-    {
-      "assetId": "coves-drach",
-      "id": "coves-drach",
-      "local": {
-        "x": 140.32996215174788,
-        "y": 29,
-        "z": 27.077978592001113
-      },
-      "name": "Coves del Drach",
-      "position": {
-        "lat": 39.53588,
-        "lon": 3.33054
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-11-04",
-      "terrainStatus": "exact-cell",
-      "type": "natural_landmark"
-    },
-    {
-      "assetId": "balearic-defence-tower",
-      "id": "castell-punta-amer",
-      "local": {
-        "x": 161.66595723339742,
-        "y": 16,
-        "z": 8.454478032001001
-      },
-      "name": "Castell de sa Punta de n'Amer",
-      "position": {
-        "lat": 39.57998,
-        "lon": 3.396
-      },
-      "preferredRepresentation": "archetype",
-      "sectorId": "s-11-03",
-      "terrainStatus": "exact-cell",
-      "type": "tower"
     },
     {
       "assetId": "castell-capdepera",
@@ -89,9 +37,71 @@
         "lon": 3.43319
       },
       "preferredRepresentation": "unique",
+      "protected": true,
       "sectorId": "s-11-02",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
       "type": "castle"
+    },
+    {
+      "assetId": "balearic-defence-tower",
+      "id": "castell-punta-amer",
+      "local": {
+        "x": 161.66595723339742,
+        "y": 16,
+        "z": 8.454478032001001
+      },
+      "name": "Castell de sa Punta de n'Amer",
+      "position": {
+        "lat": 39.57998,
+        "lon": 3.396
+      },
+      "preferredRepresentation": "archetype",
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "tower"
+    },
+    {
+      "assetId": "catedral-mallorca",
+      "id": "catedral-mallorca",
+      "local": {
+        "x": -81.99658238146331,
+        "y": 11,
+        "z": 13.792370255999963
+      },
+      "name": "Catedral de Mallorca",
+      "position": {
+        "lat": 39.56734,
+        "lon": 2.64843
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-07-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "coves-drach",
+      "id": "coves-drach",
+      "local": {
+        "x": 140.32996215174788,
+        "y": 29,
+        "z": 27.077978592001113
+      },
+      "name": "Coves del Drach",
+      "position": {
+        "lat": 39.53588,
+        "lon": 3.33054
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-11-04",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "natural_landmark"
     },
     {
       "assetId": "mediterranean-lighthouse",
@@ -107,8 +117,4408 @@
         "lon": 3.2
       },
       "preferredRepresentation": "archetype",
+      "protected": true,
       "sectorId": "s-10-01",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n10616888125",
+      "local": {
+        "x": 424.8672,
+        "y": 94,
+        "z": -128.3283
+      },
+      "name": "Sant Vicenç d'Alcaidus",
+      "position": {
+        "lat": 39.9038784,
+        "lon": 4.2035158
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "n10616888125",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "name": "Sant Vicenç d'Alcaidus",
+        "wikidata": "Q43106430",
+        "wikipedia": "fr:Sant Vicenç d’Alcaidús"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1065401698",
+      "local": {
+        "x": -123.0831,
+        "y": 25,
+        "z": 60.181
+      },
+      "name": "Faro de Cala Figueira",
+      "position": {
+        "lat": 39.4574929,
+        "lon": 2.5223743
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "n1065401698",
+      "tags": {
+        "height": "24",
+        "man_made": "lighthouse",
+        "name": "Faro de Cala Figueira",
+        "seamark:name": "Cap de Cala Figuera",
+        "seamark:type": "light_major",
+        "website": "https://es.wikipedia.org/wiki/Faro_de_Cala_Figuera",
+        "wikidata": "Q5856390"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n10859983371",
+      "local": {
+        "x": 406.0468,
+        "y": 7,
+        "z": -111.682
+      },
+      "name": "Necròpolis Talayòtica de Calescoves",
+      "position": {
+        "lat": 39.8644602,
+        "lon": 4.1457737
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "n10859983371",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Necròpolis Talayòtica de Calescoves",
+        "wikidata": "Q64605551",
+        "wikipedia": "ca:Necròpolis i Es Castellet de Calescoves"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n10860198361",
+      "local": {
+        "x": 458.5635,
+        "y": 26,
+        "z": -112.0005
+      },
+      "name": "Far de Maó",
+      "position": {
+        "lat": 39.8652144,
+        "lon": 4.306898
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "n10860198361",
+      "tags": {
+        "height": "22",
+        "man_made": "lighthouse",
+        "name": "Far de Maó",
+        "name:ca": "Far de Maó",
+        "name:es": "Faro de Mahón",
+        "wikidata": "Q29835635",
+        "wikipedia": "es:Faro de San Carlos-Mahón"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1129379432",
+      "local": {
+        "x": 93.1046,
+        "y": 34,
+        "z": -56.3559
+      },
+      "name": "Poblat pretalaiòtic des Figueral",
+      "position": {
+        "lat": 39.7334494,
+        "lon": 3.1856499
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n1129379432",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "poblat pretalaiòtic des Figueral",
+        "name:ca": "Poblat pretalaiòtic des Figueral",
+        "wikidata": "Q5861900",
+        "wikipedia": "es:Figueral de Son Real"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1133807939",
+      "local": {
+        "x": -36.569,
+        "y": 67,
+        "z": 99.8667
+      },
+      "name": "Far des Cap Blanc",
+      "position": {
+        "lat": 39.3635181,
+        "lon": 2.7878042
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-05",
+      "source": "openstreetmap",
+      "sourceId": "n1133807939",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far des Cap Blanc",
+        "name:ca": "Far des Cap Blanc",
+        "seamark:name": "Cabo Blanco",
+        "seamark:type": "light_major",
+        "wikidata": "Q8960878",
+        "wikipedia": "es:Faro de Cabo Blanco"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1163138062",
+      "local": {
+        "x": 48.2578,
+        "y": 52,
+        "z": -133.0355
+      },
+      "name": "Coves de l'Alzinaret",
+      "position": {
+        "lat": 39.9150249,
+        "lon": 3.0480575
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-09-01",
+      "source": "openstreetmap",
+      "sourceId": "n1163138062",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Coves de l'Alzinaret",
+        "name:ca": "Coves de l'Alzinaret",
+        "natural": "cave_entrance",
+        "wikidata": "Q15227363",
+        "wikipedia": "en:Hypogeum of Cala Sant Vicenç"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1167179969",
+      "local": {
+        "x": -174.6308,
+        "y": 7,
+        "z": 28.8453
+      },
+      "name": "Far de la Mola",
+      "position": {
+        "lat": 39.531695,
+        "lon": 2.3642231
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-04",
+      "source": "openstreetmap",
+      "sourceId": "n1167179969",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de la Mola",
+        "name:ca": "Far de la Mola",
+        "seamark:name": "Cabo de la Mola",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856547",
+        "wikipedia": "es:Faro de sa Mola"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1445506763",
+      "local": {
+        "x": 361.0238,
+        "y": 160,
+        "z": -180.5568
+      },
+      "name": "Castell de Santa Àgueda",
+      "position": {
+        "lat": 40.0275541,
+        "lon": 4.0076409
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-14-00",
+      "source": "openstreetmap",
+      "sourceId": "n1445506763",
+      "tags": {
+        "castle_type": "defensive",
+        "historic": "castle",
+        "name": "Castell de Santa Àgueda",
+        "name:ca": "Castell de Santa Àgueda",
+        "name:es": "Castillo de Santa Águeda",
+        "wikidata": "Q952626",
+        "wikipedia": "ca:Castell de Santa Àgueda"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1566343475",
+      "local": {
+        "x": -483.7576,
+        "y": 0,
+        "z": 365.0919
+      },
+      "name": "Punta Cala Sabina",
+      "position": {
+        "lat": 38.7354711,
+        "lon": 1.4158052
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-01-09",
+      "source": "openstreetmap",
+      "sourceId": "n1566343475",
+      "tags": {
+        "man_made": "lighthouse",
+        "seamark:name": "Punta Cala Sabina",
+        "seamark:type": "light_minor",
+        "wikidata": "Q28374781"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1566343851",
+      "local": {
+        "x": -429.0283,
+        "y": 92,
+        "z": 395.5644
+      },
+      "name": "Formentera",
+      "position": {
+        "lat": 38.663313,
+        "lon": 1.5837178
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-09",
+      "source": "openstreetmap",
+      "sourceId": "n1566343851",
+      "tags": {
+        "seamark:name": "Formentera",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856434",
+        "wikipedia": "ca:Far de la Mola"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1587270862",
+      "local": {
+        "x": -121.8239,
+        "y": 27,
+        "z": 43.6913
+      },
+      "name": "Naveta d'Alemany",
+      "position": {
+        "lat": 39.49654,
+        "lon": 2.5262377
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "n1587270862",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Naveta Alemany",
+        "name:ca": "Naveta d'Alemany",
+        "wikidata": "Q5558060",
+        "wikipedia": "ca:Naveta d'Alemany"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1634402016",
+      "local": {
+        "x": 84.3039,
+        "y": 27,
+        "z": -64.9827
+      },
+      "name": "Sepulcre megalític de Son Bauló de Dalt",
+      "position": {
+        "lat": 39.7538775,
+        "lon": 3.158649
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n1634402016",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Sepulcre megalític de Son Bauló de Dalt",
+        "name:ca": "Sepulcre megalític de Son Bauló de Dalt",
+        "wikidata": "Q20986278",
+        "wikipedia": "ca:Dolmen de Son Bauló de Dalt"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1634473061",
+      "local": {
+        "x": 118.221,
+        "y": 71,
+        "z": -47.9107
+      },
+      "name": "Talaiot de sa Clova des Xot",
+      "position": {
+        "lat": 39.7134515,
+        "lon": 3.2627084
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-11-02",
+      "source": "openstreetmap",
+      "sourceId": "n1634473061",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Talaiot de sa Clova des Xot",
+        "name:ca": "Talaiot de sa Clova des Xot",
+        "wikidata": "Q18006503",
+        "wikipedia": "ca:Talaiot de sa Clova des Xot"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1635042215",
+      "local": {
+        "x": -13.3645,
+        "y": 123,
+        "z": 49.5829
+      },
+      "name": "Talaiot de Son Noguera",
+      "position": {
+        "lat": 39.4825888,
+        "lon": 2.8589969
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-08-04",
+      "source": "openstreetmap",
+      "sourceId": "n1635042215",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Talaiot de Son Noguera",
+        "name:ca": "Talaiot de Son Noguera",
+        "wikidata": "Q11950810",
+        "wikipedia": "ca:Talaiot de Son Noguera"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1635073534",
+      "local": {
+        "x": -25.5287,
+        "y": 663,
+        "z": -86.7266
+      },
+      "name": "Jaciment arqueològic d'Almallutx",
+      "position": {
+        "lat": 39.8053665,
+        "lon": 2.8216766
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n1635073534",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Santuari d'Almallutx",
+        "name:ca": "Jaciment arqueològic d'Almallutx",
+        "wikidata": "Q6121489",
+        "wikipedia": "ca:Jaciment arqueològic talaiòtic d'Almallutx"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1857831582",
+      "local": {
+        "x": 317.7436,
+        "y": 21,
+        "z": -149.4924
+      },
+      "name": "Son Catlar",
+      "position": {
+        "lat": 39.9539944,
+        "lon": 3.8748547
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-14-01",
+      "source": "openstreetmap",
+      "sourceId": "n1857831582",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Son Catlar",
+        "name:ca": "Son Catlar",
+        "wikidata": "Q9061215",
+        "wikipedia": "ca:Poblat de Son Catlar"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1954972427",
+      "local": {
+        "x": 321.5584,
+        "y": 48,
+        "z": -181.5657
+      },
+      "name": "Torre d'en Quart",
+      "position": {
+        "lat": 40.0299433,
+        "lon": 3.8865588
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 99,
+      "sectorId": "s-14-00",
+      "source": "openstreetmap",
+      "sourceId": "n1954972427",
+      "tags": {
+        "access": "no",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Torre d'en Quart",
+        "name:ca": "Torre d'en Quart",
+        "wikidata": "Q43142597"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2306411082",
+      "local": {
+        "x": 142.1761,
+        "y": 234,
+        "z": -56.7811
+      },
+      "name": "Talaiot del Puig Figuer",
+      "position": {
+        "lat": 39.7344563,
+        "lon": 3.3362041
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-11-02",
+      "source": "openstreetmap",
+      "sourceId": "n2306411082",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Talaiot del Puig Figuer",
+        "name:ca": "Talaiot del Puig Figuer",
+        "wikidata": "Q2389829",
+        "wikipedia": "ca:Talaiot del puig Figuer"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n251386900",
+      "local": {
+        "x": 120.8096,
+        "y": 4,
+        "z": 78.5383
+      },
+      "name": "Punta de ses Crestes",
+      "position": {
+        "lat": 39.4140232,
+        "lon": 3.2706504
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-11-04",
+      "source": "openstreetmap",
+      "sourceId": "n251386900",
+      "tags": {
+        "alt_name": "Far de sa Punta de ses Crestes",
+        "man_made": "lighthouse",
+        "name": "Punta de ses Crestes",
+        "name:ca": "Punta de ses Crestes",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856452"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2795373918",
+      "local": {
+        "x": 93.8107,
+        "y": 296,
+        "z": 70.9367
+      },
+      "name": "Castell de Santueri",
+      "position": {
+        "lat": 39.4320235,
+        "lon": 3.1878164
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-10-04",
+      "source": "openstreetmap",
+      "sourceId": "n2795373918",
+      "tags": {
+        "castle_type": "castrum",
+        "historic": "castle",
+        "name": "Castell de Santueri",
+        "name:ca": "Castell de Santueri",
+        "ruins": "yes",
+        "tourism": "attraction",
+        "website": "https://www.santueri.org/",
+        "wikidata": "Q908268",
+        "wikipedia": "ca:Castell de Santueri"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3091651851",
+      "local": {
+        "x": -38.7722,
+        "y": 160,
+        "z": -31.5106
+      },
+      "name": "Basílica de Cas Frares",
+      "position": {
+        "lat": 39.6746164,
+        "lon": 2.7810448
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n3091651851",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Basílica de Cas Frares",
+        "name:ca": "Basílica de Cas Frares",
+        "wikidata": "Q11908696",
+        "wikipedia": "ca:Basílica de Cas Frares"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3413850704",
+      "local": {
+        "x": 93.8818,
+        "y": 5,
+        "z": -65.2429
+      },
+      "name": "Necròpolis de s’Illot des Porros",
+      "position": {
+        "lat": 39.7544936,
+        "lon": 3.1880345
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n3413850704",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Necròpolis de s’Illot des Porros",
+        "name:ca": "Necròpolis de s’Illot des Porros",
+        "wikidata": "Q2382896",
+        "wikipedia": "de:S’Illot des Porros"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n35345986",
+      "local": {
+        "x": 188.2293,
+        "y": 27,
+        "z": -48.8416
+      },
+      "name": "Far de Capdepera",
+      "position": {
+        "lat": 39.7156558,
+        "lon": 3.4774978
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-12-02",
+      "source": "openstreetmap",
+      "sourceId": "n35345986",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de Capdepera",
+        "seamark:name": "Capdepera",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856394"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3607742815",
+      "local": {
+        "x": 419.8613,
+        "y": 116,
+        "z": -124.7972
+      },
+      "name": "Dolmen de Alcaidús",
+      "position": {
+        "lat": 39.8955168,
+        "lon": 4.1881574
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "n3607742815",
+      "tags": {
+        "alt_name": "Sant Vicenç d’Alcaidús",
+        "historic": "archaeological_site",
+        "name": "Dolmen de Alcaidús",
+        "name:ca": "Dolmen de Alcaidús",
+        "wikidata": "Q29053849",
+        "wikipedia": "de:Sant Vicenç d’Alcaidús"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3644398307",
+      "local": {
+        "x": -471.366,
+        "y": 3,
+        "z": 293.8539
+      },
+      "name": "Far de Botafoc",
+      "position": {
+        "lat": 38.9041611,
+        "lon": 1.4538232
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "n3644398307",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de Botafoc",
+        "name:ca": "Far de Botafoc",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856356"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3678668135",
+      "local": {
+        "x": -87.2751,
+        "y": 374,
+        "z": -38.8971
+      },
+      "name": "Balma de Son Matge",
+      "position": {
+        "lat": 39.6921073,
+        "lon": 2.6322353
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "n3678668135",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Balma de Son Matge",
+        "name:ca": "Balma de Son Matge",
+        "wikidata": "Q19843480",
+        "wikipedia": "es:Yacimiento Son Matge"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3717549899",
+      "local": {
+        "x": 457.3328,
+        "y": 26,
+        "z": -112.9713
+      },
+      "name": "Castell de Sant Felip",
+      "position": {
+        "lat": 39.8675133,
+        "lon": 4.303122
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "n3717549899",
+      "tags": {
+        "castle_type": "defensive",
+        "historic": "castle",
+        "name": "Castell de Sant Felip",
+        "name:ca": "Castell de Sant Felip",
+        "name:es": "Castillo de San Felipe",
+        "tourism": "museum",
+        "website": "http://www.museomilitarmenorca.com/san-felipe/",
+        "wikidata": "Q2970599",
+        "wikipedia": "ca:Castell de Sant Felip"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3801855155",
+      "local": {
+        "x": 159.9424,
+        "y": 27,
+        "z": -14.9965
+      },
+      "name": "Talaiot de Mestre Ramon",
+      "position": {
+        "lat": 39.6355114,
+        "lon": 3.3907119
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-11-03",
+      "source": "openstreetmap",
+      "sourceId": "n3801855155",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "talaiot de Mestre Ramon",
+        "name:ca": "Talaiot de Mestre Ramon",
+        "wikidata": "Q21077315",
+        "wikipedia": "ca:Jaciment arqueològic de Mestre Ramon"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n461833100",
+      "local": {
+        "x": 50.0029,
+        "y": 9,
+        "z": 141.3786
+      },
+      "name": "Cap de ses Salines",
+      "position": {
+        "lat": 39.2652188,
+        "lon": 3.0534115
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-09-05",
+      "source": "openstreetmap",
+      "sourceId": "n461833100",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Cap de ses Salines",
+        "seamark:name": "Cabo de Salinas",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856386"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n472429182",
+      "local": {
+        "x": 371.2271,
+        "y": 66,
+        "z": -140.5916
+      },
+      "name": "Cova dels Coloms",
+      "position": {
+        "lat": 39.9329176,
+        "lon": 4.038945
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-14-01",
+      "source": "openstreetmap",
+      "sourceId": "n472429182",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Cova dels Coloms",
+        "name:ca": "Cova dels Coloms",
+        "natural": "cave_entrance",
+        "wikidata": "Q16190024",
+        "wikipedia": "ca:Cova des Coloms"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4796906812",
+      "local": {
+        "x": -439.7133,
+        "y": 89,
+        "z": 387.2607
+      },
+      "name": "Cova des Fum",
+      "position": {
+        "lat": 38.6829761,
+        "lon": 1.5509354
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 85,
+      "sectorId": "s-02-09",
+      "source": "openstreetmap",
+      "sourceId": "n4796906812",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Cova des Fum",
+        "natural": "cave_entrance",
+        "wikidata": "Q29586448",
+        "wikipedia": "de:Cova des Fum"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4804502081",
+      "local": {
+        "x": 305.4294,
+        "y": 24,
+        "z": -144.9076
+      },
+      "name": "Tomb Son Olivaret",
+      "position": {
+        "lat": 39.9431377,
+        "lon": 3.837074
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 93,
+      "sectorId": "s-13-01",
+      "source": "openstreetmap",
+      "sourceId": "n4804502081",
+      "tags": {
+        "alt_name": "Sepulcre de Son Olivaret",
+        "heritage": "2",
+        "heritage:operator": "mecd",
+        "historic": "archaeological_site",
+        "name": "Tomb Son Olivaret",
+        "name:ca": "Tomb Son Olivaret",
+        "name:es": "Sepulcro de Son Olivaret",
+        "wikidata": "Q64605333",
+        "wikipedia": "ca:Sepulcre de Son Olivaret"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5221275793",
+      "local": {
+        "x": -467.4679,
+        "y": 95,
+        "z": 267.4525
+      },
+      "name": "Torre de can Sergent de sa Torre",
+      "position": {
+        "lat": 38.966679,
+        "lon": 1.465783
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 99,
+      "sectorId": "s-01-07",
+      "source": "openstreetmap",
+      "sourceId": "n5221275793",
+      "tags": {
+        "castle_type": "defensive",
+        "historic": "castle",
+        "name": "Torre de can Sergent de sa Torre",
+        "name:ca": "Torre de can Sergent de sa Torre",
+        "wikidata": "Q97395262"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n631872796",
+      "local": {
+        "x": -194.1598,
+        "y": 12,
+        "z": 10.9071
+      },
+      "name": "Llebeig",
+      "position": {
+        "lat": 39.5741723,
+        "lon": 2.3043072
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-03",
+      "source": "openstreetmap",
+      "sourceId": "n631872796",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Llebeig",
+        "seamark:name": "Cabo Llebeitx",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856363",
+        "wikipedia": "es:Faro de Cabo Llebeig"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n631872798",
+      "local": {
+        "x": -183.1433,
+        "y": 8,
+        "z": 0.7903
+      },
+      "name": "Tramuntana",
+      "position": {
+        "lat": 39.5981285,
+        "lon": 2.3381064
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-03",
+      "source": "openstreetmap",
+      "sourceId": "n631872798",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Tramuntana",
+        "name:ca": "Tramuntana",
+        "seamark:name": "Punta Tramontana",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856392",
+        "wikipedia": "es:Faro de Cap de Tramuntana"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n659850571",
+      "local": {
+        "x": -68.7045,
+        "y": 7,
+        "z": -83.0386
+      },
+      "name": "Far de sa Creu",
+      "position": {
+        "lat": 39.7966334,
+        "lon": 2.6892109
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n659850571",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de sa Creu",
+        "name:ca": "Far de sa Creu",
+        "name:es": "Faro Punta de sa Creu",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856488",
+        "wikipedia": "es:Faro de Punta de Sa Creu"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n678832675",
+      "local": {
+        "x": 91.9797,
+        "y": 13,
+        "z": -65.4391
+      },
+      "name": "Necròpolis de Son Real",
+      "position": {
+        "lat": 39.7549582,
+        "lon": 3.1821989
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n678832675",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Necròpolis de Son Real",
+        "name:ca": "Necròpolis de Son Real",
+        "name:es": "Necrópolis de Son Real",
+        "tourism": "attraction",
+        "wikidata": "Q727501",
+        "wikipedia": "ca:Necròpoli de Son Real"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n697883608",
+      "local": {
+        "x": 88.3969,
+        "y": 20,
+        "z": -99.4219
+      },
+      "name": "Far d'Alcanada",
+      "position": {
+        "lat": 39.8354286,
+        "lon": 3.1712065
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n697883608",
+      "tags": {
+        "access": "designated",
+        "man_made": "lighthouse",
+        "name": "Far d'Alcanada",
+        "seamark:name": "Isla Alcanada",
+        "seamark:type": "light_minor",
+        "wikidata": "Q5856347",
+        "wikipedia": "es:Faro de Alcanada"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n777906600",
+      "local": {
+        "x": -445.4868,
+        "y": 29,
+        "z": 203.6869
+      },
+      "name": "Far des Moscarter",
+      "position": {
+        "lat": 39.1176743,
+        "lon": 1.5332222
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-02-06",
+      "source": "openstreetmap",
+      "sourceId": "n777906600",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far des Moscarter",
+        "name:ca": "Far des Moscarter",
+        "seamark:name": "Punta Moscarte",
+        "seamark:type": "light_major",
+        "wikidata": "Q18345859"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 667.65,
+      "footprint": [
+        [
+          108.7586,
+          98.5118
+        ],
+        [
+          108.8514,
+          98.5429
+        ],
+        [
+          108.8807,
+          98.4479
+        ],
+        [
+          108.7897,
+          98.4178
+        ],
+        [
+          108.7586,
+          98.5118
+        ]
+      ],
+      "id": "osm-landmark-r11936313",
+      "local": {
+        "x": 108.82,
+        "y": 3,
+        "z": 98.4808
+      },
+      "name": "Es Fortí",
+      "position": {
+        "lat": 39.36679993009898,
+        "lon": 3.2338658346639466
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 95,
+      "sectorId": "s-10-05",
+      "source": "openstreetmap",
+      "sourceId": "r11936313",
+      "tags": {
+        "building": "yes",
+        "historic": "fort",
+        "name": "Es Fortí",
+        "name:ca": "Es Fortí",
+        "seamark:type": "landmark",
+        "wikidata": "Q43142411"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "fortress"
+    },
+    {
+      "areaM2": 29251.46,
+      "footprint": [
+        [
+          -102.8067,
+          26.5649
+        ],
+        [
+          -102.6178,
+          26.964
+        ],
+        [
+          -102.5897,
+          26.964
+        ],
+        [
+          -102.0359,
+          26.8432
+        ],
+        [
+          -102.0273,
+          26.8669
+        ],
+        [
+          -102.0014,
+          26.8658
+        ],
+        [
+          -101.9722,
+          26.8518
+        ],
+        [
+          -101.9722,
+          26.827
+        ],
+        [
+          -101.63,
+          26.758
+        ],
+        [
+          -101.6214,
+          26.7461
+        ],
+        [
+          -101.6409,
+          26.6091
+        ],
+        [
+          -101.6862,
+          26.6199
+        ],
+        [
+          -101.7218,
+          26.4257
+        ],
+        [
+          -101.7423,
+          26.4139
+        ],
+        [
+          -102.254,
+          26.4829
+        ],
+        [
+          -102.2637,
+          26.4581
+        ],
+        [
+          -102.2875,
+          26.4559
+        ],
+        [
+          -102.308,
+          26.4656
+        ],
+        [
+          -102.308,
+          26.4883
+        ],
+        [
+          -102.7884,
+          26.5509
+        ],
+        [
+          -102.8067,
+          26.5649
+        ]
+      ],
+      "id": "osm-landmark-r14162681",
+      "local": {
+        "x": -102.2133,
+        "y": 28,
+        "z": 26.6746
+      },
+      "name": "Fortí d'Illetes",
+      "position": {
+        "lat": 39.536835199553536,
+        "lon": 2.586404139205066
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 95,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "r14162681",
+      "tags": {
+        "building": "yes",
+        "historic": "fort",
+        "name": "Fortí d'Illetes",
+        "wikidata": "Q43146029"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "fortress"
+    },
+    {
+      "areaM2": 8128.74,
+      "footprint": [
+        [
+          -82.6077,
+          13.6737
+        ],
+        [
+          -82.4883,
+          13.7441
+        ],
+        [
+          -82.3354,
+          13.7289
+        ],
+        [
+          -82.3039,
+          13.6769
+        ],
+        [
+          -82.3089,
+          13.6563
+        ],
+        [
+          -82.2528,
+          13.5555
+        ],
+        [
+          -82.2573,
+          13.5354
+        ],
+        [
+          -82.1987,
+          13.3997
+        ],
+        [
+          -82.4773,
+          13.252
+        ],
+        [
+          -82.5062,
+          13.4022
+        ],
+        [
+          -82.5114,
+          13.4618
+        ],
+        [
+          -82.5385,
+          13.5139
+        ],
+        [
+          -82.5347,
+          13.5326
+        ],
+        [
+          -82.5671,
+          13.58
+        ],
+        [
+          -82.5685,
+          13.6069
+        ],
+        [
+          -82.6077,
+          13.6737
+        ]
+      ],
+      "id": "osm-landmark-r2424202",
+      "local": {
+        "x": -82.4042,
+        "y": 11,
+        "z": 13.5212
+      },
+      "name": "Palau de l'Almudaina",
+      "position": {
+        "lat": 39.56798201988023,
+        "lon": 2.6471795376813216
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "r2424202",
+      "tags": {
+        "addr:street": "Carrer del Palau Reial",
+        "building": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "name": "Palau de l'Almudaina",
+        "name:ca": "Palau de l'Almudaina",
+        "name:en": "Almudaina Palace",
+        "name:es": "Palacio de la Almudaina",
+        "official_name": "Palau de l'Almudaina",
+        "operator": "Patrimonio Nacional",
+        "tourism": "attraction",
+        "wikidata": "Q3176377",
+        "wikipedia": "ca:Palau Reial de l'Almudaina"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 4650.84,
+      "footprint": [
+        [
+          -90.4228,
+          22.5777
+        ],
+        [
+          -90.3421,
+          22.6479
+        ],
+        [
+          -90.3501,
+          22.7904
+        ],
+        [
+          -90.2895,
+          22.7899
+        ],
+        [
+          -90.3043,
+          22.8188
+        ],
+        [
+          -90.234,
+          22.8393
+        ],
+        [
+          -90.2111,
+          22.7977
+        ],
+        [
+          -90.1896,
+          22.7779
+        ],
+        [
+          -90.1493,
+          22.766
+        ],
+        [
+          -90.0755,
+          22.7095
+        ],
+        [
+          -89.9958,
+          22.6849
+        ],
+        [
+          -90.0706,
+          22.6669
+        ],
+        [
+          -90.1484,
+          22.5258
+        ],
+        [
+          -90.2366,
+          22.5368
+        ],
+        [
+          -90.2813,
+          22.5166
+        ],
+        [
+          -90.3149,
+          22.5368
+        ],
+        [
+          -90.3128,
+          22.5819
+        ],
+        [
+          -90.4228,
+          22.5777
+        ]
+      ],
+      "id": "osm-landmark-r2885399",
+      "local": {
+        "x": -90.2259,
+        "y": 5,
+        "z": 22.6667
+      },
+      "name": "Museu Històric Militar",
+      "position": {
+        "lat": 39.546325853903426,
+        "lon": 2.6231820785313915
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "r2885399",
+      "tags": {
+        "building": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "name": "Museu Històric Militar",
+        "name:ca": "Museu Històric Militar",
+        "name:en": "Museum of Military History",
+        "name:es": "Museo Histórico Militar Castillo de San Carlos",
+        "tourism": "museum",
+        "website": "http://www.museomilitarsancarlos.com"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 19.28,
+      "footprint": [
+        [
+          -71.1922,
+          -83.2302
+        ],
+        [
+          -71.1958,
+          -83.2451
+        ],
+        [
+          -71.1796,
+          -83.2502
+        ],
+        [
+          -71.175,
+          -83.2338
+        ],
+        [
+          -71.1922,
+          -83.2302
+        ]
+      ],
+      "id": "osm-landmark-w1034891337",
+      "local": {
+        "x": -71.184,
+        "y": 32,
+        "z": -83.2677
+      },
+      "name": "Far des Cap Gros",
+      "position": {
+        "lat": 39.79717601058069,
+        "lon": 2.681603458110465
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "w1034891337",
+      "tags": {
+        "building": "yes",
+        "man_made": "lighthouse",
+        "name": "Far des Cap Gros",
+        "seamark:name": "Cabo Gros",
+        "seamark:type": "landmark",
+        "wikidata": "Q5856361",
+        "wikipedia": "es:Faro de Cabo Gros"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 633.64,
+      "footprint": [
+        [
+          323.1977,
+          -170.2707
+        ],
+        [
+          323.1657,
+          -170.2506
+        ],
+        [
+          323.1571,
+          -170.2327
+        ],
+        [
+          323.169,
+          -170.1895
+        ],
+        [
+          323.1929,
+          -170.1706
+        ],
+        [
+          323.241,
+          -170.1821
+        ],
+        [
+          323.2639,
+          -170.1996
+        ],
+        [
+          323.2782,
+          -170.2282
+        ],
+        [
+          323.2756,
+          -170.25
+        ],
+        [
+          323.2504,
+          -170.2723
+        ],
+        [
+          323.1977,
+          -170.2707
+        ]
+      ],
+      "id": "osm-landmark-w113623849",
+      "local": {
+        "x": 323.2171,
+        "y": 50,
+        "z": -170.2256
+      },
+      "name": "Naveta des Tudons",
+      "position": {
+        "lat": 40.00309013963743,
+        "lon": 3.8916477493116273
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-14-00",
+      "source": "openstreetmap",
+      "sourceId": "w113623849",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Naveta des Tudons",
+        "name:ca": "Naveta des Tudons",
+        "tourism": "attraction",
+        "wikidata": "Q1972356",
+        "wikipedia": "es:Naveta des Tudons"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 4440.7,
+      "footprint": [
+        [
+          456.6653,
+          -110.9771
+        ],
+        [
+          456.7231,
+          -110.8833
+        ],
+        [
+          456.7624,
+          -110.8648
+        ],
+        [
+          456.8699,
+          -110.923
+        ],
+        [
+          456.9181,
+          -111.023
+        ],
+        [
+          456.9174,
+          -111.147
+        ],
+        [
+          456.8024,
+          -111.1922
+        ],
+        [
+          456.761,
+          -111.2019
+        ],
+        [
+          456.7355,
+          -111.1964
+        ],
+        [
+          456.7059,
+          -111.1683
+        ],
+        [
+          456.6742,
+          -111.0956
+        ],
+        [
+          456.6653,
+          -110.9771
+        ]
+      ],
+      "id": "osm-landmark-w115648479",
+      "local": {
+        "x": 456.7898,
+        "y": 32,
+        "z": -111.0411
+      },
+      "name": "Fort Marlborough",
+      "position": {
+        "lat": 39.86294258368365,
+        "lon": 4.301456007443781
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 91,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "w115648479",
+      "tags": {
+        "access": "customers",
+        "castle_type": "fortress",
+        "historic": "castle",
+        "name": "Fort Marlborough",
+        "name:ca": "Fort Marlborough",
+        "tourism": "attraction"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 427.21,
+      "footprint": [
+        [
+          68.6402,
+          -126.6799
+        ],
+        [
+          68.6921,
+          -126.6757
+        ],
+        [
+          68.6824,
+          -126.5572
+        ],
+        [
+          68.6305,
+          -126.5614
+        ],
+        [
+          68.6402,
+          -126.6799
+        ]
+      ],
+      "id": "osm-landmark-w128300363",
+      "local": {
+        "x": 68.6612,
+        "y": 7,
+        "z": -126.6177
+      },
+      "name": "Far de la Punta de l'Avançada",
+      "position": {
+        "lat": 39.89982770168761,
+        "lon": 3.110656398080448
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-10-01",
+      "source": "openstreetmap",
+      "sourceId": "w128300363",
+      "tags": {
+        "building": "yes",
+        "man_made": "lighthouse",
+        "name": "Far de la Punta de l'Avançada",
+        "seamark:name": "Punta de la Avanzada",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856495",
+        "wikipedia": "es:Faro de Punta de la Avanzada"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 331.18,
+      "footprint": [
+        [
+          445.487,
+          -167.7561
+        ],
+        [
+          445.396,
+          -167.7325
+        ],
+        [
+          445.407,
+          -167.6865
+        ],
+        [
+          445.4972,
+          -167.7092
+        ],
+        [
+          445.5064,
+          -167.7363
+        ],
+        [
+          445.487,
+          -167.7561
+        ]
+      ],
+      "id": "osm-landmark-w132369713",
+      "local": {
+        "x": 445.4505,
+        "y": 5,
+        "z": -167.7216
+      },
+      "name": "Far de Favàritx",
+      "position": {
+        "lat": 39.99716066441128,
+        "lon": 4.2666665538925805
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "w132369713",
+      "tags": {
+        "building": "lighthouse",
+        "man_made": "lighthouse",
+        "name": "Far de Favàritx",
+        "name:ca": "Far de Favàritx",
+        "name:es": "Faro de Favàritx",
+        "tourism": "viewpoint",
+        "wikidata": "Q8960896",
+        "wikipedia": "ca:Far de Favàritx"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 17,
+      "footprint": [
+        [
+          -492.3224,
+          404.9383
+        ],
+        [
+          -492.3353,
+          404.9333
+        ],
+        [
+          -492.3422,
+          404.9478
+        ],
+        [
+          -492.3277,
+          404.9541
+        ],
+        [
+          -492.3224,
+          404.9383
+        ]
+      ],
+      "id": "osm-landmark-w1333301063",
+      "local": {
+        "x": -492.3318,
+        "y": 95,
+        "z": 404.9376
+      },
+      "name": "Far des Cap de Barbaria",
+      "position": {
+        "lat": 38.64111755289462,
+        "lon": 1.3894992009686495
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-09",
+      "source": "openstreetmap",
+      "sourceId": "w1333301063",
+      "tags": {
+        "building": "yes",
+        "man_made": "lighthouse",
+        "name": "Far des Cap de Barbaria",
+        "name:ca": "Far des Cap de Barbaria",
+        "name:es": "Faro del Cap de Barbaria",
+        "seamark:name": "Cabo Berberia",
+        "seamark:type": "light_major",
+        "wikidata": "Q5856374",
+        "wikipedia": "ca:Far de Barbaria"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 1959.29,
+      "footprint": [
+        [
+          -457.0894,
+          387.792
+        ],
+        [
+          -457.1751,
+          387.9317
+        ],
+        [
+          -457.3193,
+          387.8441
+        ],
+        [
+          -457.2321,
+          387.7017
+        ],
+        [
+          -457.0894,
+          387.792
+        ]
+      ],
+      "id": "osm-landmark-w158961302",
+      "local": {
+        "x": -457.2042,
+        "y": 7,
+        "z": 387.8171
+      },
+      "name": "Castellum Roma de Can Blai",
+      "position": {
+        "lat": 38.681658386110975,
+        "lon": 1.4972726017170952
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 93,
+      "sectorId": "s-02-09",
+      "source": "openstreetmap",
+      "sourceId": "w158961302",
+      "tags": {
+        "heritage": "3",
+        "heritage:operator": "Consell insular de Formentera",
+        "historic": "archaeological_site",
+        "name": "Castellum Roma de Can Blai",
+        "name:ca": "Castellum Roma de Can Blai",
+        "name:es": "Castillo romano de Can Blai",
+        "wikidata": "Q11913201",
+        "wikipedia": "ca:Castellum de Can Blai"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 219.36,
+      "footprint": [
+        [
+          300.7722,
+          -167.3286
+        ],
+        [
+          300.7935,
+          -167.3396
+        ],
+        [
+          300.8092,
+          -167.3099
+        ],
+        [
+          300.7388,
+          -167.2735
+        ],
+        [
+          300.7234,
+          -167.3031
+        ],
+        [
+          300.7441,
+          -167.3138
+        ],
+        [
+          300.7363,
+          -167.329
+        ],
+        [
+          300.7644,
+          -167.3435
+        ],
+        [
+          300.7722,
+          -167.3286
+        ]
+      ],
+      "id": "osm-landmark-w171277465",
+      "local": {
+        "x": 300.7643,
+        "y": 6,
+        "z": -167.3111
+      },
+      "name": "Far de Ciutadella",
+      "position": {
+        "lat": 39.996188708696224,
+        "lon": 3.8227613863884384
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-13-01",
+      "source": "openstreetmap",
+      "sourceId": "w171277465",
+      "tags": {
+        "alt_name": "Faro de Punta de Sa Farola",
+        "building": "lighthouse",
+        "man_made": "lighthouse",
+        "name": "Far de Ciutadella",
+        "name:ca": "Far de Ciutadella",
+        "name:es": "Faro de Ciutadella",
+        "tourism": "viewpoint",
+        "wikidata": "Q18149997",
+        "wikipedia": "es:Faro de Ciudadela"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 1258.78,
+      "footprint": [
+        [
+          -476.9297,
+          292.7146
+        ],
+        [
+          -476.9114,
+          292.7067
+        ],
+        [
+          -476.8825,
+          292.7163
+        ],
+        [
+          -476.865,
+          292.749
+        ],
+        [
+          -476.8719,
+          292.7977
+        ],
+        [
+          -476.8815,
+          292.8134
+        ],
+        [
+          -476.9339,
+          292.8425
+        ],
+        [
+          -476.9261,
+          292.8588
+        ],
+        [
+          -476.9779,
+          292.8915
+        ],
+        [
+          -477.0319,
+          292.76
+        ],
+        [
+          -476.9297,
+          292.7146
+        ]
+      ],
+      "id": "osm-landmark-w173542977",
+      "local": {
+        "x": -476.945,
+        "y": 2,
+        "z": 292.7881
+      },
+      "name": "Catedral d'Eivissa",
+      "position": {
+        "lat": 38.9066849288232,
+        "lon": 1.436706799791479
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "w173542977",
+      "tags": {
+        "addr:city": "Eivissa",
+        "addr:housenumber": "3",
+        "addr:postcode": "07800",
+        "addr:street": "Plaça de la Catedral",
+        "amenity": "place_of_worship",
+        "building": "cathedral",
+        "denomination": "roman_catholic",
+        "name": "Catedral d'Eivissa",
+        "name:ca": "Catedral d'Eivissa",
+        "name:es": "Catedral de Ibiza",
+        "religion": "christian",
+        "website": "https://www.obispadodeibiza.es/es/index.php",
+        "wikidata": "Q2942557",
+        "wikipedia": "es:Catedral de Ibiza"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "cathedral"
+    },
+    {
+      "areaM2": 423.86,
+      "footprint": [
+        [
+          454.0305,
+          -84.2585
+        ],
+        [
+          454.0437,
+          -84.2379
+        ],
+        [
+          454.0558,
+          -84.2455
+        ],
+        [
+          454.0776,
+          -84.2106
+        ],
+        [
+          454.0674,
+          -84.2036
+        ],
+        [
+          454.0791,
+          -84.1852
+        ],
+        [
+          454.143,
+          -84.2278
+        ],
+        [
+          454.0968,
+          -84.2993
+        ],
+        [
+          454.0305,
+          -84.2585
+        ]
+      ],
+      "id": "osm-landmark-w182854850",
+      "local": {
+        "x": 454.0895,
+        "y": 22,
+        "z": -84.2453
+      },
+      "name": "Far de l'Illa de l'Aire",
+      "position": {
+        "lat": 39.79949084378619,
+        "lon": 4.293171493891939
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-16-02",
+      "source": "openstreetmap",
+      "sourceId": "w182854850",
+      "tags": {
+        "building": "lighthouse",
+        "man_made": "lighthouse",
+        "name": "Far de l'Illa de l'Aire",
+        "name:ca": "Far de l'Illa de l'Aire",
+        "name:es": "Faro de la Isla del Aire",
+        "tourism": "viewpoint",
+        "wikidata": "Q5856428",
+        "wikipedia": "es:Faro de isla del Aire"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 4851.91,
+      "footprint": [
+        [
+          460.1877,
+          -116.6759
+        ],
+        [
+          460.1499,
+          -116.6291
+        ],
+        [
+          459.9329,
+          -116.8196
+        ],
+        [
+          459.6562,
+          -116.6697
+        ],
+        [
+          459.9211,
+          -116.4084
+        ],
+        [
+          459.8743,
+          -116.3621
+        ],
+        [
+          459.5484,
+          -116.6865
+        ],
+        [
+          459.9355,
+          -116.8954
+        ],
+        [
+          460.1877,
+          -116.6759
+        ]
+      ],
+      "id": "osm-landmark-w200306323",
+      "local": {
+        "x": 459.8352,
+        "y": 9,
+        "z": -116.6738
+      },
+      "name": "Fortalesa de la Mola",
+      "position": {
+        "lat": 39.87628073459366,
+        "lon": 4.310799533148167
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "w200306323",
+      "tags": {
+        "alt_name": "Fortaleza del La Mola",
+        "building": "yes",
+        "castle_type": "fortress",
+        "historic": "castle",
+        "name": "Fortaleza de Isabel II",
+        "name:ca": "Fortalesa de la Mola",
+        "wikidata": "Q11681904",
+        "wikipedia": "es:Fortaleza de Isabel II"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 328.98,
+      "footprint": [
+        [
+          301.0491,
+          -190.1206
+        ],
+        [
+          301.0512,
+          -190.1336
+        ],
+        [
+          301.0598,
+          -190.1315
+        ],
+        [
+          301.0825,
+          -190.1546
+        ],
+        [
+          301.133,
+          -190.1056
+        ],
+        [
+          301.1116,
+          -190.0838
+        ],
+        [
+          301.0774,
+          -190.1171
+        ],
+        [
+          301.0641,
+          -190.1034
+        ],
+        [
+          301.0982,
+          -190.0702
+        ],
+        [
+          301.0769,
+          -190.0484
+        ],
+        [
+          301.0265,
+          -190.0975
+        ],
+        [
+          301.0491,
+          -190.1206
+        ]
+      ],
+      "id": "osm-landmark-w201444606",
+      "local": {
+        "x": 301.0782,
+        "y": 24,
+        "z": -190.1077
+      },
+      "name": "Far de Punta Nati",
+      "position": {
+        "lat": 40.05017049260709,
+        "lon": 3.8237242904064654
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-13-00",
+      "source": "openstreetmap",
+      "sourceId": "w201444606",
+      "tags": {
+        "building": "lighthouse",
+        "building:levels": "2",
+        "man_made": "lighthouse",
+        "name": "Far de Punta Nati",
+        "name:ca": "Far de Punta Nati",
+        "name:es": "Faro de Punta Nati",
+        "tourism": "viewpoint",
+        "wikidata": "Q5856471",
+        "wikipedia": "ca:Far de Punta Nati"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 12.8,
+      "footprint": [
+        [
+          -123.8266,
+          59.8827
+        ],
+        [
+          -123.8411,
+          59.8848
+        ],
+        [
+          -123.8411,
+          59.8701
+        ],
+        [
+          -123.8265,
+          59.8722
+        ],
+        [
+          -123.8266,
+          59.8827
+        ]
+      ],
+      "id": "osm-landmark-w206594763",
+      "local": {
+        "x": -123.8327,
+        "y": 25,
+        "z": 59.8463
+      },
+      "name": "Torre de Cala Figuera",
+      "position": {
+        "lat": 39.45828548276539,
+        "lon": 2.5200744591144475
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "w206594763",
+      "tags": {
+        "building": "yes",
+        "historic": "ruins",
+        "name": "Torre de Cala Figuera",
+        "name:ca": "Torre de Cala Figuera",
+        "tourism": "attraction",
+        "website": "http://www.mallorca-torres.de/index_de.php?site=torres&rubrik=calafiguera",
+        "wikidata": "Q22066402",
+        "wikipedia": "es:Torre de Cala Figuera"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 65.76,
+      "footprint": [
+        [
+          -90.0871,
+          21.6959
+        ],
+        [
+          -90.0568,
+          21.7137
+        ],
+        [
+          -90.0705,
+          21.737
+        ],
+        [
+          -90.1008,
+          21.7192
+        ],
+        [
+          -90.0871,
+          21.6959
+        ]
+      ],
+      "id": "osm-landmark-w218840678",
+      "local": {
+        "x": -90.0791,
+        "y": 5,
+        "z": 21.723
+      },
+      "name": "Torre de Portopí",
+      "position": {
+        "lat": 39.548560348345866,
+        "lon": 2.623632244091257
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w218840678",
+      "tags": {
+        "alt_name": "Far de Portopí;Torre de Senyals de Portopí",
+        "building": "yes",
+        "height": "38",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "yes",
+        "man_made": "lighthouse",
+        "name": "Torre de Portopí",
+        "name:ca": "Torre de Portopí",
+        "wikidata": "Q5856454",
+        "wikipedia": "ca:Far de Portopí"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 49.77,
+      "footprint": [
+        [
+          -90.0001,
+          20.7057
+        ],
+        [
+          -89.9733,
+          20.705
+        ],
+        [
+          -89.9726,
+          20.7318
+        ],
+        [
+          -89.9994,
+          20.7324
+        ],
+        [
+          -90.0001,
+          20.7057
+        ]
+      ],
+      "id": "osm-landmark-w218840679",
+      "local": {
+        "x": -89.9862,
+        "y": 13,
+        "z": 20.7166
+      },
+      "name": "Torre de Paraires",
+      "position": {
+        "lat": 39.55094368252933,
+        "lon": 2.623917316255862
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w218840679",
+      "tags": {
+        "building": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Torre de Paraires",
+        "name:ca": "Torre de Paraires",
+        "tower:type": "defensive",
+        "wikidata": "Q559220",
+        "wikipedia": "ca:Torre de Paraires"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 46259.06,
+      "footprint": [
+        [
+          -479.2406,
+          292.5848
+        ],
+        [
+          -479.4932,
+          292.7431
+        ],
+        [
+          -479.594,
+          292.7936
+        ],
+        [
+          -479.6019,
+          292.8428
+        ],
+        [
+          -479.8175,
+          292.932
+        ],
+        [
+          -479.6115,
+          293.1061
+        ],
+        [
+          -479.3065,
+          293.0931
+        ],
+        [
+          -479.3788,
+          293.2051
+        ],
+        [
+          -479.3529,
+          293.288
+        ],
+        [
+          -479.1408,
+          293.4716
+        ],
+        [
+          -479.0903,
+          293.5113
+        ],
+        [
+          -478.8116,
+          293.5122
+        ],
+        [
+          -478.6055,
+          293.4234
+        ],
+        [
+          -478.5453,
+          293.2454
+        ],
+        [
+          -478.6055,
+          293.2697
+        ],
+        [
+          -478.6791,
+          293.2445
+        ],
+        [
+          -478.6305,
+          293.0137
+        ],
+        [
+          -478.6188,
+          292.9695
+        ],
+        [
+          -478.7506,
+          292.8692
+        ],
+        [
+          -478.7867,
+          292.8369
+        ],
+        [
+          -478.7655,
+          292.7867
+        ],
+        [
+          -479.2406,
+          292.5848
+        ]
+      ],
+      "id": "osm-landmark-w219159024",
+      "local": {
+        "x": -479.1002,
+        "y": 15,
+        "z": 293.0582
+      },
+      "name": "Necròpoli de Puig des Molins",
+      "position": {
+        "lat": 38.906045137706165,
+        "lon": 1.4300943332992095
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 93,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "w219159024",
+      "tags": {
+        "heritage": "1",
+        "heritage:operator": "whc",
+        "historic": "archaeological_site",
+        "name": "Necròpoli de Puig des Molins",
+        "name:ca": "Necròpoli de Puig des Molins",
+        "name:es": "Necrópolis de Puig des Molins",
+        "website": "https://whc.unesco.org/en/list/417",
+        "wikidata": "Q3346918",
+        "wikipedia": "ca:Necròpolis cartagineses a Eivissa"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 6084.72,
+      "footprint": [
+        [
+          -82.2757,
+          13.7423
+        ],
+        [
+          -82.2446,
+          13.7515
+        ],
+        [
+          -81.8787,
+          13.9137
+        ],
+        [
+          -81.833,
+          13.8741
+        ],
+        [
+          -81.8875,
+          13.803
+        ],
+        [
+          -81.9,
+          13.7478
+        ],
+        [
+          -81.9034,
+          13.7198
+        ],
+        [
+          -81.8845,
+          13.7071
+        ],
+        [
+          -81.9118,
+          13.5893
+        ],
+        [
+          -81.9298,
+          13.6014
+        ],
+        [
+          -81.9969,
+          13.5878
+        ],
+        [
+          -82.1356,
+          13.5691
+        ],
+        [
+          -82.1508,
+          13.5476
+        ],
+        [
+          -82.1937,
+          13.5977
+        ],
+        [
+          -82.2465,
+          13.6799
+        ],
+        [
+          -82.2552,
+          13.7271
+        ],
+        [
+          -82.2757,
+          13.7423
+        ]
+      ],
+      "id": "osm-landmark-w25883629",
+      "local": {
+        "x": -82.0432,
+        "y": 11,
+        "z": 13.7202
+      },
+      "name": "La Seu",
+      "position": {
+        "lat": 39.567510993509174,
+        "lon": 2.648287005566155
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w25883629",
+      "tags": {
+        "addr:place": "Plaça La Seu",
+        "addr:postcode": "07001",
+        "alt_name": "Catedral de Mallorca",
+        "amenity": "place_of_worship",
+        "building": "cathedral",
+        "denomination": "catholic",
+        "height": "44",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "church",
+        "name": "La Seu",
+        "name:ca": "La Seu",
+        "name:en": "Palma Cathedral",
+        "name:es": "Catedral de Santa María de Palma de Mallorca",
+        "religion": "christian",
+        "tourism": "attraction",
+        "website": "https://catedraldemallorca.org",
+        "wikidata": "Q1298819",
+        "wikipedia": "es:Catedral de Santa María de Palma de Mallorca"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "areaM2": 3313.05,
+      "footprint": [
+        [
+          147.6574,
+          -40.698
+        ],
+        [
+          147.6632,
+          -40.6774
+        ],
+        [
+          147.6926,
+          -40.6591
+        ],
+        [
+          147.6841,
+          -40.6446
+        ],
+        [
+          147.7019,
+          -40.6366
+        ],
+        [
+          147.7094,
+          -40.6516
+        ],
+        [
+          147.8103,
+          -40.5904
+        ],
+        [
+          147.8605,
+          -40.5981
+        ],
+        [
+          147.8764,
+          -40.5704
+        ],
+        [
+          147.9065,
+          -40.5912
+        ],
+        [
+          147.9331,
+          -40.6387
+        ],
+        [
+          147.9491,
+          -40.626
+        ],
+        [
+          147.9594,
+          -40.6412
+        ],
+        [
+          147.9373,
+          -40.6516
+        ],
+        [
+          148.0287,
+          -40.7
+        ],
+        [
+          147.9973,
+          -40.7321
+        ],
+        [
+          147.9181,
+          -40.7801
+        ],
+        [
+          147.8597,
+          -40.798
+        ],
+        [
+          147.8152,
+          -40.7866
+        ],
+        [
+          147.8075,
+          -40.7943
+        ],
+        [
+          147.8039,
+          -40.7804
+        ],
+        [
+          147.7364,
+          -40.7508
+        ],
+        [
+          147.7276,
+          -40.7572
+        ],
+        [
+          147.7236,
+          -40.7453
+        ],
+        [
+          147.6674,
+          -40.7081
+        ],
+        [
+          147.6508,
+          -40.7131
+        ],
+        [
+          147.645,
+          -40.7022
+        ],
+        [
+          147.6574,
+          -40.698
+        ]
+      ],
+      "id": "osm-landmark-w280418890",
+      "local": {
+        "x": 147.8401,
+        "y": 123,
+        "z": -40.6938
+      },
+      "name": "Sant Salvador",
+      "position": {
+        "lat": 39.69636195142652,
+        "lon": 3.3535815572670877
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-11-02",
+      "source": "openstreetmap",
+      "sourceId": "w280418890",
+      "tags": {
+        "alt_name": "Almudaina d’Artà",
+        "historic": "castle",
+        "name": "Sant Salvador",
+        "name:ca": "Sant Salvador",
+        "wikidata": "Q2649795",
+        "wikipedia": "de:Almudaina d’Artà"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 25887.04,
+      "footprint": [
+        [
+          -91.0321,
+          22.9503
+        ],
+        [
+          -90.8395,
+          22.8325
+        ],
+        [
+          -90.8395,
+          22.8141
+        ],
+        [
+          -90.824,
+          22.786
+        ],
+        [
+          -90.7924,
+          22.7739
+        ],
+        [
+          -90.7573,
+          22.6498
+        ],
+        [
+          -90.4519,
+          22.5849
+        ],
+        [
+          -90.4377,
+          22.5623
+        ],
+        [
+          -90.4219,
+          22.5538
+        ],
+        [
+          -90.3426,
+          22.5506
+        ],
+        [
+          -90.3328,
+          22.4803
+        ],
+        [
+          -90.3121,
+          22.473
+        ],
+        [
+          -90.249,
+          22.4933
+        ],
+        [
+          -90.2063,
+          22.4194
+        ],
+        [
+          -90.1921,
+          22.4108
+        ],
+        [
+          -90.1661,
+          22.4165
+        ],
+        [
+          -90.0961,
+          22.5729
+        ],
+        [
+          -89.9103,
+          22.7021
+        ],
+        [
+          -89.8746,
+          22.7517
+        ],
+        [
+          -89.8859,
+          22.8295
+        ],
+        [
+          -89.8772,
+          22.8962
+        ],
+        [
+          -89.9573,
+          22.9428
+        ],
+        [
+          -91.0421,
+          22.9962
+        ],
+        [
+          -91.0321,
+          22.9503
+        ]
+      ],
+      "id": "osm-landmark-w295500564",
+      "local": {
+        "x": -90.3815,
+        "y": 5,
+        "z": 22.7745
+      },
+      "name": "Castell de Sant Carles",
+      "position": {
+        "lat": 39.54607064369621,
+        "lon": 2.6227044998607756
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w295500564",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Carles",
+        "name:ca": "Castell de Sant Carles",
+        "name:es": "Castillo de San Carlos",
+        "tourism": "attraction",
+        "website": "http://www.museomilitarsancarlos.com",
+        "wikidata": "Q577830",
+        "wikipedia": "ca:Fortalesa de Sant Carles"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 1391.45,
+      "footprint": [
+        [
+          -105.1302,
+          22.82
+        ],
+        [
+          -105.0318,
+          22.7239
+        ],
+        [
+          -104.921,
+          22.8372
+        ],
+        [
+          -104.9461,
+          22.8617
+        ],
+        [
+          -104.9648,
+          22.8426
+        ],
+        [
+          -105.0051,
+          22.882
+        ],
+        [
+          -104.9952,
+          22.8921
+        ],
+        [
+          -105.0076,
+          22.9042
+        ],
+        [
+          -104.9986,
+          22.9134
+        ],
+        [
+          -105.0192,
+          22.9335
+        ],
+        [
+          -105.1302,
+          22.82
+        ]
+      ],
+      "id": "osm-landmark-w301945453",
+      "local": {
+        "x": -105.0296,
+        "y": 112,
+        "z": 22.8238
+      },
+      "name": "Castell de Bendinat",
+      "position": {
+        "lat": 39.545953685857434,
+        "lon": 2.577763406544812
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w301945453",
+      "tags": {
+        "building": "yes",
+        "historic": "castle",
+        "name": "Castell de Bendinat",
+        "name:ca": "Castell de Bendinat",
+        "name:es": "Castillo de Bendinat",
+        "wikidata": "Q63903002",
+        "wikipedia": "es:Castillo de Bendinat"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 12.36,
+      "footprint": [
+        [
+          -130.3565,
+          -35.3441
+        ],
+        [
+          -130.3609,
+          -35.3554
+        ],
+        [
+          -130.3745,
+          -35.3502
+        ],
+        [
+          -130.3685,
+          -35.3382
+        ],
+        [
+          -130.3565,
+          -35.3441
+        ]
+      ],
+      "id": "osm-landmark-w307781617",
+      "local": {
+        "x": -130.3669,
+        "y": 53,
+        "z": -35.3134
+      },
+      "name": "Torre del Verger",
+      "position": {
+        "lat": 39.683621283570986,
+        "lon": 2.5000273230942103
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w307781617",
+      "tags": {
+        "alt_name": "Torre de Ses Animes",
+        "building": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Torre del Verger",
+        "name:ca": "Torre del Verger",
+        "seamark:type": "landmark",
+        "tourism": "viewpoint",
+        "tower:type": "defensive",
+        "wikidata": "Q18008271",
+        "wikipedia": "ca:Torre del Verger"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 1216.53,
+      "footprint": [
+        [
+          68.4178,
+          -128.1209
+        ],
+        [
+          68.4148,
+          -128.0583
+        ],
+        [
+          68.4394,
+          -127.9902
+        ],
+        [
+          68.5388,
+          -127.9806
+        ],
+        [
+          68.5671,
+          -128.0391
+        ],
+        [
+          68.5763,
+          -128.0991
+        ],
+        [
+          68.4178,
+          -128.1209
+        ]
+      ],
+      "id": "osm-landmark-w349334890",
+      "local": {
+        "x": 68.4917,
+        "y": 7,
+        "z": -128.0519
+      },
+      "name": "La Fortalesa",
+      "position": {
+        "lat": 39.9032238843892,
+        "lon": 3.11013634349325
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 96,
+      "sectorId": "s-10-01",
+      "source": "openstreetmap",
+      "sourceId": "w349334890",
+      "tags": {
+        "historic": "castle",
+        "name": "La Fortalesa",
+        "wikipedia": "es:Anexo:Bienes de interés cultural de Pollensa"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 31167.18,
+      "footprint": [
+        [
+          411.2398,
+          -132.6261
+        ],
+        [
+          411.3666,
+          -132.6056
+        ],
+        [
+          411.7123,
+          -132.4399
+        ],
+        [
+          411.8461,
+          -132.2004
+        ],
+        [
+          412.0068,
+          -132.1514
+        ],
+        [
+          412.0957,
+          -132.0712
+        ],
+        [
+          412.1207,
+          -131.9391
+        ],
+        [
+          412.1523,
+          -131.9462
+        ],
+        [
+          412.2036,
+          -131.7764
+        ],
+        [
+          412.1999,
+          -131.757
+        ],
+        [
+          412.1885,
+          -131.7483
+        ],
+        [
+          412.1646,
+          -131.749
+        ],
+        [
+          411.8875,
+          -131.8297
+        ],
+        [
+          411.8533,
+          -131.8626
+        ],
+        [
+          411.8209,
+          -131.8473
+        ],
+        [
+          411.8121,
+          -131.8352
+        ],
+        [
+          411.8092,
+          -131.798
+        ],
+        [
+          411.7574,
+          -131.7472
+        ],
+        [
+          411.5692,
+          -131.7424
+        ],
+        [
+          411.5272,
+          -131.7801
+        ],
+        [
+          411.4927,
+          -131.9057
+        ],
+        [
+          411.4446,
+          -131.9353
+        ],
+        [
+          411.3686,
+          -132.1245
+        ],
+        [
+          411.3005,
+          -132.1271
+        ],
+        [
+          411.2817,
+          -132.2239
+        ],
+        [
+          411.285,
+          -132.5022
+        ],
+        [
+          411.249,
+          -132.5786
+        ],
+        [
+          411.2398,
+          -132.6261
+        ]
+      ],
+      "id": "osm-landmark-w375058822",
+      "local": {
+        "x": 411.6654,
+        "y": 109,
+        "z": -132.1267
+      },
+      "name": "Poblat talaiòtic de Torralba d'en Salort",
+      "position": {
+        "lat": 39.912872780444765,
+        "lon": 4.163012039166149
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "w375058822",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Torralba d'en Salort",
+        "name:ca": "Poblat talaiòtic de Torralba d'en Salort",
+        "tourism": "attraction",
+        "website": "www.fundacioillesbalears.com",
+        "wikidata": "Q2444476",
+        "wikipedia": "ca:Poblat talaiòtic de Torralba d'en Salort"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 647.38,
+      "footprint": [
+        [
+          -177.2887,
+          9.818
+        ],
+        [
+          -177.2134,
+          9.7631
+        ],
+        [
+          -177.1432,
+          9.8591
+        ],
+        [
+          -177.1673,
+          9.8767
+        ],
+        [
+          -177.1843,
+          9.8651
+        ],
+        [
+          -177.212,
+          9.8853
+        ],
+        [
+          -177.2272,
+          9.8645
+        ],
+        [
+          -177.2451,
+          9.8776
+        ],
+        [
+          -177.2887,
+          9.818
+        ]
+      ],
+      "id": "osm-landmark-w376242942",
+      "local": {
+        "x": -177.2172,
+        "y": 57,
+        "z": 9.8304
+      },
+      "name": "Castell de Sant Elm",
+      "position": {
+        "lat": 39.576721870144674,
+        "lon": 2.356287967820137
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-03",
+      "source": "openstreetmap",
+      "sourceId": "w376242942",
+      "tags": {
+        "access": "private",
+        "building": "yes",
+        "historic": "castle",
+        "name": "castell de Sant Elm",
+        "name:ca": "Castell de Sant Elm",
+        "wikidata": "Q43141170",
+        "wikipedia": "ca:Castell de Sant Elm (Mallorca)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 177.4,
+      "footprint": [
+        [
+          -79.8888,
+          13.6011
+        ],
+        [
+          -79.8493,
+          13.613
+        ],
+        [
+          -79.8649,
+          13.6682
+        ],
+        [
+          -79.907,
+          13.6651
+        ],
+        [
+          -79.8888,
+          13.6011
+        ]
+      ],
+      "id": "osm-landmark-w376306837",
+      "local": {
+        "x": -79.878,
+        "y": 12,
+        "z": 13.6373
+      },
+      "name": "Torres de Gumara",
+      "position": {
+        "lat": 39.567707122934706,
+        "lon": 2.6549298024865773
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "w376306837",
+      "tags": {
+        "building": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "name": "Torres de Gumara"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 83.77,
+      "footprint": [
+        [
+          99.525,
+          14.283
+        ],
+        [
+          99.5341,
+          14.3006
+        ],
+        [
+          99.4797,
+          14.3284
+        ],
+        [
+          99.4707,
+          14.3109
+        ],
+        [
+          99.525,
+          14.283
+        ]
+      ],
+      "id": "osm-landmark-w383990703",
+      "local": {
+        "x": 99.502,
+        "y": 81,
+        "z": 14.3119
+      },
+      "name": "Torre de ses Puntes",
+      "position": {
+        "lat": 39.56610982543173,
+        "lon": 3.2052775419046364
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-10-03",
+      "source": "openstreetmap",
+      "sourceId": "w383990703",
+      "tags": {
+        "building": "public",
+        "building:levels": "2",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Torre de ses Puntes",
+        "name:ca": "Torre de ses Puntes",
+        "tower:type": "defensive",
+        "wikidata": "Q43082719",
+        "wikipedia": "ca:Torre de ses Puntes"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 1828.1,
+      "footprint": [
+        [
+          305.6207,
+          -169.7612
+        ],
+        [
+          305.6193,
+          -169.7962
+        ],
+        [
+          305.6395,
+          -169.7672
+        ],
+        [
+          305.6658,
+          -169.7676
+        ],
+        [
+          305.6696,
+          -169.7813
+        ],
+        [
+          305.6879,
+          -169.7755
+        ],
+        [
+          305.6855,
+          -169.7625
+        ],
+        [
+          305.7045,
+          -169.7573
+        ],
+        [
+          305.6999,
+          -169.7432
+        ],
+        [
+          305.7679,
+          -169.7156
+        ],
+        [
+          305.7002,
+          -169.6512
+        ],
+        [
+          305.5594,
+          -169.5725
+        ],
+        [
+          305.5346,
+          -169.5909
+        ],
+        [
+          305.5139,
+          -169.6429
+        ],
+        [
+          305.524,
+          -169.6495
+        ],
+        [
+          305.52,
+          -169.6567
+        ],
+        [
+          305.5759,
+          -169.6918
+        ],
+        [
+          305.5597,
+          -169.7202
+        ],
+        [
+          305.6207,
+          -169.7612
+        ]
+      ],
+      "id": "osm-landmark-w41808276",
+      "local": {
+        "x": 305.6296,
+        "y": 12,
+        "z": -169.68
+      },
+      "name": "Catedral de Santa Maria",
+      "position": {
+        "lat": 40.00179812532247,
+        "lon": 3.837688291913294
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-13-00",
+      "source": "openstreetmap",
+      "sourceId": "w41808276",
+      "tags": {
+        "alt_name": "Catedral de Menorca",
+        "amenity": "place_of_worship",
+        "building": "cathedral",
+        "building:levels": "3",
+        "denomination": "catholic",
+        "name": "Catedral de Santa Maria",
+        "name:ca": "Catedral de Santa Maria",
+        "name:es": "Catedral de Santa María",
+        "religion": "christian",
+        "wikidata": "Q730526",
+        "wikipedia": "ca:Catedral de Menorca"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "areaM2": 20.23,
+      "footprint": [
+        [
+          7.0261,
+          198.8495
+        ],
+        [
+          7.0143,
+          198.8373
+        ],
+        [
+          7.0022,
+          198.8512
+        ],
+        [
+          7.0136,
+          198.8615
+        ],
+        [
+          7.0261,
+          198.8495
+        ]
+      ],
+      "id": "osm-landmark-w469597988",
+      "local": {
+        "x": 7.0151,
+        "y": 3,
+        "z": 198.8323
+      },
+      "name": "Far de n'Ensiola",
+      "position": {
+        "lat": 39.12916997533708,
+        "lon": 2.9215226956936897
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-09-06",
+      "source": "openstreetmap",
+      "sourceId": "w469597988",
+      "tags": {
+        "building:part": "yes",
+        "man_made": "lighthouse",
+        "name": "Far de n'Ensiola",
+        "name:ca": "Far de n'Ensiola",
+        "name:es": "Faro Ensiola",
+        "wikidata": "Q5856545",
+        "wikipedia": "es:Faro de n'Ensiola"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 54.66,
+      "footprint": [
+        [
+          -474.0048,
+          368.8742
+        ],
+        [
+          -473.9811,
+          368.8681
+        ],
+        [
+          -473.988,
+          368.8579
+        ],
+        [
+          -474.0071,
+          368.8666
+        ],
+        [
+          -473.996,
+          368.847
+        ],
+        [
+          -473.9806,
+          368.8464
+        ],
+        [
+          -473.9695,
+          368.8573
+        ],
+        [
+          -473.9698,
+          368.8729
+        ],
+        [
+          -473.9802,
+          368.8832
+        ],
+        [
+          -474.0048,
+          368.8742
+        ]
+      ],
+      "id": "osm-landmark-w486814290",
+      "local": {
+        "x": -473.9847,
+        "y": 4,
+        "z": 368.8605
+      },
+      "name": "Sepulcre megalític de Ca na Costa",
+      "position": {
+        "lat": 38.726547246695915,
+        "lon": 1.4457890144503929
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 93,
+      "sectorId": "s-01-09",
+      "source": "openstreetmap",
+      "sourceId": "w486814290",
+      "tags": {
+        "heritage": "3",
+        "heritage:operator": "Consell Insular de Formentera",
+        "historic": "archaeological_site",
+        "name": "Sepulcre megalític de Ca na Costa",
+        "name:ca": "Sepulcre megalític de Ca na Costa",
+        "name:en": "Megalithic tomb of Ca na Costa",
+        "wikidata": "Q11948252",
+        "wikipedia": "ca:Sepulcre megalític de Ca na Costa"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "areaM2": 307.62,
+      "footprint": [
+        [
+          301.7215,
+          -167.1139
+        ],
+        [
+          301.7515,
+          -167.1217
+        ],
+        [
+          301.7779,
+          -167.1064
+        ],
+        [
+          301.7853,
+          -167.0773
+        ],
+        [
+          301.7683,
+          -167.0502
+        ],
+        [
+          301.7445,
+          -167.0428
+        ],
+        [
+          301.7137,
+          -167.0581
+        ],
+        [
+          301.7066,
+          -167.0884
+        ],
+        [
+          301.7215,
+          -167.1139
+        ]
+      ],
+      "id": "osm-landmark-w571114785",
+      "local": {
+        "x": 301.7454,
+        "y": 1,
+        "z": -167.0769
+      },
+      "name": "Castell de Sant Nicolau",
+      "position": {
+        "lat": 39.9956340386529,
+        "lon": 3.825771364522614
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-13-01",
+      "source": "openstreetmap",
+      "sourceId": "w571114785",
+      "tags": {
+        "alt_name": "Torre de Sant Nicolau",
+        "building": "yes",
+        "building:levels": "1",
+        "historic": "castle",
+        "name": "Castell de Sant Nicolau",
+        "name:ca": "Castell de Sant Nicolau",
+        "name:es": "Castillo de San Nicolás",
+        "wikidata": "Q6150471",
+        "wikipedia": "es:Torre de San Nicolás (Ciudadela)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 21.62,
+      "footprint": [
+        [
+          187.4576,
+          -49.4238
+        ],
+        [
+          187.4692,
+          -49.4345
+        ],
+        [
+          187.4826,
+          -49.422
+        ],
+        [
+          187.4695,
+          -49.4094
+        ],
+        [
+          187.4576,
+          -49.4238
+        ]
+      ],
+      "id": "osm-landmark-w584612715",
+      "local": {
+        "x": 187.4681,
+        "y": 27,
+        "z": -49.3951
+      },
+      "name": "sa Torre Esbucada",
+      "position": {
+        "lat": 39.716966485997425,
+        "lon": 3.475162246313217
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-12-02",
+      "source": "openstreetmap",
+      "sourceId": "w584612715",
+      "tags": {
+        "building": "ruins",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "sa Torre Esbucada",
+        "tower:type": "defensive"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 6529.73,
+      "footprint": [
+        [
+          -477.5015,
+          292.9576
+        ],
+        [
+          -477.3772,
+          292.8277
+        ],
+        [
+          -477.2535,
+          292.7896
+        ],
+        [
+          -477.2506,
+          292.7999
+        ],
+        [
+          -477.1537,
+          292.7816
+        ],
+        [
+          -477.1545,
+          292.775
+        ],
+        [
+          -477.0758,
+          292.7577
+        ],
+        [
+          -477.0769,
+          292.7511
+        ],
+        [
+          -477.0549,
+          292.7454
+        ],
+        [
+          -476.9818,
+          292.9001
+        ],
+        [
+          -477.0612,
+          292.965
+        ],
+        [
+          -477.0836,
+          292.9541
+        ],
+        [
+          -477.116,
+          292.9659
+        ],
+        [
+          -477.0981,
+          293.0004
+        ],
+        [
+          -477.3476,
+          293.0365
+        ],
+        [
+          -477.4023,
+          293.0297
+        ],
+        [
+          -477.4556,
+          293.0015
+        ],
+        [
+          -477.5015,
+          292.9576
+        ]
+      ],
+      "id": "osm-landmark-w607136377",
+      "local": {
+        "x": -477.2316,
+        "y": 15,
+        "z": 292.9043
+      },
+      "name": "Castell-Almudaina d'Eivissa",
+      "position": {
+        "lat": 38.90640957987595,
+        "lon": 1.4358274931759483
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 99,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "w607136377",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell-Almudaina d'Eivissa",
+        "name:ca": "Castell-Almudaina d'Eivissa",
+        "name:es": "Castillo y recinto de la Almudaina",
+        "wikidata": "Q43142933"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 46.97,
+      "footprint": [
+        [
+          -155.1211,
+          10.0249
+        ],
+        [
+          -155.1031,
+          10.0431
+        ],
+        [
+          -155.0843,
+          10.0246
+        ],
+        [
+          -155.1023,
+          10.0063
+        ],
+        [
+          -155.1211,
+          10.0249
+        ]
+      ],
+      "id": "osm-landmark-w642332047",
+      "local": {
+        "x": -155.1026,
+        "y": 114,
+        "z": 10.0215
+      },
+      "name": "Castell de Son Mas",
+      "position": {
+        "lat": 39.57626929003593,
+        "lon": 2.424136881629594
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-06-03",
+      "source": "openstreetmap",
+      "sourceId": "w642332047",
+      "tags": {
+        "building:levels": "4",
+        "building:part": "yes",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Castell de Son Mas",
+        "name:ca": "Castell de Son Mas",
+        "roof:levels": "1",
+        "tower:type": "defensive"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 37.53,
+      "footprint": [
+        [
+          37.8509,
+          -116.5106
+        ],
+        [
+          37.859,
+          -116.4887
+        ],
+        [
+          37.8809,
+          -116.4966
+        ],
+        [
+          37.8728,
+          -116.5186
+        ],
+        [
+          37.8509,
+          -116.5106
+        ]
+      ],
+      "id": "osm-landmark-w696379252",
+      "local": {
+        "x": 37.8655,
+        "y": 68,
+        "z": -116.497
+      },
+      "name": "Torre de Can Desbrull",
+      "position": {
+        "lat": 39.87586208934928,
+        "lon": 3.0161734714513853
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 92,
+      "sectorId": "s-09-01",
+      "source": "openstreetmap",
+      "sourceId": "w696379252",
+      "tags": {
+        "building": "yes",
+        "castle_type": "tower",
+        "heritage": "3",
+        "heritage:operator": "Consell de Mallorca",
+        "historic": "castle",
+        "man_made": "tower",
+        "name": "Torre de Can Desbrull",
+        "tower:type": "defensive"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 416.84,
+      "footprint": [
+        [
+          388.5614,
+          -206.528
+        ],
+        [
+          388.6739,
+          -206.5266
+        ],
+        [
+          388.6731,
+          -206.4567
+        ],
+        [
+          388.6317,
+          -206.4572
+        ],
+        [
+          388.6322,
+          -206.5002
+        ],
+        [
+          388.5863,
+          -206.5008
+        ],
+        [
+          388.5857,
+          -206.4551
+        ],
+        [
+          388.5578,
+          -206.4554
+        ],
+        [
+          388.5614,
+          -206.528
+        ]
+      ],
+      "id": "osm-landmark-w74317241",
+      "local": {
+        "x": 388.6186,
+        "y": 8,
+        "z": -206.497
+      },
+      "name": "Far de Cavalleria",
+      "position": {
+        "lat": 40.08897995792984,
+        "lon": 4.092303040807055
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-15-00",
+      "source": "openstreetmap",
+      "sourceId": "w74317241",
+      "tags": {
+        "building": "lighthouse",
+        "man_made": "lighthouse",
+        "name": "Far de Cavalleria",
+        "name:ca": "Far de Cavalleria",
+        "name:es": "Faro de Cavalleria",
+        "tourism": "viewpoint",
+        "wikidata": "Q8960888",
+        "wikipedia": "ca:Far del Cap de Cavalleria"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 251.97,
+      "footprint": [
+        [
+          301.2523,
+          -136.2764
+        ],
+        [
+          301.2738,
+          -136.1995
+        ],
+        [
+          301.2298,
+          -136.1872
+        ],
+        [
+          301.2082,
+          -136.2642
+        ],
+        [
+          301.2523,
+          -136.2764
+        ]
+      ],
+      "id": "osm-landmark-w74492944",
+      "local": {
+        "x": 301.2411,
+        "y": 14,
+        "z": -136.2332
+      },
+      "name": "Far d'Artrutx",
+      "position": {
+        "lat": 39.922596984131935,
+        "lon": 3.8242242837418874
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-13-01",
+      "source": "openstreetmap",
+      "sourceId": "w74492944",
+      "tags": {
+        "building": "lighthouse",
+        "man_made": "lighthouse",
+        "name": "Far d'Artrutx",
+        "name:ca": "Far d'Artrutx",
+        "name:es": "Faro de Artrutx",
+        "tourism": "viewpoint",
+        "wikidata": "Q5856351",
+        "wikipedia": "ca:Far d'Artrutx"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": 89.47,
+      "footprint": [
+        [
+          35.9018,
+          -136.0988
+        ],
+        [
+          35.8985,
+          -136.1157
+        ],
+        [
+          35.9105,
+          -136.122
+        ],
+        [
+          35.9111,
+          -136.146
+        ],
+        [
+          35.9365,
+          -136.1438
+        ],
+        [
+          35.9305,
+          -136.0972
+        ],
+        [
+          35.9018,
+          -136.0988
+        ]
+      ],
+      "id": "osm-landmark-w81058569",
+      "local": {
+        "x": 35.919,
+        "y": 312,
+        "z": -136.1131
+      },
+      "name": "Castell del Rei",
+      "position": {
+        "lat": 39.922312573374356,
+        "lon": 3.0102013432453187
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-09-01",
+      "source": "openstreetmap",
+      "sourceId": "w81058569",
+      "tags": {
+        "access": "private",
+        "building": "yes",
+        "castle_type": "defensive",
+        "historic": "castle",
+        "name": "Castell del Rei",
+        "name:ca": "Castell del Rei",
+        "ruins": "yes",
+        "wikidata": "Q8342667",
+        "wikipedia": "es:Castillo del Rey (Pollensa)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 86.72,
+      "footprint": [
+        [
+          161.6921,
+          8.4944
+        ],
+        [
+          161.7136,
+          8.4649
+        ],
+        [
+          161.7413,
+          8.485
+        ],
+        [
+          161.7199,
+          8.5145
+        ],
+        [
+          161.6921,
+          8.4944
+        ]
+      ],
+      "id": "osm-landmark-w82427806",
+      "local": {
+        "x": 161.7163,
+        "y": 16,
+        "z": 8.496
+      },
+      "name": "Castell de la Punta de n'Amer",
+      "position": {
+        "lat": 39.57988172393894,
+        "lon": 3.3961545408345266
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-11-03",
+      "source": "openstreetmap",
+      "sourceId": "w82427806",
+      "tags": {
+        "building": "yes",
+        "historic": "castle",
+        "name": "Castell de la Punta de n'Amer",
+        "name:ca": "Castell de la Punta de n'Amer",
+        "tourism": "viewpoint",
+        "wikidata": "Q1048680",
+        "wikipedia": "ca:Castell de la Punta de n'Amer"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": 381.17,
+      "footprint": [
+        [
+          -429.0655,
+          395.567
+        ],
+        [
+          -429.0023,
+          395.609
+        ],
+        [
+          -428.9633,
+          395.549
+        ],
+        [
+          -429.0266,
+          395.5069
+        ],
+        [
+          -429.0655,
+          395.567
+        ]
+      ],
+      "id": "osm-landmark-w92166184",
+      "local": {
+        "x": -429.0144,
+        "y": 92,
+        "z": 395.5577
+      },
+      "name": "Far de la Mola",
+      "position": {
+        "lat": 38.66332881572869,
+        "lon": 1.5837603536953384
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-09",
+      "source": "openstreetmap",
+      "sourceId": "w92166184",
+      "tags": {
+        "alt_name": "Far de Formentera",
+        "building": "yes",
+        "man_made": "lighthouse",
+        "name": "Far de la Mola",
+        "name:ca": "Far de la Mola",
+        "wikidata": "Q5856434",
+        "wikipedia": "ca:Far de la Mola"
+      },
+      "terrainStatus": "nearest-land-cell",
       "type": "lighthouse"
     },
     {
@@ -125,10 +4535,14 @@
         "lon": 2.885
       },
       "preferredRepresentation": "archetype",
+      "protected": true,
       "sectorId": "s-09-02",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
       "type": "monastery"
     }
   ],
-  "regionId": "baleares"
+  "regionId": "baleares",
+  "sourceCount": 5409,
+  "wikidataRankingPending": true
 }

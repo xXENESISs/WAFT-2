@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "source": {
+    "osmTimestamp": "2026-07-31T20:21:56Z",
+    "pbfBytes": 46061737,
+    "snapshotBytes": 33417430,
+    "sourceCounts": {
+      "buildings": 305214,
+      "hotels": 3952,
+      "landmarks": 5409,
+      "ports": 146,
+      "roads": 145578,
+      "settlements": 7689
+    }
+  },
+  "package": {
+    "packageBytes": 39253849,
+    "settlements": 70,
+    "buildings": 5866,
+    "hotels": 2663,
+    "namedBuildings": 2561,
+    "roads": 43994,
+    "roadClasses": [
+      "bridleway",
+      "cycleway",
+      "footway",
+      "motorway",
+      "path",
+      "pedestrian",
+      "primary",
+      "residential",
+      "secondary",
+      "steps",
+      "tertiary",
+      "track",
+      "trunk"
+    ],
+    "ports": 146,
+    "landmarks": 90,
+    "landmarkTypes": [
+      "archaeological_site",
+      "castle",
+      "cathedral",
+      "fortress",
+      "lighthouse",
+      "monastery",
+      "natural_landmark",
+      "tower"
+    ],
+    "sectorsWithBuildings": 45,
+    "maximumBuildingsInSector": 140
+  }
+}

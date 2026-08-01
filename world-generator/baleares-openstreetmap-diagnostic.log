@@ -11,7 +11,7 @@ Collecting urllib3<3,>=1.26 (from requests->osmium)
 Collecting certifi>=2023.5.7 (from requests->osmium)
   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
 Downloading osmium-4.3.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 25.8 MB/s  0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 17.1 MB/s  0:00:00
 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
 Downloading charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (224 kB)
 Downloading idna-3.18-py3-none-any.whl (65 kB)
@@ -182,10 +182,58 @@ Successfully installed certifi-2026.7.22 charset_normalizer-3.4.9 idna-3.18 osmi
   },
   "externalWorldCoverStagePending": false
 }
-Error: Missing landmark type church
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-openstreetmap.mjs:18:25)
-    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-openstreetmap.mjs:142:62)
-    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-openstreetmap.mjs:190:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "source": {
+    "osmTimestamp": "2026-07-31T20:21:56Z",
+    "pbfBytes": 46061737,
+    "snapshotBytes": 33417430,
+    "sourceCounts": {
+      "buildings": 305214,
+      "hotels": 3952,
+      "landmarks": 5409,
+      "ports": 146,
+      "roads": 145578,
+      "settlements": 7689
+    }
+  },
+  "package": {
+    "packageBytes": 39253849,
+    "settlements": 70,
+    "buildings": 5866,
+    "hotels": 2663,
+    "namedBuildings": 2561,
+    "roads": 43994,
+    "roadClasses": [
+      "bridleway",
+      "cycleway",
+      "footway",
+      "motorway",
+      "path",
+      "pedestrian",
+      "primary",
+      "residential",
+      "secondary",
+      "steps",
+      "tertiary",
+      "track",
+      "trunk"
+    ],
+    "ports": 146,
+    "landmarks": 90,
+    "landmarkTypes": [
+      "archaeological_site",
+      "castle",
+      "cathedral",
+      "fortress",
+      "lighthouse",
+      "monastery",
+      "natural_landmark",
+      "tower"
+    ],
+    "sectorsWithBuildings": 45,
+    "maximumBuildingsInSector": 140
+  }
+}

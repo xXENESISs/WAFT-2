@@ -1,7 +1,7 @@
 {
-  "diagnosticVersion": 2,
+  "diagnosticVersion": 3,
   "install": 0,
   "import": 0,
   "build": 0,
-  "verify": 1
+  "verify": 0
 }

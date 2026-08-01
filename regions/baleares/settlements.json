@@ -1,37 +1,7 @@
 {
   "formatVersion": 1,
-  "generationStage": "manual-seed-points",
+  "generationStage": "openstreetmap-settlements",
   "items": [
-    {
-      "id": "palma",
-      "local": {
-        "x": -81.41966959052961,
-        "y": 11,
-        "z": 12.837968640000087
-      },
-      "name": "Palma",
-      "position": {
-        "lat": 39.5696,
-        "lon": 2.6502
-      },
-      "sectorId": "s-07-03",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "manacor",
-      "local": {
-        "x": 101.26938087180768,
-        "y": 88,
-        "z": 13.218040080000701
-      },
-      "name": "Manacor",
-      "position": {
-        "lat": 39.5687,
-        "lon": 3.2107
-      },
-      "sectorId": "s-10-03",
-      "terrainStatus": "exact-cell"
-    },
     {
       "id": "alcudia",
       "local": {
@@ -44,7 +14,9 @@
         "lat": 39.8533,
         "lon": 3.1214
       },
+      "protected": true,
       "sectorId": "s-10-01",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     },
     {
@@ -59,22 +31,9 @@
         "lat": 39.6047,
         "lon": 3.3848
       },
+      "protected": true,
       "sectorId": "s-11-03",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "mao",
-      "local": {
-        "x": 445.1680733656737,
-        "y": 47,
-        "z": -121.83401159999963
-      },
-      "name": "Maó",
-      "position": {
-        "lat": 39.8885,
-        "lon": 4.2658
-      },
-      "sectorId": "s-16-01",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     },
     {
@@ -89,10 +48,1899 @@
         "lat": 38.9089,
         "lon": 1.4329
       },
+      "protected": true,
       "sectorId": "s-01-08",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "manacor",
+      "local": {
+        "x": 101.26938087180768,
+        "y": 88,
+        "z": 13.218040080000701
+      },
+      "name": "Manacor",
+      "position": {
+        "lat": 39.5687,
+        "lon": 3.2107
+      },
+      "protected": true,
+      "sectorId": "s-10-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "mao",
+      "local": {
+        "x": 445.1680733656737,
+        "y": 47,
+        "z": -121.83401159999963
+      },
+      "name": "Maó",
+      "position": {
+        "lat": 39.8885,
+        "lon": 4.2658
+      },
+      "protected": true,
+      "sectorId": "s-16-01",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n11042819611",
+      "local": {
+        "x": -491.4563,
+        "y": 38,
+        "z": 294.3863
+      },
+      "name": "sa Carroca",
+      "place": "village",
+      "population": 2325,
+      "position": {
+        "lat": 38.9029004,
+        "lon": 1.3921852
+      },
+      "priority": 96.93,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "n11042819611",
+      "tags": {
+        "name": "sa Carroca",
+        "name:ca": "sa Carroca",
+        "place": "village",
+        "population": "2325"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n11042819622",
+      "local": {
+        "x": -524.5832,
+        "y": 1,
+        "z": 266.8377
+      },
+      "name": "Cala de Bou",
+      "place": "village",
+      "population": 9836,
+      "position": {
+        "lat": 38.9681347,
+        "lon": 1.2905502
+      },
+      "priority": 101.94,
+      "sectorId": "s-00-07",
+      "source": "openstreetmap",
+      "sourceId": "n11042819622",
+      "tags": {
+        "name": "Cala de Bou",
+        "name:ca": "Cala de Bou",
+        "place": "village",
+        "population": "9836"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n11054973846",
+      "local": {
+        "x": 70.0918,
+        "y": 2,
+        "z": -97.8368
+      },
+      "name": "Platja d'Alcúdia",
+      "place": "village",
+      "population": 7291,
+      "position": {
+        "lat": 39.8316751,
+        "lon": 3.1150456
+      },
+      "priority": 100.9,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n11054973846",
+      "tags": {
+        "name": "Platja d'Alcúdia",
+        "name:ca": "Platja d'Alcúdia",
+        "place": "village",
+        "population": "7291"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n11069624310",
+      "local": {
+        "x": -69.233,
+        "y": 44,
+        "z": -4.968
+      },
+      "name": "Son Macià-sa Nova Cabana",
+      "place": "village",
+      "population": 2426,
+      "position": {
+        "lat": 39.611764,
+        "lon": 2.6875894
+      },
+      "priority": 97.08,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n11069624310",
+      "tags": {
+        "name": "Son Macià-sa Nova Cabana",
+        "name:ca": "Son Macià-sa Nova Cabana",
+        "place": "village",
+        "population": "2426"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n142778723",
+      "local": {
+        "x": 59.5766,
+        "y": 2,
+        "z": -130.0744
+      },
+      "name": "Port de Pollença",
+      "place": "village",
+      "population": 7106,
+      "position": {
+        "lat": 39.908013,
+        "lon": 3.0827842
+      },
+      "priority": 100.81,
+      "sectorId": "s-10-01",
+      "source": "openstreetmap",
+      "sourceId": "n142778723",
+      "tags": {
+        "name": "Port de Pollença",
+        "name:ca": "Port de Pollença",
+        "name:es": "Port de Pollença",
+        "place": "village",
+        "population": "7106",
+        "wikidata": "Q323084",
+        "wikipedia": "ca:Port de Pollença"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1874306875",
+      "local": {
+        "x": 30.132,
+        "y": 2,
+        "z": 118.9385
+      },
+      "name": "Colònia de Sant Jordi",
+      "place": "village",
+      "population": 2971,
+      "position": {
+        "lat": 39.3183566,
+        "lon": 2.9924466
+      },
+      "priority": 97.78,
+      "sectorId": "s-09-05",
+      "source": "openstreetmap",
+      "sourceId": "n1874306875",
+      "tags": {
+        "name": "Colònia de Sant Jordi",
+        "name:ca": "Colònia de Sant Jordi",
+        "name:es": "Colònia de Sant Jordi",
+        "place": "village",
+        "population": "2971",
+        "wikidata": "Q1113110",
+        "wikipedia": "ca:Colònia de Sant Jordi"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n240974549",
+      "local": {
+        "x": 51.077,
+        "y": 72,
+        "z": -57.8822
+      },
+      "name": "Muro",
+      "place": "village",
+      "population": 6915,
+      "position": {
+        "lat": 39.7370637,
+        "lon": 3.0567069
+      },
+      "priority": 100.72,
+      "sectorId": "s-09-02",
+      "source": "openstreetmap",
+      "sourceId": "n240974549",
+      "tags": {
+        "capital": "8",
+        "name": "Muro",
+        "name:ca": "Muro",
+        "place": "village",
+        "population": "6915",
+        "wikidata": "Q595424",
+        "wikipedia": "ca:Muro (Mallorca)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n2487094876",
+      "local": {
+        "x": -445.096,
+        "y": 13,
+        "z": 259.8795
+      },
+      "name": "Santa Eulària des Riu",
+      "place": "town",
+      "population": 12101,
+      "position": {
+        "lat": 38.9846117,
+        "lon": 1.534421
+      },
+      "priority": 117.66,
+      "sectorId": "s-02-07",
+      "source": "openstreetmap",
+      "sourceId": "n2487094876",
+      "tags": {
+        "capital": "8",
+        "name": "Santa Eulària des Riu",
+        "name:ca": "Santa Eulària des Riu",
+        "name:es": "Santa Eulària des Riu",
+        "place": "town",
+        "population": "12101",
+        "wikidata": "Q24009589",
+        "wikipedia": "ca:Santa Eulària des Riu"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n250737780",
+      "local": {
+        "x": 81.262,
+        "y": 12,
+        "z": -70.9551
+      },
+      "name": "Ca'n Picafort",
+      "place": "town",
+      "population": 8869,
+      "position": {
+        "lat": 39.76802,
+        "lon": 3.1493162
+      },
+      "priority": 116.58,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n250737780",
+      "tags": {
+        "name": "Ca'n Picafort",
+        "name:ca": "Ca'n Picafort",
+        "place": "town",
+        "population": "8869",
+        "wikidata": "Q5939834",
+        "wikipedia": "es:Ca'n Picafort"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n251717463",
+      "local": {
+        "x": -39.7945,
+        "y": 128,
+        "z": -20.2474
+      },
+      "name": "Santa Maria del Camí",
+      "place": "village",
+      "population": 6141,
+      "position": {
+        "lat": 39.6479453,
+        "lon": 2.7779083
+      },
+      "priority": 100.31,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n251717463",
+      "tags": {
+        "capital": "8",
+        "name": "Santa Maria del Camí",
+        "name:ca": "Santa Maria del Camí",
+        "name:es": "Santa Maria del Camí",
+        "place": "village",
+        "population": "6141",
+        "wikidata": "Q943948",
+        "wikipedia": "ca:Santa Maria del Camí"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n252135241",
+      "local": {
+        "x": 66.055,
+        "y": 72,
+        "z": -43.6523
+      },
+      "name": "Santa Margalida",
+      "place": "village",
+      "population": 4018,
+      "position": {
+        "lat": 39.7033676,
+        "lon": 3.1026602
+      },
+      "priority": 98.83,
+      "sectorId": "s-10-02",
+      "source": "openstreetmap",
+      "sourceId": "n252135241",
+      "tags": {
+        "capital": "8",
+        "name": "Santa Margalida",
+        "name:ca": "Santa Margalida",
+        "name:es": "Santa Margalida",
+        "place": "village",
+        "population": "4018"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n252314034",
+      "local": {
+        "x": 40.6382,
+        "y": 28,
+        "z": -71.6819
+      },
+      "name": "sa Pobla",
+      "place": "town",
+      "population": 14191,
+      "position": {
+        "lat": 39.7697409,
+        "lon": 3.0246803
+      },
+      "priority": 118.22,
+      "sectorId": "s-09-02",
+      "source": "openstreetmap",
+      "sourceId": "n252314034",
+      "tags": {
+        "capital": "8",
+        "name": "Sa Pobla",
+        "name:ca": "sa Pobla",
+        "name:es": "Sa Pobla",
+        "official_name": "sa Pobla",
+        "place": "town",
+        "population": "14191",
+        "wikidata": "Q984493",
+        "wikipedia": "ca:Sa Pobla"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n253256404",
+      "local": {
+        "x": -65.5277,
+        "y": 228,
+        "z": -40.6206
+      },
+      "name": "Bunyola",
+      "place": "village",
+      "population": 2652,
+      "position": {
+        "lat": 39.6961887,
+        "lon": 2.6989574
+      },
+      "priority": 97.39,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n253256404",
+      "tags": {
+        "capital": "8",
+        "name": "Bunyola",
+        "name:ca": "Bunyola",
+        "name:es": "Bunyola",
+        "place": "village",
+        "population": "2652",
+        "wikidata": "Q837125",
+        "wikipedia": "ca:Bunyola"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n253257146",
+      "local": {
+        "x": -28.2128,
+        "y": 142,
+        "z": -28.9533
+      },
+      "name": "Consell",
+      "place": "village",
+      "population": 3832,
+      "position": {
+        "lat": 39.6685608,
+        "lon": 2.8134417
+      },
+      "priority": 98.67,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n253257146",
+      "tags": {
+        "capital": "8",
+        "name": "Consell",
+        "name:ca": "Consell",
+        "place": "village",
+        "population": "3832",
+        "wikidata": "Q950889",
+        "wikipedia": "ca:Consell"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n253262027",
+      "local": {
+        "x": -145.6294,
+        "y": 4,
+        "z": 26.2155
+      },
+      "name": "Peguera",
+      "place": "village",
+      "population": 4087,
+      "position": {
+        "lat": 39.5379223,
+        "lon": 2.4532011
+      },
+      "priority": 98.89,
+      "sectorId": "s-06-04",
+      "source": "openstreetmap",
+      "sourceId": "n253262027",
+      "tags": {
+        "name": "Peguera",
+        "name:ca": "Peguera",
+        "place": "village",
+        "population": "4087"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n253262064",
+      "local": {
+        "x": -156.3838,
+        "y": 61,
+        "z": 10.7283
+      },
+      "name": "Andratx",
+      "place": "village",
+      "population": 7863,
+      "position": {
+        "lat": 39.5745956,
+        "lon": 2.4202061
+      },
+      "priority": 101.16,
+      "sectorId": "s-06-03",
+      "source": "openstreetmap",
+      "sourceId": "n253262064",
+      "tags": {
+        "capital": "8",
+        "name": "Andratx",
+        "name:ca": "Andratx",
+        "name:es": "Andratx",
+        "place": "village",
+        "population": "7863",
+        "wikidata": "Q493017",
+        "wikipedia": "ca:Andratx"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n254088516",
+      "local": {
+        "x": 21.2269,
+        "y": 99,
+        "z": -73.9281
+      },
+      "name": "Campanet",
+      "place": "village",
+      "population": 2376,
+      "position": {
+        "lat": 39.7750599,
+        "lon": 2.9651254
+      },
+      "priority": 97.01,
+      "sectorId": "s-09-02",
+      "source": "openstreetmap",
+      "sourceId": "n254088516",
+      "tags": {
+        "capital": "8",
+        "name": "Campanet",
+        "name:ca": "Campanet",
+        "place": "village",
+        "population": "2376",
+        "wikidata": "Q850989",
+        "wikipedia": "ca:Campanet"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26475225",
+      "local": {
+        "x": 80.7277,
+        "y": 113,
+        "z": 53.56
+      },
+      "name": "Felanitx",
+      "place": "town",
+      "population": 10368,
+      "position": {
+        "lat": 39.4731713,
+        "lon": 3.1476769
+      },
+      "priority": 117.13,
+      "sectorId": "s-10-04",
+      "source": "openstreetmap",
+      "sourceId": "n26475225",
+      "tags": {
+        "capital": "8",
+        "name": "Felanitx",
+        "name:ca": "Felanitx",
+        "name:es": "Felanitx",
+        "place": "town",
+        "population": "10368",
+        "wikidata": "Q743741",
+        "wikipedia": "ca:Felanitx"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26475934",
+      "local": {
+        "x": 39.0447,
+        "y": 22,
+        "z": 71.2381
+      },
+      "name": "Campos",
+      "place": "village",
+      "population": 9604,
+      "position": {
+        "lat": 39.4313098,
+        "lon": 3.0197912
+      },
+      "priority": 101.86,
+      "sectorId": "s-09-04",
+      "source": "openstreetmap",
+      "sourceId": "n26475934",
+      "tags": {
+        "capital": "8",
+        "name": "Campos",
+        "name:ca": "Campos",
+        "place": "village",
+        "population": "9604",
+        "wikidata": "Q743716",
+        "wikipedia": "ca:Campos"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26476151",
+      "local": {
+        "x": 40.0096,
+        "y": 127,
+        "z": 35.0979
+      },
+      "name": "Porreres",
+      "place": "village",
+      "population": 5108,
+      "position": {
+        "lat": 39.5168891,
+        "lon": 3.0227517
+      },
+      "priority": 99.67,
+      "sectorId": "s-09-04",
+      "source": "openstreetmap",
+      "sourceId": "n26476151",
+      "tags": {
+        "capital": "8",
+        "name": "Porreres",
+        "name:ca": "Porreres",
+        "name:es": "Porreres",
+        "place": "village",
+        "population": "5108",
+        "wikidata": "Q925773",
+        "wikipedia": "ca:Porreres"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26476588",
+      "local": {
+        "x": 26.507,
+        "y": 153,
+        "z": 13.8316
+      },
+      "name": "Montuïri",
+      "place": "village",
+      "population": 2509,
+      "position": {
+        "lat": 39.5672471,
+        "lon": 2.9813248
+      },
+      "priority": 97.2,
+      "sectorId": "s-09-03",
+      "source": "openstreetmap",
+      "sourceId": "n26476588",
+      "tags": {
+        "capital": "8",
+        "name": "Montuïri",
+        "name:ca": "Montuïri",
+        "place": "village",
+        "population": "2509",
+        "wikidata": "Q983467",
+        "wikipedia": "ca:Montuïri"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26480876",
+      "local": {
+        "x": 61.6018,
+        "y": 109,
+        "z": 12.5389
+      },
+      "name": "Vilafranca de Bonany",
+      "place": "village",
+      "population": 3687,
+      "position": {
+        "lat": 39.5703083,
+        "lon": 3.0889977
+      },
+      "priority": 98.53,
+      "sectorId": "s-10-03",
+      "source": "openstreetmap",
+      "sourceId": "n26480876",
+      "tags": {
+        "capital": "8",
+        "name": "Vilafranca de Bonany",
+        "name:ca": "Vilafranca de Bonany",
+        "name:es": "Vilafranca de Bonany",
+        "place": "village",
+        "population": "3687",
+        "wikidata": "Q975679",
+        "wikipedia": "ca:Vilafranca de Bonany"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26481776",
+      "local": {
+        "x": 69.3622,
+        "y": 99,
+        "z": -5.6831
+      },
+      "name": "Petra",
+      "place": "village",
+      "population": 2833,
+      "position": {
+        "lat": 39.6134574,
+        "lon": 3.1128071
+      },
+      "priority": 97.62,
+      "sectorId": "s-10-03",
+      "source": "openstreetmap",
+      "sourceId": "n26481776",
+      "tags": {
+        "capital": "8",
+        "name": "Petra",
+        "name:ca": "Petra",
+        "place": "village",
+        "population": "2833",
+        "wikidata": "Q611123",
+        "wikipedia": "ca:Petra (Mallorca)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26483383",
+      "local": {
+        "x": -2.8298,
+        "y": 145,
+        "z": 46.0963
+      },
+      "name": "Llucmajor",
+      "place": "town",
+      "population": 11771,
+      "position": {
+        "lat": 39.490845,
+        "lon": 2.8913179
+      },
+      "priority": 117.57,
+      "sectorId": "s-09-04",
+      "source": "openstreetmap",
+      "sourceId": "n26483383",
+      "tags": {
+        "capital": "7",
+        "name": "Llucmajor",
+        "name:ca": "Llucmajor",
+        "name:es": "Llucmajor",
+        "place": "town",
+        "population": "11771"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26483510",
+      "local": {
+        "x": -1.8439,
+        "y": 197,
+        "z": 17.339
+      },
+      "name": "Algaida",
+      "place": "village",
+      "population": 3315,
+      "position": {
+        "lat": 39.5589416,
+        "lon": 2.8943429
+      },
+      "priority": 98.16,
+      "sectorId": "s-09-03",
+      "source": "openstreetmap",
+      "sourceId": "n26483510",
+      "tags": {
+        "capital": "8",
+        "name": "Algaida",
+        "name:ca": "Algaida",
+        "place": "village",
+        "population": "3315",
+        "wikidata": "Q851011",
+        "wikipedia": "ca:Algaida"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26486415",
+      "local": {
+        "x": 36.3785,
+        "y": 134,
+        "z": -18.2181
+      },
+      "name": "Sineu",
+      "place": "town",
+      "population": 3812,
+      "position": {
+        "lat": 39.64314,
+        "lon": 3.0116111
+      },
+      "priority": 113.65,
+      "sectorId": "s-09-03",
+      "source": "openstreetmap",
+      "sourceId": "n26486415",
+      "tags": {
+        "capital": "7",
+        "name": "Sineu",
+        "name:ca": "Sineu",
+        "name:es": "Sineu",
+        "place": "town",
+        "population": "3812",
+        "wikidata": "Q943922",
+        "wikipedia": "ca:Sineu"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26486417",
+      "local": {
+        "x": 3.634,
+        "y": 128,
+        "z": -51.1596
+      },
+      "name": "Inca",
+      "place": "town",
+      "population": 32999,
+      "position": {
+        "lat": 39.7211448,
+        "lon": 2.9111493
+      },
+      "priority": 120,
+      "sectorId": "s-09-02",
+      "source": "openstreetmap",
+      "sourceId": "n26486417",
+      "tags": {
+        "capital": "7",
+        "name": "Inca",
+        "name:ca": "Inca",
+        "place": "town",
+        "population": "32999",
+        "wikidata": "Q988688",
+        "wikipedia": "ca:Inca (Mallorca)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n264894641",
+      "local": {
+        "x": -62.3093,
+        "y": 42,
+        "z": 1.0108
+      },
+      "name": "es Pla de na Tesa",
+      "place": "village",
+      "population": 3634,
+      "position": {
+        "lat": 39.5976064,
+        "lon": 2.7088316
+      },
+      "priority": 98.48,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n264894641",
+      "tags": {
+        "name": "es Pla de na Tesa",
+        "name:ca": "es Pla de na Tesa",
+        "place": "village",
+        "population": "3634"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26490532",
+      "local": {
+        "x": -35.6181,
+        "y": 219,
+        "z": -44.8285
+      },
+      "name": "Alaró",
+      "place": "village",
+      "population": 5221,
+      "position": {
+        "lat": 39.7061528,
+        "lon": 2.7907216
+      },
+      "priority": 99.74,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n26490532",
+      "tags": {
+        "capital": "8",
+        "name": "Alaró",
+        "name:ca": "Alaró",
+        "place": "village",
+        "population": "5221",
+        "wikidata": "Q850939",
+        "wikipedia": "ca:Alaró"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n26491566",
+      "local": {
+        "x": 141.5983,
+        "y": 16,
+        "z": 24.3562
+      },
+      "name": "Portocristo",
+      "place": "village",
+      "population": 8802,
+      "position": {
+        "lat": 39.5423251,
+        "lon": 3.3344312
+      },
+      "priority": 101.56,
+      "sectorId": "s-11-04",
+      "source": "openstreetmap",
+      "sourceId": "n26491566",
+      "tags": {
+        "alt_name": "Port de Manacor",
+        "name": "Portocristo",
+        "name:ca": "Portocristo",
+        "name:es": "Porto Cristo",
+        "place": "village",
+        "population": "8802",
+        "wikidata": "Q1013077",
+        "wikipedia": "ca:Portocristo"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n268941083",
+      "local": {
+        "x": -48.8162,
+        "y": 127,
+        "z": -9.1243
+      },
+      "name": "sa Cabaneta",
+      "place": "village",
+      "population": 3147,
+      "position": {
+        "lat": 39.6216062,
+        "lon": 2.7502292
+      },
+      "priority": 97.98,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n268941083",
+      "tags": {
+        "alt_name": "La Cabaneta",
+        "capital": "8",
+        "name": "sa Cabaneta",
+        "name:ca": "sa Cabaneta",
+        "place": "village",
+        "population": "3147",
+        "wikidata": "Q6116386",
+        "wikipedia": "ca:Sa Cabaneta"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n272594117",
+      "local": {
+        "x": 388.7153,
+        "y": 78,
+        "z": -163.9066
+      },
+      "name": "es Mercadal",
+      "place": "village",
+      "population": 3237,
+      "position": {
+        "lat": 39.9881268,
+        "lon": 4.0925999
+      },
+      "priority": 98.08,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "n272594117",
+      "tags": {
+        "capital": "8",
+        "name": "es Mercadal",
+        "name:ca": "es Mercadal",
+        "name:es": "es Mercadal",
+        "place": "village",
+        "population": "3237"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n275390477",
+      "local": {
+        "x": 150.1271,
+        "y": 71,
+        "z": -9.4058
+      },
+      "name": "Son Servera",
+      "place": "village",
+      "population": 4919,
+      "position": {
+        "lat": 39.6222728,
+        "lon": 3.3605983
+      },
+      "priority": 99.54,
+      "sectorId": "s-11-03",
+      "source": "openstreetmap",
+      "sourceId": "n275390477",
+      "tags": {
+        "capital": "8",
+        "name": "Son Servera",
+        "name:ca": "Son Servera",
+        "place": "village",
+        "population": "4919",
+        "wikidata": "Q610838",
+        "wikipedia": "ca:Son Servera"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n278906425",
+      "local": {
+        "x": 304.8307,
+        "y": 12,
+        "z": -169.1066
+      },
+      "name": "Ciutadella de Menorca",
+      "place": "town",
+      "population": 24235,
+      "position": {
+        "lat": 40.0004404,
+        "lon": 3.8352372
+      },
+      "priority": 120,
+      "sectorId": "s-13-00",
+      "source": "openstreetmap",
+      "sourceId": "n278906425",
+      "tags": {
+        "capital": "8",
+        "name": "Ciutadella de Menorca",
+        "name:ca": "Ciutadella de Menorca",
+        "name:es": "Ciutadella de Menorca",
+        "place": "town",
+        "population": "24235"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n283063885",
+      "local": {
+        "x": 404.089,
+        "y": 116,
+        "z": -140.9253
+      },
+      "name": "Alaior",
+      "place": "village",
+      "population": 7284,
+      "position": {
+        "lat": 39.9337077,
+        "lon": 4.1397673
+      },
+      "priority": 100.9,
+      "sectorId": "s-15-01",
+      "source": "openstreetmap",
+      "sourceId": "n283063885",
+      "tags": {
+        "capital": "8",
+        "name": "Alaior",
+        "name:ca": "Alaior",
+        "name:es": "Alaior",
+        "place": "village",
+        "population": "7284",
+        "wikidata": "Q847324",
+        "wikipedia": "ca:Alaior"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n289451210",
+      "local": {
+        "x": -117.867,
+        "y": 8,
+        "z": 32.2196
+      },
+      "name": "Palmanova",
+      "place": "village",
+      "population": 7037,
+      "position": {
+        "lat": 39.5237047,
+        "lon": 2.5383777
+      },
+      "priority": 100.78,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "n289451210",
+      "tags": {
+        "name": "Palmanova",
+        "name:ca": "Palmanova",
+        "place": "village",
+        "population": "7037",
+        "wikidata": "Q1008934",
+        "wikipedia": "ca:Palmanova"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n291558314",
+      "local": {
+        "x": -97.5597,
+        "y": 92,
+        "z": 15.2186
+      },
+      "name": "Gènova",
+      "place": "village",
+      "population": 3896,
+      "position": {
+        "lat": 39.5639628,
+        "lon": 2.6006814
+      },
+      "priority": 98.72,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "n291558314",
+      "tags": {
+        "name": "Gènova",
+        "name:ca": "Gènova",
+        "name:es": "Génova",
+        "place": "village",
+        "population": "3896",
+        "wikidata": "Q509193",
+        "wikipedia": "es:Génova (Palma de Mallorca)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n29402598",
+      "local": {
+        "x": -136.2558,
+        "y": 10,
+        "z": 35.9734
+      },
+      "name": "Santa Ponça",
+      "place": "town",
+      "population": 12056,
+      "position": {
+        "lat": 39.5148159,
+        "lon": 2.4819598
+      },
+      "priority": 117.65,
+      "sectorId": "s-07-04",
+      "source": "openstreetmap",
+      "sourceId": "n29402598",
+      "tags": {
+        "name": "Santa Ponça",
+        "name:ca": "Santa Ponça",
+        "name:es": "Santa Ponça",
+        "place": "town",
+        "population": "12056",
+        "wikidata": "Q1941746",
+        "wikipedia": "ca:Santa Ponça"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n303622304",
+      "local": {
+        "x": -128.8659,
+        "y": 123,
+        "z": 14.7412
+      },
+      "name": "Calvià",
+      "place": "village",
+      "population": 2440,
+      "position": {
+        "lat": 39.5650931,
+        "lon": 2.5046323
+      },
+      "priority": 97.1,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "n303622304",
+      "tags": {
+        "capital": "8",
+        "name": "Calvià",
+        "name:ca": "Calvià",
+        "place": "village",
+        "population": "2440",
+        "wikidata": "Q6162461",
+        "wikipedia": "en:Calvià Vila"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n30417672",
+      "local": {
+        "x": 37.7144,
+        "y": 58,
+        "z": -117.9097
+      },
+      "name": "Pollença",
+      "place": "village",
+      "population": 7696,
+      "position": {
+        "lat": 39.8792073,
+        "lon": 3.0157098
+      },
+      "priority": 101.09,
+      "sectorId": "s-09-01",
+      "source": "openstreetmap",
+      "sourceId": "n30417672",
+      "tags": {
+        "capital": "8",
+        "name": "Pollença",
+        "name:ca": "Pollença",
+        "name:es": "Pollença",
+        "place": "village",
+        "population": "7696",
+        "wikidata": "Q601112",
+        "wikipedia": "ca:Pollença"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n307849960",
+      "local": {
+        "x": -105.0951,
+        "y": 214,
+        "z": -29.2404
+      },
+      "name": "Esporles",
+      "place": "village",
+      "population": 4143,
+      "position": {
+        "lat": 39.6692405,
+        "lon": 2.5775624
+      },
+      "priority": 98.94,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "n307849960",
+      "tags": {
+        "capital": "8",
+        "name": "Esporles",
+        "name:ca": "Esporles",
+        "name:es": "Esporles",
+        "place": "village",
+        "population": "4143",
+        "wikidata": "Q847321",
+        "wikipedia": "ca:Esporles"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n313470120",
+      "local": {
+        "x": 442.6202,
+        "y": 55,
+        "z": -105.2077
+      },
+      "name": "Sant Lluís",
+      "place": "village",
+      "population": 2903,
+      "position": {
+        "lat": 39.8491294,
+        "lon": 4.2579831
+      },
+      "priority": 97.7,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "n313470120",
+      "tags": {
+        "capital": "8",
+        "name": "Sant Lluís",
+        "name:ca": "Sant Lluís",
+        "name:es": "Sant Lluís",
+        "official_name": "Sant Lluís",
+        "place": "village",
+        "population": "2903",
+        "wikidata": "Q984499",
+        "wikipedia": "ca:Sant Lluís"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n314186311",
+      "local": {
+        "x": -521.1939,
+        "y": 21,
+        "z": 260.5361
+      },
+      "name": "Sant Antoni de Portmany",
+      "place": "town",
+      "population": 22861,
+      "position": {
+        "lat": 38.9830568,
+        "lon": 1.3009485
+      },
+      "priority": 119.87,
+      "sectorId": "s-01-07",
+      "source": "openstreetmap",
+      "sourceId": "n314186311",
+      "tags": {
+        "capital": "8",
+        "name": "Sant Antoni de Portmany",
+        "name:ca": "Sant Antoni de Portmany",
+        "name:es": "Sant Antoni de Portmany",
+        "place": "town",
+        "population": "22861",
+        "wikidata": "Q734805",
+        "wikipedia": "ca:Sant Antoni de Portmany"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n32727982",
+      "local": {
+        "x": 74.7965,
+        "y": 56,
+        "z": 103.7546
+      },
+      "name": "Santanyí",
+      "place": "village",
+      "population": 3409,
+      "position": {
+        "lat": 39.3543115,
+        "lon": 3.1294799
+      },
+      "priority": 98.26,
+      "sectorId": "s-10-05",
+      "source": "openstreetmap",
+      "sourceId": "n32727982",
+      "tags": {
+        "capital": "8",
+        "name": "Santanyí",
+        "name:ca": "Santanyí",
+        "name:es": "Santanyí",
+        "place": "village",
+        "population": "3409",
+        "wikidata": "Q983633",
+        "wikipedia": "ca:Santanyí"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n335572997",
+      "local": {
+        "x": 125.6337,
+        "y": 78,
+        "z": -4.513
+      },
+      "name": "Sant Llorenç des Cardassar",
+      "place": "village",
+      "population": 3033,
+      "position": {
+        "lat": 39.6106866,
+        "lon": 3.285451
+      },
+      "priority": 97.85,
+      "sectorId": "s-11-03",
+      "source": "openstreetmap",
+      "sourceId": "n335572997",
+      "tags": {
+        "capital": "8",
+        "name": "Sant Llorenç des Cardassar",
+        "name:ca": "Sant Llorenç des Cardassar",
+        "name:es": "Sant Llorenç des Cardassar",
+        "place": "village",
+        "population": "3033",
+        "wikidata": "Q983463",
+        "wikipedia": "ca:Sant Llorenç des Cardassar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n335577858",
+      "local": {
+        "x": 118.8792,
+        "y": 8,
+        "z": 73.4404
+      },
+      "name": "Portocolom",
+      "place": "village",
+      "population": 4744,
+      "position": {
+        "lat": 39.4260949,
+        "lon": 3.2647278
+      },
+      "priority": 99.41,
+      "sectorId": "s-11-04",
+      "source": "openstreetmap",
+      "sourceId": "n335577858",
+      "tags": {
+        "name": "Portocolom",
+        "name:ca": "Portocolom",
+        "place": "village",
+        "population": "4744"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n35345420",
+      "local": {
+        "x": 146.8795,
+        "y": 123,
+        "z": -40.1224
+      },
+      "name": "Artà",
+      "place": "village",
+      "population": 6569,
+      "position": {
+        "lat": 39.6950088,
+        "lon": 3.3506343
+      },
+      "priority": 100.54,
+      "sectorId": "s-11-03",
+      "source": "openstreetmap",
+      "sourceId": "n35345420",
+      "tags": {
+        "capital": "8",
+        "name": "Artà",
+        "name:ca": "Artà",
+        "name:es": "Artà",
+        "place": "village",
+        "population": "6569",
+        "wikidata": "Q715970",
+        "wikipedia": "ca:Artà"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n35346037",
+      "local": {
+        "x": 173.4545,
+        "y": 105,
+        "z": -43.2191
+      },
+      "name": "Capdepera",
+      "place": "village",
+      "population": 3424,
+      "position": {
+        "lat": 39.7023418,
+        "lon": 3.4321679
+      },
+      "priority": 98.28,
+      "sectorId": "s-11-02",
+      "source": "openstreetmap",
+      "sourceId": "n35346037",
+      "tags": {
+        "capital": "8",
+        "name": "Capdepera",
+        "name:ca": "Capdepera",
+        "place": "village",
+        "population": "3424",
+        "wikidata": "Q920971",
+        "wikipedia": "ca:Capdepera"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n35346421",
+      "local": {
+        "x": 182.5954,
+        "y": 8,
+        "z": -46.7228
+      },
+      "name": "Cala Rajada",
+      "place": "village",
+      "population": 6762,
+      "position": {
+        "lat": 39.7106384,
+        "lon": 3.4602126
+      },
+      "priority": 100.64,
+      "sectorId": "s-12-02",
+      "source": "openstreetmap",
+      "sourceId": "n35346421",
+      "tags": {
+        "name": "Cala Rajada",
+        "name:ca": "Cala Rajada",
+        "official_name": "Cala Rajada",
+        "place": "village",
+        "population": "6762",
+        "wikidata": "Q666891",
+        "wikipedia": "ca:Cala Rajada"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n3585283776",
+      "local": {
+        "x": -45.9071,
+        "y": 126,
+        "z": 66.2287
+      },
+      "name": "sa Torre",
+      "place": "village",
+      "population": 3598,
+      "position": {
+        "lat": 39.4431721,
+        "lon": 2.7591546
+      },
+      "priority": 98.45,
+      "sectorId": "s-08-04",
+      "source": "openstreetmap",
+      "sourceId": "n3585283776",
+      "tags": {
+        "name": "sa Torre",
+        "name:ca": "sa Torre",
+        "place": "village",
+        "population": "3598"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n365572715",
+      "local": {
+        "x": -39.7856,
+        "y": 11,
+        "z": 19.2361
+      },
+      "name": "Sant Jordi",
+      "place": "village",
+      "population": 2667,
+      "position": {
+        "lat": 39.5544494,
+        "lon": 2.7779356
+      },
+      "priority": 97.41,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n365572715",
+      "tags": {
+        "name": "Sant Jordi",
+        "name:ca": "Sant Jordi",
+        "place": "village",
+        "population": "2667",
+        "wikidata": "Q9073956",
+        "wikipedia": "ca:Sant Jordi (Palma)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n372431438",
+      "local": {
+        "x": -86.9813,
+        "y": 74,
+        "z": -3.1568
+      },
+      "name": "es Secar de la Real",
+      "place": "village",
+      "population": 2987,
+      "position": {
+        "lat": 39.6074753,
+        "lon": 2.6331367
+      },
+      "priority": 97.8,
+      "sectorId": "s-07-03",
+      "source": "openstreetmap",
+      "sourceId": "n372431438",
+      "tags": {
+        "name": "es Secar de la Real",
+        "name:ca": "es Secar de la Real",
+        "name:es": "Secar de la Real",
+        "place": "village",
+        "population": "2987",
+        "wikidata": "Q9075383",
+        "wikipedia": "ca:El Secar de la Real"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n38902580",
+      "local": {
+        "x": 362.1013,
+        "y": 119,
+        "z": -161.8885
+      },
+      "name": "Ferreries",
+      "place": "village",
+      "population": 4765,
+      "position": {
+        "lat": 39.983348,
+        "lon": 4.0109465
+      },
+      "priority": 99.42,
+      "sectorId": "s-14-01",
+      "source": "openstreetmap",
+      "sourceId": "n38902580",
+      "tags": {
+        "capital": "8",
+        "name": "Ferreries",
+        "name:ca": "Ferreries",
+        "name:es": "Ferreries",
+        "place": "village",
+        "population": "4765"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n4195895873",
+      "local": {
+        "x": -10.8942,
+        "y": 141,
+        "z": -49.9512
+      },
+      "name": "Lloseta",
+      "place": "village",
+      "population": 5674,
+      "position": {
+        "lat": 39.7182833,
+        "lon": 2.8665761
+      },
+      "priority": 100.03,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n4195895873",
+      "tags": {
+        "capital": "8",
+        "name": "Lloseta",
+        "name:ca": "Lloseta",
+        "place": "village",
+        "population": "5674",
+        "wikidata": "Q847317",
+        "wikipedia": "ca:Lloseta"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n4841589591",
+      "local": {
+        "x": -472.9135,
+        "y": 18,
+        "z": 282.2728
+      },
+      "name": "Jesús",
+      "place": "village",
+      "population": 3717,
+      "position": {
+        "lat": 38.9315849,
+        "lon": 1.4490755
+      },
+      "priority": 98.56,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "n4841589591",
+      "tags": {
+        "name": "Jesús",
+        "name:ca": "Jesús",
+        "place": "village",
+        "population": "3717",
+        "wikidata": "Q4892984",
+        "wikipedia": "ca:Jesús (Eivissa)"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n5153862907",
+      "local": {
+        "x": -489.9946,
+        "y": 7,
+        "z": 299.1778
+      },
+      "name": "Sant Jordi de ses Salines",
+      "place": "village",
+      "population": 3721,
+      "position": {
+        "lat": 38.8915542,
+        "lon": 1.3966697
+      },
+      "priority": 98.57,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "n5153862907",
+      "tags": {
+        "name": "Sant Jordi de ses Salines",
+        "name:ca": "Sant Jordi de ses Salines",
+        "name:es": "Sant Jordi de ses Salines",
+        "place": "village",
+        "population": "3721",
+        "wikidata": "Q765811",
+        "wikipedia": "ca:Sant Jordi de ses Salines"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n5169886242",
+      "local": {
+        "x": -477.6138,
+        "y": 14,
+        "z": 284.4224
+      },
+      "name": "Puig d'en Valls",
+      "place": "village",
+      "population": 3644,
+      "position": {
+        "lat": 38.9264947,
+        "lon": 1.4346546
+      },
+      "priority": 98.49,
+      "sectorId": "s-01-08",
+      "source": "openstreetmap",
+      "sourceId": "n5169886242",
+      "tags": {
+        "name": "Puig d'en Valls",
+        "name:ca": "Puig d'en Valls",
+        "place": "village",
+        "population": "3644"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n610194675",
+      "local": {
+        "x": -41.8441,
+        "y": 169,
+        "z": -7.3211
+      },
+      "name": "Pòrtol",
+      "place": "village",
+      "population": 3603,
+      "position": {
+        "lat": 39.6173362,
+        "lon": 2.77162
+      },
+      "priority": 98.45,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n610194675",
+      "tags": {
+        "name": "Pòrtol",
+        "name:ca": "Pòrtol",
+        "place": "village",
+        "population": "3603"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n624674984",
+      "local": {
+        "x": -60.2813,
+        "y": 48,
+        "z": -70.2307
+      },
+      "name": "Sóller",
+      "place": "town",
+      "population": 7921,
+      "position": {
+        "lat": 39.7663047,
+        "lon": 2.7150538
+      },
+      "priority": 116.19,
+      "sectorId": "s-08-02",
+      "source": "openstreetmap",
+      "sourceId": "n624674984",
+      "tags": {
+        "capital": "7",
+        "name": "Sóller",
+        "name:ca": "Sóller",
+        "place": "town",
+        "population": "7921",
+        "wikidata": "Q832991",
+        "wikipedia": "ca:Sóller"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n678587584",
+      "local": {
+        "x": -18.8871,
+        "y": 138,
+        "z": -37.5544
+      },
+      "name": "Binissalem",
+      "place": "village",
+      "population": 7462,
+      "position": {
+        "lat": 39.6889279,
+        "lon": 2.8420532
+      },
+      "priority": 100.98,
+      "sectorId": "s-08-03",
+      "source": "openstreetmap",
+      "sourceId": "n678587584",
+      "tags": {
+        "capital": "8",
+        "name": "Binissalem",
+        "name:ca": "Binissalem",
+        "name:es": "Binissalem",
+        "place": "village",
+        "population": "7462",
+        "wikidata": "Q837121",
+        "wikipedia": "ca:Binissalem"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n777276150",
+      "local": {
+        "x": 107.6547,
+        "y": 14,
+        "z": 95.0614
+      },
+      "name": "Cala d'Or",
+      "place": "village",
+      "population": 4168,
+      "position": {
+        "lat": 39.3748968,
+        "lon": 3.2302905
+      },
+      "priority": 98.96,
+      "sectorId": "s-10-05",
+      "source": "openstreetmap",
+      "sourceId": "n777276150",
+      "tags": {
+        "name": "Cala d'Or",
+        "name:ca": "Cala d'Or",
+        "place": "village",
+        "population": "4168",
+        "wikidata": "Q857257",
+        "wikipedia": "ca:Cala d'Or"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n822907036",
+      "local": {
+        "x": -46.8491,
+        "y": 23,
+        "z": 41.8889
+      },
+      "name": "s'Arenal de Llucmajor",
+      "place": "village",
+      "population": 10085,
+      "position": {
+        "lat": 39.500808,
+        "lon": 2.7562643
+      },
+      "priority": 102.03,
+      "sectorId": "s-08-04",
+      "source": "openstreetmap",
+      "sourceId": "n822907036",
+      "tags": {
+        "name": "s'Arenal de Llucmajor",
+        "name:ca": "s'Arenal de Llucmajor",
+        "name:es": "El Arenal de Llucmajor",
+        "place": "village",
+        "population": "10085"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n960167798",
+      "local": {
+        "x": 453.2049,
+        "y": 30,
+        "z": -118.1862
+      },
+      "name": "es Castell",
+      "place": "village",
+      "population": 5037,
+      "position": {
+        "lat": 39.879862,
+        "lon": 4.2904574
+      },
+      "priority": 99.62,
+      "sectorId": "s-16-01",
+      "source": "openstreetmap",
+      "sourceId": "n960167798",
+      "tags": {
+        "capital": "8",
+        "name": "es Castell",
+        "name:ca": "es Castell",
+        "name:es": "Es Castell",
+        "place": "village",
+        "population": "5037",
+        "wikidata": "Q941533",
+        "wikipedia": "ca:Es Castell"
+      },
+      "terrainStatus": "nearest-land-cell"
+    },
+    {
+      "id": "osm-n9797579038",
+      "local": {
+        "x": -447.3564,
+        "y": 14,
+        "z": 263.4762
+      },
+      "name": "Urbanització Siesta",
+      "place": "village",
+      "population": 2837,
+      "position": {
+        "lat": 38.9760947,
+        "lon": 1.5274862
+      },
+      "priority": 97.62,
+      "sectorId": "s-02-07",
+      "source": "openstreetmap",
+      "sourceId": "n9797579038",
+      "tags": {
+        "alt_name": "Puig d'en Fita",
+        "name": "Urbanització Siesta",
+        "name:ca": "Urbanització Siesta",
+        "place": "village",
+        "population": "2837"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "palma",
+      "local": {
+        "x": -81.41966959052961,
+        "y": 11,
+        "z": 12.837968640000087
+      },
+      "name": "Palma",
+      "position": {
+        "lat": 39.5696,
+        "lon": 2.6502
+      },
+      "protected": true,
+      "sectorId": "s-07-03",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     }
   ],
-  "proceduralGenerationPending": true,
-  "regionId": "baleares"
+  "proceduralGenerationPending": false,
+  "regionId": "baleares",
+  "sourceCount": 7689
 }

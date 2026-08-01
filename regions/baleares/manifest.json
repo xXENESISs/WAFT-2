@@ -7,13 +7,28 @@
     "visibleObjects": 2500,
     "visibleTriangles": 450000
   },
+  "cartography": {
+    "attribution": "© OpenStreetMap contributors",
+    "dataset": "OpenStreetMap regional extract",
+    "distribution": "Geofabrik",
+    "license": "ODbL 1.0",
+    "osmTimestamp": "2026-07-31T20:21:56Z",
+    "pbfSha256": "3297fa2dbe3de62b447f3dced1a4b501676bee83d73f0d2a05d254fe72db40db",
+    "provider": "OpenStreetMap contributors",
+    "retrievedOn": "2026-08-01",
+    "snapshotSha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c",
+    "sourceUrl": "https://download.geofabrik.de/europe/spain/islas-baleares-latest.osm.pbf"
+  },
   "content": {
     "connections": 3,
     "entryPoints": 5,
     "faunaSpecies": 9,
-    "generatedBuildings": 0,
-    "landmarks": 7,
-    "settlements": 6
+    "generatedBuildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "ports": 146,
+    "roads": 43994,
+    "settlements": 70
   },
   "deterministic": true,
   "files": [
@@ -28,24 +43,24 @@
       "sha256": "0032ebabb8464e7d4e388f4edda4d6a376682d6bac2051fff1ec83c37b194a1c"
     },
     {
-      "bytes": 204343,
+      "bytes": 1919797,
       "path": "sectors.json",
-      "sha256": "8b9de3e41733f281ef75cb82101e952dee74d719fb884536e50b8611000f5a9c"
+      "sha256": "ac54aeff138068db8b8546a639ea2329934a99d7784d1d6a690486869e76bb6f"
     },
     {
-      "bytes": 2002,
+      "bytes": 46170,
       "path": "settlements.json",
-      "sha256": "d7f5e353236d2455a60e5f351a90f2aafb347600d149b3e024a1645b1bcd2aa5"
+      "sha256": "8ac411b0d12cbabc444e173dd3c0a6c04b1b342f4441720c6e2a412bc67bd54c"
     },
     {
-      "bytes": 1655,
+      "bytes": 7952753,
       "path": "objects.json",
-      "sha256": "aa6168f18369aa20e6eff45c9ff06f806535736a682ebb0eec00311bba1182a9"
+      "sha256": "f62f6ffc6a71143163ba53405ec6126b41375f541fc5592d7fd564ed0ec2142a"
     },
     {
-      "bytes": 3237,
+      "bytes": 101175,
       "path": "landmarks.json",
-      "sha256": "9f8df74b5d65af22cc7a7089cd60696292ac98c24e67b220ddbe8666ee1392b4"
+      "sha256": "d574ff6d4887c580c325f1f0f9659260e6766ca96973a1031d4dfdac32ddfe77"
     },
     {
       "bytes": 12733,
@@ -53,13 +68,13 @@
       "sha256": "8cb49e97b18b1d1baa125c5633b8554976cd1ccec7afb975667c53f3d1912c61"
     },
     {
-      "bytes": 2747,
+      "bytes": 28816533,
       "path": "routes.json",
-      "sha256": "c64f1f45fada8ec51c386a645010764c385ec02607bcf1622a7b6411f16d3d24"
+      "sha256": "672336d7df7f5f270d343069ac2bfd64965c5abaaec80b961a36debff360491d"
     }
   ],
   "formatVersion": 1,
-  "generationStage": "terrain-landcover-sectors-bootstrap",
+  "generationStage": "openstreetmap-physical-network",
   "generatorVersion": "0.1.0",
   "landcover": {
     "classDistribution": {
@@ -167,9 +182,8 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 620061,
+  "packageBytesWithoutManifest": 39242505,
   "pendingStages": [
-    "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
     "gbif-fauna-candidates",
     "procedural-vegetation-and-buildings"
@@ -222,6 +236,11 @@
       "sha256": "ae980a95e5ffbf068aec81704124d11e8d65170ca25dd511146c2ec9614e0d17"
     },
     "generatorSourcesSha256": "ba2168d643b585fc7862b6f3219f9aae4fcd1f3ad7554558e525cccff87db0de",
+    "openStreetMapSnapshot": {
+      "metadataPath": "world-generator/sources/baleares/openstreetmap-extract.json",
+      "path": "world-generator/sources/baleares/openstreetmap-extract.json.gz",
+      "sha256": "241194ddb2b6c97f22c0fdc5aa3bd51966af8eaed88afe4c406c6d67207b974c"
+    },
     "overrides": {
       "path": "world-generator/overrides/baleares.overrides.json",
       "sha256": "4d8a0d19f1d66ac1df0a827f330862330ff7ddccdd6e7978849232dee25e5a78"
@@ -332,7 +351,7 @@
           "name": "Es Vedrà"
         }
       ],
-      "htmlPath": "mallorca-mobile/waft-0158.html",
+      "htmlPath": "/home/runner/work/WAFT-2/WAFT-2/mallorca-mobile/waft-0158.html",
       "limitations": [
         "Mallorca elevation is imported from the proven mobile prototype raster.",
         "Other islands use their real coast polygons with deterministic bootstrap relief.",

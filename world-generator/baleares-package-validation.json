@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "regionId": "baleares",
   "valid": true,
-  "generationStage": "terrain-landcover-sectors-bootstrap",
-  "packageBytes": 630495,
+  "generationStage": "openstreetmap-physical-network",
+  "packageBytes": 39253849,
   "terrain": {
     "columns": 512,
     "rows": 256,
@@ -30,9 +30,12 @@
     "connections": 3,
     "entryPoints": 5,
     "faunaSpecies": 9,
-    "generatedBuildings": 0,
-    "landmarks": 7,
-    "settlements": 6
+    "generatedBuildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "ports": 146,
+    "roads": 43994,
+    "settlements": 70
   },
   "fileCount": 9
 }
