@@ -1,0 +1,971 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://waft.example/schema/region.schema.json",
+  "title": "WAFT Adventure region configuration",
+  "description": "Authorial input used to generate one streamable WAFT world region.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "name",
+    "version",
+    "status",
+    "geography",
+    "sources",
+    "generation",
+    "travel",
+    "gameplay",
+    "performance",
+    "outputs",
+    "overrides"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "$ref": "#/$defs/slug"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "enum": ["draft", "prototype", "playable", "stable"]
+    },
+    "continent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "countryCodes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "geography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bounds", "origin", "projection", "scale", "subregions"],
+      "properties": {
+        "bounds": {
+          "$ref": "#/$defs/bounds"
+        },
+        "origin": {
+          "$ref": "#/$defs/geoPoint"
+        },
+        "projection": {
+          "enum": ["local-equirectangular", "local-enu", "web-mercator"]
+        },
+        "scale": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["horizontalUnitsPerKm", "verticalExaggeration", "emptySpaceCompression"],
+          "properties": {
+            "horizontalUnitsPerKm": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            "verticalExaggeration": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 10
+            },
+            "emptySpaceCompression": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["mode", "factor"],
+              "properties": {
+                "mode": {
+                  "enum": ["none", "radial", "corridor", "anchors"]
+                },
+                "factor": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 1
+                },
+                "preserveCoastline": {
+                  "type": "boolean"
+                },
+                "anchorIds": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/$defs/slug"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "subregions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "type"],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "enum": [
+                  "island",
+                  "coast",
+                  "city",
+                  "plain",
+                  "mountain",
+                  "forest",
+                  "desert",
+                  "steppe",
+                  "wetland",
+                  "tundra",
+                  "other"
+                ]
+              },
+              "bounds": {
+                "$ref": "#/$defs/bounds"
+              },
+              "center": {
+                "$ref": "#/$defs/geoPoint"
+              },
+              "priority": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["terrain", "cartography", "landcover", "climate", "landmarks", "fauna"],
+      "properties": {
+        "terrain": {
+          "$ref": "#/$defs/dataSource"
+        },
+        "cartography": {
+          "$ref": "#/$defs/dataSource"
+        },
+        "landcover": {
+          "$ref": "#/$defs/dataSource"
+        },
+        "climate": {
+          "$ref": "#/$defs/dataSource"
+        },
+        "landmarks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/dataSource"
+          }
+        },
+        "fauna": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/dataSource"
+          }
+        }
+      }
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terrain",
+        "landcover",
+        "transport",
+        "settlements",
+        "buildings",
+        "landmarks",
+        "vegetation",
+        "fauna"
+      ],
+      "properties": {
+        "terrain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["grid", "lods", "smoothingPasses", "coastalFlattening", "maxWalkableSlopeDegrees"],
+          "properties": {
+            "grid": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["columns", "rows"],
+              "properties": {
+                "columns": {
+                  "type": "integer",
+                  "minimum": 16,
+                  "maximum": 4096
+                },
+                "rows": {
+                  "type": "integer",
+                  "minimum": 16,
+                  "maximum": 4096
+                }
+              }
+            },
+            "lods": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 8
+              }
+            },
+            "smoothingPasses": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 50
+            },
+            "coastalFlattening": {
+              "type": "boolean"
+            },
+            "maxWalkableSlopeDegrees": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 89
+            },
+            "seaLevelMeters": {
+              "type": "number"
+            }
+          }
+        },
+        "landcover": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ruleset", "fallbackBiome", "season"],
+          "properties": {
+            "ruleset": {
+              "$ref": "#/$defs/slug"
+            },
+            "fallbackBiome": {
+              "$ref": "#/$defs/slug"
+            },
+            "season": {
+              "enum": ["spring", "summer", "autumn", "winter", "dynamic"]
+            },
+            "snowlineMeters": {
+              "type": ["number", "null"]
+            }
+          }
+        },
+        "transport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["includeRoadClasses", "includeRailways", "includeTrails", "simplificationMeters"],
+          "properties": {
+            "includeRoadClasses": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "includeRailways": {
+              "type": "boolean"
+            },
+            "includeTrails": {
+              "type": "boolean"
+            },
+            "simplificationMeters": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "settlements": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxCount", "minimumPopulation", "coastalTourismBoost", "profiles"],
+          "properties": {
+            "maxCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "minimumPopulation": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "coastalTourismBoost": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "profiles": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
+            },
+            "manualInclude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/namedGeoPoint"
+              }
+            },
+            "manualExcludeIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "buildings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "useRealFootprints",
+            "proceduralFallback",
+            "minimumSpacingUnits",
+            "maximumPerSector",
+            "roofWalkable",
+            "collisionMode",
+            "architectureProfiles"
+          ],
+          "properties": {
+            "useRealFootprints": {
+              "type": "boolean"
+            },
+            "proceduralFallback": {
+              "type": "boolean"
+            },
+            "minimumSpacingUnits": {
+              "type": "number",
+              "minimum": 0
+            },
+            "maximumPerSector": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "roofWalkable": {
+              "type": "boolean"
+            },
+            "collisionMode": {
+              "enum": ["none", "footprint", "compound", "mesh"]
+            },
+            "architectureProfiles": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
+            },
+            "hotelDetection": {
+              "type": "boolean"
+            }
+          }
+        },
+        "landmarks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "maximumCount",
+            "minimumScore",
+            "uniqueModelScore",
+            "archetypeScore",
+            "protectedRadiusUnits",
+            "allowedTypes"
+          ],
+          "properties": {
+            "maximumCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "minimumScore": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uniqueModelScore": {
+              "type": "number",
+              "minimum": 0
+            },
+            "archetypeScore": {
+              "type": "number",
+              "minimum": 0
+            },
+            "protectedRadiusUnits": {
+              "type": "number",
+              "minimum": 0
+            },
+            "allowedTypes": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "castle",
+                  "fortress",
+                  "cathedral",
+                  "church",
+                  "mosque",
+                  "temple",
+                  "monastery",
+                  "tower",
+                  "lighthouse",
+                  "bridge",
+                  "palace",
+                  "monument",
+                  "archaeological_site",
+                  "natural_landmark"
+                ]
+              }
+            },
+            "manualInclude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/manualLandmark"
+              }
+            },
+            "manualExcludeIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "vegetation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["profiles", "densityMultiplier", "minimumBuildingClearanceUnits", "instancing"],
+          "properties": {
+            "profiles": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
+            },
+            "densityMultiplier": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "minimumBuildingClearanceUnits": {
+              "type": "number",
+              "minimum": 0
+            },
+            "instancing": {
+              "type": "boolean"
+            }
+          }
+        },
+        "fauna": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ruleset", "maximumSpecies", "maximumActiveAnimals", "recordsSinceYear", "minimumCoordinatePrecisionMeters"],
+          "properties": {
+            "ruleset": {
+              "$ref": "#/$defs/slug"
+            },
+            "maximumSpecies": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "maximumActiveAnimals": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "recordsSinceYear": {
+              "type": "integer",
+              "minimum": 1800,
+              "maximum": 2200
+            },
+            "minimumCoordinatePrecisionMeters": {
+              "type": "number",
+              "minimum": 0
+            },
+            "manualInclude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/manualSpecies"
+              }
+            },
+            "manualExcludeScientificNames": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "travel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entryPoints", "connections"],
+      "properties": {
+        "entryPoints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "position", "type"],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "position": {
+                "$ref": "#/$defs/geoPoint"
+              },
+              "type": {
+                "enum": ["land_border", "port", "coast", "air", "secret"]
+              },
+              "arrivalHeadingDegrees": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMaximum": 360
+              }
+            }
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "targetRegionId", "entryPointId", "requiredCapabilities", "distanceClass"],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "targetRegionId": {
+                "$ref": "#/$defs/slug"
+              },
+              "entryPointId": {
+                "$ref": "#/$defs/slug"
+              },
+              "requiredCapabilities": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": ["land", "flight", "long_water"]
+                }
+              },
+              "distanceClass": {
+                "enum": ["local", "regional", "long"]
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gameplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["spawnPoints", "reservedZones", "contentTargets"],
+      "properties": {
+        "spawnPoints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "position", "role"],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "position": {
+                "$ref": "#/$defs/geoPoint"
+              },
+              "role": {
+                "enum": ["default", "mission", "boss", "checkpoint", "debug"]
+              }
+            }
+          }
+        },
+        "reservedZones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "center", "radiusKm", "purpose", "exclude"],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "center": {
+                "$ref": "#/$defs/geoPoint"
+              },
+              "radiusKm": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exclude": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": ["buildings", "vegetation", "fauna", "roads", "landmarks"]
+                }
+              }
+            }
+          }
+        },
+        "contentTargets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimumLandmarks", "minimumFaunaZones", "maximumEmptyTravelSeconds"],
+          "properties": {
+            "minimumLandmarks": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimumFaunaZones": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximumEmptyTravelSeconds": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetProfile", "sectorSizeUnits", "preloadRadiusSectors", "budgets"],
+      "properties": {
+        "targetProfile": {
+          "enum": ["mobile-low", "mobile-mid", "mobile-high", "desktop"]
+        },
+        "sectorSizeUnits": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "preloadRadiusSectors": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "budgets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "downloadMb",
+            "runtimeMemoryMb",
+            "visibleTriangles",
+            "visibleObjects",
+            "activeColliders",
+            "textureMemoryMb"
+          ],
+          "properties": {
+            "downloadMb": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "runtimeMemoryMb": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "visibleTriangles": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "visibleObjects": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "activeColliders": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "textureMemoryMb": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directory", "manifest", "terrain", "landcover", "sectors", "settlements", "objects", "landmarks", "fauna", "routes"],
+      "properties": {
+        "directory": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "manifest": {
+          "$ref": "#/$defs/fileName"
+        },
+        "terrain": {
+          "$ref": "#/$defs/fileName"
+        },
+        "landcover": {
+          "$ref": "#/$defs/fileName"
+        },
+        "sectors": {
+          "$ref": "#/$defs/fileName"
+        },
+        "settlements": {
+          "$ref": "#/$defs/fileName"
+        },
+        "objects": {
+          "$ref": "#/$defs/fileName"
+        },
+        "landmarks": {
+          "$ref": "#/$defs/fileName"
+        },
+        "fauna": {
+          "$ref": "#/$defs/fileName"
+        },
+        "routes": {
+          "$ref": "#/$defs/fileName"
+        }
+      }
+    },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "preserveOnRegenerate", "failOnUnknownTarget"],
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "preserveOnRegenerate": {
+          "type": "boolean"
+        },
+        "failOnUnknownTarget": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "geoPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lon", "lat"],
+      "properties": {
+        "lon": {
+          "$ref": "#/$defs/longitude"
+        },
+        "lat": {
+          "$ref": "#/$defs/latitude"
+        }
+      }
+    },
+    "namedGeoPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "position"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "$ref": "#/$defs/geoPoint"
+        }
+      }
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["west", "east", "south", "north"],
+      "properties": {
+        "west": {
+          "$ref": "#/$defs/longitude"
+        },
+        "east": {
+          "$ref": "#/$defs/longitude"
+        },
+        "south": {
+          "$ref": "#/$defs/latitude"
+        },
+        "north": {
+          "$ref": "#/$defs/latitude"
+        }
+      }
+    },
+    "dataSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "dataset", "license", "attribution"],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dataset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolutionMeters": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0
+        },
+        "cachePolicy": {
+          "enum": ["none", "build-cache", "redistributable"]
+        }
+      }
+    },
+    "manualLandmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "type", "position"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "$ref": "#/$defs/geoPoint"
+        },
+        "preferredRepresentation": {
+          "enum": ["unique", "archetype", "procedural"]
+        },
+        "assetId": {
+          "$ref": "#/$defs/slug"
+        }
+      }
+    },
+    "manualSpecies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scientificName", "commonName", "role", "biomes"],
+      "properties": {
+        "scientificName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commonName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": ["ambient", "mount", "encounter", "rare", "boss", "secret"]
+        },
+        "biomes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        },
+        "minimumCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximumCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\.\\.).+$"
+    },
+    "fileName": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/\\\\]+$"
+    }
+  }
+}
