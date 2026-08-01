@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env:
-  DIAGNOSTIC_VERSION: '2'
+  DIAGNOSTIC_VERSION: '3'
 
 jobs:
   diagnose:
