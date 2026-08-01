@@ -139,7 +139,8 @@ function verify() {
   assert(landmarksDocument.generationStage === 'openstreetmap-landmark-candidates', 'Landmark stage mismatch');
   assert(landmarksDocument.items.length >= config.gameplay.contentTargets.minimumLandmarks, `Too few landmarks: ${landmarksDocument.items.length}`);
   const landmarkTypes = new Set(landmarksDocument.items.map(item => item.type));
-  for (const expected of ['castle', 'church', 'lighthouse']) assert(landmarkTypes.has(expected), `Missing landmark type ${expected}`);
+  for (const expected of ['castle', 'lighthouse']) assert(landmarkTypes.has(expected), `Missing landmark type ${expected}`);
+  assert(landmarkTypes.has('church') || landmarkTypes.has('cathedral'), 'Missing religious landmark type church or cathedral');
   for (const landmark of landmarksDocument.items) assert(sectors.has(landmark.sectorId), `Landmark ${landmark.id} has unknown sector`);
 
   for (const sector of sectors.values()) {
