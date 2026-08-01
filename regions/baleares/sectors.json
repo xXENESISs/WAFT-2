@@ -770,7 +770,8 @@
         "entryPoints": [],
         "landmarks": [
           "osm-landmark-w201444606",
-          "osm-landmark-w41808276"
+          "osm-landmark-w41808276",
+          "osm-landmark-w487044661"
         ],
         "ports": [],
         "roads": [
@@ -1502,7 +1503,8 @@
         "landmarks": [
           "osm-landmark-n1445506763",
           "osm-landmark-n1954972427",
-          "osm-landmark-w113623849"
+          "osm-landmark-w113623849",
+          "osm-landmark-w423925064"
         ],
         "ports": [],
         "roads": [
@@ -2136,6 +2138,9 @@
         ],
         "entryPoints": [],
         "landmarks": [
+          "osm-landmark-w151992877",
+          "osm-landmark-w201442962",
+          "osm-landmark-w293494233",
           "osm-landmark-w74317241"
         ],
         "ports": [
@@ -3434,8 +3439,6 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1163138062",
-          "osm-landmark-w696379252",
           "osm-landmark-w81058569"
         ],
         "ports": [],
@@ -4224,8 +4227,7 @@
         "entryPoints": [],
         "landmarks": [
           "far-formentor",
-          "osm-landmark-w128300363",
-          "osm-landmark-w349334890"
+          "osm-landmark-w99993608"
         ],
         "ports": [
           "osm-port-n13266804300",
@@ -5425,7 +5427,6 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n4804502081",
           "osm-landmark-w171277465",
           "osm-landmark-w571114785",
           "osm-landmark-w74492944"
@@ -6287,7 +6288,7 @@
         "entryPoints": [],
         "landmarks": [
           "osm-landmark-n1857831582",
-          "osm-landmark-n472429182"
+          "osm-landmark-w778773501"
         ],
         "ports": [
           "osm-port-w38355229"
@@ -7008,10 +7009,14 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n10616888125",
-          "osm-landmark-n10859983371",
-          "osm-landmark-n3607742815",
-          "osm-landmark-w375058822"
+          "osm-landmark-n4799496476",
+          "osm-landmark-w354652536",
+          "osm-landmark-w375058822",
+          "osm-landmark-w41793484",
+          "osm-landmark-w423494011",
+          "osm-landmark-w487488047",
+          "osm-landmark-w488685679",
+          "osm-landmark-w583563536"
         ],
         "ports": [
           "osm-port-n3055253242"
@@ -8421,11 +8426,10 @@
           "port-mao"
         ],
         "landmarks": [
-          "osm-landmark-n10860198361",
           "osm-landmark-n3717549899",
-          "osm-landmark-w115648479",
           "osm-landmark-w132369713",
-          "osm-landmark-w200306323"
+          "osm-landmark-w200306323",
+          "osm-landmark-w571873522"
         ],
         "ports": [
           "osm-port-n10870980394",
@@ -10456,7 +10460,9 @@
           "osm-building-w98728719"
         ],
         "entryPoints": [],
-        "landmarks": [],
+        "landmarks": [
+          "osm-landmark-r1750237"
+        ],
         "ports": [
           "osm-port-w275585863",
           "osm-port-w323657642"
@@ -11117,8 +11123,9 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1635073534",
+          "osm-landmark-n463538725",
           "osm-landmark-n659850571",
+          "osm-landmark-n788275291",
           "osm-landmark-w1034891337"
         ],
         "ports": [
@@ -15552,7 +15559,6 @@
         "landmarks": [
           "osm-landmark-n1129379432",
           "osm-landmark-n1634402016",
-          "osm-landmark-n3413850704",
           "osm-landmark-n678832675",
           "osm-landmark-n697883608"
         ],
@@ -17293,10 +17299,7 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "castell-capdepera",
-          "osm-landmark-n1634473061",
-          "osm-landmark-n2306411082",
-          "osm-landmark-w280418890"
+          "castell-capdepera"
         ],
         "ports": [
           "osm-port-w277787777"
@@ -18220,10 +18223,7 @@
           "osm-building-w976652986"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-n35345986",
-          "osm-landmark-w584612715"
-        ],
+        "landmarks": [],
         "ports": [
           "osm-port-w704461814"
         ],
@@ -18836,7 +18836,9 @@
           "osm-building-w981310218"
         ],
         "entryPoints": [],
-        "landmarks": [],
+        "landmarks": [
+          "osm-landmark-w577254760"
+        ],
         "ports": [],
         "roads": [
           "osm-road-w1000329491",
@@ -19342,7 +19344,9 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-w182854850"
+          "osm-landmark-w182854850",
+          "osm-landmark-w261583338",
+          "osm-landmark-w334459172"
         ],
         "ports": [
           "osm-port-n1932203795"
@@ -20367,8 +20371,7 @@
         "landmarks": [
           "osm-landmark-n631872796",
           "osm-landmark-n631872798",
-          "osm-landmark-w376242942",
-          "osm-landmark-w642332047"
+          "osm-landmark-w376242942"
         ],
         "ports": [
           "osm-port-n1660790546",
@@ -21514,14 +21517,13 @@
           "catedral-mallorca",
           "osm-landmark-n3678668135",
           "osm-landmark-r2424202",
-          "osm-landmark-r2885399",
+          "osm-landmark-w173776533",
           "osm-landmark-w218840678",
           "osm-landmark-w218840679",
           "osm-landmark-w25883629",
           "osm-landmark-w295500564",
           "osm-landmark-w301945453",
-          "osm-landmark-w307781617",
-          "osm-landmark-w376306837"
+          "osm-landmark-w307781617"
         ],
         "ports": [
           "osm-port-n1583966731",
@@ -26480,9 +26482,7 @@
           "osm-building-w966448456"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-n3091651851"
-        ],
+        "landmarks": [],
         "ports": [
           "osm-port-w273522551",
           "osm-port-w427366155"
@@ -30798,7 +30798,10 @@
           "osm-building-w989154846"
         ],
         "entryPoints": [],
-        "landmarks": [],
+        "landmarks": [
+          "osm-landmark-n972552381",
+          "osm-landmark-w245033266"
+        ],
         "ports": [],
         "roads": [
           "osm-road-w1003184769",
@@ -34149,8 +34152,10 @@
         "entryPoints": [],
         "landmarks": [
           "castell-punta-amer",
-          "osm-landmark-n3801855155",
-          "osm-landmark-w82427806"
+          "osm-landmark-n35346188",
+          "osm-landmark-n541006537",
+          "osm-landmark-w120741516",
+          "osm-landmark-w293497014"
         ],
         "ports": [
           "osm-port-n1839746882",
@@ -36886,9 +36891,7 @@
           "osm-building-w974452726"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-n1167179969"
-        ],
+        "landmarks": [],
         "ports": [
           "osm-port-n1481273131",
           "osm-port-n2246899988",
@@ -37779,10 +37782,11 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1065401698",
           "osm-landmark-n1587270862",
           "osm-landmark-r14162681",
-          "osm-landmark-w206594763"
+          "osm-landmark-w151257472",
+          "osm-landmark-w206594763",
+          "osm-landmark-w293567375"
         ],
         "ports": [
           "osm-port-w365001380",
@@ -39352,7 +39356,7 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1635042215"
+          "osm-landmark-n461796868"
         ],
         "ports": [
           "osm-port-w364934607",
@@ -42240,7 +42244,8 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n2795373918"
+          "osm-landmark-n2795373918",
+          "osm-landmark-w692275710"
         ],
         "ports": [],
         "roads": [
@@ -43340,7 +43345,8 @@
         "entryPoints": [],
         "landmarks": [
           "coves-drach",
-          "osm-landmark-n251386900"
+          "osm-landmark-n289535967",
+          "osm-landmark-w487540413"
         ],
         "ports": [
           "osm-port-n1351126126",
@@ -45316,9 +45322,7 @@
           "osm-building-w993333277"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-n461833100"
-        ],
+        "landmarks": [],
         "ports": [
           "osm-port-n1814933511",
           "osm-port-n458442236",
@@ -46216,7 +46220,9 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-r11936313"
+          "osm-landmark-n9972811537",
+          "osm-landmark-r11936313",
+          "osm-landmark-w214428666"
         ],
         "ports": [
           "osm-port-n10126466369",
@@ -48111,9 +48117,7 @@
           "osm-building-w873147958"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-n777906600"
-        ],
+        "landmarks": [],
         "ports": [],
         "roads": [
           "osm-road-w1055835171",
@@ -48699,9 +48703,7 @@
           "osm-building-w469597990"
         ],
         "entryPoints": [],
-        "landmarks": [
-          "osm-landmark-w469597988"
-        ],
+        "landmarks": [],
         "ports": [
           "osm-port-n3032427269",
           "osm-port-n458442302",
@@ -50117,7 +50119,7 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n5221275793"
+          "osm-landmark-n4406728904"
         ],
         "ports": [
           "osm-port-n1832649072",
@@ -54679,9 +54681,9 @@
           "port-eivissa"
         ],
         "landmarks": [
-          "osm-landmark-n3644398307",
           "osm-landmark-w173542977",
           "osm-landmark-w219159024",
+          "osm-landmark-w293571114",
           "osm-landmark-w607136377"
         ],
         "ports": [
@@ -58417,9 +58419,7 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1566343475",
-          "osm-landmark-w1333301063",
-          "osm-landmark-w486814290"
+          "osm-landmark-w1333301063"
         ],
         "ports": [
           "osm-port-n3613468648",
@@ -59243,10 +59243,7 @@
         ],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-n1566343851",
-          "osm-landmark-n4796906812",
-          "osm-landmark-w158961302",
-          "osm-landmark-w92166184"
+          "osm-landmark-n1566343851"
         ],
         "ports": [
           "osm-port-w1206095643",

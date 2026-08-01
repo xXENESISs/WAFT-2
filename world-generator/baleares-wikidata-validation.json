@@ -1,0 +1,29 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "dataset": "Wikidata landmark enrichment",
+  "sourceEntities": 514,
+  "requestedQids": 514,
+  "manualMatches": 7,
+  "selectedLandmarks": 90,
+  "linkedLandmarks": 90,
+  "representationCounts": {
+    "archetype": 68,
+    "unique": 4,
+    "unique-candidate": 18
+  },
+  "landmarkTypes": [
+    "archaeological_site",
+    "castle",
+    "cathedral",
+    "church",
+    "fortress",
+    "lighthouse",
+    "monastery",
+    "monument",
+    "natural_landmark",
+    "tower"
+  ],
+  "packageBytes": 39409942
+}

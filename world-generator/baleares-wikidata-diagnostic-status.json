@@ -1,0 +1,16 @@
+{
+  "diagnosticVersion": 1,
+  "pythonSyntax": 0,
+  "applySyntax": 0,
+  "verifySyntax": 0,
+  "import": 0,
+  "baseBuild": 0,
+  "dem": 0,
+  "worldcover": 0,
+  "openstreetmap": 0,
+  "wikidataApply": 0,
+  "wikidataVerify": 0,
+  "rebuildA": 0,
+  "rebuildB": 0,
+  "deterministic": 0
+}
