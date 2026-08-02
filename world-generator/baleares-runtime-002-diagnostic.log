@@ -5,8 +5,8 @@
   "source": "mallorca-mobile/region-runtime-baleares-001.html",
   "output": "mallorca-mobile/region-runtime-baleares-002.html",
   "sourceSha256": "22a8554588199caa85fc172dec78c81c9597bfe74cbd046894557ed0b82237de",
-  "outputSha256": "90ecdb3d67da6a0db40a1d44055810e4b10608c7c360cda2ab23753f56bfcc8c",
-  "outputBytes": 53309,
+  "outputSha256": "e4976dd5b044fe28daa99306da2e5e772d36804f4a9a4029ef88f5d074b4dd44",
+  "outputBytes": 53305,
   "features": [
     "third-person-orbit-camera",
     "camera-terrain-and-building-occlusion",
@@ -17,11 +17,3 @@
     "mobile-touch-controls"
   ]
 }
-/tmp/region-runtime-002-inline.mjs:552
-    const characterProgram = program(gl, \`#version 300 es
-                                         ^
-
-SyntaxError: Invalid or unexpected token
-    at checkSyntax (node:internal/main/check_syntax:74:5)
-
-Node.js v22.23.1

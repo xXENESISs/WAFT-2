@@ -2,6 +2,6 @@
   "diagnosticVersion": 2,
   "runnerSyntax": 0,
   "build": 0,
-  "inlineSyntax": 1,
-  "valid": false
+  "inlineSyntax": 0,
+  "valid": true
 }
