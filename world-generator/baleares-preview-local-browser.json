@@ -93,21 +93,21 @@
       "streamedBuildings": 994,
       "loadedCells": 15,
       "collisionProbe": true,
-      "jumpRise": 0.4851598050000008,
+      "jumpRise": 0.2287499999999998,
       "landed": true,
-      "movementDistance": 1.1656243780482727,
+      "movementDistance": 0.4802400000000068,
       "respawnGrounded": true
     },
     "finalState": {
       "position": {
-        "x": 445.7756594400772,
+        "x": 445.1680733656737,
         "y": 2.01,
-        "z": -122.33926572647647
+        "z": -123.33401159999963
       },
       "grounded": true,
       "activeBuildings": 782,
       "loadedCells": 10,
-      "collisions": 3,
+      "collisions": 0,
       "preset": "menorca"
     },
     "pageErrors": [],

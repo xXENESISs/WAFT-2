@@ -1,2 +1,2 @@
 Error: Invalid third-person camera distance 0.9579544502014021
-    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-runtime-002-browser.mjs:92:74)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-runtime-002-browser.mjs:94:74)
