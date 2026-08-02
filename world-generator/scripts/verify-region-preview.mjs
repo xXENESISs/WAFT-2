@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const MAGIC = 'WAFTRPV1';
 const HEADER_BYTES = 80;
+const VERIFICATION_RUN = 2;
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -150,6 +151,7 @@ function verify() {
   verifyRecords(buffer, header, metadata);
   const report = {
     formatVersion: 1,
+    verificationRun: VERIFICATION_RUN,
     regionId,
     valid: true,
     buildId: metadata.buildId,
