@@ -453,7 +453,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
       presets.appendChild(button);
     }
     const initial = playable.find(item => item.name.toLowerCase().includes('palma')) || playable[0];
-    assert(initial, 'No playable spawn presets were generated');
+    if (!initial) throw new Error('No playable spawn presets were generated');
     spawn(initial);
     return { spawn, playable };
   }
