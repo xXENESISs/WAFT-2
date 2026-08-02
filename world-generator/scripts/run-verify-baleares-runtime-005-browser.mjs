@@ -3,6 +3,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+// Browser verifier runner revision 2.
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const sourcePath = path.join(directory, 'verify-baleares-runtime-005-browser.mjs');
 const patchedPath = path.join(directory, '.verify-baleares-runtime-005-browser-effective.mjs');
