@@ -3,6 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
+const BUILD_REVISION = 2;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const sourcePath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-002.html');
 const outputPath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-003.html');
@@ -56,6 +57,7 @@ assert(!html.includes('RUNTIME REGIONAL 002'), 'Runtime 002 title leaked into ru
 fs.writeFileSync(outputPath, html);
 const report = {
   formatVersion: 1,
+  buildRevision: BUILD_REVISION,
   runtimeVersion: '003',
   valid: true,
   source: path.relative(ROOT, sourcePath).replaceAll(path.sep, '/'),
