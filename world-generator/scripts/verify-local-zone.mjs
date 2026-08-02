@@ -24,6 +24,10 @@ function stableJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
+function align4(value) {
+  return (value + 3) & ~3;
+}
+
 function verify() {
   const regionId = process.argv[2] ?? 'baleares';
   const zoneId = process.argv[3] ?? 'llevant';
@@ -63,7 +67,8 @@ function verify() {
     settlementStride: buffer.readUInt16LE(62),
     totalBytes: buffer.readUInt32LE(64),
     terrainCells: buffer.readUInt32LE(68),
-    nodata: buffer.readInt32LE(72)
+    nodata: buffer.readInt32LE(72),
+    floatAlignmentPadding: buffer.readUInt32LE(76)
   };
 
   assert(header.version === 1 && header.headerBytes === HEADER_BYTES, 'Unsupported local package version');
@@ -74,7 +79,13 @@ function verify() {
   assert(header.buildingStride === 8 && header.roadStride === 4 && header.landmarkStride === 5 && header.settlementStride === 4, 'Record stride mismatch');
   assert(header.terrainOffset === HEADER_BYTES, 'Terrain offset mismatch');
   assert(header.landcoverOffset === header.terrainOffset + header.terrainCells * 2, 'Landcover offset mismatch');
-  assert(header.buildingOffset === header.landcoverOffset + header.terrainCells, 'Building offset mismatch');
+  const rawBuildingOffset = header.landcoverOffset + header.terrainCells;
+  assert(header.buildingOffset === align4(rawBuildingOffset), 'Building offset is not aligned');
+  assert(header.buildingOffset % 4 === 0, 'Building records are not 4-byte aligned');
+  assert(header.floatAlignmentPadding === header.buildingOffset - rawBuildingOffset, 'Alignment padding mismatch');
+  assert(metadata.binary.floatAlignmentPadding === header.floatAlignmentPadding, 'Metadata alignment padding mismatch');
+  assert(header.floatAlignmentPadding >= 0 && header.floatAlignmentPadding <= 3, 'Invalid alignment padding');
+  for (let offset = rawBuildingOffset; offset < header.buildingOffset; offset++) assert(buffer[offset] === 0, `Alignment padding byte ${offset} is not zero`);
   assert(header.roadOffset === header.buildingOffset + header.buildingCount * header.buildingStride * 4, 'Road offset mismatch');
   assert(header.landmarkOffset === header.roadOffset + header.roadVertexCount * header.roadStride * 4, 'Landmark offset mismatch');
   assert(header.settlementOffset === header.landmarkOffset + header.landmarkCount * header.landmarkStride * 4, 'Settlement offset mismatch');
@@ -133,7 +144,8 @@ function verify() {
     counts: metadata.counts,
     worldScale: metadata.worldScale,
     footprintScale: metadata.footprintScale,
-    regionalRadius: metadata.regionalRadius
+    regionalRadius: metadata.regionalRadius,
+    floatAlignmentPadding: header.floatAlignmentPadding
   };
   const reportPath = path.join(ROOT, 'world-generator', `${regionId}-${zoneId}-local-validation.json`);
   fs.writeFileSync(reportPath, stableJson(report));
