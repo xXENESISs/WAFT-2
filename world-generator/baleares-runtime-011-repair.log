@@ -1,0 +1,87 @@
+== syntax repaired builder ==
+exit=0
+== syntax source builder ==
+exit=0
+== syntax browser verifier ==
+exit=0
+== build runtime 011 ==
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "011",
+  "source": "mallorca-mobile/region-runtime-baleares-010.html",
+  "output": "mallorca-mobile/region-runtime-baleares-011.html",
+  "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
+  "outputSha256": "cb06ec3a18190df677a3dbc8f289293b3c90a604dfa46cd5c50dd114cc96bd1f",
+  "outputBytes": 127710,
+  "travel": {
+    "schemaVersion": 1,
+    "saveKey": "waft.baleares.travel.v1",
+    "nodes": 5,
+    "routes": 5,
+    "physicalDiscovery": true,
+    "teleportDiscoverySuppressed": true,
+    "breadcrumbTrail": true,
+    "maximumTrailPoints": 384,
+    "routeRendering": true,
+    "manualSave": true,
+    "autosaveSeconds": 5,
+    "restorePosition": true,
+    "resetConfirmation": true
+  },
+  "preserved": {
+    "terrainAdaptation": true,
+    "mountainClimbing": true,
+    "swimming": true,
+    "highJump": true,
+    "localZonePackages": true,
+    "protectedRuntime010": true
+  }
+}
+exit=0
+== syntax runtime 011 inline JavaScript ==
+exit=0
+== rebuild runtime 011 ==
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "011",
+  "source": "mallorca-mobile/region-runtime-baleares-010.html",
+  "output": "mallorca-mobile/region-runtime-baleares-011.html",
+  "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
+  "outputSha256": "cb06ec3a18190df677a3dbc8f289293b3c90a604dfa46cd5c50dd114cc96bd1f",
+  "outputBytes": 127710,
+  "travel": {
+    "schemaVersion": 1,
+    "saveKey": "waft.baleares.travel.v1",
+    "nodes": 5,
+    "routes": 5,
+    "physicalDiscovery": true,
+    "teleportDiscoverySuppressed": true,
+    "breadcrumbTrail": true,
+    "maximumTrailPoints": 384,
+    "routeRendering": true,
+    "manualSave": true,
+    "autosaveSeconds": 5,
+    "restorePosition": true,
+    "resetConfirmation": true
+  },
+  "preserved": {
+    "terrainAdaptation": true,
+    "mountainClimbing": true,
+    "swimming": true,
+    "highJump": true,
+    "localZonePackages": true,
+    "protectedRuntime010": true
+  }
+}
+exit=0
+== local mobile browser runtime 011 ==
+page.evaluate: Error: No se encontró una aproximación física segura a Alcúdia
+    at travelProbeFor (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-011.html?v=repair:1468:13)
+    at Object.getTravelProbe (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-011.html?v=repair:2107:39)
+    at eval (eval at evaluate (:291:30), <anonymous>:1:32)
+    at UtilityScript.evaluate (<anonymous>:293:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:143:37)
+exit=1

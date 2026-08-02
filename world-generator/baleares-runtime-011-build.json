@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "011",
+  "source": "mallorca-mobile/region-runtime-baleares-010.html",
+  "output": "mallorca-mobile/region-runtime-baleares-011.html",
+  "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
+  "outputSha256": "cb06ec3a18190df677a3dbc8f289293b3c90a604dfa46cd5c50dd114cc96bd1f",
+  "outputBytes": 127710,
+  "travel": {
+    "schemaVersion": 1,
+    "saveKey": "waft.baleares.travel.v1",
+    "nodes": 5,
+    "routes": 5,
+    "physicalDiscovery": true,
+    "teleportDiscoverySuppressed": true,
+    "breadcrumbTrail": true,
+    "maximumTrailPoints": 384,
+    "routeRendering": true,
+    "manualSave": true,
+    "autosaveSeconds": 5,
+    "restorePosition": true,
+    "resetConfirmation": true
+  },
+  "preserved": {
+    "terrainAdaptation": true,
+    "mountainClimbing": true,
+    "swimming": true,
+    "highJump": true,
+    "localZonePackages": true,
+    "protectedRuntime010": true
+  }
+}
