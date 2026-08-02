@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const sourcePath = path.join(ROOT, 'world-generator/scripts/verify-baleares-runtime-008-browser.mjs');
-const temporaryPath = path.join('/tmp', 'verify-baleares-runtime-009-generated.mjs');
+const temporaryPath = path.join(ROOT, 'world-generator/scripts/.verify-baleares-runtime-009-generated.mjs');
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
