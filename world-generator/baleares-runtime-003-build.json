@@ -1,5 +1,6 @@
 {
   "formatVersion": 1,
+  "buildRevision": 2,
   "runtimeVersion": "003",
   "valid": true,
   "source": "mallorca-mobile/region-runtime-baleares-002.html",
