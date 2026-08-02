@@ -1,0 +1,56 @@
+name: Diagnose Baleares runtime 005 browser
+
+on:
+  push:
+    paths:
+      - .github/workflows/diagnose-baleares-runtime-005-browser.yml
+      - world-generator/scripts/verify-baleares-runtime-005-browser.mjs
+      - mallorca-mobile/region-runtime-baleares-005.html
+      - regions/baleares/local/llevant/llevant-local-v1.bin
+      - regions/baleares/local/llevant/llevant-local-v1.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Run mobile diagnostic
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/runtime005-server.log 2>&1 &
+          pid=$!
+          sleep 2
+          node world-generator/scripts/verify-baleares-runtime-005-browser.mjs \
+            --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-005.html?v=diagnostic" \
+            --output world-generator/baleares-runtime-005-browser-diagnostic-report.json \
+            --screenshot /tmp/runtime005-diagnostic.png \
+            > world-generator/baleares-runtime-005-browser-diagnostic.log 2>&1
+          code=$?
+          kill "$pid" || true
+          printf '{"exitCode":%s}\n' "$code" > world-generator/baleares-runtime-005-browser-diagnostic-status.json
+          cat world-generator/baleares-runtime-005-browser-diagnostic.log
+          exit 0
+      - name: Commit diagnostic
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-runtime-005-browser-diagnostic.log world-generator/baleares-runtime-005-browser-diagnostic-status.json
+          [ -f world-generator/baleares-runtime-005-browser-diagnostic-report.json ] && git add world-generator/baleares-runtime-005-browser-diagnostic-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Baleares runtime 005 browser diagnostic"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
