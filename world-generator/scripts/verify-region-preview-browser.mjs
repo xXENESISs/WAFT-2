@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
-const VERIFIER_VERSION = 5;
+const VERIFIER_VERSION = 6;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArguments(argv) {
@@ -25,16 +25,100 @@ function patchLocalRuntime(options) {
   if (options.public) return null;
   const runtimePath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-001.html');
   if (!fs.existsSync(runtimePath)) throw new Error(`Missing local runtime: ${runtimePath}`);
-  const oldText = "    assert(initial, 'No playable spawn presets were generated');";
-  const newText = "    if (!initial) throw new Error('No playable spawn presets were generated');";
   let html = fs.readFileSync(runtimePath, 'utf8');
-  const occurrences = html.split(oldText).length - 1;
-  if (occurrences === 1) {
-    html = html.replace(oldText, newText);
-    fs.writeFileSync(runtimePath, html);
-  } else if (!html.includes(newText)) {
-    throw new Error(`Runtime assertion patch found ${occurrences} obsolete markers and no corrected marker`);
+  let changed = false;
+
+  const oldAssertion = "    assert(initial, 'No playable spawn presets were generated');";
+  const newAssertion = "    if (!initial) throw new Error('No playable spawn presets were generated');";
+  if (html.includes(oldAssertion)) {
+    html = html.replace(oldAssertion, newAssertion);
+    changed = true;
+  } else if (!html.includes(newAssertion)) {
+    throw new Error('Runtime assertion marker is missing');
   }
+
+  const oldSpawn = `    const presets = document.getElementById('presets');
+    const playable = metadata.presets.filter(item => item.id !== 'overview');
+    const spawn = preset => {
+      state.activePreset = preset.id;
+      for (const button of presets.children) button.classList.toggle('active', button.dataset.id === preset.id);
+      state.camera.x = preset.x;
+      state.camera.z = preset.z;
+      state.camera.y = preset.terrainMeters * terrainMesh.verticalScale + 1.35;
+      state.velocityY = 0;
+      state.grounded = true;
+      state.jumpQueued = false;
+      state.respawnQueued = false;
+      state.yaw = .4;
+      state.pitch = -.18;
+      streamer.update(state.camera.x, state.camera.z, true);
+    };`;
+  const newSpawn = `    const presets = document.getElementById('presets');
+    const playable = metadata.presets.filter(item => item.id !== 'overview');
+    const terrainAt = (x, z) => {
+      const bounds = terrainMesh.bounds;
+      const fx = (x - bounds.minX) / (bounds.maxX - bounds.minX) * (terrainMesh.columns - 1);
+      const fz = (z - bounds.minZ) / (bounds.maxZ - bounds.minZ) * (terrainMesh.rows - 1);
+      if (fx < 0 || fz < 0 || fx > terrainMesh.columns - 1 || fz > terrainMesh.rows - 1) return null;
+      const column = Math.max(0, Math.min(terrainMesh.columns - 1, Math.round(fx)));
+      const row = Math.max(0, Math.min(terrainMesh.rows - 1, Math.round(fz)));
+      const value = terrainMesh.elevations[row * terrainMesh.columns + column];
+      return value === terrainMesh.nodata ? null : value * terrainMesh.verticalScale;
+    };
+    const spawnBlocked = (x, z) => {
+      const records = streamer.active;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      const radius = .55;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const dx = x - records[offset];
+        const dz = z - records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle);
+        const s = Math.sin(angle);
+        const localX = dx * c + dz * s;
+        const localZ = -dx * s + dz * c;
+        if (Math.abs(localX) < records[offset + 3] * exaggeration * .5 + radius && Math.abs(localZ) < records[offset + 5] * exaggeration * .5 + radius) return true;
+      }
+      return false;
+    };
+    const findSafeSpawn = preset => {
+      const radii = [0, 1.5, 3, 5, 8, 12, 18];
+      for (const radius of radii) {
+        const samples = radius === 0 ? 1 : 20;
+        for (let sample = 0; sample < samples; sample++) {
+          const angle = samples === 1 ? 0 : sample / samples * Math.PI * 2;
+          const x = preset.x + Math.cos(angle) * radius;
+          const z = preset.z + Math.sin(angle) * radius;
+          streamer.update(x, z, true);
+          const terrain = terrainAt(x, z);
+          if (terrain !== null && !spawnBlocked(x, z)) return { x, z, terrain };
+        }
+      }
+      return { x: preset.x, z: preset.z, terrain: preset.terrainMeters * terrainMesh.verticalScale };
+    };
+    const spawn = preset => {
+      state.activePreset = preset.id;
+      for (const button of presets.children) button.classList.toggle('active', button.dataset.id === preset.id);
+      const safe = findSafeSpawn(preset);
+      state.camera.x = safe.x;
+      state.camera.z = safe.z;
+      state.camera.y = safe.terrain + 1.35;
+      state.velocityY = 0;
+      state.grounded = true;
+      state.jumpQueued = false;
+      state.respawnQueued = false;
+      state.yaw = .4;
+      state.pitch = -.18;
+      streamer.update(state.camera.x, state.camera.z, true);
+    };`;
+  if (html.includes(oldSpawn)) {
+    html = html.replace(oldSpawn, newSpawn);
+    changed = true;
+  } else if (!html.includes('const findSafeSpawn = preset =>')) {
+    throw new Error('Runtime safe-spawn marker is missing');
+  }
+
+  if (changed) fs.writeFileSync(runtimePath, html);
   return runtimePath;
 }
 
