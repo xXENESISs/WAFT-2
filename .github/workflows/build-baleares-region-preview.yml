@@ -121,6 +121,7 @@ jobs:
           git add \
             regions/baleares/preview/baleares-preview-v1.bin \
             regions/baleares/preview/baleares-preview-v1.json \
+            mallorca-mobile/region-runtime-baleares-001.html \
             world-generator/baleares-preview-build.json \
             world-generator/baleares-preview-validation.json \
             world-generator/baleares-preview-build.log \
