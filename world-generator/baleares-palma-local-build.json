@@ -1,0 +1,32 @@
+{
+  "binaryBytes": 25648,
+  "binarySha256": "201daac0fb9a7020f36429f40a0554418a249c969be3a8745508ea43b1f92be3",
+  "buildId": "baleares-palma-4727f01fc3de",
+  "counts": {
+    "buildings": 160,
+    "landmarks": 5,
+    "roadSegments": 574,
+    "roadVertices": 1148,
+    "settlements": 3
+  },
+  "floatAlignmentPadding": 0,
+  "footprintScale": 4,
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "regionalRadius": 24,
+  "terrain": {
+    "cells": 644,
+    "columns": 28,
+    "landCells": 397,
+    "rows": 23,
+    "sourceWindow": {
+      "maxColumn": 230,
+      "maxRow": 111,
+      "minColumn": 203,
+      "minRow": 89
+    }
+  },
+  "valid": true,
+  "worldScale": 12,
+  "zoneId": "palma"
+}

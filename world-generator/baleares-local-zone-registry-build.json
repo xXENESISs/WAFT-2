@@ -1,0 +1,36 @@
+{
+  "buildId": "baleares-local-zones-cc574a5013d0",
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "registryFile": "regions/baleares/local/zones-v1.json",
+  "valid": true,
+  "zoneCount": 2,
+  "zones": [
+    {
+      "binaryBytes": 22760,
+      "buildId": "baleares-llevant-4727f01fc3de",
+      "counts": {
+        "buildings": 112,
+        "landmarks": 2,
+        "roadSegments": 514,
+        "roadVertices": 1028,
+        "settlements": 1
+      },
+      "id": "llevant",
+      "presetId": "llevant"
+    },
+    {
+      "binaryBytes": 25648,
+      "buildId": "baleares-palma-4727f01fc3de",
+      "counts": {
+        "buildings": 160,
+        "landmarks": 5,
+        "roadSegments": 574,
+        "roadVertices": 1148,
+        "settlements": 3
+      },
+      "id": "palma",
+      "presetId": "palma"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "binary": {
+    "bytes": 25648,
+    "file": "palma-local-v1.bin",
+    "floatAlignmentPadding": 0,
+    "headerBytes": 80,
+    "magic": "WAFTLZ01",
+    "sha256": "201daac0fb9a7020f36429f40a0554418a249c969be3a8745508ea43b1f92be3"
+  },
+  "buildId": "baleares-palma-4727f01fc3de",
+  "center": {
+    "x": -117.867,
+    "z": 32.2196
+  },
+  "contract": {
+    "featurePadding": 2,
+    "maxBinaryBytes": 4194304,
+    "minimumBuildings": 150,
+    "minimumRoadVertices": 1100
+  },
+  "coordinateSpace": "regional-local-window",
+  "counts": {
+    "buildings": 160,
+    "landmarks": 5,
+    "roadSegments": 574,
+    "roadVertices": 1148,
+    "settlements": 3
+  },
+  "deterministic": true,
+  "displayBounds": {
+    "maxX": 359.6614534390747,
+    "maxZ": 355.6219651764881,
+    "minX": -342.9899672742267,
+    "minZ": -343.9082145882184
+  },
+  "footprintScale": 4,
+  "formatVersion": 1,
+  "labels": {
+    "landmarks": [
+      {
+        "id": "osm-landmark-n1587270862",
+        "name": "Naveta Alemany",
+        "representation": "archetype",
+        "type": "archaeological_site",
+        "wikidataId": "Q5558060"
+      },
+      {
+        "id": "osm-landmark-r14162681",
+        "name": "Fortí d'Illetes",
+        "representation": "archetype",
+        "type": "fortress",
+        "wikidataId": "Q43146029"
+      },
+      {
+        "id": "osm-landmark-w151257472",
+        "name": "Turriforme esglaonat de Son Ferrer",
+        "representation": "archetype",
+        "type": "archaeological_site",
+        "wikidataId": "Q9090620"
+      },
+      {
+        "id": "osm-landmark-w293567375",
+        "name": "Puig de sa Morisca",
+        "representation": "archetype",
+        "type": "archaeological_site",
+        "wikidataId": "Q6092629"
+      },
+      {
+        "id": "osm-landmark-w301945453",
+        "name": "Castell de Bendinat",
+        "representation": "archetype",
+        "type": "castle",
+        "wikidataId": "Q63903002"
+      }
+    ],
+    "settlements": [
+      {
+        "id": "osm-n289451210",
+        "name": "Palmanova",
+        "place": "village",
+        "population": 7037
+      },
+      {
+        "id": "osm-n29402598",
+        "name": "Santa Ponça",
+        "place": "town",
+        "population": 12056
+      },
+      {
+        "id": "osm-n303622304",
+        "name": "Calvià",
+        "place": "village",
+        "population": 2440
+      }
+    ]
+  },
+  "name": "Palma · Centre–Badia–Ponència",
+  "packageType": "waft-local-zone",
+  "presetId": "palma",
+  "regionId": "baleares",
+  "regionalBounds": {
+    "maxX": -87.89521221341045,
+    "maxZ": 61.85476376470734,
+    "minX": -146.44949727285223,
+    "minZ": 3.5605821176484653
+  },
+  "regionalRadius": 24,
+  "source": {
+    "configFile": "world-generator/configs/baleares-local-zones.json",
+    "fingerprint": "4727f01fc3de00f0e9b229a9bfaa4c45b4ed9a198c7c9c6983924f7a2476f524",
+    "regionalBinarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
+    "regionalBuildId": "baleares-preview-3068ab4bdb61"
+  },
+  "terrain": {
+    "cells": 644,
+    "columns": 28,
+    "landCells": 397,
+    "rows": 23,
+    "sourceWindow": {
+      "maxColumn": 230,
+      "maxRow": 111,
+      "minColumn": 203,
+      "minRow": 89
+    }
+  },
+  "verticalScaleMultiplier": 1,
+  "worldScale": 12,
+  "zoneId": "palma"
+}

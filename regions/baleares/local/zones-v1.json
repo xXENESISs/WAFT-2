@@ -1,0 +1,74 @@
+{
+  "buildId": "baleares-local-zones-cc574a5013d0",
+  "deterministic": true,
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "registryType": "waft-local-zone-registry",
+  "source": {
+    "configFile": "world-generator/configs/baleares-local-zones.json",
+    "fingerprint": "cc574a5013d0cb1ecca6fdd155e18acb7d4c1e8b87e19ca3eb6ac3881e8626e8"
+  },
+  "zoneCount": 2,
+  "zones": [
+    {
+      "binaryBytes": 22760,
+      "binaryFile": "llevant/llevant-local-v1.bin",
+      "binarySha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b",
+      "buildId": "baleares-llevant-4727f01fc3de",
+      "center": {
+        "x": 101.26938087180768,
+        "z": 13.218040080000701
+      },
+      "counts": {
+        "buildings": 112,
+        "landmarks": 2,
+        "roadSegments": 514,
+        "roadVertices": 1028,
+        "settlements": 1
+      },
+      "footprintScale": 4,
+      "id": "llevant",
+      "metadataFile": "llevant/llevant-local-v1.json",
+      "metadataSha256": "d00a6d153ea090241b6b59cd9d1be8389a6877e54583e0500d71a9ed1a01e01f",
+      "name": "Llevant · Cala Millor–Sa Coma–Cala Bona",
+      "presetId": "llevant",
+      "regionalRadius": 28,
+      "terrain": {
+        "columns": 32,
+        "landCells": 853,
+        "rows": 27
+      },
+      "worldScale": 12
+    },
+    {
+      "binaryBytes": 25648,
+      "binaryFile": "palma/palma-local-v1.bin",
+      "binarySha256": "201daac0fb9a7020f36429f40a0554418a249c969be3a8745508ea43b1f92be3",
+      "buildId": "baleares-palma-4727f01fc3de",
+      "center": {
+        "x": -117.867,
+        "z": 32.2196
+      },
+      "counts": {
+        "buildings": 160,
+        "landmarks": 5,
+        "roadSegments": 574,
+        "roadVertices": 1148,
+        "settlements": 3
+      },
+      "footprintScale": 4,
+      "id": "palma",
+      "metadataFile": "palma/palma-local-v1.json",
+      "metadataSha256": "87908d8681153ced376f5518ad2092b0b6d5f7a2335d045206dabb81ee9a0f2e",
+      "name": "Palma · Centre–Badia–Ponència",
+      "presetId": "palma",
+      "regionalRadius": 24,
+      "terrain": {
+        "columns": 28,
+        "landCells": 397,
+        "rows": 23
+      },
+      "worldScale": 12
+    }
+  ]
+}
