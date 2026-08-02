@@ -20,6 +20,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -47,6 +48,38 @@ jobs:
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
+      - name: Diagnose runtime in mobile browser
+        id: browser
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/baleares-runtime-browser-diagnostic.log
+          npm install --no-save --no-package-lock playwright-core@1.55.0 >>world-generator/baleares-runtime-browser-diagnostic.log 2>&1
+          install_code=$?
+          browser_code=99
+          if [ "$install_code" -eq 0 ] && [ -f mallorca-mobile/region-runtime-baleares-001.html ]; then
+            python3 -m http.server 8000 --bind 127.0.0.1 >>world-generator/baleares-runtime-browser-diagnostic.log 2>&1 &
+            server_pid=$!
+            sleep 2
+            node world-generator/scripts/verify-region-runtime-browser.mjs \
+              --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-001.html?v=diagnostic" \
+              --output world-generator/baleares-runtime-diagnostic-browser.json \
+              --screenshot /tmp/baleares-runtime-diagnostic.png >>world-generator/baleares-runtime-browser-diagnostic.log 2>&1
+            browser_code=$?
+            kill "$server_pid" || true
+          fi
+          cat > world-generator/baleares-runtime-browser-diagnostic-status.json <<JSON
+          {
+            "diagnosticVersion": 1,
+            "install": $install_code,
+            "browser": $browser_code,
+            "valid": $([ "$install_code" -eq 0 ] && [ "$browser_code" -eq 0 ] && echo true || echo false)
+          }
+          JSON
+          echo "code=$((install_code || browser_code))" >> "$GITHUB_OUTPUT"
+          cat world-generator/baleares-runtime-browser-diagnostic-status.json
+          exit 0
+
       - name: Show validation reports
         if: always()
         shell: bash
@@ -54,6 +87,8 @@ jobs:
           cat world-generator/validation-report.json
           cat world-generator/baleares-runtime-diagnostic-status.json
           cat world-generator/baleares-runtime-diagnostic.log
+          cat world-generator/baleares-runtime-browser-diagnostic-status.json
+          cat world-generator/baleares-runtime-browser-diagnostic.log
 
       - name: Commit validation reports
         if: always()
@@ -65,10 +100,13 @@ jobs:
             world-generator/validation-report.json \
             world-generator/baleares-runtime-diagnostic-status.json \
             world-generator/baleares-runtime-diagnostic.log \
+            world-generator/baleares-runtime-browser-diagnostic-status.json \
+            world-generator/baleares-runtime-browser-diagnostic.log \
+            world-generator/baleares-runtime-diagnostic-browser.json \
             mallorca-mobile/region-runtime-baleares-001.html \
             world-generator/baleares-runtime-build.json 2>/dev/null || true
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Validate Baleares regional runtime builder"
+          git commit -m "Validate Baleares regional runtime browser"
           git push origin HEAD:main
 
       - name: Require valid configurations
@@ -77,4 +115,8 @@ jobs:
 
       - name: Require valid runtime builder
         if: steps.runtime.outputs.code != '0'
+        run: exit 1
+
+      - name: Require valid runtime browser
+        if: steps.browser.outputs.code != '0'
         run: exit 1
