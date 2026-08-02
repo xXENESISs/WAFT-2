@@ -1,0 +1,26 @@
+$ /usr/local/bin/node --check world-generator/scripts/build-baleares-runtime.mjs
+exit=0
+$ /usr/local/bin/node --check world-generator/scripts/run-build-baleares-runtime.mjs
+exit=0
+$ /usr/local/bin/node world-generator/scripts/run-build-baleares-runtime.mjs
+{
+  "formatVersion": 1,
+  "valid": true,
+  "source": "mallorca-mobile/region-preview-baleares-001.html",
+  "output": "mallorca-mobile/region-runtime-baleares-001.html",
+  "sourceSha256": "ee0e1d30390e2d72603bdf6d53629943eaa6e161225648779ed04e41cf231993",
+  "outputSha256": "5c5e69dfe17e8cffa7e1e2b7871cdf099c6f7d7befcff559186fd4f47c227eb3",
+  "outputBytes": 43338,
+  "features": [
+    "first-person-ground-runtime",
+    "gravity-and-jump",
+    "land-and-coast-constraint",
+    "oriented-building-collision",
+    "building-cell-streaming",
+    "regional-spawn-presets",
+    "mobile-touch-controls"
+  ]
+}
+exit=0
+$ /usr/local/bin/node --check /tmp/region-runtime-inline.mjs
+exit=0
