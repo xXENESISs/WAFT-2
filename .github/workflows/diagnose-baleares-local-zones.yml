@@ -1,6 +1,6 @@
 name: Diagnose Baleares local zones
 
-# Diagnostic revision 2.
+# Diagnostic revision 3.
 on:
   push:
     paths:
@@ -34,39 +34,37 @@ jobs:
           log=world-generator/baleares-local-zones-diagnostic.log
           status=world-generator/baleares-local-zones-diagnostic-status.json
           : > "$log"
+
+          run_logged() {
+            label="$1"
+            shift
+            echo "== ${label} ==" >> "$log"
+            "$@" >> "$log" 2>&1
+            code=$?
+            echo "exit=${code}" >> "$log"
+            return "$code"
+          }
+
           syntax=0
+          run_logged 'syntax build' node --check world-generator/scripts/build-local-zone.mjs || syntax=$?
+          run_logged 'syntax verify' node --check world-generator/scripts/verify-local-zone.mjs || syntax=$?
+          run_logged 'syntax registry build' node --check world-generator/scripts/build-local-zone-registry.mjs || syntax=$?
+          run_logged 'syntax registry verify' node --check world-generator/scripts/verify-local-zone-registry.mjs || syntax=$?
+
           build_llevant=0
           verify_llevant=0
           build_palma=0
           verify_palma=0
           build_registry=0
           verify_registry=0
-          {
-            echo '== syntax =='
-            node --check world-generator/scripts/build-local-zone.mjs || syntax=$?
-            node --check world-generator/scripts/verify-local-zone.mjs || syntax=$?
-            node --check world-generator/scripts/build-local-zone-registry.mjs || syntax=$?
-            node --check world-generator/scripts/verify-local-zone-registry.mjs || syntax=$?
-            echo "syntax=$syntax"
-            echo '== build Llevant =='
-            node world-generator/scripts/build-local-zone.mjs baleares llevant || build_llevant=$?
-            echo "build_llevant=$build_llevant"
-            echo '== verify Llevant =='
-            node world-generator/scripts/verify-local-zone.mjs baleares llevant || verify_llevant=$?
-            echo "verify_llevant=$verify_llevant"
-            echo '== build Palma =='
-            node world-generator/scripts/build-local-zone.mjs baleares palma || build_palma=$?
-            echo "build_palma=$build_palma"
-            echo '== verify Palma =='
-            node world-generator/scripts/verify-local-zone.mjs baleares palma || verify_palma=$?
-            echo "verify_palma=$verify_palma"
-            echo '== build registry =='
-            node world-generator/scripts/build-local-zone-registry.mjs baleares || build_registry=$?
-            echo "build_registry=$build_registry"
-            echo '== verify registry =='
-            node world-generator/scripts/verify-local-zone-registry.mjs baleares || verify_registry=$?
-            echo "verify_registry=$verify_registry"
-          } 2>&1 | tee "$log"
+          run_logged 'build Llevant' node world-generator/scripts/build-local-zone.mjs baleares llevant || build_llevant=$?
+          run_logged 'verify Llevant' node world-generator/scripts/verify-local-zone.mjs baleares llevant || verify_llevant=$?
+          run_logged 'build Palma' node world-generator/scripts/build-local-zone.mjs baleares palma || build_palma=$?
+          run_logged 'verify Palma' node world-generator/scripts/verify-local-zone.mjs baleares palma || verify_palma=$?
+          run_logged 'build registry' node world-generator/scripts/build-local-zone-registry.mjs baleares || build_registry=$?
+          run_logged 'verify registry' node world-generator/scripts/verify-local-zone-registry.mjs baleares || verify_registry=$?
+
+          cat "$log"
           printf '{"syntax":%s,"buildLlevant":%s,"verifyLlevant":%s,"buildPalma":%s,"verifyPalma":%s,"buildRegistry":%s,"verifyRegistry":%s}\n' \
             "$syntax" "$build_llevant" "$verify_llevant" "$build_palma" "$verify_palma" "$build_registry" "$verify_registry" > "$status"
           exit 0
