@@ -1,0 +1,127 @@
+{
+  "formatVersion": 1,
+  "verifierVersion": 1,
+  "runtimeVersion": "006",
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-006.html?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d",
+  "regionalBuildId": "baleares-preview-3068ab4bdb61",
+  "localBuildId": "baleares-llevant-0ebcf523670c",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "localPackage": {
+    "bytes": 22760,
+    "sha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b",
+    "terrain": {
+      "cells": 864,
+      "columns": 32,
+      "landCells": 853,
+      "rows": 27,
+      "sourceWindow": {
+        "maxColumn": 333,
+        "maxRow": 106,
+        "minColumn": 302,
+        "minRow": 80
+      }
+    },
+    "counts": {
+      "buildings": 112,
+      "landmarks": 2,
+      "roadSegments": 514,
+      "roadVertices": 1028,
+      "settlements": 1
+    },
+    "worldScale": 12,
+    "footprintScale": 4
+  },
+  "tests": {
+    "noLocalBootRequests": true,
+    "loadingStateVisible": true,
+    "firstLoadRequests": 2,
+    "localDatasetActivated": "local-package",
+    "localGpuResourcesCreated": 16,
+    "collisionProbe": true,
+    "rightDisplayDistance": 3.839759999999661,
+    "rightAlignment": 1,
+    "forwardDisplayDistance": 3.5992799999999407,
+    "forwardAlignment": 1,
+    "jumpRise": 0.8123847450000019,
+    "exitPreservedRegionalPosition": true,
+    "localReferencesReleased": true,
+    "localGpuResourcesReleased": true,
+    "regionalStreamingResumed": true,
+    "packageRequestedAgainOnReentry": true,
+    "finalLoads": 2,
+    "finalReleases": 2,
+    "finalLocalRequests": 4
+  },
+  "finalState": {
+    "position": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "displayPosition": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "cameraEye": {
+      "x": 102.07077598925412,
+      "y": 4.631280543986345,
+      "z": 11.565684149036226
+    },
+    "cameraYaw": 0.4,
+    "playerFacing": 0.39560083161079,
+    "cameraMode": "third-person",
+    "characterVisible": true,
+    "cameraBlocked": true,
+    "lateralControls": "screen-relative",
+    "worldMode": "regional",
+    "worldScale": 1,
+    "footprintScale": 1,
+    "localCenter": {
+      "x": 101.26938087180768,
+      "z": 13.218040080000701
+    },
+    "localRadius": 28,
+    "localZoneId": null,
+    "localPackageLoaded": false,
+    "localPackageStatus": "unloaded",
+    "localPackageLoadCount": 2,
+    "localPackageReleaseCount": 2,
+    "localPackageRequestCount": 4,
+    "localGpuResources": 0,
+    "renderDataset": "regional-streamed",
+    "localPackageBuildId": null,
+    "localPackageBytes": 0,
+    "localTerrain": {
+      "columns": 0,
+      "rows": 0
+    },
+    "localCounts": {
+      "buildings": 0,
+      "roadVertices": 0
+    },
+    "grounded": true,
+    "activeBuildings": 1205,
+    "loadedCells": 23,
+    "collisions": 0,
+    "preset": "llevant"
+  },
+  "localRequests": [
+    "https://xxenesiss.github.io/WAFT-2/regions/baleares/local/llevant/llevant-local-v1.json?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d&load=1",
+    "https://xxenesiss.github.io/WAFT-2/regions/baleares/local/llevant/llevant-local-v1.bin?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d&load=1",
+    "https://xxenesiss.github.io/WAFT-2/regions/baleares/local/llevant/llevant-local-v1.json?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d&load=2",
+    "https://xxenesiss.github.io/WAFT-2/regions/baleares/local/llevant/llevant-local-v1.bin?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d&load=2"
+  ],
+  "pageErrors": [],
+  "consoleErrors": []
+}
