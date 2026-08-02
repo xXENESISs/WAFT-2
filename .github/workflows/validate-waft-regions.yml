@@ -40,9 +40,9 @@ jobs:
           set +e
           LOG=world-generator/baleares-runtime-002-diagnostic.log
           : > "$LOG"
-          node --check world-generator/scripts/build-baleares-runtime-002.mjs >>"$LOG" 2>&1
-          source_syntax=$?
-          node world-generator/scripts/build-baleares-runtime-002.mjs >>"$LOG" 2>&1
+          node --check world-generator/scripts/run-build-baleares-runtime-002.mjs >>"$LOG" 2>&1
+          runner_syntax=$?
+          node world-generator/scripts/run-build-baleares-runtime-002.mjs >>"$LOG" 2>&1
           build=$?
           inline_syntax=99
           if [ "$build" -eq 0 ]; then
@@ -64,11 +64,11 @@ jobs:
             fi
           fi
           valid=false
-          if [ "$source_syntax" -eq 0 ] && [ "$build" -eq 0 ] && [ "$inline_syntax" -eq 0 ]; then valid=true; fi
+          if [ "$runner_syntax" -eq 0 ] && [ "$build" -eq 0 ] && [ "$inline_syntax" -eq 0 ]; then valid=true; fi
           cat > world-generator/baleares-runtime-002-diagnostic-status.json <<JSON
           {
-            "diagnosticVersion": 1,
-            "sourceSyntax": $source_syntax,
+            "diagnosticVersion": 2,
+            "runnerSyntax": $runner_syntax,
             "build": $build,
             "inlineSyntax": $inline_syntax,
             "valid": $valid
@@ -94,7 +94,7 @@ jobs:
             world-generator/baleares-runtime-002-diagnostic-status.json \
             world-generator/baleares-runtime-002-diagnostic.log
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Diagnose Baleares runtime 002 builder"
+          git commit -m "Diagnose corrected Baleares runtime 002 builder"
           git pull --rebase origin main
           git push origin HEAD:main
 
