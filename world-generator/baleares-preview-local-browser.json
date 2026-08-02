@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "verifierVersion": 4,
+  "verifierVersion": 5,
   "valid": true,
   "public": false,
   "url": "http://127.0.0.1:8000/mallorca-mobile/region-preview-baleares-001.html?v=local",
@@ -46,7 +46,7 @@
   "runtime": {
     "valid": false,
     "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-001.html?v=local",
-    "error": "Error: Runtime player did not land\n    at verifyRuntime (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:96:33)\n    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:211:21)",
+    "error": "Error: Runtime player could not move in any tested direction\n    at verifyRuntime (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:109:26)\n    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:210:21)",
     "pageErrors": [],
     "consoleErrors": [],
     "patchedRuntimePath": "mallorca-mobile/region-runtime-baleares-001.html"
