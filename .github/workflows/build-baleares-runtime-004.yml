@@ -1,0 +1,188 @@
+name: Build Baleares regional runtime 004
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-baleares-runtime-004.yml
+      - world-generator/scripts/build-baleares-runtime-004.mjs
+      - world-generator/scripts/verify-baleares-runtime-004-browser.mjs
+      - mallorca-mobile/region-runtime-baleares-003.html
+      - regions/baleares/preview/baleares-preview-v1.bin
+      - regions/baleares/preview/baleares-preview-v1.json
+      - regions/baleares/terrain.bin
+      - regions/baleares/landcover.bin
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-004
+  cancel-in-progress: true
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Record frozen 0.15.5 files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-runtime-004-before.sha256
+
+      - name: Check runtime 004 tools
+        shell: bash
+        run: |
+          node --check world-generator/scripts/build-baleares-runtime-004.mjs
+          node --check world-generator/scripts/verify-baleares-runtime-004-browser.mjs
+
+      - name: Build runtime 004 twice
+        shell: bash
+        run: |
+          node world-generator/scripts/build-baleares-runtime-004.mjs | tee world-generator/baleares-runtime-004-build.log
+          cp mallorca-mobile/region-runtime-baleares-004.html /tmp/region-runtime-baleares-004-first.html
+          cp world-generator/baleares-runtime-004-build.json /tmp/baleares-runtime-004-build-first.json
+          node world-generator/scripts/build-baleares-runtime-004.mjs >/tmp/baleares-runtime-004-rebuild.log
+          diff -q /tmp/region-runtime-baleares-004-first.html mallorca-mobile/region-runtime-baleares-004.html
+          diff -q /tmp/baleares-runtime-004-build-first.json world-generator/baleares-runtime-004-build.json
+
+      - name: Check generated runtime syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-runtime-baleares-004.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          Path('/tmp/region-runtime-baleares-004-inline.mjs').write_text(scripts[0], encoding='utf-8')
+          required = [
+              'RUNTIME REGIONAL 004',
+              'ENTRAR EN LLEVANT',
+              "worldScale = 12",
+              "footprintScale = 4",
+              "version: '004'",
+              '__WAFT_RUNTIME_004_READY__=true'
+          ]
+          for marker in required:
+              if marker not in html:
+                  raise SystemExit(f'Missing generated marker: {marker}')
+          PY
+          node --check /tmp/region-runtime-baleares-004-inline.mjs
+
+      - name: Install mobile browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Verify local dual-scale runtime
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/baleares-runtime-004-server.log 2>&1 &
+          echo $! >/tmp/baleares-runtime-004-server.pid
+          sleep 2
+          node world-generator/scripts/verify-baleares-runtime-004-browser.mjs \
+            --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-004.html?v=local" \
+            --output world-generator/baleares-runtime-004-local-browser.json \
+            --screenshot /tmp/baleares-runtime-004-local.png
+          kill "$(cat /tmp/baleares-runtime-004-server.pid)" || true
+
+      - name: Confirm frozen build is untouched
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-runtime-004-after.sha256
+          diff -u /tmp/waft-0155-runtime-004-before.sha256 /tmp/waft-0155-runtime-004-after.sha256
+
+      - name: Publish runtime 004
+        id: publish
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            mallorca-mobile/region-runtime-baleares-004.html \
+            world-generator/baleares-runtime-004-build.json \
+            world-generator/baleares-runtime-004-build.log \
+            world-generator/baleares-runtime-004-local-browser.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Baleares regional runtime 004"
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
+          PUBLISH_SHA="$(git rev-parse HEAD)"
+          OUTPUT_SHA="$(sha256sum mallorca-mobile/region-runtime-baleares-004.html | cut -d' ' -f1)"
+          echo "commit=${PUBLISH_SHA}" >> "$GITHUB_OUTPUT"
+          echo "output_sha=${OUTPUT_SHA}" >> "$GITHUB_OUTPUT"
+          echo "PUBLISH_SHA=${PUBLISH_SHA}" >> "$GITHUB_ENV"
+          echo "OUTPUT_SHA=${OUTPUT_SHA}" >> "$GITHUB_ENV"
+
+      - name: Wait for GitHub Pages runtime 004
+        shell: bash
+        run: |
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-004.html?v=${OUTPUT_SHA}"
+          echo "PAGE_URL=${PAGE_URL}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            PAGE="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
+            if printf '%s' "$PAGE" | grep -q "RUNTIME REGIONAL 004" && printf '%s' "$PAGE" | grep -q "__WAFT_RUNTIME_004_READY__=true"; then
+              echo "GitHub Pages serves runtime 004"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/60)"
+            sleep 5
+          done
+          echo "GitHub Pages did not publish runtime 004 in time" >&2
+          exit 1
+
+      - name: Verify public dual-scale runtime
+        shell: bash
+        run: |
+          node world-generator/scripts/verify-baleares-runtime-004-browser.mjs \
+            --url "$PAGE_URL" \
+            --public \
+            --output world-generator/baleares-runtime-004-public-verification.json \
+            --screenshot /tmp/baleares-runtime-004-public.png
+
+      - name: Record public verification
+        shell: bash
+        run: |
+          git add world-generator/baleares-runtime-004-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Baleares regional runtime 004"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload runtime screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-004-screenshots
+          path: |
+            /tmp/baleares-runtime-004-local.png
+            /tmp/baleares-runtime-004-public.png
+          retention-days: 7
