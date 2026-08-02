@@ -4,7 +4,7 @@
   "runtimeVersion": "010",
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=spatial",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=local",
   "regionalBuildId": "baleares-preview-3068ab4bdb61",
   "registryBuildId": "baleares-local-zones-cc574a5013d0",
   "viewport": {
@@ -65,13 +65,13 @@
         "suggestedMilliseconds": 700
       }
     },
-    "mountainDistance": 1.0941695999999723,
-    "mountainGain": 1.3874629430719096,
-    "mountainPitch": -0.6152754970680795,
+    "mountainDistance": 0.5757695999999868,
+    "mountainGain": 0.7301052631578671,
+    "mountainPitch": -0.5981562466409035,
     "mountainSlopeAngle": 1.2116006629495588,
-    "waterDistance": 1.8199999999997212,
-    "waterPitch": -0.48187946287660066,
-    "highJumpRise": 1.6369022299999967
+    "waterDistance": 1.9936799999997026,
+    "waterPitch": -0.48231527547159275,
+    "highJumpRise": 1.5425398500000023
   },
   "proximity": {
     "palma": {
@@ -108,9 +108,9 @@
         "roadVertices": 1148,
         "settlements": 3
       },
-      "lateralDistance": 3.72023999999951,
+      "lateralDistance": 3.9600000000004467,
       "lateralAlignment": 1.0000000000000002,
-      "jumpRise": 1.6369022299999967
+      "jumpRise": 1.5425398500000023
     },
     "llevant": {
       "buildId": "baleares-llevant-4727f01fc3de",
@@ -122,8 +122,8 @@
         "roadVertices": 1028,
         "settlements": 1
       },
-      "forwardDistance": 3.7018200838421884,
-      "forwardAlignment": 1.0000000000000002
+      "forwardDistance": 3.8214803205184245,
+      "forwardAlignment": 1
     }
   },
   "tests": {
@@ -150,37 +150,37 @@
     "finalReleases": 2,
     "finalPackageRequests": 4,
     "finalGpuResources": 0,
-    "proximityUpdates": 20
+    "proximityUpdates": 21
   },
   "finalState": {
     "movementMode": "ground",
     "swimming": false,
-    "terrainPitch": -0.08846243176515053,
-    "terrainRoll": 0.03651312521348323,
+    "terrainPitch": -0.0820972283901974,
+    "terrainRoll": 0.033895449996418636,
     "slopeAngle": 0.1057436992875705,
     "slopeSpeedFactor": 1,
-    "groundHeight": 2.682634072063492,
+    "groundHeight": 2.6836261696519204,
     "waterSurfaceHeight": -0.24,
     "jumpVelocity": 8.8,
     "swimSpeed": 5.2,
     "runSpeed": 7.2,
     "position": {
-      "x": 105.86951059185556,
-      "y": 3.502634063548354,
-      "z": 13.502173587171004
+      "x": 105.87339374943946,
+      "y": 3.5036261569550335,
+      "z": 13.511358118548971
     },
     "displayPosition": {
-      "x": 105.86951059185556,
-      "y": 3.502634063548354,
-      "z": 13.502173587171004
+      "x": 105.87339374943946,
+      "y": 3.5036261569550335,
+      "z": 13.511358118548971
     },
     "cameraEye": {
-      "x": 104.88604284948593,
-      "y": 4.430660892258905,
-      "z": 11.176053633533108
+      "x": 104.88992600706983,
+      "y": 4.4316529856655835,
+      "z": 11.185238164911077
     },
     "cameraYaw": 0.4,
-    "playerFacing": 0.3972735040385407,
+    "playerFacing": 0.39757461002805,
     "cameraMode": "third-person",
     "characterVisible": true,
     "cameraBlocked": true,
@@ -206,11 +206,11 @@
     "localRequestedZoneId": null,
     "localLastLoadedZoneId": "llevant",
     "localProximityZoneId": "llevant",
-    "localProximityDistance": 4.608896320288039,
+    "localProximityDistance": 4.6133469465385994,
     "localProximityStatus": "available",
     "localEntryRadius": 8.96,
     "localDiscoveryRadius": 20.160000000000004,
-    "localProximityUpdates": 20,
+    "localProximityUpdates": 21,
     "playerVisualScale": 0.58,
     "playerCollisionRadius": 0.16,
     "playerEyeHeight": 0.82,
