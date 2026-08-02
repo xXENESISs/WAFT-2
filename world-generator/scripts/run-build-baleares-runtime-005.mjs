@@ -3,6 +3,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+// Effective runner revision 1.
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const sourcePath = path.join(directory, 'build-baleares-runtime-005.mjs');
 const patchedPath = path.join(directory, '.build-baleares-runtime-005-effective.mjs');
