@@ -1,0 +1,182 @@
+name: Build Baleares region preview
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-baleares-region-preview.yml
+      - world-generator/scripts/build-region-preview.mjs
+      - world-generator/scripts/verify-region-preview.mjs
+      - world-generator/scripts/verify-region-preview-browser.mjs
+      - mallorca-mobile/region-preview-baleares-001.html
+      - regions/baleares/manifest.json
+      - regions/baleares/terrain.bin
+      - regions/baleares/landcover.bin
+      - regions/baleares/objects.json
+      - regions/baleares/routes.json
+      - regions/baleares/landmarks.json
+      - regions/baleares/settlements.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-region-preview-001
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Record frozen 0.15.5 files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-before.sha256
+
+      - name: Check preview source syntax
+        shell: bash
+        run: |
+          node --check world-generator/scripts/build-region-preview.mjs
+          node --check world-generator/scripts/verify-region-preview.mjs
+          node --check world-generator/scripts/verify-region-preview-browser.mjs
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-preview-baleares-001.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          Path('/tmp/region-preview-inline.mjs').write_text(scripts[0], encoding='utf-8')
+          PY
+          node --check /tmp/region-preview-inline.mjs
+
+      - name: Build and validate compact preview package
+        shell: bash
+        run: |
+          node world-generator/scripts/build-region-preview.mjs baleares | tee world-generator/baleares-preview-build.log
+          node world-generator/scripts/verify-region-preview.mjs baleares
+          rm -rf /tmp/baleares-preview-first
+          mkdir -p /tmp/baleares-preview-first
+          cp regions/baleares/preview/baleares-preview-v1.bin /tmp/baleares-preview-first/
+          cp regions/baleares/preview/baleares-preview-v1.json /tmp/baleares-preview-first/
+          node world-generator/scripts/build-region-preview.mjs baleares >/tmp/baleares-preview-rebuild.log
+          diff -q /tmp/baleares-preview-first/baleares-preview-v1.bin regions/baleares/preview/baleares-preview-v1.bin
+          diff -q /tmp/baleares-preview-first/baleares-preview-v1.json regions/baleares/preview/baleares-preview-v1.json
+
+      - name: Install browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Verify preview in local mobile browser
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/baleares-preview-server.log 2>&1 &
+          echo $! >/tmp/baleares-preview-server.pid
+          sleep 2
+          node world-generator/scripts/verify-region-preview-browser.mjs \
+            --url "http://127.0.0.1:8000/mallorca-mobile/region-preview-baleares-001.html?v=local" \
+            --output world-generator/baleares-preview-local-browser.json \
+            --screenshot /tmp/baleares-preview-local.png
+          kill "$(cat /tmp/baleares-preview-server.pid)" || true
+
+      - name: Confirm frozen build is untouched
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-after.sha256
+          diff -u /tmp/waft-0155-preview-before.sha256 /tmp/waft-0155-preview-after.sha256
+
+      - name: Commit preview package
+        id: publish
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            regions/baleares/preview/baleares-preview-v1.bin \
+            regions/baleares/preview/baleares-preview-v1.json \
+            world-generator/baleares-preview-build.json \
+            world-generator/baleares-preview-validation.json \
+            world-generator/baleares-preview-build.log \
+            world-generator/baleares-preview-local-browser.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Baleares region preview 001"
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
+          PREVIEW_COMMIT="$(git rev-parse HEAD)"
+          echo "commit=${PREVIEW_COMMIT}" >> "$GITHUB_OUTPUT"
+          echo "PREVIEW_COMMIT=${PREVIEW_COMMIT}" >> "$GITHUB_ENV"
+          echo "PREVIEW_BUILD_ID=$(jq -r .buildId regions/baleares/preview/baleares-preview-v1.json)" >> "$GITHUB_ENV"
+
+      - name: Wait for GitHub Pages
+        shell: bash
+        run: |
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=${PREVIEW_COMMIT}"
+          DATA_URL="https://xxenesiss.github.io/WAFT-2/regions/baleares/preview/baleares-preview-v1.json?v=${PREVIEW_COMMIT}"
+          echo "PAGE_URL=${PAGE_URL}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 48); do
+            REMOTE_BUILD="$(curl -fsS --max-time 20 "$DATA_URL" | jq -r .buildId 2>/dev/null || true)"
+            if [ "$REMOTE_BUILD" = "$PREVIEW_BUILD_ID" ] && curl -fsS --max-time 20 "$PAGE_URL" | grep -q "VISOR REGIONAL 001"; then
+              echo "GitHub Pages serves ${PREVIEW_BUILD_ID}"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/48): remote=${REMOTE_BUILD:-missing} expected=${PREVIEW_BUILD_ID}"
+            sleep 5
+          done
+          echo "GitHub Pages did not publish the preview in time" >&2
+          exit 1
+
+      - name: Verify public mobile preview
+        shell: bash
+        run: |
+          node world-generator/scripts/verify-region-preview-browser.mjs \
+            --url "$PAGE_URL" \
+            --public \
+            --output world-generator/baleares-preview-public-verification.json \
+            --screenshot /tmp/baleares-preview-public.png
+
+      - name: Record public verification
+        shell: bash
+        run: |
+          git add world-generator/baleares-preview-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Baleares region preview 001"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload preview screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-region-preview-001-screenshots
+          path: |
+            /tmp/baleares-preview-local.png
+            /tmp/baleares-preview-public.png
+          retention-days: 7
