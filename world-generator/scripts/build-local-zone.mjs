@@ -33,6 +33,10 @@ function stableJson(value) {
   return `${JSON.stringify(sort(value), null, 2)}\n`;
 }
 
+function align4(value) {
+  return (value + 3) & ~3;
+}
+
 function parsePreview(buffer) {
   assert(buffer.subarray(0, 8).toString('ascii') === 'WAFTRPV1', 'Invalid regional preview binary');
   const header = {
@@ -215,7 +219,7 @@ function build() {
 
   const terrainOffset = HEADER_BYTES;
   const landcoverOffset = terrainOffset + crop.elevations.byteLength;
-  const buildingOffset = landcoverOffset + crop.classes.byteLength;
+  const buildingOffset = align4(landcoverOffset + crop.classes.byteLength);
   const roadOffset = buildingOffset + buildings.byteLength;
   const landmarkOffset = roadOffset + roads.byteLength;
   const settlementOffset = landmarkOffset + landmarks.records.byteLength;
@@ -243,7 +247,7 @@ function build() {
   binary.writeUInt32LE(totalBytes, 64);
   binary.writeUInt32LE(crop.columns * crop.rows, 68);
   binary.writeInt32LE(NODATA, 72);
-  binary.writeUInt32LE(0, 76);
+  binary.writeUInt32LE(buildingOffset - (landcoverOffset + crop.classes.byteLength), 76);
   writeTypedArray(binary, terrainOffset, crop.elevations);
   writeTypedArray(binary, landcoverOffset, crop.classes);
   writeTypedArray(binary, buildingOffset, buildings);
@@ -306,7 +310,8 @@ function build() {
       bytes: binary.length,
       sha256: sha256(binary),
       magic: MAGIC,
-      headerBytes: HEADER_BYTES
+      headerBytes: HEADER_BYTES,
+      floatAlignmentPadding: buildingOffset - (landcoverOffset + crop.classes.byteLength)
     },
     source: {
       regionalBuildId: regionalMetadata.buildId,
@@ -327,7 +332,8 @@ function build() {
     counts: metadata.counts,
     worldScale,
     footprintScale,
-    regionalRadius
+    regionalRadius,
+    floatAlignmentPadding: metadata.binary.floatAlignmentPadding
   };
   fs.writeFileSync(path.join(ROOT, 'world-generator', 'baleares-llevant-local-build.json'), stableJson(report));
   process.stdout.write(stableJson(report));
