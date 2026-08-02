@@ -1194,19 +1194,37 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
       }
       return { moved, waterSteps, landSteps };
     };
+    const regionalProbeCellSize = 24;
+    const regionalProbeBuildingCells = new Map();
+    for (let offset = 0; offset < preview.buildings.length; offset += 8) {
+      const cellX = Math.floor(preview.buildings[offset] / regionalProbeCellSize);
+      const cellZ = Math.floor(preview.buildings[offset + 2] / regionalProbeCellSize);
+      const key = cellX + ':' + cellZ;
+      let offsets = regionalProbeBuildingCells.get(key);
+      if (!offsets) regionalProbeBuildingCells.set(key, offsets = []);
+      offsets.push(offset);
+    }
     const collidesFullRegionalBuilding = (x, z, radius = state.playerCollisionRadius) => {
       const records = preview.buildings;
       const exaggeration = metadata.display.buildingHorizontalExaggeration;
-      for (let offset = 0; offset < records.length; offset += 8) {
-        const dx = x - records[offset];
-        const dz = z - records[offset + 2];
-        const angle = records[offset + 6];
-        const c = Math.cos(angle), s = Math.sin(angle);
-        const localX = dx * c + dz * s;
-        const localZ = -dx * s + dz * c;
-        const halfX = records[offset + 3] * exaggeration * .5 + radius;
-        const halfZ = records[offset + 5] * exaggeration * .5 + radius;
-        if (Math.abs(localX) < halfX && Math.abs(localZ) < halfZ) return true;
+      const centerCellX = Math.floor(x / regionalProbeCellSize);
+      const centerCellZ = Math.floor(z / regionalProbeCellSize);
+      for (let cellZ = centerCellZ - 1; cellZ <= centerCellZ + 1; cellZ++) {
+        for (let cellX = centerCellX - 1; cellX <= centerCellX + 1; cellX++) {
+          const offsets = regionalProbeBuildingCells.get(cellX + ':' + cellZ);
+          if (!offsets) continue;
+          for (const offset of offsets) {
+            const dx = x - records[offset];
+            const dz = z - records[offset + 2];
+            const angle = records[offset + 6];
+            const c = Math.cos(angle), s = Math.sin(angle);
+            const localX = dx * c + dz * s;
+            const localZ = -dx * s + dz * c;
+            const halfX = records[offset + 3] * exaggeration * .5 + radius;
+            const halfZ = records[offset + 5] * exaggeration * .5 + radius;
+            if (Math.abs(localX) < halfX && Math.abs(localZ) < halfZ) return true;
+          }
+        }
       }
       return false;
     };

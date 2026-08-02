@@ -31,18 +31,13 @@
     "protectedPreviousRuntime": true
   }
 }
-file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs:11
-  if (!condition) throw new Error(message);
-                        ^
-
-Error: Spatial building lookup was not installed
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs:11:25)
-    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs:75:1
-    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
-    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
-    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
-
-Node.js v20.20.2
+{
+  "valid": true,
+  "runtime": "mallorca-mobile/region-runtime-baleares-010.html",
+  "outputBytes": 104399,
+  "outputSha256": "b33c439d883d4e39912541d7bb4d53b9bfd5b0748c1c94a93c070dd8e6c03024",
+  "regionalProbeCellSize": 24
+}
 page.waitForFunction: Timeout 120000ms exceeded.
     at verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs:128:16)
 [runtime-010-verifier] status=1 signal=none error=none
