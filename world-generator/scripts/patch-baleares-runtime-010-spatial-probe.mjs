@@ -67,23 +67,33 @@ const newBlock = `    const regionalProbeCellSize = 24;
       return false;
     };`;
 
+const oldProbeErrors = `      assert(mountain, 'No mountain locomotion probe could be generated');
+      assert(water, 'No open-water locomotion probe could be generated');`;
+const newProbeErrors = `      if (!mountain) throw new Error('No mountain locomotion probe could be generated');
+      if (!water) throw new Error('No open-water locomotion probe could be generated');`;
+
 let html = fs.readFileSync(runtimePath, 'utf8');
 const oldCount = html.split(oldBlock).length - 1;
 const newCount = html.split('const regionalProbeBuildingCells = new Map();').length - 1;
 if (oldCount === 1) html = html.replace(oldBlock, newBlock);
 else assert(newCount === 1, `Expected one unpatched or patched spatial probe, found old=${oldCount} new=${newCount}`);
 assert(html.includes("regionalProbeBuildingCells.get(cellX + ':' + cellZ)"), 'Spatial building lookup was not installed');
+const oldErrorCount = html.split(oldProbeErrors).length - 1;
+if (oldErrorCount === 1) html = html.replace(oldProbeErrors, newProbeErrors);
+else assert(html.includes(newProbeErrors), `Expected browser-safe probe errors, found old=${oldErrorCount}`);
+assert(!html.includes("assert(mountain, 'No mountain locomotion probe could be generated')"), 'Node-only mountain assertion remains in the browser runtime');
 fs.writeFileSync(runtimePath, html);
 
 const buffer = fs.readFileSync(runtimePath);
 const report = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : {};
-report.buildRevision = Math.max(2, Number(report.buildRevision) || 0);
+report.buildRevision = Math.max(3, Number(report.buildRevision) || 0);
 report.outputSha256 = sha256(buffer);
 report.outputBytes = buffer.length;
 report.behavior = {
   ...(report.behavior || {}),
   spatiallyIndexedLocomotionProbe: true,
-  regionalProbeCellSize: 24
+  regionalProbeCellSize: 24,
+  browserSafeLocomotionProbeErrors: true
 };
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify({
@@ -91,5 +101,6 @@ process.stdout.write(`${JSON.stringify({
   runtime: path.relative(ROOT, runtimePath).replaceAll(path.sep, '/'),
   outputBytes: buffer.length,
   outputSha256: report.outputSha256,
-  regionalProbeCellSize: 24
+  regionalProbeCellSize: 24,
+  browserSafeLocomotionProbeErrors: true
 }, null, 2)}\n`);
