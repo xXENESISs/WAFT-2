@@ -1,0 +1,88 @@
+{
+  "binary": {
+    "bytes": 22760,
+    "file": "llevant-local-v1.bin",
+    "floatAlignmentPadding": 0,
+    "headerBytes": 80,
+    "magic": "WAFTLZ01",
+    "sha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b"
+  },
+  "buildId": "baleares-llevant-0ebcf523670c",
+  "center": {
+    "x": 101.26938087180768,
+    "z": 13.218040080000701
+  },
+  "coordinateSpace": "regional-local-window",
+  "counts": {
+    "buildings": 112,
+    "landmarks": 2,
+    "roadSegments": 514,
+    "roadVertices": 1028,
+    "settlements": 1
+  },
+  "deterministic": true,
+  "displayBounds": {
+    "maxX": 410.5099323651627,
+    "maxZ": 424.6565524517741,
+    "minX": -396.2379951204792,
+    "minZ": -402.06093272469747
+  },
+  "footprintScale": 4,
+  "formatVersion": 1,
+  "labels": {
+    "landmarks": [
+      {
+        "id": "osm-landmark-w293497014",
+        "name": "basílica de Son Peretó",
+        "representation": "archetype",
+        "type": "archaeological_site",
+        "wikidataId": "Q810130"
+      },
+      {
+        "id": "osm-landmark-w383990703",
+        "name": "torre de ses Puntes",
+        "representation": "unique-candidate",
+        "type": "castle",
+        "wikidataId": "Q43082719"
+      }
+    ],
+    "settlements": [
+      {
+        "id": "manacor",
+        "name": "Manacor",
+        "place": null,
+        "population": null
+      }
+    ]
+  },
+  "name": "Llevant · Cala Millor–Sa Coma–Cala Bona",
+  "packageType": "waft-local-zone",
+  "regionId": "baleares",
+  "regionalBounds": {
+    "maxX": 135.4785419022379,
+    "maxZ": 48.606086117648545,
+    "minX": 68.24954794510109,
+    "minZ": -20.287037647057417
+  },
+  "regionalRadius": 28,
+  "source": {
+    "fingerprint": "0ebcf523670c0f6e6d87346f05f35a532c33a6ca4dda80ec2e3f68afbbf4ec25",
+    "regionalBinarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
+    "regionalBuildId": "baleares-preview-3068ab4bdb61"
+  },
+  "terrain": {
+    "cells": 864,
+    "columns": 32,
+    "landCells": 853,
+    "rows": 27,
+    "sourceWindow": {
+      "maxColumn": 333,
+      "maxRow": 106,
+      "minColumn": 302,
+      "minRow": 80
+    }
+  },
+  "verticalScaleMultiplier": 1,
+  "worldScale": 12,
+  "zoneId": "llevant"
+}

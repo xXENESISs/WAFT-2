@@ -1,12 +1,46 @@
 == syntax checks ==
 build-check=0 verify-check=0 build-runner-check=0 verify-runner-check=0
 == first configured build ==
-Error: Llevant local zone has too few buildings: 112
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:16:25)
-    at build (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:217:3)
-    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:344:3
+{
+  "binaryBytes": 22760,
+  "binarySha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b",
+  "buildId": "baleares-llevant-0ebcf523670c",
+  "counts": {
+    "buildings": 112,
+    "landmarks": 2,
+    "roadSegments": 514,
+    "roadVertices": 1028,
+    "settlements": 1
+  },
+  "floatAlignmentPadding": 0,
+  "footprintScale": 4,
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "regionalRadius": 28,
+  "terrain": {
+    "cells": 864,
+    "columns": 32,
+    "landCells": 853,
+    "rows": 27,
+    "sourceWindow": {
+      "maxColumn": 333,
+      "maxRow": 106,
+      "minColumn": 302,
+      "minRow": 80
+    }
+  },
+  "valid": true,
+  "worldScale": 12,
+  "zoneId": "llevant"
+}
+build-code=0
+== first configured verification ==
+Error: Invalid local building count: 112
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-local-zone-effective.mjs:12:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-local-zone-effective.mjs:98:3)
+    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-local-zone-effective.mjs:156:3
     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
-build-code=1
+verify-code=1
 deterministic-code=99
