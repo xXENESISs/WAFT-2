@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "registryFile": "zones-v1.json",
+  "packageFormat": "WAFTLZ01",
+  "defaults": {
+    "worldScale": 12,
+    "footprintScale": 4,
+    "verticalScaleMultiplier": 1,
+    "maxBinaryBytes": 4194304,
+    "terrainPaddingMinimum": 1.5,
+    "terrainPaddingRatio": 0.08,
+    "featurePadding": 2
+  },
+  "zones": [
+    {
+      "id": "llevant",
+      "presetId": "llevant",
+      "name": "Llevant · Cala Millor–Sa Coma–Cala Bona",
+      "regionalRadius": 28,
+      "minimumBuildings": 100,
+      "minimumRoadVertices": 600
+    },
+    {
+      "id": "palma",
+      "presetId": "palma",
+      "name": "Palma · Centre–Badia–Ponència",
+      "regionalRadius": 24,
+      "minimumBuildings": 300,
+      "minimumRoadVertices": 1200
+    }
+  ]
+}
