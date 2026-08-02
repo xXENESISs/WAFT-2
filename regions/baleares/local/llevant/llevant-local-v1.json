@@ -7,7 +7,7 @@
     "magic": "WAFTLZ01",
     "sha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b"
   },
-  "buildId": "baleares-llevant-067efe0eaed5",
+  "buildId": "baleares-llevant-c4d1780ceebf",
   "center": {
     "x": 101.26938087180768,
     "z": 13.218040080000701
@@ -74,7 +74,7 @@
   "regionalRadius": 28,
   "source": {
     "configFile": "world-generator/configs/baleares-local-zones.json",
-    "fingerprint": "067efe0eaed52f7b36183cd6ea7443f7d32eb86ed195609b39763b3a7dc918dd",
+    "fingerprint": "c4d1780ceebf9bf58d2bd3d0cf23f56e6afd3762dc9c01e6e15d2bd036f0aa09",
     "regionalBinarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
     "regionalBuildId": "baleares-preview-3068ab4bdb61"
   },
