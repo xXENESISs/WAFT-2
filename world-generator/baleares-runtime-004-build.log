@@ -1,0 +1,26 @@
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "004",
+  "valid": true,
+  "source": "mallorca-mobile/region-runtime-baleares-003.html",
+  "output": "mallorca-mobile/region-runtime-baleares-004.html",
+  "sourceSha256": "94025fcc2aa4b63b81786e92dab3f01b746ec570f1fbd50c803e2f7707431b65",
+  "outputSha256": "ff212aa47b156baa8412d7a68636b9fb58a9290566e1726e604af12f44bce1c5",
+  "outputBytes": 60011,
+  "localZone": {
+    "id": "llevant",
+    "worldScale": 12,
+    "footprintScale": 4,
+    "regionalRadius": 18,
+    "verticalScaleMultiplier": 1
+  },
+  "changes": [
+    "regional-local-dual-coordinate-runtime",
+    "llevant-local-zone-transition",
+    "horizontal-terrain-and-road-expansion",
+    "independent-building-footprint-expansion",
+    "scale-aware-movement-collision-camera-and-hud",
+    "preserve-regional-runtime-and-third-person-controls"
+  ]
+}

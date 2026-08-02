@@ -1,0 +1,81 @@
+{
+  "formatVersion": 1,
+  "verifierVersion": 1,
+  "runtimeVersion": "004",
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-004.html?v=local",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "tests": {
+    "initialMode": "regional",
+    "localZoneId": "llevant",
+    "worldScale": 12,
+    "footprintScale": 4,
+    "localRadius": 18,
+    "eastExpansion": 12,
+    "southExpansion": 12,
+    "coordinateRoundTrip": {
+      "x": 103.76938087180768,
+      "z": 13.218040080000701
+    },
+    "rightDisplayDistance": 2.039759999999666,
+    "rightAlignment": 1.0000000000000002,
+    "forwardDisplayDistance": 2.2795199999998825,
+    "forwardAlignment": 1,
+    "jumpRise": 0.42375000000000007,
+    "exitPreservedRegionalPosition": true,
+    "reenteredLocal": true,
+    "activeBuildings": 1205,
+    "loadedCells": 23,
+    "characterVisible": true,
+    "cameraMode": "third-person"
+  },
+  "finalState": {
+    "position": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "displayPosition": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "cameraEye": {
+      "x": 100.07476203910109,
+      "y": 6.919760669661619,
+      "z": 6.844667203423442
+    },
+    "cameraYaw": 0.4,
+    "playerFacing": 0.37995722024881556,
+    "cameraMode": "third-person",
+    "characterVisible": true,
+    "cameraBlocked": false,
+    "lateralControls": "screen-relative",
+    "worldMode": "local",
+    "worldScale": 12,
+    "footprintScale": 4,
+    "localCenter": {
+      "x": 102.76938087180768,
+      "z": 13.218040080000701
+    },
+    "localRadius": 18,
+    "localZoneId": "llevant",
+    "grounded": true,
+    "activeBuildings": 1205,
+    "loadedCells": 23,
+    "collisions": 0,
+    "preset": "llevant"
+  },
+  "pageErrors": [],
+  "consoleErrors": []
+}
