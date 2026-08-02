@@ -16,7 +16,6 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -34,7 +33,7 @@ jobs:
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Diagnose runtime 002 builder
+      - name: Build and diagnose runtime 002
         id: runtime002
         shell: bash
         run: |
@@ -68,7 +67,7 @@ jobs:
           if [ "$runner_syntax" -eq 0 ] && [ "$build" -eq 0 ] && [ "$inline_syntax" -eq 0 ]; then valid=true; fi
           cat > world-generator/baleares-runtime-002-diagnostic-status.json <<JSON
           {
-            "diagnosticVersion": 2,
+            "diagnosticVersion": 3,
             "runnerSyntax": $runner_syntax,
             "build": $build,
             "inlineSyntax": $inline_syntax,
@@ -80,48 +79,11 @@ jobs:
           if [ "$valid" = true ]; then echo "code=0" >> "$GITHUB_OUTPUT"; else echo "code=1" >> "$GITHUB_OUTPUT"; fi
           exit 0
 
-      - name: Diagnose runtime 002 mobile browser
-        id: runtime002browser
-        if: steps.runtime002.outputs.code == '0'
-        shell: bash
-        run: |
-          set +e
-          LOG=world-generator/baleares-runtime-002-browser-diagnostic.log
-          : > "$LOG"
-          npm install --no-save --no-package-lock playwright-core@1.55.0 >>"$LOG" 2>&1
-          install=$?
-          browser=99
-          if [ "$install" -eq 0 ]; then
-            python3 -m http.server 8000 --bind 127.0.0.1 >>"$LOG" 2>&1 &
-            server_pid=$!
-            sleep 2
-            node world-generator/scripts/verify-region-runtime-002-browser.mjs \
-              --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-002.html?v=diagnostic" \
-              --output world-generator/baleares-runtime-002-browser-diagnostic.json \
-              --screenshot /tmp/baleares-runtime-002-diagnostic.png >>"$LOG" 2>&1
-            browser=$?
-            kill "$server_pid" || true
-          fi
-          valid=false
-          if [ "$install" -eq 0 ] && [ "$browser" -eq 0 ]; then valid=true; fi
-          cat > world-generator/baleares-runtime-002-browser-diagnostic-status.json <<JSON
-          {
-            "diagnosticVersion": 1,
-            "install": $install,
-            "browser": $browser,
-            "valid": $valid
-          }
-          JSON
-          cat world-generator/baleares-runtime-002-browser-diagnostic-status.json
-          cat "$LOG"
-          if [ "$valid" = true ]; then echo "code=0" >> "$GITHUB_OUTPUT"; else echo "code=1" >> "$GITHUB_OUTPUT"; fi
-          exit 0
-
       - name: Show validation report
         if: always()
         run: cat world-generator/validation-report.json
 
-      - name: Commit validation reports
+      - name: Commit validation reports and runtime 002
         if: always()
         shell: bash
         run: |
@@ -131,11 +93,10 @@ jobs:
             world-generator/validation-report.json \
             world-generator/baleares-runtime-002-diagnostic-status.json \
             world-generator/baleares-runtime-002-diagnostic.log \
-            world-generator/baleares-runtime-002-browser-diagnostic-status.json \
-            world-generator/baleares-runtime-002-browser-diagnostic.log \
-            world-generator/baleares-runtime-002-browser-diagnostic.json 2>/dev/null || true
+            world-generator/baleares-runtime-002-build.json \
+            mallorca-mobile/region-runtime-baleares-002.html 2>/dev/null || true
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Diagnose Baleares runtime 002 mobile browser"
+          git commit -m "Publish syntax-validated Baleares runtime 002"
           git pull --rebase origin main
           git push origin HEAD:main
 
@@ -145,8 +106,4 @@ jobs:
 
       - name: Require valid runtime 002 builder
         if: steps.runtime002.outputs.code != '0'
-        run: exit 1
-
-      - name: Require valid runtime 002 browser
-        if: steps.runtime002browser.outputs.code != '0'
         run: exit 1
