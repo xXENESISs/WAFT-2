@@ -82,18 +82,24 @@ const oldErrorCount = html.split(oldProbeErrors).length - 1;
 if (oldErrorCount === 1) html = html.replace(oldProbeErrors, newProbeErrors);
 else assert(html.includes(newProbeErrors), `Expected browser-safe probe errors, found old=${oldErrorCount}`);
 assert(!html.includes("assert(mountain, 'No mountain locomotion probe could be generated')"), 'Node-only mountain assertion remains in the browser runtime');
+const oldMountainDuration = '                suggestedMilliseconds: 260';
+const newMountainDuration = '                suggestedMilliseconds: 850';
+const durationCount = html.split(oldMountainDuration).length - 1;
+if (durationCount === 1) html = html.replace(oldMountainDuration, newMountainDuration);
+else assert(html.includes(newMountainDuration), `Expected one mountain probe duration, found old=${durationCount}`);
 fs.writeFileSync(runtimePath, html);
 
 const buffer = fs.readFileSync(runtimePath);
 const report = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : {};
-report.buildRevision = Math.max(3, Number(report.buildRevision) || 0);
+report.buildRevision = Math.max(4, Number(report.buildRevision) || 0);
 report.outputSha256 = sha256(buffer);
 report.outputBytes = buffer.length;
 report.behavior = {
   ...(report.behavior || {}),
   spatiallyIndexedLocomotionProbe: true,
   regionalProbeCellSize: 24,
-  browserSafeLocomotionProbeErrors: true
+  browserSafeLocomotionProbeErrors: true,
+  mountainProbeMilliseconds: 850
 };
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify({
@@ -102,5 +108,6 @@ process.stdout.write(`${JSON.stringify({
   outputBytes: buffer.length,
   outputSha256: report.outputSha256,
   regionalProbeCellSize: 24,
-  browserSafeLocomotionProbeErrors: true
+  browserSafeLocomotionProbeErrors: true,
+  mountainProbeMilliseconds: 850
 }, null, 2)}\n`);
