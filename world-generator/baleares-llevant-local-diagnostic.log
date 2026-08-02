@@ -1,15 +1,12 @@
-== node --check build-local-zone ==
-build-check=0
-== node --check verify-local-zone ==
-verify-check=0
-== first build ==
-Error: Llevant local zone has too few buildings
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/build-local-zone.mjs:16:25)
-    at build (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/build-local-zone.mjs:216:3)
-    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/build-local-zone.mjs:343:3
+== syntax checks ==
+build-check=0 verify-check=0 build-runner-check=0 verify-runner-check=0
+== first configured build ==
+Error: Llevant local zone has too few buildings: 112
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:16:25)
+    at build (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:217:3)
+    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.build-local-zone-effective.mjs:344:3
     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
 build-code=1
-verify-code=99
 deterministic-code=99
