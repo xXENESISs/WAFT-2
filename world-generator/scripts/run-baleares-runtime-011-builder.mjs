@@ -62,6 +62,41 @@ builder = replaceOnce(
   'full regional collision along travel probe'
 );
 
+builder = replaceOnce(
+  builder,
+  `      const startRadius = node.discoveryRadius + 2.6;
+      for (let index = 0; index < 24; index++) {
+        const angle = index / 24 * Math.PI * 2;
+        const start = { x: node.x + Math.cos(angle) * startRadius, z: node.z + Math.sin(angle) * startRadius };`,
+  `      const startRadius = node.discoveryRadius + 3.2;
+      const targetRadius = Math.max(node.arrivalRadius + .6, node.discoveryRadius - 1.8);
+      for (let index = 0; index < 48; index++) {
+        const angle = index / 48 * Math.PI * 2;
+        const directionX = Math.cos(angle);
+        const directionZ = Math.sin(angle);
+        const start = { x: node.x + directionX * startRadius, z: node.z + directionZ * startRadius };
+        const target = { x: node.x + directionX * targetRadius, z: node.z + directionZ * targetRadius };`,
+  'travel probe boundary points'
+);
+builder = replaceOnce(
+  builder,
+  `          const x = start.x + (node.x - start.x) * t;
+          const z = start.z + (node.z - start.z) * t;`,
+  `          const x = start.x + (target.x - start.x) * t;
+          const z = start.z + (target.z - start.z) * t;`,
+  'travel probe boundary path'
+);
+builder = replaceOnce(
+  builder,
+  `          const directionX = node.x - start.x;
+          const directionZ = node.z - start.z;
+          return { node: { ...node }, start, yaw: Math.atan2(directionX, directionZ), suggestedMilliseconds: 1800 };`,
+  `          const travelX = target.x - start.x;
+          const travelZ = target.z - start.z;
+          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 1100 };`,
+  'travel probe boundary heading'
+);
+
 fs.writeFileSync(temporaryPath, builder);
 const result = spawnSync(process.execPath, [temporaryPath, ...process.argv.slice(2)], {
   cwd: ROOT,
