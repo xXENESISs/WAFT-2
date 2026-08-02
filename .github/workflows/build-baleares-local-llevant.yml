@@ -1,13 +1,16 @@
-name: Build Baleares Llevant local zone
+name: Build Baleares local zones
 
 on:
   push:
     paths:
       - .github/workflows/build-baleares-local-llevant.yml
+      - world-generator/configs/baleares-local-zones.json
       - world-generator/scripts/build-local-zone.mjs
       - world-generator/scripts/verify-local-zone.mjs
       - world-generator/scripts/run-build-local-zone.mjs
       - world-generator/scripts/run-verify-local-zone.mjs
+      - world-generator/scripts/build-local-zone-registry.mjs
+      - world-generator/scripts/verify-local-zone-registry.mjs
       - regions/baleares/preview/baleares-preview-v1.bin
       - regions/baleares/preview/baleares-preview-v1.json
       - regions/baleares/terrain.bin
@@ -18,58 +21,119 @@ permissions:
   contents: write
 
 concurrency:
-  group: baleares-local-llevant-v1
+  group: baleares-local-zones-v1
   cancel-in-progress: true
 
 jobs:
   build-and-verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Record frozen 0.15.5 files
+
+      - name: Record protected runtimes
+        shell: bash
         run: |
-          sha256sum mallorca-mobile/waft-0155-estable.html mallorca-mobile/v155direct2-0{0..6}.js > /tmp/waft-local-before.sha256
-      - name: Check local package scripts
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            > /tmp/waft-local-zones-before.sha256
+
+      - name: Check local-zone scripts
+        shell: bash
         run: |
           node --check world-generator/scripts/build-local-zone.mjs
           node --check world-generator/scripts/verify-local-zone.mjs
           node --check world-generator/scripts/run-build-local-zone.mjs
           node --check world-generator/scripts/run-verify-local-zone.mjs
-      - name: Build and verify local package
+          node --check world-generator/scripts/build-local-zone-registry.mjs
+          node --check world-generator/scripts/verify-local-zone-registry.mjs
+
+      - name: Build and verify registered zones
+        shell: bash
         run: |
           node world-generator/scripts/run-build-local-zone.mjs baleares llevant
           node world-generator/scripts/run-verify-local-zone.mjs baleares llevant
+          node world-generator/scripts/run-build-local-zone.mjs baleares palma
+          node world-generator/scripts/run-verify-local-zone.mjs baleares palma
+          node world-generator/scripts/build-local-zone-registry.mjs baleares
+          node world-generator/scripts/verify-local-zone-registry.mjs baleares
+
       - name: Verify deterministic rebuild
+        shell: bash
         run: |
-          rm -rf /tmp/llevant-local-first
-          mkdir -p /tmp/llevant-local-first
-          cp regions/baleares/local/llevant/llevant-local-v1.bin /tmp/llevant-local-first/
-          cp regions/baleares/local/llevant/llevant-local-v1.json /tmp/llevant-local-first/
+          rm -rf /tmp/baleares-local-zones-first
+          mkdir -p /tmp/baleares-local-zones-first/llevant /tmp/baleares-local-zones-first/palma
+          cp regions/baleares/local/llevant/llevant-local-v1.bin /tmp/baleares-local-zones-first/llevant/
+          cp regions/baleares/local/llevant/llevant-local-v1.json /tmp/baleares-local-zones-first/llevant/
+          cp regions/baleares/local/palma/palma-local-v1.bin /tmp/baleares-local-zones-first/palma/
+          cp regions/baleares/local/palma/palma-local-v1.json /tmp/baleares-local-zones-first/palma/
+          cp regions/baleares/local/zones-v1.json /tmp/baleares-local-zones-first/
+
           node world-generator/scripts/run-build-local-zone.mjs baleares llevant >/tmp/llevant-local-rebuild.log
-          diff -q /tmp/llevant-local-first/llevant-local-v1.bin regions/baleares/local/llevant/llevant-local-v1.bin
-          diff -q /tmp/llevant-local-first/llevant-local-v1.json regions/baleares/local/llevant/llevant-local-v1.json
+          node world-generator/scripts/run-build-local-zone.mjs baleares palma >/tmp/palma-local-rebuild.log
+          node world-generator/scripts/build-local-zone-registry.mjs baleares >/tmp/local-registry-rebuild.log
+
+          diff -q /tmp/baleares-local-zones-first/llevant/llevant-local-v1.bin regions/baleares/local/llevant/llevant-local-v1.bin
+          diff -q /tmp/baleares-local-zones-first/llevant/llevant-local-v1.json regions/baleares/local/llevant/llevant-local-v1.json
+          diff -q /tmp/baleares-local-zones-first/palma/palma-local-v1.bin regions/baleares/local/palma/palma-local-v1.bin
+          diff -q /tmp/baleares-local-zones-first/palma/palma-local-v1.json regions/baleares/local/palma/palma-local-v1.json
+          diff -q /tmp/baleares-local-zones-first/zones-v1.json regions/baleares/local/zones-v1.json
+
           node world-generator/scripts/run-verify-local-zone.mjs baleares llevant
-      - name: Confirm frozen build unchanged
+          node world-generator/scripts/run-verify-local-zone.mjs baleares palma
+          node world-generator/scripts/verify-local-zone-registry.mjs baleares
+
+      - name: Confirm protected runtimes unchanged
+        shell: bash
         run: |
-          sha256sum mallorca-mobile/waft-0155-estable.html mallorca-mobile/v155direct2-0{0..6}.js > /tmp/waft-local-after.sha256
-          diff -u /tmp/waft-local-before.sha256 /tmp/waft-local-after.sha256
-      - name: Commit generated package and reports
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            > /tmp/waft-local-zones-after.sha256
+          diff -u /tmp/waft-local-zones-before.sha256 /tmp/waft-local-zones-after.sha256
+
+      - name: Commit generated zones, registry and reports
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             regions/baleares/local/llevant/llevant-local-v1.bin \
             regions/baleares/local/llevant/llevant-local-v1.json \
+            regions/baleares/local/palma/palma-local-v1.bin \
+            regions/baleares/local/palma/palma-local-v1.json \
+            regions/baleares/local/zones-v1.json \
             world-generator/baleares-llevant-local-build.json \
-            world-generator/baleares-llevant-local-validation.json
+            world-generator/baleares-llevant-local-validation.json \
+            world-generator/baleares-palma-local-build.json \
+            world-generator/baleares-palma-local-validation.json \
+            world-generator/baleares-local-zone-registry-build.json \
+            world-generator/baleares-local-zone-registry-validation.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Generate Llevant local exploration package"
+          git commit -m "Generate registered Baleares local exploration zones"
           git pull --rebase origin main
           git push origin HEAD:main
