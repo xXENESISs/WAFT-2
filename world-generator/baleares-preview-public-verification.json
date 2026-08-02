@@ -1,8 +1,9 @@
 {
   "formatVersion": 1,
+  "verifierVersion": 3,
   "valid": true,
   "public": true,
-  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=1bde0209386ca985ea48ee7f63ffe5fadaef2691",
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=1aaa26c9dde63d2b29fa95de9799e1ff3fc1d88a",
   "buildId": "baleares-preview-3068ab4bdb61",
   "stats": {
     "buildings": 5866,
@@ -41,6 +42,15 @@
       "z": 56.699600000000004
     },
     "buildId": "baleares-preview-3068ab4bdb61"
+  },
+  "runtime": {
+    "valid": false,
+    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=1aaa26c9dde63d2b29fa95de9799e1ff3fc1d88a",
+    "error": "page.waitForFunction: Timeout 120000ms exceeded.\n    at verifyRuntime (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:44:16)\n    at async verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:191:21)",
+    "pageErrors": [],
+    "consoleErrors": [
+      "ReferenceError: assert is not defined\n    at setupControls (https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=1aaa26c9dde63d2b29fa95de9799e1ff3fc1d88a:456:5)\n    at boot (https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=1aaa26c9dde63d2b29fa95de9799e1ff3fc1d88a:521:29)"
+    ]
   },
   "pageErrors": [],
   "consoleErrors": [
