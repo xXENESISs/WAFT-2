@@ -1,5 +1,6 @@
 name: Diagnose Baleares runtime 005 browser
 
+# Diagnostic revision 2.
 on:
   push:
     paths:
