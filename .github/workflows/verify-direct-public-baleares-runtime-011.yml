@@ -1,0 +1,100 @@
+name: Verify direct public Baleares runtime 011
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-direct-public-baleares-runtime-011.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-011-direct-public
+  cancel-in-progress: true
+
+jobs:
+  verify-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Resolve exact public URL
+        shell: bash
+        run: |
+          blob="$(git hash-object mallorca-mobile/region-runtime-baleares-011.html)"
+          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-011.html?v=${blob}"
+          echo "RUNTIME_BLOB=${blob}" >> "$GITHUB_ENV"
+          echo "PUBLIC_RUNTIME_URL=${url}" >> "$GITHUB_ENV"
+
+      - name: Wait for exact GitHub Pages build
+        shell: bash
+        run: |
+          for attempt in $(seq 1 120); do
+            body="$(curl -fsS --max-time 20 "$PUBLIC_RUNTIME_URL" || true)"
+            if printf '%s' "$body" | grep -q 'RUNTIME REGIONAL 011' && printf '%s' "$body" | grep -q 'getTravelState'; then
+              echo "Exact runtime 011 is public: $PUBLIC_RUNTIME_URL"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/120)"
+            sleep 5
+          done
+          exit 1
+
+      - name: Run public mobile verification
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          node world-generator/scripts/verify-baleares-runtime-011-browser.mjs \
+            --url "$PUBLIC_RUNTIME_URL" \
+            --public \
+            --output world-generator/baleares-runtime-011-public-verification.json \
+            --screenshot /tmp/runtime-011-direct-public.png \
+            > world-generator/baleares-runtime-011-direct-public.log 2>&1
+          code=$?
+          printf '{"exitCode":%s,"url":"%s","blob":"%s"}\n' "$code" "$PUBLIC_RUNTIME_URL" "$RUNTIME_BLOB" \
+            > world-generator/baleares-runtime-011-direct-public-status.json
+          cat world-generator/baleares-runtime-011-direct-public.log
+          echo "code=${code}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit public result
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          optional=(
+            world-generator/baleares-runtime-011-public-verification.json
+            world-generator/baleares-runtime-011-direct-public.log
+            world-generator/baleares-runtime-011-direct-public-status.json
+          )
+          for path in "${optional[@]}"; do [ -f "$path" ] && git add "$path"; done
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify direct public Baleares runtime 011"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Require public success
+        if: steps.verify.outputs.code != '0'
+        run: exit 1
+
+      - name: Upload public screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-011-direct-public
+          path: /tmp/runtime-011-direct-public.png
+          retention-days: 7
