@@ -1,0 +1,3 @@
+Error: Local package has invalid building reduction
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-005-browser.mjs:37:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-005-browser.mjs:119:5)
