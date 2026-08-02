@@ -93,9 +93,9 @@
       "streamedBuildings": 994,
       "loadedCells": 15,
       "collisionProbe": true,
-      "jumpRise": 0.2287499999999998,
+      "jumpRise": 0.3013874850000011,
       "landed": true,
-      "movementDistance": 0.4802400000000068,
+      "movementDistance": 0.3599999999999981,
       "respawnGrounded": true
     },
     "finalState": {

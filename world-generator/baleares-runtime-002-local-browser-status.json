@@ -1,6 +1,6 @@
 {
   "verificationVersion": 1,
   "scope": "local",
-  "exitCode": 1,
-  "valid": false
+  "exitCode": 0,
+  "valid": true
 }

@@ -1,2 +1,65 @@
-Error: Invalid third-person camera distance 0.9579544502014021
-    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-runtime-002-browser.mjs:94:74)
+{
+  "formatVersion": 1,
+  "verifierVersion": 3,
+  "runtimeVersion": "002",
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-002.html?v=local",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "presets": [
+    "Palma",
+    "Llevant",
+    "Alcúdia",
+    "Menorca",
+    "Eivissa"
+  ],
+  "tests": {
+    "totalBuildings": 5866,
+    "streamedBuildings": 994,
+    "loadedCells": 15,
+    "collisionProbe": true,
+    "initialCameraDistance": 1.3510136170029574,
+    "jumpRise": 0.2287499999999998,
+    "landed": true,
+    "movementDistance": 1.4400000000001414,
+    "facingChange": 1.4726215563702159,
+    "cameraDistanceAfterMovement": 6.73291405949698,
+    "respawnGrounded": true,
+    "cameraMode": "third-person",
+    "characterVisible": true
+  },
+  "finalState": {
+    "position": {
+      "x": 445.1680733656737,
+      "y": 2.01,
+      "z": -123.33401159999963
+    },
+    "cameraEye": {
+      "x": 442.7728566254901,
+      "y": 4.7486761508103275,
+      "z": -128.99923193473498
+    },
+    "playerFacing": 1.8726215563702158,
+    "cameraMode": "third-person",
+    "characterVisible": true,
+    "cameraBlocked": false,
+    "grounded": true,
+    "activeBuildings": 782,
+    "loadedCells": 10,
+    "collisions": 0,
+    "preset": "menorca"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ]
+}
