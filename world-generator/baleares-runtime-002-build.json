@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "runtimeVersion": "002",
+  "valid": true,
+  "source": "mallorca-mobile/region-runtime-baleares-001.html",
+  "output": "mallorca-mobile/region-runtime-baleares-002.html",
+  "sourceSha256": "22a8554588199caa85fc172dec78c81c9597bfe74cbd046894557ed0b82237de",
+  "outputSha256": "e4976dd5b044fe28daa99306da2e5e772d36804f4a9a4029ef88f5d074b4dd44",
+  "outputBytes": 53305,
+  "features": [
+    "third-person-orbit-camera",
+    "camera-terrain-and-building-occlusion",
+    "visible-procedural-macaque-placeholder",
+    "movement-facing-and-walk-animation",
+    "gravity-jump-and-safe-respawn",
+    "building-cell-streaming",
+    "mobile-touch-controls"
+  ]
+}
