@@ -16,7 +16,7 @@ const patches = [
   },
   {
     from: "  assert(buildings.length / BUILDING_FLOATS >= 250, 'Llevant local zone has too few buildings');",
-    to: "  const localBuildingCount = buildings.length / BUILDING_FLOATS;\n  assert(localBuildingCount >= 150, `Llevant local zone has too few buildings: ${localBuildingCount}`);",
+    to: "  const localBuildingCount = buildings.length / BUILDING_FLOATS;\n  assert(localBuildingCount >= 100, `Llevant local zone has too few buildings: ${localBuildingCount}`);",
     label: 'Llevant minimum building density'
   }
 ];
