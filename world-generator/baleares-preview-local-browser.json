@@ -1,0 +1,49 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/region-preview-baleares-001.html?v=local",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "stats": {
+    "buildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "namedBuildings": 2561,
+    "roadSegments": 17046,
+    "roadVertices": 34092,
+    "selectedRoads": 12500,
+    "settlements": 70,
+    "webgl2": true,
+    "buildId": "baleares-preview-3068ab4bdb61",
+    "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684"
+  },
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "presets": [
+    "Tot",
+    "Palma",
+    "Llevant",
+    "Alcúdia",
+    "Menorca",
+    "Eivissa"
+  ],
+  "interaction": {
+    "camera": {
+      "x": -142.347,
+      "y": 42.24,
+      "z": 56.699600000000004
+    },
+    "buildId": "baleares-preview-3068ab4bdb61"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ]
+}

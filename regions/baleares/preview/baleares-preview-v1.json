@@ -1,0 +1,1220 @@
+{
+  "binary": {
+    "bytes": 736184,
+    "file": "baleares-preview-v1.bin",
+    "headerBytes": 80,
+    "magic": "WAFTRPV1",
+    "sha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684"
+  },
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "counts": {
+    "buildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "namedBuildings": 2561,
+    "roadSegments": 17046,
+    "roadVertices": 34092,
+    "selectedRoads": 12500,
+    "settlements": 70
+  },
+  "display": {
+    "buildingHorizontalExaggeration": 2.7,
+    "buildingVerticalScale": 0.075,
+    "landmarkLift": 2.6,
+    "roadLift": 0.16
+  },
+  "distributions": {
+    "buildingKinds": {
+      "commercial": 1139,
+      "historic": 192,
+      "hotel": 2663,
+      "ordinary": 1368,
+      "public": 118,
+      "religious": 386
+    },
+    "landmarkRepresentations": {
+      "archetype": 68,
+      "unique": 4,
+      "unique-candidate": 18
+    },
+    "roadClasses": {
+      "motorway": 486,
+      "primary": 3973,
+      "secondary": 3146,
+      "tertiary": 4268,
+      "trunk": 627
+    }
+  },
+  "formatVersion": 1,
+  "generationStage": "wikidata-ranked-landmarks",
+  "landmarks": [
+    {
+      "id": "castell-bellver",
+      "name": "castell de Bellver",
+      "representation": "unique",
+      "type": "castle",
+      "wikidataId": null
+    },
+    {
+      "id": "castell-capdepera",
+      "name": "Castell de Capdepera",
+      "representation": "unique",
+      "type": "castle",
+      "wikidataId": null
+    },
+    {
+      "id": "castell-punta-amer",
+      "name": "Castell de la Punta de n'Amer",
+      "representation": "archetype",
+      "type": "tower",
+      "wikidataId": null
+    },
+    {
+      "id": "catedral-mallorca",
+      "name": "església de Sant Joan de Malta",
+      "representation": "unique",
+      "type": "cathedral",
+      "wikidataId": null
+    },
+    {
+      "id": "coves-drach",
+      "name": "Coves dels Hams",
+      "representation": "unique",
+      "type": "natural_landmark",
+      "wikidataId": null
+    },
+    {
+      "id": "far-formentor",
+      "name": "far de Formentor",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": null
+    },
+    {
+      "id": "osm-landmark-n1129379432",
+      "name": "Es Figueral de Son Real",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q5861900"
+    },
+    {
+      "id": "osm-landmark-n1133807939",
+      "name": "far del Cap Blanc",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q8960878"
+    },
+    {
+      "id": "osm-landmark-n1445506763",
+      "name": "Castell de Santa Àgueda",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q952626"
+    },
+    {
+      "id": "osm-landmark-n1566343851",
+      "name": "far de la Mola",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856434"
+    },
+    {
+      "id": "osm-landmark-n1587270862",
+      "name": "Naveta Alemany",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q5558060"
+    },
+    {
+      "id": "osm-landmark-n1634402016",
+      "name": "Dolmen de Son Bauló de Dalt",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q20986278"
+    },
+    {
+      "id": "osm-landmark-n1857831582",
+      "name": "poblat de Son Catlar",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q9061215"
+    },
+    {
+      "id": "osm-landmark-n1954972427",
+      "name": "Torre d'en Quart",
+      "representation": "archetype",
+      "type": "castle",
+      "wikidataId": "Q43142597"
+    },
+    {
+      "id": "osm-landmark-n2795373918",
+      "name": "Castell de Santueri",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q908268"
+    },
+    {
+      "id": "osm-landmark-n289535967",
+      "name": "coves del Drac",
+      "representation": "archetype",
+      "type": "monument",
+      "wikidataId": "Q429431"
+    },
+    {
+      "id": "osm-landmark-n35346188",
+      "name": "coves d'Artà",
+      "representation": "archetype",
+      "type": "natural_landmark",
+      "wikidataId": "Q1138119"
+    },
+    {
+      "id": "osm-landmark-n3678668135",
+      "name": "balma de Son Matge",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q19843480"
+    },
+    {
+      "id": "osm-landmark-n3717549899",
+      "name": "Castell de Sant Felip",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q2970599"
+    },
+    {
+      "id": "osm-landmark-n4406728904",
+      "name": "cova de Santa Agnès",
+      "representation": "archetype",
+      "type": "natural_landmark",
+      "wikidataId": "Q11915930"
+    },
+    {
+      "id": "osm-landmark-n461796868",
+      "name": "Poblat talaiòtic de Capocorb Vell",
+      "representation": "archetype",
+      "type": "monument",
+      "wikidataId": "Q1034758"
+    },
+    {
+      "id": "osm-landmark-n463538725",
+      "name": "Torre Picada",
+      "representation": "archetype",
+      "type": "tower",
+      "wikidataId": "Q2444541"
+    },
+    {
+      "id": "osm-landmark-n4799496476",
+      "name": "naveta oriental de Biniac-Argentina",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q27956344"
+    },
+    {
+      "id": "osm-landmark-n541006537",
+      "name": "Poblat murat de ses Païsses",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q1403219"
+    },
+    {
+      "id": "osm-landmark-n631872796",
+      "name": "far de Llebeig",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856363"
+    },
+    {
+      "id": "osm-landmark-n631872798",
+      "name": "far de Tramuntana",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856392"
+    },
+    {
+      "id": "osm-landmark-n659850571",
+      "name": "far de sa Creu",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856488"
+    },
+    {
+      "id": "osm-landmark-n678832675",
+      "name": "necròpoli de Son Real",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q727501"
+    },
+    {
+      "id": "osm-landmark-n697883608",
+      "name": "far d'Alcanada",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856347"
+    },
+    {
+      "id": "osm-landmark-n788275291",
+      "name": "Puig Major",
+      "representation": "archetype",
+      "type": "natural_landmark",
+      "wikidataId": "Q587189"
+    },
+    {
+      "id": "osm-landmark-n972552381",
+      "name": "Restes prehistòriques de Son Corró / Can Gallet",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q6132048"
+    },
+    {
+      "id": "osm-landmark-n9972811537",
+      "name": "poblat talaiòtic de na Nova",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q43104528"
+    },
+    {
+      "id": "osm-landmark-r11936313",
+      "name": "Torre de Cala Llonga",
+      "representation": "archetype",
+      "type": "fortress",
+      "wikidataId": "Q43142411"
+    },
+    {
+      "id": "osm-landmark-r14162681",
+      "name": "Fortí d'Illetes",
+      "representation": "archetype",
+      "type": "fortress",
+      "wikidataId": "Q43146029"
+    },
+    {
+      "id": "osm-landmark-r1750237",
+      "name": "Cartoixa de Valldemossa",
+      "representation": "archetype",
+      "type": "church",
+      "wikidataId": "Q1494326"
+    },
+    {
+      "id": "osm-landmark-r2424202",
+      "name": "Palau Reial de l'Almudaina",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q3176377"
+    },
+    {
+      "id": "osm-landmark-w1034891337",
+      "name": "far del Cap Gros",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856361"
+    },
+    {
+      "id": "osm-landmark-w113623849",
+      "name": "Naveta des Tudons",
+      "representation": "unique-candidate",
+      "type": "archaeological_site",
+      "wikidataId": "Q1972356"
+    },
+    {
+      "id": "osm-landmark-w120741516",
+      "name": "poblat talaiòtic de s'Illot",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q2389827"
+    },
+    {
+      "id": "osm-landmark-w132369713",
+      "name": "far de Favàritx",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q8960896"
+    },
+    {
+      "id": "osm-landmark-w1333301063",
+      "name": "far de Barbaria",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856374"
+    },
+    {
+      "id": "osm-landmark-w151257472",
+      "name": "Turriforme esglaonat de Son Ferrer",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q9090620"
+    },
+    {
+      "id": "osm-landmark-w151992877",
+      "name": "Castell de Sant Antoni",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q17596606"
+    },
+    {
+      "id": "osm-landmark-w171277465",
+      "name": "sa Farola",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q18149997"
+    },
+    {
+      "id": "osm-landmark-w173542977",
+      "name": "Catedral d'Eivissa",
+      "representation": "unique-candidate",
+      "type": "cathedral",
+      "wikidataId": "Q2942557"
+    },
+    {
+      "id": "osm-landmark-w173776533",
+      "name": "església de Santa Eulàlia",
+      "representation": "archetype",
+      "type": "church",
+      "wikidataId": "Q11682892"
+    },
+    {
+      "id": "osm-landmark-w182854850",
+      "name": "far de l'Illa de l'Aire",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856428"
+    },
+    {
+      "id": "osm-landmark-w200306323",
+      "name": "Fortalesa de la Mola",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q11681904"
+    },
+    {
+      "id": "osm-landmark-w201442962",
+      "name": "Basílica del Cap del Port de Fornells",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q11908701"
+    },
+    {
+      "id": "osm-landmark-w201444606",
+      "name": "far de Punta Nati",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q5856471"
+    },
+    {
+      "id": "osm-landmark-w206594763",
+      "name": "Torre de Cala Figuera",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q22066402"
+    },
+    {
+      "id": "osm-landmark-w214428666",
+      "name": "es Pontàs",
+      "representation": "archetype",
+      "type": "natural_landmark",
+      "wikidataId": "Q1366405"
+    },
+    {
+      "id": "osm-landmark-w218840678",
+      "name": "far de Portopí",
+      "representation": "unique-candidate",
+      "type": "lighthouse",
+      "wikidataId": "Q5856454"
+    },
+    {
+      "id": "osm-landmark-w218840679",
+      "name": "Torre de Paraires",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q559220"
+    },
+    {
+      "id": "osm-landmark-w219159024",
+      "name": "Necròpolis cartagineses a Eivissa",
+      "representation": "unique-candidate",
+      "type": "archaeological_site",
+      "wikidataId": "Q3346918"
+    },
+    {
+      "id": "osm-landmark-w245033266",
+      "name": "Son Fornés",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q2300742"
+    },
+    {
+      "id": "osm-landmark-w25883629",
+      "name": "Catedral de Mallorca",
+      "representation": "unique-candidate",
+      "type": "cathedral",
+      "wikidataId": "Q1298819"
+    },
+    {
+      "id": "osm-landmark-w261583338",
+      "name": "Torre de Son Ganxo",
+      "representation": "archetype",
+      "type": "tower",
+      "wikidataId": "Q9088920"
+    },
+    {
+      "id": "osm-landmark-w293494233",
+      "name": "Sanisera",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q3302594"
+    },
+    {
+      "id": "osm-landmark-w293497014",
+      "name": "basílica de Son Peretó",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q810130"
+    },
+    {
+      "id": "osm-landmark-w293567375",
+      "name": "Puig de sa Morisca",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q6092629"
+    },
+    {
+      "id": "osm-landmark-w293571114",
+      "name": "Poblament fenici de sa Caleta",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q1822057"
+    },
+    {
+      "id": "osm-landmark-w295500564",
+      "name": "Fortalesa de Sant Carles",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q577830"
+    },
+    {
+      "id": "osm-landmark-w301945453",
+      "name": "Castell de Bendinat",
+      "representation": "archetype",
+      "type": "castle",
+      "wikidataId": "Q63903002"
+    },
+    {
+      "id": "osm-landmark-w307781617",
+      "name": "Talaia de ses Ànimes",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q18008271"
+    },
+    {
+      "id": "osm-landmark-w334459172",
+      "name": "torre d’Alcalfar",
+      "representation": "archetype",
+      "type": "tower",
+      "wikidataId": "Q19758774"
+    },
+    {
+      "id": "osm-landmark-w354652536",
+      "name": "Talatí de Dalt",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q2389896"
+    },
+    {
+      "id": "osm-landmark-w375058822",
+      "name": "poblat talaiòtic de Torralba d'en Salort",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q2444476"
+    },
+    {
+      "id": "osm-landmark-w376242942",
+      "name": "Castell de Sant Elm",
+      "representation": "archetype",
+      "type": "castle",
+      "wikidataId": "Q43141170"
+    },
+    {
+      "id": "osm-landmark-w383990703",
+      "name": "torre de ses Puntes",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q43082719"
+    },
+    {
+      "id": "osm-landmark-w41793484",
+      "name": "basílica de Son Bou",
+      "representation": "archetype",
+      "type": "monument",
+      "wikidataId": "Q168365"
+    },
+    {
+      "id": "osm-landmark-w41808276",
+      "name": "catedral de Menorca",
+      "representation": "unique-candidate",
+      "type": "cathedral",
+      "wikidataId": "Q730526"
+    },
+    {
+      "id": "osm-landmark-w423494011",
+      "name": "Poblat i hipogeus de Torre d'en Galmés",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q462996"
+    },
+    {
+      "id": "osm-landmark-w423925064",
+      "name": "Poblat de navetes de Son Morell Nou - coll de Cala Morell",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q927907"
+    },
+    {
+      "id": "osm-landmark-w487044661",
+      "name": "Hipogeu de Torre del Ram",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q1641338"
+    },
+    {
+      "id": "osm-landmark-w487488047",
+      "name": "Poblat de Cornia Nou - sa Talaia",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q11915672"
+    },
+    {
+      "id": "osm-landmark-w487540413",
+      "name": "l'Hospitalet Vell",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q370336"
+    },
+    {
+      "id": "osm-landmark-w488685679",
+      "name": "Assentament i necròpolis de So na Caçana",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q16465959"
+    },
+    {
+      "id": "osm-landmark-w571114785",
+      "name": "torre de defensa del Castell de Sant Nicolau",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q6150471"
+    },
+    {
+      "id": "osm-landmark-w571873522",
+      "name": "Basílica paleocristiana de l'Illa del Rei",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q8840707"
+    },
+    {
+      "id": "osm-landmark-w577254760",
+      "name": "Poblat de Binissafullet",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q11942142"
+    },
+    {
+      "id": "osm-landmark-w583563536",
+      "name": "Casa talaiòtica de Biniparratx Petit",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q40356825"
+    },
+    {
+      "id": "osm-landmark-w607136377",
+      "name": "Almudaina d'Eivissa",
+      "representation": "archetype",
+      "type": "castle",
+      "wikidataId": "Q43142933"
+    },
+    {
+      "id": "osm-landmark-w692275710",
+      "name": "Santuari de Sant Salvador",
+      "representation": "archetype",
+      "type": "church",
+      "wikidataId": "Q1236385"
+    },
+    {
+      "id": "osm-landmark-w74317241",
+      "name": "Far del Cap de Cavalleria",
+      "representation": "archetype",
+      "type": "lighthouse",
+      "wikidataId": "Q8960888"
+    },
+    {
+      "id": "osm-landmark-w74492944",
+      "name": "Far d'Artrutx",
+      "representation": "unique-candidate",
+      "type": "lighthouse",
+      "wikidataId": "Q5856351"
+    },
+    {
+      "id": "osm-landmark-w778773501",
+      "name": "Poblat de navetes de Son Mercer de Baix - sa Cova des Moro",
+      "representation": "archetype",
+      "type": "archaeological_site",
+      "wikidataId": "Q1137979"
+    },
+    {
+      "id": "osm-landmark-w81058569",
+      "name": "Castell del Rei",
+      "representation": "unique-candidate",
+      "type": "castle",
+      "wikidataId": "Q8342667"
+    },
+    {
+      "id": "osm-landmark-w99993608",
+      "name": "teatre romà d'Alcúdia",
+      "representation": "archetype",
+      "type": "monument",
+      "wikidataId": "Q9082219"
+    },
+    {
+      "id": "santuari-lluc",
+      "name": "Basílica de la Mare de Déu de Lluc",
+      "representation": "archetype",
+      "type": "monastery",
+      "wikidataId": null
+    }
+  ],
+  "mappings": {
+    "buildingKinds": {
+      "commercial": 5,
+      "historic": 3,
+      "hotel": 1,
+      "ordinary": 0,
+      "public": 4,
+      "religious": 2
+    },
+    "representations": {
+      "archetype": 0,
+      "marker": 0,
+      "unique": 2,
+      "unique-candidate": 1
+    },
+    "roadClasses": {
+      "bridleway": 9,
+      "cycleway": 9,
+      "footway": 8,
+      "living_street": 5,
+      "motorway": 0,
+      "motorway_link": 0,
+      "path": 8,
+      "pedestrian": 8,
+      "primary": 2,
+      "primary_link": 2,
+      "residential": 5,
+      "secondary": 3,
+      "secondary_link": 3,
+      "service": 6,
+      "steps": 10,
+      "tertiary": 4,
+      "tertiary_link": 4,
+      "track": 7,
+      "trunk": 1,
+      "trunk_link": 1,
+      "unclassified": 6
+    }
+  },
+  "presets": [
+    {
+      "altitude": 310,
+      "distance": 0,
+      "id": "overview",
+      "name": "Tot",
+      "terrainMeters": 0,
+      "x": 0,
+      "z": 0
+    },
+    {
+      "altitude": 42,
+      "distance": 34,
+      "id": "palma",
+      "name": "Palma",
+      "terrainMeters": 8,
+      "x": -117.867,
+      "z": 32.2196
+    },
+    {
+      "altitude": 48,
+      "distance": 42,
+      "id": "llevant",
+      "name": "Llevant",
+      "terrainMeters": 88,
+      "x": 101.26938087180768,
+      "z": 13.218040080000701
+    },
+    {
+      "altitude": 45,
+      "distance": 38,
+      "id": "alcúdia",
+      "name": "Alcúdia",
+      "terrainMeters": 11,
+      "x": 72.16298978119798,
+      "z": -106.96899527999827
+    },
+    {
+      "altitude": 52,
+      "distance": 46,
+      "id": "menorca",
+      "name": "Menorca",
+      "terrainMeters": 47,
+      "x": 445.1680733656737,
+      "z": -121.83401159999963
+    },
+    {
+      "altitude": 50,
+      "distance": 44,
+      "id": "eivissa",
+      "name": "Eivissa",
+      "terrainMeters": 15,
+      "x": -478.1857376151559,
+      "z": 291.8526357599995
+    }
+  ],
+  "regionId": "baleares",
+  "regionName": "Islas Baleares",
+  "settlements": [
+    {
+      "id": "alcudia",
+      "name": "Alcúdia",
+      "place": null,
+      "population": null
+    },
+    {
+      "id": "cala-millor",
+      "name": "Cala Millor",
+      "place": null,
+      "population": null
+    },
+    {
+      "id": "eivissa",
+      "name": "Eivissa",
+      "place": null,
+      "population": null
+    },
+    {
+      "id": "manacor",
+      "name": "Manacor",
+      "place": null,
+      "population": null
+    },
+    {
+      "id": "mao",
+      "name": "Maó",
+      "place": null,
+      "population": null
+    },
+    {
+      "id": "osm-n11042819611",
+      "name": "sa Carroca",
+      "place": "village",
+      "population": 2325
+    },
+    {
+      "id": "osm-n11042819622",
+      "name": "Cala de Bou",
+      "place": "village",
+      "population": 9836
+    },
+    {
+      "id": "osm-n11054973846",
+      "name": "Platja d'Alcúdia",
+      "place": "village",
+      "population": 7291
+    },
+    {
+      "id": "osm-n11069624310",
+      "name": "Son Macià-sa Nova Cabana",
+      "place": "village",
+      "population": 2426
+    },
+    {
+      "id": "osm-n142778723",
+      "name": "Port de Pollença",
+      "place": "village",
+      "population": 7106
+    },
+    {
+      "id": "osm-n1874306875",
+      "name": "Colònia de Sant Jordi",
+      "place": "village",
+      "population": 2971
+    },
+    {
+      "id": "osm-n240974549",
+      "name": "Muro",
+      "place": "village",
+      "population": 6915
+    },
+    {
+      "id": "osm-n2487094876",
+      "name": "Santa Eulària des Riu",
+      "place": "town",
+      "population": 12101
+    },
+    {
+      "id": "osm-n250737780",
+      "name": "Ca'n Picafort",
+      "place": "town",
+      "population": 8869
+    },
+    {
+      "id": "osm-n251717463",
+      "name": "Santa Maria del Camí",
+      "place": "village",
+      "population": 6141
+    },
+    {
+      "id": "osm-n252135241",
+      "name": "Santa Margalida",
+      "place": "village",
+      "population": 4018
+    },
+    {
+      "id": "osm-n252314034",
+      "name": "sa Pobla",
+      "place": "town",
+      "population": 14191
+    },
+    {
+      "id": "osm-n253256404",
+      "name": "Bunyola",
+      "place": "village",
+      "population": 2652
+    },
+    {
+      "id": "osm-n253257146",
+      "name": "Consell",
+      "place": "village",
+      "population": 3832
+    },
+    {
+      "id": "osm-n253262027",
+      "name": "Peguera",
+      "place": "village",
+      "population": 4087
+    },
+    {
+      "id": "osm-n253262064",
+      "name": "Andratx",
+      "place": "village",
+      "population": 7863
+    },
+    {
+      "id": "osm-n254088516",
+      "name": "Campanet",
+      "place": "village",
+      "population": 2376
+    },
+    {
+      "id": "osm-n26475225",
+      "name": "Felanitx",
+      "place": "town",
+      "population": 10368
+    },
+    {
+      "id": "osm-n26475934",
+      "name": "Campos",
+      "place": "village",
+      "population": 9604
+    },
+    {
+      "id": "osm-n26476151",
+      "name": "Porreres",
+      "place": "village",
+      "population": 5108
+    },
+    {
+      "id": "osm-n26476588",
+      "name": "Montuïri",
+      "place": "village",
+      "population": 2509
+    },
+    {
+      "id": "osm-n26480876",
+      "name": "Vilafranca de Bonany",
+      "place": "village",
+      "population": 3687
+    },
+    {
+      "id": "osm-n26481776",
+      "name": "Petra",
+      "place": "village",
+      "population": 2833
+    },
+    {
+      "id": "osm-n26483383",
+      "name": "Llucmajor",
+      "place": "town",
+      "population": 11771
+    },
+    {
+      "id": "osm-n26483510",
+      "name": "Algaida",
+      "place": "village",
+      "population": 3315
+    },
+    {
+      "id": "osm-n26486415",
+      "name": "Sineu",
+      "place": "town",
+      "population": 3812
+    },
+    {
+      "id": "osm-n26486417",
+      "name": "Inca",
+      "place": "town",
+      "population": 32999
+    },
+    {
+      "id": "osm-n264894641",
+      "name": "es Pla de na Tesa",
+      "place": "village",
+      "population": 3634
+    },
+    {
+      "id": "osm-n26490532",
+      "name": "Alaró",
+      "place": "village",
+      "population": 5221
+    },
+    {
+      "id": "osm-n26491566",
+      "name": "Portocristo",
+      "place": "village",
+      "population": 8802
+    },
+    {
+      "id": "osm-n268941083",
+      "name": "sa Cabaneta",
+      "place": "village",
+      "population": 3147
+    },
+    {
+      "id": "osm-n272594117",
+      "name": "es Mercadal",
+      "place": "village",
+      "population": 3237
+    },
+    {
+      "id": "osm-n275390477",
+      "name": "Son Servera",
+      "place": "village",
+      "population": 4919
+    },
+    {
+      "id": "osm-n278906425",
+      "name": "Ciutadella de Menorca",
+      "place": "town",
+      "population": 24235
+    },
+    {
+      "id": "osm-n283063885",
+      "name": "Alaior",
+      "place": "village",
+      "population": 7284
+    },
+    {
+      "id": "osm-n289451210",
+      "name": "Palmanova",
+      "place": "village",
+      "population": 7037
+    },
+    {
+      "id": "osm-n291558314",
+      "name": "Gènova",
+      "place": "village",
+      "population": 3896
+    },
+    {
+      "id": "osm-n29402598",
+      "name": "Santa Ponça",
+      "place": "town",
+      "population": 12056
+    },
+    {
+      "id": "osm-n303622304",
+      "name": "Calvià",
+      "place": "village",
+      "population": 2440
+    },
+    {
+      "id": "osm-n30417672",
+      "name": "Pollença",
+      "place": "village",
+      "population": 7696
+    },
+    {
+      "id": "osm-n307849960",
+      "name": "Esporles",
+      "place": "village",
+      "population": 4143
+    },
+    {
+      "id": "osm-n313470120",
+      "name": "Sant Lluís",
+      "place": "village",
+      "population": 2903
+    },
+    {
+      "id": "osm-n314186311",
+      "name": "Sant Antoni de Portmany",
+      "place": "town",
+      "population": 22861
+    },
+    {
+      "id": "osm-n32727982",
+      "name": "Santanyí",
+      "place": "village",
+      "population": 3409
+    },
+    {
+      "id": "osm-n335572997",
+      "name": "Sant Llorenç des Cardassar",
+      "place": "village",
+      "population": 3033
+    },
+    {
+      "id": "osm-n335577858",
+      "name": "Portocolom",
+      "place": "village",
+      "population": 4744
+    },
+    {
+      "id": "osm-n35345420",
+      "name": "Artà",
+      "place": "village",
+      "population": 6569
+    },
+    {
+      "id": "osm-n35346037",
+      "name": "Capdepera",
+      "place": "village",
+      "population": 3424
+    },
+    {
+      "id": "osm-n35346421",
+      "name": "Cala Rajada",
+      "place": "village",
+      "population": 6762
+    },
+    {
+      "id": "osm-n3585283776",
+      "name": "sa Torre",
+      "place": "village",
+      "population": 3598
+    },
+    {
+      "id": "osm-n365572715",
+      "name": "Sant Jordi",
+      "place": "village",
+      "population": 2667
+    },
+    {
+      "id": "osm-n372431438",
+      "name": "es Secar de la Real",
+      "place": "village",
+      "population": 2987
+    },
+    {
+      "id": "osm-n38902580",
+      "name": "Ferreries",
+      "place": "village",
+      "population": 4765
+    },
+    {
+      "id": "osm-n4195895873",
+      "name": "Lloseta",
+      "place": "village",
+      "population": 5674
+    },
+    {
+      "id": "osm-n4841589591",
+      "name": "Jesús",
+      "place": "village",
+      "population": 3717
+    },
+    {
+      "id": "osm-n5153862907",
+      "name": "Sant Jordi de ses Salines",
+      "place": "village",
+      "population": 3721
+    },
+    {
+      "id": "osm-n5169886242",
+      "name": "Puig d'en Valls",
+      "place": "village",
+      "population": 3644
+    },
+    {
+      "id": "osm-n610194675",
+      "name": "Pòrtol",
+      "place": "village",
+      "population": 3603
+    },
+    {
+      "id": "osm-n624674984",
+      "name": "Sóller",
+      "place": "town",
+      "population": 7921
+    },
+    {
+      "id": "osm-n678587584",
+      "name": "Binissalem",
+      "place": "village",
+      "population": 7462
+    },
+    {
+      "id": "osm-n777276150",
+      "name": "Cala d'Or",
+      "place": "village",
+      "population": 4168
+    },
+    {
+      "id": "osm-n822907036",
+      "name": "s'Arenal de Llucmajor",
+      "place": "village",
+      "population": 10085
+    },
+    {
+      "id": "osm-n960167798",
+      "name": "es Castell",
+      "place": "village",
+      "population": 5037
+    },
+    {
+      "id": "osm-n9797579038",
+      "name": "Urbanització Siesta",
+      "place": "village",
+      "population": 2837
+    },
+    {
+      "id": "palma",
+      "name": "Palma",
+      "place": null,
+      "population": null
+    }
+  ],
+  "sources": {
+    "inputsSha256": "3068ab4bdb612aa012a8cb3a021f30d6b78f0ed01ff141f77982008a0dd1ad44",
+    "landcoverSha256": "0032ebabb8464e7d4e388f4edda4d6a376682d6bac2051fff1ec83c37b194a1c",
+    "regionManifestSha256": "702cd3c8c029857c1af702ad4b652aaab4f22db349c1f218d931203f1aa0ad75",
+    "terrainSha256": "5fdb1be2fa48647a114ff31f843713348a6b8f76ad5f778fc8d83b982809d4c5"
+  },
+  "terrain": {
+    "columns": 512,
+    "file": "../terrain.bin",
+    "landcoverFile": "../landcover.bin",
+    "localBounds": {
+      "maxX": 521.5030878496692,
+      "maxZ": 443.4166800000018,
+      "minX": -586.6909738308777,
+      "minZ": -232.2658799999988
+    },
+    "rows": 256,
+    "verticalScale": 0.03
+  }
+}

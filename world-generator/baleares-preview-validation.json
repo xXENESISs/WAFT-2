@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "valid": true,
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "binaryBytes": 736184,
+  "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
+  "counts": {
+    "buildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "namedBuildings": 2561,
+    "roadSegments": 17046,
+    "roadVertices": 34092,
+    "selectedRoads": 12500,
+    "settlements": 70
+  },
+  "presets": [
+    "Tot",
+    "Palma",
+    "Llevant",
+    "Alcúdia",
+    "Menorca",
+    "Eivissa"
+  ],
+  "terrain": {
+    "columns": 512,
+    "rows": 256
+  },
+  "generationStage": "wikidata-ranked-landmarks"
+}

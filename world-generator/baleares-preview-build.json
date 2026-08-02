@@ -1,0 +1,41 @@
+{
+  "binaryBytes": 736184,
+  "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "counts": {
+    "buildings": 5866,
+    "hotels": 2663,
+    "landmarks": 90,
+    "namedBuildings": 2561,
+    "roadSegments": 17046,
+    "roadVertices": 34092,
+    "selectedRoads": 12500,
+    "settlements": 70
+  },
+  "distributions": {
+    "buildingKinds": {
+      "commercial": 1139,
+      "historic": 192,
+      "hotel": 2663,
+      "ordinary": 1368,
+      "public": 118,
+      "religious": 386
+    },
+    "landmarkRepresentations": {
+      "archetype": 68,
+      "unique": 4,
+      "unique-candidate": 18
+    },
+    "roadClasses": {
+      "motorway": 486,
+      "primary": 3973,
+      "secondary": 3146,
+      "tertiary": 4268,
+      "trunk": 627
+    }
+  },
+  "formatVersion": 1,
+  "inputsSha256": "3068ab4bdb612aa012a8cb3a021f30d6b78f0ed01ff141f77982008a0dd1ad44",
+  "regionId": "baleares",
+  "valid": true
+}
