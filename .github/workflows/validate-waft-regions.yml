@@ -42,40 +42,9 @@ jobs:
         shell: bash
         run: |
           set +e
-          : > world-generator/baleares-runtime-diagnostic.log
-          node --check world-generator/scripts/build-baleares-runtime.mjs >>world-generator/baleares-runtime-diagnostic.log 2>&1
-          syntax=$?
-          node world-generator/scripts/build-baleares-runtime.mjs >>world-generator/baleares-runtime-diagnostic.log 2>&1
-          build=$?
-          inline=99
-          if [ "$build" -eq 0 ]; then
-            python3 - <<'PY' >>world-generator/baleares-runtime-diagnostic.log 2>&1
-          from pathlib import Path
-          import re
-          html = Path('mallorca-mobile/region-runtime-baleares-001.html').read_text(encoding='utf-8')
-          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
-          if len(scripts) != 1:
-              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
-          Path('/tmp/region-runtime-inline.mjs').write_text(scripts[0], encoding='utf-8')
-          PY
-            extracted=$?
-            if [ "$extracted" -eq 0 ]; then
-              node --check /tmp/region-runtime-inline.mjs >>world-generator/baleares-runtime-diagnostic.log 2>&1
-              inline=$?
-            else
-              inline=$extracted
-            fi
-          fi
-          cat > world-generator/baleares-runtime-diagnostic-status.json <<JSON
-          {
-            "diagnosticVersion": 2,
-            "syntax": $syntax,
-            "build": $build,
-            "inlineSyntax": $inline
-          }
-          JSON
-          echo "code=$((syntax || build || inline))" >> "$GITHUB_OUTPUT"
-          cat world-generator/baleares-runtime-diagnostic-status.json
+          node world-generator/scripts/diagnose-baleares-runtime.mjs
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
       - name: Show validation reports
@@ -86,7 +55,7 @@ jobs:
           cat world-generator/baleares-runtime-diagnostic-status.json
           cat world-generator/baleares-runtime-diagnostic.log
 
-      - name: Commit validation and runtime diagnostic
+      - name: Commit validation reports
         if: always()
         shell: bash
         run: |
