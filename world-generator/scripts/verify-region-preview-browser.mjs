@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
-const VERIFIER_VERSION = 3;
+const VERIFIER_VERSION = 4;
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArguments(argv) {
   const result = { url: null, output: null, screenshot: null, public: false };
@@ -17,6 +19,23 @@ function parseArguments(argv) {
   }
   if (!result.url || !result.output) throw new Error('--url and --output are required');
   return result;
+}
+
+function patchLocalRuntime(options) {
+  if (options.public) return null;
+  const runtimePath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-001.html');
+  if (!fs.existsSync(runtimePath)) throw new Error(`Missing local runtime: ${runtimePath}`);
+  const oldText = "    assert(initial, 'No playable spawn presets were generated');";
+  const newText = "    if (!initial) throw new Error('No playable spawn presets were generated');";
+  let html = fs.readFileSync(runtimePath, 'utf8');
+  const occurrences = html.split(oldText).length - 1;
+  if (occurrences === 1) {
+    html = html.replace(oldText, newText);
+    fs.writeFileSync(runtimePath, html);
+  } else if (!html.includes(newText)) {
+    throw new Error(`Runtime assertion patch found ${occurrences} obsolete markers and no corrected marker`);
+  }
+  return runtimePath;
 }
 
 function findChrome() {
@@ -128,6 +147,7 @@ async function verifyRuntime(context, previewUrl) {
 
 async function verify() {
   const options = parseArguments(process.argv.slice(2));
+  const patchedRuntimePath = patchLocalRuntime(options);
   const pageErrors = [];
   const consoleErrors = [];
   const browser = await chromium.launch({
@@ -201,7 +221,7 @@ async function verify() {
       canvas: initial.canvas,
       presets: initial.presets,
       interaction,
-      runtime,
+      runtime: { ...runtime, patchedRuntimePath: patchedRuntimePath ? path.relative(ROOT, patchedRuntimePath).replaceAll(path.sep, '/') : null },
       pageErrors,
       consoleErrors
     };
