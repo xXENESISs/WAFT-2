@@ -1,5 +1,6 @@
 name: Diagnose Baleares local zones
 
+# Diagnostic revision 2.
 on:
   push:
     paths:
