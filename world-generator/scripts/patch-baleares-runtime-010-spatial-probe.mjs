@@ -72,7 +72,7 @@ const oldCount = html.split(oldBlock).length - 1;
 const newCount = html.split('const regionalProbeBuildingCells = new Map();').length - 1;
 if (oldCount === 1) html = html.replace(oldBlock, newBlock);
 else assert(newCount === 1, `Expected one unpatched or patched spatial probe, found old=${oldCount} new=${newCount}`);
-assert(html.includes('regionalProbeBuildingCells.get(cellX + ":" + cellZ)'), 'Spatial building lookup was not installed');
+assert(html.includes("regionalProbeBuildingCells.get(cellX + ':' + cellZ)"), 'Spatial building lookup was not installed');
 fs.writeFileSync(runtimePath, html);
 
 const buffer = fs.readFileSync(runtimePath);
