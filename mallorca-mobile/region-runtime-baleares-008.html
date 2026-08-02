@@ -701,6 +701,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
         localAssets.release(false);
         return false;
       }
+      const entryOrigin = { x: state.camera.x, z: state.camera.z, terrainMeters: state.camera.y };
       state.localCenter.x = localAssets.metadata.center.x;
       state.localCenter.z = localAssets.metadata.center.z;
       state.localZoneId = localAssets.metadata.zoneId;
@@ -711,6 +712,12 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
       state.renderDataset = 'local-package';
       state.activeBuildings = localAssets.metadata.counts.buildings;
       state.loadedCells = 1;
+      const safeEntry = findSafeSpawn({ id: preset.id, x: entryOrigin.x, z: entryOrigin.z, terrainMeters: entryOrigin.terrainMeters });
+      state.camera.x = safeEntry.x;
+      state.camera.z = safeEntry.z;
+      state.camera.y = safeEntry.terrain + 1.35;
+      state.velocityY = 0;
+      state.grounded = true;
       state.cameraDistance = 7.2;
       updateScaleButton();
       return true;

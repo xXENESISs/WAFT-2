@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
-  "buildRevision": 1,
+  "buildRevision": 2,
   "runtimeVersion": "008",
   "source": "mallorca-mobile/region-runtime-baleares-007.html",
   "output": "mallorca-mobile/region-runtime-baleares-008.html",
   "sourceSha256": "11e1ae291481ec7b7a62058862f97190f715e5348da6365ef634741e9f70323c",
-  "outputSha256": "1cfcadbe6383330c00f9fdbb385a89b940a120bf0f3d71317ef7b8536a75e146",
-  "outputBytes": 82934,
+  "outputSha256": "74f668afff73b539ca0aa36e555d602fa8831252e09567a50421a9e1792164bf",
+  "outputBytes": 83346,
   "behavior": {
     "registryLoadsAtBoot": true,
     "localPackagesLoadAtBoot": false,
@@ -14,6 +14,7 @@
     "entryIsProximityGated": true,
     "discoveryAndEntryRadiiAreDerivedFromZoneSize": true,
     "directDestinationButtonsRemainForTesting": true,
-    "previousZoneReleasesBeforeNextLoad": true
+    "previousZoneReleasesBeforeNextLoad": true,
+    "entryUsesSafeLocalParcel": true
   }
 }
