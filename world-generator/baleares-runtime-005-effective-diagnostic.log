@@ -1,0 +1,85 @@
+{
+  "binaryBytes": 22760,
+  "binarySha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b",
+  "buildId": "baleares-llevant-0ebcf523670c",
+  "counts": {
+    "buildings": 112,
+    "landmarks": 2,
+    "roadSegments": 514,
+    "roadVertices": 1028,
+    "settlements": 1
+  },
+  "floatAlignmentPadding": 0,
+  "footprintScale": 4,
+  "formatVersion": 1,
+  "regionId": "baleares",
+  "regionalRadius": 28,
+  "terrain": {
+    "cells": 864,
+    "columns": 32,
+    "landCells": 853,
+    "rows": 27,
+    "sourceWindow": {
+      "maxColumn": 333,
+      "maxRow": 106,
+      "minColumn": 302,
+      "minRow": 80
+    }
+  },
+  "valid": true,
+  "worldScale": 12,
+  "zoneId": "llevant"
+}
+{
+  "formatVersion": 1,
+  "valid": true,
+  "regionId": "baleares",
+  "zoneId": "llevant",
+  "buildId": "baleares-llevant-0ebcf523670c",
+  "binaryBytes": 22760,
+  "binarySha256": "c83c7bced9952c0861a7cc93e2ca275e7a483ca5693574c8ef19e5be4933196b",
+  "terrain": {
+    "cells": 864,
+    "columns": 32,
+    "landCells": 853,
+    "rows": 27,
+    "sourceWindow": {
+      "maxColumn": 333,
+      "maxRow": 106,
+      "minColumn": 302,
+      "minRow": 80
+    }
+  },
+  "counts": {
+    "buildings": 112,
+    "landmarks": 2,
+    "roadSegments": 514,
+    "roadVertices": 1028,
+    "settlements": 1
+  },
+  "worldScale": 12,
+  "footprintScale": 4,
+  "regionalRadius": 28,
+  "floatAlignmentPadding": 0
+}
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "005",
+  "valid": true,
+  "source": "mallorca-mobile/region-runtime-baleares-004.html",
+  "output": "mallorca-mobile/region-runtime-baleares-005.html",
+  "sourceSha256": "ff212aa47b156baa8412d7a68636b9fb58a9290566e1726e604af12f44bce1c5",
+  "outputSha256": "44b7dfb5deab0e4bae1b0e5d5a8ebfba3211ffae510f304f7109f51f9c921421",
+  "outputBytes": 67606,
+  "localPackage": "regions/baleares/local/llevant/llevant-local-v1.bin",
+  "changes": [
+    "load-and-verify-independent-llevant-local-package",
+    "switch-terrain-roads-buildings-landmarks-and-settlements-by-world-mode",
+    "use-cropped-local-terrain-for-physics",
+    "use-local-building-set-for-collision-and-safe-spawn",
+    "preserve-regional-position-across-package-transition",
+    "expose-active-dataset-and-local-package-metadata"
+  ]
+}
+{"runnerSyntax":0,"verifierSyntax":0,"localBuild":0,"localVerify":0,"runtimeBuild":0,"inlineSyntax":0,"deterministic":0}

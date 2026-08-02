@@ -1,0 +1,20 @@
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "005",
+  "valid": true,
+  "source": "mallorca-mobile/region-runtime-baleares-004.html",
+  "output": "mallorca-mobile/region-runtime-baleares-005.html",
+  "sourceSha256": "ff212aa47b156baa8412d7a68636b9fb58a9290566e1726e604af12f44bce1c5",
+  "outputSha256": "44b7dfb5deab0e4bae1b0e5d5a8ebfba3211ffae510f304f7109f51f9c921421",
+  "outputBytes": 67606,
+  "localPackage": "regions/baleares/local/llevant/llevant-local-v1.bin",
+  "changes": [
+    "load-and-verify-independent-llevant-local-package",
+    "switch-terrain-roads-buildings-landmarks-and-settlements-by-world-mode",
+    "use-cropped-local-terrain-for-physics",
+    "use-local-building-set-for-collision-and-safe-spawn",
+    "preserve-regional-position-across-package-transition",
+    "expose-active-dataset-and-local-package-metadata"
+  ]
+}
