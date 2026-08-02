@@ -1,9 +1,9 @@
 {
   "formatVersion": 1,
-  "verifierVersion": 5,
+  "verifierVersion": 6,
   "valid": true,
   "public": true,
-  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=58d1cb0a6b7e04854cbd29524797a715cf9da2ea",
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=b0b1d68681220e472454e2ae4122099746396902",
   "buildId": "baleares-preview-3068ab4bdb61",
   "stats": {
     "buildings": 5866,
@@ -45,8 +45,8 @@
   },
   "runtime": {
     "valid": false,
-    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=58d1cb0a6b7e04854cbd29524797a715cf9da2ea",
-    "error": "Error: Runtime player could not move in any tested direction\n    at verifyRuntime (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:109:26)\n    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:210:21)",
+    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=b0b1d68681220e472454e2ae4122099746396902",
+    "error": "Error: Runtime player could not move in any tested direction\n    at verifyRuntime (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:193:26)\n    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:294:21)",
     "pageErrors": [],
     "consoleErrors": [],
     "patchedRuntimePath": null
