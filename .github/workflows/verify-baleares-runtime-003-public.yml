@@ -1,0 +1,93 @@
+name: Verify public Baleares runtime 003
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-baleares-runtime-003-public.yml
+      - world-generator/runtime-003-public-trigger.txt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-003-public-direct
+  cancel-in-progress: true
+
+jobs:
+  verify-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check verifier syntax
+        run: node --check world-generator/scripts/verify-region-runtime-003-browser.mjs
+
+      - name: Install browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Verify current GitHub Pages runtime
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-003.html?v=2b1641bfebcb1cef43c530c7ca7f903095ed2183"
+          LOG=world-generator/baleares-runtime-003-public-direct.log
+          node world-generator/scripts/verify-region-runtime-003-browser.mjs \
+            --url "$URL" \
+            --public \
+            --output world-generator/baleares-runtime-003-public-verification.json \
+            --screenshot /tmp/baleares-runtime-003-public-direct.png >"$LOG" 2>&1
+          code=$?
+          valid=false
+          if [ "$code" -eq 0 ]; then valid=true; fi
+          cat > world-generator/baleares-runtime-003-public-status.json <<JSON
+          {
+            "verificationVersion": 1,
+            "url": "$URL",
+            "exitCode": $code,
+            "valid": $valid
+          }
+          JSON
+          cat "$LOG"
+          cat world-generator/baleares-runtime-003-public-status.json
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit public verification result
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            world-generator/baleares-runtime-003-public-verification.json \
+            world-generator/baleares-runtime-003-public-status.json \
+            world-generator/baleares-runtime-003-public-direct.log 2>/dev/null || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Verify public Baleares regional runtime 003 directly"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Require valid public runtime
+        if: steps.verify.outputs.code != '0'
+        run: exit 1
+
+      - name: Upload public screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-003-public-direct
+          path: /tmp/baleares-runtime-003-public-direct.png
+          if-no-files-found: ignore
+          retention-days: 7
