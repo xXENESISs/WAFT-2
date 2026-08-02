@@ -140,6 +140,7 @@ async function verify() {
     assert(loading.button.text.includes('CARGANDO'), `Loading label is missing: ${loading.button.text}`);
     await firstEnterPromise;
     await page.waitForTimeout(700);
+    await page.waitForFunction(() => document.getElementById('hudStats')?.textContent.includes('PAQUETE'), null, { timeout: 5000 });
 
     const firstLocal = await page.evaluate(() => {
       const state = window.WAFTRegionRuntime.getState();
