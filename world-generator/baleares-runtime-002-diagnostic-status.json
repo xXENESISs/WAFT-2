@@ -1,7 +1,7 @@
 {
-  "diagnosticVersion": 1,
-  "sourceSyntax": 1,
-  "build": 1,
-  "inlineSyntax": 99,
+  "diagnosticVersion": 2,
+  "runnerSyntax": 0,
+  "build": 0,
+  "inlineSyntax": 1,
   "valid": false
 }
