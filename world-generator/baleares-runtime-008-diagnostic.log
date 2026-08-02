@@ -1,0 +1,53 @@
+== syntax runtime builder ==
+exit=0
+== syntax browser verifier ==
+exit=0
+== build runtime 008 ==
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "008",
+  "source": "mallorca-mobile/region-runtime-baleares-007.html",
+  "output": "mallorca-mobile/region-runtime-baleares-008.html",
+  "sourceSha256": "11e1ae291481ec7b7a62058862f97190f715e5348da6365ef634741e9f70323c",
+  "outputSha256": "1cfcadbe6383330c00f9fdbb385a89b940a120bf0f3d71317ef7b8536a75e146",
+  "outputBytes": 82934,
+  "behavior": {
+    "registryLoadsAtBoot": true,
+    "localPackagesLoadAtBoot": false,
+    "zoneDiscoveryUsesPlayerPosition": true,
+    "entryIsProximityGated": true,
+    "discoveryAndEntryRadiiAreDerivedFromZoneSize": true,
+    "directDestinationButtonsRemainForTesting": true,
+    "previousZoneReleasesBeforeNextLoad": true
+  }
+}
+exit=0
+== syntax runtime 008 inline JavaScript ==
+exit=0
+== rebuild runtime 008 ==
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "008",
+  "source": "mallorca-mobile/region-runtime-baleares-007.html",
+  "output": "mallorca-mobile/region-runtime-baleares-008.html",
+  "sourceSha256": "11e1ae291481ec7b7a62058862f97190f715e5348da6365ef634741e9f70323c",
+  "outputSha256": "1cfcadbe6383330c00f9fdbb385a89b940a120bf0f3d71317ef7b8536a75e146",
+  "outputBytes": 82934,
+  "behavior": {
+    "registryLoadsAtBoot": true,
+    "localPackagesLoadAtBoot": false,
+    "zoneDiscoveryUsesPlayerPosition": true,
+    "entryIsProximityGated": true,
+    "discoveryAndEntryRadiiAreDerivedFromZoneSize": true,
+    "directDestinationButtonsRemainForTesting": true,
+    "previousZoneReleasesBeforeNextLoad": true
+  }
+}
+exit=0
+== local mobile browser runtime 008 ==
+Error: Palma lateral movement failed: {"distance":0,"alignment":-1}
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-008-browser.mjs:37:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-008-browser.mjs:211:5)
+exit=1
