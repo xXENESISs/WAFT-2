@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
-const VERIFIER_VERSION = 2;
+const VERIFIER_VERSION = 3;
 
 function parseArguments(argv) {
   const result = { url: null, output: null, screenshot: null, public: false };
@@ -29,6 +29,101 @@ function findChrome() {
   ].filter(Boolean);
   for (const candidate of candidates) if (fs.existsSync(candidate)) return candidate;
   throw new Error(`Chrome was not found in: ${candidates.join(', ')}`);
+}
+
+async function verifyRuntime(context, previewUrl) {
+  const runtimeUrl = previewUrl.replace('region-preview-baleares-001.html', 'region-runtime-baleares-001.html');
+  const pageErrors = [];
+  const consoleErrors = [];
+  const page = await context.newPage();
+  page.on('pageerror', error => pageErrors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
+  try {
+    const response = await page.goto(runtimeUrl, { waitUntil: 'domcontentloaded', timeout: 120000 });
+    if (!response || !response.ok()) throw new Error(`Runtime page returned ${response?.status() ?? 'no response'}`);
+    await page.waitForFunction(() => window.__WAFT_RUNTIME_READY__ === true, null, { timeout: 120000 });
+    await page.waitForTimeout(1500);
+    const initial = await page.evaluate(() => ({
+      stats: window.__WAFT_RUNTIME_STATS__,
+      state: window.WAFTRegionRuntime.getState(),
+      error: window.__WAFT_RUNTIME_ERROR__ ?? null,
+      presets: [...document.querySelectorAll('#presets button')].map(button => button.textContent),
+      webgl2: Boolean(document.querySelector('canvas')?.getContext('webgl2')),
+      canvas: { width: document.querySelector('canvas')?.width ?? 0, height: document.querySelector('canvas')?.height ?? 0 },
+      collisionProbe: window.WAFTRegionRuntime.probeCollision()
+    }));
+    if (initial.error) throw new Error(initial.error);
+    if (!initial.webgl2) throw new Error('Runtime WebGL2 context was not available');
+    if (initial.stats.totalBuildings < 5000) throw new Error(`Runtime has too few buildings: ${initial.stats.totalBuildings}`);
+    if (initial.stats.activeBuildings <= 0) throw new Error('Runtime has no active streamed buildings');
+    if (initial.stats.activeBuildings >= initial.stats.totalBuildings) throw new Error('Runtime loaded every building instead of streaming');
+    if (initial.stats.loadedCells <= 0 || initial.stats.loadedCells > 25) throw new Error(`Runtime loaded invalid cell count: ${initial.stats.loadedCells}`);
+    if (!initial.state.grounded) throw new Error('Runtime player did not start grounded');
+    if (!initial.collisionProbe) throw new Error('Runtime building collision probe failed');
+    for (const required of ['Palma', 'Llevant', 'Alcúdia', 'Menorca', 'Eivissa']) {
+      if (!initial.presets.includes(required)) throw new Error(`Runtime is missing spawn ${required}`);
+    }
+
+    await page.evaluate(() => window.WAFTRegionRuntime.spawn('Menorca'));
+    await page.waitForTimeout(300);
+    const beforeJump = await page.evaluate(() => window.WAFTRegionRuntime.getState());
+    await page.evaluate(() => window.WAFTRegionRuntime.jump());
+    await page.waitForTimeout(220);
+    const duringJump = await page.evaluate(() => window.WAFTRegionRuntime.getState());
+    const jumpRise = duringJump.position.y - beforeJump.position.y;
+    if (jumpRise <= .15) throw new Error(`Runtime jump rise is too small: ${jumpRise}`);
+    await page.waitForTimeout(900);
+    const landed = await page.evaluate(() => window.WAFTRegionRuntime.getState());
+    if (!landed.grounded) throw new Error('Runtime player did not land');
+
+    let movement = null;
+    for (const [x, y] of [[0,-1],[1,0],[0,1],[-1,0]]) {
+      const result = await page.evaluate(async ({ x, y }) => {
+        const before = window.WAFTRegionRuntime.getState();
+        window.WAFTRegionRuntime.setInput(x, y);
+        await new Promise(resolve => setTimeout(resolve, 450));
+        window.WAFTRegionRuntime.setInput(0, 0);
+        const after = window.WAFTRegionRuntime.getState();
+        return { before, after, distance: Math.hypot(after.position.x - before.position.x, after.position.z - before.position.z) };
+      }, { x, y });
+      if (result.distance > .25) { movement = result; break; }
+    }
+    if (!movement) throw new Error('Runtime player could not move in any tested direction');
+
+    await page.evaluate(() => window.WAFTRegionRuntime.respawn());
+    await page.waitForTimeout(250);
+    const finalState = await page.evaluate(() => window.WAFTRegionRuntime.getState());
+    if (!finalState.grounded) throw new Error('Runtime respawn did not restore grounded state');
+    if (pageErrors.length) throw new Error(`Runtime page errors: ${pageErrors.join(' | ')}`);
+
+    return {
+      valid: true,
+      url: runtimeUrl,
+      initial,
+      tests: {
+        streamedBuildings: initial.stats.activeBuildings,
+        loadedCells: initial.stats.loadedCells,
+        collisionProbe: initial.collisionProbe,
+        jumpRise,
+        landed: landed.grounded,
+        movementDistance: movement.distance,
+        respawnGrounded: finalState.grounded
+      },
+      finalState,
+      pageErrors,
+      consoleErrors
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      url: runtimeUrl,
+      error: error.stack || error.message,
+      pageErrors,
+      consoleErrors
+    };
+  } finally {
+    await page.close();
+  }
 }
 
 async function verify() {
@@ -93,6 +188,7 @@ async function verify() {
       await page.screenshot({ path: options.screenshot, type: 'png' });
     }
     if (pageErrors.length) throw new Error(`Page errors: ${pageErrors.join(' | ')}`);
+    const runtime = await verifyRuntime(context, options.url);
     const report = {
       formatVersion: 1,
       verifierVersion: VERIFIER_VERSION,
@@ -105,6 +201,7 @@ async function verify() {
       canvas: initial.canvas,
       presets: initial.presets,
       interaction,
+      runtime,
       pageErrors,
       consoleErrors
     };
