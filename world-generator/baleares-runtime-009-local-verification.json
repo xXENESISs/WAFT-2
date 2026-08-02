@@ -1,72 +1,3 @@
-== syntax runtime builder ==
-exit=0
-== syntax browser verifier ==
-exit=0
-== build runtime 009 ==
-{
-  "formatVersion": 1,
-  "buildRevision": 1,
-  "runtimeVersion": "009",
-  "source": "mallorca-mobile/region-runtime-baleares-008.html",
-  "output": "mallorca-mobile/region-runtime-baleares-009.html",
-  "sourceSha256": "74f668afff73b539ca0aa36e555d602fa8831252e09567a50421a9e1792164bf",
-  "outputSha256": "e5d76de782d0b93c17e2a46c5fd2018eb91657bdea64c3aa1d6bf695feb96ead",
-  "outputBytes": 88340,
-  "player": {
-    "visualScale": 0.58,
-    "collisionRadius": 0.16,
-    "previousCollisionRadius": 0.34,
-    "eyeHeight": 0.82
-  },
-  "graphics": {
-    "profile": "enhanced-mobile-v1",
-    "enhancedTerrainLighting": true,
-    "enhancedMediterraneanPalette": true,
-    "enhancedBuildingMaterials": true,
-    "enhancedCharacterShading": true
-  },
-  "behavior": {
-    "geographicZoneDetectionPreserved": true,
-    "localPackageLifecyclePreserved": true,
-    "narrowPassageProbeIncluded": true,
-    "protectedPreviousRuntime": true
-  }
-}
-exit=0
-== syntax runtime 009 inline JavaScript ==
-exit=0
-== rebuild runtime 009 ==
-{
-  "formatVersion": 1,
-  "buildRevision": 1,
-  "runtimeVersion": "009",
-  "source": "mallorca-mobile/region-runtime-baleares-008.html",
-  "output": "mallorca-mobile/region-runtime-baleares-009.html",
-  "sourceSha256": "74f668afff73b539ca0aa36e555d602fa8831252e09567a50421a9e1792164bf",
-  "outputSha256": "e5d76de782d0b93c17e2a46c5fd2018eb91657bdea64c3aa1d6bf695feb96ead",
-  "outputBytes": 88340,
-  "player": {
-    "visualScale": 0.58,
-    "collisionRadius": 0.16,
-    "previousCollisionRadius": 0.34,
-    "eyeHeight": 0.82
-  },
-  "graphics": {
-    "profile": "enhanced-mobile-v1",
-    "enhancedTerrainLighting": true,
-    "enhancedMediterraneanPalette": true,
-    "enhancedBuildingMaterials": true,
-    "enhancedCharacterShading": true
-  },
-  "behavior": {
-    "geographicZoneDetectionPreserved": true,
-    "localPackageLifecyclePreserved": true,
-    "narrowPassageProbeIncluded": true,
-    "protectedPreviousRuntime": true
-  }
-}
-exit=0
-== local mobile browser runtime 009 ==
 {
   "formatVersion": 1,
   "verifierVersion": 2,
@@ -237,4 +168,3 @@ exit=0
   "pageErrors": [],
   "consoleErrors": []
 }
-exit=0
