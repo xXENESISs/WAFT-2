@@ -1,0 +1,81 @@
+{
+  "formatVersion": 1,
+  "verifierVersion": 1,
+  "runtimeVersion": "004",
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-004.html?v=ff212aa47b156baa8412d7a68636b9fb58a9290566e1726e604af12f44bce1c5",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "tests": {
+    "initialMode": "regional",
+    "localZoneId": "llevant",
+    "worldScale": 12,
+    "footprintScale": 4,
+    "localRadius": 18,
+    "eastExpansion": 12,
+    "southExpansion": 12,
+    "coordinateRoundTrip": {
+      "x": 103.76938087180768,
+      "z": 13.218040080000701
+    },
+    "rightDisplayDistance": 1.799999999999681,
+    "rightAlignment": 1,
+    "forwardDisplayDistance": 1.9202399999998854,
+    "forwardAlignment": 1.0000000000000002,
+    "jumpRise": 0.2287499999999998,
+    "exitPreservedRegionalPosition": true,
+    "reenteredLocal": true,
+    "activeBuildings": 1205,
+    "loadedCells": 23,
+    "characterVisible": true,
+    "cameraMode": "third-person"
+  },
+  "finalState": {
+    "position": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "displayPosition": {
+      "x": 102.76938087180768,
+      "y": 3.96,
+      "z": 13.218040080000701
+    },
+    "cameraEye": {
+      "x": 100.07476203910109,
+      "y": 6.919760669661619,
+      "z": 6.844667203423442
+    },
+    "cameraYaw": 0.4,
+    "playerFacing": 0.3603880141144294,
+    "cameraMode": "third-person",
+    "characterVisible": true,
+    "cameraBlocked": false,
+    "lateralControls": "screen-relative",
+    "worldMode": "local",
+    "worldScale": 12,
+    "footprintScale": 4,
+    "localCenter": {
+      "x": 102.76938087180768,
+      "z": 13.218040080000701
+    },
+    "localRadius": 18,
+    "localZoneId": "llevant",
+    "grounded": true,
+    "activeBuildings": 1205,
+    "loadedCells": 23,
+    "collisions": 0,
+    "preset": "llevant"
+  },
+  "pageErrors": [],
+  "consoleErrors": []
+}
