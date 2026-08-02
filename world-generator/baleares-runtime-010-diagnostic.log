@@ -75,3 +75,8 @@ exit=0
 }
 exit=0
 == local mobile browser runtime 010 ==
+page.waitForFunction: Timeout 120000ms exceeded.
+    at verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs:128:16)
+[runtime-010-verifier] status=1 signal=none error=none
+[runtime-010-verifier] generated verifier retained at /home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs
+exit=1
