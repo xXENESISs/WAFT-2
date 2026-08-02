@@ -19,8 +19,9 @@ function run(command, args) {
   return result.status ?? 99;
 }
 
-const syntax = run(process.execPath, ['--check', 'world-generator/scripts/build-baleares-runtime.mjs']);
-const build = run(process.execPath, ['world-generator/scripts/build-baleares-runtime.mjs']);
+const sourceSyntax = run(process.execPath, ['--check', 'world-generator/scripts/build-baleares-runtime.mjs']);
+const runnerSyntax = run(process.execPath, ['--check', 'world-generator/scripts/run-build-baleares-runtime.mjs']);
+const build = run(process.execPath, ['world-generator/scripts/run-build-baleares-runtime.mjs']);
 let inlineSyntax = 99;
 if (build === 0) {
   try {
@@ -36,11 +37,12 @@ if (build === 0) {
 }
 
 const status = {
-  diagnosticVersion: 3,
-  syntax,
+  diagnosticVersion: 4,
+  sourceSyntax,
+  runnerSyntax,
   build,
   inlineSyntax,
-  valid: syntax === 0 && build === 0 && inlineSyntax === 0
+  valid: sourceSyntax === 0 && runnerSyntax === 0 && build === 0 && inlineSyntax === 0
 };
 fs.writeFileSync(logPath, `${log.join('\n')}\n`);
 fs.writeFileSync(statusPath, `${JSON.stringify(status, null, 2)}\n`);
