@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/build-baleares-region-runtime.yml
       - world-generator/scripts/build-baleares-runtime.mjs
+      - world-generator/scripts/run-build-baleares-runtime.mjs
       - world-generator/scripts/verify-region-runtime-browser.mjs
       - mallorca-mobile/region-preview-baleares-001.html
       - regions/baleares/preview/baleares-preview-v1.bin
@@ -53,15 +54,16 @@ jobs:
         shell: bash
         run: |
           node --check world-generator/scripts/build-baleares-runtime.mjs
+          node --check world-generator/scripts/run-build-baleares-runtime.mjs
           node --check world-generator/scripts/verify-region-runtime-browser.mjs
 
       - name: Build deterministic regional runtime
         shell: bash
         run: |
-          node world-generator/scripts/build-baleares-runtime.mjs | tee world-generator/baleares-runtime-build.log
+          node world-generator/scripts/run-build-baleares-runtime.mjs | tee world-generator/baleares-runtime-build.log
           cp mallorca-mobile/region-runtime-baleares-001.html /tmp/region-runtime-baleares-first.html
           cp world-generator/baleares-runtime-build.json /tmp/baleares-runtime-first.json
-          node world-generator/scripts/build-baleares-runtime.mjs >/tmp/baleares-runtime-rebuild.log
+          node world-generator/scripts/run-build-baleares-runtime.mjs >/tmp/baleares-runtime-rebuild.log
           diff -q /tmp/region-runtime-baleares-first.html mallorca-mobile/region-runtime-baleares-001.html
           diff -q /tmp/baleares-runtime-first.json world-generator/baleares-runtime-build.json
           python3 - <<'PY'
