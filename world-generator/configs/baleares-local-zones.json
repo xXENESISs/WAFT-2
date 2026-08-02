@@ -1,5 +1,6 @@
 {
   "formatVersion": 1,
+  "runtimeRevision": 1,
   "regionId": "baleares",
   "registryFile": "zones-v1.json",
   "packageFormat": "WAFTLZ01",
