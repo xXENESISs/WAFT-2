@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
-const VERIFIER_VERSION = 3;
+const VERIFIER_VERSION = 4;
+const PUBLIC_MIRROR_URL = 'https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-002.html?v=4cd5c90e3ce81afa5492ab4fd784dfeac9fe2e30';
 
 function parseArguments(argv) {
   const options = { url: null, output: null, screenshot: null, public: false };
@@ -43,37 +44,15 @@ function cameraDistance(state) {
   );
 }
 
-async function verify() {
-  const options = parseArguments(process.argv.slice(2));
+async function verifyPage(context, url, screenshot = null) {
   const pageErrors = [];
   const consoleErrors = [];
-  let browser;
+  const page = await context.newPage();
+  page.on('pageerror', error => pageErrors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   try {
-    browser = await chromium.launch({
-      executablePath: findChrome(),
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-        '--ignore-gpu-blocklist',
-        '--enable-webgl',
-        '--use-gl=angle',
-        '--use-angle=swiftshader',
-        '--disable-background-networking'
-      ]
-    });
-    const context = await browser.newContext({
-      viewport: { width: 844, height: 390 },
-      deviceScaleFactor: 1,
-      isMobile: true,
-      hasTouch: true
-    });
-    const page = await context.newPage();
-    page.on('pageerror', error => pageErrors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
-
-    const response = await page.goto(options.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
-    requireValue(response?.ok(), `Runtime 002 page returned ${response?.status() ?? 'no response'}`);
+    const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 120000 });
+    requireValue(response?.ok(), `Runtime 002 page returned ${response?.status() ?? 'no response'} at ${url}`);
     await page.waitForFunction(() => window.__WAFT_RUNTIME_002_READY__ === true, null, { timeout: 120000 });
     await page.waitForTimeout(1800);
 
@@ -154,20 +133,15 @@ async function verify() {
     requireValue(finalState.cameraMode === 'third-person' && finalState.characterVisible, 'Third-person state was lost after respawn');
     requireValue(pageErrors.length === 0, `Page errors: ${pageErrors.join(' | ')}`);
 
-    if (options.screenshot) {
-      fs.mkdirSync(path.dirname(options.screenshot), { recursive: true });
-      await page.screenshot({ path: options.screenshot, type: 'png' });
+    if (screenshot) {
+      fs.mkdirSync(path.dirname(screenshot), { recursive: true });
+      await page.screenshot({ path: screenshot, type: 'png' });
     }
 
-    const report = {
-      formatVersion: 1,
-      verifierVersion: VERIFIER_VERSION,
-      runtimeVersion: '002',
+    return {
       valid: true,
-      public: options.public,
-      url: options.url,
+      url,
       buildId: initial.stats.buildId,
-      viewport: { width: 844, height: 390, touch: true },
       canvas: initial.canvas,
       presets: initial.presets,
       tests: {
@@ -189,6 +163,53 @@ async function verify() {
       pageErrors,
       consoleErrors
     };
+  } finally {
+    await page.close();
+  }
+}
+
+async function verify() {
+  const options = parseArguments(process.argv.slice(2));
+  let browser;
+  try {
+    browser = await chromium.launch({
+      executablePath: findChrome(),
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--ignore-gpu-blocklist',
+        '--enable-webgl',
+        '--use-gl=angle',
+        '--use-angle=swiftshader',
+        '--disable-background-networking'
+      ]
+    });
+    const context = await browser.newContext({
+      viewport: { width: 844, height: 390 },
+      deviceScaleFactor: 1,
+      isMobile: true,
+      hasTouch: true
+    });
+    const primary = await verifyPage(context, options.url, options.screenshot);
+    const publicMirror = options.public ? null : await verifyPage(context, PUBLIC_MIRROR_URL);
+    const report = {
+      formatVersion: 1,
+      verifierVersion: VERIFIER_VERSION,
+      runtimeVersion: '002',
+      valid: true,
+      public: options.public,
+      url: options.url,
+      buildId: primary.buildId,
+      viewport: { width: 844, height: 390, touch: true },
+      canvas: primary.canvas,
+      presets: primary.presets,
+      tests: primary.tests,
+      finalState: primary.finalState,
+      pageErrors: primary.pageErrors,
+      consoleErrors: primary.consoleErrors,
+      publicMirror
+    };
     fs.mkdirSync(path.dirname(options.output), { recursive: true });
     fs.writeFileSync(options.output, `${JSON.stringify(report, null, 2)}\n`);
     process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
@@ -200,9 +221,8 @@ async function verify() {
       valid: false,
       public: options.public,
       url: options.url,
-      error: error.stack || error.message,
-      pageErrors,
-      consoleErrors
+      publicMirrorUrl: options.public ? null : PUBLIC_MIRROR_URL,
+      error: error.stack || error.message
     };
     fs.mkdirSync(path.dirname(options.output), { recursive: true });
     fs.writeFileSync(options.output, `${JSON.stringify(failure, null, 2)}\n`);
