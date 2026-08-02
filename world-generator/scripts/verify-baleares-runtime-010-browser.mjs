@@ -179,8 +179,14 @@ assert(verifier.includes('Palma high-jump rise'), 'Generated verifier lacks the 
 fs.writeFileSync(temporaryPath, verifier);
 const result = spawnSync(process.execPath, [temporaryPath, ...process.argv.slice(2)], {
   cwd: ROOT,
-  stdio: 'inherit'
+  stdio: 'pipe',
+  encoding: 'utf8',
+  maxBuffer: 16 * 1024 * 1024
 });
-fs.rmSync(temporaryPath, { force: true });
+if (result.stdout) process.stdout.write(result.stdout);
+if (result.stderr) process.stderr.write(result.stderr);
+console.error(`[runtime-010-verifier] status=${result.status} signal=${result.signal || 'none'} error=${result.error?.message || 'none'}`);
+if (result.status === 0 && !result.signal && !result.error) fs.rmSync(temporaryPath, { force: true });
+else console.error(`[runtime-010-verifier] generated verifier retained at ${temporaryPath}`);
 if (result.error) throw result.error;
 process.exitCode = result.status ?? 1;
