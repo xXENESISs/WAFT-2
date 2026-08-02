@@ -3,9 +3,10 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+const RUNNER_VERSION = 1;
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const sourcePath = path.join(directory, 'build-baleares-runtime.mjs');
-const patchedPath = path.join(directory, '.build-baleares-runtime-patched.mjs');
+const patchedPath = path.join(directory, `.build-baleares-runtime-patched-v${RUNNER_VERSION}.mjs`);
 
 const source = fs.readFileSync(sourcePath, 'utf8');
 const oldMarker = 'window\\.__WAFT_PREVIEW_READY__=true';
