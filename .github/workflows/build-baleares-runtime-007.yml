@@ -1,0 +1,285 @@
+name: Build Baleares regional runtime 007
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-baleares-runtime-007.yml
+      - world-generator/configs/baleares-local-zones.json
+      - world-generator/scripts/build-local-zone.mjs
+      - world-generator/scripts/verify-local-zone.mjs
+      - world-generator/scripts/build-local-zone-registry.mjs
+      - world-generator/scripts/verify-local-zone-registry.mjs
+      - world-generator/scripts/build-baleares-runtime-007.mjs
+      - world-generator/scripts/verify-baleares-runtime-007-browser.mjs
+      - mallorca-mobile/region-runtime-baleares-006.html
+      - regions/baleares/preview/baleares-preview-v1.bin
+      - regions/baleares/preview/baleares-preview-v1.json
+      - regions/baleares/terrain.bin
+      - regions/baleares/landcover.bin
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-007
+  cancel-in-progress: true
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Record protected files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            > /tmp/runtime-007-protected-before.sha256
+
+      - name: Install mobile browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Build, validate and test locally
+        id: local
+        shell: bash
+        run: |
+          set +e
+          LOG=world-generator/baleares-runtime-007-diagnostic.log
+          STATUS=world-generator/baleares-runtime-007-diagnostic-status.json
+          : > "$LOG"
+
+          run_logged() {
+            label="$1"
+            shift
+            echo "== ${label} ==" >> "$LOG"
+            "$@" >> "$LOG" 2>&1
+            code=$?
+            echo "exit=${code}" >> "$LOG"
+            return "$code"
+          }
+
+          syntax=0
+          zones=0
+          deterministic_zones=0
+          runtime=0
+          inline=0
+          deterministic_runtime=0
+          browser=0
+          protected=0
+
+          run_logged 'syntax local builder' node --check world-generator/scripts/build-local-zone.mjs || syntax=$?
+          run_logged 'syntax local verifier' node --check world-generator/scripts/verify-local-zone.mjs || syntax=$?
+          run_logged 'syntax registry builder' node --check world-generator/scripts/build-local-zone-registry.mjs || syntax=$?
+          run_logged 'syntax registry verifier' node --check world-generator/scripts/verify-local-zone-registry.mjs || syntax=$?
+          run_logged 'syntax runtime builder' node --check world-generator/scripts/build-baleares-runtime-007.mjs || syntax=$?
+          run_logged 'syntax browser verifier' node --check world-generator/scripts/verify-baleares-runtime-007-browser.mjs || syntax=$?
+
+          if [ "$syntax" = 0 ]; then
+            run_logged 'build Llevant' node world-generator/scripts/build-local-zone.mjs baleares llevant || zones=$?
+            run_logged 'verify Llevant' node world-generator/scripts/verify-local-zone.mjs baleares llevant || zones=$?
+            run_logged 'build Palma' node world-generator/scripts/build-local-zone.mjs baleares palma || zones=$?
+            run_logged 'verify Palma' node world-generator/scripts/verify-local-zone.mjs baleares palma || zones=$?
+            run_logged 'build local registry' node world-generator/scripts/build-local-zone-registry.mjs baleares || zones=$?
+            run_logged 'verify local registry' node world-generator/scripts/verify-local-zone-registry.mjs baleares || zones=$?
+          else
+            zones=99
+          fi
+
+          if [ "$zones" = 0 ]; then
+            rm -rf /tmp/runtime-007-zones-first
+            mkdir -p /tmp/runtime-007-zones-first/llevant /tmp/runtime-007-zones-first/palma
+            cp regions/baleares/local/llevant/llevant-local-v1.bin /tmp/runtime-007-zones-first/llevant/
+            cp regions/baleares/local/llevant/llevant-local-v1.json /tmp/runtime-007-zones-first/llevant/
+            cp regions/baleares/local/palma/palma-local-v1.bin /tmp/runtime-007-zones-first/palma/
+            cp regions/baleares/local/palma/palma-local-v1.json /tmp/runtime-007-zones-first/palma/
+            cp regions/baleares/local/zones-v1.json /tmp/runtime-007-zones-first/
+            run_logged 'rebuild Llevant' node world-generator/scripts/build-local-zone.mjs baleares llevant || deterministic_zones=$?
+            run_logged 'rebuild Palma' node world-generator/scripts/build-local-zone.mjs baleares palma || deterministic_zones=$?
+            run_logged 'rebuild registry' node world-generator/scripts/build-local-zone-registry.mjs baleares || deterministic_zones=$?
+            diff -q /tmp/runtime-007-zones-first/llevant/llevant-local-v1.bin regions/baleares/local/llevant/llevant-local-v1.bin >> "$LOG" 2>&1 || deterministic_zones=$?
+            diff -q /tmp/runtime-007-zones-first/llevant/llevant-local-v1.json regions/baleares/local/llevant/llevant-local-v1.json >> "$LOG" 2>&1 || deterministic_zones=$?
+            diff -q /tmp/runtime-007-zones-first/palma/palma-local-v1.bin regions/baleares/local/palma/palma-local-v1.bin >> "$LOG" 2>&1 || deterministic_zones=$?
+            diff -q /tmp/runtime-007-zones-first/palma/palma-local-v1.json regions/baleares/local/palma/palma-local-v1.json >> "$LOG" 2>&1 || deterministic_zones=$?
+            diff -q /tmp/runtime-007-zones-first/zones-v1.json regions/baleares/local/zones-v1.json >> "$LOG" 2>&1 || deterministic_zones=$?
+          else
+            deterministic_zones=99
+          fi
+
+          if [ "$zones" = 0 ] && [ "$deterministic_zones" = 0 ]; then
+            run_logged 'build runtime 007' node world-generator/scripts/build-baleares-runtime-007.mjs || runtime=$?
+          else
+            runtime=99
+          fi
+
+          if [ "$runtime" = 0 ]; then
+            python3 - <<'PY' > /tmp/runtime-007-inline.mjs
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-runtime-baleares-007.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          print(scripts[0])
+          PY
+            run_logged 'syntax runtime 007 inline JavaScript' node --check /tmp/runtime-007-inline.mjs || inline=$?
+          else
+            inline=99
+          fi
+
+          if [ "$runtime" = 0 ] && [ "$inline" = 0 ]; then
+            cp mallorca-mobile/region-runtime-baleares-007.html /tmp/runtime-007-first.html
+            cp world-generator/baleares-runtime-007-build.json /tmp/runtime-007-first-build.json
+            run_logged 'rebuild runtime 007' node world-generator/scripts/build-baleares-runtime-007.mjs || deterministic_runtime=$?
+            diff -q /tmp/runtime-007-first.html mallorca-mobile/region-runtime-baleares-007.html >> "$LOG" 2>&1 || deterministic_runtime=$?
+            diff -q /tmp/runtime-007-first-build.json world-generator/baleares-runtime-007-build.json >> "$LOG" 2>&1 || deterministic_runtime=$?
+          else
+            deterministic_runtime=99
+          fi
+
+          if [ "$runtime" = 0 ] && [ "$inline" = 0 ] && [ "$deterministic_runtime" = 0 ]; then
+            python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/runtime-007-server.log 2>&1 &
+            server_pid=$!
+            sleep 2
+            run_logged 'local mobile browser runtime 007' node world-generator/scripts/verify-baleares-runtime-007-browser.mjs \
+              --url http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-007.html?v=local \
+              --output world-generator/baleares-runtime-007-local-verification.json \
+              --screenshot /tmp/runtime-007-local.png || browser=$?
+            kill "$server_pid" >/dev/null 2>&1 || true
+          else
+            browser=99
+          fi
+
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            > /tmp/runtime-007-protected-after.sha256
+          diff -u /tmp/runtime-007-protected-before.sha256 /tmp/runtime-007-protected-after.sha256 >> "$LOG" 2>&1 || protected=$?
+
+          printf '{"syntax":%s,"zones":%s,"deterministicZones":%s,"runtime":%s,"inlineSyntax":%s,"deterministicRuntime":%s,"browser":%s,"protected":%s}\n' \
+            "$syntax" "$zones" "$deterministic_zones" "$runtime" "$inline" "$deterministic_runtime" "$browser" "$protected" > "$STATUS"
+          cat "$LOG"
+          all=0
+          for code in "$syntax" "$zones" "$deterministic_zones" "$runtime" "$inline" "$deterministic_runtime" "$browser" "$protected"; do
+            [ "$code" = 0 ] || all=1
+          done
+          echo "code=${all}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit generated packages, runtime and diagnostics
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          paths=(
+            world-generator/baleares-runtime-007-diagnostic.log
+            world-generator/baleares-runtime-007-diagnostic-status.json
+          )
+          optional=(
+            regions/baleares/local/llevant/llevant-local-v1.bin
+            regions/baleares/local/llevant/llevant-local-v1.json
+            regions/baleares/local/palma/palma-local-v1.bin
+            regions/baleares/local/palma/palma-local-v1.json
+            regions/baleares/local/zones-v1.json
+            world-generator/baleares-llevant-local-build.json
+            world-generator/baleares-llevant-local-validation.json
+            world-generator/baleares-palma-local-build.json
+            world-generator/baleares-palma-local-validation.json
+            world-generator/baleares-local-zone-registry-build.json
+            world-generator/baleares-local-zone-registry-validation.json
+            mallorca-mobile/region-runtime-baleares-007.html
+            world-generator/baleares-runtime-007-build.json
+            world-generator/baleares-runtime-007-local-verification.json
+          )
+          for path in "${paths[@]}"; do [ -f "$path" ] && git add "$path"; done
+          for path in "${optional[@]}"; do [ -f "$path" ] && git add "$path"; done
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate and verify Baleares regional runtime 007"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          RUNTIME_BLOB="$(git hash-object mallorca-mobile/region-runtime-baleares-007.html 2>/dev/null || true)"
+          echo "RUNTIME_BLOB=${RUNTIME_BLOB}" >> "$GITHUB_ENV"
+
+      - name: Require local success
+        if: steps.local.outputs.code != '0'
+        run: exit 1
+
+      - name: Wait for public runtime and zone registry
+        shell: bash
+        run: |
+          runtime_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-007.html?v=${RUNTIME_BLOB}"
+          registry_url="https://xxenesiss.github.io/WAFT-2/regions/baleares/local/zones-v1.json?v=${RUNTIME_BLOB}"
+          echo "PUBLIC_RUNTIME_URL=${runtime_url}" >> "$GITHUB_ENV"
+          expected_registry="$(jq -r .buildId regions/baleares/local/zones-v1.json)"
+          for attempt in $(seq 1 60); do
+            runtime_ok=0
+            registry_ok=0
+            curl -fsS --max-time 20 "$runtime_url" | grep -q 'RUNTIME REGIONAL 007' && runtime_ok=1
+            remote_registry="$(curl -fsS --max-time 20 "$registry_url" | jq -r .buildId 2>/dev/null || true)"
+            [ "$remote_registry" = "$expected_registry" ] && registry_ok=1
+            if [ "$runtime_ok" = 1 ] && [ "$registry_ok" = 1 ]; then
+              echo "GitHub Pages serves runtime 007 and registry ${expected_registry}"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/60): runtime=${runtime_ok} registry=${remote_registry:-missing}"
+            sleep 5
+          done
+          exit 1
+
+      - name: Verify public mobile runtime
+        shell: bash
+        run: |
+          node world-generator/scripts/verify-baleares-runtime-007-browser.mjs \
+            --url "$PUBLIC_RUNTIME_URL" \
+            --public \
+            --output world-generator/baleares-runtime-007-public-verification.json \
+            --screenshot /tmp/runtime-007-public.png
+
+      - name: Record public verification
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-runtime-007-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Baleares regional runtime 007"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload runtime screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-007-mobile
+          path: |
+            /tmp/runtime-007-local.png
+            /tmp/runtime-007-public.png
+          retention-days: 7
