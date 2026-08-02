@@ -26,7 +26,7 @@
       "presetId": "palma",
       "name": "Palma · Centre–Badia–Ponència",
       "regionalRadius": 24,
-      "minimumBuildings": 300,
+      "minimumBuildings": 150,
       "minimumRoadVertices": 1200
     }
   ]
