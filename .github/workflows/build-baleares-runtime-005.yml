@@ -1,0 +1,258 @@
+name: Build Baleares regional runtime 005
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-baleares-runtime-005.yml
+      - world-generator/scripts/build-local-zone.mjs
+      - world-generator/scripts/verify-local-zone.mjs
+      - world-generator/scripts/run-build-local-zone.mjs
+      - world-generator/scripts/run-verify-local-zone.mjs
+      - world-generator/scripts/build-baleares-runtime-005.mjs
+      - world-generator/scripts/verify-baleares-runtime-005-browser.mjs
+      - mallorca-mobile/region-runtime-baleares-004.html
+      - regions/baleares/preview/baleares-preview-v1.bin
+      - regions/baleares/preview/baleares-preview-v1.json
+      - regions/baleares/terrain.bin
+      - regions/baleares/landcover.bin
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-005
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Record frozen 0.15.5 files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-runtime005-before.sha256
+
+      - name: Build runtime 005 with diagnostics
+        id: build
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/baleares-runtime-005-diagnostic.log
+          exec > >(tee -a world-generator/baleares-runtime-005-diagnostic.log) 2>&1
+
+          echo "== syntax checks =="
+          for script in \
+            world-generator/scripts/build-local-zone.mjs \
+            world-generator/scripts/verify-local-zone.mjs \
+            world-generator/scripts/run-build-local-zone.mjs \
+            world-generator/scripts/run-verify-local-zone.mjs \
+            world-generator/scripts/build-baleares-runtime-005.mjs \
+            world-generator/scripts/verify-baleares-runtime-005-browser.mjs; do
+            node --check "$script"
+            code=$?
+            echo "syntax ${script}=${code}"
+            if [ "$code" -ne 0 ]; then syntax_code=1; fi
+          done
+          syntax_code=${syntax_code:-0}
+
+          echo "== build local package =="
+          node world-generator/scripts/run-build-local-zone.mjs baleares llevant
+          local_build=$?
+          echo "local-build=${local_build}"
+          local_verify=99
+          if [ "$local_build" -eq 0 ]; then
+            node world-generator/scripts/run-verify-local-zone.mjs baleares llevant
+            local_verify=$?
+          fi
+          echo "local-verify=${local_verify}"
+
+          echo "== build runtime 005 =="
+          node world-generator/scripts/build-baleares-runtime-005.mjs
+          runtime_build=$?
+          echo "runtime-build=${runtime_build}"
+
+          inline_syntax=99
+          deterministic=99
+          if [ "$runtime_build" -eq 0 ]; then
+            python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-runtime-baleares-005.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          Path('/tmp/runtime005-inline.mjs').write_text(scripts[0], encoding='utf-8')
+          PY
+            node --check /tmp/runtime005-inline.mjs
+            inline_syntax=$?
+            echo "inline-syntax=${inline_syntax}"
+          fi
+
+          if [ "$runtime_build" -eq 0 ] && [ "$inline_syntax" -eq 0 ]; then
+            cp mallorca-mobile/region-runtime-baleares-005.html /tmp/runtime005-first.html
+            cp world-generator/baleares-runtime-005-build.json /tmp/runtime005-first.json
+            node world-generator/scripts/build-baleares-runtime-005.mjs >/tmp/runtime005-rebuild.log
+            rebuild=$?
+            echo "runtime-rebuild=${rebuild}"
+            if [ "$rebuild" -eq 0 ]; then
+              diff -q /tmp/runtime005-first.html mallorca-mobile/region-runtime-baleares-005.html
+              html_diff=$?
+              diff -q /tmp/runtime005-first.json world-generator/baleares-runtime-005-build.json
+              report_diff=$?
+              echo "html-diff=${html_diff} report-diff=${report_diff}"
+              if [ "$html_diff" -eq 0 ] && [ "$report_diff" -eq 0 ]; then deterministic=0; else deterministic=1; fi
+            fi
+          fi
+          echo "deterministic=${deterministic}"
+
+          printf '{"syntax":%s,"localBuild":%s,"localVerify":%s,"runtimeBuild":%s,"inlineSyntax":%s,"deterministic":%s}\n' \
+            "$syntax_code" "$local_build" "$local_verify" "$runtime_build" "$inline_syntax" "$deterministic" \
+            > world-generator/baleares-runtime-005-diagnostic-status.json
+
+          if [ "$syntax_code" -eq 0 ] && [ "$local_build" -eq 0 ] && [ "$local_verify" -eq 0 ] && [ "$runtime_build" -eq 0 ] && [ "$inline_syntax" -eq 0 ] && [ "$deterministic" -eq 0 ]; then
+            echo "code=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "code=1" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Install browser verifier
+        if: steps.build.outputs.code == '0'
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Verify runtime 005 locally
+        id: browser
+        if: steps.build.outputs.code == '0'
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/runtime005-server.log 2>&1 &
+          server_pid=$!
+          sleep 2
+          node world-generator/scripts/verify-baleares-runtime-005-browser.mjs \
+            --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-005.html?v=local" \
+            --output world-generator/baleares-runtime-005-local-browser.json \
+            --screenshot /tmp/baleares-runtime-005-local.png
+          code=$?
+          kill "$server_pid" || true
+          echo "code=${code}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Confirm frozen build is untouched
+        if: always()
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-runtime005-after.sha256
+          diff -u /tmp/waft-0155-runtime005-before.sha256 /tmp/waft-0155-runtime005-after.sha256
+
+      - name: Commit diagnostics or verified runtime
+        if: always()
+        id: publish
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-runtime-005-diagnostic.log world-generator/baleares-runtime-005-diagnostic-status.json
+          [ -f regions/baleares/local/llevant/llevant-local-v1.bin ] && git add regions/baleares/local/llevant/llevant-local-v1.bin
+          [ -f regions/baleares/local/llevant/llevant-local-v1.json ] && git add regions/baleares/local/llevant/llevant-local-v1.json
+          [ -f world-generator/baleares-llevant-local-build.json ] && git add world-generator/baleares-llevant-local-build.json
+          [ -f world-generator/baleares-llevant-local-validation.json ] && git add world-generator/baleares-llevant-local-validation.json
+          [ -f mallorca-mobile/region-runtime-baleares-005.html ] && git add mallorca-mobile/region-runtime-baleares-005.html
+          [ -f world-generator/baleares-runtime-005-build.json ] && git add world-generator/baleares-runtime-005-build.json
+          [ -f world-generator/baleares-runtime-005-local-browser.json ] && git add world-generator/baleares-runtime-005-local-browser.json
+          if ! git diff --cached --quiet; then
+            if [ "${{ steps.build.outputs.code }}" = "0" ] && [ "${{ steps.browser.outputs.code }}" = "0" ]; then
+              git commit -m "Publish Baleares regional runtime 005"
+            else
+              git commit -m "Record Baleares runtime 005 diagnostics"
+            fi
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          commit="$(git rev-parse HEAD)"
+          echo "commit=${commit}" >> "$GITHUB_OUTPUT"
+
+      - name: Require successful local verification
+        if: steps.build.outputs.code != '0' || steps.browser.outputs.code != '0'
+        run: exit 1
+
+      - name: Wait for GitHub Pages
+        if: steps.build.outputs.code == '0' && steps.browser.outputs.code == '0'
+        shell: bash
+        run: |
+          commit="${{ steps.publish.outputs.commit }}"
+          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-005.html?v=${commit}"
+          local_url="https://xxenesiss.github.io/WAFT-2/regions/baleares/local/llevant/llevant-local-v1.json?v=${commit}"
+          expected="$(jq -r .buildId regions/baleares/local/llevant/llevant-local-v1.json)"
+          echo "PUBLIC_URL=${url}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            remote="$(curl -fsS --max-time 20 "$local_url" | jq -r .buildId 2>/dev/null || true)"
+            if [ "$remote" = "$expected" ] && curl -fsS --max-time 20 "$url" | grep -q "RUNTIME REGIONAL 005"; then
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/60): remote=${remote:-missing} expected=${expected}"
+            sleep 5
+          done
+          exit 1
+
+      - name: Verify public runtime 005
+        if: steps.build.outputs.code == '0' && steps.browser.outputs.code == '0'
+        run: |
+          node world-generator/scripts/verify-baleares-runtime-005-browser.mjs \
+            --url "$PUBLIC_URL" \
+            --public \
+            --output world-generator/baleares-runtime-005-public-verification.json \
+            --screenshot /tmp/baleares-runtime-005-public.png
+
+      - name: Record public verification
+        if: steps.build.outputs.code == '0' && steps.browser.outputs.code == '0'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-runtime-005-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Baleares regional runtime 005"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload runtime screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-005-screenshots
+          path: |
+            /tmp/baleares-runtime-005-local.png
+            /tmp/baleares-runtime-005-public.png
+          if-no-files-found: ignore
+          retention-days: 7
