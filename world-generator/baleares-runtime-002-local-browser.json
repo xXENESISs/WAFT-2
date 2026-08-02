@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "verifierVersion": 3,
+  "verifierVersion": 4,
   "runtimeVersion": "002",
   "valid": true,
   "public": false,
@@ -28,10 +28,10 @@
     "loadedCells": 15,
     "collisionProbe": true,
     "initialCameraDistance": 1.3510136170029574,
-    "jumpRise": 0.2287499999999998,
+    "jumpRise": 0.30097493999999925,
     "landed": true,
-    "movementDistance": 1.4400000000001414,
-    "facingChange": 1.4726215563702159,
+    "movementDistance": 1.7128751070760402,
+    "facingChange": 1.5462526341887264,
     "cameraDistanceAfterMovement": 6.73291405949698,
     "respawnGrounded": true,
     "cameraMode": "third-person",
@@ -48,18 +48,74 @@
       "y": 4.7486761508103275,
       "z": -128.99923193473498
     },
-    "playerFacing": 1.8726215563702158,
+    "playerFacing": 1.9462526341887263,
     "cameraMode": "third-person",
     "characterVisible": true,
     "cameraBlocked": false,
     "grounded": true,
     "activeBuildings": 782,
     "loadedCells": 10,
-    "collisions": 0,
+    "collisions": 3,
     "preset": "menorca"
   },
   "pageErrors": [],
   "consoleErrors": [
     "Failed to load resource: the server responded with a status of 404 (File not found)"
-  ]
+  ],
+  "publicMirror": {
+    "valid": true,
+    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-002.html?v=4cd5c90e3ce81afa5492ab4fd784dfeac9fe2e30",
+    "buildId": "baleares-preview-3068ab4bdb61",
+    "canvas": {
+      "width": 844,
+      "height": 390
+    },
+    "presets": [
+      "Palma",
+      "Llevant",
+      "Alcúdia",
+      "Menorca",
+      "Eivissa"
+    ],
+    "tests": {
+      "totalBuildings": 5866,
+      "streamedBuildings": 994,
+      "loadedCells": 15,
+      "collisionProbe": true,
+      "initialCameraDistance": 1.3510136170029574,
+      "jumpRise": 0.4237499999999996,
+      "landed": true,
+      "movementDistance": 1.5989131154158447,
+      "facingChange": 1.5162493444244691,
+      "cameraDistanceAfterMovement": 6.7329140594969665,
+      "respawnGrounded": true,
+      "cameraMode": "third-person",
+      "characterVisible": true
+    },
+    "finalState": {
+      "position": {
+        "x": 445.1680733656737,
+        "y": 2.01,
+        "z": -123.33401159999963
+      },
+      "cameraEye": {
+        "x": 442.7728566254901,
+        "y": 4.7486761508103275,
+        "z": -128.99923193473498
+      },
+      "playerFacing": 1.9162493444244693,
+      "cameraMode": "third-person",
+      "characterVisible": true,
+      "cameraBlocked": false,
+      "grounded": true,
+      "activeBuildings": 782,
+      "loadedCells": 10,
+      "collisions": 2,
+      "preset": "menorca"
+    },
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  }
 }
