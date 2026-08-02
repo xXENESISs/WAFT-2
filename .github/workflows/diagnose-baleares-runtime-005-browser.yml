@@ -1,11 +1,12 @@
 name: Diagnose Baleares runtime 005 browser
 
-# Diagnostic revision 2.
+# Diagnostic revision 3: measured local density.
 on:
   push:
     paths:
       - .github/workflows/diagnose-baleares-runtime-005-browser.yml
       - world-generator/scripts/verify-baleares-runtime-005-browser.mjs
+      - world-generator/scripts/run-verify-baleares-runtime-005-browser.mjs
       - mallorca-mobile/region-runtime-baleares-005.html
       - regions/baleares/local/llevant/llevant-local-v1.bin
       - regions/baleares/local/llevant/llevant-local-v1.json
@@ -34,7 +35,7 @@ jobs:
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/runtime005-server.log 2>&1 &
           pid=$!
           sleep 2
-          node world-generator/scripts/verify-baleares-runtime-005-browser.mjs \
+          node world-generator/scripts/run-verify-baleares-runtime-005-browser.mjs \
             --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-005.html?v=diagnostic" \
             --output world-generator/baleares-runtime-005-browser-diagnostic-report.json \
             --screenshot /tmp/runtime005-diagnostic.png \
