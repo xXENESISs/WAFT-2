@@ -7,7 +7,9 @@ on:
       - world-generator/scripts/build-region-preview.mjs
       - world-generator/scripts/verify-region-preview.mjs
       - world-generator/scripts/verify-region-preview-browser.mjs
+      - world-generator/scripts/verify-region-runtime-002-browser.mjs
       - mallorca-mobile/region-preview-baleares-001.html
+      - mallorca-mobile/region-runtime-baleares-002.html
       - regions/baleares/manifest.json
       - regions/baleares/terrain.bin
       - regions/baleares/landcover.bin
@@ -27,7 +29,7 @@ concurrency:
 jobs:
   build-and-verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -53,22 +55,28 @@ jobs:
             mallorca-mobile/v155direct2-05.js \
             mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-before.sha256
 
-      - name: Check preview source syntax
+      - name: Check preview and runtime verifier syntax
         shell: bash
         run: |
           node --check world-generator/scripts/build-region-preview.mjs
           node --check world-generator/scripts/verify-region-preview.mjs
           node --check world-generator/scripts/verify-region-preview-browser.mjs
+          node --check world-generator/scripts/verify-region-runtime-002-browser.mjs
           python3 - <<'PY'
           from pathlib import Path
           import re
-          html = Path('mallorca-mobile/region-preview-baleares-001.html').read_text(encoding='utf-8')
-          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
-          if len(scripts) != 1:
-              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
-          Path('/tmp/region-preview-inline.mjs').write_text(scripts[0], encoding='utf-8')
+          for source, target in [
+              ('mallorca-mobile/region-preview-baleares-001.html', '/tmp/region-preview-inline.mjs'),
+              ('mallorca-mobile/region-runtime-baleares-002.html', '/tmp/region-runtime-002-inline.mjs')
+          ]:
+              html = Path(source).read_text(encoding='utf-8')
+              scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+              if len(scripts) != 1:
+                  raise SystemExit(f'Expected one inline script in {source}, found {len(scripts)}')
+              Path(target).write_text(scripts[0], encoding='utf-8')
           PY
           node --check /tmp/region-preview-inline.mjs
+          node --check /tmp/region-runtime-002-inline.mjs
 
       - name: Build and validate compact preview package
         shell: bash
@@ -86,7 +94,8 @@ jobs:
       - name: Install browser verifier
         run: npm install --no-save --no-package-lock playwright-core@1.55.0
 
-      - name: Verify preview in local mobile browser
+      - name: Verify preview and runtime 002 locally
+        id: runtime002_local
         shell: bash
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/baleares-preview-server.log 2>&1 &
@@ -96,7 +105,27 @@ jobs:
             --url "http://127.0.0.1:8000/mallorca-mobile/region-preview-baleares-001.html?v=local" \
             --output world-generator/baleares-preview-local-browser.json \
             --screenshot /tmp/baleares-preview-local.png
+          set +e
+          node world-generator/scripts/verify-region-runtime-002-browser.mjs \
+            --url "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-002.html?v=local" \
+            --output world-generator/baleares-runtime-002-local-browser.json \
+            --screenshot /tmp/baleares-runtime-002-local.png \
+            >world-generator/baleares-runtime-002-local-browser.log 2>&1
+          code=$?
+          set -e
           kill "$(cat /tmp/baleares-preview-server.pid)" || true
+          cat > world-generator/baleares-runtime-002-local-browser-status.json <<JSON
+          {
+            "verificationVersion": 1,
+            "scope": "local",
+            "exitCode": $code,
+            "valid": $([ "$code" -eq 0 ] && echo true || echo false)
+          }
+          JSON
+          cat world-generator/baleares-runtime-002-local-browser-status.json
+          cat world-generator/baleares-runtime-002-local-browser.log
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Confirm frozen build is untouched
         shell: bash
@@ -112,7 +141,7 @@ jobs:
             mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-after.sha256
           diff -u /tmp/waft-0155-preview-before.sha256 /tmp/waft-0155-preview-after.sha256
 
-      - name: Commit preview package
+      - name: Commit preview package and local runtime verification
         id: publish
         shell: bash
         run: |
@@ -125,9 +154,12 @@ jobs:
             world-generator/baleares-preview-build.json \
             world-generator/baleares-preview-validation.json \
             world-generator/baleares-preview-build.log \
-            world-generator/baleares-preview-local-browser.json
+            world-generator/baleares-preview-local-browser.json \
+            world-generator/baleares-runtime-002-local-browser-status.json \
+            world-generator/baleares-runtime-002-local-browser.log
+          git add world-generator/baleares-runtime-002-local-browser.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "Publish Baleares region preview 001"
+            git commit -m "Verify local Baleares regional runtime 002"
           fi
           git pull --rebase origin main
           git push origin HEAD:main
@@ -136,22 +168,30 @@ jobs:
           echo "PREVIEW_COMMIT=${PREVIEW_COMMIT}" >> "$GITHUB_ENV"
           echo "PREVIEW_BUILD_ID=$(jq -r .buildId regions/baleares/preview/baleares-preview-v1.json)" >> "$GITHUB_ENV"
 
+      - name: Require valid local runtime 002
+        if: steps.runtime002_local.outputs.code != '0'
+        run: exit 1
+
       - name: Wait for GitHub Pages
         shell: bash
         run: |
           PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=${PREVIEW_COMMIT}"
+          RUNTIME_002_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-002.html?v=${PREVIEW_COMMIT}"
           DATA_URL="https://xxenesiss.github.io/WAFT-2/regions/baleares/preview/baleares-preview-v1.json?v=${PREVIEW_COMMIT}"
           echo "PAGE_URL=${PAGE_URL}" >> "$GITHUB_ENV"
-          for attempt in $(seq 1 48); do
+          echo "RUNTIME_002_URL=${RUNTIME_002_URL}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
             REMOTE_BUILD="$(curl -fsS --max-time 20 "$DATA_URL" | jq -r .buildId 2>/dev/null || true)"
-            if [ "$REMOTE_BUILD" = "$PREVIEW_BUILD_ID" ] && curl -fsS --max-time 20 "$PAGE_URL" | grep -q "VISOR REGIONAL 001"; then
-              echo "GitHub Pages serves ${PREVIEW_BUILD_ID}"
+            if [ "$REMOTE_BUILD" = "$PREVIEW_BUILD_ID" ] \
+              && curl -fsS --max-time 20 "$PAGE_URL" | grep -q "VISOR REGIONAL 001" \
+              && curl -fsS --max-time 20 "$RUNTIME_002_URL" | grep -q "RUNTIME REGIONAL 002"; then
+              echo "GitHub Pages serves preview and runtime 002 ${PREVIEW_BUILD_ID}"
               exit 0
             fi
-            echo "Waiting for Pages (${attempt}/48): remote=${REMOTE_BUILD:-missing} expected=${PREVIEW_BUILD_ID}"
+            echo "Waiting for Pages (${attempt}/60): remote=${REMOTE_BUILD:-missing} expected=${PREVIEW_BUILD_ID}"
             sleep 5
           done
-          echo "GitHub Pages did not publish the preview in time" >&2
+          echo "GitHub Pages did not publish preview and runtime 002 in time" >&2
           exit 1
 
       - name: Verify public mobile preview
@@ -163,21 +203,60 @@ jobs:
             --output world-generator/baleares-preview-public-verification.json \
             --screenshot /tmp/baleares-preview-public.png
 
-      - name: Record public verification
+      - name: Verify public mobile runtime 002
+        id: runtime002_public
         shell: bash
         run: |
-          git add world-generator/baleares-preview-public-verification.json
+          set +e
+          node world-generator/scripts/verify-region-runtime-002-browser.mjs \
+            --url "$RUNTIME_002_URL" \
+            --public \
+            --output world-generator/baleares-runtime-002-public-verification.json \
+            --screenshot /tmp/baleares-runtime-002-public.png \
+            >world-generator/baleares-runtime-002-public-verification.log 2>&1
+          code=$?
+          set -e
+          cat > world-generator/baleares-runtime-002-public-verification-status.json <<JSON
+          {
+            "verificationVersion": 1,
+            "scope": "public",
+            "exitCode": $code,
+            "valid": $([ "$code" -eq 0 ] && echo true || echo false),
+            "url": "$RUNTIME_002_URL"
+          }
+          JSON
+          cat world-generator/baleares-runtime-002-public-verification-status.json
+          cat world-generator/baleares-runtime-002-public-verification.log
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Record public verification
+        if: always()
+        shell: bash
+        run: |
+          git add \
+            world-generator/baleares-preview-public-verification.json \
+            world-generator/baleares-runtime-002-public-verification-status.json \
+            world-generator/baleares-runtime-002-public-verification.log
+          git add world-generator/baleares-runtime-002-public-verification.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "Verify public Baleares region preview 001"
+            git commit -m "Verify public Baleares regional runtime 002"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
 
-      - name: Upload preview screenshots
+      - name: Require valid public runtime 002
+        if: steps.runtime002_public.outputs.code != '0'
+        run: exit 1
+
+      - name: Upload preview and runtime screenshots
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: baleares-region-preview-001-screenshots
+          name: baleares-preview-and-runtime-002-screenshots
           path: |
             /tmp/baleares-preview-local.png
             /tmp/baleares-preview-public.png
+            /tmp/baleares-runtime-002-local.png
+            /tmp/baleares-runtime-002-public.png
           retention-days: 7
