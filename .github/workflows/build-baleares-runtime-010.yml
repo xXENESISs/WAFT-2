@@ -1,11 +1,12 @@
 name: Build Baleares regional runtime 010
 
-# Workflow revision 4.
+# Workflow revision 5.
 on:
   push:
     paths:
       - .github/workflows/build-baleares-runtime-010.yml
       - world-generator/scripts/build-baleares-runtime-010.mjs
+      - world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs
       - world-generator/scripts/verify-baleares-runtime-010-browser.mjs
       - world-generator/scripts/verify-baleares-runtime-009-browser.mjs
       - mallorca-mobile/region-runtime-baleares-009.html
@@ -86,10 +87,14 @@ jobs:
           protected=0
 
           run_logged 'syntax runtime builder' node --check world-generator/scripts/build-baleares-runtime-010.mjs || syntax=$?
+          run_logged 'syntax runtime locomotion patch' node --check world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs || syntax=$?
           run_logged 'syntax browser verifier' node --check world-generator/scripts/verify-baleares-runtime-010-browser.mjs || syntax=$?
 
           if [ "$syntax" = 0 ]; then
             run_logged 'build runtime 010' node world-generator/scripts/build-baleares-runtime-010.mjs || runtime=$?
+            if [ "$runtime" = 0 ]; then
+              run_logged 'apply runtime 010 locomotion patch' node world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs || runtime=$?
+            fi
           else
             runtime=99
           fi
@@ -113,6 +118,9 @@ jobs:
             cp mallorca-mobile/region-runtime-baleares-010.html /tmp/runtime-010-first.html
             cp world-generator/baleares-runtime-010-build.json /tmp/runtime-010-first-build.json
             run_logged 'rebuild runtime 010' node world-generator/scripts/build-baleares-runtime-010.mjs || deterministic=$?
+            if [ "$deterministic" = 0 ]; then
+              run_logged 'reapply runtime 010 locomotion patch' node world-generator/scripts/patch-baleares-runtime-010-spatial-probe.mjs || deterministic=$?
+            fi
             diff -q /tmp/runtime-010-first.html mallorca-mobile/region-runtime-baleares-010.html >> "$LOG" 2>&1 || deterministic=$?
             diff -q /tmp/runtime-010-first-build.json world-generator/baleares-runtime-010-build.json >> "$LOG" 2>&1 || deterministic=$?
           else
