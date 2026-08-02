@@ -1466,7 +1466,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
         if (clear) {
           const travelX = target.x - start.x;
           const travelZ = target.z - start.z;
-          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 1100 };
+          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 3800 };
         }
       }
       throw new Error('No se encontró una aproximación física segura a ' + node.name);

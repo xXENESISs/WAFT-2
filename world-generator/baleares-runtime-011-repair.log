@@ -12,7 +12,7 @@ exit=0
   "source": "mallorca-mobile/region-runtime-baleares-010.html",
   "output": "mallorca-mobile/region-runtime-baleares-011.html",
   "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
-  "outputSha256": "a454e978761f229b98eb4a5613d76784fdaa880013910c84dc000c97736a9b5a",
+  "outputSha256": "68235157e241ee3dda3d2ff834b88d8fcbce80774a07315fd03e5a08e7195225",
   "outputBytes": 127987,
   "travel": {
     "schemaVersion": 1,
@@ -49,7 +49,7 @@ exit=0
   "source": "mallorca-mobile/region-runtime-baleares-010.html",
   "output": "mallorca-mobile/region-runtime-baleares-011.html",
   "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
-  "outputSha256": "a454e978761f229b98eb4a5613d76784fdaa880013910c84dc000c97736a9b5a",
+  "outputSha256": "68235157e241ee3dda3d2ff834b88d8fcbce80774a07315fd03e5a08e7195225",
   "outputBytes": 127987,
   "travel": {
     "schemaVersion": 1,
@@ -77,7 +77,7 @@ exit=0
 }
 exit=0
 == local mobile browser runtime 011 ==
-Error: Physical approach was too short: 1.8568467116629819
+Error: Swimming movement regressed: 1.0399999999998408
     at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:37:25)
-    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:151:5)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:202:5)
 exit=1
