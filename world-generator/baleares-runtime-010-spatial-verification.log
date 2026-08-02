@@ -34,11 +34,13 @@
 {
   "valid": true,
   "runtime": "mallorca-mobile/region-runtime-baleares-010.html",
-  "outputBytes": 104399,
-  "outputSha256": "b33c439d883d4e39912541d7bb4d53b9bfd5b0748c1c94a93c070dd8e6c03024",
-  "regionalProbeCellSize": 24
+  "outputBytes": 104427,
+  "outputSha256": "24a84c6518144df3a92d52c90960d5e7e310dfb34446b4bfc8edb05e5cb87971",
+  "regionalProbeCellSize": 24,
+  "browserSafeLocomotionProbeErrors": true
 }
-page.waitForFunction: Timeout 120000ms exceeded.
-    at verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs:128:16)
+Error: Mountain movement is too short: 0.17279999999999518
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs:37:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs:195:5)
 [runtime-010-verifier] status=1 signal=none error=none
 [runtime-010-verifier] generated verifier retained at /home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-baleares-runtime-010-generated.mjs
