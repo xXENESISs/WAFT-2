@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
+const VERIFIER_VERSION = 2;
+
 function parseArguments(argv) {
   const result = { url: null, output: null, screenshot: null, public: false };
   const args = [...argv];
@@ -93,6 +95,7 @@ async function verify() {
     if (pageErrors.length) throw new Error(`Page errors: ${pageErrors.join(' | ')}`);
     const report = {
       formatVersion: 1,
+      verifierVersion: VERIFIER_VERSION,
       valid: true,
       public: options.public,
       url: options.url,
