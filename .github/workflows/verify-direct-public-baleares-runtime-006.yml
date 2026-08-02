@@ -1,0 +1,55 @@
+name: Verify direct public Baleares runtime 006
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-direct-public-baleares-runtime-006.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Verify direct public runtime
+        shell: bash
+        run: |
+          set +e
+          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-006.html?v=ffd1e22a2cce491cdec2fc7abe542f86baeeb39d"
+          node world-generator/scripts/verify-baleares-runtime-006-browser.mjs \
+            --url "$url" \
+            --public \
+            --output world-generator/baleares-runtime-006-public-verification.json \
+            --screenshot /tmp/runtime-006-public.png \
+            > world-generator/baleares-runtime-006-direct-public.log 2>&1
+          code=$?
+          printf '{"exitCode":%s,"url":"%s"}\n' "$code" "$url" > world-generator/baleares-runtime-006-direct-public-status.json
+          cat world-generator/baleares-runtime-006-direct-public.log
+          exit 0
+      - name: Commit direct public result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            world-generator/baleares-runtime-006-direct-public.log \
+            world-generator/baleares-runtime-006-direct-public-status.json
+          [ -f world-generator/baleares-runtime-006-public-verification.json ] && git add world-generator/baleares-runtime-006-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify direct public Baleares runtime 006"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Require success
+        run: test "$(jq -r .exitCode world-generator/baleares-runtime-006-direct-public-status.json)" = "0"
