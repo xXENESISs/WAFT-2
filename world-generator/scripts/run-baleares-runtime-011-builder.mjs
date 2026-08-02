@@ -97,6 +97,15 @@ builder = replaceOnce(
   'travel probe boundary heading'
 );
 
+builder = replaceOnce(
+  builder,
+  `assert(html.includes("version: '011'"), 'Runtime API version was not upgraded');`,
+  `html = replaceOnce(html, 'suggestedMilliseconds: 700', 'suggestedMilliseconds: 1200', 'runtime 011 open-water probe duration');
+
+assert(html.includes("version: '011'"), 'Runtime API version was not upgraded');`,
+  'runtime 011 water probe duration patch'
+);
+
 fs.writeFileSync(temporaryPath, builder);
 const result = spawnSync(process.execPath, [temporaryPath, ...process.argv.slice(2)], {
   cwd: ROOT,
