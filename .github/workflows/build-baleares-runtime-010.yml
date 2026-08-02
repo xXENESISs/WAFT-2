@@ -1,0 +1,230 @@
+name: Build Baleares regional runtime 010
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-baleares-runtime-010.yml
+      - world-generator/scripts/build-baleares-runtime-010.mjs
+      - world-generator/scripts/verify-baleares-runtime-010-browser.mjs
+      - world-generator/scripts/verify-baleares-runtime-009-browser.mjs
+      - mallorca-mobile/region-runtime-baleares-009.html
+      - regions/baleares/local/zones-v1.json
+      - regions/baleares/local/llevant/llevant-local-v1.bin
+      - regions/baleares/local/llevant/llevant-local-v1.json
+      - regions/baleares/local/palma/palma-local-v1.bin
+      - regions/baleares/local/palma/palma-local-v1.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: baleares-runtime-010
+  cancel-in-progress: true
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Record protected files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            mallorca-mobile/region-runtime-baleares-007.html \
+            mallorca-mobile/region-runtime-baleares-008.html \
+            mallorca-mobile/region-runtime-baleares-009.html \
+            > /tmp/runtime-010-protected-before.sha256
+
+      - name: Install mobile browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Build and test locally
+        id: local
+        shell: bash
+        run: |
+          set +e
+          LOG=world-generator/baleares-runtime-010-diagnostic.log
+          STATUS=world-generator/baleares-runtime-010-diagnostic-status.json
+          : > "$LOG"
+
+          run_logged() {
+            label="$1"
+            shift
+            echo "== ${label} ==" >> "$LOG"
+            "$@" >> "$LOG" 2>&1
+            code=$?
+            echo "exit=${code}" >> "$LOG"
+            return "$code"
+          }
+
+          syntax=0
+          runtime=0
+          inline=0
+          deterministic=0
+          browser=0
+          protected=0
+
+          run_logged 'syntax runtime builder' node --check world-generator/scripts/build-baleares-runtime-010.mjs || syntax=$?
+          run_logged 'syntax browser verifier' node --check world-generator/scripts/verify-baleares-runtime-010-browser.mjs || syntax=$?
+
+          if [ "$syntax" = 0 ]; then
+            run_logged 'build runtime 010' node world-generator/scripts/build-baleares-runtime-010.mjs || runtime=$?
+          else
+            runtime=99
+          fi
+
+          if [ "$runtime" = 0 ]; then
+            python3 - <<'PY' > /tmp/runtime-010-inline.mjs
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-runtime-baleares-010.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          print(scripts[0])
+          PY
+            run_logged 'syntax runtime 010 inline JavaScript' node --check /tmp/runtime-010-inline.mjs || inline=$?
+          else
+            inline=99
+          fi
+
+          if [ "$runtime" = 0 ] && [ "$inline" = 0 ]; then
+            cp mallorca-mobile/region-runtime-baleares-010.html /tmp/runtime-010-first.html
+            cp world-generator/baleares-runtime-010-build.json /tmp/runtime-010-first-build.json
+            run_logged 'rebuild runtime 010' node world-generator/scripts/build-baleares-runtime-010.mjs || deterministic=$?
+            diff -q /tmp/runtime-010-first.html mallorca-mobile/region-runtime-baleares-010.html >> "$LOG" 2>&1 || deterministic=$?
+            diff -q /tmp/runtime-010-first-build.json world-generator/baleares-runtime-010-build.json >> "$LOG" 2>&1 || deterministic=$?
+          else
+            deterministic=99
+          fi
+
+          if [ "$runtime" = 0 ] && [ "$inline" = 0 ] && [ "$deterministic" = 0 ]; then
+            python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/runtime-010-server.log 2>&1 &
+            server_pid=$!
+            sleep 2
+            run_logged 'local mobile browser runtime 010' node world-generator/scripts/verify-baleares-runtime-010-browser.mjs \
+              --url http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=local \
+              --output world-generator/baleares-runtime-010-local-verification.json \
+              --screenshot /tmp/runtime-010-local.png || browser=$?
+            kill "$server_pid" >/dev/null 2>&1 || true
+          else
+            browser=99
+          fi
+
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-runtime-baleares-005.html \
+            mallorca-mobile/region-runtime-baleares-006.html \
+            mallorca-mobile/region-runtime-baleares-007.html \
+            mallorca-mobile/region-runtime-baleares-008.html \
+            mallorca-mobile/region-runtime-baleares-009.html \
+            > /tmp/runtime-010-protected-after.sha256
+          diff -u /tmp/runtime-010-protected-before.sha256 /tmp/runtime-010-protected-after.sha256 >> "$LOG" 2>&1 || protected=$?
+
+          printf '{"syntax":%s,"runtime":%s,"inlineSyntax":%s,"deterministicRuntime":%s,"browser":%s,"protected":%s}\n' \
+            "$syntax" "$runtime" "$inline" "$deterministic" "$browser" "$protected" > "$STATUS"
+          cat "$LOG"
+          all=0
+          for code in "$syntax" "$runtime" "$inline" "$deterministic" "$browser" "$protected"; do
+            [ "$code" = 0 ] || all=1
+          done
+          echo "code=${all}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit runtime and local verification
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          optional=(
+            mallorca-mobile/region-runtime-baleares-010.html
+            world-generator/baleares-runtime-010-build.json
+            world-generator/baleares-runtime-010-local-verification.json
+            world-generator/baleares-runtime-010-diagnostic.log
+            world-generator/baleares-runtime-010-diagnostic-status.json
+          )
+          for path in "${optional[@]}"; do [ -f "$path" ] && git add "$path"; done
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate and verify Baleares regional runtime 010"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          RUNTIME_BLOB="$(git hash-object mallorca-mobile/region-runtime-baleares-010.html 2>/dev/null || true)"
+          echo "RUNTIME_BLOB=${RUNTIME_BLOB}" >> "$GITHUB_ENV"
+
+      - name: Require local success
+        if: steps.local.outputs.code != '0'
+        run: exit 1
+
+      - name: Wait for public runtime
+        shell: bash
+        run: |
+          runtime_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-010.html?v=${RUNTIME_BLOB}"
+          echo "PUBLIC_RUNTIME_URL=${runtime_url}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            if curl -fsS --max-time 20 "$runtime_url" | grep -q 'RUNTIME REGIONAL 010'; then
+              echo "GitHub Pages serves runtime 010"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/60)"
+            sleep 5
+          done
+          exit 1
+
+      - name: Verify public mobile runtime
+        shell: bash
+        run: |
+          node world-generator/scripts/verify-baleares-runtime-010-browser.mjs \
+            --url "$PUBLIC_RUNTIME_URL" \
+            --public \
+            --output world-generator/baleares-runtime-010-public-verification.json \
+            --screenshot /tmp/runtime-010-public.png
+
+      - name: Record public verification
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/baleares-runtime-010-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Baleares regional runtime 010"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload runtime screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: baleares-runtime-010-mobile
+          path: |
+            /tmp/runtime-010-local.png
+            /tmp/runtime-010-public.png
+          retention-days: 7
