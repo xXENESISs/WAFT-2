@@ -11,7 +11,7 @@ let source = fs.readFileSync(sourcePath, 'utf8');
 const patches = [
   {
     from: '  assert(header.buildingCount >= 250 && header.buildingCount < 5866, `Invalid local building count: ${header.buildingCount}`);',
-    to: '  assert(header.buildingCount >= 150 && header.buildingCount < 5866, `Invalid local building count: ${header.buildingCount}`);',
+    to: '  assert(header.buildingCount >= 100 && header.buildingCount < 5866, `Invalid local building count: ${header.buildingCount}`);',
     label: 'Llevant minimum building density'
   },
   {
