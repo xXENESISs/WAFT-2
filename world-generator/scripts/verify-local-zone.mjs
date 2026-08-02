@@ -28,23 +28,71 @@ function align4(value) {
   return (value + 3) & ~3;
 }
 
+function near(actual, expected, tolerance, label) {
+  assert(Math.abs(actual - expected) <= tolerance, `${label}: expected ${expected}, got ${actual}`);
+}
+
+function loadZoneContract(regionId, zoneId) {
+  const configPath = path.join(ROOT, 'world-generator', 'configs', `${regionId}-local-zones.json`);
+  assert(fs.existsSync(configPath), `Missing local-zone config ${configPath}`);
+  const config = readJson(configPath);
+  assert(config.formatVersion === 1 && config.regionId === regionId, 'Invalid local-zone config');
+  assert(config.packageFormat === MAGIC, 'Local-zone config package format mismatch');
+  const zone = config.zones.find(item => item.id === zoneId);
+  assert(zone, `Unknown local zone ${regionId}/${zoneId}`);
+  const defaults = config.defaults ?? {};
+  return {
+    configPath,
+    config,
+    contract: {
+      ...defaults,
+      ...zone,
+      worldScale: zone.worldScale ?? defaults.worldScale,
+      footprintScale: zone.footprintScale ?? defaults.footprintScale,
+      verticalScaleMultiplier: zone.verticalScaleMultiplier ?? defaults.verticalScaleMultiplier,
+      maxBinaryBytes: zone.maxBinaryBytes ?? defaults.maxBinaryBytes,
+      featurePadding: zone.featurePadding ?? defaults.featurePadding
+    }
+  };
+}
+
 function verify() {
   const regionId = process.argv[2] ?? 'baleares';
   const zoneId = process.argv[3] ?? 'llevant';
+  const { configPath, contract } = loadZoneContract(regionId, zoneId);
   const directory = path.join(ROOT, 'regions', regionId, 'local', zoneId);
-  const metadataPath = path.join(directory, 'llevant-local-v1.json');
-  const binaryPath = path.join(directory, 'llevant-local-v1.bin');
-  assert(fs.existsSync(metadataPath), `Missing ${metadataPath}`);
-  assert(fs.existsSync(binaryPath), `Missing ${binaryPath}`);
+  const metadataPath = path.join(directory, `${zoneId}-local-v1.json`);
+  const binaryPath = path.join(directory, `${zoneId}-local-v1.bin`);
+  const regionalMetadataPath = path.join(ROOT, 'regions', regionId, 'preview', `${regionId}-preview-v1.json`);
+  for (const filePath of [metadataPath, binaryPath, regionalMetadataPath]) {
+    assert(fs.existsSync(filePath), `Missing ${filePath}`);
+  }
 
   const metadata = readJson(metadataPath);
+  const regionalMetadata = readJson(regionalMetadataPath);
   const buffer = fs.readFileSync(binaryPath);
   assert(metadata.packageType === 'waft-local-zone', 'Invalid package type');
   assert(metadata.regionId === regionId && metadata.zoneId === zoneId, 'Region or zone mismatch');
+  assert(metadata.presetId === contract.presetId, 'Local-zone preset mismatch');
+  assert(metadata.name === contract.name, 'Local-zone name mismatch');
   assert(metadata.deterministic === true, 'Local package is not deterministic');
+  assert(metadata.coordinateSpace === 'regional-local-window', 'Unexpected coordinate space');
+  assert(metadata.binary.file === `${zoneId}-local-v1.bin`, 'Unexpected binary filename');
   assert(metadata.binary.sha256 === sha256(buffer), 'Local package SHA-256 mismatch');
   assert(metadata.binary.bytes === buffer.length, 'Local package byte count mismatch');
   assert(buffer.subarray(0, 8).toString('ascii') === MAGIC, 'Invalid local package magic');
+  assert(metadata.source.configFile === path.relative(ROOT, configPath).replaceAll(path.sep, '/'), 'Local package config provenance mismatch');
+  assert(metadata.source.regionalBuildId === regionalMetadata.buildId, 'Regional build provenance mismatch');
+  assert(metadata.source.regionalBinarySha256 === regionalMetadata.binary.sha256, 'Regional binary provenance mismatch');
+
+  const preset = regionalMetadata.presets.find(item => item.id === contract.presetId);
+  assert(preset, `Missing regional preset ${contract.presetId}`);
+  near(metadata.center.x, preset.x, 1e-9, 'Zone center x');
+  near(metadata.center.z, preset.z, 1e-9, 'Zone center z');
+  near(metadata.regionalRadius, contract.regionalRadius, 1e-9, 'Regional radius');
+  near(metadata.worldScale, contract.worldScale, 1e-9, 'World scale');
+  near(metadata.footprintScale, contract.footprintScale, 1e-9, 'Footprint scale');
+  near(metadata.verticalScaleMultiplier, contract.verticalScaleMultiplier, 1e-9, 'Vertical scale multiplier');
 
   const header = {
     version: buffer.readUInt16LE(8),
@@ -85,7 +133,9 @@ function verify() {
   assert(header.floatAlignmentPadding === header.buildingOffset - rawBuildingOffset, 'Alignment padding mismatch');
   assert(metadata.binary.floatAlignmentPadding === header.floatAlignmentPadding, 'Metadata alignment padding mismatch');
   assert(header.floatAlignmentPadding >= 0 && header.floatAlignmentPadding <= 3, 'Invalid alignment padding');
-  for (let offset = rawBuildingOffset; offset < header.buildingOffset; offset++) assert(buffer[offset] === 0, `Alignment padding byte ${offset} is not zero`);
+  for (let offset = rawBuildingOffset; offset < header.buildingOffset; offset++) {
+    assert(buffer[offset] === 0, `Alignment padding byte ${offset} is not zero`);
+  }
   assert(header.roadOffset === header.buildingOffset + header.buildingCount * header.buildingStride * 4, 'Road offset mismatch');
   assert(header.landmarkOffset === header.roadOffset + header.roadVertexCount * header.roadStride * 4, 'Landmark offset mismatch');
   assert(header.settlementOffset === header.landmarkOffset + header.landmarkCount * header.landmarkStride * 4, 'Settlement offset mismatch');
@@ -95,12 +145,19 @@ function verify() {
   assert(header.roadVertexCount === metadata.counts.roadVertices, 'Road vertex count mismatch');
   assert(header.landmarkCount === metadata.counts.landmarks, 'Landmark count mismatch');
   assert(header.settlementCount === metadata.counts.settlements, 'Settlement count mismatch');
-  assert(header.buildingCount >= 250 && header.buildingCount < 5866, `Invalid local building count: ${header.buildingCount}`);
-  assert(header.roadVertexCount >= 600 && header.roadVertexCount < 34092, `Invalid local road vertex count: ${header.roadVertexCount}`);
-  assert(header.columns < 512 && header.rows < 256, `Terrain was not cropped: ${header.columns}x${header.rows}`);
-  assert(metadata.worldScale === 12 && metadata.footprintScale === 4, 'Local scale contract changed');
-  assert(metadata.regionalRadius === 18, 'Local radius contract changed');
-  assert(buffer.length < 2 * 1024 * 1024, `Local package is too large: ${buffer.length}`);
+  assert(header.roadVertexCount % 2 === 0, 'Road vertex count must describe complete segments');
+  assert(metadata.counts.roadSegments === header.roadVertexCount / 2, 'Road segment count mismatch');
+  assert(metadata.labels.landmarks.length === header.landmarkCount, 'Landmark label count mismatch');
+  assert(metadata.labels.settlements.length === header.settlementCount, 'Settlement label count mismatch');
+  assert(header.buildingCount >= contract.minimumBuildings, `Invalid local building count: ${header.buildingCount}`);
+  assert(header.buildingCount < regionalMetadata.counts.buildings, 'Local package did not reduce buildings');
+  assert(header.roadVertexCount >= contract.minimumRoadVertices, `Invalid local road vertex count: ${header.roadVertexCount}`);
+  assert(header.roadVertexCount < regionalMetadata.counts.roadVertices, 'Local package did not reduce roads');
+  assert(header.columns < regionalMetadata.terrain.columns && header.rows < regionalMetadata.terrain.rows, `Terrain was not cropped: ${header.columns}x${header.rows}`);
+  assert(buffer.length <= contract.maxBinaryBytes, `Local package is too large: ${buffer.length}`);
+  assert(metadata.contract.minimumBuildings === contract.minimumBuildings, 'Metadata building contract mismatch');
+  assert(metadata.contract.minimumRoadVertices === contract.minimumRoadVertices, 'Metadata road contract mismatch');
+  assert(metadata.contract.maxBinaryBytes === contract.maxBinaryBytes, 'Metadata byte budget mismatch');
 
   let landCells = 0;
   const terrainStart = header.terrainOffset;
@@ -108,8 +165,9 @@ function verify() {
   for (let index = 0; index < header.terrainCells; index++) {
     const elevation = buffer.readInt16LE(terrainStart + index * 2);
     const landcover = buffer[landcoverStart + index];
-    if (elevation === NODATA) assert(landcover === 0, `Water cell ${index} has landcover ${landcover}`);
-    else {
+    if (elevation === NODATA) {
+      assert(landcover === 0, `Water cell ${index} has landcover ${landcover}`);
+    } else {
       assert(elevation >= 0, `Negative land elevation at ${index}`);
       assert(landcover !== 0, `Land cell ${index} is classified as water`);
       landCells++;
@@ -118,19 +176,36 @@ function verify() {
   assert(landCells === metadata.terrain.landCells, 'Land cell count mismatch');
   assert(landCells > 0, 'Local terrain has no land');
 
-  const radiusLimit = metadata.regionalRadius + 2.5;
+  const radiusLimit = metadata.regionalRadius + contract.featurePadding + 0.5;
   for (let index = 0; index < header.buildingCount; index++) {
     const offset = header.buildingOffset + index * header.buildingStride * 4;
     const x = buffer.readFloatLE(offset);
+    const y = buffer.readFloatLE(offset + 4);
     const z = buffer.readFloatLE(offset + 8);
+    const width = buffer.readFloatLE(offset + 12);
+    const height = buffer.readFloatLE(offset + 16);
+    const depth = buffer.readFloatLE(offset + 20);
+    assert(Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(z), `Building ${index} has invalid position`);
+    assert(width > 0 && height > 0 && depth > 0, `Building ${index} has invalid dimensions`);
     assert(Math.hypot(x - metadata.center.x, z - metadata.center.z) <= radiusLimit, `Building ${index} lies outside local package`);
   }
   for (let index = 0; index < header.roadVertexCount; index++) {
     const offset = header.roadOffset + index * header.roadStride * 4;
     const x = buffer.readFloatLE(offset);
+    const y = buffer.readFloatLE(offset + 4);
     const z = buffer.readFloatLE(offset + 8);
-    assert(Number.isFinite(x) && Number.isFinite(z), `Road vertex ${index} is invalid`);
+    const roadClass = buffer.readFloatLE(offset + 12);
+    assert(Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(z), `Road vertex ${index} is invalid`);
+    assert(Number.isInteger(roadClass) && roadClass >= 0 && roadClass <= 10, `Road vertex ${index} has invalid class ${roadClass}`);
   }
+
+  const expectedDisplayBounds = {
+    minX: (metadata.regionalBounds.minX - metadata.center.x) * metadata.worldScale,
+    maxX: (metadata.regionalBounds.maxX - metadata.center.x) * metadata.worldScale,
+    minZ: (metadata.regionalBounds.minZ - metadata.center.z) * metadata.worldScale,
+    maxZ: (metadata.regionalBounds.maxZ - metadata.center.z) * metadata.worldScale
+  };
+  for (const key of Object.keys(expectedDisplayBounds)) near(metadata.displayBounds[key], expectedDisplayBounds[key], 1e-6, `Display bound ${key}`);
 
   const report = {
     formatVersion: 1,
