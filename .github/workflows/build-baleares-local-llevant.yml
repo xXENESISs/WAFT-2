@@ -1,5 +1,6 @@
 name: Build Baleares Llevant local zone
 
+# Pipeline revision 2: aligned local package format.
 on:
   push:
     paths:
