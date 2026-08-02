@@ -712,16 +712,30 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
       camera: gl.getUniformLocation(characterProgram, 'uCamera')
     };
     const resolveThirdPersonCamera = (target, desired) => {
-      let last = [target[0], target[1] + .35, target[2]];
+      const deltaX = desired[0] - target[0];
+      const deltaY = desired[1] - target[1];
+      const deltaZ = desired[2] - target[2];
+      const desiredDistance = Math.hypot(deltaX, deltaY, deltaZ) || 1;
+      const minimumDistance = Math.min(1.55, desiredDistance * .32);
+      const minimumT = minimumDistance / desiredDistance;
+      let last = [
+        target[0] + deltaX * minimumT,
+        target[1] + deltaY * minimumT,
+        target[2] + deltaZ * minimumT
+      ];
       let blocked = false;
-      const steps = 20;
+      const steps = 24;
       for (let step = 1; step <= steps; step++) {
         const t = step / steps;
         const point = [
-          target[0] + (desired[0] - target[0]) * t,
-          target[1] + (desired[1] - target[1]) * t,
-          target[2] + (desired[2] - target[2]) * t
+          target[0] + deltaX * t,
+          target[1] + deltaY * t,
+          target[2] + deltaZ * t
         ];
+        if (t <= minimumT) {
+          last = point;
+          continue;
+        }
         const terrain = sampleTerrainInfo(point[0], point[2]);
         if (!terrain.land || terrain.height + .28 > point[1] || collidesBuilding(point[0], point[2])) {
           blocked = true;
