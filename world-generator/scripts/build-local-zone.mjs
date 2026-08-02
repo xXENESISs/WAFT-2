@@ -27,7 +27,9 @@ function sha256(data) {
 function stableJson(value) {
   const sort = input => {
     if (Array.isArray(input)) return input.map(sort);
-    if (input && typeof input === 'object') return Object.fromEntries(Object.keys(input).sort().map(key => [key, sort(input[key])]));
+    if (input && typeof input === 'object') {
+      return Object.fromEntries(Object.keys(input).sort().map(key => [key, sort(input[key])]));
+    }
     return input;
   };
   return `${JSON.stringify(sort(value), null, 2)}\n`;
@@ -35,6 +37,34 @@ function stableJson(value) {
 
 function align4(value) {
   return (value + 3) & ~3;
+}
+
+function loadZoneContract(regionId, zoneId) {
+  const configPath = path.join(ROOT, 'world-generator', 'configs', `${regionId}-local-zones.json`);
+  assert(fs.existsSync(configPath), `Missing local-zone config ${configPath}`);
+  const config = readJson(configPath);
+  assert(config.formatVersion === 1, 'Unsupported local-zone config version');
+  assert(config.regionId === regionId, `Local-zone config region mismatch: ${config.regionId}`);
+  assert(config.packageFormat === MAGIC, `Local-zone package format mismatch: ${config.packageFormat}`);
+  const zone = config.zones.find(item => item.id === zoneId);
+  assert(zone, `Unknown local zone ${regionId}/${zoneId}`);
+  const defaults = config.defaults ?? {};
+  const contract = {
+    ...defaults,
+    ...zone,
+    worldScale: zone.worldScale ?? defaults.worldScale,
+    footprintScale: zone.footprintScale ?? defaults.footprintScale,
+    verticalScaleMultiplier: zone.verticalScaleMultiplier ?? defaults.verticalScaleMultiplier,
+    maxBinaryBytes: zone.maxBinaryBytes ?? defaults.maxBinaryBytes,
+    terrainPaddingMinimum: zone.terrainPaddingMinimum ?? defaults.terrainPaddingMinimum,
+    terrainPaddingRatio: zone.terrainPaddingRatio ?? defaults.terrainPaddingRatio,
+    featurePadding: zone.featurePadding ?? defaults.featurePadding
+  };
+  for (const field of ['id', 'presetId', 'name']) assert(typeof contract[field] === 'string' && contract[field], `Zone ${zoneId} is missing ${field}`);
+  for (const field of ['regionalRadius', 'worldScale', 'footprintScale', 'verticalScaleMultiplier', 'maxBinaryBytes', 'minimumBuildings', 'minimumRoadVertices']) {
+    assert(Number.isFinite(contract[field]) && contract[field] > 0, `Zone ${zoneId} has invalid ${field}`);
+  }
+  return { configPath, config, contract };
 }
 
 function parsePreview(buffer) {
@@ -57,6 +87,10 @@ function parsePreview(buffer) {
     totalBytes: buffer.readUInt32LE(52)
   };
   assert(header.version === 1 && header.totalBytes === buffer.length, 'Regional preview binary is incomplete');
+  assert(header.buildingStride === BUILDING_FLOATS, 'Unexpected regional building stride');
+  assert(header.roadStride === ROAD_FLOATS, 'Unexpected regional road stride');
+  assert(header.landmarkStride === LANDMARK_FLOATS, 'Unexpected regional landmark stride');
+  assert(header.settlementStride === SETTLEMENT_FLOATS, 'Unexpected regional settlement stride');
   return {
     header,
     buildings: new Float32Array(buffer.buffer, buffer.byteOffset + header.buildingOffset, header.buildingCount * header.buildingStride),
@@ -71,8 +105,12 @@ function parseTerrain(buffer) {
   const headerBytes = buffer.readUInt16LE(10);
   const columns = buffer.readUInt16LE(12);
   const rows = buffer.readUInt16LE(14);
-  const elevations = new Int16Array(buffer.buffer, buffer.byteOffset + headerBytes, columns * rows);
-  return { headerBytes, columns, rows, elevations };
+  return {
+    headerBytes,
+    columns,
+    rows,
+    elevations: new Int16Array(buffer.buffer, buffer.byteOffset + headerBytes, columns * rows)
+  };
 }
 
 function parseLandcover(buffer) {
@@ -80,8 +118,12 @@ function parseLandcover(buffer) {
   const headerBytes = buffer.readUInt16LE(10);
   const columns = buffer.readUInt16LE(12);
   const rows = buffer.readUInt16LE(14);
-  const classes = new Uint8Array(buffer.buffer, buffer.byteOffset + headerBytes, columns * rows);
-  return { headerBytes, columns, rows, classes };
+  return {
+    headerBytes,
+    columns,
+    rows,
+    classes: new Uint8Array(buffer.buffer, buffer.byteOffset + headerBytes, columns * rows)
+  };
 }
 
 function segmentDistance(px, pz, ax, az, bx, bz) {
@@ -92,9 +134,9 @@ function segmentDistance(px, pz, ax, az, bx, bz) {
   return Math.hypot(px - (ax + vx * t), pz - (az + vz * t));
 }
 
-function cropTerrain(terrain, landcover, bounds, center, radius) {
+function cropTerrain(terrain, landcover, bounds, center, radius, contract) {
   assert(terrain.columns === landcover.columns && terrain.rows === landcover.rows, 'Terrain and landcover grids differ');
-  const pad = Math.max(1.5, radius * .08);
+  const pad = Math.max(contract.terrainPaddingMinimum, radius * contract.terrainPaddingRatio);
   const requested = {
     minX: center.x - radius - pad,
     maxX: center.x + radius + pad,
@@ -139,9 +181,9 @@ function cropTerrain(terrain, landcover, bounds, center, radius) {
   };
 }
 
-function filterBuildings(records, center, radius) {
+function filterBuildings(records, center, radius, featurePadding) {
   const selected = [];
-  const limit = radius + 2;
+  const limit = radius + featurePadding;
   for (let offset = 0; offset < records.length; offset += BUILDING_FLOATS) {
     if (Math.hypot(records[offset] - center.x, records[offset + 2] - center.z) > limit) continue;
     for (let index = 0; index < BUILDING_FLOATS; index++) selected.push(records[offset + index]);
@@ -149,9 +191,9 @@ function filterBuildings(records, center, radius) {
   return new Float32Array(selected);
 }
 
-function filterRoads(records, center, radius) {
+function filterRoads(records, center, radius, featurePadding) {
   const selected = [];
-  const limit = radius + 2;
+  const limit = radius + featurePadding;
   for (let offset = 0; offset < records.length; offset += ROAD_FLOATS * 2) {
     const ax = records[offset];
     const az = records[offset + 2];
@@ -181,41 +223,46 @@ function writeTypedArray(buffer, offset, array) {
 function build() {
   const regionId = process.argv[2] ?? 'baleares';
   const zoneId = process.argv[3] ?? 'llevant';
-  assert(regionId === 'baleares' && zoneId === 'llevant', 'Generator 0.1 supports baleares/llevant only');
+  const { configPath, contract } = loadZoneContract(regionId, zoneId);
   const regionDirectory = path.join(ROOT, 'regions', regionId);
   const previewDirectory = path.join(regionDirectory, 'preview');
   const outputDirectory = path.join(regionDirectory, 'local', zoneId);
   fs.mkdirSync(outputDirectory, { recursive: true });
 
-  const metadataPath = path.join(previewDirectory, 'baleares-preview-v1.json');
-  const previewPath = path.join(previewDirectory, 'baleares-preview-v1.bin');
+  const metadataPath = path.join(previewDirectory, `${regionId}-preview-v1.json`);
+  const previewPath = path.join(previewDirectory, `${regionId}-preview-v1.bin`);
   const terrainPath = path.join(regionDirectory, 'terrain.bin');
   const landcoverPath = path.join(regionDirectory, 'landcover.bin');
-  for (const filePath of [metadataPath, previewPath, terrainPath, landcoverPath]) assert(fs.existsSync(filePath), `Missing ${filePath}`);
+  for (const filePath of [metadataPath, previewPath, terrainPath, landcoverPath]) {
+    assert(fs.existsSync(filePath), `Missing ${filePath}`);
+  }
 
   const regionalMetadata = readJson(metadataPath);
+  assert(regionalMetadata.regionId === regionId, 'Regional preview metadata mismatch');
   const previewBuffer = fs.readFileSync(previewPath);
   const preview = parsePreview(previewBuffer);
   const terrainBuffer = fs.readFileSync(terrainPath);
   const landcoverBuffer = fs.readFileSync(landcoverPath);
   const terrain = parseTerrain(terrainBuffer);
   const landcover = parseLandcover(landcoverBuffer);
-  const preset = regionalMetadata.presets.find(item => item.id === 'llevant');
-  assert(preset, 'Missing Llevant preset');
+  const preset = regionalMetadata.presets.find(item => item.id === contract.presetId);
+  assert(preset, `Missing preset ${contract.presetId} for local zone ${zoneId}`);
 
   const center = { x: preset.x, z: preset.z };
-  const regionalRadius = 18;
-  const worldScale = 12;
-  const footprintScale = 4;
-  const crop = cropTerrain(terrain, landcover, regionalMetadata.terrain.localBounds, center, regionalRadius);
-  const buildings = filterBuildings(preview.buildings, center, regionalRadius);
-  const roads = filterRoads(preview.roads, center, regionalRadius);
+  const regionalRadius = contract.regionalRadius;
+  const worldScale = contract.worldScale;
+  const footprintScale = contract.footprintScale;
+  const crop = cropTerrain(terrain, landcover, regionalMetadata.terrain.localBounds, center, regionalRadius, contract);
+  const buildings = filterBuildings(preview.buildings, center, regionalRadius, contract.featurePadding);
+  const roads = filterRoads(preview.roads, center, regionalRadius, contract.featurePadding);
   const landmarks = filterPoints(preview.landmarks, LANDMARK_FLOATS, regionalMetadata.landmarks, center, regionalRadius);
   const settlements = filterPoints(preview.settlements, SETTLEMENT_FLOATS, regionalMetadata.settlements, center, regionalRadius);
+  const buildingCount = buildings.length / BUILDING_FLOATS;
+  const roadVertexCount = roads.length / ROAD_FLOATS;
 
-  assert(buildings.length / BUILDING_FLOATS >= 250, 'Llevant local zone has too few buildings');
-  assert(roads.length / ROAD_FLOATS >= 600, 'Llevant local zone has too few road vertices');
-  assert(crop.landCells > 0, 'Llevant local terrain has no land');
+  assert(buildingCount >= contract.minimumBuildings, `${zoneId} local zone has too few buildings: ${buildingCount} < ${contract.minimumBuildings}`);
+  assert(roadVertexCount >= contract.minimumRoadVertices, `${zoneId} local zone has too few road vertices: ${roadVertexCount} < ${contract.minimumRoadVertices}`);
+  assert(crop.landCells > 0, `${zoneId} local terrain has no land`);
 
   const terrainOffset = HEADER_BYTES;
   const landcoverOffset = terrainOffset + crop.elevations.byteLength;
@@ -224,14 +271,16 @@ function build() {
   const landmarkOffset = roadOffset + roads.byteLength;
   const settlementOffset = landmarkOffset + landmarks.records.byteLength;
   const totalBytes = settlementOffset + settlements.records.byteLength;
+  assert(totalBytes <= contract.maxBinaryBytes, `${zoneId} local package exceeds ${contract.maxBinaryBytes} bytes: ${totalBytes}`);
+
   const binary = Buffer.alloc(totalBytes);
   binary.write(MAGIC, 0, 8, 'ascii');
   binary.writeUInt16LE(1, 8);
   binary.writeUInt16LE(HEADER_BYTES, 10);
   binary.writeUInt16LE(crop.columns, 12);
   binary.writeUInt16LE(crop.rows, 14);
-  binary.writeUInt32LE(buildings.length / BUILDING_FLOATS, 16);
-  binary.writeUInt32LE(roads.length / ROAD_FLOATS, 20);
+  binary.writeUInt32LE(buildingCount, 16);
+  binary.writeUInt32LE(roadVertexCount, 20);
   binary.writeUInt32LE(landmarks.records.length / LANDMARK_FLOATS, 24);
   binary.writeUInt32LE(settlements.records.length / SETTLEMENT_FLOATS, 28);
   binary.writeUInt32LE(terrainOffset, 32);
@@ -255,31 +304,34 @@ function build() {
   writeTypedArray(binary, landmarkOffset, landmarks.records);
   writeTypedArray(binary, settlementOffset, settlements.records);
 
-  const binaryName = 'llevant-local-v1.bin';
-  const metadataName = 'llevant-local-v1.json';
+  const binaryName = `${zoneId}-local-v1.bin`;
+  const metadataName = `${zoneId}-local-v1.json`;
   const binaryPath = path.join(outputDirectory, binaryName);
   fs.writeFileSync(binaryPath, binary);
+
   const sourceFingerprint = sha256(Buffer.concat([
     fs.readFileSync(metadataPath),
     previewBuffer,
     terrainBuffer,
     landcoverBuffer,
-    Buffer.from(fs.readFileSync(fileURLToPath(import.meta.url)))
+    fs.readFileSync(configPath),
+    fs.readFileSync(fileURLToPath(import.meta.url))
   ]));
   const metadata = {
     formatVersion: 1,
     packageType: 'waft-local-zone',
     regionId,
     zoneId,
-    name: 'Llevant · Cala Millor–Sa Coma–Cala Bona',
-    buildId: `baleares-llevant-${sourceFingerprint.slice(0, 12)}`,
+    presetId: contract.presetId,
+    name: contract.name,
+    buildId: `${regionId}-${zoneId}-${sourceFingerprint.slice(0, 12)}`,
     deterministic: true,
     coordinateSpace: 'regional-local-window',
     center,
     regionalRadius,
     worldScale,
     footprintScale,
-    verticalScaleMultiplier: 1,
+    verticalScaleMultiplier: contract.verticalScaleMultiplier,
     regionalBounds: crop.regionalBounds,
     displayBounds: {
       minX: (crop.regionalBounds.minX - center.x) * worldScale,
@@ -295,9 +347,9 @@ function build() {
       sourceWindow: crop.sourceWindow
     },
     counts: {
-      buildings: buildings.length / BUILDING_FLOATS,
-      roadVertices: roads.length / ROAD_FLOATS,
-      roadSegments: roads.length / ROAD_FLOATS / 2,
+      buildings: buildingCount,
+      roadVertices: roadVertexCount,
+      roadSegments: roadVertexCount / 2,
       landmarks: landmarks.records.length / LANDMARK_FLOATS,
       settlements: settlements.records.length / SETTLEMENT_FLOATS
     },
@@ -313,13 +365,21 @@ function build() {
       headerBytes: HEADER_BYTES,
       floatAlignmentPadding: buildingOffset - (landcoverOffset + crop.classes.byteLength)
     },
+    contract: {
+      minimumBuildings: contract.minimumBuildings,
+      minimumRoadVertices: contract.minimumRoadVertices,
+      maxBinaryBytes: contract.maxBinaryBytes,
+      featurePadding: contract.featurePadding
+    },
     source: {
       regionalBuildId: regionalMetadata.buildId,
       regionalBinarySha256: regionalMetadata.binary.sha256,
+      configFile: path.relative(ROOT, configPath).replaceAll(path.sep, '/'),
       fingerprint: sourceFingerprint
     }
   };
   fs.writeFileSync(path.join(outputDirectory, metadataName), stableJson(metadata));
+
   const report = {
     formatVersion: 1,
     valid: true,
@@ -335,7 +395,7 @@ function build() {
     regionalRadius,
     floatAlignmentPadding: metadata.binary.floatAlignmentPadding
   };
-  fs.writeFileSync(path.join(ROOT, 'world-generator', 'baleares-llevant-local-build.json'), stableJson(report));
+  fs.writeFileSync(path.join(ROOT, 'world-generator', `${regionId}-${zoneId}-local-build.json`), stableJson(report));
   process.stdout.write(stableJson(report));
 }
 
