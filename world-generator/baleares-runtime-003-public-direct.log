@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "verifierVersion": 1,
+  "runtimeVersion": "003",
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-003.html?v=2b1641bfebcb1cef43c530c7ca7f903095ed2183",
+  "buildId": "baleares-preview-3068ab4bdb61",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "presets": [
+    "Palma",
+    "Llevant",
+    "Alcúdia",
+    "Menorca",
+    "Eivissa"
+  ],
+  "tests": {
+    "directionalPreset": "menorca",
+    "cameraYaw": 0.4,
+    "rightDistance": 0.4809600000000596,
+    "rightAlignment": 0.9999999999999999,
+    "leftDistance": 1.6690082395303916,
+    "leftAlignment": 0.9979162171551601,
+    "forwardDistance": 1.4473059476349082,
+    "forwardAlignment": 0.9547654931235,
+    "jumpRise": 0.4237499999999996,
+    "groundedAfterRespawn": true,
+    "totalBuildings": 5866,
+    "activeBuildings": 994,
+    "loadedCells": 15,
+    "characterVisible": true,
+    "cameraMode": "third-person",
+    "lateralControls": "screen-relative"
+  },
+  "finalState": {
+    "position": {
+      "x": 445.1680733656737,
+      "y": 2.01,
+      "z": -123.33401159999963
+    },
+    "cameraEye": {
+      "x": 442.7728566254901,
+      "y": 4.7486761508103275,
+      "z": -128.99923193473498
+    },
+    "cameraYaw": 0.4,
+    "playerFacing": 0.4155405060803655,
+    "cameraMode": "third-person",
+    "characterVisible": true,
+    "cameraBlocked": false,
+    "lateralControls": "screen-relative",
+    "grounded": true,
+    "activeBuildings": 782,
+    "loadedCells": 10,
+    "collisions": 21,
+    "preset": "menorca"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ]
+}
