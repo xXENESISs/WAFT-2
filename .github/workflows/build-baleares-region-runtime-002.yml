@@ -1,11 +1,12 @@
 name: Build Baleares regional runtime 002
-# pipeline-version: 2
+# pipeline-version: 3
 
 on:
   push:
     paths:
       - .github/workflows/build-baleares-region-runtime-002.yml
       - world-generator/scripts/build-baleares-runtime-002.mjs
+      - world-generator/scripts/run-build-baleares-runtime-002.mjs
       - world-generator/scripts/verify-region-runtime-002-browser.mjs
       - mallorca-mobile/region-runtime-baleares-001.html
       - regions/baleares/preview/baleares-preview-v1.bin
@@ -50,19 +51,19 @@ jobs:
             mallorca-mobile/v155direct2-05.js \
             mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-runtime-002-before.sha256
 
-      - name: Check builder and verifier syntax
+      - name: Check launcher and verifier syntax
         shell: bash
         run: |
-          node --check world-generator/scripts/build-baleares-runtime-002.mjs
+          node --check world-generator/scripts/run-build-baleares-runtime-002.mjs
           node --check world-generator/scripts/verify-region-runtime-002-browser.mjs
 
       - name: Build deterministic runtime 002
         shell: bash
         run: |
-          node world-generator/scripts/build-baleares-runtime-002.mjs | tee world-generator/baleares-runtime-002-build.log
+          node world-generator/scripts/run-build-baleares-runtime-002.mjs | tee world-generator/baleares-runtime-002-build.log
           cp mallorca-mobile/region-runtime-baleares-002.html /tmp/region-runtime-baleares-002-first.html
           cp world-generator/baleares-runtime-002-build.json /tmp/baleares-runtime-002-first.json
-          node world-generator/scripts/build-baleares-runtime-002.mjs >/tmp/baleares-runtime-002-rebuild.log
+          node world-generator/scripts/run-build-baleares-runtime-002.mjs >/tmp/baleares-runtime-002-rebuild.log
           diff -q /tmp/region-runtime-baleares-002-first.html mallorca-mobile/region-runtime-baleares-002.html
           diff -q /tmp/baleares-runtime-002-first.json world-generator/baleares-runtime-002-build.json
           python3 - <<'PY'
