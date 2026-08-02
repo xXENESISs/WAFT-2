@@ -7,7 +7,9 @@ on:
       - world-generator/scripts/build-region-preview.mjs
       - world-generator/scripts/verify-region-preview.mjs
       - world-generator/scripts/verify-region-preview-browser.mjs
+      - world-generator/scripts/verify-region-runtime-browser.mjs
       - mallorca-mobile/region-preview-baleares-001.html
+      - mallorca-mobile/region-runtime-baleares-001.html
       - regions/baleares/manifest.json
       - regions/baleares/terrain.bin
       - regions/baleares/landcover.bin
@@ -53,22 +55,25 @@ jobs:
             mallorca-mobile/v155direct2-05.js \
             mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-before.sha256
 
-      - name: Check preview source syntax
+      - name: Check preview and runtime source syntax
         shell: bash
         run: |
           node --check world-generator/scripts/build-region-preview.mjs
           node --check world-generator/scripts/verify-region-preview.mjs
           node --check world-generator/scripts/verify-region-preview-browser.mjs
+          node --check world-generator/scripts/verify-region-runtime-browser.mjs
           python3 - <<'PY'
           from pathlib import Path
           import re
-          html = Path('mallorca-mobile/region-preview-baleares-001.html').read_text(encoding='utf-8')
-          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
-          if len(scripts) != 1:
-              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
-          Path('/tmp/region-preview-inline.mjs').write_text(scripts[0], encoding='utf-8')
+          for name in ['region-preview-baleares-001.html', 'region-runtime-baleares-001.html']:
+              html = Path('mallorca-mobile', name).read_text(encoding='utf-8')
+              scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+              if len(scripts) != 1:
+                  raise SystemExit(f'{name}: expected one inline script, found {len(scripts)}')
+              Path('/tmp', name + '.mjs').write_text(scripts[0], encoding='utf-8')
           PY
-          node --check /tmp/region-preview-inline.mjs
+          node --check /tmp/region-preview-baleares-001.html.mjs
+          node --check /tmp/region-runtime-baleares-001.html.mjs
 
       - name: Build and validate compact preview package
         shell: bash
@@ -98,6 +103,24 @@ jobs:
             --screenshot /tmp/baleares-preview-local.png
           kill "$(cat /tmp/baleares-preview-server.pid)" || true
 
+      - name: Diagnose runtime in local mobile browser
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8001 --bind 127.0.0.1 >/tmp/baleares-runtime-server.log 2>&1 &
+          server_pid=$!
+          sleep 2
+          node world-generator/scripts/verify-region-runtime-browser.mjs \
+            --url "http://127.0.0.1:8001/mallorca-mobile/region-runtime-baleares-001.html?v=local" \
+            --output world-generator/baleares-runtime-diagnostic-browser.json \
+            --screenshot /tmp/baleares-runtime-local.png >world-generator/baleares-runtime-browser-diagnostic.log 2>&1
+          code=$?
+          kill "$server_pid" || true
+          printf '{"diagnosticVersion":2,"browser":%s,"valid":%s}\n' "$code" "$([ "$code" -eq 0 ] && echo true || echo false)" > world-generator/baleares-runtime-browser-diagnostic-status.json
+          cat world-generator/baleares-runtime-browser-diagnostic.log
+          cat world-generator/baleares-runtime-browser-diagnostic-status.json
+          exit 0
+
       - name: Confirm frozen build is untouched
         shell: bash
         run: |
@@ -112,7 +135,7 @@ jobs:
             mallorca-mobile/v155direct2-06.js > /tmp/waft-0155-preview-after.sha256
           diff -u /tmp/waft-0155-preview-before.sha256 /tmp/waft-0155-preview-after.sha256
 
-      - name: Commit preview package
+      - name: Commit preview package and runtime diagnostic
         id: publish
         shell: bash
         run: |
@@ -124,9 +147,12 @@ jobs:
             world-generator/baleares-preview-build.json \
             world-generator/baleares-preview-validation.json \
             world-generator/baleares-preview-build.log \
-            world-generator/baleares-preview-local-browser.json
+            world-generator/baleares-preview-local-browser.json \
+            world-generator/baleares-runtime-browser-diagnostic.log \
+            world-generator/baleares-runtime-browser-diagnostic-status.json \
+            world-generator/baleares-runtime-diagnostic-browser.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "Publish Baleares region preview 001"
+            git commit -m "Record Baleares playable runtime browser diagnostic"
           fi
           git pull --rebase origin main
           git push origin HEAD:main
@@ -179,4 +205,5 @@ jobs:
           path: |
             /tmp/baleares-preview-local.png
             /tmp/baleares-preview-public.png
+            /tmp/baleares-runtime-local.png
           retention-days: 7
