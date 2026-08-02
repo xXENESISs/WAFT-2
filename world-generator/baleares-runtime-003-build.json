@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "runtimeVersion": "003",
+  "valid": true,
+  "source": "mallorca-mobile/region-runtime-baleares-002.html",
+  "output": "mallorca-mobile/region-runtime-baleares-003.html",
+  "sourceSha256": "f2930f73c5ae040ecdc508e0a78c3bd43c988240ea6e5adf05410c199d85c87a",
+  "outputSha256": "94025fcc2aa4b63b81786e92dab3f01b746ec570f1fbd50c803e2f7707431b65",
+  "outputBytes": 53894,
+  "changes": [
+    "invert-touch-strafe-to-screen-relative-direction",
+    "invert-keyboard-a-d-to-screen-relative-direction",
+    "preserve-forward-back-camera-and-character-scale",
+    "expose-camera-yaw-and-lateral-control-convention-for-verification"
+  ]
+}
