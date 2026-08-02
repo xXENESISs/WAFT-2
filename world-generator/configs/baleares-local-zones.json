@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "runtimeRevision": 1,
+  "runtimeRevision": 2,
   "regionId": "baleares",
   "registryFile": "zones-v1.json",
   "packageFormat": "WAFTLZ01",
@@ -28,7 +28,7 @@
       "name": "Palma · Centre–Badia–Ponència",
       "regionalRadius": 24,
       "minimumBuildings": 150,
-      "minimumRoadVertices": 1200
+      "minimumRoadVertices": 1100
     }
   ]
 }
