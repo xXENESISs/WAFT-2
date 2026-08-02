@@ -93,7 +93,7 @@ builder = replaceOnce(
           return { node: { ...node }, start, yaw: Math.atan2(directionX, directionZ), suggestedMilliseconds: 1800 };`,
   `          const travelX = target.x - start.x;
           const travelZ = target.z - start.z;
-          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 1100 };`,
+          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 3800 };`,
   'travel probe boundary heading'
 );
 
