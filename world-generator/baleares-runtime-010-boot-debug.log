@@ -1,7 +1,7 @@
 {
   "valid": false,
   "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug",
-  "elapsedMs": 1760,
+  "elapsedMs": 1780,
   "responseStatus": 200,
   "navigationError": null,
   "samples": [
@@ -15,7 +15,7 @@
       "errorVisible": "block",
       "errorText": "No se pudo abrir el runtime regional.\n\nReferenceError: assert is not defined\n    at buildLocomotionProbes (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1305:7)\n    at boot (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1724:5)",
       "memory": {
-        "used": 11872594,
+        "used": 11937186,
         "total": 14502842,
         "limit": 4395630592
       }
@@ -111,10 +111,10 @@
     "resources": [
       "http://127.0.0.1:8000/regions/baleares/preview/baleares-preview-v1.json?v=debug",
       "http://127.0.0.1:8000/regions/baleares/local/zones-v1.json?v=debug",
+      "http://127.0.0.1:8000/favicon.ico",
       "http://127.0.0.1:8000/regions/baleares/preview/baleares-preview-v1.bin?v=debug",
       "http://127.0.0.1:8000/regions/baleares/terrain.bin?v=debug",
-      "http://127.0.0.1:8000/regions/baleares/landcover.bin?v=debug",
-      "http://127.0.0.1:8000/favicon.ico"
+      "http://127.0.0.1:8000/regions/baleares/landcover.bin?v=debug"
     ]
   },
   "pageErrors": [],
