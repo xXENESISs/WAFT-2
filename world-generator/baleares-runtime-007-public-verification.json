@@ -27,9 +27,9 @@
         "roadVertices": 1148,
         "settlements": 3
       },
-      "lateralDistance": 3.839759999999148,
-      "lateralAlignment": 0.9999999999999999,
-      "jumpRise": 0.8313746399999997
+      "lateralDistance": 3.5985599999999005,
+      "lateralAlignment": 1,
+      "jumpRise": 0.7811397450000006
     },
     "llevant": {
       "buildId": "baleares-llevant-4727f01fc3de",
@@ -41,8 +41,8 @@
         "roadVertices": 1028,
         "settlements": 1
       },
-      "forwardDistance": 3.7195200000000863,
-      "forwardAlignment": 1
+      "forwardDistance": 3.720239999999962,
+      "forwardAlignment": 1.0000000000000002
     }
   },
   "tests": {
@@ -59,22 +59,22 @@
   },
   "finalState": {
     "position": {
-      "x": 102.89008498118967,
+      "x": 102.89010834629019,
       "y": 3.96,
-      "z": 13.503532145701843
+      "z": 13.503587409361481
     },
     "displayPosition": {
-      "x": 102.89008498118967,
+      "x": 102.89010834629019,
       "y": 3.96,
-      "z": 13.503532145701843
+      "z": 13.503587409361481
     },
     "cameraEye": {
-      "x": 102.09167940112846,
+      "x": 102.09170276622898,
       "y": 4.752892050270109,
-      "z": 11.615125367456729
+      "z": 11.615180631116367
     },
     "cameraYaw": 0.4,
-    "playerFacing": 0.3944973445963613,
+    "playerFacing": 0.3960320363290832,
     "cameraMode": "third-person",
     "characterVisible": true,
     "cameraBlocked": true,
