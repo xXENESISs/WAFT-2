@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "buildRevision": 1,
+  "runtimeVersion": "006",
+  "source": "mallorca-mobile/region-runtime-baleares-005.html",
+  "output": "mallorca-mobile/region-runtime-baleares-006.html",
+  "sourceSha256": "44b7dfb5deab0e4bae1b0e5d5a8ebfba3211ffae510f304f7109f51f9c921421",
+  "outputSha256": "9162a745d5b5f2043621aa26de72a720b4ea137be25d4705f22278aa2e19f122",
+  "outputBytes": 72777,
+  "behavior": {
+    "bootLoadsLocalPackage": false,
+    "enterLoadsLocalPackage": true,
+    "exitReleasesLocalPackage": true,
+    "deletesLocalWebglResources": true,
+    "preservesRegionalPosition": true
+  }
+}
