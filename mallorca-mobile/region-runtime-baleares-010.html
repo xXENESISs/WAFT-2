@@ -1,0 +1,1716 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#08151d">
+<title>WAFT · Runtime regional de Baleares 010</title>
+<style>
+:root{color-scheme:dark;--gold:#e6bd68;--panel:rgba(7,20,28,.88);--line:rgba(230,189,104,.38)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08151d;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#f6ead1;touch-action:none}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+#loading{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#173642,#07141b 70%);z-index:40;text-align:center;padding:28px;transition:opacity .35s}
+#loading.hide{opacity:0;pointer-events:none}
+#loading h1{margin:0 0 12px;color:var(--gold);font-size:clamp(24px,5vw,44px);letter-spacing:.05em}
+#loadText{max-width:620px;line-height:1.45;color:#d8e3df;font-weight:650}
+#hud{position:fixed;left:max(10px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));z-index:10;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:9px 11px;max-width:min(62vw,450px);backdrop-filter:blur(8px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+#hudTitle{font-size:13px;color:var(--gold);font-weight:900;letter-spacing:.05em}
+#hudStats,#nearest{font-size:11px;line-height:1.35;color:#d9e2df;margin-top:3px}
+#layers{position:fixed;right:max(8px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));z-index:12;display:grid;gap:5px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px;backdrop-filter:blur(8px)}
+.layer{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer}
+.layer input{accent-color:var(--gold);width:15px;height:15px;margin:0}
+#presets{position:fixed;left:50%;transform:translateX(-50%);bottom:max(9px,env(safe-area-inset-bottom));z-index:14;display:flex;gap:5px;max-width:58vw;overflow-x:auto;padding:5px;background:rgba(7,20,28,.78);border:1px solid var(--line);border-radius:13px;backdrop-filter:blur(8px);scrollbar-width:none}
+#presets::-webkit-scrollbar{display:none}
+#presets button,#vertical button,#boost{border:1px solid rgba(230,189,104,.5);background:rgba(24,48,57,.92);color:#f8ebd2;border-radius:9px;font-weight:850;padding:8px 10px;font-size:11px;white-space:nowrap}
+#presets button.active,#boost.active{background:#80672f;color:#fff7e4}
+#joystick{position:fixed;left:max(18px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom));width:112px;height:112px;border-radius:50%;border:2px solid rgba(230,189,104,.48);background:rgba(5,17,23,.42);z-index:15;touch-action:none;box-shadow:inset 0 0 30px rgba(0,0,0,.25)}
+#stick{position:absolute;width:46px;height:46px;left:31px;top:31px;border-radius:50%;background:rgba(230,189,104,.82);border:2px solid rgba(255,249,231,.7);box-shadow:0 4px 18px rgba(0,0,0,.4);pointer-events:none}
+#vertical{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:15;display:grid;grid-template-columns:54px 54px;gap:7px}
+#vertical button{height:48px;font-size:19px;padding:0;touch-action:none}
+#boost{grid-column:1/3;height:36px;padding:0;font-size:11px}
+#scaleMode{grid-column:1/3;height:38px;padding:0;font-size:10px;letter-spacing:.025em}
+#scaleMode.active{background:#315f51;color:#f7fff9;border-color:#8bd1b5}
+#crosshair{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;color:rgba(255,247,220,.78);font-size:23px;font-weight:300;text-shadow:0 1px 4px #000;pointer-events:none}
+#help{position:fixed;right:max(9px,env(safe-area-inset-right));bottom:145px;z-index:8;font-size:10px;color:#d9e2df;background:rgba(7,20,28,.7);border-radius:8px;padding:5px 7px;pointer-events:none}
+#portrait{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:30;background:rgba(4,15,21,.92);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--gold);font-weight:850;pointer-events:none}
+#error{display:none;position:fixed;inset:12%;z-index:50;background:#190e0e;border:1px solid #d26b5d;border-radius:14px;padding:20px;overflow:auto;color:#ffd9d2;white-space:pre-wrap}
+@media (orientation:portrait){#portrait{display:block}#layers{top:86px}#hud{max-width:73vw}#presets{max-width:64vw;bottom:8px}#joystick{width:98px;height:98px;bottom:54px}#stick{left:27px;top:27px;width:42px;height:42px}#vertical{bottom:55px}}
+@media (max-width:700px){#help{display:none}.layer span{display:none}#layers{grid-template-columns:repeat(2,26px)}.layer{justify-content:center}.layer input{width:18px;height:18px}#hudStats{max-height:44px;overflow:hidden}}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="loading"><div><h1>WAFT · BALEARES</h1><div id="loadText">Preparando locomoción terrestre, montaña y natación…</div></div></div>
+<div id="hud"><div id="hudTitle">RUNTIME REGIONAL 010</div><div id="hudStats">Cargando datos…</div><div id="nearest"></div></div>
+<div id="layers">
+<label class="layer"><input id="terrainLayer" type="checkbox" checked><span>Terreno</span></label>
+<label class="layer"><input id="roadLayer" type="checkbox" checked><span>Carreteras</span></label>
+<label class="layer"><input id="buildingLayer" type="checkbox" checked><span>Edificios</span></label>
+<label class="layer"><input id="hotelLayer" type="checkbox" checked><span>Hoteles</span></label>
+<label class="layer"><input id="landmarkLayer" type="checkbox" checked><span>Monumentos</span></label>
+<label class="layer"><input id="settlementLayer" type="checkbox" checked><span>Poblaciones</span></label>
+</div>
+<div id="presets"></div>
+<div id="joystick"><div id="stick"></div></div>
+<div id="vertical"><button id="up" aria-label="Saltar">⤒</button><button id="down" aria-label="Reaparecer">↺</button><button id="boost">CORRER ×1</button><button id="scaleMode">ZONA LOCAL</button></div><div id="crosshair">＋</div>
+<div id="help">Joystick: correr/nadar · Arrastrar: orbitar · ⤒: salto alto · ZONA LOCAL: acércate físicamente a Palma o Llevant para habilitar la entrada</div>
+<div id="portrait">El runtime funciona mejor con el móvil en horizontal.</div>
+<pre id="error"></pre>
+<script>
+'use strict';
+(() => {
+  const canvas = document.getElementById('gl');
+  const loading = document.getElementById('loading');
+  const loadText = document.getElementById('loadText');
+  const hudStats = document.getElementById('hudStats');
+  const nearestText = document.getElementById('nearest');
+  const errorBox = document.getElementById('error');
+  const cacheKey = new URLSearchParams(location.search).get('v') || '1';
+  const base = '../regions/baleares/';
+  const previewBase = `${base}preview/`;
+  const localBase = `${base}local/`;
+  const state = {
+    terrain: true,
+    roads: true,
+    buildings: true,
+    hotels: true,
+    landmarks: true,
+    settlements: true,
+    boost: false,
+    joyX: 0,
+    joyY: 0,
+    yaw: .4,
+    pitch: .24,
+    camera: { x: 0, y: 3, z: 0 },
+    velocityY: 0,
+    grounded: true,
+    jumpQueued: false,
+    respawnQueued: false,
+    fps: 0,
+    activePreset: null,
+    activeBuildings: 0,
+    loadedCells: 0,
+    collisions: 0,
+    playerFacing: .4,
+    moveAmount: 0,
+    cameraDistance: 5.2,
+    cameraEye: { x: 0, y: 0, z: 0 },
+    cameraBlocked: false,
+    cameraMode: 'third-person',
+    worldMode: 'regional',
+    worldScale: 1,
+    footprintScale: 1,
+    localCenter: { x: 0, z: 0 },
+    localRadius: 18,
+    localZoneId: null,
+    localPackageLoaded: false,
+    renderDataset: 'regional-streamed',
+    localPackageBuildId: null,
+    localPackageBytes: 0,
+    localTerrainColumns: 0,
+    localTerrainRows: 0,
+    localBuildingCount: 0,
+    localRoadVertexCount: 0,
+    localPackageStatus: 'unloaded',
+    localPackageLoadCount: 0,
+    localPackageReleaseCount: 0,
+    localPackageRequestCount: 0,
+    localGpuResources: 0,
+    localRegistryLoaded: false,
+    localRegistryBuildId: null,
+    localZoneCount: 0,
+    localRequestedZoneId: null,
+    localLastLoadedZoneId: null,
+    localProximityZoneId: null,
+    localProximityDistance: null,
+    localProximityStatus: 'outside',
+    localEntryRadius: 0,
+    localDiscoveryRadius: 0,
+    localProximityUpdates: 0,
+    playerVisualScale: .58,
+    playerCollisionRadius: .16,
+    playerEyeHeight: .82,
+    playerPreviousCollisionRadius: .34,
+    graphicsProfile: 'enhanced-mobile-v2',
+    movementMode: 'ground',
+    swimming: false,
+    playerSwimEyeHeight: .46,
+    runSpeed: 7.2,
+    swimSpeed: 5.2,
+    jumpVelocity: 8.8,
+    gravity: 13.5,
+    terrainPitch: 0,
+    terrainRoll: 0,
+    slopeAngle: 0,
+    slopeSpeedFactor: 1,
+    groundHeight: 0,
+    waterSurfaceHeight: 0,
+    swimStroke: 0
+  };
+
+  const fail = error => {
+    console.error(error);
+    loading.classList.add('hide');
+    errorBox.style.display = 'block';
+    errorBox.textContent = `No se pudo abrir el runtime regional.\n\n${error?.stack || error?.message || error}`;
+    window.__WAFT_RUNTIME_010_ERROR__ = String(error?.message || error);
+  };
+  window.addEventListener('error', event => { if (!window.__WAFT_RUNTIME_010_READY__) fail(event.error || event.message); });
+  window.addEventListener('unhandledrejection', event => fail(event.reason));
+
+  function setLoading(text) { loadText.textContent = text; }
+  function hex(bytes) { return [...bytes].map(value => value.toString(16).padStart(2, '0')).join(''); }
+  function versionedUrl(url, extra = '') {
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}v=${encodeURIComponent(cacheKey)}${extra ? `&${extra}` : ''}`;
+  }
+  async function fetchBuffer(url, extra = '') {
+    const response = await fetch(versionedUrl(url, extra));
+    if (!response.ok) throw new Error(`${response.status} al descargar ${url}`);
+    return response.arrayBuffer();
+  }
+  async function fetchJson(url, extra = '') {
+    const response = await fetch(versionedUrl(url, extra));
+    if (!response.ok) throw new Error(`${response.status} al descargar ${url}`);
+    return response.json();
+  }
+
+  function compile(gl, type, source) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));
+    return shader;
+  }
+  function program(gl, vertex, fragment) {
+    const result = gl.createProgram();
+    gl.attachShader(result, compile(gl, gl.VERTEX_SHADER, vertex));
+    gl.attachShader(result, compile(gl, gl.FRAGMENT_SHADER, fragment));
+    gl.linkProgram(result);
+    if (!gl.getProgramParameter(result, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(result));
+    return result;
+  }
+  let bufferCapture = null;
+  function buffer(gl, target, data, usage = gl.STATIC_DRAW) {
+    const result = gl.createBuffer();
+    if (bufferCapture) bufferCapture.push(result);
+    gl.bindBuffer(target, result);
+    gl.bufferData(target, data, usage);
+    return result;
+  }
+
+  function perspective(out, fovy, aspect, near, far) {
+    const f = 1 / Math.tan(fovy / 2);
+    out.fill(0);
+    out[0] = f / aspect;
+    out[5] = f;
+    out[10] = (far + near) / (near - far);
+    out[11] = -1;
+    out[14] = 2 * far * near / (near - far);
+    return out;
+  }
+  function lookAt(out, eye, center, up) {
+    let zx = eye[0] - center[0], zy = eye[1] - center[1], zz = eye[2] - center[2];
+    let length = Math.hypot(zx, zy, zz) || 1; zx /= length; zy /= length; zz /= length;
+    let xx = up[1] * zz - up[2] * zy, xy = up[2] * zx - up[0] * zz, xz = up[0] * zy - up[1] * zx;
+    length = Math.hypot(xx, xy, xz) || 1; xx /= length; xy /= length; xz /= length;
+    const yx = zy * xz - zz * xy, yy = zz * xx - zx * xz, yz = zx * xy - zy * xx;
+    out[0] = xx; out[1] = yx; out[2] = zx; out[3] = 0;
+    out[4] = xy; out[5] = yy; out[6] = zy; out[7] = 0;
+    out[8] = xz; out[9] = yz; out[10] = zz; out[11] = 0;
+    out[12] = -(xx * eye[0] + xy * eye[1] + xz * eye[2]);
+    out[13] = -(yx * eye[0] + yy * eye[1] + yz * eye[2]);
+    out[14] = -(zx * eye[0] + zy * eye[1] + zz * eye[2]);
+    out[15] = 1;
+    return out;
+  }
+  function multiply(out, a, b) {
+    const copy = new Float32Array(16);
+    for (let column = 0; column < 4; column++) {
+      for (let row = 0; row < 4; row++) {
+        copy[column * 4 + row] = a[row] * b[column * 4] + a[4 + row] * b[column * 4 + 1] + a[8 + row] * b[column * 4 + 2] + a[12 + row] * b[column * 4 + 3];
+      }
+    }
+    out.set(copy);
+    return out;
+  }
+
+  function parsePreview(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = new TextDecoder().decode(new Uint8Array(arrayBuffer, 0, 8));
+    if (magic !== 'WAFTRPV1') throw new Error(`Paquete visual desconocido: ${magic}`);
+    const header = {
+      version: view.getUint16(8, true), headerBytes: view.getUint16(10, true),
+      buildingCount: view.getUint32(12, true), roadVertexCount: view.getUint32(16, true),
+      landmarkCount: view.getUint32(20, true), settlementCount: view.getUint32(24, true),
+      buildingOffset: view.getUint32(28, true), roadOffset: view.getUint32(32, true),
+      landmarkOffset: view.getUint32(36, true), settlementOffset: view.getUint32(40, true),
+      buildingStride: view.getUint16(44, true), roadStride: view.getUint16(46, true),
+      landmarkStride: view.getUint16(48, true), settlementStride: view.getUint16(50, true),
+      totalBytes: view.getUint32(52, true)
+    };
+    if (header.version !== 1 || header.totalBytes !== arrayBuffer.byteLength) throw new Error('El paquete visual está incompleto.');
+    return {
+      header,
+      buildings: new Float32Array(arrayBuffer, header.buildingOffset, header.buildingCount * header.buildingStride),
+      roads: new Float32Array(arrayBuffer, header.roadOffset, header.roadVertexCount * header.roadStride),
+      landmarks: new Float32Array(arrayBuffer, header.landmarkOffset, header.landmarkCount * header.landmarkStride),
+      settlements: new Float32Array(arrayBuffer, header.settlementOffset, header.settlementCount * header.settlementStride)
+    };
+  }
+
+  function parseTerrain(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = new TextDecoder().decode(new Uint8Array(arrayBuffer, 0, 8));
+    if (magic !== 'WAFTHGT1') throw new Error(`Terreno desconocido: ${magic}`);
+    const columns = view.getUint16(12, true), rows = view.getUint16(14, true), headerBytes = view.getUint16(10, true);
+    return { columns, rows, headerBytes, nodata: view.getInt32(56, true), elevations: new Int16Array(arrayBuffer, headerBytes, columns * rows) };
+  }
+  function parseLandcover(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = new TextDecoder().decode(new Uint8Array(arrayBuffer, 0, 8));
+    if (magic !== 'WAFTLCV1') throw new Error(`Cobertura desconocida: ${magic}`);
+    const columns = view.getUint16(12, true), rows = view.getUint16(14, true), headerBytes = view.getUint16(10, true);
+    return { columns, rows, classes: new Uint8Array(arrayBuffer, headerBytes, columns * rows) };
+  }
+  function parseLocalZone(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = new TextDecoder().decode(new Uint8Array(arrayBuffer, 0, 8));
+    if (magic !== 'WAFTLZ01') throw new Error(`Paquete local desconocido: ${magic}`);
+    const header = {
+      version: view.getUint16(8, true), headerBytes: view.getUint16(10, true),
+      columns: view.getUint16(12, true), rows: view.getUint16(14, true),
+      buildingCount: view.getUint32(16, true), roadVertexCount: view.getUint32(20, true),
+      landmarkCount: view.getUint32(24, true), settlementCount: view.getUint32(28, true),
+      terrainOffset: view.getUint32(32, true), landcoverOffset: view.getUint32(36, true),
+      buildingOffset: view.getUint32(40, true), roadOffset: view.getUint32(44, true),
+      landmarkOffset: view.getUint32(48, true), settlementOffset: view.getUint32(52, true),
+      buildingStride: view.getUint16(56, true), roadStride: view.getUint16(58, true),
+      landmarkStride: view.getUint16(60, true), settlementStride: view.getUint16(62, true),
+      totalBytes: view.getUint32(64, true), terrainCells: view.getUint32(68, true),
+      nodata: view.getInt32(72, true), floatAlignmentPadding: view.getUint32(76, true)
+    };
+    if (header.version !== 1 || header.headerBytes !== 80 || header.totalBytes !== arrayBuffer.byteLength) throw new Error('El paquete local está incompleto.');
+    if (header.buildingOffset % 4 !== 0 || header.roadOffset % 4 !== 0 || header.landmarkOffset % 4 !== 0 || header.settlementOffset % 4 !== 0) throw new Error('El paquete local no está alineado.');
+    return {
+      header,
+      terrain: { columns: header.columns, rows: header.rows, nodata: header.nodata, elevations: new Int16Array(arrayBuffer, header.terrainOffset, header.terrainCells) },
+      landcover: { columns: header.columns, rows: header.rows, classes: new Uint8Array(arrayBuffer, header.landcoverOffset, header.terrainCells) },
+      buildings: new Float32Array(arrayBuffer, header.buildingOffset, header.buildingCount * header.buildingStride),
+      roads: new Float32Array(arrayBuffer, header.roadOffset, header.roadVertexCount * header.roadStride),
+      landmarks: new Float32Array(arrayBuffer, header.landmarkOffset, header.landmarkCount * header.landmarkStride),
+      settlements: new Float32Array(arrayBuffer, header.settlementOffset, header.settlementCount * header.settlementStride)
+    };
+  }
+
+  function createTerrainMesh(gl, terrain, landcover, metadata) {
+    const { columns, rows, elevations, nodata } = terrain;
+    const bounds = metadata.terrain.localBounds;
+    const verticalScale = metadata.terrain.verticalScale;
+    const count = columns * rows;
+    const positions = new Float32Array(count * 3);
+    const normals = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const palette = [
+      [.028,.165,.285],[.78,.665,.405],[.39,.405,.39],[.265,.445,.175],[.052,.275,.115],
+      [.46,.49,.19],[.405,.415,.405],[.145,.37,.275],[.45,.405,.355],[.35,.535,.205]
+    ];
+    const dx = (bounds.maxX - bounds.minX) / (columns - 1);
+    const dz = (bounds.maxZ - bounds.minZ) / (rows - 1);
+    const elevation = (column, row) => {
+      const value = elevations[Math.max(0, Math.min(rows - 1, row)) * columns + Math.max(0, Math.min(columns - 1, column))];
+      return value === nodata ? -8 : value;
+    };
+    for (let row = 0; row < rows; row++) {
+      for (let column = 0; column < columns; column++) {
+        const index = row * columns + column;
+        const offset = index * 3;
+        const raw = elevations[index];
+        const isWater = raw === nodata;
+        const height = isWater ? -8 : raw;
+        positions[offset] = bounds.minX + column * dx;
+        positions[offset + 1] = height;
+        positions[offset + 2] = bounds.minZ + row * dz;
+        const left = elevation(column - 1, row), right = elevation(column + 1, row);
+        const up = elevation(column, row - 1), down = elevation(column, row + 1);
+        let nx = -(right - left) * verticalScale / (2 * dx);
+        let ny = 1;
+        let nz = -(down - up) * verticalScale / (2 * dz);
+        const length = Math.hypot(nx, ny, nz) || 1; nx /= length; ny /= length; nz /= length;
+        normals[offset] = nx; normals[offset + 1] = ny; normals[offset + 2] = nz;
+        const color = palette[landcover.classes[index]] || palette[0];
+        colors[offset] = color[0]; colors[offset + 1] = color[1]; colors[offset + 2] = color[2];
+      }
+    }
+    const indices = new Uint32Array((columns - 1) * (rows - 1) * 6);
+    let cursor = 0;
+    for (let row = 0; row < rows - 1; row++) {
+      for (let column = 0; column < columns - 1; column++) {
+        const a = row * columns + column, b = a + 1, c = a + columns, d = c + 1;
+        indices[cursor++] = a; indices[cursor++] = c; indices[cursor++] = b;
+        indices[cursor++] = b; indices[cursor++] = c; indices[cursor++] = d;
+      }
+    }
+    const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    buffer(gl, gl.ARRAY_BUFFER, positions); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+    buffer(gl, gl.ARRAY_BUFFER, normals); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
+    buffer(gl, gl.ARRAY_BUFFER, colors); gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 0, 0);
+    const indexBuffer = buffer(gl, gl.ELEMENT_ARRAY_BUFFER, indices);
+    gl.bindVertexArray(null);
+    return { vao, indexBuffer, count: indices.length, elevations, columns, rows, nodata, bounds, verticalScale };
+  }
+
+  function createCubeGeometry(gl, instances) {
+    const faces = [
+      [[-1,0,-1],[1,0,-1],[1,1,-1],[-1,1,-1],[0,0,-1]],
+      [[1,0,1],[-1,0,1],[-1,1,1],[1,1,1],[0,0,1]],
+      [[-1,0,1],[-1,0,-1],[-1,1,-1],[-1,1,1],[-1,0,0]],
+      [[1,0,-1],[1,0,1],[1,1,1],[1,1,-1],[1,0,0]],
+      [[-1,1,-1],[1,1,-1],[1,1,1],[-1,1,1],[0,1,0]],
+      [[-1,0,1],[1,0,1],[1,0,-1],[-1,0,-1],[0,-1,0]]
+    ];
+    const vertices = [], normals = [], indices = [];
+    for (let face = 0; face < faces.length; face++) {
+      const start = vertices.length / 3;
+      for (let index = 0; index < 4; index++) {
+        const point = faces[face][index]; vertices.push(point[0] * .5, point[1], point[2] * .5);
+        normals.push(...faces[face][4]);
+      }
+      indices.push(start, start+1, start+2, start, start+2, start+3);
+    }
+    const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    buffer(gl, gl.ARRAY_BUFFER, new Float32Array(vertices)); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    buffer(gl, gl.ARRAY_BUFFER, new Float32Array(normals)); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);
+    const instanceBuffer = buffer(gl, gl.ARRAY_BUFFER, instances);
+    const stride = 8 * 4;
+    gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2,3,gl.FLOAT,false,stride,0); gl.vertexAttribDivisor(2,1);
+    gl.enableVertexAttribArray(3); gl.vertexAttribPointer(3,3,gl.FLOAT,false,stride,12); gl.vertexAttribDivisor(3,1);
+    gl.enableVertexAttribArray(4); gl.vertexAttribPointer(4,1,gl.FLOAT,false,stride,24); gl.vertexAttribDivisor(4,1);
+    gl.enableVertexAttribArray(5); gl.vertexAttribPointer(5,1,gl.FLOAT,false,stride,28); gl.vertexAttribDivisor(5,1);
+    const indexBuffer = buffer(gl, gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices));
+    gl.bindVertexArray(null);
+    return { vao, instanceBuffer, indexBuffer, indexCount: indices.length, instanceCount: instances.length / 8 };
+  }
+
+  function createRoadGeometry(gl, records) {
+    const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    buffer(gl, gl.ARRAY_BUFFER, records);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,16,0);
+    gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,1,gl.FLOAT,false,16,12);
+    gl.bindVertexArray(null);
+    return { vao, count: records.length / 4 };
+  }
+  function createPointGeometry(gl, records, stride) {
+    const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    buffer(gl, gl.ARRAY_BUFFER, records);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,stride*4,0);
+    gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,1,gl.FLOAT,false,stride*4,12);
+    if (stride >= 5) { gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2,1,gl.FLOAT,false,stride*4,16); }
+    gl.bindVertexArray(null);
+    return { vao, count: records.length / stride };
+  }
+
+  function captureMesh(factory) {
+    const previousCapture = bufferCapture;
+    const gpuBuffers = [];
+    bufferCapture = gpuBuffers;
+    try {
+      const mesh = factory();
+      mesh.gpuBuffers = gpuBuffers;
+      return mesh;
+    } finally {
+      bufferCapture = previousCapture;
+    }
+  }
+  function disposeMesh(gl, mesh) {
+    if (!mesh) return 0;
+    let released = 0;
+    if (mesh.vao) { gl.deleteVertexArray(mesh.vao); released++; }
+    for (const gpuBuffer of mesh.gpuBuffers || []) {
+      if (gpuBuffer) { gl.deleteBuffer(gpuBuffer); released++; }
+    }
+    mesh.vao = null;
+    mesh.gpuBuffers = [];
+    return released;
+  }
+
+  function createBuildingStreamer(gl, mesh, records, cellSize = 36, radius = 2) {
+    const stride = 8;
+    const cells = new Map();
+    for (let index = 0; index < records.length; index += stride) {
+      const cellX = Math.floor(records[index] / cellSize);
+      const cellZ = Math.floor(records[index + 2] / cellSize);
+      const key = cellX + ':' + cellZ;
+      let list = cells.get(key);
+      if (!list) cells.set(key, list = []);
+      list.push(index);
+    }
+    let active = new Float32Array(0);
+    let lastCell = '';
+    let loadedCells = 0;
+    const update = (x, z, force = false) => {
+      const centerX = Math.floor(x / cellSize);
+      const centerZ = Math.floor(z / cellSize);
+      const cellKey = centerX + ':' + centerZ;
+      if (!force && cellKey === lastCell) return false;
+      lastCell = cellKey;
+      const offsets = [];
+      loadedCells = 0;
+      for (let dz = -radius; dz <= radius; dz++) {
+        for (let dx = -radius; dx <= radius; dx++) {
+          const list = cells.get((centerX + dx) + ':' + (centerZ + dz));
+          if (!list) continue;
+          loadedCells++;
+          offsets.push(...list);
+        }
+      }
+      active = new Float32Array(offsets.length * stride);
+      let cursor = 0;
+      for (const offset of offsets) {
+        active.set(records.subarray(offset, offset + stride), cursor);
+        cursor += stride;
+      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, mesh.instanceBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, active, gl.DYNAMIC_DRAW);
+      mesh.instanceCount = active.length / stride;
+      state.activeBuildings = mesh.instanceCount;
+      state.loadedCells = loadedCells;
+      return true;
+    };
+    return {
+      update,
+      get active() { return active; },
+      get loadedCells() { return loadedCells; },
+      cellSize,
+      radius,
+      totalCells: cells.size
+    };
+  }
+
+  function setupControls(metadata, terrainMesh, preview, streamer, localAssets, localRegistry) {
+    const joystick = document.getElementById('joystick');
+    const stick = document.getElementById('stick');
+    let joyPointer = null;
+    const updateJoy = event => {
+      const rect = joystick.getBoundingClientRect();
+      let x = event.clientX - (rect.left + rect.width / 2);
+      let y = event.clientY - (rect.top + rect.height / 2);
+      const radius = rect.width * .31;
+      const length = Math.hypot(x, y);
+      if (length > radius) { x *= radius / length; y *= radius / length; }
+      state.joyX = x / radius;
+      state.joyY = y / radius;
+      stick.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    };
+    joystick.addEventListener('pointerdown', event => { event.preventDefault(); event.stopPropagation(); joyPointer = event.pointerId; joystick.setPointerCapture(event.pointerId); updateJoy(event); });
+    joystick.addEventListener('pointermove', event => { if (event.pointerId === joyPointer) updateJoy(event); });
+    const releaseJoy = event => { if (event.pointerId !== joyPointer) return; joyPointer = null; state.joyX = state.joyY = 0; stick.style.transform = 'translate(0,0)'; };
+    joystick.addEventListener('pointerup', releaseJoy);
+    joystick.addEventListener('pointercancel', releaseJoy);
+
+    let lookPointer = null, lastX = 0, lastY = 0;
+    canvas.addEventListener('pointerdown', event => { if (lookPointer !== null) return; lookPointer = event.pointerId; lastX = event.clientX; lastY = event.clientY; canvas.setPointerCapture(event.pointerId); });
+    canvas.addEventListener('pointermove', event => {
+      if (event.pointerId !== lookPointer) return;
+      const dx = event.clientX - lastX;
+      const dy = event.clientY - lastY;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      state.yaw -= dx * .0042;
+      state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));
+    });
+    const releaseLook = event => { if (event.pointerId === lookPointer) lookPointer = null; };
+    canvas.addEventListener('pointerup', releaseLook);
+    canvas.addEventListener('pointercancel', releaseLook);
+
+    const queueJump = event => { event?.preventDefault(); state.jumpQueued = true; };
+    document.getElementById('up').addEventListener('pointerdown', queueJump);
+    document.getElementById('down').addEventListener('pointerdown', event => { event.preventDefault(); state.respawnQueued = true; });
+    const boost = document.getElementById('boost');
+    const scaleModeButton = document.getElementById('scaleMode');
+    boost.addEventListener('click', () => {
+      state.boost = !state.boost;
+      boost.classList.toggle('active', state.boost);
+      boost.textContent = state.boost ? 'CORRER ×2.4' : 'CORRER ×1';
+    });
+
+    const keys = new Set();
+    addEventListener('keydown', event => {
+      keys.add(event.code);
+      if (event.code === 'Space') { event.preventDefault(); state.jumpQueued = true; }
+      if (event.code === 'KeyR') state.respawnQueued = true;
+    });
+    addEventListener('keyup', event => keys.delete(event.code));
+    state.keyboard = keys;
+    for (const [id, key] of [['terrainLayer','terrain'],['roadLayer','roads'],['buildingLayer','buildings'],['hotelLayer','hotels'],['landmarkLayer','landmarks'],['settlementLayer','settlements']]) {
+      document.getElementById(id).addEventListener('change', event => state[key] = event.target.checked);
+    }
+
+    const presets = document.getElementById('presets');
+    const playable = metadata.presets.filter(item => item.id !== 'overview');
+    const zoneById = new Map(localRegistry.zones.map(zone => [zone.id, zone]));
+    const zoneByPreset = new Map(localRegistry.zones.map(zone => [zone.presetId, zone]));
+    const shortZoneName = zone => zone.name.split(' · ')[0].toUpperCase();
+    const zoneForPreset = presetId => zoneByPreset.get(presetId) || null;
+    const entryRadiusFor = zone => Math.max(6, Math.min(10, Number(zone.regionalRadius) * .32));
+    const discoveryRadiusFor = zone => entryRadiusFor(zone) * 2.25;
+    const nearestZoneAt = (x, z) => {
+      let nearest = null;
+      for (const zone of localRegistry.zones) {
+        const distance = Math.hypot(x - zone.center.x, z - zone.center.z);
+        if (!nearest || distance < nearest.distance) nearest = { zone, distance };
+      }
+      return nearest;
+    };
+    const updateScaleButton = () => {
+      if (state.worldMode === 'local') {
+        scaleModeButton.disabled = false;
+        scaleModeButton.textContent = 'SALIR A REGIONAL';
+        scaleModeButton.classList.add('active');
+        return;
+      }
+      scaleModeButton.classList.remove('active');
+      const proximityZone = state.localProximityZoneId ? zoneById.get(state.localProximityZoneId) : null;
+      const requestedZone = state.localRequestedZoneId ? zoneById.get(state.localRequestedZoneId) : null;
+      if (state.localPackageStatus === 'loading') {
+        const loadingZone = requestedZone || proximityZone;
+        scaleModeButton.disabled = true;
+        scaleModeButton.textContent = loadingZone ? 'CARGANDO ' + shortZoneName(loadingZone) + '…' : 'CARGANDO ZONA…';
+        return;
+      }
+      if (state.localProximityStatus === 'available' && proximityZone) {
+        scaleModeButton.disabled = false;
+        const retry = state.localPackageStatus === 'error' && state.localRequestedZoneId === proximityZone.id;
+        scaleModeButton.textContent = (retry ? 'REINTENTAR ' : 'ENTRAR EN ') + shortZoneName(proximityZone);
+        return;
+      }
+      if (state.localProximityStatus === 'nearby' && proximityZone) {
+        scaleModeButton.disabled = true;
+        scaleModeButton.textContent = 'ACÉRCATE A ' + shortZoneName(proximityZone) + ' · ' + state.localProximityDistance.toFixed(1);
+        return;
+      }
+      scaleModeButton.disabled = true;
+      scaleModeButton.textContent = 'SIN ZONA CERCANA';
+    };
+    const refreshLocalProximity = (force = false) => {
+      if (state.worldMode === 'local') return {
+        zoneId: state.localZoneId,
+        distance: 0,
+        status: 'inside',
+        entryRadius: state.localEntryRadius,
+        discoveryRadius: state.localDiscoveryRadius
+      };
+      const nearest = nearestZoneAt(state.camera.x, state.camera.z);
+      const entryRadius = nearest ? entryRadiusFor(nearest.zone) : 0;
+      const discoveryRadius = nearest ? discoveryRadiusFor(nearest.zone) : 0;
+      const status = !nearest || nearest.distance > discoveryRadius
+        ? 'outside'
+        : nearest.distance <= entryRadius ? 'available' : 'nearby';
+      const zoneId = status === 'outside' ? null : nearest.zone.id;
+      const distance = nearest ? nearest.distance : null;
+      const changed = force
+        || state.localProximityZoneId !== zoneId
+        || state.localProximityStatus !== status
+        || Math.abs((state.localProximityDistance ?? -1) - (distance ?? -1)) >= .15;
+      state.localProximityZoneId = zoneId;
+      state.localProximityDistance = distance;
+      state.localProximityStatus = status;
+      state.localEntryRadius = entryRadius;
+      state.localDiscoveryRadius = discoveryRadius;
+      if (changed) {
+        state.localProximityUpdates++;
+        updateScaleButton();
+      }
+      return { zoneId, distance, status, entryRadius, discoveryRadius };
+    };
+    const terrainAt = (x, z) => {
+      const sourceTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;
+      const bounds = sourceTerrain.bounds;
+      const fx = (x - bounds.minX) / (bounds.maxX - bounds.minX) * (sourceTerrain.columns - 1);
+      const fz = (z - bounds.minZ) / (bounds.maxZ - bounds.minZ) * (sourceTerrain.rows - 1);
+      if (fx < 0 || fz < 0 || fx > sourceTerrain.columns - 1 || fz > sourceTerrain.rows - 1) return null;
+      const column = Math.max(0, Math.min(sourceTerrain.columns - 1, Math.round(fx)));
+      const row = Math.max(0, Math.min(sourceTerrain.rows - 1, Math.round(fz)));
+      const value = sourceTerrain.elevations[row * sourceTerrain.columns + column];
+      return value === sourceTerrain.nodata ? null : value * sourceTerrain.verticalScale;
+    };
+    const spawnBlocked = (x, z) => {
+      const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      const radius = state.playerCollisionRadius + .06;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const dx = x - records[offset];
+        const dz = z - records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle);
+        const s = Math.sin(angle);
+        const localX = dx * c + dz * s;
+        const localZ = -dx * s + dz * c;
+        const halfX = (records[offset + 3] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        const halfZ = (records[offset + 5] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        if (Math.abs(localX) < halfX && Math.abs(localZ) < halfZ) return true;
+      }
+      return false;
+    };
+    const findSafeSpawn = preset => {
+      const radii = [0, 1.5, 3, 5, 8, 12, 18];
+      for (const radius of radii) {
+        const samples = radius === 0 ? 1 : 20;
+        for (let sample = 0; sample < samples; sample++) {
+          const angle = samples === 1 ? 0 : sample / samples * Math.PI * 2;
+          const x = preset.x + Math.cos(angle) * radius;
+          const z = preset.z + Math.sin(angle) * radius;
+          if (state.worldMode === 'regional') streamer.update(x, z, true);
+          const terrain = terrainAt(x, z);
+          if (terrain !== null && !spawnBlocked(x, z)) return { x, z, terrain };
+        }
+      }
+      return { x: preset.x, z: preset.z, terrain: preset.terrainMeters * terrainMesh.verticalScale };
+    };
+    const spawn = preset => {
+      state.activePreset = preset.id;
+      for (const button of presets.children) button.classList.toggle('active', button.dataset.id === preset.id);
+      const safe = findSafeSpawn(preset);
+      state.camera.x = safe.x;
+      state.camera.z = safe.z;
+      state.camera.y = safe.terrain + state.playerEyeHeight;
+      state.velocityY = 0;
+      state.grounded = true;
+      state.jumpQueued = false;
+      state.respawnQueued = false;
+      state.yaw = .4;
+      state.pitch = .24;
+      if (state.worldMode === 'regional') streamer.update(state.camera.x, state.camera.z, true);
+      refreshLocalProximity(true);
+    };
+    let localTransitionGeneration = 0;
+    const exitLocal = () => {
+      localTransitionGeneration++;
+      state.worldMode = 'regional';
+      state.worldScale = 1;
+      state.footprintScale = 1;
+      state.localZoneId = null;
+      state.renderDataset = 'regional-streamed';
+      state.cameraDistance = 5.2;
+      streamer.update(state.camera.x, state.camera.z, true);
+      localAssets.release();
+      state.localRequestedZoneId = null;
+      refreshLocalProximity(true);
+      return true;
+    };
+    const enterLocal = async (requestedZoneId = null) => {
+      const transitionGeneration = ++localTransitionGeneration;
+      const proximity = refreshLocalProximity(true);
+      const zoneEntry = requestedZoneId
+        ? zoneById.get(String(requestedZoneId))
+        : proximity.zoneId ? zoneById.get(proximity.zoneId) : null;
+      if (!zoneEntry) throw new Error('No hay una zona local suficientemente cerca.');
+      if (proximity.status !== 'available' || proximity.zoneId !== zoneEntry.id) {
+        throw new Error('Debes acercarte físicamente a ' + zoneEntry.name + ' antes de entrar.');
+      }
+      const preset = playable.find(item => item.id === zoneEntry.presetId);
+      if (!preset) throw new Error('El punto regional de ' + zoneEntry.name + ' no está configurado.');
+      state.activePreset = preset.id;
+      for (const button of presets.children) button.classList.toggle('active', button.dataset.id === preset.id);
+      state.localRequestedZoneId = zoneEntry.id;
+      updateScaleButton();
+      await localAssets.load(zoneEntry);
+      if (transitionGeneration !== localTransitionGeneration) {
+        localAssets.release(false);
+        return false;
+      }
+      const entryOrigin = { x: state.camera.x, z: state.camera.z, terrainMeters: state.camera.y };
+      state.localCenter.x = localAssets.metadata.center.x;
+      state.localCenter.z = localAssets.metadata.center.z;
+      state.localZoneId = localAssets.metadata.zoneId;
+      state.worldMode = 'local';
+      state.worldScale = localAssets.metadata.worldScale;
+      state.footprintScale = localAssets.metadata.footprintScale;
+      state.localRadius = localAssets.metadata.regionalRadius;
+      state.renderDataset = 'local-package';
+      state.activeBuildings = localAssets.metadata.counts.buildings;
+      state.loadedCells = 1;
+      const safeEntry = findSafeSpawn({ id: preset.id, x: entryOrigin.x, z: entryOrigin.z, terrainMeters: entryOrigin.terrainMeters });
+      state.camera.x = safeEntry.x;
+      state.camera.z = safeEntry.z;
+      state.camera.y = safeEntry.terrain + state.playerEyeHeight;
+      state.velocityY = 0;
+      state.grounded = true;
+      state.cameraDistance = 5.8;
+      updateScaleButton();
+      return true;
+    };
+    scaleModeButton.addEventListener('click', async () => {
+      try {
+        if (state.worldMode === 'local') exitLocal();
+        else await enterLocal();
+      } catch (error) {
+        updateScaleButton();
+        fail(error);
+      }
+    });
+    for (const preset of playable) {
+      const button = document.createElement('button');
+      button.textContent = preset.name;
+      button.dataset.id = preset.id;
+      button.addEventListener('click', () => {
+        if (state.worldMode === 'local') exitLocal();
+        spawn(preset);
+      });
+      presets.appendChild(button);
+    }
+    const initial = playable.find(item => item.name.toLowerCase().includes('palma')) || playable[0];
+    if (!initial) throw new Error('No playable spawn presets were generated');
+    spawn(initial);
+    return { spawn, playable, enterLocal, exitLocal, refreshLocalProximity, nearestZoneAt, entryRadiusFor, discoveryRadiusFor };
+  }
+
+
+  function createSphereGeometry(gl, segments = 12, rings = 8) {
+    const vertices = [];
+    const indices = [];
+    for (let ring = 0; ring <= rings; ring++) {
+      const v = ring / rings;
+      const theta = v * Math.PI;
+      const sinTheta = Math.sin(theta);
+      const cosTheta = Math.cos(theta);
+      for (let segment = 0; segment <= segments; segment++) {
+        const u = segment / segments;
+        const phi = u * Math.PI * 2;
+        const nx = Math.cos(phi) * sinTheta;
+        const ny = cosTheta;
+        const nz = Math.sin(phi) * sinTheta;
+        vertices.push(nx, ny, nz, nx, ny, nz);
+      }
+    }
+    for (let ring = 0; ring < rings; ring++) {
+      for (let segment = 0; segment < segments; segment++) {
+        const a = ring * (segments + 1) + segment;
+        const b = a + segments + 1;
+        indices.push(a, b, a + 1, b, b + 1, a + 1);
+      }
+    }
+    const vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+    const vertexBuffer = buffer(gl, gl.ARRAY_BUFFER, new Float32Array(vertices));
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+    gl.enableVertexAttribArray(1);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+    const indexBuffer = buffer(gl, gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices));
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+    gl.bindVertexArray(null);
+    return { vao, count: indices.length };
+  }
+
+  async function boot() {
+    const gl = canvas.getContext('webgl2', { antialias:true, alpha:false, powerPreference:'high-performance' });
+    if (!gl) throw new Error('Este dispositivo no ofrece WebGL 2.');
+    setLoading('Descargando el paquete visual reducido…');
+    const [metadata, localRegistry] = await Promise.all([
+      fetchJson(`${previewBase}baleares-preview-v1.json`),
+      fetchJson(`${localBase}zones-v1.json`)
+    ]);
+    if (localRegistry.registryType !== 'waft-local-zone-registry' || localRegistry.regionId !== 'baleares') throw new Error('El registro de zonas locales no es válido.');
+    if (!Array.isArray(localRegistry.zones) || localRegistry.zones.length < 2) throw new Error('El registro local no contiene suficientes zonas.');
+    state.localRegistryLoaded = true;
+    state.localRegistryBuildId = localRegistry.buildId;
+    state.localZoneCount = localRegistry.zones.length;
+    const [previewBuffer, terrainBuffer, landcoverBuffer] = await Promise.all([
+      fetchBuffer(`${previewBase}${metadata.binary.file}`),
+      fetchBuffer(`${base}terrain.bin`),
+      fetchBuffer(`${base}landcover.bin`)
+    ]);
+    setLoading('Comprobando la integridad de los datos…');
+    const digest = hex(new Uint8Array(await crypto.subtle.digest('SHA-256', previewBuffer)));
+    if (digest !== metadata.binary.sha256) throw new Error('El paquete visual no coincide con su SHA-256.');
+    const preview = parsePreview(previewBuffer);
+    const terrain = parseTerrain(terrainBuffer);
+    const landcover = parseLandcover(landcoverBuffer);
+    if (terrain.columns !== landcover.columns || terrain.rows !== landcover.rows) throw new Error('Terreno y biomas tienen cuadrículas incompatibles.');
+
+    setLoading('Construyendo terreno, ciudades y carreteras…');
+    const terrainMesh = createTerrainMesh(gl, terrain, landcover, metadata);
+    const buildingMesh = createCubeGeometry(gl, new Float32Array(8));
+    const streamer = createBuildingStreamer(gl, buildingMesh, preview.buildings);
+    const roadMesh = createRoadGeometry(gl, preview.roads);
+    const landmarkMesh = createPointGeometry(gl, preview.landmarks, 5);
+    const settlementMesh = createPointGeometry(gl, preview.settlements, 4);
+    const localAssets = {
+      zoneEntry: null,
+      metadata: null,
+      preview: null,
+      terrainMesh: null,
+      buildingMesh: null,
+      roadMesh: null,
+      landmarkMesh: null,
+      settlementMesh: null,
+      loadPromise: null,
+      async load(zoneEntry) {
+        if (!zoneEntry) throw new Error('No se indicó una zona local.');
+        if (state.localPackageLoaded && this.zoneEntry?.id === zoneEntry.id) return this;
+        if (state.localPackageLoaded || this.metadata) this.release();
+        if (this.loadPromise) return this.loadPromise;
+        const loadNumber = state.localPackageLoadCount + 1;
+        const scaleModeButton = document.getElementById('scaleMode');
+        state.localPackageStatus = 'loading';
+        state.localRequestedZoneId = zoneEntry.id;
+        scaleModeButton.disabled = true;
+        scaleModeButton.textContent = 'CARGANDO ' + zoneEntry.name.split(' · ')[0].toUpperCase() + '…';
+        this.loadPromise = (async () => {
+          state.localPackageRequestCount++;
+          const localMetadata = await fetchJson(`${localBase}${zoneEntry.metadataFile}`, `zone=${encodeURIComponent(zoneEntry.id)}&load=${loadNumber}`);
+          if (localMetadata.zoneId !== zoneEntry.id || localMetadata.presetId !== zoneEntry.presetId || localMetadata.buildId !== zoneEntry.buildId) throw new Error('Los metadatos locales no coinciden con el registro.');
+          if (localMetadata.binary.sha256 !== zoneEntry.binarySha256 || localMetadata.binary.bytes !== zoneEntry.binaryBytes) throw new Error('La referencia binaria local no coincide con el registro.');
+          state.localPackageRequestCount++;
+          const localBuffer = await fetchBuffer(`${localBase}${zoneEntry.binaryFile}`, `zone=${encodeURIComponent(zoneEntry.id)}&load=${loadNumber}`);
+          const localDigest = hex(new Uint8Array(await crypto.subtle.digest('SHA-256', localBuffer)));
+          if (localDigest !== zoneEntry.binarySha256 || localDigest !== localMetadata.binary.sha256) throw new Error('El paquete local no coincide con su SHA-256.');
+          if (localBuffer.byteLength !== zoneEntry.binaryBytes) throw new Error('El paquete local tiene un tamaño inesperado.');
+          const localPreview = parseLocalZone(localBuffer);
+          const localRenderMetadata = { terrain: { localBounds: localMetadata.regionalBounds, verticalScale: metadata.terrain.verticalScale } };
+          this.zoneEntry = zoneEntry;
+          this.metadata = localMetadata;
+          this.preview = localPreview;
+          this.terrainMesh = captureMesh(() => createTerrainMesh(gl, localPreview.terrain, localPreview.landcover, localRenderMetadata));
+          this.buildingMesh = captureMesh(() => createCubeGeometry(gl, localPreview.buildings));
+          this.roadMesh = captureMesh(() => createRoadGeometry(gl, localPreview.roads));
+          this.landmarkMesh = captureMesh(() => createPointGeometry(gl, localPreview.landmarks, 5));
+          this.settlementMesh = captureMesh(() => createPointGeometry(gl, localPreview.settlements, 4));
+          state.localPackageLoaded = true;
+          state.localPackageStatus = 'loaded';
+          state.localPackageLoadCount = loadNumber;
+          state.localLastLoadedZoneId = zoneEntry.id;
+          state.localPackageBuildId = localMetadata.buildId;
+          state.localPackageBytes = localMetadata.binary.bytes;
+          state.localTerrainColumns = localMetadata.terrain.columns;
+          state.localTerrainRows = localMetadata.terrain.rows;
+          state.localBuildingCount = localMetadata.counts.buildings;
+          state.localRoadVertexCount = localMetadata.counts.roadVertices;
+          state.localGpuResources = [this.terrainMesh, this.buildingMesh, this.roadMesh, this.landmarkMesh, this.settlementMesh]
+            .reduce((total, mesh) => total + (mesh?.vao ? 1 : 0) + (mesh?.gpuBuffers?.length || 0), 0);
+          return this;
+        })();
+        try {
+          return await this.loadPromise;
+        } catch (error) {
+          this.release(false);
+          state.localPackageStatus = 'error';
+          state.localRequestedZoneId = zoneEntry.id;
+          throw error;
+        } finally {
+          this.loadPromise = null;
+          if (state.worldMode === 'regional') {
+            scaleModeButton.disabled = false;
+            const prefix = state.localPackageStatus === 'error' ? 'REINTENTAR ' : 'ENTRAR EN ';
+            scaleModeButton.textContent = prefix + zoneEntry.name.split(' · ')[0].toUpperCase();
+          }
+        }
+      },
+      release(countRelease = true) {
+        const hadPackage = Boolean(this.metadata || this.preview || this.terrainMesh || this.buildingMesh || this.roadMesh || this.landmarkMesh || this.settlementMesh);
+        disposeMesh(gl, this.terrainMesh);
+        disposeMesh(gl, this.buildingMesh);
+        disposeMesh(gl, this.roadMesh);
+        disposeMesh(gl, this.landmarkMesh);
+        disposeMesh(gl, this.settlementMesh);
+        this.zoneEntry = null;
+        this.metadata = null;
+        this.preview = null;
+        this.terrainMesh = null;
+        this.buildingMesh = null;
+        this.roadMesh = null;
+        this.landmarkMesh = null;
+        this.settlementMesh = null;
+        state.localPackageLoaded = false;
+        state.localPackageStatus = 'unloaded';
+        state.localPackageBuildId = null;
+        state.localPackageBytes = 0;
+        state.localTerrainColumns = 0;
+        state.localTerrainRows = 0;
+        state.localBuildingCount = 0;
+        state.localRoadVertexCount = 0;
+        state.localGpuResources = 0;
+        if (countRelease && hadPackage) state.localPackageReleaseCount++;
+      }
+    };
+    const characterMesh = createSphereGeometry(gl);
+
+    const terrainProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in vec3 aNormal; layout(location=2) in vec3 aColor;
+      uniform mat4 uPV; uniform float uVerticalScale; uniform vec2 uWorldCenter; uniform float uWorldScale; out vec3 vColor; out vec3 vNormal; out vec3 vWorld;
+      void main(){vec2 xz=uWorldCenter+(aPosition.xz-uWorldCenter)*uWorldScale;vWorld=vec3(xz.x,aPosition.y*uVerticalScale,xz.y);vColor=aColor;vNormal=aNormal;gl_Position=uPV*vec4(vWorld,1.0);}`,
+      `#version 300 es
+      precision highp float; in vec3 vColor; in vec3 vNormal; in vec3 vWorld; uniform vec3 uCamera; out vec4 outColor;
+      void main(){
+        vec3 normal=normalize(vNormal);
+        vec3 sunDirection=normalize(vec3(.38,.88,.26));
+        float sun=max(dot(normal,sunDirection),0.0);
+        float hemisphere=.40+.28*max(normal.y,0.0);
+        float slopeShade=1.0-(1.0-max(normal.y,0.0))*.20;
+        float altitude=clamp(vWorld.y/95.0,0.0,1.0);
+        vec3 warm=vColor*vec3(1.08,1.02,.90);
+        vec3 cool=vColor*vec3(.82,.93,1.08);
+        vec3 base=mix(warm,cool,altitude*.28);
+        float waterMask=smoothstep(.035,.15,vColor.b-vColor.r)*smoothstep(.015,.11,vColor.b-vColor.g);
+        float wave=.92+.08*sin(vWorld.x*.34+vWorld.z*.29)+.035*sin(vWorld.x*.91-vWorld.z*.63);
+        vec3 waterColor=mix(vec3(.025,.18,.31),vec3(.075,.36,.49),clamp(sun*.75+.15,0.0,1.0))*wave;
+        base=mix(base,waterColor,waterMask);
+        vec3 lit=base*(hemisphere+sun*.54)*slopeShade;
+        float distanceToCamera=distance(vWorld.xz,uCamera.xz);
+        float fog=smoothstep(390.0,1020.0,distanceToCamera);
+        vec3 sky=vec3(.39,.555,.655);
+        outColor=vec4(mix(lit,sky,fog),1.0);
+      }`);
+    const buildingProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in vec3 aNormal; layout(location=2) in vec3 aCenter; layout(location=3) in vec3 aSize; layout(location=4) in float aAngle; layout(location=5) in float aKind;
+      uniform mat4 uPV; uniform float uTerrainScale; uniform float uBuildingScale; uniform float uHorizontalExaggeration; uniform vec2 uWorldCenter; uniform float uWorldScale; uniform float uFootprintScale; out vec3 vNormal; flat out int vKind; out vec3 vWorld;
+      void main(){float c=cos(aAngle),s=sin(aAngle);vec2 local=aPosition.xz*aSize.xz*uHorizontalExaggeration*uFootprintScale;vec2 rotated=vec2(local.x*c-local.y*s,local.x*s+local.y*c);vec2 centerXZ=uWorldCenter+(aCenter.xz-uWorldCenter)*uWorldScale;vWorld=vec3(centerXZ.x+rotated.x,aCenter.y*uTerrainScale+aPosition.y*aSize.y*uBuildingScale+.06,centerXZ.y+rotated.y);vNormal=normalize(vec3(aNormal.x*c-aNormal.z*s,aNormal.y,aNormal.x*s+aNormal.z*c));vKind=int(aKind+.5);gl_Position=uPV*vec4(vWorld,1.0);}`,
+      `#version 300 es
+      precision highp float; in vec3 vNormal; in vec3 vWorld; flat in int vKind; uniform vec3 uCamera; uniform bool uShowHotels; out vec4 outColor;
+      vec3 colorFor(int kind){if(kind==1)return vec3(.91,.86,.72);if(kind==2)return vec3(.74,.56,.34);if(kind==3)return vec3(.50,.35,.24);if(kind==4)return vec3(.45,.59,.64);if(kind==5)return vec3(.72,.43,.28);return vec3(.66,.59,.49);}
+      void main(){
+        if(vKind==1&&!uShowHotels)discard;
+        vec3 normal=normalize(vNormal);
+        vec3 viewDirection=normalize(uCamera-vWorld);
+        float sun=max(dot(normal,normalize(vec3(.42,.86,.28))),0.0);
+        float roof=smoothstep(.72,.96,normal.y);
+        float materialVariation=.96+.045*sin(vWorld.x*.31+vWorld.z*.27+float(vKind)*1.7);
+        float floorBand=.94+.06*step(.58,fract(vWorld.y*.34));
+        vec3 base=colorFor(vKind)*materialVariation*mix(floorBand,1.08,roof);
+        vec3 lit=base*(.46+sun*.53+roof*.12);
+        float rim=pow(1.0-max(dot(normal,viewDirection),0.0),2.0)*.045;
+        float fog=smoothstep(285.0,800.0,distance(vWorld.xz,uCamera.xz));
+        outColor=vec4(mix(lit+rim,vec3(.39,.555,.655),fog),1.0);
+      }`);
+    const roadProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in float aClass; uniform mat4 uPV; uniform float uTerrainScale; uniform float uLift; uniform vec2 uWorldCenter; uniform float uWorldScale; flat out int vClass;
+      void main(){vClass=int(aClass+.5);vec2 xz=uWorldCenter+(aPosition.xz-uWorldCenter)*uWorldScale;gl_Position=uPV*vec4(xz.x,aPosition.y*uTerrainScale+uLift,xz.y,1.0);}`,
+      `#version 300 es
+      precision highp float; flat in int vClass; out vec4 outColor;
+      void main(){vec3 c=vClass<=2?vec3(.94,.72,.28):vClass<=4?vec3(.86,.79,.59):vClass==5?vec3(.68,.64,.57):vClass==7?vec3(.48,.36,.24):vec3(.57,.54,.43);outColor=vec4(c,.92);}`);
+    const landmarkProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in float aScore; layout(location=2) in float aRepresentation; uniform mat4 uPV; uniform float uTerrainScale; uniform float uLift; uniform vec2 uWorldCenter; uniform float uWorldScale; out float vRep;
+      void main(){vRep=aRepresentation;vec2 xz=uWorldCenter+(aPosition.xz-uWorldCenter)*uWorldScale;gl_Position=uPV*vec4(xz.x,aPosition.y*uTerrainScale+uLift+aRepresentation*.5,xz.y,1.0);gl_PointSize=10.0+aRepresentation*5.0;}`,
+      `#version 300 es
+      precision highp float; in float vRep; out vec4 outColor;
+      void main(){vec2 p=gl_PointCoord*2.0-1.0;float r=dot(p,p);if(r>1.0)discard;vec3 c=vRep>1.5?vec3(1.0,.72,.18):vRep>.5?vec3(.88,.35,.72):vec3(.94,.88,.56);float edge=smoothstep(1.0,.58,r);outColor=vec4(c,edge);}`);
+    const settlementProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in float aPriority; uniform mat4 uPV; uniform float uTerrainScale; uniform vec2 uWorldCenter; uniform float uWorldScale; out float vPriority;
+      void main(){vPriority=aPriority;vec2 xz=uWorldCenter+(aPosition.xz-uWorldCenter)*uWorldScale;gl_Position=uPV*vec4(xz.x,aPosition.y*uTerrainScale+1.0,xz.y,1.0);gl_PointSize=clamp(5.0+aPriority*.035,5.0,10.0);}`,
+      `#version 300 es
+      precision highp float; in float vPriority; out vec4 outColor;
+      void main(){vec2 p=gl_PointCoord*2.0-1.0;if(dot(p,p)>1.0)discard;outColor=vec4(.78,.92,.96,.9);}`);
+
+    const characterProgram = program(gl, `#version 300 es
+      layout(location=0) in vec3 aPosition; layout(location=1) in vec3 aNormal;
+      uniform mat4 uPV; uniform vec3 uCenter; uniform vec3 uScale; uniform float uYaw; uniform float uPitch; uniform float uRoll;
+      out vec3 vNormal; out vec3 vWorld;
+      void main(){
+        float c=cos(uYaw),s=sin(uYaw),cp=cos(uPitch),sp=sin(uPitch),cr=cos(uRoll),sr=sin(uRoll);
+        vec3 local=aPosition*uScale;
+        vec3 rolled=vec3(local.x*cr-local.y*sr,local.x*sr+local.y*cr,local.z);
+        vec3 pitched=vec3(rolled.x,rolled.y*cp-rolled.z*sp,rolled.y*sp+rolled.z*cp);
+        vec3 rotated=vec3(pitched.x*c+pitched.z*s,pitched.y,-pitched.x*s+pitched.z*c);
+        vWorld=uCenter+rotated;
+        vec3 adjusted=normalize(vec3(aNormal.x/max(uScale.x,.001),aNormal.y/max(uScale.y,.001),aNormal.z/max(uScale.z,.001)));
+        vec3 adjustedRoll=vec3(adjusted.x*cr-adjusted.y*sr,adjusted.x*sr+adjusted.y*cr,adjusted.z);
+        vec3 adjustedPitch=vec3(adjustedRoll.x,adjustedRoll.y*cp-adjustedRoll.z*sp,adjustedRoll.y*sp+adjustedRoll.z*cp);
+        vNormal=normalize(vec3(adjustedPitch.x*c+adjustedPitch.z*s,adjustedPitch.y,-adjustedPitch.x*s+adjustedPitch.z*c));
+        gl_Position=uPV*vec4(vWorld,1.0);
+      }`,
+      `#version 300 es
+      precision highp float; in vec3 vNormal; in vec3 vWorld;
+      uniform vec3 uColor; uniform vec3 uCamera; out vec4 outColor;
+      void main(){
+        vec3 normal=normalize(vNormal);
+        vec3 viewDirection=normalize(uCamera-vWorld);
+        float sun=max(dot(normal,normalize(vec3(.38,.90,.24))),0.0);
+        float fill=.38+.23*max(normal.y,0.0);
+        float rim=pow(1.0-max(dot(normal,viewDirection),0.0),2.2)*.18;
+        float furVariation=.94+.07*sin(vWorld.y*12.0+vWorld.x*8.0+vWorld.z*7.0);
+        float fog=smoothstep(300.0,780.0,distance(vWorld.xz,uCamera.xz));
+        vec3 color=uColor*furVariation*(fill+sun*.52)+vec3(.16,.13,.10)*rim;
+        outColor=vec4(mix(color,vec3(.39,.555,.655),fog),1.0);
+      }`);
+
+    const runtimeControls = setupControls(metadata, terrainMesh, preview, streamer, localAssets, localRegistry);
+    gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE); gl.cullFace(gl.BACK); gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+    const projection = new Float32Array(16), view = new Float32Array(16), pv = new Float32Array(16);
+    const resize = () => {
+      const dpr = Math.min(1.65, devicePixelRatio || 1);
+      const width = Math.max(1, Math.floor(innerWidth * dpr)), height = Math.max(1, Math.floor(innerHeight * dpr));
+      if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; gl.viewport(0,0,width,height); }
+    };
+    addEventListener('resize', resize); resize();
+
+    const toDisplayXZ = (x, z) => ({
+      x: state.localCenter.x + (x - state.localCenter.x) * state.worldScale,
+      z: state.localCenter.z + (z - state.localCenter.z) * state.worldScale
+    });
+    const toRegionalXZ = (x, z) => ({
+      x: state.localCenter.x + (x - state.localCenter.x) / state.worldScale,
+      z: state.localCenter.z + (z - state.localCenter.z) / state.worldScale
+    });
+    const sampleTerrainInfo = (x, z) => {
+      const sourceTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;
+      const bounds = sourceTerrain.bounds;
+      const fx = (x - bounds.minX) / (bounds.maxX - bounds.minX) * (sourceTerrain.columns - 1);
+      const fz = (z - bounds.minZ) / (bounds.maxZ - bounds.minZ) * (sourceTerrain.rows - 1);
+      const waterHeight = -8 * sourceTerrain.verticalScale;
+      if (fx < 0 || fz < 0 || fx > sourceTerrain.columns - 1 || fz > sourceTerrain.rows - 1) {
+        return { inside: false, land: false, water: false, height: waterHeight, waterHeight, normal: { x: 0, y: 1, z: 0 }, slopeAngle: 0 };
+      }
+      const columns = sourceTerrain.columns;
+      const rows = sourceTerrain.rows;
+      const rawAt = (column, row) => sourceTerrain.elevations[Math.max(0, Math.min(rows - 1, row)) * columns + Math.max(0, Math.min(columns - 1, column))];
+      const nearestColumn = Math.max(0, Math.min(columns - 1, Math.round(fx)));
+      const nearestRow = Math.max(0, Math.min(rows - 1, Math.round(fz)));
+      const nearestRaw = rawAt(nearestColumn, nearestRow);
+      if (nearestRaw === sourceTerrain.nodata) {
+        return { inside: true, land: false, water: true, height: waterHeight, waterHeight, normal: { x: 0, y: 1, z: 0 }, slopeAngle: 0 };
+      }
+      const column0 = Math.floor(fx), row0 = Math.floor(fz);
+      const column1 = Math.min(columns - 1, column0 + 1), row1 = Math.min(rows - 1, row0 + 1);
+      const tx = fx - column0, tz = fz - row0;
+      const validRaw = (column, row) => {
+        const value = rawAt(column, row);
+        return value === sourceTerrain.nodata ? nearestRaw : value;
+      };
+      const h00 = validRaw(column0, row0);
+      const h10 = validRaw(column1, row0);
+      const h01 = validRaw(column0, row1);
+      const h11 = validRaw(column1, row1);
+      const rawHeight = (h00 * (1 - tx) + h10 * tx) * (1 - tz) + (h01 * (1 - tx) + h11 * tx) * tz;
+      const dx = (bounds.maxX - bounds.minX) / Math.max(1, columns - 1);
+      const dz = (bounds.maxZ - bounds.minZ) / Math.max(1, rows - 1);
+      const left = validRaw(nearestColumn - 1, nearestRow) * sourceTerrain.verticalScale;
+      const right = validRaw(nearestColumn + 1, nearestRow) * sourceTerrain.verticalScale;
+      const back = validRaw(nearestColumn, nearestRow - 1) * sourceTerrain.verticalScale;
+      const front = validRaw(nearestColumn, nearestRow + 1) * sourceTerrain.verticalScale;
+      let nx = -(right - left) / Math.max(.001, 2 * dx * state.worldScale);
+      let ny = 1;
+      let nz = -(front - back) / Math.max(.001, 2 * dz * state.worldScale);
+      const length = Math.hypot(nx, ny, nz) || 1;
+      nx /= length; ny /= length; nz /= length;
+      return {
+        inside: true,
+        land: true,
+        water: false,
+        height: rawHeight * sourceTerrain.verticalScale,
+        waterHeight,
+        normal: { x: nx, y: ny, z: nz },
+        slopeAngle: Math.acos(Math.max(-1, Math.min(1, ny)))
+      };
+    };
+    const collidesBuildingWithRadius = (x, z, radius) => {
+      const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const dx = x - records[offset];
+        const dz = z - records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle);
+        const s = Math.sin(angle);
+        const localX = dx * c + dz * s;
+        const localZ = -dx * s + dz * c;
+        const halfX = (records[offset + 3] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        const halfZ = (records[offset + 5] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        if (Math.abs(localX) < halfX && Math.abs(localZ) < halfZ) return true;
+      }
+      return false;
+    };
+    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
+    const findReducedColliderPassage = () => {
+      if (state.worldMode !== 'local' || !localAssets.preview) return null;
+      const records = localAssets.preview.buildings;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      const oldRadius = state.playerPreviousCollisionRadius;
+      const newRadius = state.playerCollisionRadius;
+      const margin = (oldRadius + newRadius) * .5 / state.worldScale;
+      const tangentStep = .34 / state.worldScale;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const centerX = records[offset];
+        const centerZ = records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle);
+        const s = Math.sin(angle);
+        const halfX = records[offset + 3] * exaggeration * state.footprintScale * .5 / state.worldScale;
+        const halfZ = records[offset + 5] * exaggeration * state.footprintScale * .5 / state.worldScale;
+        const tests = [
+          { localX: halfX + margin, localZ: 0, tangentX: -s * tangentStep, tangentZ: c * tangentStep },
+          { localX: -halfX - margin, localZ: 0, tangentX: -s * tangentStep, tangentZ: c * tangentStep },
+          { localX: 0, localZ: halfZ + margin, tangentX: c * tangentStep, tangentZ: s * tangentStep },
+          { localX: 0, localZ: -halfZ - margin, tangentX: c * tangentStep, tangentZ: s * tangentStep }
+        ];
+        for (const test of tests) {
+          const x = centerX + test.localX * c - test.localZ * s;
+          const z = centerZ + test.localX * s + test.localZ * c;
+          const terrain = sampleTerrainInfo(x, z);
+          const newClear = terrain.land && !collidesBuildingWithRadius(x, z, newRadius);
+          const oldBlocked = collidesBuildingWithRadius(x, z, oldRadius);
+          const tangentClear = newClear
+            && !collidesBuildingWithRadius(x + test.tangentX, z + test.tangentZ, newRadius)
+            && !collidesBuildingWithRadius(x - test.tangentX, z - test.tangentZ, newRadius);
+          if (newClear && oldBlocked && tangentClear) {
+            return {
+              x, z,
+              clearanceDisplay: margin * state.worldScale,
+              newRadius,
+              oldRadius,
+              newClear,
+              oldBlocked,
+              tangentClear
+            };
+          }
+        }
+      }
+      return null;
+    };
+    const movePlayer = (dx, dz) => {
+      const distance = Math.hypot(dx, dz);
+      if (distance < 1e-6) return { moved: 0, waterSteps: 0, landSteps: 0 };
+      const steps = Math.max(1, Math.ceil(distance / .12));
+      const stepX = dx / steps;
+      const stepZ = dz / steps;
+      let moved = 0, waterSteps = 0, landSteps = 0;
+      for (let step = 0; step < steps; step++) {
+        const nextX = state.camera.x + stepX;
+        const xTerrain = sampleTerrainInfo(nextX, state.camera.z);
+        if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {
+          state.camera.x = nextX;
+          moved += Math.abs(stepX);
+          if (xTerrain.land) landSteps++; else waterSteps++;
+        } else state.collisions++;
+        const nextZ = state.camera.z + stepZ;
+        const zTerrain = sampleTerrainInfo(state.camera.x, nextZ);
+        if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {
+          state.camera.z = nextZ;
+          moved += Math.abs(stepZ);
+          if (zTerrain.land) landSteps++; else waterSteps++;
+        } else state.collisions++;
+      }
+      return { moved, waterSteps, landSteps };
+    };
+    const collidesFullRegionalBuilding = (x, z, radius = state.playerCollisionRadius) => {
+      const records = preview.buildings;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const dx = x - records[offset];
+        const dz = z - records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle), s = Math.sin(angle);
+        const localX = dx * c + dz * s;
+        const localZ = -dx * s + dz * c;
+        const halfX = records[offset + 3] * exaggeration * .5 + radius;
+        const halfZ = records[offset + 5] * exaggeration * .5 + radius;
+        if (Math.abs(localX) < halfX && Math.abs(localZ) < halfZ) return true;
+      }
+      return false;
+    };
+    let locomotionProbes = null;
+    const buildLocomotionProbes = () => {
+      if (locomotionProbes) return locomotionProbes;
+      const source = terrainMesh;
+      const bounds = source.bounds;
+      const columns = source.columns, rows = source.rows;
+      const dx = (bounds.maxX - bounds.minX) / (columns - 1);
+      const dz = (bounds.maxZ - bounds.minZ) / (rows - 1);
+      const rawAt = (column, row) => source.elevations[row * columns + column];
+      let mountain = null;
+      const directions = [[1,0],[-1,0],[0,1],[0,-1]];
+      for (let row = 2; row < rows - 2; row++) {
+        for (let column = 2; column < columns - 2; column++) {
+          const baseRaw = rawAt(column, row);
+          if (baseRaw === source.nodata) continue;
+          for (const [dc, dr] of directions) {
+            const targetRaw = rawAt(column + dc, row + dr);
+            if (targetRaw === source.nodata || targetRaw <= baseRaw) continue;
+            const rise = (targetRaw - baseRaw) * source.verticalScale;
+            const horizontal = Math.hypot(dc * dx, dr * dz);
+            const angle = Math.atan2(rise, horizontal);
+            if (rise < .18 || angle < .08 || angle > .92) continue;
+            const startX = bounds.minX + column * dx;
+            const startZ = bounds.minZ + row * dz;
+            const targetX = bounds.minX + (column + dc) * dx;
+            const targetZ = bounds.minZ + (row + dr) * dz;
+            if (collidesFullRegionalBuilding(startX, startZ) || collidesFullRegionalBuilding(targetX, targetZ)) continue;
+            const score = angle * 4 + rise * .15 + Math.max(0, baseRaw) * .0003;
+            if (!mountain || score > mountain.score) {
+              const directionLength = Math.hypot(targetX - startX, targetZ - startZ) || 1;
+              const directionX = (targetX - startX) / directionLength;
+              const directionZ = (targetZ - startZ) / directionLength;
+              mountain = {
+                start: { x: startX, z: startZ },
+                target: { x: targetX, z: targetZ },
+                direction: { x: directionX, z: directionZ },
+                yaw: Math.atan2(directionX, directionZ),
+                rise,
+                angle,
+                score,
+                suggestedMilliseconds: 260
+              };
+            }
+          }
+        }
+      }
+      const palma = metadata.presets.find(item => item.id === 'palma');
+      const menorca = metadata.presets.find(item => item.id === 'menorca');
+      let water = null;
+      if (palma && menorca) {
+        const routeX = menorca.x - palma.x;
+        const routeZ = menorca.z - palma.z;
+        const routeLength = Math.hypot(routeX, routeZ) || 1;
+        const directionX = routeX / routeLength;
+        const directionZ = routeZ / routeLength;
+        for (let t = .22; t <= .78 && !water; t += .008) {
+          const x = palma.x + routeX * t;
+          const z = palma.z + routeZ * t;
+          let clear = true;
+          for (let sample = -2; sample <= 8; sample++) {
+            const terrain = sampleTerrainInfo(x + directionX * sample * .9, z + directionZ * sample * .9);
+            if (!terrain.inside || terrain.land) { clear = false; break; }
+          }
+          if (clear) {
+            water = {
+              start: { x, z },
+              direction: { x: directionX, z: directionZ },
+              yaw: Math.atan2(directionX, directionZ),
+              route: 'Mallorca-Menorca',
+              suggestedMilliseconds: 700
+            };
+          }
+        }
+      }
+      assert(mountain, 'No mountain locomotion probe could be generated');
+      assert(water, 'No open-water locomotion probe could be generated');
+      locomotionProbes = { mountain, water };
+      return locomotionProbes;
+    };
+    let lastTime = performance.now(), frames = 0, fpsTime = lastTime, nearestClock = 0;
+    const nearestUpdate = () => {
+      const sourcePreview = state.worldMode === 'local' ? localAssets.preview : preview;
+      const landmarkLabels = state.worldMode === 'local' ? localAssets.metadata.labels.landmarks : metadata.landmarks;
+      const settlementLabels = state.worldMode === 'local' ? localAssets.metadata.labels.settlements : metadata.settlements;
+      let best = null;
+      for (let index=0;index<sourcePreview.header.landmarkCount;index++) {
+        const offset=index*5, dx=sourcePreview.landmarks[offset]-state.camera.x, dz=sourcePreview.landmarks[offset+2]-state.camera.z, distance=Math.hypot(dx,dz);
+        if (!best||distance<best.distance) best={distance:distance*state.worldScale,name:landmarkLabels[index]?.name||'Monumento',kind:'monumento'};
+      }
+      for (let index=0;index<sourcePreview.header.settlementCount;index++) {
+        const offset=index*4, dx=sourcePreview.settlements[offset]-state.camera.x, dz=sourcePreview.settlements[offset+2]-state.camera.z, distance=Math.hypot(dx,dz);
+        const displayDistance=distance*state.worldScale;
+        if (!best||displayDistance<best.distance) best={distance:displayDistance,name:settlementLabels[index]?.name||'Población',kind:'población'};
+      }
+      nearestText.textContent = best ? `Cerca: ${best.name} · ${best.distance.toFixed(1)} u ${state.worldMode === 'local' ? 'locales' : 'regionales'}` : '';
+    };
+
+
+    const characterUniforms = {
+      pv: gl.getUniformLocation(characterProgram, 'uPV'),
+      center: gl.getUniformLocation(characterProgram, 'uCenter'),
+      scale: gl.getUniformLocation(characterProgram, 'uScale'),
+      yaw: gl.getUniformLocation(characterProgram, 'uYaw'),
+      color: gl.getUniformLocation(characterProgram, 'uColor'),
+      camera: gl.getUniformLocation(characterProgram, 'uCamera'),
+      pitch: gl.getUniformLocation(characterProgram, 'uPitch'),
+      roll: gl.getUniformLocation(characterProgram, 'uRoll')
+    };
+    const resolveThirdPersonCamera = (target, desired) => {
+      const deltaX = desired[0] - target[0];
+      const deltaY = desired[1] - target[1];
+      const deltaZ = desired[2] - target[2];
+      const desiredDistance = Math.hypot(deltaX, deltaY, deltaZ) || 1;
+      const minimumDistance = Math.min(1.05, desiredDistance * .30);
+      const minimumT = minimumDistance / desiredDistance;
+      let last = [
+        target[0] + deltaX * minimumT,
+        target[1] + deltaY * minimumT,
+        target[2] + deltaZ * minimumT
+      ];
+      let blocked = false;
+      const steps = 24;
+      for (let step = 1; step <= steps; step++) {
+        const t = step / steps;
+        const point = [
+          target[0] + deltaX * t,
+          target[1] + deltaY * t,
+          target[2] + deltaZ * t
+        ];
+        if (t <= minimumT) {
+          last = point;
+          continue;
+        }
+        const regional = toRegionalXZ(point[0], point[2]);
+        const terrain = sampleTerrainInfo(regional.x, regional.z);
+        if ((terrain.land && terrain.height + .28 > point[1]) || collidesBuilding(regional.x, regional.z)) {
+          blocked = true;
+          break;
+        }
+        last = point;
+      }
+      state.cameraBlocked = blocked;
+      return last;
+    };
+    const updateTerrainAlignment = dt => {
+      if (state.swimming) {
+        const blend = Math.min(1, dt * 5.5);
+        state.terrainPitch += (-.48 - state.terrainPitch) * blend;
+        state.terrainRoll += (0 - state.terrainRoll) * blend;
+        state.slopeAngle = 0;
+        return;
+      }
+      const sampleDistance = .55 / Math.max(1, state.worldScale);
+      const forwardX = Math.sin(state.playerFacing), forwardZ = Math.cos(state.playerFacing);
+      const rightX = Math.cos(state.playerFacing), rightZ = -Math.sin(state.playerFacing);
+      const forward = sampleTerrainInfo(state.camera.x + forwardX * sampleDistance, state.camera.z + forwardZ * sampleDistance);
+      const backward = sampleTerrainInfo(state.camera.x - forwardX * sampleDistance, state.camera.z - forwardZ * sampleDistance);
+      const right = sampleTerrainInfo(state.camera.x + rightX * sampleDistance, state.camera.z + rightZ * sampleDistance);
+      const left = sampleTerrainInfo(state.camera.x - rightX * sampleDistance, state.camera.z - rightZ * sampleDistance);
+      const horizontal = sampleDistance * 2 * state.worldScale;
+      const targetPitch = forward.land && backward.land ? -Math.atan2(forward.height - backward.height, horizontal) : 0;
+      const targetRoll = right.land && left.land ? Math.atan2(right.height - left.height, horizontal) : 0;
+      const blend = Math.min(1, dt * 8);
+      state.terrainPitch += (Math.max(-.62, Math.min(.62, targetPitch)) - state.terrainPitch) * blend;
+      state.terrainRoll += (Math.max(-.48, Math.min(.48, targetRoll)) - state.terrainRoll) * blend;
+    };
+    const drawCharacter = (now, cameraPosition) => {
+      const phase = now * (state.swimming ? .0085 : .012);
+      const gait = Math.sin(phase) * state.moveAmount;
+      const bounce = state.swimming ? Math.sin(phase * .7) * .018 : Math.abs(Math.sin(phase)) * .024 * state.moveAmount;
+      const baseOffset = state.swimming ? state.playerSwimEyeHeight : state.playerEyeHeight;
+      const baseY = state.camera.y - baseOffset + bounce;
+      const playerDisplay = toDisplayXZ(state.camera.x, state.camera.z);
+      const facing = state.playerFacing;
+      const bodyScale = state.playerVisualScale;
+      const pitch = state.terrainPitch;
+      const roll = state.terrainRoll;
+      const c = Math.cos(facing), s = Math.sin(facing), cp = Math.cos(pitch), sp = Math.sin(pitch), cr = Math.cos(roll), sr = Math.sin(roll);
+      const rotateLocal = (localX, localY, localZ) => {
+        const rolledX = localX * cr - localY * sr;
+        const rolledY = localX * sr + localY * cr;
+        const pitchedY = rolledY * cp - localZ * sp;
+        const pitchedZ = rolledY * sp + localZ * cp;
+        return {
+          x: rolledX * c + pitchedZ * s,
+          y: pitchedY,
+          z: -rolledX * s + pitchedZ * c
+        };
+      };
+      const drawPart = (localX, localY, localZ, scaleX, scaleY, scaleZ, red, green, blue) => {
+        const rotated = rotateLocal(localX * bodyScale, localY * bodyScale, localZ * bodyScale);
+        gl.uniform3f(characterUniforms.center, playerDisplay.x + rotated.x, baseY + rotated.y, playerDisplay.z + rotated.z);
+        gl.uniform3f(characterUniforms.scale, scaleX * bodyScale, scaleY * bodyScale, scaleZ * bodyScale);
+        gl.uniform1f(characterUniforms.yaw, facing);
+        gl.uniform1f(characterUniforms.pitch, pitch);
+        gl.uniform1f(characterUniforms.roll, roll);
+        gl.uniform3f(characterUniforms.color, red, green, blue);
+        gl.drawElements(gl.TRIANGLES, characterMesh.count, gl.UNSIGNED_SHORT, 0);
+      };
+      const swim = state.swimming ? 1 : 0;
+      const armStroke = swim ? Math.sin(phase) * .46 : gait * .18;
+      const legStroke = swim ? Math.sin(phase + Math.PI) * .28 : gait * .16;
+      gl.useProgram(characterProgram);
+      gl.uniformMatrix4fv(characterUniforms.pv, false, pv);
+      gl.uniform3f(characterUniforms.camera, ...cameraPosition);
+      gl.bindVertexArray(characterMesh.vao);
+      drawPart(0, .78, 0, .34, .54, .28, .30, .23, .17);
+      drawPart(0, 1.12, .02, .40, .38, .32, .36, .28, .20);
+      drawPart(0, 1.46, .05, .34, .34, .32, .32, .24, .18);
+      drawPart(0, 1.38, .29, .24, .16, .18, .62, .43, .32);
+      drawPart(-.31, 1.48, .02, .12, .16, .09, .42, .31, .23);
+      drawPart(.31, 1.48, .02, .12, .16, .09, .42, .31, .23);
+      drawPart(-.42, .84, armStroke, .13, .45, .13, .29, .22, .16);
+      drawPart(.42, .84, -armStroke, .13, .45, .13, .29, .22, .16);
+      drawPart(-.43, .41, armStroke * 1.08, .16, .15, .15, .20, .16, .12);
+      drawPart(.43, .41, -armStroke * 1.08, .16, .15, .15, .20, .16, .12);
+      drawPart(-.20, .33, -legStroke, .15, .36, .16, .31, .23, .17);
+      drawPart(.20, .33, legStroke, .15, .36, .16, .31, .23, .17);
+      drawPart(-.20, .08, .13 - legStroke, .18, .10, .27, .22, .17, .13);
+      drawPart(.20, .08, .13 + legStroke, .18, .10, .27, .22, .17, .13);
+      drawPart(0, .72, -.30, .15, .15, .23, .31, .23, .17);
+      drawPart(0, .79, -.57, .14, .14, .22, .31, .23, .17);
+      drawPart(0, .91, -.82, .13, .13, .20, .31, .23, .17);
+      drawPart(0, 1.08, -1.00, .11, .11, .18, .31, .23, .17);
+    };
+
+    const draw = now => {
+      const dt = Math.min(.05, (now - lastTime) / 1000);
+      lastTime = now;
+      const keys = state.keyboard;
+      const strafe = -state.joyX + (keys.has('KeyA') ? 1 : 0) - (keys.has('KeyD') ? 1 : 0);
+      const forward = -state.joyY + (keys.has('KeyW') || keys.has('ArrowUp') ? 1 : 0) - (keys.has('KeyS') || keys.has('ArrowDown') ? 1 : 0);
+      const inputLength = Math.hypot(strafe, forward);
+      const normalizedStrafe = inputLength > 1 ? strafe / inputLength : strafe;
+      const normalizedForward = inputLength > 1 ? forward / inputLength : forward;
+      const sin = Math.sin(state.yaw);
+      const cos = Math.cos(state.yaw);
+      const inputX = sin * normalizedForward + cos * normalizedStrafe;
+      const inputZ = cos * normalizedForward - sin * normalizedStrafe;
+      const terrainBeforeMove = sampleTerrainInfo(state.camera.x, state.camera.z);
+      const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;
+      const lookAheadDistance = .75 / Math.max(1, state.worldScale);
+      const aheadTerrain = inputLength > .001
+        ? sampleTerrainInfo(state.camera.x + inputX * lookAheadDistance, state.camera.z + inputZ * lookAheadDistance)
+        : terrainBeforeMove;
+      const ascentAngle = terrainBeforeMove.land && aheadTerrain.land
+        ? Math.atan2(aheadTerrain.height - terrainBeforeMove.height, lookAheadDistance * state.worldScale)
+        : 0;
+      state.slopeSpeedFactor = swimmingBeforeMove
+        ? 1
+        : Math.max(.48, Math.min(1.12, 1 - Math.max(0, ascentAngle) * .58 + Math.max(0, -ascentAngle) * .12));
+      const boosted = state.boost || keys.has('ShiftLeft') || keys.has('ShiftRight');
+      const speed = swimmingBeforeMove
+        ? state.swimSpeed * (boosted ? 1.75 : 1)
+        : state.runSpeed * (boosted ? 2.4 : 1) * state.slopeSpeedFactor;
+      const moveX = inputX * speed * dt;
+      const moveZ = inputZ * speed * dt;
+      state.moveAmount = Math.min(1, Math.hypot(normalizedStrafe, normalizedForward));
+      if (Math.hypot(moveX, moveZ) > .0001) {
+        const desiredFacing = Math.atan2(moveX, moveZ);
+        const turn = Math.atan2(Math.sin(desiredFacing - state.playerFacing), Math.cos(desiredFacing - state.playerFacing));
+        state.playerFacing += turn * Math.min(1, dt * 10);
+      }
+      movePlayer(moveX / state.worldScale, moveZ / state.worldScale);
+      if (state.worldMode === 'local') {
+        const localDx = state.camera.x - state.localCenter.x;
+        const localDz = state.camera.z - state.localCenter.z;
+        const localDistance = Math.hypot(localDx, localDz);
+        if (localDistance > state.localRadius) {
+          state.camera.x = state.localCenter.x + localDx / localDistance * state.localRadius;
+          state.camera.z = state.localCenter.z + localDz / localDistance * state.localRadius;
+          state.collisions++;
+        }
+      }
+      if (state.worldMode === 'regional') streamer.update(state.camera.x, state.camera.z);
+      else { state.activeBuildings = localAssets.metadata.counts.buildings; state.loadedCells = 1; }
+
+      if (state.respawnQueued) {
+        const preset = runtimeControls.playable.find(item => item.id === state.activePreset) || runtimeControls.playable[0];
+        runtimeControls.spawn(preset);
+      }
+      const terrainNow = sampleTerrainInfo(state.camera.x, state.camera.z);
+      const wasSwimming = state.swimming;
+      state.swimming = terrainNow.inside && !terrainNow.land;
+      state.movementMode = state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';
+      state.groundHeight = terrainNow.height;
+      state.waterSurfaceHeight = terrainNow.waterHeight;
+      state.slopeAngle = terrainNow.land ? terrainNow.slopeAngle : 0;
+      const ground = terrainNow.height + state.playerEyeHeight;
+      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;
+      if (state.swimming) {
+        if (state.jumpQueued) state.swimStroke = 1;
+        state.velocityY = 0;
+        state.grounded = false;
+        state.camera.y += (swimSurface - state.camera.y) * Math.min(1, dt * 7);
+      } else {
+        if (wasSwimming) {
+          state.velocityY = 0;
+          state.grounded = true;
+          state.camera.y = ground;
+        }
+        if (state.jumpQueued && state.grounded) {
+          state.velocityY = state.jumpVelocity;
+          state.grounded = false;
+        }
+        if (!state.grounded) {
+          state.velocityY -= state.gravity * dt;
+          state.camera.y += state.velocityY * dt;
+          if (state.camera.y <= ground) {
+            state.camera.y = ground;
+            state.velocityY = 0;
+            state.grounded = true;
+          }
+        } else {
+          state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
+        }
+      }
+      state.jumpQueued = false;
+      state.swimStroke *= Math.max(0, 1 - dt * 2.8);
+      updateTerrainAlignment(dt);
+
+      const activeTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;
+      const bounds = activeTerrain.bounds;
+      state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));
+      state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));
+      if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();
+      const displayPosition = toDisplayXZ(state.camera.x, state.camera.z);
+      const target = [displayPosition.x, state.camera.y - (state.swimming ? .18 : .07), displayPosition.z];
+      const horizontalDistance = state.cameraDistance * Math.cos(state.pitch);
+      const desiredEye = [
+        target[0] - Math.sin(state.yaw) * horizontalDistance,
+        target[1] + (state.swimming ? .48 : .76) + Math.sin(state.pitch) * state.cameraDistance,
+        target[2] - Math.cos(state.yaw) * horizontalDistance
+      ];
+      const eye = resolveThirdPersonCamera(target, desiredEye);
+      state.cameraEye.x = eye[0]; state.cameraEye.y = eye[1]; state.cameraEye.z = eye[2];
+      const center = [target[0], target[1] + .18, target[2]];
+      perspective(projection, Math.PI / 3, canvas.width / canvas.height, .12, state.worldMode === 'local' ? 2400 : 1450);
+      lookAt(view, eye, center, [0,1,0]);
+      multiply(pv, projection, view);
+      gl.clearColor(.39,.555,.655,1);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+      const activeRoadMesh = state.worldMode === 'local' ? localAssets.roadMesh : roadMesh;
+      const activeBuildingMesh = state.worldMode === 'local' ? localAssets.buildingMesh : buildingMesh;
+      const activeLandmarkMesh = state.worldMode === 'local' ? localAssets.landmarkMesh : landmarkMesh;
+      const activeSettlementMesh = state.worldMode === 'local' ? localAssets.settlementMesh : settlementMesh;
+      if (state.terrain) { gl.useProgram(terrainProgram); gl.uniformMatrix4fv(gl.getUniformLocation(terrainProgram,'uPV'),false,pv); gl.uniform1f(gl.getUniformLocation(terrainProgram,'uVerticalScale'),activeTerrain.verticalScale); gl.uniform2f(gl.getUniformLocation(terrainProgram,'uWorldCenter'),state.localCenter.x,state.localCenter.z); gl.uniform1f(gl.getUniformLocation(terrainProgram,'uWorldScale'),state.worldScale); gl.uniform3f(gl.getUniformLocation(terrainProgram,'uCamera'),...eye); gl.bindVertexArray(activeTerrain.vao); gl.drawElements(gl.TRIANGLES,activeTerrain.count,gl.UNSIGNED_INT,0); }
+      if (state.roads) { gl.useProgram(roadProgram); gl.uniformMatrix4fv(gl.getUniformLocation(roadProgram,'uPV'),false,pv); gl.uniform1f(gl.getUniformLocation(roadProgram,'uTerrainScale'),activeTerrain.verticalScale); gl.uniform1f(gl.getUniformLocation(roadProgram,'uLift'),metadata.display.roadLift); gl.uniform2f(gl.getUniformLocation(roadProgram,'uWorldCenter'),state.localCenter.x,state.localCenter.z); gl.uniform1f(gl.getUniformLocation(roadProgram,'uWorldScale'),state.worldScale); gl.bindVertexArray(activeRoadMesh.vao); gl.drawArrays(gl.LINES,0,activeRoadMesh.count); }
+      if (state.buildings) { gl.useProgram(buildingProgram); gl.uniformMatrix4fv(gl.getUniformLocation(buildingProgram,'uPV'),false,pv); gl.uniform1f(gl.getUniformLocation(buildingProgram,'uTerrainScale'),activeTerrain.verticalScale); gl.uniform1f(gl.getUniformLocation(buildingProgram,'uBuildingScale'),metadata.display.buildingVerticalScale); gl.uniform1f(gl.getUniformLocation(buildingProgram,'uHorizontalExaggeration'),metadata.display.buildingHorizontalExaggeration); gl.uniform2f(gl.getUniformLocation(buildingProgram,'uWorldCenter'),state.localCenter.x,state.localCenter.z); gl.uniform1f(gl.getUniformLocation(buildingProgram,'uWorldScale'),state.worldScale); gl.uniform1f(gl.getUniformLocation(buildingProgram,'uFootprintScale'),state.footprintScale); gl.uniform3f(gl.getUniformLocation(buildingProgram,'uCamera'),...eye); gl.uniform1i(gl.getUniformLocation(buildingProgram,'uShowHotels'),state.hotels?1:0); gl.bindVertexArray(activeBuildingMesh.vao); gl.drawElementsInstanced(gl.TRIANGLES,activeBuildingMesh.indexCount,gl.UNSIGNED_SHORT,0,activeBuildingMesh.instanceCount); }
+      if (state.landmarks) { gl.useProgram(landmarkProgram); gl.uniformMatrix4fv(gl.getUniformLocation(landmarkProgram,'uPV'),false,pv); gl.uniform1f(gl.getUniformLocation(landmarkProgram,'uTerrainScale'),activeTerrain.verticalScale); gl.uniform1f(gl.getUniformLocation(landmarkProgram,'uLift'),metadata.display.landmarkLift); gl.uniform2f(gl.getUniformLocation(landmarkProgram,'uWorldCenter'),state.localCenter.x,state.localCenter.z); gl.uniform1f(gl.getUniformLocation(landmarkProgram,'uWorldScale'),state.worldScale); gl.bindVertexArray(activeLandmarkMesh.vao); gl.drawArrays(gl.POINTS,0,activeLandmarkMesh.count); }
+      if (state.settlements) { gl.useProgram(settlementProgram); gl.uniformMatrix4fv(gl.getUniformLocation(settlementProgram,'uPV'),false,pv); gl.uniform1f(gl.getUniformLocation(settlementProgram,'uTerrainScale'),activeTerrain.verticalScale); gl.uniform2f(gl.getUniformLocation(settlementProgram,'uWorldCenter'),state.localCenter.x,state.localCenter.z); gl.uniform1f(gl.getUniformLocation(settlementProgram,'uWorldScale'),state.worldScale); gl.bindVertexArray(activeSettlementMesh.vao); gl.drawArrays(gl.POINTS,0,activeSettlementMesh.count); }
+      drawCharacter(now, eye);
+      gl.bindVertexArray(null);
+
+      frames++;
+      if (now - fpsTime >= 1000) {
+        state.fps = Math.round(frames * 1000 / (now - fpsTime));
+        frames = 0;
+        fpsTime = now;
+        const localLabel = localAssets.metadata?.name?.split(' · ')[0]?.toUpperCase() || state.localZoneId?.toUpperCase() || 'ZONA';
+        const proximityZone = state.localProximityZoneId ? localRegistry.zones.find(zone => zone.id === state.localProximityZoneId) : null;
+        const proximityHint = state.worldMode !== 'regional' || !proximityZone
+          ? ''
+          : state.localProximityStatus === 'available'
+            ? ' · ACCESO ' + proximityZone.name.split(' · ')[0].toUpperCase()
+            : ' · ' + proximityZone.name.split(' · ')[0].toUpperCase() + ' A ' + state.localProximityDistance.toFixed(1);
+        const locomotionLabel = state.swimming ? ' · NADANDO' : state.slopeAngle > .12 ? ' · PENDIENTE ' + Math.round(state.slopeAngle * 180 / Math.PI) + '°' : '';
+        const modeLabel = (state.worldMode === 'local' ? 'LOCAL ' + localLabel + ' · PAQUETE ×' + state.worldScale : 'REGIONAL ×1' + proximityHint) + locomotionLabel;
+        const visibleTotal = state.worldMode === 'local' ? localAssets.metadata.counts.buildings : metadata.counts.buildings;
+        hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';
+        window.__WAFT_RUNTIME_010_STATS__ = {
+          totalBuildings: metadata.counts.buildings,
+          activeBuildings: state.activeBuildings,
+          loadedCells: state.loadedCells,
+          collisions: state.collisions,
+          grounded: state.grounded,
+          cameraMode: 'third-person',
+          characterVisible: true,
+          lateralControls: 'screen-relative',
+          worldMode: state.worldMode,
+          worldScale: state.worldScale,
+          footprintScale: state.footprintScale,
+          localZoneId: state.localZoneId,
+          localPackageLoaded: state.localPackageLoaded,
+          renderDataset: state.renderDataset,
+          localPackageBuildId: state.localPackageBuildId,
+          localPackageBytes: state.localPackageBytes,
+          localTerrainColumns: state.localTerrainColumns,
+          localTerrainRows: state.localTerrainRows,
+          localBuildingCount: state.localBuildingCount,
+          localRoadVertexCount: state.localRoadVertexCount,
+          localPackageStatus: state.localPackageStatus,
+          localPackageLoadCount: state.localPackageLoadCount,
+          localPackageReleaseCount: state.localPackageReleaseCount,
+          localPackageRequestCount: state.localPackageRequestCount,
+          localGpuResources: state.localGpuResources,
+          localRegistryLoaded: state.localRegistryLoaded,
+          localRegistryBuildId: state.localRegistryBuildId,
+          localZoneCount: state.localZoneCount,
+          localRequestedZoneId: state.localRequestedZoneId,
+          localLastLoadedZoneId: state.localLastLoadedZoneId,
+          localProximityZoneId: state.localProximityZoneId,
+          localProximityDistance: state.localProximityDistance,
+          localProximityStatus: state.localProximityStatus,
+          localEntryRadius: state.localEntryRadius,
+          localDiscoveryRadius: state.localDiscoveryRadius,
+          localProximityUpdates: state.localProximityUpdates,
+          playerVisualScale: state.playerVisualScale,
+          playerCollisionRadius: state.playerCollisionRadius,
+          playerEyeHeight: state.playerEyeHeight,
+          graphicsProfile: state.graphicsProfile,
+          movementMode: state.movementMode,
+          swimming: state.swimming,
+          terrainPitch: state.terrainPitch,
+          terrainRoll: state.terrainRoll,
+          slopeAngle: state.slopeAngle,
+          slopeSpeedFactor: state.slopeSpeedFactor,
+          groundHeight: state.groundHeight,
+          waterSurfaceHeight: state.waterSurfaceHeight,
+          jumpVelocity: state.jumpVelocity,
+          swimSpeed: state.swimSpeed,
+          runSpeed: state.runSpeed,
+          playerFacing: state.playerFacing,
+          cameraBlocked: state.cameraBlocked,
+          cameraEye: { ...state.cameraEye },
+          webgl2: true,
+          buildId: metadata.buildId,
+          binarySha256: metadata.binary.sha256,
+          position: { x: state.camera.x, y: state.camera.y, z: state.camera.z }
+        };
+      }
+      nearestClock += dt;
+      if (nearestClock > .45) { nearestClock = 0; nearestUpdate(); }
+      requestAnimationFrame(draw);
+    };
+
+    window.WAFTRegionRuntime = {
+      spawn(id) {
+        const preset = runtimeControls.playable.find(item => item.id === id || item.name.toLowerCase() === String(id).toLowerCase());
+        if (!preset) throw new Error('Punto de aparición desconocido: ' + id);
+        if (state.worldMode === 'local') runtimeControls.exitLocal();
+        runtimeControls.spawn(preset);
+      },
+      setRegionalPosition(x, z) {
+        if (state.worldMode === 'local') runtimeControls.exitLocal();
+        const nextX = Number(x), nextZ = Number(z);
+        if (!Number.isFinite(nextX) || !Number.isFinite(nextZ)) throw new Error('Las coordenadas regionales deben ser numéricas.');
+        state.camera.x = nextX;
+        state.camera.z = nextZ;
+        const terrainInfo = sampleTerrainInfo(nextX, nextZ);
+        state.swimming = terrainInfo.inside && !terrainInfo.land;
+        state.movementMode = state.swimming ? 'swimming' : 'ground';
+        state.camera.y = state.swimming
+          ? terrainInfo.waterHeight + state.playerSwimEyeHeight
+          : terrainInfo.height + state.playerEyeHeight;
+        state.velocityY = 0;
+        state.grounded = !state.swimming;
+        streamer.update(state.camera.x, state.camera.z, true);
+        return runtimeControls.refreshLocalProximity(true);
+      },
+      detectLocalZone() { return runtimeControls.refreshLocalProximity(true); },
+      setHeading(yaw) {
+        const value = Number(yaw);
+        if (!Number.isFinite(value)) throw new Error('El rumbo debe ser numérico.');
+        state.yaw = value;
+        state.playerFacing = value;
+        return value;
+      },
+      getLocomotionProbes() { return buildLocomotionProbes(); },
+      sampleSurface(x, z) { return sampleTerrainInfo(Number(x), Number(z)); },
+      enterLocal(zoneId = null) { return runtimeControls.enterLocal(zoneId); },
+      exitLocal() { return runtimeControls.exitLocal(); },
+      toggleScale(zoneId = null) { return state.worldMode === 'local' ? runtimeControls.exitLocal() : runtimeControls.enterLocal(zoneId); },
+      regionalToDisplay(x, z) { return toDisplayXZ(Number(x), Number(z)); },
+      displayToRegional(x, z) { return toRegionalXZ(Number(x), Number(z)); },
+      setInput(x, y) { state.joyX = Math.max(-1, Math.min(1, Number(x) || 0)); state.joyY = Math.max(-1, Math.min(1, Number(y) || 0)); },
+      jump() { state.jumpQueued = true; },
+      respawn() { state.respawnQueued = true; },
+      setLayer(name, value) { if (!(name in state)) throw new Error('Capa desconocida: ' + name); state[name] = Boolean(value); },
+      probeCollision() {
+        const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
+        return records.length >= 8 ? collidesBuilding(records[0], records[2]) : false;
+      },
+      probeNarrowPassage() { return findReducedColliderPassage(); },
+      getState() { const displayPosition = toDisplayXZ(state.camera.x, state.camera.z); return { movementMode: state.movementMode, swimming: state.swimming, terrainPitch: state.terrainPitch, terrainRoll: state.terrainRoll, slopeAngle: state.slopeAngle, slopeSpeedFactor: state.slopeSpeedFactor, groundHeight: state.groundHeight, waterSurfaceHeight: state.waterSurfaceHeight, jumpVelocity: state.jumpVelocity, swimSpeed: state.swimSpeed, runSpeed: state.runSpeed, position: { ...state.camera }, displayPosition: { x: displayPosition.x, y: state.camera.y, z: displayPosition.z }, cameraEye: { ...state.cameraEye }, cameraYaw: state.yaw, playerFacing: state.playerFacing, cameraMode: 'third-person', characterVisible: true, cameraBlocked: state.cameraBlocked, lateralControls: 'screen-relative', worldMode: state.worldMode, worldScale: state.worldScale, footprintScale: state.footprintScale, localCenter: { ...state.localCenter }, localRadius: state.localRadius, localZoneId: state.localZoneId, localPackageLoaded: state.localPackageLoaded, localPackageStatus: state.localPackageStatus, localPackageLoadCount: state.localPackageLoadCount, localPackageReleaseCount: state.localPackageReleaseCount, localPackageRequestCount: state.localPackageRequestCount, localGpuResources: state.localGpuResources, localRegistryLoaded: state.localRegistryLoaded, localRegistryBuildId: state.localRegistryBuildId, localZoneCount: state.localZoneCount, localRequestedZoneId: state.localRequestedZoneId, localLastLoadedZoneId: state.localLastLoadedZoneId, localProximityZoneId: state.localProximityZoneId, localProximityDistance: state.localProximityDistance, localProximityStatus: state.localProximityStatus, localEntryRadius: state.localEntryRadius, localDiscoveryRadius: state.localDiscoveryRadius, localProximityUpdates: state.localProximityUpdates, playerVisualScale: state.playerVisualScale, playerCollisionRadius: state.playerCollisionRadius, playerEyeHeight: state.playerEyeHeight, graphicsProfile: state.graphicsProfile, renderDataset: state.renderDataset, localPackageBuildId: state.localPackageBuildId, localPackageBytes: state.localPackageBytes, localTerrain: { columns: state.localTerrainColumns, rows: state.localTerrainRows }, localCounts: { buildings: state.localBuildingCount, roadVertices: state.localRoadVertexCount }, grounded: state.grounded, activeBuildings: state.activeBuildings, loadedCells: state.loadedCells, collisions: state.collisions, preset: state.activePreset }; },
+      version: '010',
+      playerMetrics: { visualScale: state.playerVisualScale, collisionRadius: state.playerCollisionRadius, eyeHeight: state.playerEyeHeight, swimEyeHeight: state.playerSwimEyeHeight, previousCollisionRadius: state.playerPreviousCollisionRadius, graphicsProfile: state.graphicsProfile, runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, gravity: state.gravity, terrainAdaptation: true, swimming: true },
+      metadata,
+      localRegistry,
+      availableZones: localRegistry.zones.map(zone => ({ id: zone.id, presetId: zone.presetId, name: zone.name, buildId: zone.buildId, center: { ...zone.center }, entryRadius: Math.max(6, Math.min(10, Number(zone.regionalRadius) * .32)), discoveryRadius: Math.max(6, Math.min(10, Number(zone.regionalRadius) * .32)) * 2.25 })),
+      get localMetadata() { return localAssets.metadata; }
+    };
+    buildLocomotionProbes();
+    window.__WAFT_RUNTIME_010_STATS__ = { movementMode: state.movementMode, swimming: state.swimming, terrainPitch: state.terrainPitch, terrainRoll: state.terrainRoll, slopeAngle: state.slopeAngle, slopeSpeedFactor: state.slopeSpeedFactor, groundHeight: state.groundHeight, waterSurfaceHeight: state.waterSurfaceHeight, jumpVelocity: state.jumpVelocity, swimSpeed: state.swimSpeed, runSpeed: state.runSpeed, totalBuildings: metadata.counts.buildings, activeBuildings: state.activeBuildings, loadedCells: state.loadedCells, collisions: 0, grounded: true, cameraMode: 'third-person', characterVisible: true, lateralControls: 'screen-relative', worldMode: state.worldMode, worldScale: state.worldScale, footprintScale: state.footprintScale, localZoneId: state.localZoneId, localPackageLoaded: state.localPackageLoaded, localPackageStatus: state.localPackageStatus, localPackageLoadCount: state.localPackageLoadCount, localPackageReleaseCount: state.localPackageReleaseCount, localPackageRequestCount: state.localPackageRequestCount, localGpuResources: state.localGpuResources, localRegistryLoaded: state.localRegistryLoaded, localRegistryBuildId: state.localRegistryBuildId, localZoneCount: state.localZoneCount, localRequestedZoneId: state.localRequestedZoneId, localLastLoadedZoneId: state.localLastLoadedZoneId, localProximityZoneId: state.localProximityZoneId, localProximityDistance: state.localProximityDistance, localProximityStatus: state.localProximityStatus, localEntryRadius: state.localEntryRadius, localDiscoveryRadius: state.localDiscoveryRadius, localProximityUpdates: state.localProximityUpdates, playerVisualScale: state.playerVisualScale, playerCollisionRadius: state.playerCollisionRadius, playerEyeHeight: state.playerEyeHeight, graphicsProfile: state.graphicsProfile, renderDataset: state.renderDataset, localPackageBuildId: state.localPackageBuildId, localPackageBytes: state.localPackageBytes, localTerrainColumns: state.localTerrainColumns, localTerrainRows: state.localTerrainRows, localBuildingCount: state.localBuildingCount, localRoadVertexCount: state.localRoadVertexCount, playerFacing: state.playerFacing, cameraBlocked: state.cameraBlocked, cameraEye: { ...state.cameraEye }, webgl2: true, buildId: metadata.buildId, binarySha256: metadata.binary.sha256, position: { ...state.camera } };
+    window.__WAFT_RUNTIME_010_READY__=true;
+    loading.classList.add('hide');
+    requestAnimationFrame(draw);
+  }
+  boot().catch(fail);
+})();
+</script>
+</body>
+</html>
