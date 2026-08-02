@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
-const VERIFIER_VERSION = 4;
+const VERIFIER_VERSION = 5;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArguments(argv) {
@@ -91,9 +91,8 @@ async function verifyRuntime(context, previewUrl) {
     const duringJump = await page.evaluate(() => window.WAFTRegionRuntime.getState());
     const jumpRise = duringJump.position.y - beforeJump.position.y;
     if (jumpRise <= .15) throw new Error(`Runtime jump rise is too small: ${jumpRise}`);
-    await page.waitForTimeout(900);
+    await page.waitForFunction(() => window.WAFTRegionRuntime.getState().grounded === true, null, { timeout: 5000 });
     const landed = await page.evaluate(() => window.WAFTRegionRuntime.getState());
-    if (!landed.grounded) throw new Error('Runtime player did not land');
 
     let movement = null;
     for (const [x, y] of [[0,-1],[1,0],[0,1],[-1,0]]) {
