@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const sourcePath = path.join(ROOT, 'world-generator/scripts/verify-baleares-runtime-009-browser.mjs');
+const sourcePath = path.join(ROOT, 'world-generator/scripts/verify-baleares-runtime-008-browser.mjs');
 const temporaryPath = path.join(ROOT, 'world-generator/scripts/.verify-baleares-runtime-010-generated.mjs');
 
 function assert(condition, message) {
@@ -18,28 +18,35 @@ function replaceOnce(source, search, replacement, label) {
   return source.slice(0, first) + replacement + source.slice(first + search.length);
 }
 
-let verifier = fs.readFileSync(sourcePath, 'utf8').replaceAll('009', '010');
-verifier = verifier.replace('const VERIFIER_VERSION = 2;', 'const VERIFIER_VERSION = 3;');
+let verifier = fs.readFileSync(sourcePath, 'utf8').replaceAll('008', '010');
+verifier = verifier.replace('const VERIFIER_VERSION = 1;', 'const VERIFIER_VERSION = 3;');
 
 verifier = replaceOnce(
   verifier,
-  `      playerMetrics: window.WAFTRegionRuntime.playerMetrics,
+  `      availableZones: window.WAFTRegionRuntime.availableZones,
       error: window.__WAFT_RUNTIME_010_ERROR__ ?? null,`,
-  `      playerMetrics: window.WAFTRegionRuntime.playerMetrics,
+  `      availableZones: window.WAFTRegionRuntime.availableZones,
+      playerMetrics: window.WAFTRegionRuntime.playerMetrics,
       locomotionProbes: window.WAFTRegionRuntime.getLocomotionProbes(),
       error: window.__WAFT_RUNTIME_010_ERROR__ ?? null,`,
-  'locomotion probe snapshot'
+  'runtime 010 metrics snapshot'
 );
 
 verifier = replaceOnce(
   verifier,
-  `    assert(initial.playerMetrics?.graphicsProfile === 'enhanced-mobile-v1', \`Unexpected graphics profile: \${initial.playerMetrics?.graphicsProfile}\`);`,
-  `    assert(initial.playerMetrics?.graphicsProfile === 'enhanced-mobile-v2', \`Unexpected graphics profile: \${initial.playerMetrics?.graphicsProfile}\`);
+  `    assert(initial.version === '010', \`Expected runtime 010, got \${initial.version}\`);
+    assert(initial.webgl2, 'WebGL2 is unavailable');`,
+  `    assert(initial.version === '010', \`Expected runtime 010, got \${initial.version}\`);
+    assert(initial.playerMetrics?.graphicsProfile === 'enhanced-mobile-v2', \`Unexpected graphics profile: \${initial.playerMetrics?.graphicsProfile}\`);
+    assert(initial.playerMetrics.visualScale <= .60 && initial.playerMetrics.visualScale >= .50, \`Unexpected visual scale: \${initial.playerMetrics.visualScale}\`);
+    assert(initial.playerMetrics.collisionRadius <= .18 && initial.playerMetrics.collisionRadius < initial.playerMetrics.previousCollisionRadius, \`Player collision radius was not reduced: \${JSON.stringify(initial.playerMetrics)}\`);
+    assert(initial.playerMetrics.eyeHeight <= .9, \`Player eye height was not reduced: \${initial.playerMetrics.eyeHeight}\`);
     assert(initial.playerMetrics.terrainAdaptation === true && initial.playerMetrics.swimming === true, 'Terrain adaptation or swimming is disabled');
     assert(initial.playerMetrics.jumpVelocity >= 8.5, \`Jump velocity is too low: \${initial.playerMetrics.jumpVelocity}\`);
     assert(initial.playerMetrics.swimSpeed >= 5, \`Swim speed is too low: \${initial.playerMetrics.swimSpeed}\`);
     assert(initial.locomotionProbes?.mountain?.rise > .15, \`Mountain probe is invalid: \${JSON.stringify(initial.locomotionProbes?.mountain)}\`);
-    assert(initial.locomotionProbes?.water?.route === 'Mallorca-Menorca', \`Water route is invalid: \${JSON.stringify(initial.locomotionProbes?.water)}\`);`,
+    assert(initial.locomotionProbes?.water?.route === 'Mallorca-Menorca', \`Water route is invalid: \${JSON.stringify(initial.locomotionProbes?.water)}\`);
+    assert(initial.webgl2, 'WebGL2 is unavailable');`,
   'runtime 010 locomotion contracts'
 );
 
@@ -91,6 +98,25 @@ verifier = replaceOnce(
 
 verifier = replaceOnce(
   verifier,
+  `    assert(palmaLocal.collisionProbe, 'Palma collision probe failed');
+    assert(palmaLocal.hud.includes('LOCAL PALMA'), \`Palma HUD is wrong: \${palmaLocal.hud}\`);
+
+    const palmaYaw`,
+  `    assert(palmaLocal.collisionProbe, 'Palma collision probe failed');
+    assert(palmaLocal.hud.includes('LOCAL PALMA'), \`Palma HUD is wrong: \${palmaLocal.hud}\`);
+    const narrowPassage = await page.evaluate(() => window.WAFTRegionRuntime.probeNarrowPassage());
+    assert(narrowPassage, 'Palma contains no verified reduced-collider passage');
+    assert(narrowPassage.newClear === true && narrowPassage.oldBlocked === true && narrowPassage.tangentClear === true, \`Reduced-collider passage is invalid: \${JSON.stringify(narrowPassage)}\`);
+    assert(narrowPassage.newRadius === initial.playerMetrics.collisionRadius, 'Passage probe does not use the new collision radius');
+    assert(narrowPassage.oldRadius === initial.playerMetrics.previousCollisionRadius, 'Passage probe does not compare against the old collision radius');
+    assert(narrowPassage.clearanceDisplay > narrowPassage.newRadius && narrowPassage.clearanceDisplay < narrowPassage.oldRadius, \`Passage clearance is outside the expected interval: \${JSON.stringify(narrowPassage)}\`);
+
+    const palmaYaw`,
+  'Palma reduced-collider passage verification'
+);
+
+verifier = replaceOnce(
+  verifier,
   `    assert(jumpRise > .15, \`Palma jump rise is too small: \${jumpRise}\`);`,
   `    assert(jumpRise > 1.25, \`Palma high-jump rise is too small: \${jumpRise}\`);`,
   'high jump assertion'
@@ -98,9 +124,10 @@ verifier = replaceOnce(
 
 verifier = replaceOnce(
   verifier,
-  `      playerMetrics: initial.playerMetrics,
+  `      canvas: initial.canvas,
       proximity: {`,
-  `      playerMetrics: initial.playerMetrics,
+  `      canvas: initial.canvas,
+      playerMetrics: initial.playerMetrics,
       locomotion: {
         probes: initial.locomotionProbes,
         mountainDistance,
@@ -117,14 +144,30 @@ verifier = replaceOnce(
 
 verifier = replaceOnce(
   verifier,
-  `        enhancedMobileGraphics: true,`,
-  `        enhancedMobileGraphics: true,
+  `        palma: {
+          buildId: palmaLocal.metadata.buildId,`,
+  `        palma: {
+          narrowPassage,
+          buildId: palmaLocal.metadata.buildId,`,
+  'narrow passage report'
+);
+
+verifier = replaceOnce(
+  verifier,
+  `      tests: {
+        registryRequestedAtBoot: true,`,
+  `      tests: {
+        smallerPlayerVisualScale: true,
+        reducedPlayerCollider: true,
+        narrowPalmaPassage: true,
+        enhancedMobileGraphics: true,
         bilinearTerrainFollowing: true,
         mountainClimbing: true,
         slopeAlignedCharacter: true,
         openWaterSwimming: true,
         mallorcaToMenorcaWaterRoute: true,
-        highJump: true,`,
+        highJump: true,
+        registryRequestedAtBoot: true,`,
   'runtime 010 test flags'
 );
 
