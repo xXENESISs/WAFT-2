@@ -3,7 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
-const BUILD_REVISION = 1;
+const BUILD_REVISION = 2;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const sourcePath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-007.html');
 const outputPath = path.join(ROOT, 'mallorca-mobile/region-runtime-baleares-008.html');
@@ -312,6 +312,44 @@ html = replaceOnce(
   'public proximity contracts'
 );
 
+html = replaceOnce(
+  html,
+  `      state.localCenter.x = localAssets.metadata.center.x;
+      state.localCenter.z = localAssets.metadata.center.z;
+      state.localZoneId = localAssets.metadata.zoneId;
+      state.worldMode = 'local';
+      state.worldScale = localAssets.metadata.worldScale;
+      state.footprintScale = localAssets.metadata.footprintScale;
+      state.localRadius = localAssets.metadata.regionalRadius;
+      state.renderDataset = 'local-package';
+      state.activeBuildings = localAssets.metadata.counts.buildings;
+      state.loadedCells = 1;
+      state.cameraDistance = 7.2;
+      updateScaleButton();`,
+  `      const entryOrigin = { x: state.camera.x, z: state.camera.z, terrainMeters: state.camera.y };
+      state.localCenter.x = localAssets.metadata.center.x;
+      state.localCenter.z = localAssets.metadata.center.z;
+      state.localZoneId = localAssets.metadata.zoneId;
+      state.worldMode = 'local';
+      state.worldScale = localAssets.metadata.worldScale;
+      state.footprintScale = localAssets.metadata.footprintScale;
+      state.localRadius = localAssets.metadata.regionalRadius;
+      state.renderDataset = 'local-package';
+      state.activeBuildings = localAssets.metadata.counts.buildings;
+      state.loadedCells = 1;
+      const safeEntry = findSafeSpawn({ id: preset.id, x: entryOrigin.x, z: entryOrigin.z, terrainMeters: entryOrigin.terrainMeters });
+      state.camera.x = safeEntry.x;
+      state.camera.z = safeEntry.z;
+      state.camera.y = safeEntry.terrain + 1.35;
+      state.velocityY = 0;
+      state.grounded = true;
+      state.cameraDistance = 7.2;
+      updateScaleButton();`,
+  'safe geographic local entry'
+);
+
+assert(html.includes('const safeEntry = findSafeSpawn'), 'Runtime 008 does not select a safe local entry parcel');
+
 assert(html.includes("version: '008'"), 'Runtime 008 API version is missing');
 assert(html.includes('refreshLocalProximity'), 'Runtime 008 has no position detector');
 assert(html.includes("localProximityStatus: 'outside'"), 'Runtime 008 has no proximity state');
@@ -340,7 +378,8 @@ const report = {
     entryIsProximityGated: true,
     discoveryAndEntryRadiiAreDerivedFromZoneSize: true,
     directDestinationButtonsRemainForTesting: true,
-    previousZoneReleasesBeforeNextLoad: true
+    previousZoneReleasesBeforeNextLoad: true,
+    entryUsesSafeLocalParcel: true
   }
 };
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
