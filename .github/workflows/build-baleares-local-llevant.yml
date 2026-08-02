@@ -1,12 +1,14 @@
 name: Build Baleares Llevant local zone
 
-# Pipeline revision 3: preserve diagnostics on failure.
+# Pipeline revision 4: configured footprint and persistent diagnostics.
 on:
   push:
     paths:
       - .github/workflows/build-baleares-local-llevant.yml
       - world-generator/scripts/build-local-zone.mjs
       - world-generator/scripts/verify-local-zone.mjs
+      - world-generator/scripts/run-build-local-zone.mjs
+      - world-generator/scripts/run-verify-local-zone.mjs
       - regions/baleares/preview/baleares-preview-v1.bin
       - regions/baleares/preview/baleares-preview-v1.json
       - regions/baleares/terrain.bin
@@ -55,49 +57,55 @@ jobs:
         run: |
           set +e
           : > world-generator/baleares-llevant-local-diagnostic.log
-          {
-            echo "== node --check build-local-zone =="
-            node --check world-generator/scripts/build-local-zone.mjs
-            echo "build-check=$?"
-            echo "== node --check verify-local-zone =="
-            node --check world-generator/scripts/verify-local-zone.mjs
-            echo "verify-check=$?"
-            echo "== first build =="
-            node world-generator/scripts/build-local-zone.mjs baleares llevant
-            build_code=$?
-            echo "build-code=${build_code}"
-            if [ "$build_code" -eq 0 ]; then
-              echo "== first verification =="
-              node world-generator/scripts/verify-local-zone.mjs baleares llevant
-              verify_code=$?
-            else
-              verify_code=99
-            fi
+          exec > >(tee -a world-generator/baleares-llevant-local-diagnostic.log) 2>&1
+
+          echo "== syntax checks =="
+          node --check world-generator/scripts/build-local-zone.mjs
+          build_check=$?
+          node --check world-generator/scripts/verify-local-zone.mjs
+          verify_check=$?
+          node --check world-generator/scripts/run-build-local-zone.mjs
+          build_runner_check=$?
+          node --check world-generator/scripts/run-verify-local-zone.mjs
+          verify_runner_check=$?
+          echo "build-check=${build_check} verify-check=${verify_check} build-runner-check=${build_runner_check} verify-runner-check=${verify_runner_check}"
+
+          echo "== first configured build =="
+          node world-generator/scripts/run-build-local-zone.mjs baleares llevant
+          build_code=$?
+          echo "build-code=${build_code}"
+
+          verify_code=99
+          deterministic_code=99
+          if [ "$build_code" -eq 0 ]; then
+            echo "== first configured verification =="
+            node world-generator/scripts/run-verify-local-zone.mjs baleares llevant
+            verify_code=$?
             echo "verify-code=${verify_code}"
-            deterministic_code=99
-            if [ "$build_code" -eq 0 ] && [ "$verify_code" -eq 0 ]; then
-              rm -rf /tmp/llevant-local-first
-              mkdir -p /tmp/llevant-local-first
-              cp regions/baleares/local/llevant/llevant-local-v1.bin /tmp/llevant-local-first/
-              cp regions/baleares/local/llevant/llevant-local-v1.json /tmp/llevant-local-first/
-              echo "== deterministic rebuild =="
-              node world-generator/scripts/build-local-zone.mjs baleares llevant
-              rebuild_code=$?
-              echo "rebuild-code=${rebuild_code}"
-              if [ "$rebuild_code" -eq 0 ]; then
-                diff -q /tmp/llevant-local-first/llevant-local-v1.bin regions/baleares/local/llevant/llevant-local-v1.bin
-                binary_diff=$?
-                diff -q /tmp/llevant-local-first/llevant-local-v1.json regions/baleares/local/llevant/llevant-local-v1.json
-                metadata_diff=$?
-                echo "binary-diff=${binary_diff}"
-                echo "metadata-diff=${metadata_diff}"
-                if [ "$binary_diff" -eq 0 ] && [ "$metadata_diff" -eq 0 ]; then deterministic_code=0; else deterministic_code=1; fi
-              fi
+          fi
+
+          if [ "$build_code" -eq 0 ] && [ "$verify_code" -eq 0 ]; then
+            rm -rf /tmp/llevant-local-first
+            mkdir -p /tmp/llevant-local-first
+            cp regions/baleares/local/llevant/llevant-local-v1.bin /tmp/llevant-local-first/
+            cp regions/baleares/local/llevant/llevant-local-v1.json /tmp/llevant-local-first/
+            echo "== deterministic configured rebuild =="
+            node world-generator/scripts/run-build-local-zone.mjs baleares llevant
+            rebuild_code=$?
+            echo "rebuild-code=${rebuild_code}"
+            if [ "$rebuild_code" -eq 0 ]; then
+              diff -q /tmp/llevant-local-first/llevant-local-v1.bin regions/baleares/local/llevant/llevant-local-v1.bin
+              binary_diff=$?
+              diff -q /tmp/llevant-local-first/llevant-local-v1.json regions/baleares/local/llevant/llevant-local-v1.json
+              metadata_diff=$?
+              echo "binary-diff=${binary_diff} metadata-diff=${metadata_diff}"
+              if [ "$binary_diff" -eq 0 ] && [ "$metadata_diff" -eq 0 ]; then deterministic_code=0; else deterministic_code=1; fi
             fi
-            echo "deterministic-code=${deterministic_code}"
-            printf '{"build":%s,"verify":%s,"deterministic":%s}\n' "$build_code" "$verify_code" "$deterministic_code" > world-generator/baleares-llevant-local-diagnostic-status.json
-          } 2>&1 | tee -a world-generator/baleares-llevant-local-diagnostic.log
-          if [ "$build_code" -eq 0 ] && [ "$verify_code" -eq 0 ] && [ "$deterministic_code" -eq 0 ]; then
+          fi
+          echo "deterministic-code=${deterministic_code}"
+          printf '{"build":%s,"verify":%s,"deterministic":%s}\n' "$build_code" "$verify_code" "$deterministic_code" > world-generator/baleares-llevant-local-diagnostic-status.json
+
+          if [ "$build_check" -eq 0 ] && [ "$verify_check" -eq 0 ] && [ "$build_runner_check" -eq 0 ] && [ "$verify_runner_check" -eq 0 ] && [ "$build_code" -eq 0 ] && [ "$verify_code" -eq 0 ] && [ "$deterministic_code" -eq 0 ]; then
             echo "code=0" >> "$GITHUB_OUTPUT"
           else
             echo "code=1" >> "$GITHUB_OUTPUT"
@@ -131,7 +139,7 @@ jobs:
           [ -f world-generator/baleares-llevant-local-build.json ] && git add world-generator/baleares-llevant-local-build.json
           [ -f world-generator/baleares-llevant-local-validation.json ] && git add world-generator/baleares-llevant-local-validation.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Record Llevant local package build"
+          git commit -m "Record configured Llevant local package build"
           git pull --rebase origin main
           git push origin HEAD:main
 
