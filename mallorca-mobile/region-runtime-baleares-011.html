@@ -1445,24 +1445,28 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:
     const travelProbeFor = nodeId => {
       const node = travelNodeById.get(nodeId);
       if (!node) throw new Error('Nodo de viaje desconocido: ' + nodeId);
-      const startRadius = node.discoveryRadius + 2.6;
-      for (let index = 0; index < 24; index++) {
-        const angle = index / 24 * Math.PI * 2;
-        const start = { x: node.x + Math.cos(angle) * startRadius, z: node.z + Math.sin(angle) * startRadius };
+      const startRadius = node.discoveryRadius + 3.2;
+      const targetRadius = Math.max(node.arrivalRadius + .6, node.discoveryRadius - 1.8);
+      for (let index = 0; index < 48; index++) {
+        const angle = index / 48 * Math.PI * 2;
+        const directionX = Math.cos(angle);
+        const directionZ = Math.sin(angle);
+        const start = { x: node.x + directionX * startRadius, z: node.z + directionZ * startRadius };
+        const target = { x: node.x + directionX * targetRadius, z: node.z + directionZ * targetRadius };
         const surface = sampleTerrainInfo(start.x, start.z);
         if (!surface.inside || !surface.land || collidesFullRegionalBuilding(start.x, start.z)) continue;
         let clear = true;
         for (let sample = 1; sample <= 8; sample++) {
           const t = sample / 8;
-          const x = start.x + (node.x - start.x) * t;
-          const z = start.z + (node.z - start.z) * t;
+          const x = start.x + (target.x - start.x) * t;
+          const z = start.z + (target.z - start.z) * t;
           const stepSurface = sampleTerrainInfo(x, z);
           if (!stepSurface.inside || !stepSurface.land || collidesFullRegionalBuilding(x, z)) { clear = false; break; }
         }
         if (clear) {
-          const directionX = node.x - start.x;
-          const directionZ = node.z - start.z;
-          return { node: { ...node }, start, yaw: Math.atan2(directionX, directionZ), suggestedMilliseconds: 1800 };
+          const travelX = target.x - start.x;
+          const travelZ = target.z - start.z;
+          return { node: { ...node }, start, target, yaw: Math.atan2(travelX, travelZ), suggestedMilliseconds: 1100 };
         }
       }
       throw new Error('No se encontró una aproximación física segura a ' + node.name);

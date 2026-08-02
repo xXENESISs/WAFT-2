@@ -12,8 +12,8 @@ exit=0
   "source": "mallorca-mobile/region-runtime-baleares-010.html",
   "output": "mallorca-mobile/region-runtime-baleares-011.html",
   "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
-  "outputSha256": "cb06ec3a18190df677a3dbc8f289293b3c90a604dfa46cd5c50dd114cc96bd1f",
-  "outputBytes": 127710,
+  "outputSha256": "a454e978761f229b98eb4a5613d76784fdaa880013910c84dc000c97736a9b5a",
+  "outputBytes": 127987,
   "travel": {
     "schemaVersion": 1,
     "saveKey": "waft.baleares.travel.v1",
@@ -49,8 +49,8 @@ exit=0
   "source": "mallorca-mobile/region-runtime-baleares-010.html",
   "output": "mallorca-mobile/region-runtime-baleares-011.html",
   "sourceSha256": "2d2593f22bac1b178c7530af5842edf25b50ad9f23fd12a3a108620d03ccd01a",
-  "outputSha256": "cb06ec3a18190df677a3dbc8f289293b3c90a604dfa46cd5c50dd114cc96bd1f",
-  "outputBytes": 127710,
+  "outputSha256": "a454e978761f229b98eb4a5613d76784fdaa880013910c84dc000c97736a9b5a",
+  "outputBytes": 127987,
   "travel": {
     "schemaVersion": 1,
     "saveKey": "waft.baleares.travel.v1",
@@ -77,11 +77,7 @@ exit=0
 }
 exit=0
 == local mobile browser runtime 011 ==
-page.evaluate: Error: No se encontró una aproximación física segura a Alcúdia
-    at travelProbeFor (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-011.html?v=repair:1468:13)
-    at Object.getTravelProbe (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-011.html?v=repair:2107:39)
-    at eval (eval at evaluate (:291:30), <anonymous>:1:32)
-    at UtilityScript.evaluate (<anonymous>:293:16)
-    at UtilityScript.<anonymous> (<anonymous>:1:44)
-    at verify (/home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:143:37)
+Error: Physical approach was too short: 1.8568467116629819
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:37:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-baleares-runtime-011-browser.mjs:151:5)
 exit=1
