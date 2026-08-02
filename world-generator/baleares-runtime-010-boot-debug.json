@@ -1,7 +1,7 @@
 {
   "valid": true,
   "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug",
-  "elapsedMs": 2668,
+  "elapsedMs": 2120,
   "responseStatus": 200,
   "navigationError": null,
   "samples": [
@@ -15,7 +15,7 @@
       "errorVisible": "none",
       "errorText": "",
       "memory": {
-        "used": 11790600,
+        "used": 11966008,
         "total": 14502724,
         "limit": 4395630592
       }
@@ -29,8 +29,8 @@
     "apiState": {
       "movementMode": "ground",
       "swimming": false,
-      "terrainPitch": 0.01597455513459608,
-      "terrainRoll": -0.004948593667421678,
+      "terrainPitch": -0.10162184848249728,
+      "terrainRoll": 0.03148039063592284,
       "slopeAngle": 0.084286903494726,
       "slopeSpeedFactor": 1,
       "groundHeight": 0.09272661145600557,
@@ -40,17 +40,17 @@
       "runSpeed": 7.2,
       "position": {
         "x": -116.44041522555727,
-        "y": 0.9124812273233084,
+        "y": 0.8955850453080154,
         "z": 32.68312549156242
       },
       "displayPosition": {
         "x": -116.44041522555727,
-        "y": 0.9124812273233084,
+        "y": 0.8955850453080154,
         "z": 32.68312549156242
       },
       "cameraEye": {
         "x": -116.76823780634714,
-        "y": 1.1751568368934917,
+        "y": 1.1582606548781986,
         "z": 31.90775217368312
       },
       "cameraYaw": 0.4,
