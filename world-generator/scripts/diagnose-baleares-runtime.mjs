@@ -37,7 +37,7 @@ if (build === 0) {
 }
 
 const status = {
-  diagnosticVersion: 4,
+  diagnosticVersion: 5,
   sourceSyntax,
   runnerSyntax,
   build,
