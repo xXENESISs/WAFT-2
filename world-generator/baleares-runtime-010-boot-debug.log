@@ -1,63 +1,63 @@
 {
-  "valid": false,
+  "valid": true,
   "url": "http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug",
-  "elapsedMs": 1780,
+  "elapsedMs": 2668,
   "responseStatus": 200,
   "navigationError": null,
   "samples": [
     {
       "second": 2,
-      "ready": false,
-      "error": "assert is not defined",
+      "ready": true,
+      "error": null,
       "hasApi": true,
       "loadingText": "Construyendo terreno, ciudades y carreteras…",
       "loadingHidden": true,
-      "errorVisible": "block",
-      "errorText": "No se pudo abrir el runtime regional.\n\nReferenceError: assert is not defined\n    at buildLocomotionProbes (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1305:7)\n    at boot (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1724:5)",
+      "errorVisible": "none",
+      "errorText": "",
       "memory": {
-        "used": 11937186,
-        "total": 14502842,
+        "used": 11790600,
+        "total": 14502724,
         "limit": 4395630592
       }
     }
   ],
   "final": {
     "title": "WAFT · Runtime regional de Baleares 010",
-    "ready": false,
-    "error": "assert is not defined",
+    "ready": true,
+    "error": null,
     "apiVersion": "010",
     "apiState": {
       "movementMode": "ground",
       "swimming": false,
-      "terrainPitch": 0,
-      "terrainRoll": 0,
-      "slopeAngle": 0,
+      "terrainPitch": 0.01597455513459608,
+      "terrainRoll": -0.004948593667421678,
+      "slopeAngle": 0.084286903494726,
       "slopeSpeedFactor": 1,
-      "groundHeight": 0,
-      "waterSurfaceHeight": 0,
+      "groundHeight": 0.09272661145600557,
+      "waterSurfaceHeight": -0.24,
       "jumpVelocity": 8.8,
       "swimSpeed": 5.2,
       "runSpeed": 7.2,
       "position": {
         "x": -116.44041522555727,
-        "y": 0.8799999999999999,
+        "y": 0.9124812273233084,
         "z": 32.68312549156242
       },
       "displayPosition": {
         "x": -116.44041522555727,
-        "y": 0.8799999999999999,
+        "y": 0.9124812273233084,
         "z": 32.68312549156242
       },
       "cameraEye": {
-        "x": 0,
-        "y": 0,
-        "z": 0
+        "x": -116.76823780634714,
+        "y": 1.1751568368934917,
+        "z": 31.90775217368312
       },
       "cameraYaw": 0.4,
       "playerFacing": 0.4,
       "cameraMode": "third-person",
       "characterVisible": true,
-      "cameraBlocked": false,
+      "cameraBlocked": true,
       "lateralControls": "screen-relative",
       "worldMode": "regional",
       "worldScale": 1,
@@ -111,10 +111,10 @@
     "resources": [
       "http://127.0.0.1:8000/regions/baleares/preview/baleares-preview-v1.json?v=debug",
       "http://127.0.0.1:8000/regions/baleares/local/zones-v1.json?v=debug",
-      "http://127.0.0.1:8000/favicon.ico",
       "http://127.0.0.1:8000/regions/baleares/preview/baleares-preview-v1.bin?v=debug",
       "http://127.0.0.1:8000/regions/baleares/terrain.bin?v=debug",
-      "http://127.0.0.1:8000/regions/baleares/landcover.bin?v=debug"
+      "http://127.0.0.1:8000/regions/baleares/landcover.bin?v=debug",
+      "http://127.0.0.1:8000/favicon.ico"
     ]
   },
   "pageErrors": [],
@@ -126,10 +126,6 @@
     {
       "type": "error",
       "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
-    },
-    {
-      "type": "error",
-      "text": "ReferenceError: assert is not defined\n    at buildLocomotionProbes (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1305:7)\n    at boot (http://127.0.0.1:8000/mallorca-mobile/region-runtime-baleares-010.html?v=debug:1724:5)"
     }
   ],
   "requestFailures": []

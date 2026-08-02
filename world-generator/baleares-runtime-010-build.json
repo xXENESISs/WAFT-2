@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
-  "buildRevision": 2,
+  "buildRevision": 3,
   "runtimeVersion": "010",
   "source": "mallorca-mobile/region-runtime-baleares-009.html",
   "output": "mallorca-mobile/region-runtime-baleares-010.html",
   "sourceSha256": "e5d76de782d0b93c17e2a46c5fd2018eb91657bdea64c3aa1d6bf695feb96ead",
-  "outputSha256": "b33c439d883d4e39912541d7bb4d53b9bfd5b0748c1c94a93c070dd8e6c03024",
-  "outputBytes": 104399,
+  "outputSha256": "24a84c6518144df3a92d52c90960d5e7e310dfb34446b4bfc8edb05e5cb87971",
+  "outputBytes": 104427,
   "locomotion": {
     "bilinearTerrainFollowing": true,
     "slopeAlignedCharacter": true,
@@ -30,6 +30,7 @@
     "smallerPlayerAndColliderPreserved": true,
     "protectedPreviousRuntime": true,
     "spatiallyIndexedLocomotionProbe": true,
-    "regionalProbeCellSize": 24
+    "regionalProbeCellSize": 24,
+    "browserSafeLocomotionProbeErrors": true
   }
 }
