@@ -3,7 +3,7 @@
   "verifierVersion": 6,
   "valid": true,
   "public": true,
-  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=b0b1d68681220e472454e2ae4122099746396902",
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-baleares-001.html?v=1e96586d5f4e32ced6fbcee8d3fb7a8a1b608081",
   "buildId": "baleares-preview-3068ab4bdb61",
   "stats": {
     "buildings": 5866,
@@ -44,9 +44,72 @@
     "buildId": "baleares-preview-3068ab4bdb61"
   },
   "runtime": {
-    "valid": false,
-    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=b0b1d68681220e472454e2ae4122099746396902",
-    "error": "Error: Runtime player could not move in any tested direction\n    at verifyRuntime (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:193:26)\n    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-region-preview-browser.mjs:294:21)",
+    "valid": true,
+    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-001.html?v=1e96586d5f4e32ced6fbcee8d3fb7a8a1b608081",
+    "initial": {
+      "stats": {
+        "totalBuildings": 5866,
+        "activeBuildings": 994,
+        "loadedCells": 15,
+        "collisions": 0,
+        "grounded": true,
+        "webgl2": true,
+        "buildId": "baleares-preview-3068ab4bdb61",
+        "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
+        "position": {
+          "x": -116.65347450843758,
+          "y": 1.4100000000000001,
+          "z": 33.10127787843871
+        }
+      },
+      "state": {
+        "position": {
+          "x": -116.65347450843758,
+          "y": 1.4100000000000001,
+          "z": 33.10127787843871
+        },
+        "grounded": true,
+        "activeBuildings": 994,
+        "loadedCells": 15,
+        "collisions": 0,
+        "preset": "palma"
+      },
+      "error": null,
+      "presets": [
+        "Palma",
+        "Llevant",
+        "Alcúdia",
+        "Menorca",
+        "Eivissa"
+      ],
+      "webgl2": true,
+      "canvas": {
+        "width": 844,
+        "height": 390
+      },
+      "collisionProbe": true
+    },
+    "tests": {
+      "streamedBuildings": 994,
+      "loadedCells": 15,
+      "collisionProbe": true,
+      "jumpRise": 0.2287499999999998,
+      "landed": true,
+      "movementDistance": 0.9597600000000078,
+      "respawnGrounded": true
+    },
+    "finalState": {
+      "position": {
+        "x": 445.1680733656737,
+        "y": 2.01,
+        "z": -123.33401159999963
+      },
+      "grounded": true,
+      "activeBuildings": 782,
+      "loadedCells": 10,
+      "collisions": 0,
+      "preset": "menorca"
+    },
     "pageErrors": [],
     "consoleErrors": [],
     "patchedRuntimePath": null
