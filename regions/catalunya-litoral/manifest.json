@@ -31,7 +31,7 @@
     "roads": 124461,
     "settlements": 90,
     "uniqueModelCandidates": 24,
-    "wikidataLinkedLandmarks": 100
+    "wikidataLinkedLandmarks": 98
   },
   "deterministic": true,
   "files": [
@@ -61,9 +61,9 @@
       "sha256": "dcd74f7e7457f8237473c8215ec01d78f0b245f2ddd052908b4c08358da2e984"
     },
     {
-      "bytes": 283982,
+      "bytes": 281975,
       "path": "landmarks.json",
-      "sha256": "ca3767a55dcb004919ff9badf9751fd8724e55f55b2023e2b944c152d7a7cdb7"
+      "sha256": "689494b9cc4f8c9c165237af800df6bd73651bef93f90d10b916def505ddbdc0"
     },
     {
       "bytes": 10664,
@@ -195,7 +195,7 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 52602397,
+  "packageBytesWithoutManifest": 52600390,
   "packageEncoding": {
     "deterministic": true,
     "json": "compact-utf8-v1"

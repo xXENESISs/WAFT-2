@@ -1,27 +1,16 @@
 == import selected Wikidata landmarks ==
 {
-  "formatVersion": 1,
   "regionId": "catalunya-litoral",
-  "dataset": "Wikidata landmark enrichment",
-  "provider": "Wikimedia Foundation and Wikidata contributors",
-  "endpoint": "https://www.wikidata.org/w/api.php",
-  "license": "CC0 1.0",
-  "retrievedOn": "2026-08-03",
-  "requestedQids": 98,
-  "requestedQidsSha256": "3f5c0adcd81e493b49c130db0e4cd8cd70e9482b62268b4b987f3ab241179b0b",
-  "entityCount": 98,
-  "manualMatchCount": 7,
-  "snapshotFile": "wikidata-landmarks.json.gz",
-  "snapshotBytes": 17127,
-  "snapshotSha256": "06940f00a975de19c4c611027746c81236c6dfd421c446d759a33bf332675178",
-  "uncompressedBytes": 99917
+  "snapshot": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
+  "status": "reused",
+  "entities": 98
 }
 exit=0
 == rank Wikidata landmarks ==
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52612772,
+  "packageBytes": 52610764,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -30,14 +19,14 @@ exit=0
     "unique-candidate": 18
   },
   "uniqueModelCandidates": 24,
-  "wikidataLinkedLandmarks": 100
+  "wikidataLinkedLandmarks": 98
 }
 exit=0
 == build compact preview ==
 {
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-9851156a227f",
+  "buildId": "catalunya-litoral-preview-c73e65c65c64",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -69,7 +58,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "9851156a227f86dc3a4fb67457fba2e4c4dabe7ba9dc63aeff0da12be643f2d1",
+  "inputsSha256": "c73e65c65c64416a0a9e78a6803a6e351abeabc5c6f10dcac54a1578ce961eb3",
   "regionId": "catalunya-litoral",
   "valid": true
 }
@@ -80,7 +69,7 @@ exit=0
   "verificationRun": 2,
   "regionId": "catalunya-litoral",
   "valid": true,
-  "buildId": "catalunya-litoral-preview-9851156a227f",
+  "buildId": "catalunya-litoral-preview-c73e65c65c64",
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {
@@ -138,7 +127,7 @@ exit=0
     "width": 844,
     "height": 390
   },
-  "buildId": "catalunya-litoral-preview-9851156a227f",
+  "buildId": "catalunya-litoral-preview-c73e65c65c64",
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {
     "buildings": 3534,
@@ -160,7 +149,7 @@ exit=0
     "selectedRoads": 12500,
     "settlements": 90,
     "webgl2": true,
-    "buildId": "catalunya-litoral-preview-9851156a227f",
+    "buildId": "catalunya-litoral-preview-c73e65c65c64",
     "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
   },
   "presets": [
@@ -193,7 +182,7 @@ exit=0
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52612772,
+  "packageBytes": 52610764,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -202,14 +191,14 @@ exit=0
     "unique-candidate": 18
   },
   "uniqueModelCandidates": 24,
-  "wikidataLinkedLandmarks": 100
+  "wikidataLinkedLandmarks": 98
 }
 exit=0
 == deterministic preview rebuild ==
 {
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-9851156a227f",
+  "buildId": "catalunya-litoral-preview-c73e65c65c64",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -241,7 +230,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "9851156a227f86dc3a4fb67457fba2e4c4dabe7ba9dc63aeff0da12be643f2d1",
+  "inputsSha256": "c73e65c65c64416a0a9e78a6803a6e351abeabc5c6f10dcac54a1578ce961eb3",
   "regionId": "catalunya-litoral",
   "valid": true
 }
@@ -252,7 +241,7 @@ exit=0
   "verificationRun": 2,
   "regionId": "catalunya-litoral",
   "valid": true,
-  "buildId": "catalunya-litoral-preview-9851156a227f",
+  "buildId": "catalunya-litoral-preview-c73e65c65c64",
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {

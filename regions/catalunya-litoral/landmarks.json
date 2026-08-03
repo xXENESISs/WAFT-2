@@ -200,40 +200,7 @@
       "sectorId": "s-07-02",
       "source": "manual-config",
       "terrainStatus": "exact-cell",
-      "type": "castle",
-      "wikidata": {
-        "commonsCategory": "Far de Tossa",
-        "coordinate": {
-          "lat": 41.7156,
-          "lon": 2.93397
-        },
-        "description": "lighthouse in Spain",
-        "heightMeters": 11,
-        "heritageDesignations": [
-          "Q28034408"
-        ],
-        "image": "FAR DE TOSSA - IB-133.JPG",
-        "inception": "+1919-00-00T00:00:00Z",
-        "instanceOf": [
-          "Q39715"
-        ],
-        "labels": {
-          "ca": "far de Tossa",
-          "de": "Far de Tossa",
-          "en": "Far de Tossa",
-          "es": "Faro de Tosa de Mar",
-          "fr": "phare de Tossa",
-          "it": "Far de Tossa"
-        },
-        "officialWebsite": null,
-        "qid": "Q18696197",
-        "sitelinkCount": 4,
-        "sitelinks": {
-          "ca": "Far (Tossa)",
-          "es": "Faro de Tosa de Mar",
-          "fr": "Phare de Tossa"
-        }
-      }
+      "type": "castle"
     },
     {
       "assetId": "catedral-barcelona",
@@ -11714,43 +11681,7 @@
       "sectorId": "s-04-03",
       "source": "manual-config",
       "terrainStatus": "exact-cell",
-      "type": "tower",
-      "wikidata": {
-        "commonsCategory": "Torre de Jaume I",
-        "coordinate": {
-          "lat": 41.3720826,
-          "lon": 2.1801209
-        },
-        "description": "construcció del telefèric del Port de Barcelona",
-        "heightMeters": null,
-        "heritageDesignations": [
-          "Q11910250"
-        ],
-        "image": "Torre de Jaume I (Barcelona)1788.JPG",
-        "inception": "+1931-00-00T00:00:00Z",
-        "instanceOf": [
-          "Q12518"
-        ],
-        "labels": {
-          "ca": "Torre de Jaume I",
-          "de": "Torre Jaume I",
-          "en": "Torre Jaume I",
-          "es": "Torre Jaume I",
-          "fr": "Torre Jaume I",
-          "it": "Torre Jaume I"
-        },
-        "officialWebsite": "https://portvellbcn.cat/ca/portfolio-item/torre-de-jaume-i/",
-        "qid": "Q2736529",
-        "sitelinkCount": 9,
-        "sitelinks": {
-          "ca": "Torre de Jaume I",
-          "de": "Torre Jaume I",
-          "en": "Torre Jaume I",
-          "es": "Torre Jaime I",
-          "fr": "Torre Jaume I",
-          "it": "Torre Jaume I"
-        }
-      }
+      "type": "tower"
     }
   ],
   "regionId": "catalunya-litoral",
