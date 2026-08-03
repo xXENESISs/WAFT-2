@@ -19,12 +19,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Repair, generate, validate and persist diagnostics
+      - name: Repair, build and validate
         shell: bash
         run: |
           set +e
@@ -35,29 +34,32 @@ jobs:
           from pathlib import Path
           path = Path('world-generator/build-waft-0160.js')
           text = path.read_text()
-          broken = '}`,' + '\n' + '    "'
-          fixed = '}`",' + '\n' + '    "'
-          count = text.count(broken)
-          if count > 0:
-              path.write_text(text.replace(broken, fixed))
-              print(f'Repaired {count} malformed shader boundary/boundaries')
-          else:
-              print('Builder quoting already repaired')
+          replacements = [
+              ('}`,' + '\n' + '    "', '}`",' + '\n' + '    "'),
+              ('}`,' + '\n' + "    '", '}`",' + '\n' + "    '")
+          ]
+          repaired = 0
+          for broken, fixed in replacements:
+              count = text.count(broken)
+              repaired += count
+              text = text.replace(broken, fixed)
+          path.write_text(text)
+          print(f'Repaired {repaired} malformed shader boundary/boundaries')
           PY
-          REPAIR_CODE=$?
-          if [ "$REPAIR_CODE" -eq 0 ]; then
+          REPAIR=$?
+          if [ "$REPAIR" -eq 0 ]; then
             node --check world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
-            REPAIR_CODE=$?
+            REPAIR=$?
           fi
 
-          BUILD_CODE=99
-          if [ "$REPAIR_CODE" -eq 0 ]; then
+          BUILD=99
+          if [ "$REPAIR" -eq 0 ]; then
             node world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
-            BUILD_CODE=$?
+            BUILD=$?
           fi
 
-          VALIDATION_CODE=99
-          if [ "$BUILD_CODE" -eq 0 ]; then
+          VALIDATION=99
+          if [ "$BUILD" -eq 0 ]; then
             node >> world-generator/waft-0160-workflow.log 2>&1 <<'NODE'
           const fs = require('fs');
           const { execFileSync } = require('child_process');
@@ -68,82 +70,54 @@ jobs:
           ];
           for (const file of files) {
             const html = fs.readFileSync(file, 'utf8');
-            if (!html.includes('</html>')) throw new Error(file + ': HTML incompleto');
+            if (!html.endsWith('</html>') && !html.endsWith('</html>\n')) throw new Error(file + ': HTML incompleto');
             const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
-            if (!scripts.length) throw new Error(file + ': sin script inline');
+            if (!scripts.length) throw new Error(file + ': sin JavaScript');
             for (const script of scripts) new Function(script);
           }
           const adventure = fs.readFileSync(files[2], 'utf8');
-          for (const marker of [
-            'waft-adventure-0160-visual-access-v1',
-            'region-runtime-baleares-012.html',
-            'region-runtime-catalunya-litoral-002.html',
-            'state.exitDistance <= 32',
-            'state.movementSinceLoad >= .35',
-            'travelActivationRadius: 32'
-          ]) if (!adventure.includes(marker)) throw new Error('Falta marcador de aventura: ' + marker);
+          for (const marker of ['waft-adventure-0160-visual-access-v1','region-runtime-baleares-012.html','region-runtime-catalunya-litoral-002.html','state.exitDistance <= 32','state.movementSinceLoad >= .35','travelActivationRadius: 32']) {
+            if (!adventure.includes(marker)) throw new Error('Aventura sin marcador: ' + marker);
+          }
           for (const file of files.slice(0, 2)) {
             const html = fs.readFileSync(file, 'utf8');
-            for (const marker of [
-              "Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82))",
-              "graphicsProfile: 'enhanced-mobile-v3'",
-              'drawPart(0, .67, -.46',
-              'createSphereGeometry(gl, 16, 11)',
-              '#scaleMode.ready',
-              'roofFor(int kind)'
-            ]) if (!html.includes(marker)) throw new Error(file + ': falta ' + marker);
-            if (html.includes('drawPart(0, 1.08, -1.00')) throw new Error(file + ': conserva la cola larga antigua');
+            for (const marker of ["Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82))","graphicsProfile: 'enhanced-mobile-v3'",'drawPart(0, .67, -.46','createSphereGeometry(gl, 16, 11)','#scaleMode.ready','roofFor(int kind)']) {
+              if (!html.includes(marker)) throw new Error(file + ': falta ' + marker);
+            }
+            if (html.includes('drawPart(0, 1.08, -1.00')) throw new Error(file + ': conserva cola larga antigua');
           }
-          const protectedExpected = {
-            'mallorca-mobile/waft-0158.html': 'b605801b9b18cf5d88e24968b9674db0503eef21',
-            'mallorca-mobile/region-runtime-baleares-011.html': '54efca64586886fdd2f385f928489c786f925f31'
+          const protectedFiles = {
+            'mallorca-mobile/waft-0158.html':'b605801b9b18cf5d88e24968b9674db0503eef21',
+            'mallorca-mobile/region-runtime-baleares-011.html':'54efca64586886fdd2f385f928489c786f925f31'
           };
-          for (const [file, expected] of Object.entries(protectedExpected)) {
-            const actual = execFileSync('git', ['hash-object', file], { encoding: 'utf8' }).trim();
-            if (actual !== expected) throw new Error(file + ': fuente protegida modificada ' + actual);
+          for (const [file, expected] of Object.entries(protectedFiles)) {
+            const actual = execFileSync('git',['hash-object',file],{encoding:'utf8'}).trim();
+            if (actual !== expected) throw new Error(file + ': protegido modificado');
           }
-          const status = JSON.parse(fs.readFileSync('world-generator/waft-0160-build-status.json', 'utf8'));
-          status.validation = {
-            syntax: 0,
-            protectedSources: 0,
-            generatedFiles: 0,
-            markers: 0,
-            validatedAt: new Date().toISOString()
-          };
-          fs.writeFileSync('world-generator/waft-0160-build-status.json', JSON.stringify(status, null, 2) + '\n');
-          console.log(JSON.stringify({ valid: true, files }, null, 2));
+          const status = JSON.parse(fs.readFileSync('world-generator/waft-0160-build-status.json','utf8'));
+          status.validation = {syntax:0,protectedSources:0,generatedFiles:0,markers:0,validatedAt:new Date().toISOString()};
+          fs.writeFileSync('world-generator/waft-0160-build-status.json',JSON.stringify(status,null,2)+'\n');
+          console.log(JSON.stringify({valid:true,files},null,2));
           NODE
-            VALIDATION_CODE=$?
+            VALIDATION=$?
           fi
 
-          node - "$REPAIR_CODE" "$BUILD_CODE" "$VALIDATION_CODE" <<'NODE'
+          node - "$REPAIR" "$BUILD" "$VALIDATION" <<'NODE'
           const fs = require('fs');
           const repair = Number(process.argv[2]);
           const build = Number(process.argv[3]);
           const validation = Number(process.argv[4]);
-          const result = {
-            repair,
-            build,
-            validation,
-            success: repair === 0 && build === 0 && validation === 0,
-            recordedAt: new Date().toISOString()
-          };
-          fs.writeFileSync('world-generator/waft-0160-workflow-status.json', JSON.stringify(result, null, 2) + '\n');
+          fs.writeFileSync('world-generator/waft-0160-workflow-status.json',JSON.stringify({repair,build,validation,success:repair===0&&build===0&&validation===0,recordedAt:new Date().toISOString()},null,2)+'\n');
           NODE
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add world-generator/build-waft-0160.js world-generator/waft-0160-workflow.log world-generator/waft-0160-workflow-status.json
-          [ -f world-generator/waft-0160-build-status.json ] && git add world-generator/waft-0160-build-status.json
-          [ -f mallorca-mobile/region-runtime-baleares-012.html ] && git add mallorca-mobile/region-runtime-baleares-012.html
-          [ -f mallorca-mobile/region-runtime-catalunya-litoral-002.html ] && git add mallorca-mobile/region-runtime-catalunya-litoral-002.html
-          [ -f mallorca-mobile/waft-0160.html ] && git add mallorca-mobile/waft-0160.html
-
+          for file in world-generator/waft-0160-build-status.json mallorca-mobile/region-runtime-baleares-012.html mallorca-mobile/region-runtime-catalunya-litoral-002.html mallorca-mobile/waft-0160.html; do
+            [ -f "$file" ] && git add "$file"
+          done
           if ! git diff --cached --quiet; then
             git commit -m "Generate WAFT Adventure 0.16.0 diagnostics"
             git push origin HEAD:main
           fi
-
-          if [ "$REPAIR_CODE" -ne 0 ] || [ "$BUILD_CODE" -ne 0 ] || [ "$VALIDATION_CODE" -ne 0 ]; then
-            exit 1
-          fi
+          [ "$REPAIR" -eq 0 ] && [ "$BUILD" -eq 0 ] && [ "$VALIDATION" -eq 0 ]
