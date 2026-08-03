@@ -4,9 +4,9 @@
     "file": "catalunya-litoral-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "54c93a82548b3a695a788da3ad10d91fb9dbd99d7c194fdc426274643ab54dc1"
+    "sha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
   },
-  "buildId": "catalunya-litoral-preview-52321295a3f2",
+  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -140,7 +140,7 @@
     {
       "id": "osm-landmark-n1665606789",
       "name": "Far del Capaspre",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "lighthouse",
       "wikidataId": "Q15242338"
     },
@@ -329,7 +329,7 @@
     {
       "id": "osm-landmark-r10769413",
       "name": "castell de Castellet",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "castle",
       "wikidataId": "Q5132925"
     },
@@ -413,7 +413,7 @@
     {
       "id": "osm-landmark-r7422813",
       "name": "Hospital de la Santa Creu i Sant Pau",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "monument",
       "wikidataId": "Q507282"
     },
@@ -434,14 +434,14 @@
     {
       "id": "osm-landmark-r9036251",
       "name": "monestir de Santa Maria de Pedralbes",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "monastery",
       "wikidataId": "Q1321526"
     },
     {
       "id": "osm-landmark-r9160031",
       "name": "Casa Bonaventura Ferrer",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "castle",
       "wikidataId": "Q8341565"
     },
@@ -490,7 +490,7 @@
     {
       "id": "osm-landmark-w132514125",
       "name": "Casa Vicens",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "monument",
       "wikidataId": "Q746333"
     },
@@ -539,7 +539,7 @@
     {
       "id": "osm-landmark-w159513015",
       "name": "Hostal del Santuari de Pinós",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "castle",
       "wikidataId": "Q19677075"
     },
@@ -581,7 +581,7 @@
     {
       "id": "osm-landmark-w195771604",
       "name": "Palauet Albéniz",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "castle",
       "wikidataId": "Q3753144"
     },
@@ -672,7 +672,7 @@
     {
       "id": "osm-landmark-w377216661",
       "name": "Palau de la Música Catalana",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "monument",
       "wikidataId": "Q327940"
     },
@@ -700,7 +700,7 @@
     {
       "id": "osm-landmark-w51260215",
       "name": "Santa Maria del Mar",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "church",
       "wikidataId": "Q908802"
     },
@@ -1396,9 +1396,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "52321295a3f22bfe794558710cee8b9b4720a40c3d28f85540ac152002673b34",
+    "inputsSha256": "d7dc4c7c99e280802c0c387e66b67ffc869fcd1d8a9164d32770a5120a489542",
     "landcoverSha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b",
-    "regionManifestSha256": "b326553159ff4c2b1ea3ca2de58e42f29259cc54db8ff03cce1651b2a003f663",
+    "regionManifestSha256": "f6276ce3e6bc82e5681a5bf5f18505f7d632dcbf058b8f3f224f0819b2081157",
     "terrainSha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
   },
   "terrain": {

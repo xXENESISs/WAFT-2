@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "verificationRun": 2,
+  "regionId": "catalunya-litoral",
+  "valid": true,
+  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "binaryBytes": 670144,
+  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
+  "counts": {
+    "buildings": 3534,
+    "hotels": 597,
+    "landmarks": 100,
+    "namedBuildings": 3292,
+    "roadSegments": 17298,
+    "roadVertices": 34596,
+    "selectedRoads": 12500,
+    "settlements": 90
+  },
+  "presets": [
+    "Tot",
+    "Barcelona",
+    "Tarragona",
+    "Girona",
+    "Montserrat",
+    "Montseny",
+    "Maresme"
+  ],
+  "terrain": {
+    "columns": 512,
+    "rows": 384
+  },
+  "generationStage": "wikidata-ranked-landmarks"
+}

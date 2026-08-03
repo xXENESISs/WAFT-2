@@ -499,8 +499,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 203.52,
-        "finalScore": 237.15,
+        "baseScore": 69,
+        "finalScore": 102.63,
         "reasons": [
           "sitelinks:29",
           "image",
@@ -510,7 +510,7 @@
         ],
         "wikidataBoost": 33.63
       },
-      "score": 237.15,
+      "score": 102.63,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n10262292616",
@@ -584,8 +584,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -596,7 +596,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n12166457465",
@@ -667,8 +667,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 205,
-        "finalScore": 239,
+        "baseScore": 69,
+        "finalScore": 103,
         "reasons": [
           "sitelinks:31",
           "image",
@@ -678,7 +678,7 @@
         ],
         "wikidataBoost": 34
       },
-      "score": 239,
+      "score": 103,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1249955905",
@@ -750,8 +750,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 189,
-        "finalScore": 219,
+        "baseScore": 69,
+        "finalScore": 99,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -762,7 +762,7 @@
         ],
         "wikidataBoost": 30
       },
-      "score": 219,
+      "score": 99,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
       "sourceId": "n1304127509",
@@ -836,8 +836,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -848,7 +848,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
       "sourceId": "n1491216017",
@@ -920,8 +920,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -932,7 +932,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "n1505187049",
@@ -1004,8 +1004,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -1016,7 +1016,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-01-05",
       "source": "openstreetmap",
       "sourceId": "n1566211246",
@@ -1075,10 +1075,10 @@
         "z": -29.5669
       },
       "modelPolicy": {
-        "assetId": "regional-lighthouse",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Far del Capaspre",
       "originalName": "Far del Capaspre",
@@ -1086,11 +1086,11 @@
         "lat": 41.6081412,
         "lon": 2.646404
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "protected": true,
       "ranking": {
-        "baseScore": 248.92,
-        "finalScore": 286.15,
+        "baseScore": 100,
+        "finalScore": 137.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -1101,7 +1101,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 286.15,
+      "score": 137.23,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1665606789",
@@ -1175,8 +1175,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1187,7 +1187,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n1677679948",
@@ -1259,8 +1259,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 232,
-        "finalScore": 265,
+        "baseScore": 100,
+        "finalScore": 133,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1272,7 +1272,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 265,
+      "score": 133,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1803278293",
@@ -1347,8 +1347,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 241.16,
-        "finalScore": 276.45,
+        "baseScore": 100,
+        "finalScore": 135.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -1359,7 +1359,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 276.45,
+      "score": 135.29,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1803302223",
@@ -1432,8 +1432,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1444,7 +1444,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "n1876115981",
@@ -1516,8 +1516,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1528,7 +1528,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "n1917268245",
@@ -1600,8 +1600,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1612,7 +1612,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-00",
       "source": "openstreetmap",
       "sourceId": "n1966547138",
@@ -1684,8 +1684,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1696,7 +1696,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n1978539479",
@@ -1768,8 +1768,8 @@
       "preferredRepresentation": "unique-candidate",
       "protected": true,
       "ranking": {
-        "baseScore": 263.2,
-        "finalScore": 304,
+        "baseScore": 100,
+        "finalScore": 140.8,
         "reasons": [
           "sitelinks:12",
           "heritage",
@@ -1780,7 +1780,7 @@
         ],
         "wikidataBoost": 40.8
       },
-      "score": 304,
+      "score": 140.8,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
       "sourceId": "n2050474584",
@@ -1855,8 +1855,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1867,7 +1867,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "n2054044697",
@@ -1938,8 +1938,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1950,7 +1950,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
       "sourceId": "n2068349851",
@@ -2022,8 +2022,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2034,7 +2034,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "n2078630168",
@@ -2106,8 +2106,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2118,7 +2118,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n2169420249",
@@ -2191,8 +2191,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2203,7 +2203,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n2217023135",
@@ -2275,8 +2275,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2287,7 +2287,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-03-00",
       "source": "openstreetmap",
       "sourceId": "n2244858893",
@@ -2360,8 +2360,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2372,7 +2372,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n2482266590",
@@ -2444,8 +2444,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2456,7 +2456,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n3036789750",
@@ -2528,8 +2528,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2540,7 +2540,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-07-00",
       "source": "openstreetmap",
       "sourceId": "n3578876029",
@@ -2612,8 +2612,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2624,7 +2624,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
       "sourceId": "n3718831881",
@@ -2696,8 +2696,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2708,7 +2708,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
       "sourceId": "n394737758",
@@ -2780,8 +2780,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 229.36,
-        "finalScore": 263.7,
+        "baseScore": 92,
+        "finalScore": 126.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2792,7 +2792,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 263.7,
+      "score": 126.34,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
       "sourceId": "n416645426",
@@ -2866,8 +2866,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -2878,7 +2878,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n427959994",
@@ -2951,8 +2951,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2963,7 +2963,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
       "sourceId": "n4965268654",
@@ -3034,8 +3034,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 211.72,
-        "finalScore": 247.4,
+        "baseScore": 69,
+        "finalScore": 104.68,
         "reasons": [
           "sitelinks:35",
           "image",
@@ -3046,7 +3046,7 @@
         ],
         "wikidataBoost": 35.68
       },
-      "score": 247.4,
+      "score": 104.68,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
       "sourceId": "n5002853506",
@@ -3119,8 +3119,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 245.36,
-        "finalScore": 281.7,
+        "baseScore": 100,
+        "finalScore": 136.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -3131,7 +3131,7 @@
         ],
         "wikidataBoost": 36.34
       },
-      "score": 281.7,
+      "score": 136.34,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n504549153",
@@ -3204,8 +3204,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 169.36,
-        "finalScore": 192.7,
+        "baseScore": 76,
+        "finalScore": 99.34,
         "reasons": [
           "sitelinks:2",
           "heritage",
@@ -3214,7 +3214,7 @@
         ],
         "wikidataBoost": 23.34
       },
-      "score": 192.7,
+      "score": 99.34,
       "sectorId": "s-00-04",
       "source": "openstreetmap",
       "sourceId": "n5095138225",
@@ -3285,8 +3285,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 241.16,
-        "finalScore": 276.45,
+        "baseScore": 100,
+        "finalScore": 135.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -3297,7 +3297,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 276.45,
+      "score": 135.29,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "n6360226505",
@@ -3421,10 +3421,10 @@
         "z": 92.5876
       },
       "modelPolicy": {
-        "assetId": "regional-castle",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "castell de Castellet",
       "originalName": "castell de Castellet",
@@ -3432,10 +3432,10 @@
         "lat": 41.264646313240185,
         "lon": 1.6361242608052928
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 248.92,
-        "finalScore": 286.15,
+        "baseScore": 100,
+        "finalScore": 137.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -3446,7 +3446,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 286.15,
+      "score": 137.23,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "r10769413",
@@ -3540,8 +3540,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 232.16,
-        "finalScore": 265.45,
+        "baseScore": 99,
+        "finalScore": 132.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -3552,7 +3552,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 265.45,
+      "score": 132.29,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r11259745",
@@ -3704,8 +3704,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 254.72,
-        "finalScore": 293.4,
+        "baseScore": 100,
+        "finalScore": 138.68,
         "reasons": [
           "sitelinks:8",
           "heritage",
@@ -3716,7 +3716,7 @@
         ],
         "wikidataBoost": 38.68
       },
-      "score": 293.4,
+      "score": 138.68,
       "sectorId": "s-08-00",
       "source": "openstreetmap",
       "sourceId": "r11815186",
@@ -3843,8 +3843,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 258.36,
-        "finalScore": 298.2,
+        "baseScore": 99,
+        "finalScore": 138.84,
         "reasons": [
           "sitelinks:10",
           "heritage",
@@ -3855,7 +3855,7 @@
         ],
         "wikidataBoost": 39.84
       },
-      "score": 298.2,
+      "score": 138.84,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r118402",
@@ -3965,8 +3965,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 240.92,
-        "finalScore": 278.15,
+        "baseScore": 92,
+        "finalScore": 129.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -3977,7 +3977,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 278.15,
+      "score": 129.23,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "r17304045",
@@ -4134,8 +4134,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 258.72,
-        "finalScore": 298.4,
+        "baseScore": 100,
+        "finalScore": 139.68,
         "reasons": [
           "sitelinks:8",
           "heritage",
@@ -4147,7 +4147,7 @@
         ],
         "wikidataBoost": 39.68
       },
-      "score": 298.4,
+      "score": 139.68,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "r18405323",
@@ -4297,8 +4297,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 273.4,
-        "finalScore": 316.75,
+        "baseScore": 100,
+        "finalScore": 143.35,
         "reasons": [
           "sitelinks:16",
           "heritage",
@@ -4310,7 +4310,7 @@
         ],
         "wikidataBoost": 43.35
       },
-      "score": 316.75,
+      "score": 143.35,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "r20270010",
@@ -4472,8 +4472,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 240.92,
-        "finalScore": 276.15,
+        "baseScore": 100,
+        "finalScore": 135.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -4484,7 +4484,7 @@
         ],
         "wikidataBoost": 35.23
       },
-      "score": 276.15,
+      "score": 135.23,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r2874766",
@@ -4593,8 +4593,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 265.52,
-        "finalScore": 307.15,
+        "baseScore": 99,
+        "finalScore": 140.63,
         "reasons": [
           "sitelinks:14",
           "heritage",
@@ -4605,7 +4605,7 @@
         ],
         "wikidataBoost": 41.63
       },
-      "score": 307.15,
+      "score": 140.63,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r2874767",
@@ -4716,8 +4716,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -4728,7 +4728,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7331544",
@@ -4854,8 +4854,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -4866,7 +4866,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7363116",
@@ -5024,8 +5024,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 248.16,
-        "finalScore": 285.45,
+        "baseScore": 99,
+        "finalScore": 136.29,
         "reasons": [
           "sitelinks:9",
           "heritage",
@@ -5036,7 +5036,7 @@
         ],
         "wikidataBoost": 37.29
       },
-      "score": 285.45,
+      "score": 136.29,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7364282",
@@ -5189,10 +5189,10 @@
         "z": 39.4904
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-monument",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Hospital de la Santa Creu i Sant Pau",
       "originalName": "Hospital de la Santa Creu i Sant Pau",
@@ -5200,10 +5200,10 @@
         "lat": 41.413954212292595,
         "lon": 2.1744492686052816
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 276.36,
-        "finalScore": 324.2,
+        "baseScore": 85,
+        "finalScore": 132.84,
         "reasons": [
           "sitelinks:36",
           "heritage",
@@ -5215,7 +5215,7 @@
         ],
         "wikidataBoost": 47.84
       },
-      "score": 324.2,
+      "score": 132.84,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7422813",
@@ -5363,8 +5363,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 258.36,
-        "finalScore": 298.2,
+        "baseScore": 99,
+        "finalScore": 138.84,
         "reasons": [
           "sitelinks:10",
           "heritage",
@@ -5375,7 +5375,7 @@
         ],
         "wikidataBoost": 39.84
       },
-      "score": 298.2,
+      "score": 138.84,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r8906532",
@@ -5535,8 +5535,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 247.92,
-        "finalScore": 285.15,
+        "baseScore": 99,
+        "finalScore": 136.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -5547,7 +5547,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 285.15,
+      "score": 136.23,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r8911639",
@@ -5696,10 +5696,10 @@
         "z": 46.0175
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-monastery",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "monestir de Santa Maria de Pedralbes",
       "originalName": "monestir de Santa Maria de Pedralbes",
@@ -5707,10 +5707,10 @@
         "lat": 41.39560007327908,
         "lon": 2.1120474505825073
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 260.4,
-        "finalScore": 303.75,
+        "baseScore": 87,
+        "finalScore": 130.35,
         "reasons": [
           "sitelinks:16",
           "heritage",
@@ -5722,7 +5722,7 @@
         ],
         "wikidataBoost": 43.35
       },
-      "score": 303.75,
+      "score": 130.35,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9036251",
@@ -5806,10 +5806,10 @@
         "z": 45.5662
       },
       "modelPolicy": {
-        "assetId": "regional-castle",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Casa Bonaventura Ferrer",
       "originalName": "Casa Bonaventura Ferrer",
@@ -5817,10 +5817,10 @@
         "lat": 41.39686910240945,
         "lon": 2.1583138175527545
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 252.92,
-        "finalScore": 291.15,
+        "baseScore": 100,
+        "finalScore": 138.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -5832,7 +5832,7 @@
         ],
         "wikidataBoost": 38.23
       },
-      "score": 291.15,
+      "score": 138.23,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9160031",
@@ -5943,8 +5943,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 255,
-        "finalScore": 294,
+        "baseScore": 99,
+        "finalScore": 138,
         "reasons": [
           "sitelinks:7",
           "heritage",
@@ -5956,7 +5956,7 @@
         ],
         "wikidataBoost": 39
       },
-      "score": 294,
+      "score": 138,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9160957",
@@ -6064,8 +6064,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 241.36,
-        "finalScore": 276.7,
+        "baseScore": 100,
+        "finalScore": 135.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -6077,7 +6077,7 @@
         ],
         "wikidataBoost": 35.34
       },
-      "score": 276.7,
+      "score": 135.34,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w100770949",
@@ -6188,8 +6188,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6200,7 +6200,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w1022084360",
@@ -6379,8 +6379,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6391,7 +6391,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "w102354386",
@@ -6530,8 +6530,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 232,
-        "finalScore": 265,
+        "baseScore": 100,
+        "finalScore": 133,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -6543,7 +6543,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 265,
+      "score": 133,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w1136276783",
@@ -6672,8 +6672,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 241.16,
-        "finalScore": 276.45,
+        "baseScore": 100,
+        "finalScore": 135.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6684,7 +6684,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 276.45,
+      "score": 135.29,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w117479716",
@@ -6792,10 +6792,10 @@
         "z": 43.2054
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-monument",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Casa Vicens",
       "originalName": "Casa Vicens",
@@ -6803,10 +6803,10 @@
         "lat": 41.40350758811351,
         "lon": 2.1506195517139908
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 274.4,
-        "finalScore": 321.75,
+        "baseScore": 85,
+        "finalScore": 132.35,
         "reasons": [
           "sitelinks:33",
           "heritage",
@@ -6818,7 +6818,7 @@
         ],
         "wikidataBoost": 47.35
       },
-      "score": 321.75,
+      "score": 132.35,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w132514125",
@@ -6986,8 +6986,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 278.28,
-        "finalScore": 322.85,
+        "baseScore": 100,
+        "finalScore": 144.57,
         "reasons": [
           "sitelinks:20",
           "heritage",
@@ -6999,7 +6999,7 @@
         ],
         "wikidataBoost": 44.57
       },
-      "score": 322.85,
+      "score": 144.57,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w143361299",
@@ -7156,8 +7156,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 260.36,
-        "finalScore": 300.7,
+        "baseScore": 99,
+        "finalScore": 139.34,
         "reasons": [
           "sitelinks:11",
           "heritage",
@@ -7168,7 +7168,7 @@
         ],
         "wikidataBoost": 40.34
       },
-      "score": 300.7,
+      "score": 139.34,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w1533889825",
@@ -7302,8 +7302,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 228,
-        "finalScore": 260,
+        "baseScore": 100,
+        "finalScore": 132,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -7314,7 +7314,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 260,
+      "score": 132,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
       "sourceId": "w154190284",
@@ -7431,8 +7431,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 245.36,
-        "finalScore": 281.7,
+        "baseScore": 100,
+        "finalScore": 136.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7443,7 +7443,7 @@
         ],
         "wikidataBoost": 36.34
       },
-      "score": 281.7,
+      "score": 136.34,
       "sectorId": "s-02-02",
       "source": "openstreetmap",
       "sourceId": "w154368475",
@@ -7598,8 +7598,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 242.96,
-        "finalScore": 286.95,
+        "baseScore": 67,
+        "finalScore": 110.99,
         "reasons": [
           "sitelinks:18",
           "heritage",
@@ -7611,7 +7611,7 @@
         ],
         "wikidataBoost": 43.99
       },
-      "score": 286.95,
+      "score": 110.99,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w154706128",
@@ -7772,8 +7772,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7784,7 +7784,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w158701157",
@@ -7884,10 +7884,10 @@
         "z": -111.252
       },
       "modelPolicy": {
-        "assetId": "regional-castle",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Hostal del Santuari de Pinós",
       "originalName": "Hostal del Santuari de Pinós",
@@ -7895,10 +7895,10 @@
         "lat": 41.83783741604438,
         "lon": 1.5400916903617707
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 249.36,
-        "finalScore": 286.7,
+        "baseScore": 100,
+        "finalScore": 137.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7910,7 +7910,7 @@
         ],
         "wikidataBoost": 37.34
       },
-      "score": 286.7,
+      "score": 137.34,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "w159513015",
@@ -8033,8 +8033,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 235.28,
-        "finalScore": 278.85,
+        "baseScore": 61,
+        "finalScore": 104.57,
         "reasons": [
           "sitelinks:20",
           "heritage",
@@ -8045,7 +8045,7 @@
         ],
         "wikidataBoost": 43.57
       },
-      "score": 278.85,
+      "score": 104.57,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w163393541",
@@ -8167,8 +8167,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 288.72,
-        "finalScore": 335.9,
+        "baseScore": 100,
+        "finalScore": 147.18,
         "reasons": [
           "sitelinks:32",
           "heritage",
@@ -8180,7 +8180,7 @@
         ],
         "wikidataBoost": 47.18
       },
-      "score": 335.9,
+      "score": 147.18,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w166565579",
@@ -8285,8 +8285,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 202,
-        "finalScore": 234,
+        "baseScore": 74,
+        "finalScore": 106,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -8297,7 +8297,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 234,
+      "score": 106,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
       "sourceId": "w167404725",
@@ -8393,8 +8393,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -8405,7 +8405,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w172425043",
@@ -8514,8 +8514,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 237.36,
-        "finalScore": 271.7,
+        "baseScore": 100,
+        "finalScore": 134.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -8526,7 +8526,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 271.7,
+      "score": 134.34,
       "sectorId": "s-02-03",
       "source": "openstreetmap",
       "sourceId": "w173191415",
@@ -8638,10 +8638,10 @@
         "z": 56.0176
       },
       "modelPolicy": {
-        "assetId": "regional-castle",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Palauet Albéniz",
       "originalName": "Palauet Albéniz",
@@ -8649,10 +8649,10 @@
         "lat": 41.36748021460135,
         "lon": 2.1560043552928065
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 248.92,
-        "finalScore": 286.15,
+        "baseScore": 100,
+        "finalScore": 137.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -8663,7 +8663,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 286.15,
+      "score": 137.23,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w195771604",
@@ -8770,8 +8770,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 209,
-        "finalScore": 241,
+        "baseScore": 81,
+        "finalScore": 113,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -8782,7 +8782,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 241,
+      "score": 113,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "w210655995",
@@ -8925,8 +8925,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 277.16,
-        "finalScore": 321.45,
+        "baseScore": 100,
+        "finalScore": 144.29,
         "reasons": [
           "sitelinks:19",
           "heritage",
@@ -8938,7 +8938,7 @@
         ],
         "wikidataBoost": 44.29
       },
-      "score": 321.45,
+      "score": 144.29,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "w229995175",
@@ -9093,8 +9093,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9105,7 +9105,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w231854421",
@@ -9215,8 +9215,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 263.2,
-        "finalScore": 304,
+        "baseScore": 100,
+        "finalScore": 140.8,
         "reasons": [
           "sitelinks:12",
           "heritage",
@@ -9227,7 +9227,7 @@
         ],
         "wikidataBoost": 40.8
       },
-      "score": 304,
+      "score": 140.8,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w246755544",
@@ -9383,8 +9383,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9395,7 +9395,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w261849239",
@@ -9532,8 +9532,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 241.92,
-        "finalScore": 279.15,
+        "baseScore": 93,
+        "finalScore": 130.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -9544,7 +9544,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 279.15,
+      "score": 130.23,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w268213121",
@@ -9683,8 +9683,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 229.36,
-        "finalScore": 263.7,
+        "baseScore": 92,
+        "finalScore": 126.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -9695,7 +9695,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 263.7,
+      "score": 126.34,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "w268218947",
@@ -9813,8 +9813,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 232,
-        "finalScore": 265,
+        "baseScore": 100,
+        "finalScore": 133,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -9826,7 +9826,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 265,
+      "score": 133,
       "sectorId": "s-05-03",
       "source": "openstreetmap",
       "sourceId": "w279854434",
@@ -9919,8 +9919,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9931,7 +9931,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "w284235967",
@@ -10068,8 +10068,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10080,7 +10080,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
       "sourceId": "w335736732",
@@ -10226,8 +10226,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 248.92,
-        "finalScore": 286.15,
+        "baseScore": 100,
+        "finalScore": 137.23,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -10238,7 +10238,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 286.15,
+      "score": 137.23,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w350278938",
@@ -10392,8 +10392,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10404,7 +10404,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-05-01",
       "source": "openstreetmap",
       "sourceId": "w364455957",
@@ -10501,10 +10501,10 @@
         "z": 48.8679
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-monument",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Palau de la Música Catalana",
       "originalName": "Palau de la Música Catalana",
@@ -10512,10 +10512,10 @@
         "lat": 41.38758478824917,
         "lon": 2.1752209500754804
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 276.36,
-        "finalScore": 324.2,
+        "baseScore": 85,
+        "finalScore": 132.84,
         "reasons": [
           "sitelinks:43",
           "heritage",
@@ -10526,7 +10526,7 @@
         ],
         "wikidataBoost": 47.84
       },
-      "score": 324.2,
+      "score": 132.84,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w377216661",
@@ -10642,8 +10642,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 268.45,
+        "baseScore": 92,
+        "finalScore": 127.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10654,7 +10654,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 268.45,
+      "score": 127.29,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w38655102",
@@ -10765,8 +10765,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10777,7 +10777,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "w414822767",
@@ -10891,8 +10891,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 243,
-        "finalScore": 279,
+        "baseScore": 99,
+        "finalScore": 135,
         "reasons": [
           "sitelinks:7",
           "heritage",
@@ -10903,7 +10903,7 @@
         ],
         "wikidataBoost": 36
       },
-      "score": 279,
+      "score": 135,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "w41817535",
@@ -11003,10 +11003,10 @@
         "z": 50.2095
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-church",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Santa Maria del Mar",
       "originalName": "Santa Maria del Mar",
@@ -11014,10 +11014,10 @@
         "lat": 41.383812298417176,
         "lon": 2.1820309732227385
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 261.28,
-        "finalScore": 308.1,
+        "baseScore": 74,
+        "finalScore": 120.82,
         "reasons": [
           "sitelinks:30",
           "heritage",
@@ -11029,7 +11029,7 @@
         ],
         "wikidataBoost": 46.82
       },
-      "score": 308.1,
+      "score": 120.82,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w51260215",
@@ -11149,8 +11149,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 233.16,
-        "finalScore": 266.45,
+        "baseScore": 100,
+        "finalScore": 133.29,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -11161,7 +11161,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 266.45,
+      "score": 133.29,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "w610319747",
@@ -11315,8 +11315,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 241.96,
-        "finalScore": 285.95,
+        "baseScore": 66,
+        "finalScore": 109.99,
         "reasons": [
           "sitelinks:18",
           "heritage",
@@ -11328,7 +11328,7 @@
         ],
         "wikidataBoost": 43.99
       },
-      "score": 285.95,
+      "score": 109.99,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w625295824",
@@ -11455,8 +11455,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 236.36,
-        "finalScore": 270.7,
+        "baseScore": 99,
+        "finalScore": 133.34,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -11467,7 +11467,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 270.7,
+      "score": 133.34,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w650766179",
