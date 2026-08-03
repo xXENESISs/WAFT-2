@@ -1,0 +1,65 @@
+Exact public build found on attempt 1
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0160.html?v=waft-adventure-0160-visual-access-v1",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390,
+    "webgl2": true
+  },
+  "buildId": "waft-adventure-0160-visual-access-v1",
+  "access": {
+    "profile": "wide-area-v1",
+    "travelActivationRadius": 32,
+    "outwardDistance": 3.439999999999884,
+    "homewardDistance": 4.046320000000009,
+    "localEntry": {
+      "zoneId": "llevant",
+      "probeDistance": 14,
+      "entryRadius": 22.959999999999997,
+      "discoveryRadius": 40.17999999999999,
+      "localBuildId": "baleares-llevant-4727f01fc3de"
+    }
+  },
+  "visuals": {
+    "graphicsProfile": "enhanced-mobile-v3",
+    "balearesRuntimeVersion": "012",
+    "catalunyaRuntimeVersion": "002",
+    "characterVisible": true
+  },
+  "transitions": 2,
+  "discoveredRegions": [
+    "baleares",
+    "catalunya-litoral"
+  ],
+  "discoveredConnections": [
+    "baleares-catalunya-long-water"
+  ],
+  "restored": true,
+  "regionalBuilds": {
+    "baleares": {
+      "regionId": "baleares",
+      "buildId": "baleares-preview-3068ab4bdb61",
+      "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684"
+    },
+    "catalunyaLitoral": {
+      "regionId": "catalunya-litoral",
+      "buildId": "catalunya-litoral-preview-4ba7b372d799",
+      "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
+    }
+  },
+  "locomotion": {
+    "catalunyaMountainRise": 1.3499999999999999,
+    "catalunyaWaterRoute": "litoral-catalunya"
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": []
+}

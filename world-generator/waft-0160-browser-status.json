@@ -1,7 +1,12 @@
 {
   "syntax": 0,
   "local": 0,
-  "public": 99,
+  "published": 0,
+  "public": 0,
+  "roundTrip": 0,
+  "restore": 0,
+  "wideEntry": 0,
+  "webgl2": 0,
   "success": true,
-  "recordedAt": "2026-08-03T04:46:53.892Z"
+  "verifiedAt": "2026-08-03T04:48:50.654Z"
 }
