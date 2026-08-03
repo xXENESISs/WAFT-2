@@ -1,0 +1,67 @@
+name: Diagnose WAFT Adventure 0.15.9 v4
+
+on:
+  push:
+    paths:
+      - .github/workflows/diagnose-waft-0159-v4.yml
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Run complete mobile round trip
+        shell: bash
+        run: |
+          set +e
+          log=world-generator/adventure-0159-diagnostic-v4.log
+          status=world-generator/adventure-0159-diagnostic-v4-status.json
+          : > "$log"
+          build=0; syntax=0; browser=0; protected=0
+          node world-generator/scripts/build-adventure-0159.mjs >> "$log" 2>&1 || build=$?
+          if [ "$build" = 0 ]; then
+            python - <<'PY'
+          from pathlib import Path
+          import re
+          for source, target in [('mallorca-mobile/waft-0159.html','/tmp/waft-0159-v4.mjs'),('mallorca-mobile/region-runtime-catalunya-litoral-001.html','/tmp/catalunya-runtime-v4.mjs')]:
+              scripts=re.findall(r'<script>(.*?)</script>',Path(source).read_text(encoding='utf-8'),flags=re.S)
+              if len(scripts)!=1: raise SystemExit(f'{source}: {len(scripts)} scripts')
+              Path(target).write_text(scripts[0],encoding='utf-8')
+          PY
+            node --check /tmp/waft-0159-v4.mjs >> "$log" 2>&1 || syntax=$?
+            node --check /tmp/catalunya-runtime-v4.mjs >> "$log" 2>&1 || syntax=$?
+          else syntax=99; fi
+          if [ "$syntax" = 0 ]; then
+            python -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0159-v4-server.log 2>&1 & server_pid=$!
+            sleep 2
+            timeout 360s node world-generator/scripts/verify-adventure-0159-browser.mjs --url http://127.0.0.1:8000/mallorca-mobile/waft-0159.html?v=diagnostic-v4 --output world-generator/adventure-0159-diagnostic-v4-browser.json --screenshot /tmp/waft-0159-v4.png >> "$log" 2>&1 || browser=$?
+            kill "$server_pid" >/dev/null 2>&1 || true
+            cat /tmp/waft-0159-v4-server.log >> "$log" 2>&1 || true
+          else browser=99; fi
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70" || protected=$?
+          test "$(git hash-object mallorca-mobile/waft-0158.html)" = "b605801b9b18cf5d88e24968b9674db0503eef21" || protected=$?
+          test "$(git hash-object mallorca-mobile/region-runtime-baleares-011.html)" = "54efca64586886fdd2f385f928489c786f925f31" || protected=$?
+          printf '{"build":%s,"syntax":%s,"browser":%s,"protected":%s}\n' "$build" "$syntax" "$browser" "$protected" > "$status"
+          cat "$log"
+      - name: Commit result
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for path in mallorca-mobile/waft-0159.html mallorca-mobile/region-runtime-catalunya-litoral-001.html world-generator/adventure-0159-build.json world-generator/adventure-0159-diagnostic-v4.log world-generator/adventure-0159-diagnostic-v4-status.json world-generator/adventure-0159-diagnostic-v4-browser.json; do [ -e "$path" ] && git add "$path"; done
+          if ! git diff --cached --quiet; then
+            git commit -m "Record WAFT 0.15.9 mobile diagnostic v4"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
