@@ -1,6 +1,6 @@
 name: Verify direct public Baleares runtime 011
 
-# Direct verification revision 2.
+# Direct verification revision 3.
 on:
   push:
     paths:
@@ -39,22 +39,38 @@ jobs:
           echo "RUNTIME_BLOB=${blob}" >> "$GITHUB_ENV"
           echo "PUBLIC_RUNTIME_URL=${url}" >> "$GITHUB_ENV"
 
-      - name: Wait for exact GitHub Pages build
+      - name: Check exact GitHub Pages build
+        id: pages
         shell: bash
         run: |
-          for attempt in $(seq 1 120); do
-            body="$(curl -fsS --max-time 20 "$PUBLIC_RUNTIME_URL" || true)"
-            if printf '%s' "$body" | grep -q 'RUNTIME REGIONAL 011' && printf '%s' "$body" | grep -q 'getTravelState'; then
-              echo "Exact runtime 011 is public: $PUBLIC_RUNTIME_URL"
-              exit 0
+          set +e
+          available=1
+          attempts=0
+          http=0
+          bytes=0
+          for attempt in $(seq 1 36); do
+            attempts="$attempt"
+            tmp="$(mktemp)"
+            http="$(curl -L -sS -o "$tmp" -w '%{http_code}' --max-time 20 "$PUBLIC_RUNTIME_URL" || echo 000)"
+            bytes="$(wc -c < "$tmp" | tr -d ' ')"
+            if [ "$http" = 200 ] && grep -q 'RUNTIME REGIONAL 011' "$tmp" && grep -q 'getTravelState' "$tmp"; then
+              available=0
+              rm -f "$tmp"
+              break
             fi
-            echo "Waiting for Pages (${attempt}/120)"
+            rm -f "$tmp"
             sleep 5
           done
-          exit 1
+          printf '{"available":%s,"httpStatus":"%s","bytes":%s,"attempts":%s,"url":"%s","blob":"%s"}\n' \
+            "$([ "$available" = 0 ] && echo true || echo false)" "$http" "$bytes" "$attempts" "$PUBLIC_RUNTIME_URL" "$RUNTIME_BLOB" \
+            > world-generator/baleares-runtime-011-pages-status.json
+          cat world-generator/baleares-runtime-011-pages-status.json
+          echo "code=${available}" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Run public mobile verification
         id: verify
+        if: steps.pages.outputs.code == '0'
         shell: bash
         run: |
           set +e
@@ -71,6 +87,13 @@ jobs:
           echo "code=${code}" >> "$GITHUB_OUTPUT"
           exit 0
 
+      - name: Record skipped verification
+        if: steps.pages.outputs.code != '0'
+        shell: bash
+        run: |
+          printf '{"exitCode":99,"url":"%s","blob":"%s","reason":"pages-unavailable"}\n' "$PUBLIC_RUNTIME_URL" "$RUNTIME_BLOB" \
+            > world-generator/baleares-runtime-011-direct-public-status.json
+
       - name: Commit public result
         if: always()
         shell: bash
@@ -79,21 +102,23 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           optional=(
             world-generator/baleares-runtime-011-public-verification.json
+            world-generator/baleares-runtime-011-pages-status.json
             world-generator/baleares-runtime-011-direct-public.log
             world-generator/baleares-runtime-011-direct-public-status.json
           )
           for path in "${optional[@]}"; do [ -f "$path" ] && git add "$path"; done
           if ! git diff --cached --quiet; then
-            git commit -m "Verify direct public Baleares runtime 011"
+            git commit -m "Record direct public Baleares runtime 011 verification"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
 
       - name: Require public success
-        if: steps.verify.outputs.code != '0'
+        if: steps.pages.outputs.code != '0' || steps.verify.outputs.code != '0'
         run: exit 1
 
       - name: Upload public screenshot
+        if: steps.verify.outputs.code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: baleares-runtime-011-direct-public
