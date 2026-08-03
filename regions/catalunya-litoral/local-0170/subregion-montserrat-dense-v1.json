@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "catalunya-litoral-subregion-montserrat-0170",
+  "presetId": "subregion-montserrat",
+  "regionId": "catalunya-litoral",
+  "name": "Montserrat · entorno local",
+  "buildId": "catalunya-litoral-subregion-montserrat-ac09e015441c",
+  "center": {
+    "x": -85.3418,
+    "z": -23.1155
+  },
+  "regionalBounds": {
+    "minX": -119.3418,
+    "maxX": -51.341800000000006,
+    "minZ": -57.1155,
+    "maxZ": 10.8845
+  },
+  "regionalRadius": 34,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 290,
+    "roadVertices": 96,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Montserrat"
+      },
+      {
+        "name": "Mercat de Montserrat"
+      },
+      {
+        "name": "Mirador de Montserrat"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Montserrat"
+      }
+    ]
+  },
+  "binary": {
+    "file": "subregion-montserrat-dense-v1.bin",
+    "bytes": 39200,
+    "sha256": "ac09e015441c7b4caa2e172b05217337b8c982a403f711bc67d6d63bb78806a1"
+  }
+}

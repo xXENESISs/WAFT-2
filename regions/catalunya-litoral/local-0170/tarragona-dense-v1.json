@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "catalunya-litoral-tarragona-0170",
+  "presetId": "tarragona",
+  "regionId": "catalunya-litoral",
+  "name": "Tarragona · núcleo urbano",
+  "buildId": "catalunya-litoral-tarragona-48ae4f543e14",
+  "center": {
+    "x": -241.4905,
+    "z": 144.4183
+  },
+  "regionalBounds": {
+    "minX": -279.4905,
+    "maxX": -203.4905,
+    "minZ": 106.41829999999999,
+    "maxZ": 182.4183
+  },
+  "regionalRadius": 38,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 390,
+    "roadVertices": 42,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Tarragona"
+      },
+      {
+        "name": "Mercat de Tarragona"
+      },
+      {
+        "name": "Mirador de Tarragona"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Tarragona"
+      }
+    ]
+  },
+  "binary": {
+    "file": "tarragona-dense-v1.bin",
+    "bytes": 41536,
+    "sha256": "48ae4f543e1449770e08fc523ce1b4725b5782e3898619ff9cd1e9325573f281"
+  }
+}

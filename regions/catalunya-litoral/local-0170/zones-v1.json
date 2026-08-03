@@ -1,0 +1,119 @@
+{
+  "formatVersion": 1,
+  "registryType": "waft-local-zone-registry",
+  "regionId": "catalunya-litoral",
+  "buildId": "catalunya-litoral-local-0170-a8c84c9620a0",
+  "generatedAt": "2026-08-03T09:57:45.363Z",
+  "zoneCount": 6,
+  "totalBuildings": 2210,
+  "zones": [
+    {
+      "id": "catalunya-litoral-barcelona-0170",
+      "presetId": "barcelona",
+      "name": "Barcelona · área metropolitana",
+      "buildId": "catalunya-litoral-barcelona-d10254066723",
+      "center": {
+        "x": 6.2406,
+        "z": 49.7516
+      },
+      "regionalRadius": 42,
+      "metadataFile": "barcelona-dense-v1.json",
+      "binaryFile": "barcelona-dense-v1.bin",
+      "binarySha256": "d10254066723c19fff143c9125608a7c0787c147daa481a5f024a24174da8afd",
+      "binaryBytes": 46976,
+      "buildingCount": 560,
+      "roadVertexCount": 42,
+      "cityType": "metropolis"
+    },
+    {
+      "id": "catalunya-litoral-tarragona-0170",
+      "presetId": "tarragona",
+      "name": "Tarragona · núcleo urbano",
+      "buildId": "catalunya-litoral-tarragona-48ae4f543e14",
+      "center": {
+        "x": -241.4905,
+        "z": 144.4183
+      },
+      "regionalRadius": 38,
+      "metadataFile": "tarragona-dense-v1.json",
+      "binaryFile": "tarragona-dense-v1.bin",
+      "binarySha256": "48ae4f543e1449770e08fc523ce1b4725b5782e3898619ff9cd1e9325573f281",
+      "binaryBytes": 41536,
+      "buildingCount": 390,
+      "roadVertexCount": 42,
+      "cityType": "city"
+    },
+    {
+      "id": "catalunya-litoral-girona-0170",
+      "presetId": "girona",
+      "name": "Girona · núcleo urbano",
+      "buildId": "catalunya-litoral-girona-202b8ec8b36f",
+      "center": {
+        "x": 179.0577,
+        "z": -161.5948
+      },
+      "regionalRadius": 38,
+      "metadataFile": "girona-dense-v1.json",
+      "binaryFile": "girona-dense-v1.bin",
+      "binarySha256": "202b8ec8b36fe2e123a6ba0edafefea3b752508d033cbf91a763429f0b6c071d",
+      "binaryBytes": 42400,
+      "buildingCount": 390,
+      "roadVertexCount": 96,
+      "cityType": "city"
+    },
+    {
+      "id": "catalunya-litoral-subregion-montserrat-0170",
+      "presetId": "subregion-montserrat",
+      "name": "Montserrat · entorno local",
+      "buildId": "catalunya-litoral-subregion-montserrat-ac09e015441c",
+      "center": {
+        "x": -85.3418,
+        "z": -23.1155
+      },
+      "regionalRadius": 34,
+      "metadataFile": "subregion-montserrat-dense-v1.json",
+      "binaryFile": "subregion-montserrat-dense-v1.bin",
+      "binarySha256": "ac09e015441c7b4caa2e172b05217337b8c982a403f711bc67d6d63bb78806a1",
+      "binaryBytes": 39200,
+      "buildingCount": 290,
+      "roadVertexCount": 96,
+      "cityType": "town"
+    },
+    {
+      "id": "catalunya-litoral-subregion-montseny-0170",
+      "presetId": "subregion-montseny",
+      "name": "Montseny · entorno local",
+      "buildId": "catalunya-litoral-subregion-montseny-ada202484228",
+      "center": {
+        "x": 66.6732,
+        "z": -87.1275
+      },
+      "regionalRadius": 34,
+      "metadataFile": "subregion-montseny-dense-v1.json",
+      "binaryFile": "subregion-montseny-dense-v1.bin",
+      "binarySha256": "ada202484228cf8602450298fe027aa7e2100889869ea3aeb12709bb4b86bb76",
+      "binaryBytes": 39200,
+      "buildingCount": 290,
+      "roadVertexCount": 96,
+      "cityType": "town"
+    },
+    {
+      "id": "catalunya-litoral-subregion-maresme-0170",
+      "presetId": "subregion-maresme",
+      "name": "Maresme · entorno local",
+      "buildId": "catalunya-litoral-subregion-maresme-e210b992dd48",
+      "center": {
+        "x": 92.73373857099128,
+        "z": -9.683953340291234
+      },
+      "regionalRadius": 34,
+      "metadataFile": "subregion-maresme-dense-v1.json",
+      "binaryFile": "subregion-maresme-dense-v1.bin",
+      "binarySha256": "e210b992dd48eaf0a21e6af26a5ea529dfee6fa4b97cd828dac87d667de06196",
+      "binaryBytes": 38240,
+      "buildingCount": 290,
+      "roadVertexCount": 36,
+      "cityType": "town"
+    }
+  ]
+}

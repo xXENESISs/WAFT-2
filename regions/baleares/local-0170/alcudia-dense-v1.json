@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "baleares-alcudia-0170",
+  "presetId": "alcúdia",
+  "regionId": "baleares",
+  "name": "Alcúdia · núcleo urbano",
+  "buildId": "baleares-alcudia-b71f2d64af61",
+  "center": {
+    "x": 72.16298978119798,
+    "z": -106.96899527999827
+  },
+  "regionalBounds": {
+    "minX": 34.16298978119798,
+    "maxX": 110.16298978119798,
+    "minZ": -144.96899527999827,
+    "maxZ": -68.96899527999827
+  },
+  "regionalRadius": 38,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 390,
+    "roadVertices": 30,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Alcúdia"
+      },
+      {
+        "name": "Mercat de Alcúdia"
+      },
+      {
+        "name": "Mirador de Alcúdia"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Alcúdia"
+      }
+    ]
+  },
+  "binary": {
+    "file": "alcudia-dense-v1.bin",
+    "bytes": 41344,
+    "sha256": "b71f2d64af61c2657f9840c87c70ff4c93e5ee2bc9e42ea40dc8f6203593fa85"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "formatVersion": 1,
+  "registryType": "waft-local-zone-registry",
+  "regionId": "baleares",
+  "buildId": "baleares-local-0170-b292d14b48ed",
+  "generatedAt": "2026-08-03T09:57:45.234Z",
+  "zoneCount": 5,
+  "totalBuildings": 1960,
+  "zones": [
+    {
+      "id": "baleares-palma-0170",
+      "presetId": "palma",
+      "name": "Palma · área metropolitana",
+      "buildId": "baleares-palma-e469478cf58f",
+      "center": {
+        "x": -117.867,
+        "z": 32.2196
+      },
+      "regionalRadius": 42,
+      "metadataFile": "palma-dense-v1.json",
+      "binaryFile": "palma-dense-v1.bin",
+      "binarySha256": "e469478cf58f36ec10ab6458a0f5ff9e6b0826b8649f88272769cecbc00abd80",
+      "binaryBytes": 47040,
+      "buildingCount": 560,
+      "roadVertexCount": 46,
+      "cityType": "metropolis"
+    },
+    {
+      "id": "baleares-llevant-0170",
+      "presetId": "llevant",
+      "name": "Llevant · entorno local",
+      "buildId": "baleares-llevant-14fba2421a10",
+      "center": {
+        "x": 101.26938087180768,
+        "z": 13.218040080000701
+      },
+      "regionalRadius": 34,
+      "metadataFile": "llevant-dense-v1.json",
+      "binaryFile": "llevant-dense-v1.bin",
+      "binarySha256": "14fba2421a10333a35f32f11f64a8f812ba9f466844a911c438ca4352c778462",
+      "binaryBytes": 37280,
+      "buildingCount": 230,
+      "roadVertexCount": 96,
+      "cityType": "village"
+    },
+    {
+      "id": "baleares-alcudia-0170",
+      "presetId": "alcúdia",
+      "name": "Alcúdia · núcleo urbano",
+      "buildId": "baleares-alcudia-b71f2d64af61",
+      "center": {
+        "x": 72.16298978119798,
+        "z": -106.96899527999827
+      },
+      "regionalRadius": 38,
+      "metadataFile": "alcudia-dense-v1.json",
+      "binaryFile": "alcudia-dense-v1.bin",
+      "binarySha256": "b71f2d64af61c2657f9840c87c70ff4c93e5ee2bc9e42ea40dc8f6203593fa85",
+      "binaryBytes": 41344,
+      "buildingCount": 390,
+      "roadVertexCount": 30,
+      "cityType": "city"
+    },
+    {
+      "id": "baleares-menorca-0170",
+      "presetId": "menorca",
+      "name": "Menorca · núcleo urbano",
+      "buildId": "baleares-menorca-47d3e26b2233",
+      "center": {
+        "x": 445.1680733656737,
+        "z": -121.83401159999963
+      },
+      "regionalRadius": 38,
+      "metadataFile": "menorca-dense-v1.json",
+      "binaryFile": "menorca-dense-v1.bin",
+      "binarySha256": "47d3e26b22332faac330f115e3ebc926c47383368fd5527834b6606a0927eb4c",
+      "binaryBytes": 41632,
+      "buildingCount": 390,
+      "roadVertexCount": 48,
+      "cityType": "city"
+    },
+    {
+      "id": "baleares-eivissa-0170",
+      "presetId": "eivissa",
+      "name": "Eivissa · núcleo urbano",
+      "buildId": "baleares-eivissa-0da29c53987e",
+      "center": {
+        "x": -478.1857376151559,
+        "z": 291.8526357599995
+      },
+      "regionalRadius": 38,
+      "metadataFile": "eivissa-dense-v1.json",
+      "binaryFile": "eivissa-dense-v1.bin",
+      "binarySha256": "0da29c53987ef4f03458e8f1733c56a91f21fdfeb1554425f62148cb0c541210",
+      "binaryBytes": 41600,
+      "buildingCount": 390,
+      "roadVertexCount": 46,
+      "cityType": "city"
+    }
+  ]
+}

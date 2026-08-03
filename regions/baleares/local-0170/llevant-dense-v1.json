@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "baleares-llevant-0170",
+  "presetId": "llevant",
+  "regionId": "baleares",
+  "name": "Llevant · entorno local",
+  "buildId": "baleares-llevant-14fba2421a10",
+  "center": {
+    "x": 101.26938087180768,
+    "z": 13.218040080000701
+  },
+  "regionalBounds": {
+    "minX": 67.26938087180768,
+    "maxX": 135.2693808718077,
+    "minZ": -20.7819599199993,
+    "maxZ": 47.218040080000705
+  },
+  "regionalRadius": 34,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 230,
+    "roadVertices": 96,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Llevant"
+      },
+      {
+        "name": "Mercat de Llevant"
+      },
+      {
+        "name": "Mirador de Llevant"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Llevant"
+      }
+    ]
+  },
+  "binary": {
+    "file": "llevant-dense-v1.bin",
+    "bytes": 37280,
+    "sha256": "14fba2421a10333a35f32f11f64a8f812ba9f466844a911c438ca4352c778462"
+  }
+}

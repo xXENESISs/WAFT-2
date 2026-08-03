@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "catalunya-litoral-barcelona-0170",
+  "presetId": "barcelona",
+  "regionId": "catalunya-litoral",
+  "name": "Barcelona · área metropolitana",
+  "buildId": "catalunya-litoral-barcelona-d10254066723",
+  "center": {
+    "x": 6.2406,
+    "z": 49.7516
+  },
+  "regionalBounds": {
+    "minX": -35.7594,
+    "maxX": 48.2406,
+    "minZ": 7.751600000000003,
+    "maxZ": 91.7516
+  },
+  "regionalRadius": 42,
+  "worldScale": 5.2,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 560,
+    "roadVertices": 42,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Barcelona"
+      },
+      {
+        "name": "Mercat de Barcelona"
+      },
+      {
+        "name": "Mirador de Barcelona"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Barcelona"
+      }
+    ]
+  },
+  "binary": {
+    "file": "barcelona-dense-v1.bin",
+    "bytes": 46976,
+    "sha256": "d10254066723c19fff143c9125608a7c0787c147daa481a5f024a24174da8afd"
+  }
+}

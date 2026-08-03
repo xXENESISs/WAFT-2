@@ -1,0 +1,84 @@
+{
+  "version": "0.17.0",
+  "buildId": "waft-adventure-0170-dense-places-v2",
+  "generatedAt": "2026-08-03T09:57:45.375Z",
+  "travel": {
+    "directBarcelonaButton": true,
+    "directMallorcaButton": true,
+    "hiddenPortTrigger": false
+  },
+  "regions": {
+    "baleares": {
+      "zones": 5,
+      "buildings": 1960,
+      "registryBuildId": "baleares-local-0170-b292d14b48ed"
+    },
+    "catalunyaLitoral": {
+      "zones": 6,
+      "buildings": 2210,
+      "registryBuildId": "catalunya-litoral-local-0170-a8c84c9620a0"
+    }
+  },
+  "outputs": {
+    "mallorca-mobile/region-runtime-baleares-013.html": {
+      "bytes": 131505,
+      "sha256": "fff3a462ea652dc37eab2cbf554865d9c87abf2b928022f7177ba1d6cc960374"
+    },
+    "mallorca-mobile/region-runtime-catalunya-litoral-003.html": {
+      "bytes": 131273,
+      "sha256": "7f14d2b41f16dc89e9558df5d6d4004ccdc63fd3ef6d02a07e399e6d4159f24a"
+    },
+    "mallorca-mobile/waft-0170.html": {
+      "bytes": 20128,
+      "sha256": "13be90e8d6285bf7b0c09baf8fb4dd7c29834b043424c7b9d7c6d6bd5863848c"
+    }
+  }
+}
+{
+  "valid": true,
+  "status": {
+    "version": "0.17.0",
+    "buildId": "waft-adventure-0170-dense-places-v2",
+    "generatedAt": "2026-08-03T09:57:45.375Z",
+    "travel": {
+      "directBarcelonaButton": true,
+      "directMallorcaButton": true,
+      "hiddenPortTrigger": false
+    },
+    "regions": {
+      "baleares": {
+        "zones": 5,
+        "buildings": 1960,
+        "registryBuildId": "baleares-local-0170-b292d14b48ed"
+      },
+      "catalunyaLitoral": {
+        "zones": 6,
+        "buildings": 2210,
+        "registryBuildId": "catalunya-litoral-local-0170-a8c84c9620a0"
+      }
+    },
+    "outputs": {
+      "mallorca-mobile/region-runtime-baleares-013.html": {
+        "bytes": 131505,
+        "sha256": "fff3a462ea652dc37eab2cbf554865d9c87abf2b928022f7177ba1d6cc960374"
+      },
+      "mallorca-mobile/region-runtime-catalunya-litoral-003.html": {
+        "bytes": 131273,
+        "sha256": "7f14d2b41f16dc89e9558df5d6d4004ccdc63fd3ef6d02a07e399e6d4159f24a"
+      },
+      "mallorca-mobile/waft-0170.html": {
+        "bytes": 20128,
+        "sha256": "13be90e8d6285bf7b0c09baf8fb4dd7c29834b043424c7b9d7c6d6bd5863848c"
+      }
+    },
+    "validation": {
+      "syntax": 0,
+      "html": 0,
+      "packages": 0,
+      "density": 0,
+      "barcelona": 0,
+      "protectedSources": 0,
+      "validatedAt": "2026-08-03T09:57:45.467Z"
+    }
+  }
+}

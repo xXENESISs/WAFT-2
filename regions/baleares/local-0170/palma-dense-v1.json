@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "baleares-palma-0170",
+  "presetId": "palma",
+  "regionId": "baleares",
+  "name": "Palma · área metropolitana",
+  "buildId": "baleares-palma-e469478cf58f",
+  "center": {
+    "x": -117.867,
+    "z": 32.2196
+  },
+  "regionalBounds": {
+    "minX": -159.86700000000002,
+    "maxX": -75.867,
+    "minZ": -9.7804,
+    "maxZ": 74.2196
+  },
+  "regionalRadius": 42,
+  "worldScale": 5.2,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 560,
+    "roadVertices": 46,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Palma"
+      },
+      {
+        "name": "Mercat de Palma"
+      },
+      {
+        "name": "Mirador de Palma"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Palma"
+      }
+    ]
+  },
+  "binary": {
+    "file": "palma-dense-v1.bin",
+    "bytes": 47040,
+    "sha256": "e469478cf58f36ec10ab6458a0f5ff9e6b0826b8649f88272769cecbc00abd80"
+  }
+}

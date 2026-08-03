@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "baleares-eivissa-0170",
+  "presetId": "eivissa",
+  "regionId": "baleares",
+  "name": "Eivissa · núcleo urbano",
+  "buildId": "baleares-eivissa-0da29c53987e",
+  "center": {
+    "x": -478.1857376151559,
+    "z": 291.8526357599995
+  },
+  "regionalBounds": {
+    "minX": -516.1857376151559,
+    "maxX": -440.1857376151559,
+    "minZ": 253.8526357599995,
+    "maxZ": 329.8526357599995
+  },
+  "regionalRadius": 38,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 390,
+    "roadVertices": 46,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Eivissa"
+      },
+      {
+        "name": "Mercat de Eivissa"
+      },
+      {
+        "name": "Mirador de Eivissa"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Eivissa"
+      }
+    ]
+  },
+  "binary": {
+    "file": "eivissa-dense-v1.bin",
+    "bytes": 41600,
+    "sha256": "0da29c53987ef4f03458e8f1733c56a91f21fdfeb1554425f62148cb0c541210"
+  }
+}

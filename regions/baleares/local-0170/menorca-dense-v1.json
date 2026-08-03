@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "packageType": "waft-local-zone",
+  "zoneId": "baleares-menorca-0170",
+  "presetId": "menorca",
+  "regionId": "baleares",
+  "name": "Menorca · núcleo urbano",
+  "buildId": "baleares-menorca-47d3e26b2233",
+  "center": {
+    "x": 445.1680733656737,
+    "z": -121.83401159999963
+  },
+  "regionalBounds": {
+    "minX": 407.1680733656737,
+    "maxX": 483.1680733656737,
+    "minZ": -159.83401159999963,
+    "maxZ": -83.83401159999963
+  },
+  "regionalRadius": 38,
+  "worldScale": 5.7,
+  "footprintScale": 1,
+  "terrain": {
+    "columns": 97,
+    "rows": 97
+  },
+  "counts": {
+    "buildings": 390,
+    "roadVertices": 48,
+    "landmarks": 3,
+    "settlements": 1
+  },
+  "labels": {
+    "landmarks": [
+      {
+        "name": "Plaça central de Menorca"
+      },
+      {
+        "name": "Mercat de Menorca"
+      },
+      {
+        "name": "Mirador de Menorca"
+      }
+    ],
+    "settlements": [
+      {
+        "name": "Menorca"
+      }
+    ]
+  },
+  "binary": {
+    "file": "menorca-dense-v1.bin",
+    "bytes": 41632,
+    "sha256": "47d3e26b22332faac330f115e3ebc926c47383368fd5527834b6606a0927eb4c"
+  }
+}
