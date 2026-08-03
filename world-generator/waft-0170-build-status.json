@@ -1,7 +1,7 @@
 {
   "version": "0.17.0",
   "buildId": "waft-adventure-0170-dense-places-v2",
-  "generatedAt": "2026-08-03T09:57:45.375Z",
+  "generatedAt": "2026-08-03T09:59:20.918Z",
   "travel": {
     "directBarcelonaButton": true,
     "directMallorcaButton": true,
@@ -40,6 +40,20 @@
     "density": 0,
     "barcelona": 0,
     "protectedSources": 0,
-    "validatedAt": "2026-08-03T09:57:45.467Z"
+    "summary": {
+      "baleares": {
+        "zones": 5,
+        "buildings": 1960,
+        "minBuildings": 230,
+        "maxBuildings": 560
+      },
+      "catalunya-litoral": {
+        "zones": 6,
+        "buildings": 2210,
+        "minBuildings": 290,
+        "maxBuildings": 560
+      }
+    },
+    "validatedAt": "2026-08-03T09:59:21.074Z"
   }
 }
