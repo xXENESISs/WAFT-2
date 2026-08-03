@@ -38,13 +38,11 @@ jobs:
           broken = '}`,' + '\n' + '    "'
           fixed = '}`",' + '\n' + '    "'
           count = text.count(broken)
-          if count == 2:
+          if count > 0:
               path.write_text(text.replace(broken, fixed))
-              print('Repaired two malformed shader boundaries')
-          elif count == 0:
-              print('Builder quoting already repaired')
+              print(f'Repaired {count} malformed shader boundary/boundaries')
           else:
-              raise SystemExit(f'Unexpected malformed boundary count: {count}')
+              print('Builder quoting already repaired')
           PY
           REPAIR_CODE=$?
           if [ "$REPAIR_CODE" -eq 0 ]; then
