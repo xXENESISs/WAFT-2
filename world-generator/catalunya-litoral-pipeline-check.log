@@ -1,0 +1,9 @@
+== validate config ==
+OK world-generator/configs/catalunya-litoral.region.json
+Report: world-generator/validation-report.json
+== node syntax world-generator/scripts/build-region-v2.mjs ==
+== node syntax world-generator/scripts/build-region-preview-v2.mjs ==
+== node syntax world-generator/scripts/verify-region-preview-v2.mjs ==
+== node syntax world-generator/scripts/build-region-preview-page.mjs ==
+== node syntax world-generator/scripts/verify-region-preview-browser-v2.mjs ==
+== python OSM wrapper syntax ==

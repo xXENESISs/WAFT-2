@@ -1,25 +1,9 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-03T00:41:09.476Z",
+  "generatedAt": "2026-08-03T00:50:07.985Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
-    {
-      "file": "world-generator/configs/baleares.region.json",
-      "id": "baleares",
-      "version": "0.1.0",
-      "valid": true,
-      "errors": [],
-      "warnings": [],
-      "summary": {
-        "subregions": 7,
-        "manualSettlements": 6,
-        "manualLandmarks": 7,
-        "manualSpecies": 9,
-        "entryPoints": 5,
-        "connections": 3
-      }
-    },
     {
       "file": "world-generator/configs/catalunya-litoral.region.json",
       "id": "catalunya-litoral",
