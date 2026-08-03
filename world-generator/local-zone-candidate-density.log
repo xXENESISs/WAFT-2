@@ -1,0 +1,523 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-08-03T09:12:56.818Z",
+  "radii": [
+    18,
+    24,
+    30,
+    36,
+    44,
+    52
+  ],
+  "regions": {
+    "baleares": {
+      "buildId": "baleares-preview-3068ab4bdb61",
+      "candidates": {
+        "alcúdia": {
+          "center": {
+            "x": 72.16298978119798,
+            "z": -106.96899527999827
+          },
+          "density": {
+            "18": {
+              "buildings": 134,
+              "roadLength": 168.1353588328701,
+              "roadSegments": 297,
+              "roadVertices": 594
+            },
+            "24": {
+              "buildings": 180,
+              "roadLength": 222.5047025602686,
+              "roadSegments": 408,
+              "roadVertices": 816
+            },
+            "30": {
+              "buildings": 267,
+              "roadLength": 315.94626396852306,
+              "roadSegments": 579,
+              "roadVertices": 1158
+            },
+            "36": {
+              "buildings": 360,
+              "roadLength": 430.12030378653935,
+              "roadSegments": 749,
+              "roadVertices": 1498
+            },
+            "44": {
+              "buildings": 409,
+              "roadLength": 606.2845534255684,
+              "roadSegments": 1000,
+              "roadVertices": 2000
+            },
+            "52": {
+              "buildings": 434,
+              "roadLength": 724.5497937465985,
+              "roadSegments": 1219,
+              "roadVertices": 2438
+            }
+          },
+          "name": "Alcúdia"
+        },
+        "eivissa": {
+          "center": {
+            "x": -478.1857376151559,
+            "z": 291.8526357599995
+          },
+          "density": {
+            "18": {
+              "buildings": 151,
+              "roadLength": 311.1936051686901,
+              "roadSegments": 791,
+              "roadVertices": 1582
+            },
+            "24": {
+              "buildings": 268,
+              "roadLength": 390.7645411581191,
+              "roadSegments": 932,
+              "roadVertices": 1864
+            },
+            "30": {
+              "buildings": 297,
+              "roadLength": 493.32716336307413,
+              "roadSegments": 1125,
+              "roadVertices": 2250
+            },
+            "36": {
+              "buildings": 305,
+              "roadLength": 604.4397848842866,
+              "roadSegments": 1274,
+              "roadVertices": 2548
+            },
+            "44": {
+              "buildings": 316,
+              "roadLength": 811.7947103898367,
+              "roadSegments": 1592,
+              "roadVertices": 3184
+            },
+            "52": {
+              "buildings": 434,
+              "roadLength": 1054.5818712865805,
+              "roadSegments": 2105,
+              "roadVertices": 4210
+            }
+          },
+          "name": "Eivissa"
+        },
+        "llevant": {
+          "center": {
+            "x": 101.26938087180768,
+            "z": 13.218040080000701
+          },
+          "density": {
+            "18": {
+              "buildings": 89,
+              "roadLength": 239.89362023506317,
+              "roadSegments": 379,
+              "roadVertices": 758
+            },
+            "24": {
+              "buildings": 101,
+              "roadLength": 300.68521384217144,
+              "roadSegments": 408,
+              "roadVertices": 816
+            },
+            "30": {
+              "buildings": 112,
+              "roadLength": 382.9750051840074,
+              "roadSegments": 514,
+              "roadVertices": 1028
+            },
+            "36": {
+              "buildings": 139,
+              "roadLength": 509.2185059196754,
+              "roadSegments": 667,
+              "roadVertices": 1334
+            },
+            "44": {
+              "buildings": 265,
+              "roadLength": 720.4318200148796,
+              "roadSegments": 967,
+              "roadVertices": 1934
+            },
+            "52": {
+              "buildings": 367,
+              "roadLength": 977.5069895462084,
+              "roadSegments": 1239,
+              "roadVertices": 2478
+            }
+          },
+          "name": "Llevant"
+        },
+        "menorca": {
+          "center": {
+            "x": 445.1680733656737,
+            "z": -121.83401159999963
+          },
+          "density": {
+            "18": {
+              "buildings": 154,
+              "roadLength": 306.27340018540644,
+              "roadSegments": 696,
+              "roadVertices": 1392
+            },
+            "24": {
+              "buildings": 182,
+              "roadLength": 399.8027999125301,
+              "roadSegments": 809,
+              "roadVertices": 1618
+            },
+            "30": {
+              "buildings": 280,
+              "roadLength": 475.75137006824303,
+              "roadSegments": 893,
+              "roadVertices": 1786
+            },
+            "36": {
+              "buildings": 455,
+              "roadLength": 559.921093532014,
+              "roadSegments": 1030,
+              "roadVertices": 2060
+            },
+            "44": {
+              "buildings": 500,
+              "roadLength": 638.9131028009858,
+              "roadSegments": 1126,
+              "roadVertices": 2252
+            },
+            "52": {
+              "buildings": 518,
+              "roadLength": 727.4192439080098,
+              "roadSegments": 1225,
+              "roadVertices": 2450
+            }
+          },
+          "name": "Menorca"
+        },
+        "palma": {
+          "center": {
+            "x": -117.867,
+            "z": 32.2196
+          },
+          "density": {
+            "18": {
+              "buildings": 119,
+              "roadLength": 200.87052514154078,
+              "roadSegments": 372,
+              "roadVertices": 744
+            },
+            "24": {
+              "buildings": 155,
+              "roadLength": 267.90656598012595,
+              "roadSegments": 497,
+              "roadVertices": 994
+            },
+            "30": {
+              "buildings": 226,
+              "roadLength": 405.29869085358024,
+              "roadSegments": 774,
+              "roadVertices": 1548
+            },
+            "36": {
+              "buildings": 278,
+              "roadLength": 519.7580896226124,
+              "roadSegments": 980,
+              "roadVertices": 1960
+            },
+            "44": {
+              "buildings": 426,
+              "roadLength": 835.5727649249565,
+              "roadSegments": 1671,
+              "roadVertices": 3342
+            },
+            "52": {
+              "buildings": 505,
+              "roadLength": 1231.6719188536392,
+              "roadSegments": 2460,
+              "roadVertices": 4920
+            }
+          },
+          "name": "Palma"
+        }
+      },
+      "totalBuildings": 5866,
+      "totalRoadVertices": 34092
+    },
+    "catalunya-litoral": {
+      "buildId": "catalunya-litoral-preview-4ba7b372d799",
+      "candidates": {
+        "barcelona": {
+          "center": {
+            "x": 6.2406,
+            "z": 49.7516
+          },
+          "density": {
+            "18": {
+              "buildings": 159,
+              "roadLength": 252.54016874570985,
+              "roadSegments": 710,
+              "roadVertices": 1420
+            },
+            "24": {
+              "buildings": 191,
+              "roadLength": 405.0832445156296,
+              "roadSegments": 1169,
+              "roadVertices": 2338
+            },
+            "30": {
+              "buildings": 224,
+              "roadLength": 520.6371477025127,
+              "roadSegments": 1415,
+              "roadVertices": 2830
+            },
+            "36": {
+              "buildings": 251,
+              "roadLength": 639.5055463585267,
+              "roadSegments": 1660,
+              "roadVertices": 3320
+            },
+            "44": {
+              "buildings": 279,
+              "roadLength": 826.8998797416101,
+              "roadSegments": 2044,
+              "roadVertices": 4088
+            },
+            "52": {
+              "buildings": 303,
+              "roadLength": 1076.4366353674168,
+              "roadSegments": 2425,
+              "roadVertices": 4850
+            }
+          },
+          "name": "Barcelona"
+        },
+        "girona": {
+          "center": {
+            "x": 179.0577,
+            "z": -161.5948
+          },
+          "density": {
+            "18": {
+              "buildings": 31,
+              "roadLength": 94.46101929296043,
+              "roadSegments": 93,
+              "roadVertices": 186
+            },
+            "24": {
+              "buildings": 51,
+              "roadLength": 159.74835187647614,
+              "roadSegments": 163,
+              "roadVertices": 326
+            },
+            "30": {
+              "buildings": 65,
+              "roadLength": 219.45431478041027,
+              "roadSegments": 215,
+              "roadVertices": 430
+            },
+            "36": {
+              "buildings": 94,
+              "roadLength": 285.46923393059024,
+              "roadSegments": 295,
+              "roadVertices": 590
+            },
+            "44": {
+              "buildings": 124,
+              "roadLength": 420.93638403345966,
+              "roadSegments": 431,
+              "roadVertices": 862
+            },
+            "52": {
+              "buildings": 178,
+              "roadLength": 625.0795891034119,
+              "roadSegments": 796,
+              "roadVertices": 1592
+            }
+          },
+          "name": "Girona"
+        },
+        "subregion-maresme": {
+          "center": {
+            "x": 93.3425,
+            "z": -8.8906
+          },
+          "density": {
+            "18": {
+              "buildings": 13,
+              "roadLength": 90.37822181523872,
+              "roadSegments": 148,
+              "roadVertices": 296
+            },
+            "24": {
+              "buildings": 44,
+              "roadLength": 142.02794658690004,
+              "roadSegments": 239,
+              "roadVertices": 478
+            },
+            "30": {
+              "buildings": 103,
+              "roadLength": 193.46682960993425,
+              "roadSegments": 299,
+              "roadVertices": 598
+            },
+            "36": {
+              "buildings": 119,
+              "roadLength": 237.6886012859781,
+              "roadSegments": 334,
+              "roadVertices": 668
+            },
+            "44": {
+              "buildings": 176,
+              "roadLength": 366.0801920619543,
+              "roadSegments": 465,
+              "roadVertices": 930
+            },
+            "52": {
+              "buildings": 208,
+              "roadLength": 472.22758686842315,
+              "roadSegments": 586,
+              "roadVertices": 1172
+            }
+          },
+          "name": "Maresme"
+        },
+        "subregion-montseny": {
+          "center": {
+            "x": 66.6732,
+            "z": -87.1275
+          },
+          "density": {
+            "18": {
+              "buildings": 22,
+              "roadLength": 0,
+              "roadSegments": 0,
+              "roadVertices": 0
+            },
+            "24": {
+              "buildings": 29,
+              "roadLength": 0,
+              "roadSegments": 0,
+              "roadVertices": 0
+            },
+            "30": {
+              "buildings": 45,
+              "roadLength": 0,
+              "roadSegments": 0,
+              "roadVertices": 0
+            },
+            "36": {
+              "buildings": 65,
+              "roadLength": 52.095459126224476,
+              "roadSegments": 69,
+              "roadVertices": 138
+            },
+            "44": {
+              "buildings": 95,
+              "roadLength": 279.2323160007528,
+              "roadSegments": 315,
+              "roadVertices": 630
+            },
+            "52": {
+              "buildings": 135,
+              "roadLength": 445.6719647471959,
+              "roadSegments": 453,
+              "roadVertices": 906
+            }
+          },
+          "name": "Montseny"
+        },
+        "subregion-montserrat": {
+          "center": {
+            "x": -85.3418,
+            "z": -23.1155
+          },
+          "density": {
+            "18": {
+              "buildings": 18,
+              "roadLength": 151.2665671242683,
+              "roadSegments": 201,
+              "roadVertices": 402
+            },
+            "24": {
+              "buildings": 34,
+              "roadLength": 242.02917817804823,
+              "roadSegments": 318,
+              "roadVertices": 636
+            },
+            "30": {
+              "buildings": 47,
+              "roadLength": 327.11022335953226,
+              "roadSegments": 434,
+              "roadVertices": 868
+            },
+            "36": {
+              "buildings": 69,
+              "roadLength": 427.30725413074435,
+              "roadSegments": 576,
+              "roadVertices": 1152
+            },
+            "44": {
+              "buildings": 101,
+              "roadLength": 681.0014931906093,
+              "roadSegments": 987,
+              "roadVertices": 1974
+            },
+            "52": {
+              "buildings": 174,
+              "roadLength": 893.5560907766642,
+              "roadSegments": 1272,
+              "roadVertices": 2544
+            }
+          },
+          "name": "Montserrat"
+        },
+        "tarragona": {
+          "center": {
+            "x": -241.4905,
+            "z": 144.4183
+          },
+          "density": {
+            "18": {
+              "buildings": 43,
+              "roadLength": 272.5389878026348,
+              "roadSegments": 318,
+              "roadVertices": 636
+            },
+            "24": {
+              "buildings": 50,
+              "roadLength": 402.09307173144,
+              "roadSegments": 449,
+              "roadVertices": 898
+            },
+            "30": {
+              "buildings": 73,
+              "roadLength": 615.1716390493043,
+              "roadSegments": 920,
+              "roadVertices": 1840
+            },
+            "36": {
+              "buildings": 89,
+              "roadLength": 702.6282584382731,
+              "roadSegments": 1085,
+              "roadVertices": 2170
+            },
+            "44": {
+              "buildings": 104,
+              "roadLength": 809.7102740966172,
+              "roadSegments": 1243,
+              "roadVertices": 2486
+            },
+            "52": {
+              "buildings": 115,
+              "roadLength": 886.932038106555,
+              "roadSegments": 1350,
+              "roadVertices": 2700
+            }
+          },
+          "name": "Tarragona"
+        }
+      },
+      "totalBuildings": 3534,
+      "totalRoadVertices": 34596
+    }
+  }
+}
