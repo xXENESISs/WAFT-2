@@ -104,3 +104,5 @@ for (const region of regions) {
 
 fs.writeFileSync(path.join(ROOT, 'world-generator/local-zone-candidate-density.json'), stableJson(report));
 process.stdout.write(stableJson(report));
+
+// Trigger analysis after workflow registration.
