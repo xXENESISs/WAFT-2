@@ -70,6 +70,7 @@ jobs:
           set +e
           log=world-generator/catalunya-litoral-preview.log
           status=world-generator/catalunya-litoral-preview-status.json
+          rm -f world-generator/catalunya-litoral-preview-public-verification.json
           : > "$log"
           wikidata_import=0
           wikidata_apply=0
@@ -166,6 +167,7 @@ jobs:
             world-generator/catalunya-litoral-preview-status.json
           )
           for path in "${optional[@]}"; do [ -e "$path" ] && git add "$path"; done
+          git add -A -- world-generator/catalunya-litoral-preview-public-verification.json
           if ! git diff --cached --quiet; then
             git commit -m "Build Catalunya litoral regional preview"
             git pull --rebase origin main
@@ -176,19 +178,34 @@ jobs:
       - name: Require local success
         if: steps.build.outputs.code != '0'
         run: exit 1
-      - name: Wait for public preview
+      - name: Wait for exact public preview
         shell: bash
         run: |
-          url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-catalunya-litoral-001.html?v=${PREVIEW_BLOB}"
-          echo "PUBLIC_PREVIEW_URL=${url}" >> "$GITHUB_ENV"
+          page_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-catalunya-litoral-001.html?v=${PREVIEW_BLOB}"
+          expected_build="$(node -p "require('./world-generator/catalunya-litoral-preview-local-browser.json').buildId")"
+          expected_sha="$(node -p "require('./world-generator/catalunya-litoral-preview-local-browser.json').binarySha256")"
+          metadata_url="https://xxenesiss.github.io/WAFT-2/regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.json?v=${expected_build}"
+          echo "PUBLIC_PREVIEW_URL=${page_url}" >> "$GITHUB_ENV"
           for attempt in $(seq 1 120); do
-            body="$(curl -fsS --max-time 20 "$url" || true)"
-            if printf '%s' "$body" | grep -q 'CATALUNYA LITORAL' && printf '%s' "$body" | grep -q 'catalunya-litoral-preview-v1.json'; then exit 0; fi
+            metadata="$(curl -fsS --max-time 20 "$metadata_url" || true)"
+            actual_build="$(printf '%s' "$metadata" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{process.stdout.write(JSON.parse(s).buildId||'')}catch{}})")"
+            actual_sha="$(printf '%s' "$metadata" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{process.stdout.write(JSON.parse(s).binary?.sha256||'')}catch{}})")"
+            if [ "$actual_build" = "$expected_build" ] && [ "$actual_sha" = "$expected_sha" ]; then exit 0; fi
             sleep 5
           done
+          echo "Expected public build ${expected_build}/${expected_sha}" >&2
           exit 1
       - name: Verify public mobile preview
         run: node world-generator/scripts/verify-region-preview-browser-v2.mjs --region catalunya-litoral --url "$PUBLIC_PREVIEW_URL" --public --output world-generator/catalunya-litoral-preview-public-verification.json --screenshot /tmp/catalunya-preview-public.png
+      - name: Require exact public build
+        run: |
+          node - <<'NODE'
+          const local = require('./world-generator/catalunya-litoral-preview-local-browser.json');
+          const published = require('./world-generator/catalunya-litoral-preview-public-verification.json');
+          if (!published.valid || !published.public) throw new Error('Public verification is not valid');
+          if (published.buildId !== local.buildId) throw new Error(`Public build mismatch: ${published.buildId}/${local.buildId}`);
+          if (published.binarySha256 !== local.binarySha256) throw new Error(`Public binary mismatch: ${published.binarySha256}/${local.binarySha256}`);
+          NODE
       - name: Recheck protected stable build
         run: test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
       - name: Commit public verification
