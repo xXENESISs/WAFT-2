@@ -1,0 +1,1 @@
+Apply compact local building footprint scales to WAFT 0.17.0.
