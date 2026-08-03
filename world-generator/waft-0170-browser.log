@@ -1,0 +1,4 @@
+Error: Palma · área metropolitana: solo undefined edificios locales
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0170-browser.mjs:24:21)
+    at enterZone (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0170-browser.mjs:75:3)
+    at async verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0170-browser.mjs:117:19)
