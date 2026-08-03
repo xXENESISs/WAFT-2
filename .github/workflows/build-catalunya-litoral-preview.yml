@@ -10,6 +10,7 @@ on:
       - world-generator/scripts/import-wikidata-landmarks.py
       - world-generator/scripts/import-wikidata-landmarks-v2.py
       - world-generator/scripts/apply-wikidata-landmarks.mjs
+      - world-generator/scripts/apply-wikidata-landmarks-v2.mjs
       - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/scripts/verify-region-preview-v2.mjs
       - world-generator/scripts/build-region-preview-page.mjs
@@ -90,7 +91,7 @@ jobs:
           }
 
           run_logged 'import selected Wikidata landmarks' python world-generator/scripts/import-wikidata-landmarks-v2.py catalunya-litoral --retrieved-on 2026-08-03 || wikidata_import=$?
-          if [ "$wikidata_import" = 0 ]; then run_logged 'rank Wikidata landmarks' node world-generator/scripts/apply-wikidata-landmarks.mjs catalunya-litoral || wikidata_apply=$?; else wikidata_apply=99; fi
+          if [ "$wikidata_import" = 0 ]; then run_logged 'rank Wikidata landmarks' node world-generator/scripts/apply-wikidata-landmarks-v2.mjs catalunya-litoral || wikidata_apply=$?; else wikidata_apply=99; fi
           if [ "$wikidata_apply" = 0 ]; then run_logged 'build compact preview' node world-generator/scripts/build-region-preview-v2.mjs catalunya-litoral || preview=$?; else preview=99; fi
           if [ "$preview" = 0 ]; then run_logged 'verify compact preview' node world-generator/scripts/verify-region-preview-v2.mjs catalunya-litoral || verify=$?; else verify=99; fi
           if [ "$verify" = 0 ]; then run_logged 'build mobile preview page' node world-generator/scripts/build-region-preview-page.mjs catalunya-litoral 001 || page=$?; else page=99; fi
@@ -119,7 +120,7 @@ jobs:
           else browser=99; fi
           if [ "$browser" = 0 ]; then
             sha256sum regions/catalunya-litoral/landmarks.json regions/catalunya-litoral/manifest.json regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.bin regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.json mallorca-mobile/region-preview-catalunya-litoral-001.html > /tmp/catalunya-preview-first.sha
-            run_logged 'deterministic Wikidata ranking' node world-generator/scripts/apply-wikidata-landmarks.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic Wikidata ranking' node world-generator/scripts/apply-wikidata-landmarks-v2.mjs catalunya-litoral || deterministic=$?
             run_logged 'deterministic preview rebuild' node world-generator/scripts/build-region-preview-v2.mjs catalunya-litoral || deterministic=$?
             run_logged 'deterministic preview verification' node world-generator/scripts/verify-region-preview-v2.mjs catalunya-litoral || deterministic=$?
             run_logged 'deterministic preview page rebuild' node world-generator/scripts/build-region-preview-page.mjs catalunya-litoral 001 || deterministic=$?
