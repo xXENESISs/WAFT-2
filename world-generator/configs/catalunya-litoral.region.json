@@ -558,7 +558,7 @@
           "lon": 1.18,
           "lat": 40.98
         },
-        "type": "land",
+        "type": "land_border",
         "arrivalHeadingDegrees": 35
       },
       {
@@ -568,7 +568,7 @@
           "lon": 2.82,
           "lat": 42.08
         },
-        "type": "land",
+        "type": "land_border",
         "arrivalHeadingDegrees": 190
       }
     ],
