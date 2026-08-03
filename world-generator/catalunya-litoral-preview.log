@@ -10,7 +10,7 @@ exit=0
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52612982,
+  "packageBytes": 52612929,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -25,8 +25,8 @@ exit=0
 == build compact preview ==
 {
   "binaryBytes": 670144,
-  "binarySha256": "b834462e0465d057eca7ab491ee278c90457b9e558931cd75fc2922ecbe26bd0",
-  "buildId": "catalunya-litoral-preview-66a8808bbaea",
+  "binarySha256": "54c93a82548b3a695a788da3ad10d91fb9dbd99d7c194fdc426274643ab54dc1",
+  "buildId": "catalunya-litoral-preview-52321295a3f2",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -58,15 +58,15 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "66a8808bbaea6b5148b1d958312e41cc12724e89eee6029e8f4d1a62fb707d20",
+  "inputsSha256": "52321295a3f22bfe794558710cee8b9b4720a40c3d28f85540ac152002673b34",
   "regionId": "catalunya-litoral",
   "valid": true
 }
 exit=0
 == verify compact preview ==
-Error: Road vertex 8 x outside bounds
+Error: Landmark 6 score invalid
     at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-region-preview-v2-generated.mjs:24:25)
-    at verifyRecords (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-region-preview-v2-generated.mjs:59:5)
+    at verifyRecords (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-region-preview-v2-generated.mjs:74:5)
     at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-region-preview-v2-generated.mjs:150:3)
     at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/.verify-region-preview-v2-generated.mjs:169:3
     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)

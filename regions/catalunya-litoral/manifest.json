@@ -61,9 +61,9 @@
       "sha256": "dcd74f7e7457f8237473c8215ec01d78f0b245f2ddd052908b4c08358da2e984"
     },
     {
-      "bytes": 284192,
+      "bytes": 284139,
       "path": "landmarks.json",
-      "sha256": "3a449a839547e4ed7e764180bb9886fac35912e9d6a3a02f3628d6c9b3675364"
+      "sha256": "caf1090662ef694f9e923a97c790a757527bf1102e243a43f0677cd3857fa8aa"
     },
     {
       "bytes": 10664,
@@ -195,7 +195,7 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 52602607,
+  "packageBytesWithoutManifest": 52602554,
   "packageEncoding": {
     "deterministic": true,
     "json": "compact-utf8-v1"
