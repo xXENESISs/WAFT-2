@@ -1,0 +1,124 @@
+== check build script ==
+exit=0
+== check browser verifier ==
+exit=0
+== build Adventure 0.15.9 ==
+{
+  "buildId": "waft-adventure-0159-ac6ed7b3aca1",
+  "capabilities": [
+    "land",
+    "long_water"
+  ],
+  "formatVersion": 1,
+  "inputsSha256": "ac6ed7b3aca11c12d39019535bf12c21052fbeea73646741ed43da32fd17be34",
+  "outputs": {
+    "adventure": "mallorca-mobile/waft-0159.html",
+    "catalunyaRuntime": "mallorca-mobile/region-runtime-catalunya-litoral-001.html"
+  },
+  "protectedInputs": {
+    "adventure0158BlobExpected": "b605801b9b18cf5d88e24968b9674db0503eef21",
+    "balearesRuntimeBlobExpected": "54efca64586886fdd2f385f928489c786f925f31"
+  },
+  "regions": {
+    "baleares": {
+      "arrival": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "departure": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "expectedBuildId": "baleares-preview-3068ab4bdb61",
+      "id": "baleares",
+      "name": "Baleares",
+      "runtime": "region-runtime-baleares-011.html"
+    },
+    "catalunya-litoral": {
+      "arrival": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      },
+      "departure": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      },
+      "expectedBuildId": "catalunya-litoral-preview-4ba7b372d799",
+      "id": "catalunya-litoral",
+      "name": "Catalunya litoral",
+      "runtime": "region-runtime-catalunya-litoral-001.html"
+    }
+  },
+  "route": {
+    "arrivals": {
+      "baleares": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "catalunya-litoral": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      }
+    },
+    "capability": "long_water",
+    "departures": {
+      "baleares": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "catalunya-litoral": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      }
+    },
+    "from": "baleares",
+    "id": "baleares-catalunya-long-water",
+    "to": "catalunya-litoral"
+  },
+  "valid": true
+}
+exit=0
+== check Adventure inline JavaScript ==
+/tmp/waft-0159-inline.mjs:42
+    errorBox.textContent = 'No se pudo abrir WAFT Adventure 0.15.9.
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at checkSyntax (node:internal/main/check_syntax:74:5)
+
+Node.js v20.20.2
+exit=1
+== check Catalunya runtime inline JavaScript ==
+exit=0
