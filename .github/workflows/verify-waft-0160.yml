@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
 
+# Registered workflow revision: run local and public mobile verification.
 concurrency:
   group: verify-waft-0160
   cancel-in-progress: true
