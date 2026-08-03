@@ -49,6 +49,12 @@ generated = replaceOnce(
   });`,
   'canonical manual landmark restoration'
 );
+generated = replaceOnce(
+  generated,
+  `    const candidate = existing ? { ...existing } : buildCandidate(source, projection, sampleTerrain, locateSector);`,
+  `    const candidate = existing ? { ...existing, score: source.score } : buildCandidate(source, projection, sampleTerrain, locateSector);`,
+  'automatic landmark base score reset'
+);
 
 fs.writeFileSync(temporaryPath, generated);
 const result = spawnSync(process.execPath, [temporaryPath, ...process.argv.slice(2)], { cwd: ROOT, stdio: 'inherit' });
