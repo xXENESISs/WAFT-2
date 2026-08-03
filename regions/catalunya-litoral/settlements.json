@@ -1,52 +1,7 @@
 {
   "formatVersion": 1,
-  "generationStage": "manual-seed-points",
+  "generationStage": "openstreetmap-settlements",
   "items": [
-    {
-      "id": "barcelona",
-      "local": {
-        "x": 6.2406,
-        "y": 25,
-        "z": 49.7516
-      },
-      "name": "Barcelona",
-      "position": {
-        "lat": 41.3851,
-        "lon": 2.1734
-      },
-      "sectorId": "s-04-03",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "tarragona",
-      "local": {
-        "x": -241.4905,
-        "y": 32,
-        "z": 144.4183
-      },
-      "name": "Tarragona",
-      "position": {
-        "lat": 41.1189,
-        "lon": 1.2445
-      },
-      "sectorId": "s-00-05",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "girona",
-      "local": {
-        "x": 179.0577,
-        "y": 81,
-        "z": -161.5948
-      },
-      "name": "Girona",
-      "position": {
-        "lat": 41.9794,
-        "lon": 2.8214
-      },
-      "sectorId": "s-06-00",
-      "terrainStatus": "exact-cell"
-    },
     {
       "id": "badalona",
       "local": {
@@ -59,82 +14,26 @@
         "lat": 41.4501,
         "lon": 2.2474
       },
+      "protected": true,
       "sectorId": "s-04-03",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     },
     {
-      "id": "mataro",
+      "id": "barcelona",
       "local": {
-        "x": 78.5411,
-        "y": 24,
-        "z": -4.6587
-      },
-      "name": "Mataró",
-      "position": {
-        "lat": 41.5381,
-        "lon": 2.4445
-      },
-      "sectorId": "s-05-03",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "sabadell",
-      "local": {
-        "x": -10.8277,
-        "y": 196,
-        "z": -7.5748
-      },
-      "name": "Sabadell",
-      "position": {
-        "lat": 41.5463,
-        "lon": 2.1094
-      },
-      "sectorId": "s-03-03",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "terrassa",
-      "local": {
-        "x": -37.6304,
-        "y": 284,
-        "z": -13.5848
-      },
-      "name": "Terrassa",
-      "position": {
-        "lat": 41.5632,
-        "lon": 2.0089
-      },
-      "sectorId": "s-03-02",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "vilanova-geltru",
-      "local": {
-        "x": -113.2912,
-        "y": 23,
-        "z": 107.0779
-      },
-      "name": "Vilanova i la Geltrú",
-      "position": {
-        "lat": 41.2239,
-        "lon": 1.7252
-      },
-      "sectorId": "s-02-04",
-      "terrainStatus": "exact-cell"
-    },
-    {
-      "id": "sitges",
-      "local": {
-        "x": -90.1689,
+        "x": 6.2406,
         "y": 25,
-        "z": 102.3481
+        "z": 49.7516
       },
-      "name": "Sitges",
+      "name": "Barcelona",
       "position": {
-        "lat": 41.2372,
-        "lon": 1.8119
+        "lat": 41.3851,
+        "lon": 2.1734
       },
-      "sectorId": "s-02-04",
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     },
     {
@@ -149,10 +48,2371 @@
         "lat": 41.6742,
         "lon": 2.7902
       },
+      "protected": true,
       "sectorId": "s-06-02",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "girona",
+      "local": {
+        "x": 179.0577,
+        "y": 81,
+        "z": -161.5948
+      },
+      "name": "Girona",
+      "position": {
+        "lat": 41.9794,
+        "lon": 2.8214
+      },
+      "protected": true,
+      "sectorId": "s-06-00",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "mataro",
+      "local": {
+        "x": 78.5411,
+        "y": 24,
+        "z": -4.6587
+      },
+      "name": "Mataró",
+      "position": {
+        "lat": 41.5381,
+        "lon": 2.4445
+      },
+      "protected": true,
+      "sectorId": "s-05-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1389000150",
+      "local": {
+        "x": -28.0993,
+        "y": 34,
+        "z": 51.1082
+      },
+      "name": "Sant Feliu de Llobregat",
+      "place": "town",
+      "population": 46688,
+      "position": {
+        "lat": 41.3812851,
+        "lon": 2.0446381
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1389000150",
+      "tags": {
+        "name": "Sant Feliu de Llobregat",
+        "name:ca": "Sant Feliu de Llobregat",
+        "place": "town",
+        "population": "46688",
+        "wikidata": "Q15639",
+        "wikipedia": "ca:Sant Feliu de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1389000241",
+      "local": {
+        "x": -40.8745,
+        "y": 51,
+        "z": 36.52
+      },
+      "name": "Pallejà",
+      "place": "town",
+      "population": 9684,
+      "position": {
+        "lat": 41.4223067,
+        "lon": 1.9967356
+      },
+      "priority": 116.89,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1389000241",
+      "tags": {
+        "name": "Pallejà",
+        "name:ca": "Pallejà",
+        "place": "town",
+        "population": "9684",
+        "wikidata": "Q15627",
+        "wikipedia": "ca:Pallejà"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460477981",
+      "local": {
+        "x": -6.2422,
+        "y": 136,
+        "z": 2.7549
+      },
+      "name": "Barberà del Vallès",
+      "place": "town",
+      "population": 26572,
+      "position": {
+        "lat": 41.5172534,
+        "lon": 2.1265942
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1460477981",
+      "tags": {
+        "name": "Barberà del Vallès",
+        "name:ca": "Barberà del Vallès",
+        "place": "town",
+        "population": "26572",
+        "wikidata": "Q13916",
+        "wikipedia": "ca:Barberà del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460478465",
+      "local": {
+        "x": -74.5158,
+        "y": 181,
+        "z": -4.9586
+      },
+      "name": "Esparreguera",
+      "place": "town",
+      "population": 17801,
+      "position": {
+        "lat": 41.5389434,
+        "lon": 1.8705935
+      },
+      "priority": 119,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1460478465",
+      "tags": {
+        "name": "Esparreguera",
+        "name:ca": "Esparreguera",
+        "place": "town",
+        "population": "17801",
+        "wikidata": "Q15620",
+        "wikipedia": "ca:Esparreguera"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460478559",
+      "local": {
+        "x": -201.0996,
+        "y": 28,
+        "z": 134.7258
+      },
+      "name": "Torredembarra",
+      "place": "town",
+      "population": 16405,
+      "position": {
+        "lat": 41.146155,
+        "lon": 1.3959508
+      },
+      "priority": 118.72,
+      "sectorId": "s-01-05",
+      "source": "openstreetmap",
+      "sourceId": "n1460478559",
+      "tags": {
+        "name": "Torredembarra",
+        "name:ca": "Torredembarra",
+        "place": "town",
+        "population": "16405",
+        "wikidata": "Q995637",
+        "wikipedia": "ca:Torredembarra"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460478645",
+      "local": {
+        "x": 157.7237,
+        "y": 9,
+        "z": -42.9989
+      },
+      "name": "Malgrat de Mar",
+      "place": "town",
+      "population": 19630,
+      "position": {
+        "lat": 41.6459118,
+        "lon": 2.7414054
+      },
+      "priority": 119.34,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n1460478645",
+      "tags": {
+        "name": "Malgrat de Mar",
+        "name:ca": "Malgrat de Mar",
+        "place": "town",
+        "population": "19630",
+        "wikidata": "Q12590",
+        "wikipedia": "ca:Malgrat de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460478680",
+      "local": {
+        "x": 11.5005,
+        "y": 55,
+        "z": 4.2252
+      },
+      "name": "la Llagosta",
+      "place": "town",
+      "population": 13252,
+      "position": {
+        "lat": 41.5131188,
+        "lon": 2.1931226
+      },
+      "priority": 117.98,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1460478680",
+      "tags": {
+        "name": "la Llagosta",
+        "name:ca": "la Llagosta",
+        "place": "town",
+        "population": "13252",
+        "wikidata": "Q15422",
+        "wikipedia": "ca:La Llagosta"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1460478908",
+      "local": {
+        "x": -16.3681,
+        "y": 93,
+        "z": 52.3443
+      },
+      "name": "Esplugues de Llobregat",
+      "place": "town",
+      "population": 48424,
+      "position": {
+        "lat": 41.3778094,
+        "lon": 2.0886257
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1460478908",
+      "tags": {
+        "name": "Esplugues de Llobregat",
+        "name:ca": "Esplugues de Llobregat",
+        "place": "town",
+        "population": "48424",
+        "wikidata": "Q15621",
+        "wikipedia": "ca:Esplugues de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838013",
+      "local": {
+        "x": 106.4522,
+        "y": 41,
+        "z": -19.4536
+      },
+      "name": "Arenys de Mar",
+      "place": "town",
+      "population": 14801,
+      "position": {
+        "lat": 41.5797031,
+        "lon": 2.5491562
+      },
+      "priority": 118.36,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838013",
+      "tags": {
+        "name": "Arenys de Mar",
+        "name:ca": "Arenys de Mar",
+        "place": "town",
+        "population": "14801",
+        "wikidata": "Q12110",
+        "wikipedia": "ca:Arenys de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838014",
+      "local": {
+        "x": 66.7476,
+        "y": 111,
+        "z": -10.8225
+      },
+      "name": "Argentona",
+      "place": "town",
+      "population": 9218,
+      "position": {
+        "lat": 41.5554326,
+        "lon": 2.4002787
+      },
+      "priority": 116.72,
+      "sectorId": "s-05-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838014",
+      "tags": {
+        "name": "Argentona",
+        "name:ca": "Argentona",
+        "place": "town",
+        "population": "9218",
+        "wikidata": "Q11539",
+        "wikipedia": "ca:Argentona"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838085",
+      "local": {
+        "x": 164.1124,
+        "y": 163,
+        "z": -210.901
+      },
+      "name": "Banyoles",
+      "place": "town",
+      "population": 20724,
+      "position": {
+        "lat": 42.1180477,
+        "lon": 2.7653607
+      },
+      "priority": 119.53,
+      "sectorId": "s-06-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470838085",
+      "tags": {
+        "name": "Banyoles",
+        "name:ca": "Banyoles",
+        "name:es": "Banyoles",
+        "place": "town",
+        "population": "20724",
+        "wikidata": "Q13614",
+        "wikipedia": "ca:Banyoles"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838103",
+      "local": {
+        "x": -81.2145,
+        "y": 670,
+        "z": -204.8903
+      },
+      "name": "Berga",
+      "place": "town",
+      "population": 15977,
+      "position": {
+        "lat": 42.1011456,
+        "lon": 1.8454758
+      },
+      "priority": 118.63,
+      "sectorId": "s-02-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470838103",
+      "tags": {
+        "name": "Berga",
+        "name:ca": "Berga",
+        "place": "town",
+        "population": "15977",
+        "wikidata": "Q15487",
+        "wikipedia": "ca:Berga"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838164",
+      "local": {
+        "x": 3.3636,
+        "y": 221,
+        "z": -38.9336
+      },
+      "name": "Caldes de Montbui",
+      "place": "town",
+      "population": 13692,
+      "position": {
+        "lat": 41.6344802,
+        "lon": 2.1626124
+      },
+      "priority": 118.09,
+      "sectorId": "s-04-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838164",
+      "tags": {
+        "name": "Caldes de Montbui",
+        "name:ca": "Caldes de Montbui",
+        "place": "town",
+        "population": "13692",
+        "wikidata": "Q15400",
+        "wikipedia": "ca:Caldes de Montbui"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838165",
+      "local": {
+        "x": 135.3761,
+        "y": 12,
+        "z": -31.3988
+      },
+      "name": "Calella",
+      "place": "town",
+      "population": 19379,
+      "position": {
+        "lat": 41.6132925,
+        "lon": 2.6576102
+      },
+      "priority": 119.3,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838165",
+      "tags": {
+        "name": "Calella",
+        "name:ca": "Calella",
+        "place": "town",
+        "population": "19379",
+        "wikidata": "Q12540",
+        "wikipedia": "ca:Calella"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838178",
+      "local": {
+        "x": 114.0912,
+        "y": 34,
+        "z": -23.1486
+      },
+      "name": "Canet de Mar",
+      "place": "town",
+      "population": 15082,
+      "position": {
+        "lat": 41.5900933,
+        "lon": 2.5777998
+      },
+      "priority": 118.43,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838178",
+      "tags": {
+        "name": "Canet de Mar",
+        "name:ca": "Canet de Mar",
+        "place": "town",
+        "population": "15082",
+        "wikidata": "Q12114",
+        "wikipedia": "ca:Canet de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838185",
+      "local": {
+        "x": 54.8963,
+        "y": 194,
+        "z": -40.3691
+      },
+      "name": "Cardedeu",
+      "place": "town",
+      "population": 18707,
+      "position": {
+        "lat": 41.6385167,
+        "lon": 2.3558408
+      },
+      "priority": 119.18,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838185",
+      "tags": {
+        "name": "Cardedeu",
+        "name:ca": "Cardedeu",
+        "place": "town",
+        "population": "18707",
+        "wikidata": "Q15406",
+        "wikipedia": "ca:Cardedeu"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838199",
+      "local": {
+        "x": -16.5504,
+        "y": 353,
+        "z": -33.1949
+      },
+      "name": "Castellar del Vallès",
+      "place": "town",
+      "population": 19744,
+      "position": {
+        "lat": 41.6183431,
+        "lon": 2.0879423
+      },
+      "priority": 119.36,
+      "sectorId": "s-03-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838199",
+      "tags": {
+        "name": "Castellar del Vallès",
+        "name:ca": "Castellar del Vallès",
+        "place": "town",
+        "population": "19744",
+        "wikidata": "Q13918",
+        "wikipedia": "ca:Castellar del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838201",
+      "local": {
+        "x": -44.6931,
+        "y": 13,
+        "z": 84.9574
+      },
+      "name": "Castelldefels",
+      "place": "town",
+      "population": 69689,
+      "position": {
+        "lat": 41.2861022,
+        "lon": 1.9824173
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838201",
+      "tags": {
+        "name": "Castelldefels",
+        "name:ca": "Castelldefels",
+        "place": "town",
+        "population": "69689",
+        "wikidata": "Q15597",
+        "wikipedia": "ca:Castelldefels"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838211",
+      "local": {
+        "x": -233.9051,
+        "y": 553,
+        "z": -52.6558
+      },
+      "name": "Cervera",
+      "place": "town",
+      "population": 9537,
+      "position": {
+        "lat": 41.6730667,
+        "lon": 1.2729426
+      },
+      "priority": 116.84,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838211",
+      "tags": {
+        "name": "Cervera",
+        "name:ca": "Cervera",
+        "place": "town",
+        "population": "9537",
+        "wikidata": "Q847011",
+        "wikipedia": "ca:Cervera"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838232",
+      "local": {
+        "x": -21.1694,
+        "y": 27,
+        "z": 60.1983
+      },
+      "name": "Cornellà de Llobregat",
+      "place": "city",
+      "population": 78614,
+      "position": {
+        "lat": 41.355724,
+        "lon": 2.0706225
+      },
+      "priority": 135,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838232",
+      "tags": {
+        "name": "Cornellà de Llobregat",
+        "name:ca": "Cornellà de Llobregat",
+        "place": "city",
+        "population": "78614",
+        "wikidata": "Q15602",
+        "wikipedia": "ca:Cornellà de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838245",
+      "local": {
+        "x": -137.491,
+        "y": 11,
+        "z": 116.4322
+      },
+      "name": "Cunit",
+      "place": "town",
+      "population": 16283,
+      "position": {
+        "lat": 41.197596,
+        "lon": 1.6344596
+      },
+      "priority": 118.69,
+      "sectorId": "s-02-05",
+      "source": "openstreetmap",
+      "sourceId": "n1470838245",
+      "tags": {
+        "name": "Cunit",
+        "name:ca": "Cunit",
+        "place": "town",
+        "population": "16283",
+        "wikidata": "Q474489"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838263",
+      "local": {
+        "x": 43.1602,
+        "y": 25,
+        "z": 16.1133
+      },
+      "name": "el Masnou",
+      "place": "town",
+      "population": 24727,
+      "position": {
+        "lat": 41.4796899,
+        "lon": 2.3118347
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838263",
+      "tags": {
+        "name": "el Masnou",
+        "name:ca": "el Masnou",
+        "place": "town",
+        "population": "24727",
+        "wikidata": "Q12039",
+        "wikipedia": "ca:El Masnou"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838266",
+      "local": {
+        "x": -15.1798,
+        "y": 9,
+        "z": 69.1359
+      },
+      "name": "el Prat de Llobregat",
+      "place": "town",
+      "population": 65980,
+      "position": {
+        "lat": 41.3305918,
+        "lon": 2.0930815
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838266",
+      "tags": {
+        "name": "el Prat de Llobregat",
+        "name:ca": "el Prat de Llobregat",
+        "place": "town",
+        "population": "65980",
+        "wikidata": "Q15619",
+        "wikipedia": "ca:El Prat de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838269",
+      "local": {
+        "x": -164.0544,
+        "y": 54,
+        "z": 108.4763
+      },
+      "name": "el Vendrell",
+      "place": "town",
+      "population": 30565,
+      "position": {
+        "lat": 41.2199677,
+        "lon": 1.5348566
+      },
+      "priority": 120,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838269",
+      "tags": {
+        "name": "el Vendrell",
+        "name:ca": "el Vendrell",
+        "place": "town",
+        "population": "30565",
+        "wikidata": "Q929759",
+        "wikipedia": "ca:El Vendrell"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838298",
+      "local": {
+        "x": -38.3204,
+        "y": 16,
+        "z": 78.2037
+      },
+      "name": "Gavà",
+      "place": "town",
+      "population": 48181,
+      "position": {
+        "lat": 41.3050933,
+        "lon": 2.0063126
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838298",
+      "tags": {
+        "name": "Gavà",
+        "name:ca": "Gavà",
+        "place": "town",
+        "population": "48181",
+        "wikidata": "Q15622",
+        "wikipedia": "ca:Gavà"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838306",
+      "local": {
+        "x": 36.6972,
+        "y": 152,
+        "z": -29.5008
+      },
+      "name": "Granollers",
+      "place": "town",
+      "population": 64628,
+      "position": {
+        "lat": 41.6079555,
+        "lon": 2.2876008
+      },
+      "priority": 120,
+      "sectorId": "s-04-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838306",
+      "tags": {
+        "name": "Granollers",
+        "name:ca": "Granollers",
+        "place": "town",
+        "population": "64628",
+        "wikidata": "Q15420"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838412",
+      "local": {
+        "x": -142.0551,
+        "y": 309,
+        "z": -19.2101
+      },
+      "name": "Igualada",
+      "place": "town",
+      "population": 42449,
+      "position": {
+        "lat": 41.5790182,
+        "lon": 1.617346
+      },
+      "priority": 120,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838412",
+      "tags": {
+        "name": "Igualada",
+        "name:ca": "Igualada",
+        "place": "town",
+        "population": "42449",
+        "wikidata": "Q15950",
+        "wikipedia": "ca:Igualada"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838432",
+      "local": {
+        "x": 237.2543,
+        "y": 42,
+        "z": -154.6491
+      },
+      "name": "la Bisbal d'Empordà",
+      "place": "town",
+      "population": 11599,
+      "position": {
+        "lat": 41.9598687,
+        "lon": 3.039616
+      },
+      "priority": 117.52,
+      "sectorId": "s-07-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470838432",
+      "tags": {
+        "name": "la Bisbal d'Empordà",
+        "name:ca": "la Bisbal d'Empordà",
+        "place": "town",
+        "population": "11599",
+        "wikidata": "Q13460",
+        "wikipedia": "ca:La Bisbal d'Empordà"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838435",
+      "local": {
+        "x": 36.4248,
+        "y": 247,
+        "z": -56.868
+      },
+      "name": "la Garriga",
+      "place": "town",
+      "population": 17272,
+      "position": {
+        "lat": 41.6849111,
+        "lon": 2.2865796
+      },
+      "priority": 118.9,
+      "sectorId": "s-04-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838435",
+      "tags": {
+        "name": "la Garriga",
+        "name:ca": "la Garriga",
+        "place": "town",
+        "population": "17272",
+        "wikidata": "Q15415",
+        "wikipedia": "ca:La Garriga"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838480",
+      "local": {
+        "x": 186.0005,
+        "y": 15,
+        "z": -61.7678
+      },
+      "name": "Lloret de Mar",
+      "place": "town",
+      "population": 36533,
+      "position": {
+        "lat": 41.6986894,
+        "lon": 2.8474332
+      },
+      "priority": 120,
+      "sectorId": "s-07-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838480",
+      "tags": {
+        "name": "Lloret de Mar",
+        "name:ca": "Lloret de Mar",
+        "place": "town",
+        "population": "36533",
+        "wikidata": "Q12977"
+      },
+      "terrainStatus": "nearest-land-cell"
+    },
+    {
+      "id": "osm-n1470838507",
+      "local": {
+        "x": 35.7678,
+        "y": 450,
+        "z": -168.9139
+      },
+      "name": "Manlleu",
+      "place": "town",
+      "population": 21046,
+      "position": {
+        "lat": 41.9999811,
+        "lon": 2.2841159
+      },
+      "priority": 119.59,
+      "sectorId": "s-04-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470838507",
+      "tags": {
+        "name": "Manlleu",
+        "name:ca": "Manlleu",
+        "place": "town",
+        "population": "21046",
+        "wikidata": "Q13804",
+        "wikipedia": "ca:Manlleu"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838508",
+      "local": {
+        "x": -85.6947,
+        "y": 255,
+        "z": -72.5092
+      },
+      "name": "Manresa",
+      "place": "city",
+      "population": 78191,
+      "position": {
+        "lat": 41.7288939,
+        "lon": 1.8286765
+      },
+      "priority": 135,
+      "sectorId": "s-02-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838508",
+      "tags": {
+        "name": "Manresa",
+        "name:ca": "Manresa",
+        "place": "city",
+        "population": "78191",
+        "wikidata": "Q16697",
+        "wikipedia": "ca:Manresa"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838514",
+      "local": {
+        "x": -58.4815,
+        "y": 55,
+        "z": 17.9985
+      },
+      "name": "Martorell",
+      "place": "town",
+      "population": 28821,
+      "position": {
+        "lat": 41.4743886,
+        "lon": 1.9307159
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838514",
+      "tags": {
+        "name": "Martorell",
+        "name:ca": "Martorell",
+        "place": "town",
+        "population": "28821",
+        "wikidata": "Q15623",
+        "wikipedia": "ca:Martorell"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838538",
+      "local": {
+        "x": -35.7468,
+        "y": 30,
+        "z": 39.5421
+      },
+      "name": "Molins de Rei",
+      "place": "town",
+      "population": 26441,
+      "position": {
+        "lat": 41.4138087,
+        "lon": 2.0159626
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838538",
+      "tags": {
+        "name": "Molins de Rei",
+        "name:ca": "Molins de Rei",
+        "place": "town",
+        "population": "26441",
+        "wikidata": "Q15624",
+        "wikipedia": "ca:Molins de Rei"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838541",
+      "local": {
+        "x": 16.8266,
+        "y": 66,
+        "z": -5.1026
+      },
+      "name": "Mollet del Vallès",
+      "place": "town",
+      "population": 52604,
+      "position": {
+        "lat": 41.5393484,
+        "lon": 2.2130934
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838541",
+      "tags": {
+        "name": "Mollet del Vallès",
+        "name:ca": "Mollet del Vallès",
+        "place": "town",
+        "population": "52604",
+        "wikidata": "Q15430",
+        "wikipedia": "ca:Mollet del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838556",
+      "local": {
+        "x": 31.2179,
+        "y": 102,
+        "z": -6.2394
+      },
+      "name": "Montornès del Vallès",
+      "place": "town",
+      "population": 13265,
+      "position": {
+        "lat": 41.542545,
+        "lon": 2.2670557
+      },
+      "priority": 117.98,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838556",
+      "tags": {
+        "name": "Montornès del Vallès",
+        "name:ca": "Montornès del Vallès",
+        "place": "town",
+        "population": "13265",
+        "wikidata": "Q15433",
+        "wikipedia": "ca:Montornès del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838615",
+      "local": {
+        "x": -68.9719,
+        "y": 111,
+        "z": -6.7431
+      },
+      "name": "Olesa de Montserrat",
+      "place": "town",
+      "population": 24248,
+      "position": {
+        "lat": 41.5439614,
+        "lon": 1.8913809
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838615",
+      "tags": {
+        "name": "Olesa de Montserrat",
+        "name:ca": "Olesa de Montserrat",
+        "place": "town",
+        "population": "24248",
+        "wikidata": "Q15626",
+        "wikipedia": "ca:Olesa de Montserrat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838631",
+      "local": {
+        "x": 269.8908,
+        "y": 82,
+        "z": -139.8883
+      },
+      "name": "Palafrugell",
+      "place": "town",
+      "population": 22696,
+      "position": {
+        "lat": 41.9183618,
+        "lon": 3.1619905
+      },
+      "priority": 119.85,
+      "sectorId": "s-08-01",
+      "source": "openstreetmap",
+      "sourceId": "n1470838631",
+      "tags": {
+        "name": "Palafrugell",
+        "name:ca": "Palafrugell",
+        "place": "town",
+        "population": "22696",
+        "wikidata": "Q13490",
+        "wikipedia": "ca:Palafrugell"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838632",
+      "local": {
+        "x": 260.7933,
+        "y": 7,
+        "z": -115.4121
+      },
+      "name": "Palamós",
+      "place": "town",
+      "population": 9926,
+      "position": {
+        "lat": 41.8495354,
+        "lon": 3.1278785
+      },
+      "priority": 116.97,
+      "sectorId": "s-08-01",
+      "source": "openstreetmap",
+      "sourceId": "n1470838632",
+      "tags": {
+        "name": "Palamós",
+        "name:ca": "Palamós",
+        "place": "town",
+        "population": "9926",
+        "wikidata": "Q13491",
+        "wikipedia": "ca:Palamós"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838702",
+      "local": {
+        "x": 143.9797,
+        "y": 19,
+        "z": -36.5156
+      },
+      "name": "Pineda de Mar",
+      "place": "town",
+      "population": 16560,
+      "position": {
+        "lat": 41.6276807,
+        "lon": 2.6898707
+      },
+      "priority": 118.75,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470838702",
+      "tags": {
+        "name": "Pineda de Mar",
+        "name:ca": "Pineda de Mar",
+        "place": "town",
+        "population": "16560",
+        "wikidata": "Q12552",
+        "wikipedia": "ca:Pineda de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838783",
+      "local": {
+        "x": 56.1614,
+        "y": 23,
+        "z": 11.4929
+      },
+      "name": "Premià de Mar",
+      "place": "town",
+      "population": 29348,
+      "position": {
+        "lat": 41.4926822,
+        "lon": 2.3605846
+      },
+      "priority": 120,
+      "sectorId": "s-05-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838783",
+      "tags": {
+        "name": "Premià de Mar",
+        "name:ca": "Premià de Mar",
+        "place": "town",
+        "population": "29348",
+        "wikidata": "Q12046",
+        "wikipedia": "ca:Premià de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838821",
+      "local": {
+        "x": -268.2822,
+        "y": 19,
+        "z": 159.3831
+      },
+      "name": "Salou",
+      "place": "town",
+      "population": 27270,
+      "position": {
+        "lat": 41.0768193,
+        "lon": 1.1440411
+      },
+      "priority": 120,
+      "sectorId": "s-00-05",
+      "source": "openstreetmap",
+      "sourceId": "n1470838821",
+      "tags": {
+        "name": "Salou",
+        "name:ca": "Salou",
+        "place": "town",
+        "population": "27270",
+        "wikidata": "Q662789",
+        "wikipedia": "ca:Salou"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838822",
+      "local": {
+        "x": 172.0139,
+        "y": 88,
+        "z": -159.7339
+      },
+      "name": "Salt",
+      "place": "town",
+      "population": 34585,
+      "position": {
+        "lat": 41.9741672,
+        "lon": 2.7949886
+      },
+      "priority": 120,
+      "sectorId": "s-06-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470838822",
+      "tags": {
+        "name": "Salt",
+        "name:ca": "Salt",
+        "place": "town",
+        "population": "34585",
+        "wikidata": "Q13444",
+        "wikipedia": "ca:Salt"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838823",
+      "local": {
+        "x": 18.2091,
+        "y": 15,
+        "z": 33.6123
+      },
+      "name": "Sant Adrià de Besòs",
+      "place": "town",
+      "population": 38980,
+      "position": {
+        "lat": 41.4304832,
+        "lon": 2.2182775
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838823",
+      "tags": {
+        "name": "Sant Adrià de Besòs",
+        "name:ca": "Sant Adrià de Besòs",
+        "place": "town",
+        "population": "38980",
+        "wikidata": "Q15471",
+        "wikipedia": "ca:Sant Adrià de Besòs"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838825",
+      "local": {
+        "x": -28.9716,
+        "y": 24,
+        "z": 63.6908
+      },
+      "name": "Sant Boi de Llobregat",
+      "place": "city",
+      "population": 85317,
+      "position": {
+        "lat": 41.3459033,
+        "lon": 2.0413673
+      },
+      "priority": 135,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838825",
+      "tags": {
+        "name": "Sant Boi de Llobregat",
+        "name:ca": "Sant Boi de Llobregat",
+        "name:es": "Sant Boi de Llobregat",
+        "place": "city",
+        "population": "85317",
+        "wikidata": "Q23992295",
+        "wikipedia": "ca:Sant Boi de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838828",
+      "local": {
+        "x": -17.3666,
+        "y": 123,
+        "z": 19.2771
+      },
+      "name": "Sant Cugat del Vallès",
+      "place": "city",
+      "population": 65030,
+      "position": {
+        "lat": 41.4707933,
+        "lon": 2.0848815
+      },
+      "priority": 135,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838828",
+      "tags": {
+        "name": "Sant Cugat del Vallès",
+        "name:ca": "Sant Cugat del Vallès",
+        "place": "city",
+        "population": "65030",
+        "wikidata": "Q13936"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838830",
+      "local": {
+        "x": 234.2416,
+        "y": 19,
+        "z": -92.0645
+      },
+      "name": "Sant Feliu de Guíxols",
+      "place": "town",
+      "population": 22411,
+      "position": {
+        "lat": 41.7838827,
+        "lon": 3.0283195
+      },
+      "priority": 119.8,
+      "sectorId": "s-07-01",
+      "source": "openstreetmap",
+      "sourceId": "n1470838830",
+      "tags": {
+        "name": "Sant Feliu de Guíxols",
+        "name:ca": "Sant Feliu de Guíxols",
+        "name:es": "Sant Feliu de Guíxols",
+        "place": "town",
+        "population": "22411",
+        "wikidata": "Q13521",
+        "wikipedia": "ca:Sant Feliu de Guíxols"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838836",
+      "local": {
+        "x": -24.7932,
+        "y": 24,
+        "z": 56.2612
+      },
+      "name": "Sant Joan Despí",
+      "place": "town",
+      "population": 35627,
+      "position": {
+        "lat": 41.3667951,
+        "lon": 2.0570346
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838836",
+      "tags": {
+        "name": "Sant Joan Despí",
+        "name:ca": "Sant Joan Despí",
+        "place": "town",
+        "population": "35627",
+        "wikidata": "Q15640",
+        "wikipedia": "ca:Sant Joan Despí"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838887",
+      "local": {
+        "x": -19.7979,
+        "y": 137,
+        "z": 49.4921
+      },
+      "name": "Sant Just Desvern",
+      "place": "town",
+      "population": 21045,
+      "position": {
+        "lat": 41.3858295,
+        "lon": 2.0757651
+      },
+      "priority": 119.59,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470838887",
+      "tags": {
+        "name": "Sant Just Desvern",
+        "name:ca": "Sant Just Desvern",
+        "place": "town",
+        "population": "21045",
+        "wikidata": "Q15641",
+        "wikipedia": "ca:Sant Just Desvern"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470838938",
+      "local": {
+        "x": -100.7738,
+        "y": 50,
+        "z": 93.5565
+      },
+      "name": "Sant Pere de Ribes",
+      "place": "town",
+      "population": 13091,
+      "position": {
+        "lat": 41.2619218,
+        "lon": 1.7721357
+      },
+      "priority": 117.94,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470838938",
+      "tags": {
+        "name": "Sant Pere de Ribes",
+        "name:ca": "Sant Pere de Ribes",
+        "place": "town",
+        "population": "13091",
+        "wikidata": "Q15555",
+        "wikipedia": "ca:Sant Pere de Ribes"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839142",
+      "local": {
+        "x": 88.7596,
+        "y": 123,
+        "z": -17.4086
+      },
+      "name": "Sant Andreu de Llavaneres",
+      "place": "town",
+      "population": 11910,
+      "position": {
+        "lat": 41.5739524,
+        "lon": 2.4828158
+      },
+      "priority": 117.61,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470839142",
+      "tags": {
+        "name": "Sant Andreu de Llavaneres",
+        "name:ca": "Sant Andreu de Llavaneres",
+        "name:es": "Sant Andreu de Llavaneres",
+        "place": "town",
+        "population": "11910",
+        "wikidata": "Q12093",
+        "wikipedia": "ca:Sant Andreu de Llavaneres"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839144",
+      "local": {
+        "x": -47.4742,
+        "y": 43,
+        "z": 26.6837
+      },
+      "name": "Sant Andreu de la Barca",
+      "place": "town",
+      "population": 27069,
+      "position": {
+        "lat": 41.4499661,
+        "lon": 1.9719894
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470839144",
+      "tags": {
+        "name": "Sant Andreu de la Barca",
+        "name:ca": "Sant Andreu de la Barca",
+        "place": "town",
+        "population": "27069",
+        "wikidata": "Q15634",
+        "wikipedia": "ca:Sant Andreu de la Barca"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839184",
+      "local": {
+        "x": -92.3758,
+        "y": 231,
+        "z": -77.2438
+      },
+      "name": "Sant Joan de Vilatorrada",
+      "place": "town",
+      "population": 10872,
+      "position": {
+        "lat": 41.7422073,
+        "lon": 1.803625
+      },
+      "priority": 117.29,
+      "sectorId": "s-02-01",
+      "source": "openstreetmap",
+      "sourceId": "n1470839184",
+      "tags": {
+        "name": "Sant Joan de Vilatorrada",
+        "name:ca": "Sant Joan de Vilatorrada",
+        "name:es": "Sant Joan de Vilatorrada",
+        "place": "town",
+        "population": "10872",
+        "wikidata": "Q16731",
+        "wikipedia": "ca:Sant Joan de Vilatorrada"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839216",
+      "local": {
+        "x": -37.3508,
+        "y": 26,
+        "z": 46.793
+      },
+      "name": "Sant Vicenç dels Horts",
+      "place": "town",
+      "population": 28758,
+      "position": {
+        "lat": 41.3934193,
+        "lon": 2.0099482
+      },
+      "priority": 120,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470839216",
+      "tags": {
+        "name": "Sant Vicenç dels Horts",
+        "name:ca": "Sant Vicenç dels Horts",
+        "name:es": "Sant Vicenç dels Horts",
+        "place": "town",
+        "population": "28758",
+        "wikidata": "Q15649",
+        "wikipedia": "ca:Sant Vicenç dels Horts"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839251",
+      "local": {
+        "x": 137.5882,
+        "y": 133,
+        "z": -119.2441
+      },
+      "name": "Santa Coloma de Farners",
+      "place": "town",
+      "population": 12228,
+      "position": {
+        "lat": 41.8603109,
+        "lon": 2.6659047
+      },
+      "priority": 117.7,
+      "sectorId": "s-06-01",
+      "source": "openstreetmap",
+      "sourceId": "n1470839251",
+      "tags": {
+        "name": "Santa Coloma de Farners",
+        "name:ca": "Santa Coloma de Farners",
+        "place": "town",
+        "population": "12228",
+        "wikidata": "Q13032",
+        "wikipedia": "ca:Santa Coloma de Farners"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839326",
+      "local": {
+        "x": 8.9556,
+        "y": 72,
+        "z": -3.316
+      },
+      "name": "Santa Perpètua de Mogoda",
+      "place": "town",
+      "population": 18282,
+      "position": {
+        "lat": 41.5343245,
+        "lon": 2.1835803
+      },
+      "priority": 119.1,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470839326",
+      "tags": {
+        "name": "Santa Perpètua de Mogoda",
+        "name:ca": "Santa Perpètua de Mogoda",
+        "place": "town",
+        "population": "18282",
+        "wikidata": "Q13941",
+        "wikipedia": "ca:Santa Perpètua de Mogoda"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839444",
+      "local": {
+        "x": -2.5201,
+        "y": 86,
+        "z": 12.0922
+      },
+      "name": "Cerdanyola del Vallès",
+      "place": "town",
+      "population": 55042,
+      "position": {
+        "lat": 41.4909972,
+        "lon": 2.1405506
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470839444",
+      "tags": {
+        "name": "Cerdanyola del Vallès",
+        "name:ca": "Cerdanyola del Vallès",
+        "place": "town",
+        "population": "55042",
+        "wikidata": "Q13922",
+        "wikipedia": "ca:Cerdanyola del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839495",
+      "local": {
+        "x": 151.5592,
+        "y": 35,
+        "z": -62.7169
+      },
+      "name": "Tordera",
+      "place": "town",
+      "population": 9322,
+      "position": {
+        "lat": 41.7013581,
+        "lon": 2.7182911
+      },
+      "priority": 116.76,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470839495",
+      "tags": {
+        "name": "Tordera",
+        "name:ca": "Tordera",
+        "place": "town",
+        "population": "9322",
+        "wikidata": "Q12596"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839496",
+      "local": {
+        "x": 30.4934,
+        "y": 513,
+        "z": -185.9302
+      },
+      "name": "Torelló",
+      "place": "town",
+      "population": 15194,
+      "position": {
+        "lat": 42.0478304,
+        "lon": 2.2643391
+      },
+      "priority": 118.45,
+      "sectorId": "s-04-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470839496",
+      "tags": {
+        "name": "Torelló",
+        "name:ca": "Torelló",
+        "place": "town",
+        "population": "15194",
+        "wikidata": "Q13854",
+        "wikipedia": "ca:Torelló"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839515",
+      "local": {
+        "x": -269.1168,
+        "y": 376,
+        "z": -43.4841
+      },
+      "name": "Tàrrega",
+      "place": "town",
+      "population": 18405,
+      "position": {
+        "lat": 41.6472761,
+        "lon": 1.1409115
+      },
+      "priority": 119.12,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470839515",
+      "tags": {
+        "name": "Tàrrega",
+        "name:ca": "Tàrrega",
+        "name:es": "Tàrrega",
+        "place": "town",
+        "population": "18405",
+        "wikidata": "Q752137",
+        "wikipedia": "ca:Tàrrega"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839529",
+      "local": {
+        "x": -240.7268,
+        "y": 217,
+        "z": 85.8702
+      },
+      "name": "Valls",
+      "place": "town",
+      "population": 22998,
+      "position": {
+        "lat": 41.2835355,
+        "lon": 1.2473637
+      },
+      "priority": 119.89,
+      "sectorId": "s-00-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470839529",
+      "tags": {
+        "name": "Valls",
+        "name:ca": "Valls",
+        "place": "town",
+        "population": "22998",
+        "wikidata": "Q825883",
+        "wikipedia": "ca:Valls"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839536",
+      "local": {
+        "x": 27.8946,
+        "y": 492,
+        "z": -144.0989
+      },
+      "name": "Vic",
+      "place": "town",
+      "population": 49813,
+      "position": {
+        "lat": 41.9302021,
+        "lon": 2.2545943
+      },
+      "priority": 120,
+      "sectorId": "s-04-00",
+      "source": "openstreetmap",
+      "sourceId": "n1470839536",
+      "tags": {
+        "name": "Vic",
+        "name:ca": "Vic",
+        "name:es": "Vic",
+        "place": "town",
+        "population": "49813",
+        "wikidata": "Q13855",
+        "wikipedia": "ca:Vic"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839538",
+      "local": {
+        "x": -268.0369,
+        "y": 41,
+        "z": 147.2537
+      },
+      "name": "Vila-seca",
+      "place": "town",
+      "population": 18913,
+      "position": {
+        "lat": 41.1109268,
+        "lon": 1.144961
+      },
+      "priority": 119.21,
+      "sectorId": "s-00-05",
+      "source": "openstreetmap",
+      "sourceId": "n1470839538",
+      "tags": {
+        "name": "Vila-seca",
+        "name:ca": "Vila-seca",
+        "place": "town",
+        "population": "18913",
+        "wikidata": "Q508754",
+        "wikipedia": "ca:Vila-seca"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839540",
+      "local": {
+        "x": -137.0416,
+        "y": 303,
+        "z": -16.5128
+      },
+      "name": "Vilanova del Camí",
+      "place": "town",
+      "population": 12671,
+      "position": {
+        "lat": 41.5714336,
+        "lon": 1.6361449
+      },
+      "priority": 117.82,
+      "sectorId": "s-02-02",
+      "source": "openstreetmap",
+      "sourceId": "n1470839540",
+      "tags": {
+        "name": "Vilanova del Camí",
+        "name:ca": "Vilanova del Camí",
+        "place": "town",
+        "population": "12671",
+        "wikidata": "Q23990468"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839541",
+      "local": {
+        "x": 64.3766,
+        "y": 22,
+        "z": 6.6131
+      },
+      "name": "Vilassar de Mar",
+      "place": "town",
+      "population": 21017,
+      "position": {
+        "lat": 41.5064041,
+        "lon": 2.3913883
+      },
+      "priority": 119.58,
+      "sectorId": "s-05-03",
+      "source": "openstreetmap",
+      "sourceId": "n1470839541",
+      "tags": {
+        "name": "Vilassar de Mar",
+        "name:ca": "Vilassar de Mar",
+        "place": "town",
+        "population": "21017",
+        "wikidata": "Q12071",
+        "wikipedia": "ca:Vilassar de Mar"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1470839547",
+      "local": {
+        "x": -120.1395,
+        "y": 231,
+        "z": 63.5204
+      },
+      "name": "Vilafranca del Penedès",
+      "place": "town",
+      "population": 42237,
+      "position": {
+        "lat": 41.3463825,
+        "lon": 1.6995213
+      },
+      "priority": 120,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n1470839547",
+      "tags": {
+        "name": "Vilafranca del Penedès",
+        "name:ca": "Vilafranca del Penedès",
+        "place": "town",
+        "population": "42237",
+        "wikidata": "Q835012",
+        "wikipedia": "ca:Vilafranca del Penedès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n152364156",
+      "local": {
+        "x": -66.2115,
+        "y": 107,
+        "z": 3.0999
+      },
+      "name": "Abrera",
+      "place": "town",
+      "population": 9579,
+      "position": {
+        "lat": 41.5162832,
+        "lon": 1.9017313
+      },
+      "priority": 116.85,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n152364156",
+      "tags": {
+        "name": "Abrera",
+        "name:ca": "Abrera",
+        "place": "town",
+        "population": "9579",
+        "wikidata": "Q15593",
+        "wikipedia": "ca:Abrera"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n1954570210",
+      "local": {
+        "x": -168.4423,
+        "y": 670,
+        "z": -166.9918
+      },
+      "name": "Solsona",
+      "place": "town",
+      "population": 9234,
+      "position": {
+        "lat": 41.9945762,
+        "lon": 1.5184038
+      },
+      "priority": 116.72,
+      "sectorId": "s-01-00",
+      "source": "openstreetmap",
+      "sourceId": "n1954570210",
+      "tags": {
+        "name": "Solsona",
+        "name:ca": "Solsona",
+        "place": "town",
+        "population": "9234",
+        "wikidata": "Q507621",
+        "wikipedia": "ca:Solsona"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n2375518653",
+      "local": {
+        "x": -35.8426,
+        "y": 25,
+        "z": 74.2154
+      },
+      "name": "Viladecans",
+      "place": "town",
+      "population": 67471,
+      "position": {
+        "lat": 41.3163083,
+        "lon": 2.0156034
+      },
+      "priority": 120,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n2375518653",
+      "tags": {
+        "name": "Viladecans",
+        "name:ca": "Viladecans",
+        "place": "town",
+        "population": "67471",
+        "wikidata": "Q15652",
+        "wikipedia": "ca:Viladecans"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n2794611208",
+      "local": {
+        "x": -9.2336,
+        "y": 119,
+        "z": 6.1984
+      },
+      "name": "Badia del Vallès",
+      "place": "town",
+      "population": 13058,
+      "position": {
+        "lat": 41.5075702,
+        "lon": 2.1153773
+      },
+      "priority": 117.93,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n2794611208",
+      "tags": {
+        "name": "Badia del Vallès",
+        "name:ca": "Badia del Vallès",
+        "place": "town",
+        "population": "13058",
+        "wikidata": "Q13913",
+        "wikipedia": "ca:Badia del Vallès"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n290730984",
+      "local": {
+        "x": 245.0374,
+        "y": 9,
+        "z": -104.3643
+      },
+      "name": "Platja d'Aro",
+      "place": "town",
+      "population": 9044,
+      "position": {
+        "lat": 41.8184693,
+        "lon": 3.0687997
+      },
+      "priority": 116.65,
+      "sectorId": "s-07-01",
+      "source": "openstreetmap",
+      "sourceId": "n290730984",
+      "tags": {
+        "name": "Platja d'Aro",
+        "name:ca": "Platja d'Aro",
+        "place": "town",
+        "population": "9044",
+        "wikidata": "Q11941952",
+        "wikipedia": "ca:Platja d'Aro"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n3248338760",
+      "local": {
+        "x": -31.4837,
+        "y": 133,
+        "z": 11.1596
+      },
+      "name": "Rubí",
+      "place": "city",
+      "population": 73892,
+      "position": {
+        "lat": 41.4936194,
+        "lon": 2.0319476
+      },
+      "priority": 135,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n3248338760",
+      "tags": {
+        "name": "Rubí",
+        "name:ca": "Rubí",
+        "place": "city",
+        "population": "73892",
+        "wikidata": "Q13934"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n339019326",
+      "local": {
+        "x": 263.6906,
+        "y": 29,
+        "z": -209.2962
+      },
+      "name": "l'Escala",
+      "place": "town",
+      "population": 10056,
+      "position": {
+        "lat": 42.113535,
+        "lon": 3.1387422
+      },
+      "priority": 117.02,
+      "sectorId": "s-08-00",
+      "source": "openstreetmap",
+      "sourceId": "n339019326",
+      "tags": {
+        "name": "l'Escala",
+        "name:ca": "l'Escala",
+        "place": "town",
+        "population": "10056",
+        "wikidata": "Q11304",
+        "wikipedia": "ca:L'Escala"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n346353020",
+      "local": {
+        "x": 15.4898,
+        "y": 31,
+        "z": 25.982
+      },
+      "name": "Santa Coloma de Gramenet",
+      "place": "city",
+      "population": 123250,
+      "position": {
+        "lat": 41.4519395,
+        "lon": 2.2080809
+      },
+      "priority": 135,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n346353020",
+      "tags": {
+        "name": "Santa Coloma de Gramenet",
+        "name:ca": "Santa Coloma de Gramenet",
+        "place": "city",
+        "population": "123250",
+        "wikidata": "Q15473",
+        "wikipedia": "ca:Santa Coloma de Gramenet"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n3538816683",
+      "local": {
+        "x": 1.9494,
+        "y": 86,
+        "z": 9.1263
+      },
+      "name": "Ripollet",
+      "place": "town",
+      "population": 39773,
+      "position": {
+        "lat": 41.4993372,
+        "lon": 2.1573095
+      },
+      "priority": 120,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n3538816683",
+      "tags": {
+        "name": "Ripollet",
+        "name:ca": "Ripollet",
+        "place": "town",
+        "population": "39773",
+        "wikidata": "Q13933"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n427061659",
+      "local": {
+        "x": 9.87,
+        "y": 42,
+        "z": 15.9762
+      },
+      "name": "Montcada i Reixac",
+      "place": "town",
+      "population": 13023,
+      "position": {
+        "lat": 41.4800754,
+        "lon": 2.187009
+      },
+      "priority": 117.92,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n427061659",
+      "tags": {
+        "name": "Montcada i Reixac",
+        "name:ca": "Montcada i Reixac",
+        "place": "town",
+        "population": "13023",
+        "wikidata": "Q13927"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n5417486419",
+      "local": {
+        "x": 193.1514,
+        "y": 143,
+        "z": -128.9019
+      },
+      "name": "Cassà de la Selva",
+      "place": "town",
+      "population": 10437,
+      "position": {
+        "lat": 41.8874685,
+        "lon": 2.8742461
+      },
+      "priority": 117.15,
+      "sectorId": "s-07-01",
+      "source": "openstreetmap",
+      "sourceId": "n5417486419",
+      "tags": {
+        "name": "Cassà de la Selva",
+        "name:ca": "Cassà de la Selva",
+        "place": "town",
+        "population": "10437",
+        "wikidata": "Q13424",
+        "wikipedia": "ca:Cassà de la Selva"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n7577933121",
+      "local": {
+        "x": 91.063,
+        "y": 153,
+        "z": -58.5013
+      },
+      "name": "Sant Celoni",
+      "place": "town",
+      "population": 16541,
+      "position": {
+        "lat": 41.6895041,
+        "lon": 2.4914526
+      },
+      "priority": 118.75,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n7577933121",
+      "tags": {
+        "name": "Sant Celoni",
+        "name:ca": "Sant Celoni",
+        "place": "town",
+        "population": "16541",
+        "wikidata": "Q15441",
+        "wikipedia": "ca:Sant Celoni"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n8195286823",
+      "local": {
+        "x": -96.9709,
+        "y": 159,
+        "z": 35.752
+      },
+      "name": "Sant Sadurní d'Anoia",
+      "place": "town",
+      "population": 12586,
+      "position": {
+        "lat": 41.4244663,
+        "lon": 1.7863949
+      },
+      "priority": 117.8,
+      "sectorId": "s-02-03",
+      "source": "openstreetmap",
+      "sourceId": "n8195286823",
+      "tags": {
+        "name": "Sant Sadurní d'Anoia",
+        "name:ca": "Sant Sadurní d'Anoia",
+        "place": "town",
+        "population": "12586",
+        "wikidata": "Q984508",
+        "wikipedia": "ca:Sant Sadurní d'Anoia"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "osm-n939880925",
+      "local": {
+        "x": -13.4328,
+        "y": 15,
+        "z": 58.8513
+      },
+      "name": "l'Hospitalet de Llobregat",
+      "place": "city",
+      "population": 292161,
+      "position": {
+        "lat": 41.3595118,
+        "lon": 2.0996318
+      },
+      "priority": 135,
+      "sectorId": "s-03-04",
+      "source": "openstreetmap",
+      "sourceId": "n939880925",
+      "tags": {
+        "name": "l'Hospitalet de Llobregat",
+        "name:ca": "l'Hospitalet de Llobregat",
+        "place": "city",
+        "population": "292161",
+        "wikidata": "Q15470",
+        "wikipedia": "ca:L'Hospitalet de Llobregat"
+      },
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "sabadell",
+      "local": {
+        "x": -10.8277,
+        "y": 196,
+        "z": -7.5748
+      },
+      "name": "Sabadell",
+      "position": {
+        "lat": 41.5463,
+        "lon": 2.1094
+      },
+      "protected": true,
+      "sectorId": "s-03-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "sitges",
+      "local": {
+        "x": -90.1689,
+        "y": 25,
+        "z": 102.3481
+      },
+      "name": "Sitges",
+      "position": {
+        "lat": 41.2372,
+        "lon": 1.8119
+      },
+      "protected": true,
+      "sectorId": "s-02-04",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "tarragona",
+      "local": {
+        "x": -241.4905,
+        "y": 32,
+        "z": 144.4183
+      },
+      "name": "Tarragona",
+      "position": {
+        "lat": 41.1189,
+        "lon": 1.2445
+      },
+      "protected": true,
+      "sectorId": "s-00-05",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "terrassa",
+      "local": {
+        "x": -37.6304,
+        "y": 284,
+        "z": -13.5848
+      },
+      "name": "Terrassa",
+      "position": {
+        "lat": 41.5632,
+        "lon": 2.0089
+      },
+      "protected": true,
+      "sectorId": "s-03-02",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "vilanova-geltru",
+      "local": {
+        "x": -113.2912,
+        "y": 23,
+        "z": 107.0779
+      },
+      "name": "Vilanova i la Geltrú",
+      "position": {
+        "lat": 41.2239,
+        "lon": 1.7252
+      },
+      "protected": true,
+      "sectorId": "s-02-04",
+      "source": "manual-config",
       "terrainStatus": "exact-cell"
     }
   ],
-  "proceduralGenerationPending": true,
-  "regionId": "catalunya-litoral"
+  "proceduralGenerationPending": false,
+  "regionId": "catalunya-litoral",
+  "sourceCount": 19207
 }

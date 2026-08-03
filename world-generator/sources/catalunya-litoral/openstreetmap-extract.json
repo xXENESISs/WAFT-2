@@ -1,0 +1,50 @@
+{
+  "attribution": "© OpenStreetMap contributors",
+  "compaction": {
+    "gridColumns": 18,
+    "gridRows": 14,
+    "majorRoadsPreserved": true,
+    "maximumBuildingsPerCell": 220,
+    "maximumMinorRoadsPerCell": 300,
+    "mode": "spatial-priority-v1",
+    "originalCounts": {
+      "buildings": 540601,
+      "landmarks": 20140,
+      "ports": 93,
+      "roads": 942734,
+      "settlements": 19207
+    },
+    "tagFiltering": true
+  },
+  "counts": {
+    "buildings": 35593,
+    "hotels": 792,
+    "landmarks": 20140,
+    "ports": 93,
+    "roads": 152331,
+    "settlements": 19207
+  },
+  "dataset": "OpenStreetMap regional extract",
+  "distribution": "Geofabrik",
+  "formatVersion": 1,
+  "httpLastModified": "Sun, 02 Aug 2026 23:22:15 GMT",
+  "license": "ODbL 1.0",
+  "osmTimestamp": "2026-08-02T20:21:48Z",
+  "parserStatistics": {
+    "areasSeen": 1723544,
+    "invalidGeometries": 1,
+    "nodesSeen": 36852814,
+    "relationsSeen": 151060,
+    "waysSeen": 3073866
+  },
+  "pbfBytes": 266546921,
+  "pbfSha256": "318a5805be404c4a43f051c5e7c55760e606553f4545414f9e6501df03a1bda2",
+  "provider": "OpenStreetMap contributors",
+  "regionId": "catalunya-litoral",
+  "retrievedOn": "2026-08-03",
+  "snapshotBytes": 11475814,
+  "snapshotFile": "openstreetmap-extract.json.gz",
+  "snapshotSha256": "61706e28e3b75aa62d8036b1d3045427b1201566d0457db8e3e37a4c626a15f9",
+  "sourceUrl": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf",
+  "uncompressedBytes": 63003445
+}

@@ -1,61 +1,27 @@
 {
-  "automaticDiscoveryPending": true,
+  "automaticDiscoveryPending": false,
   "formatVersion": 1,
-  "generationStage": "manual-landmark-seeds",
+  "generationStage": "openstreetmap-landmark-candidates",
   "items": [
     {
-      "assetId": "sagrada-familia",
-      "id": "sagrada-familia",
+      "assetId": "amfiteatre-tarragona",
+      "id": "amfiteatre-tarragona",
       "local": {
-        "x": 6.5073,
-        "y": 38,
-        "z": 43.1726
+        "x": -237.5168,
+        "y": 34,
+        "z": 145.8407
       },
-      "name": "Basílica de la Sagrada Família",
+      "name": "Amfiteatre de Tarragona",
       "position": {
-        "lat": 41.4036,
-        "lon": 2.1744
+        "lat": 41.1149,
+        "lon": 1.2594
       },
       "preferredRepresentation": "unique",
-      "sectorId": "s-04-03",
+      "protected": true,
+      "sectorId": "s-00-05",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
-      "type": "cathedral"
-    },
-    {
-      "assetId": "park-guell",
-      "id": "park-guell",
-      "local": {
-        "x": 0.7201,
-        "y": 181,
-        "z": 39.2963
-      },
-      "name": "Park Güell",
-      "position": {
-        "lat": 41.4145,
-        "lon": 2.1527
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-04-03",
-      "terrainStatus": "exact-cell",
-      "type": "monument"
-    },
-    {
-      "assetId": "catedral-barcelona",
-      "id": "catedral-barcelona",
-      "local": {
-        "x": 6.9607,
-        "y": 25,
-        "z": 50.1783
-      },
-      "name": "Catedral de Barcelona",
-      "position": {
-        "lat": 41.3839,
-        "lon": 2.1761
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-04-03",
-      "terrainStatus": "exact-cell",
-      "type": "cathedral"
+      "type": "archaeological_site"
     },
     {
       "assetId": "catalan-fortress",
@@ -71,81 +37,11 @@
         "lon": 2.1699
       },
       "preferredRepresentation": "archetype",
+      "protected": true,
       "sectorId": "s-04-04",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
       "type": "castle"
-    },
-    {
-      "assetId": "monestir-montserrat",
-      "id": "monestir-montserrat",
-      "local": {
-        "x": -83.955,
-        "y": 785,
-        "z": -24.2179
-      },
-      "name": "Monestir de Montserrat",
-      "position": {
-        "lat": 41.5931,
-        "lon": 1.8352
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-02-02",
-      "terrainStatus": "exact-cell",
-      "type": "monastery"
-    },
-    {
-      "assetId": "amfiteatre-tarragona",
-      "id": "amfiteatre-tarragona",
-      "local": {
-        "x": -237.5168,
-        "y": 34,
-        "z": 145.8407
-      },
-      "name": "Amfiteatre de Tarragona",
-      "position": {
-        "lat": 41.1149,
-        "lon": 1.2594
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-00-05",
-      "terrainStatus": "exact-cell",
-      "type": "archaeological_site"
-    },
-    {
-      "assetId": "modern-observation-tower",
-      "id": "torre-glories",
-      "local": {
-        "x": 10.5877,
-        "y": 11,
-        "z": 43.2081
-      },
-      "name": "Torre Glòries",
-      "position": {
-        "lat": 41.4035,
-        "lon": 2.1897
-      },
-      "preferredRepresentation": "archetype",
-      "sectorId": "s-04-03",
-      "terrainStatus": "exact-cell",
-      "type": "tower"
-    },
-    {
-      "assetId": "catalan-city-walls",
-      "id": "muralles-girona",
-      "local": {
-        "x": 180.4711,
-        "y": 77,
-        "z": -164.4398
-      },
-      "name": "Muralles de Girona",
-      "position": {
-        "lat": 41.9874,
-        "lon": 2.8267
-      },
-      "preferredRepresentation": "archetype",
-      "sectorId": "s-06-00",
-      "terrainStatus": "exact-cell",
-      "type": "fortress"
     },
     {
       "assetId": "vila-vella-tossa",
@@ -161,10 +57,2784 @@
         "lon": 2.9344
       },
       "preferredRepresentation": "unique",
+      "protected": true,
       "sectorId": "s-07-02",
+      "source": "manual-config",
       "terrainStatus": "exact-cell",
       "type": "castle"
+    },
+    {
+      "assetId": "catedral-barcelona",
+      "id": "catedral-barcelona",
+      "local": {
+        "x": 6.9607,
+        "y": 25,
+        "z": 50.1783
+      },
+      "name": "Catedral de Barcelona",
+      "position": {
+        "lat": 41.3839,
+        "lon": 2.1761
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "monestir-montserrat",
+      "id": "monestir-montserrat",
+      "local": {
+        "x": -83.955,
+        "y": 785,
+        "z": -24.2179
+      },
+      "name": "Monestir de Montserrat",
+      "position": {
+        "lat": 41.5931,
+        "lon": 1.8352
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-02-02",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "monastery"
+    },
+    {
+      "assetId": "catalan-city-walls",
+      "id": "muralles-girona",
+      "local": {
+        "x": 180.4711,
+        "y": 77,
+        "z": -164.4398
+      },
+      "name": "Muralles de Girona",
+      "position": {
+        "lat": 41.9874,
+        "lon": 2.8267
+      },
+      "preferredRepresentation": "archetype",
+      "protected": true,
+      "sectorId": "s-06-00",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "fortress"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n10543781881",
+      "local": {
+        "x": 210.4228,
+        "y": 456,
+        "z": -85.7101
+      },
+      "name": "Castell de Montagut",
+      "position": {
+        "lat": 41.7660143,
+        "lon": 2.9390076
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-01",
+      "source": "openstreetmap",
+      "sourceId": "n10543781881",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Montagut",
+        "name:ca": "Castell de Montagut",
+        "wikidata": "Q18696060",
+        "wikipedia": "ca:Castell de Montagut (Llagostera)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n10937059329",
+      "local": {
+        "x": 173.3328,
+        "y": 123,
+        "z": -103.7561
+      },
+      "name": "Castell de Malavella",
+      "position": {
+        "lat": 41.8167593,
+        "lon": 2.7999337
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-01",
+      "source": "openstreetmap",
+      "sourceId": "n10937059329",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Malavella",
+        "name:es": "Castillo de Malavella",
+        "wikidata": "Q14906527",
+        "wikipedia": "ca:Castell de Malavella"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n11619555859",
+      "local": {
+        "x": 138.9045,
+        "y": 264,
+        "z": -135.3055
+      },
+      "name": "Castell Vell",
+      "position": {
+        "lat": 41.9054751,
+        "lon": 2.6708405
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-01",
+      "source": "openstreetmap",
+      "sourceId": "n11619555859",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell Vell",
+        "name:ca": "Castell Vell",
+        "wikidata": "Q21730702",
+        "wikipedia": "ca:Castell Vell (Brunyola)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n12166457465",
+      "local": {
+        "x": 171.4657,
+        "y": 23,
+        "z": -53.6124
+      },
+      "name": "Castell Palau dels Vescomtes de Cabrera",
+      "position": {
+        "lat": 41.6757565,
+        "lon": 2.7929328
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n12166457465",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell Palau dels Vescomtes de Cabrera",
+        "name:ca": "Castell Palau dels Vescomtes de Cabrera",
+        "wikidata": "Q8342135",
+        "wikipedia": "ca:Palau vescomtal de Blanes"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n13232671283",
+      "local": {
+        "x": 12.5449,
+        "y": 69,
+        "z": -1.2165
+      },
+      "name": "Castell de Mogoda",
+      "position": {
+        "lat": 41.5284208,
+        "lon": 2.1970388
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "n13232671283",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Mogoda",
+        "name:ca": "Castell de Mogoda",
+        "wikidata": "Q8342455",
+        "wikipedia": "ca:Castell de Mogoda"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n13878906399",
+      "local": {
+        "x": -137.9735,
+        "y": 838,
+        "z": -95.6213
+      },
+      "name": "Castell de Castelltallat",
+      "position": {
+        "lat": 41.7938844,
+        "lon": 1.6326506
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-01",
+      "source": "openstreetmap",
+      "sourceId": "n13878906399",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Castelltallat",
+        "name:ca": "Castell de Castelltallat",
+        "wikidata": "Q18696058",
+        "wikipedia": "ca:Castell de Castelltallat (Sant Mateu de Bages)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1491216017",
+      "local": {
+        "x": -154.5677,
+        "y": 580,
+        "z": -42.674
+      },
+      "name": "Castell de Rubió",
+      "position": {
+        "lat": 41.6449982,
+        "lon": 1.5704282
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n1491216017",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Rubió",
+        "name:ca": "Castell de Rubió",
+        "wikidata": "Q8342520",
+        "wikipedia": "ca:Castell de Rubió (Anoia)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1505187049",
+      "local": {
+        "x": -131.1452,
+        "y": 167,
+        "z": 77.744
+      },
+      "name": "Castell de Penyafort",
+      "position": {
+        "lat": 41.3063861,
+        "lon": 1.658254
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n1505187049",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Penyafort",
+        "name:ca": "Castell de Penyafort",
+        "wikidata": "Q8342506",
+        "wikipedia": "ca:Castell de Penyafort"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1566211246",
+      "local": {
+        "x": -201.4056,
+        "y": 16,
+        "z": 139.6744
+      },
+      "name": "Far de Punta de la Galera",
+      "position": {
+        "lat": 41.1322395,
+        "lon": 1.3948037
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-05",
+      "source": "openstreetmap",
+      "sourceId": "n1566211246",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de Punta de la Galera",
+        "name:ca": "Far de Punta de la Galera",
+        "seamark:type": "light_major",
+        "wikidata": "Q30754272",
+        "wikipedia": "ca:Far de Torredembarra"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1665606789",
+      "local": {
+        "x": 132.3875,
+        "y": 29,
+        "z": -29.5669
+      },
+      "name": "Far del Capaspre",
+      "position": {
+        "lat": 41.6081412,
+        "lon": 2.646404
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-02",
+      "source": "openstreetmap",
+      "sourceId": "n1665606789",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de Calella",
+        "name:ca": "Far del Capaspre",
+        "name:es": "Faro de Calella",
+        "wikidata": "Q15242338",
+        "wikipedia": "ca:Far del Capaspre"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1677679948",
+      "local": {
+        "x": -153.4068,
+        "y": 788,
+        "z": -87.3515
+      },
+      "name": "Castell de Boixadors",
+      "position": {
+        "lat": 41.7706298,
+        "lon": 1.5747811
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-01",
+      "source": "openstreetmap",
+      "sourceId": "n1677679948",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Boixadors",
+        "name:ca": "Castell de Boixadors",
+        "wikidata": "Q8342193",
+        "wikipedia": "ca:Castell de Boixadors"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1742957377",
+      "local": {
+        "x": -32.3405,
+        "y": 652,
+        "z": -58.8263
+      },
+      "name": "Castell de Pera",
+      "position": {
+        "lat": 41.6904179,
+        "lon": 2.0287352
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-02",
+      "source": "openstreetmap",
+      "sourceId": "n1742957377",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Pera",
+        "name:ca": "Castell de Pera",
+        "wikidata": "Q22893361",
+        "wikipedia": "ca:Castell de Pera (Sant Llorenç Savall)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1766633206",
+      "local": {
+        "x": -243.2363,
+        "y": 825,
+        "z": 10.9834
+      },
+      "name": "Castell de Forès",
+      "position": {
+        "lat": 41.494115,
+        "lon": 1.237954
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n1766633206",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Forès",
+        "name:ca": "Castell de Forès",
+        "wikidata": "Q17596192",
+        "wikipedia": "ca:Castell de Forès"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1766633220",
+      "local": {
+        "x": -254.4515,
+        "y": 704,
+        "z": -2.5406
+      },
+      "name": "Castell de Passanant",
+      "position": {
+        "lat": 41.532144,
+        "lon": 1.195901
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n1766633220",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Passanant",
+        "name:ca": "Castell de Passanant",
+        "wikidata": "Q11913074",
+        "wikipedia": "ca:Castell de Passanant"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1766633239",
+      "local": {
+        "x": -235.9449,
+        "y": 781,
+        "z": -6.8846
+      },
+      "name": "Castell de Segura",
+      "position": {
+        "lat": 41.5443592,
+        "lon": 1.2652941
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n1766633239",
+      "tags": {
+        "building": "castle",
+        "historic": "castle",
+        "name": "Castell de Segura",
+        "name:ca": "Castell de Segura",
+        "wikidata": "Q11913098",
+        "wikipedia": "ca:Castell de Segura"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1766633257",
+      "local": {
+        "x": -248.6651,
+        "y": 765,
+        "z": 2.1398
+      },
+      "name": "Castell de la Sala",
+      "position": {
+        "lat": 41.518983,
+        "lon": 1.217598
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n1766633257",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Sala",
+        "name:ca": "Castell de la Sala",
+        "wikidata": "Q11913136",
+        "wikipedia": "ca:Castell de la Sala de Comalats"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1766729031",
+      "local": {
+        "x": -33.5109,
+        "y": 676,
+        "z": -51.0183
+      },
+      "name": "Castell de Roca Mur",
+      "position": {
+        "lat": 41.6684621,
+        "lon": 2.0243467
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-02",
+      "source": "openstreetmap",
+      "sourceId": "n1766729031",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Roca Mur",
+        "name:ca": "Castell de Roca Mur",
+        "wikidata": "Q22893366",
+        "wikipedia": "ca:Castell de Rocamur"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1800919441",
+      "local": {
+        "x": -27.0362,
+        "y": 462,
+        "z": -51.195
+      },
+      "name": "Torrota de la Roca",
+      "position": {
+        "lat": 41.6689588,
+        "lon": 2.0486241
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-02",
+      "source": "openstreetmap",
+      "sourceId": "n1800919441",
+      "tags": {
+        "historic": "castle",
+        "name": "Torrota de la Roca",
+        "name:ca": "Torrota de la Roca",
+        "wikidata": "Q22893352",
+        "wikipedia": "ca:Torrota de la Roca"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1803278293",
+      "local": {
+        "x": -74.5821,
+        "y": 258,
+        "z": 31.7156
+      },
+      "name": "Castell de Gelida",
+      "position": {
+        "lat": 41.4358166,
+        "lon": 1.8703447
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1803278293",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Gelida",
+        "name:ca": "Castell de Gelida",
+        "tourism": "attraction",
+        "wikidata": "Q8342350",
+        "wikipedia": "ca:Castell de Gelida"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1803302223",
+      "local": {
+        "x": -61.4593,
+        "y": 285,
+        "z": 26.3003
+      },
+      "name": "Castell de Sant Jaume",
+      "position": {
+        "lat": 41.4510444,
+        "lon": 1.9195502
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1803302223",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Jaume (ruines)",
+        "name:ca": "Castell de Sant Jaume",
+        "wikidata": "Q5577057",
+        "wikipedia": "ca:Castell Vell de Rosanes"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1817518634",
+      "local": {
+        "x": -60.4915,
+        "y": 189,
+        "z": 21.1869
+      },
+      "name": "Castell de Rocafort",
+      "position": {
+        "lat": 41.4654231,
+        "lon": 1.9231793
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n1817518634",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Rocafort",
+        "name:ca": "Castell de Rocafort",
+        "wikidata": "Q17596577",
+        "wikipedia": "ca:Castell de Rocafort (Sant Genís de Rocafort)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1876115981",
+      "local": {
+        "x": 19.3496,
+        "y": 681,
+        "z": -189.7976
+      },
+      "name": "Castell d'Orís",
+      "position": {
+        "lat": 42.0587053,
+        "lon": 2.2225538
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-00",
+      "source": "openstreetmap",
+      "sourceId": "n1876115981",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Orís",
+        "name:ca": "Castell d'Orís",
+        "wikidata": "Q8342492",
+        "wikipedia": "ca:Castell d'Orís"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1891972649",
+      "local": {
+        "x": 18.3402,
+        "y": 558,
+        "z": -135.7967
+      },
+      "name": "Castell de Sentfores",
+      "position": {
+        "lat": 41.9068563,
+        "lon": 2.2187691
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-01",
+      "source": "openstreetmap",
+      "sourceId": "n1891972649",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sentfores",
+        "name:ca": "Castell de Sentfores",
+        "wikidata": "Q17596718",
+        "wikipedia": "ca:Castell de Sentfores"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1917268245",
+      "local": {
+        "x": -153.2266,
+        "y": 499,
+        "z": 2.1934
+      },
+      "name": "Castell d'Orpí",
+      "position": {
+        "lat": 41.5188323,
+        "lon": 1.575457
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-03",
+      "source": "openstreetmap",
+      "sourceId": "n1917268245",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Orpí",
+        "name:ca": "Castell d'Orpí",
+        "wikidata": "Q8342489",
+        "wikipedia": "ca:Castell d'Orpí"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1966547138",
+      "local": {
+        "x": -168.4077,
+        "y": 902,
+        "z": -187.1908
+      },
+      "name": "Castell de Lladurs",
+      "position": {
+        "lat": 42.0513752,
+        "lon": 1.5185335
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-00",
+      "source": "openstreetmap",
+      "sourceId": "n1966547138",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Lladurs",
+        "name:ca": "Castell de Lladurs",
+        "wikidata": "Q5783663",
+        "wikipedia": "ca:Castell de Lladurs"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n1978539479",
+      "local": {
+        "x": 246.2467,
+        "y": 29,
+        "z": -120.2164
+      },
+      "name": "Castell de Calonge",
+      "position": {
+        "lat": 41.8630452,
+        "lon": 3.073334
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-01",
+      "source": "openstreetmap",
+      "sourceId": "n1978539479",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Calonge",
+        "name:ca": "Castell de Calonge",
+        "name:es": "Castillo de Calonge",
+        "wikidata": "Q8342207",
+        "wikipedia": "ca:Castell de Calonge"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2016440447",
+      "local": {
+        "x": -53.251,
+        "y": 316,
+        "z": -97.5362
+      },
+      "name": "Castell d'Artés",
+      "position": {
+        "lat": 41.799269,
+        "lon": 1.9503286
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-01",
+      "source": "openstreetmap",
+      "sourceId": "n2016440447",
+      "tags": {
+        "historic": "castle",
+        "name": "Castellot d'Artés",
+        "name:ca": "Castell d'Artés",
+        "tourism": "attraction",
+        "wikidata": "Q11912994",
+        "wikipedia": "ca:Castell d'Artés"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2046109771",
+      "local": {
+        "x": 62.9349,
+        "y": 379,
+        "z": -33.3369
+      },
+      "name": "Torrassa del Moro",
+      "position": {
+        "lat": 41.6187424,
+        "lon": 2.3859825
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n2046109771",
+      "tags": {
+        "historic": "castle",
+        "name": "Torrassa del Moro",
+        "name:ca": "Torrassa del Moro",
+        "wikidata": "Q11952224",
+        "wikipedia": "ca:Torrassa del Moro"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2050474584",
+      "local": {
+        "x": -123.8496,
+        "y": 457,
+        "z": -138.458
+      },
+      "name": "Castell de Cardona",
+      "position": {
+        "lat": 41.9143399,
+        "lon": 1.68561
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-01",
+      "source": "openstreetmap",
+      "sourceId": "n2050474584",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Cardona",
+        "name:ca": "Castell de Cardona",
+        "tourism": "attraction",
+        "wikidata": "Q975868",
+        "wikipedia": "ca:Castell de Cardona"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2054044697",
+      "local": {
+        "x": -217.2691,
+        "y": 478,
+        "z": -134.6477
+      },
+      "name": "Castell de Sallent",
+      "position": {
+        "lat": 41.9036254,
+        "lon": 1.3353212
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2054044697",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sallent",
+        "name:ca": "Castell de Sallent",
+        "wikidata": "Q8342523",
+        "wikipedia": "ca:Castell de Sallent (Pinell de Solsonès)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2054110786",
+      "local": {
+        "x": -209.9894,
+        "y": 579,
+        "z": -129.4706
+      },
+      "name": "Castell de Lloberola",
+      "position": {
+        "lat": 41.8890676,
+        "lon": 1.3626174
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2054110786",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Lloberola",
+        "name:ca": "Castell de Lloberola",
+        "tourism": "attraction",
+        "wikidata": "Q11913049",
+        "wikipedia": "ca:Castell de Lloberola"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2068349851",
+      "local": {
+        "x": -269.0916,
+        "y": 550,
+        "z": -12.7682
+      },
+      "name": "Castell de Ciutadilla",
+      "position": {
+        "lat": 41.5609038,
+        "lon": 1.141006
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n2068349851",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Ciutadilla",
+        "name:ca": "Castell de Ciutadilla",
+        "wikidata": "Q8342279",
+        "wikipedia": "ca:Castell de Ciutadilla"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2078630168",
+      "local": {
+        "x": -268.22,
+        "y": 380,
+        "z": -86.4135
+      },
+      "name": "Castell de Castellnou d'Ossó",
+      "position": {
+        "lat": 41.7679923,
+        "lon": 1.1442741
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2078630168",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Castellnou d'Ossó",
+        "name:ca": "Castell de Castellnou d'Ossó",
+        "wikidata": "Q11680594",
+        "wikipedia": "ca:Castell de Castellnou d'Ossó"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2078694316",
+      "local": {
+        "x": -271.7166,
+        "y": 365,
+        "z": -83.3726
+      },
+      "name": "Castell de Montfalcó",
+      "position": {
+        "lat": 41.7594414,
+        "lon": 1.1311633
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2078694316",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Montfalcó",
+        "name:ca": "Castell de Montfalcó",
+        "wikidata": "Q20875067",
+        "wikipedia": "ca:Castell de Montfalcó d'Ossó"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2088897413",
+      "local": {
+        "x": -237.3782,
+        "y": 125,
+        "z": 122.7118
+      },
+      "name": "Castellet de Bofarull",
+      "position": {
+        "lat": 41.1799378,
+        "lon": 1.2599197
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-05",
+      "source": "openstreetmap",
+      "sourceId": "n2088897413",
+      "tags": {
+        "historic": "castle",
+        "name": "Castellet de Bofarull",
+        "name:ca": "Castellet de Bofarull",
+        "wikidata": "Q17596491",
+        "wikipedia": "ca:Castell de Penallonga"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2112197794",
+      "local": {
+        "x": -182.9705,
+        "y": 646,
+        "z": -105.1607
+      },
+      "name": "Castell de Claret",
+      "position": {
+        "lat": 41.820709,
+        "lon": 1.4639282
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-01",
+      "source": "openstreetmap",
+      "sourceId": "n2112197794",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Claret",
+        "name:ca": "Castell de Claret",
+        "wikidata": "Q19830948",
+        "wikipedia": "ca:Castell de Claret (Torà)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2144275119",
+      "local": {
+        "x": -9.3749,
+        "y": 179,
+        "z": -12.9832
+      },
+      "name": "Castell d'Arraona",
+      "position": {
+        "lat": 41.5615083,
+        "lon": 2.1148477
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-02",
+      "source": "openstreetmap",
+      "sourceId": "n2144275119",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Arraona",
+        "name:ca": "Castell d'Arraona",
+        "tourism": "attraction",
+        "wikidata": "Q17481589",
+        "wikipedia": "ca:Turó del Castell d'Arraona"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2150449220",
+      "local": {
+        "x": -210.7794,
+        "y": 477,
+        "z": -113.142
+      },
+      "name": "Castell de Biosca",
+      "position": {
+        "lat": 41.8431522,
+        "lon": 1.3596553
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2150449220",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Biosca",
+        "name:ca": "Castell de Biosca",
+        "wikidata": "Q17595952",
+        "wikipedia": "ca:Castell de Biosca"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2159556560",
+      "local": {
+        "x": -100.3598,
+        "y": 761,
+        "z": -29.8621
+      },
+      "name": "Castell de la Guàrdia de Monsterrat",
+      "position": {
+        "lat": 41.6089714,
+        "lon": 1.7736878
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-02",
+      "source": "openstreetmap",
+      "sourceId": "n2159556560",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Guàrdia de Monsterrat",
+        "name:ca": "Castell de la Guàrdia de Monsterrat",
+        "wikidata": "Q18003848",
+        "wikipedia": "ca:Castell de la Guàrdia de Montserrat"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2169420249",
+      "local": {
+        "x": -139.4249,
+        "y": 580,
+        "z": -80.2591
+      },
+      "name": "Castell d'Aguilar",
+      "position": {
+        "lat": 41.7506864,
+        "lon": 1.6272083
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-01",
+      "source": "openstreetmap",
+      "sourceId": "n2169420249",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Aguilar",
+        "name:ca": "Castell d'Aguilar",
+        "tourism": "attraction",
+        "wikidata": "Q5640090",
+        "wikipedia": "ca:Castell d'Aguilar de Segarra"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2181803095",
+      "local": {
+        "x": -206.3894,
+        "y": 822,
+        "z": -10.6627
+      },
+      "name": "Castell de Montargull",
+      "position": {
+        "lat": 41.5549832,
+        "lon": 1.3761161
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n2181803095",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Montargull",
+        "name:ca": "Castell de Montargull",
+        "wikidata": "Q11913057",
+        "wikipedia": "ca:Castell de Montargull"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2191032924",
+      "local": {
+        "x": -224.7476,
+        "y": 652,
+        "z": -10.9888
+      },
+      "name": "Castell de Llorac",
+      "position": {
+        "lat": 41.5559001,
+        "lon": 1.3072796
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n2191032924",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Llorac",
+        "name:ca": "Castell de Llorac",
+        "wikidata": "Q11913048",
+        "wikipedia": "ca:Castell de Llorac"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2217023135",
+      "local": {
+        "x": -32.9671,
+        "y": 131,
+        "z": 10.8224
+      },
+      "name": "Castell de Rubí",
+      "position": {
+        "lat": 41.4945678,
+        "lon": 2.0263856
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-03",
+      "source": "openstreetmap",
+      "sourceId": "n2217023135",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Rubí",
+        "name:ca": "Castell de Rubí",
+        "wikidata": "Q11680604",
+        "wikipedia": "ca:Castell de Rubí"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2234856605",
+      "local": {
+        "x": -226.9426,
+        "y": 813,
+        "z": -6.6533
+      },
+      "name": "Castell de Savallà",
+      "position": {
+        "lat": 41.5437088,
+        "lon": 1.2990492
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n2234856605",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Savallà",
+        "name:ca": "Castell de Savallà",
+        "wikidata": "Q17596709",
+        "wikipedia": "ca:Castell de Savallà"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2244858893",
+      "local": {
+        "x": -71.4213,
+        "y": 437,
+        "z": -158.7247
+      },
+      "name": "Castell de Puig-reig",
+      "position": {
+        "lat": 41.9713294,
+        "lon": 1.8821966
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-03-00",
+      "source": "openstreetmap",
+      "sourceId": "n2244858893",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Puig-reig",
+        "name:ca": "Castell de Puig-reig",
+        "tourism": "attraction",
+        "wikidata": "Q11913079",
+        "wikipedia": "ca:Castell de Puig-reig"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2383211504",
+      "local": {
+        "x": 133.8541,
+        "y": 370,
+        "z": -193.2047
+      },
+      "name": "Castell de Granollers",
+      "position": {
+        "lat": 42.0682861,
+        "lon": 2.6519032
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-00",
+      "source": "openstreetmap",
+      "sourceId": "n2383211504",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Granollers",
+        "name:ca": "Castell de Granollers",
+        "wikidata": "Q19256339",
+        "wikipedia": "ca:Castell de Granollers"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2417004066",
+      "local": {
+        "x": -159.4376,
+        "y": 158,
+        "z": 85.5026
+      },
+      "name": "Castell de Llorenç",
+      "position": {
+        "lat": 41.2845691,
+        "lon": 1.552168
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n2417004066",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Llorenç",
+        "name:ca": "Castell de Llorenç",
+        "wikidata": "Q17615493",
+        "wikipedia": "ca:Castell de Llorenç"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2482266590",
+      "local": {
+        "x": 9.5378,
+        "y": 4,
+        "z": 53.3676
+      },
+      "name": "La Torre del Rellotge",
+      "position": {
+        "lat": 41.3749318,
+        "lon": 2.1857633
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-04",
+      "source": "openstreetmap",
+      "sourceId": "n2482266590",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "La Torre del Rellotge",
+        "wikidata": "Q18325508",
+        "wikipedia": "ca:Torre del Rellotge (Barceloneta)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2501722657",
+      "local": {
+        "x": -228.6119,
+        "y": 740,
+        "z": -23.0691
+      },
+      "name": "Castell de la Guàrdia Lada",
+      "position": {
+        "lat": 41.5898696,
+        "lon": 1.2927898
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n2501722657",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Guàrdia Lada",
+        "name:ca": "Castell de la Guàrdia Lada",
+        "wikidata": "Q19367854",
+        "wikipedia": "ca:Castell de la Guàrdia Lada"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2558690302",
+      "local": {
+        "x": -211.4809,
+        "y": 639,
+        "z": -70.9067
+      },
+      "name": "Castell de la Manresana",
+      "position": {
+        "lat": 41.7243875,
+        "lon": 1.3570249
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n2558690302",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Manresana",
+        "name:ca": "Castell de la Manresana",
+        "wikidata": "Q11913131",
+        "wikipedia": "ca:Castell de la Manresana"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2569935438",
+      "local": {
+        "x": -222.5184,
+        "y": 513,
+        "z": -61.7747
+      },
+      "name": "Torre de les Oluges",
+      "position": {
+        "lat": 41.6987086,
+        "lon": 1.3156382
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n2569935438",
+      "tags": {
+        "historic": "castle",
+        "name": "Torre de les Oluges",
+        "name:ca": "Torre de les Oluges",
+        "wikidata": "Q43125374",
+        "wikipedia": "ca:Torre de les Oluges"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2588926316",
+      "local": {
+        "x": -210.9954,
+        "y": 626,
+        "z": -88.3985
+      },
+      "name": "Castell de Vicfred",
+      "position": {
+        "lat": 41.7735741,
+        "lon": 1.3588454
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-01",
+      "source": "openstreetmap",
+      "sourceId": "n2588926316",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Vicfred",
+        "name:ca": "Castell de Vicfred",
+        "wikidata": "Q11913120",
+        "wikipedia": "ca:Castell de Vicfred"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2600018864",
+      "local": {
+        "x": -199.6274,
+        "y": 546,
+        "z": -104.4458
+      },
+      "name": "Castell de l'Aguda",
+      "position": {
+        "lat": 41.8186985,
+        "lon": 1.4014711
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-01",
+      "source": "openstreetmap",
+      "sourceId": "n2600018864",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de l'Aguda",
+        "name:ca": "Castell de l'Aguda",
+        "wikidata": "Q19594014",
+        "wikipedia": "ca:Castell de l'Aguda"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2770112432",
+      "local": {
+        "x": -114.8734,
+        "y": 265,
+        "z": 51.9925
+      },
+      "name": "Castell de la Granada",
+      "position": {
+        "lat": 41.3787986,
+        "lon": 1.7192672
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n2770112432",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Granada",
+        "name:ca": "Castell de la Granada",
+        "wikidata": "Q17596286",
+        "wikipedia": "ca:Castell de la Granada"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n2880570343",
+      "local": {
+        "x": -210.7313,
+        "y": 123,
+        "z": 113.9955
+      },
+      "name": "Castell de Vespella",
+      "position": {
+        "lat": 41.204448,
+        "lon": 1.3598355
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-04",
+      "source": "openstreetmap",
+      "sourceId": "n2880570343",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Vespella",
+        "name:ca": "Castell de Vespella",
+        "wikidata": "Q11913121",
+        "wikipedia": "ca:Castell de Vespella"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3036789750",
+      "local": {
+        "x": -179.676,
+        "y": 505,
+        "z": -89.9527
+      },
+      "name": "Castell d'Enfesta",
+      "position": {
+        "lat": 41.7779443,
+        "lon": 1.4762816
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-01",
+      "source": "openstreetmap",
+      "sourceId": "n3036789750",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Enfesta",
+        "name:ca": "Castell d'Enfesta",
+        "wikidata": "Q8342297",
+        "wikipedia": "ca:Castell d'Enfesta"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3578876029",
+      "local": {
+        "x": 226.9008,
+        "y": 67,
+        "z": -181.7167
+      },
+      "name": "Castell de Foixà",
+      "position": {
+        "lat": 42.0359821,
+        "lon": 3.0007939
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-07-00",
+      "source": "openstreetmap",
+      "sourceId": "n3578876029",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Foixà",
+        "name:ca": "Castell de Foixà",
+        "wikidata": "Q8342325",
+        "wikipedia": "ca:Castell de Foixà"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3583450312",
+      "local": {
+        "x": -159.4905,
+        "y": 653,
+        "z": -61.0668
+      },
+      "name": "Castell de la Manresana",
+      "position": {
+        "lat": 41.6967182,
+        "lon": 1.5519695
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n3583450312",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Manresana",
+        "name:ca": "Castell de la Manresana",
+        "tourism": "attraction",
+        "wikidata": "Q67148389"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3718831881",
+      "local": {
+        "x": -90.6492,
+        "y": 567,
+        "z": -152.5227
+      },
+      "name": "Castellot de Viver",
+      "position": {
+        "lat": 41.9538896,
+        "lon": 1.8100992
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-00",
+      "source": "openstreetmap",
+      "sourceId": "n3718831881",
+      "tags": {
+        "historic": "castle",
+        "name": "Castellot de Viver",
+        "name:ca": "Castellot de Viver",
+        "wikidata": "Q8342670",
+        "wikipedia": "ca:Castellot de Viver"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3741570195",
+      "local": {
+        "x": 158.0644,
+        "y": 119,
+        "z": -129.506
+      },
+      "name": "Castell de Vilobí",
+      "position": {
+        "lat": 41.8891673,
+        "lon": 2.7426829
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-06-01",
+      "source": "openstreetmap",
+      "sourceId": "n3741570195",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Vilobí",
+        "wikidata": "Q18696065",
+        "wikipedia": "ca:Castell de Vilobí d'Onyar"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3760604492",
+      "local": {
+        "x": -194.5443,
+        "y": 737,
+        "z": -68.3523
+      },
+      "name": "Castell de Pujalt",
+      "position": {
+        "lat": 41.7172046,
+        "lon": 1.4205307
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n3760604492",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Pujalt",
+        "name:ca": "Castell de Pujalt",
+        "wikidata": "Q20985569",
+        "wikipedia": "ca:Castell de Pujalt"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3903352305",
+      "local": {
+        "x": -183.6075,
+        "y": 678,
+        "z": 56.0285
+      },
+      "name": "Castell de Selma",
+      "position": {
+        "lat": 41.3674495,
+        "lon": 1.4615397
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n3903352305",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Selma",
+        "name:ca": "Castell de Selma",
+        "wikidata": "Q11913101",
+        "wikipedia": "ca:Castell de Selma"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3916693008",
+      "local": {
+        "x": -159.6818,
+        "y": 382,
+        "z": 59.1712
+      },
+      "name": "Castell de Marmellar",
+      "position": {
+        "lat": 41.3586123,
+        "lon": 1.5512525
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n3916693008",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Marmellar",
+        "name:ca": "Castell de Marmellar",
+        "wikidata": "Q17596361",
+        "wikipedia": "ca:Castell de Marmellar"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3916842641",
+      "local": {
+        "x": -166.5726,
+        "y": 439,
+        "z": -12.2497
+      },
+      "name": "Castell de Sant Martí de Tous",
+      "position": {
+        "lat": 41.5594459,
+        "lon": 1.5254143
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-03",
+      "source": "openstreetmap",
+      "sourceId": "n3916842641",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Martí de Tous",
+        "name:ca": "Castell de Sant Martí de Tous",
+        "wikidata": "Q17596630",
+        "wikipedia": "ca:Castell de Sant Martí de Tous"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n394737758",
+      "local": {
+        "x": 41.1802,
+        "y": 838,
+        "z": -103.7494
+      },
+      "name": "Castell del Brull",
+      "position": {
+        "lat": 41.8167403,
+        "lon": 2.3044104
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-01",
+      "source": "openstreetmap",
+      "sourceId": "n394737758",
+      "tags": {
+        "heritage": "2",
+        "historic": "castle",
+        "name": "Castell del Brull",
+        "name:ca": "Castell del Brull",
+        "wikidata": "Q5639526",
+        "wikipedia": "ca:Castell del Brull"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n3964061194",
+      "local": {
+        "x": -263.784,
+        "y": 845,
+        "z": -201.1467
+      },
+      "name": "Castell de Tarabau",
+      "position": {
+        "lat": 42.0906187,
+        "lon": 1.1609078
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-00",
+      "source": "openstreetmap",
+      "sourceId": "n3964061194",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Tarabau",
+        "name:ca": "Castell de Tarabau",
+        "wikidata": "Q20431631",
+        "wikipedia": "ca:Castell de Tarabau"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4084059197",
+      "local": {
+        "x": -0.5734,
+        "y": 37,
+        "z": 60.0402
+      },
+      "name": "Castell de Port",
+      "position": {
+        "lat": 41.3561687,
+        "lon": 2.14785
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-04",
+      "source": "openstreetmap",
+      "sourceId": "n4084059197",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Port",
+        "name:ca": "Castell de Port",
+        "wikidata": "Q22893363",
+        "wikipedia": "ca:Castell de Port"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4101295764",
+      "local": {
+        "x": -121.4628,
+        "y": 320,
+        "z": 4.2988
+      },
+      "name": "Castell de Cabrera",
+      "position": {
+        "lat": 41.512912,
+        "lon": 1.6945593
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-03",
+      "source": "openstreetmap",
+      "sourceId": "n4101295764",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Cabrera",
+        "name:ca": "Castell de Cabrera",
+        "wikidata": "Q8342203",
+        "wikipedia": "ca:Castell de Cabrera (Anoia)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4140326700",
+      "local": {
+        "x": -89.6217,
+        "y": 251,
+        "z": 72.7555
+      },
+      "name": "Castell Vell d'Olivella",
+      "position": {
+        "lat": 41.3204135,
+        "lon": 1.8139518
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n4140326700",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell Vell d'Olivella",
+        "name:ca": "Castell Vell d'Olivella",
+        "wikidata": "Q18003832",
+        "wikipedia": "ca:Castell d'Olivella"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4167157200",
+      "local": {
+        "x": -208.9956,
+        "y": 228,
+        "z": 93.3106
+      },
+      "name": "Castell de Rocamora",
+      "position": {
+        "lat": 41.2626133,
+        "lon": 1.366344
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-04",
+      "source": "openstreetmap",
+      "sourceId": "n4167157200",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Rocamora",
+        "name:ca": "Castell de Rocamora",
+        "wikidata": "Q8342518",
+        "wikipedia": "ca:Castell de Rocamora (Montferri)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4206737264",
+      "local": {
+        "x": -213.7094,
+        "y": 680,
+        "z": 28.5723
+      },
+      "name": "Castell de Vallespinosa",
+      "position": {
+        "lat": 41.4446555,
+        "lon": 1.3486689
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-03",
+      "source": "openstreetmap",
+      "sourceId": "n4206737264",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Vallespinosa",
+        "name:ca": "Castell de Vallespinosa",
+        "wikidata": "Q17596759",
+        "wikipedia": "ca:Castell de Vallespinosa"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4230334431",
+      "local": {
+        "x": -153.6299,
+        "y": 387,
+        "z": 62.7911
+      },
+      "name": "Torre de Can Pascol",
+      "position": {
+        "lat": 41.3484332,
+        "lon": 1.5739449
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n4230334431",
+      "tags": {
+        "historic": "castle",
+        "name": "Torre de Can Pascol",
+        "wikidata": "Q18008401",
+        "wikipedia": "ca:Torre de Can Pascol"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n427959994",
+      "local": {
+        "x": 4.2531,
+        "y": 72,
+        "z": 58.3282
+      },
+      "name": "Far de Montjuïc",
+      "position": {
+        "lat": 41.3609829,
+        "lon": 2.1659475
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-04",
+      "source": "openstreetmap",
+      "sourceId": "n427959994",
+      "tags": {
+        "man_made": "lighthouse",
+        "name": "Far de Montjuïc",
+        "name:ca": "Far de Montjuïc",
+        "seamark:type": "light_major",
+        "wikidata": "Q30912204",
+        "wikipedia": "ca:Far de Montjuïc"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "lighthouse"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4523557319",
+      "local": {
+        "x": 68.6522,
+        "y": 343,
+        "z": -36.142
+      },
+      "name": "Castell del Far",
+      "position": {
+        "lat": 41.6266303,
+        "lon": 2.4074205
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-05-02",
+      "source": "openstreetmap",
+      "sourceId": "n4523557319",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell del Far",
+        "name:ca": "Castell del Far",
+        "tourism": "attraction",
+        "wikidata": "Q10975752",
+        "wikipedia": "ca:Castell del Far"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4844004974",
+      "local": {
+        "x": -177.4,
+        "y": 647,
+        "z": -1.2122
+      },
+      "name": "Castell de la Roqueta",
+      "position": {
+        "lat": 41.5284086,
+        "lon": 1.4848157
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-03",
+      "source": "openstreetmap",
+      "sourceId": "n4844004974",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Roqueta",
+        "name:ca": "Castell de la Roqueta",
+        "wikidata": "Q17596305",
+        "wikipedia": "ca:Castell de Roqueta"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4915697587",
+      "local": {
+        "x": -268.3121,
+        "y": 414,
+        "z": -30.5304
+      },
+      "name": "Castell de Verdú",
+      "position": {
+        "lat": 41.6108506,
+        "lon": 1.1439289
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n4915697587",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Verdú",
+        "name:ca": "Castell de Verdú",
+        "wikidata": "Q8342605",
+        "wikipedia": "ca:Castell de Verdú"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n4965268654",
+      "local": {
+        "x": -80.9905,
+        "y": 670,
+        "z": -206.7793
+      },
+      "name": "Castell de Sant Ferran",
+      "position": {
+        "lat": 42.1064575,
+        "lon": 1.8463156
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-00",
+      "source": "openstreetmap",
+      "sourceId": "n4965268654",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Ferran",
+        "name:ca": "Castell de Sant Ferran",
+        "tourism": "attraction",
+        "wikidata": "Q17596609",
+        "wikipedia": "ca:Castell de Sant Ferran (Berga)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n504549153",
+      "local": {
+        "x": 266.0507,
+        "y": 8,
+        "z": -118.4925
+      },
+      "name": "Castell de Sant Esteve de Mar",
+      "position": {
+        "lat": 41.8581975,
+        "lon": 3.1475915
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-01",
+      "source": "openstreetmap",
+      "sourceId": "n504549153",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Esteve de Mar",
+        "name:ca": "Castell de Sant Esteve de Mar",
+        "wikidata": "Q8342538",
+        "wikipedia": "ca:Castell de Sant Esteve de Mar"
+      },
+      "terrainStatus": "nearest-land-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5120409698",
+      "local": {
+        "x": -215.6679,
+        "y": 559,
+        "z": -35.729
+      },
+      "name": "Castell de Sant Antolí",
+      "position": {
+        "lat": 41.6254689,
+        "lon": 1.3413253
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-02",
+      "source": "openstreetmap",
+      "sourceId": "n5120409698",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Antolí",
+        "name:ca": "Castell de Sant Antolí",
+        "wikidata": "Q20901124",
+        "wikipedia": "ca:Castell de Sant Antolí"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5290082783",
+      "local": {
+        "x": 102.1378,
+        "y": 1044,
+        "z": -141.5668
+      },
+      "name": "Castell de Solterra",
+      "position": {
+        "lat": 41.9230817,
+        "lon": 2.5329789
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-05-00",
+      "source": "openstreetmap",
+      "sourceId": "n5290082783",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Solterra",
+        "name:ca": "Castell de Solterra",
+        "wikidata": "Q18091466",
+        "wikipedia": "ca:Castell de Solterra"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5333519535",
+      "local": {
+        "x": -173.2028,
+        "y": 539,
+        "z": -21.8889
+      },
+      "name": "Castell de Clariana",
+      "position": {
+        "lat": 41.5865511,
+        "lon": 1.5005535
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n5333519535",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Clariana",
+        "name:ca": "Castell de Clariana",
+        "wikidata": "Q19256334",
+        "wikipedia": "ca:Castell de Clariana (Argençola)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5380947895",
+      "local": {
+        "x": -206.8778,
+        "y": 59,
+        "z": 134.7804
+      },
+      "name": "Castell d'Altafulla",
+      "position": {
+        "lat": 41.1460015,
+        "lon": 1.3742848
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-05",
+      "source": "openstreetmap",
+      "sourceId": "n5380947895",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell d'Altafulla",
+        "name:ca": "Castell d'Altafulla",
+        "wikidata": "Q17595812",
+        "wikipedia": "ca:Castell d'Altafulla"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5452232029",
+      "local": {
+        "x": 26.7036,
+        "y": 633,
+        "z": -69.8975
+      },
+      "name": "Castell dels Moros, del Prat o de la Rovira",
+      "position": {
+        "lat": 41.7215497,
+        "lon": 2.2501287
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-04-02",
+      "source": "openstreetmap",
+      "sourceId": "n5452232029",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Montmany",
+        "name:ca": "Castell dels Moros, del Prat o de la Rovira",
+        "wikidata": "Q8342475",
+        "wikipedia": "ca:Castell de Montmany"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5532224083",
+      "local": {
+        "x": 255.2787,
+        "y": 28,
+        "z": -172.3255
+      },
+      "name": "Castell de Fontanilles",
+      "position": {
+        "lat": 42.0095744,
+        "lon": 3.1072008
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-08-00",
+      "source": "openstreetmap",
+      "sourceId": "n5532224083",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Fontanilles",
+        "name:ca": "Castell de Fontanilles",
+        "wikidata": "Q19256338",
+        "wikipedia": "ca:Castell de Fontanilles"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5602391964",
+      "local": {
+        "x": -160.9687,
+        "y": 397,
+        "z": -27.5747
+      },
+      "name": "Castell de Jorba",
+      "position": {
+        "lat": 41.6025392,
+        "lon": 1.5464271
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n5602391964",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Jorba",
+        "name:ca": "Castell de Jorba",
+        "wikidata": "Q8342361",
+        "wikipedia": "ca:Castell de Jorba"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n5836585208",
+      "local": {
+        "x": -263.883,
+        "y": 369,
+        "z": -146.8772
+      },
+      "name": "el Castellot de Sant Joan",
+      "position": {
+        "lat": 41.9380144,
+        "lon": 1.1605363
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-00-00",
+      "source": "openstreetmap",
+      "sourceId": "n5836585208",
+      "tags": {
+        "historic": "castle",
+        "name": "el Castellot de Sant Joan",
+        "name:ca": "el Castellot de Sant Joan",
+        "wikidata": "Q21530424",
+        "wikipedia": "ca:El Castellot (Ponts)"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n6172717160",
+      "local": {
+        "x": -93.117,
+        "y": 299,
+        "z": 41.3679
+      },
+      "name": "la Torrota de Can Llopard",
+      "position": {
+        "lat": 41.4086747,
+        "lon": 1.8008458
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-03",
+      "source": "openstreetmap",
+      "sourceId": "n6172717160",
+      "tags": {
+        "historic": "castle",
+        "name": "la Torrota de Can Llopard",
+        "name:ca": "la Torrota de Can Llopard",
+        "wikidata": "Q11952589",
+        "wikipedia": "ca:Torrota de Can Llopart"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n6195416438",
+      "local": {
+        "x": -169.4577,
+        "y": 88,
+        "z": 114.1815
+      },
+      "name": "Castell de Sant Vicenç de Calders",
+      "position": {
+        "lat": 41.203925,
+        "lon": 1.5145962
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n6195416438",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Sant Vicenç de Calders",
+        "name:ca": "Castell de Sant Vicenç de Calders",
+        "wikidata": "Q17596677",
+        "wikipedia": "ca:Castell de Sant Vicenç de Calders"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n6195685737",
+      "local": {
+        "x": -113.9305,
+        "y": 132,
+        "z": 84.6224
+      },
+      "name": "Castell de Canyelles",
+      "position": {
+        "lat": 41.2870441,
+        "lon": 1.7228028
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-02-04",
+      "source": "openstreetmap",
+      "sourceId": "n6195685737",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Canyelles",
+        "name:ca": "Castell de Canyelles",
+        "wikidata": "Q8342280",
+        "wikipedia": "ca:Castell de Canyelles"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n6200719157",
+      "local": {
+        "x": -152.3952,
+        "y": 165,
+        "z": 86.6842
+      },
+      "name": "Castel de Banyeres",
+      "position": {
+        "lat": 41.2812466,
+        "lon": 1.5785745
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-04",
+      "source": "openstreetmap",
+      "sourceId": "n6200719157",
+      "tags": {
+        "historic": "castle",
+        "name": "Castel de Banyeres",
+        "wikidata": "Q17595904",
+        "wikipedia": "ca:Castell de Banyeres"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "areaM2": null,
+      "footprint": null,
+      "id": "osm-landmark-n6210136016",
+      "local": {
+        "x": -181.2688,
+        "y": 743,
+        "z": -64.8162
+      },
+      "name": "Castell de la Guàrdia",
+      "position": {
+        "lat": 41.7072612,
+        "lon": 1.4703089
+      },
+      "preferredRepresentation": "unique-candidate",
+      "score": 100,
+      "sectorId": "s-01-02",
+      "source": "openstreetmap",
+      "sourceId": "n6210136016",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de la Guàrdia",
+        "name:ca": "Castell de la Guàrdia",
+        "wikidata": "Q20985549",
+        "wikipedia": "ca:Castell de la Guàrdia Pilosa"
+      },
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "assetId": "park-guell",
+      "id": "park-guell",
+      "local": {
+        "x": 0.7201,
+        "y": 181,
+        "z": 39.2963
+      },
+      "name": "Park Güell",
+      "position": {
+        "lat": 41.4145,
+        "lon": 2.1527
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "monument"
+    },
+    {
+      "assetId": "sagrada-familia",
+      "id": "sagrada-familia",
+      "local": {
+        "x": 6.5073,
+        "y": 38,
+        "z": 43.1726
+      },
+      "name": "Basílica de la Sagrada Família",
+      "position": {
+        "lat": 41.4036,
+        "lon": 2.1744
+      },
+      "preferredRepresentation": "unique",
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "modern-observation-tower",
+      "id": "torre-glories",
+      "local": {
+        "x": 10.5877,
+        "y": 11,
+        "z": 43.2081
+      },
+      "name": "Torre Glòries",
+      "position": {
+        "lat": 41.4035,
+        "lon": 2.1897
+      },
+      "preferredRepresentation": "archetype",
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "manual-config",
+      "terrainStatus": "exact-cell",
+      "type": "tower"
     }
   ],
-  "regionId": "catalunya-litoral"
+  "regionId": "catalunya-litoral",
+  "sourceCount": 20140,
+  "wikidataRankingPending": true
 }
