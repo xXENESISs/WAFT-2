@@ -31,13 +31,13 @@ def main() -> int:
     old_match = "        if best and (best['nameSimilarity'] >= 0.45 or (best['typeMatch'] and best['distanceKm'] <= 0.65)):\n"
     new_match = (
         "        if best and (\n"
-        "            best['nameSimilarity'] >= 0.72\n"
-        "            or (best['typeMatch'] and best['nameSimilarity'] >= 0.52 and best['distanceKm'] <= 0.65)\n"
+        "            (best['typeMatch'] and best['nameSimilarity'] >= 0.52 and best['distanceKm'] <= 0.65)\n"
+        "            or (best['nameSimilarity'] >= 0.88 and best['distanceKm'] <= 1.5)\n"
         "        ):\n"
     )
-    generated = replace_once(generated, old_match, new_match, 'protected landmark match threshold')
+    generated = replace_once(generated, old_match, new_match, 'protected landmark semantic threshold')
     old_hash = "    requested_hash = sha256_bytes(('\\n'.join(qids) + '\\n').encode('ascii'))\n"
-    new_hash = "    requested_hash = sha256_bytes(('selected-landmarks-manual-match-v2\\n' + '\\n'.join(qids) + '\\n').encode('ascii'))\n"
+    new_hash = "    requested_hash = sha256_bytes(('selected-landmarks-manual-match-v3\\n' + '\\n'.join(qids) + '\\n').encode('ascii'))\n"
     generated = replace_once(generated, old_hash, new_hash, 'snapshot algorithm fingerprint')
     TEMPORARY.write_text(generated, encoding='utf-8')
     try:
