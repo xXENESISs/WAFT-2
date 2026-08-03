@@ -1,0 +1,112 @@
+name: Verify WAFT Adventure 0.17.0 Dense Places
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/verify-waft-0170-trigger-v2.txt
+      - .github/workflows/verify-waft-0170-v2.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-waft-0170-v2
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install mobile browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Run local and public verification with persistent diagnostics
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/waft-0170-browser.log
+          node --check world-generator/scripts/verify-adventure-0170-browser.mjs >> world-generator/waft-0170-browser.log 2>&1
+          SYNTAX=$?
+          LOCAL=99
+          PUBLISHED=99
+          PUBLIC=99
+
+          if [ "$SYNTAX" -eq 0 ]; then
+            python -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0170-server.log 2>&1 &
+            SERVER_PID=$!
+            sleep 2
+            node world-generator/scripts/verify-adventure-0170-browser.mjs \
+              --url http://127.0.0.1:8000/mallorca-mobile/waft-0170.html?v=waft-adventure-0170-dense-places-v2 \
+              --output world-generator/waft-0170-local-browser.json \
+              --screenshot /tmp/waft-0170-local.png \
+              >> world-generator/waft-0170-browser.log 2>&1
+            LOCAL=$?
+            kill "$SERVER_PID" >/dev/null 2>&1 || true
+          fi
+
+          if [ "$LOCAL" -eq 0 ]; then
+            PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0170.html?v=waft-adventure-0170-dense-places-v2"
+            for attempt in $(seq 1 180); do
+              page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
+              baleares="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/regions/baleares/local-0170/zones-v1.json?v=waft-adventure-0170-dense-places-v2" || true)"
+              catalunya="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/regions/catalunya-litoral/local-0170/zones-v1.json?v=waft-adventure-0170-dense-places-v2" || true)"
+              if printf '%s' "$page" | grep -q 'waft-adventure-0170-dense-places-v2' \
+                && printf '%s' "$page" | grep -q 'IR A BARCELONA' \
+                && printf '%s' "$baleares" | grep -q 'totalBuildings' \
+                && printf '%s' "$catalunya" | grep -qi 'barcelona'; then
+                PUBLISHED=0
+                break
+              fi
+              sleep 4
+            done
+            if [ "$PUBLISHED" -eq 0 ]; then
+              node world-generator/scripts/verify-adventure-0170-browser.mjs \
+                --url "$PAGE_URL" \
+                --public \
+                --output world-generator/waft-0170-public-browser.json \
+                --screenshot /tmp/waft-0170-public.png \
+                >> world-generator/waft-0170-browser.log 2>&1
+              PUBLIC=$?
+            fi
+          fi
+
+          node - "$SYNTAX" "$LOCAL" "$PUBLISHED" "$PUBLIC" <<'NODE'
+          const fs = require('fs');
+          const syntax = Number(process.argv[2]);
+          const local = Number(process.argv[3]);
+          const published = Number(process.argv[4]);
+          const publicBrowser = Number(process.argv[5]);
+          const success = syntax===0 && local===0 && published===0 && publicBrowser===0;
+          const status = {syntax,local,published,public:publicBrowser,directBarcelona:success?0:99,densePalma:success?0:99,denseBarcelona:success?0:99,roundTrip:success?0:99,restore:success?0:99,webgl2:success?0:99,success,recordedAt:new Date().toISOString()};
+          fs.writeFileSync('world-generator/waft-0170-browser-status.json',JSON.stringify(status,null,2)+'\n');
+          NODE
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/waft-0170-browser.log world-generator/waft-0170-browser-status.json
+          [ -f world-generator/waft-0170-local-browser.json ] && git add world-generator/waft-0170-local-browser.json
+          [ -f world-generator/waft-0170-public-browser.json ] && git add world-generator/waft-0170-public-browser.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify WAFT Adventure 0.17.0 dense places"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          [ "$SYNTAX" -eq 0 ] && [ "$LOCAL" -eq 0 ] && [ "$PUBLISHED" -eq 0 ] && [ "$PUBLIC" -eq 0 ]
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: waft-adventure-0170-dense-places
+          path: |
+            /tmp/waft-0170-local.png
+            /tmp/waft-0170-public.png
+          if-no-files-found: ignore
+          retention-days: 7
