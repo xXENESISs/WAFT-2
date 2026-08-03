@@ -260,7 +260,7 @@ function createDenseZone(regionId, preset, metadata, sample, outputDir) {
     regionalBounds: bounds,
     regionalRadius,
     worldScale: type === 'metropolis' ? 5.2 : 5.7,
-    footprintScale: 1,
+    footprintScale: type === 'metropolis' ? 4.8 : 5.1,
     terrain: { columns, rows },
     counts: {
       buildings: buildings.length / 8,

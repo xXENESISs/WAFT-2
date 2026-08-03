@@ -18,7 +18,7 @@
   },
   "regionalRadius": 34,
   "worldScale": 5.7,
-  "footprintScale": 1,
+  "footprintScale": 5.1,
   "terrain": {
     "columns": 97,
     "rows": 97
