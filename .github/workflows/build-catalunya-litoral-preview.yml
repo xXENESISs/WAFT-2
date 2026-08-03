@@ -8,6 +8,7 @@ on:
       - regions/catalunya-litoral/objects.json
       - regions/catalunya-litoral/routes.json
       - world-generator/scripts/import-wikidata-landmarks.py
+      - world-generator/scripts/import-wikidata-landmarks-v2.py
       - world-generator/scripts/apply-wikidata-landmarks.mjs
       - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/scripts/verify-region-preview-v2.mjs
@@ -88,7 +89,7 @@ jobs:
             return "$code"
           }
 
-          run_logged 'import Wikidata landmarks' python world-generator/scripts/import-wikidata-landmarks.py catalunya-litoral --retrieved-on 2026-08-03 || wikidata_import=$?
+          run_logged 'import selected Wikidata landmarks' python world-generator/scripts/import-wikidata-landmarks-v2.py catalunya-litoral --retrieved-on 2026-08-03 || wikidata_import=$?
           if [ "$wikidata_import" = 0 ]; then run_logged 'rank Wikidata landmarks' node world-generator/scripts/apply-wikidata-landmarks.mjs catalunya-litoral || wikidata_apply=$?; else wikidata_apply=99; fi
           if [ "$wikidata_apply" = 0 ]; then run_logged 'build compact preview' node world-generator/scripts/build-region-preview-v2.mjs catalunya-litoral || preview=$?; else preview=99; fi
           if [ "$preview" = 0 ]; then run_logged 'verify compact preview' node world-generator/scripts/verify-region-preview-v2.mjs catalunya-litoral || verify=$?; else verify=99; fi
