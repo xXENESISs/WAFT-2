@@ -1,0 +1,134 @@
+{
+  "buildId": "waft-adventure-0159-ac6ed7b3aca1",
+  "capabilities": [
+    "land",
+    "long_water"
+  ],
+  "formatVersion": 1,
+  "inputsSha256": "ac6ed7b3aca11c12d39019535bf12c21052fbeea73646741ed43da32fd17be34",
+  "outputs": {
+    "adventure": "mallorca-mobile/waft-0159.html",
+    "catalunyaRuntime": "mallorca-mobile/region-runtime-catalunya-litoral-001.html"
+  },
+  "protectedInputs": {
+    "adventure0158BlobExpected": "b605801b9b18cf5d88e24968b9674db0503eef21",
+    "balearesRuntimeBlobExpected": "54efca64586886fdd2f385f928489c786f925f31"
+  },
+  "regions": {
+    "baleares": {
+      "arrival": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "departure": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "expectedBuildId": "baleares-preview-3068ab4bdb61",
+      "id": "baleares",
+      "name": "Baleares",
+      "runtime": "region-runtime-baleares-011.html"
+    },
+    "catalunya-litoral": {
+      "arrival": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      },
+      "departure": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      },
+      "expectedBuildId": "catalunya-litoral-preview-4ba7b372d799",
+      "id": "catalunya-litoral",
+      "name": "Catalunya litoral",
+      "runtime": "region-runtime-catalunya-litoral-001.html"
+    }
+  },
+  "route": {
+    "arrivals": {
+      "baleares": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "catalunya-litoral": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      }
+    },
+    "capability": "long_water",
+    "departures": {
+      "baleares": {
+        "heading": 3.577925,
+        "id": "port-alcudia",
+        "name": "Port d'Alcúdia",
+        "type": "port",
+        "x": 102.9282,
+        "z": -133.3584
+      },
+      "catalunya-litoral": {
+        "heading": 6.108652,
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "type": "port",
+        "x": 5.3339,
+        "z": 62.2339
+      }
+    },
+    "from": "baleares",
+    "id": "baleares-catalunya-long-water",
+    "to": "catalunya-litoral"
+  },
+  "valid": true
+}
+Error: World state was not restored after reload
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0159-browser.mjs:31:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0159-browser.mjs:128:5)
+127.0.0.1 - - [03/Aug/2026 03:16:10] "GET /mallorca-mobile/waft-0159.html?v=diagnostic-v3 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:11] "GET /mallorca-mobile/region-runtime-baleares-011.html?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:11] "GET /regions/baleares/preview/baleares-preview-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:11] "GET /regions/baleares/local/zones-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] code 404, message File not found
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /mallorca-mobile/waft-0159.html?v=diagnostic-v3 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /regions/baleares/terrain.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /regions/baleares/landcover.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /regions/baleares/preview/baleares-preview-v1.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:12] code 404, message File not found
+127.0.0.1 - - [03/Aug/2026 03:16:12] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Aug/2026 03:16:14] "GET /mallorca-mobile/region-runtime-catalunya-litoral-001.html?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:15] "GET /regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:15] "GET /regions/catalunya-litoral/local/zones-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:15] "GET /regions/catalunya-litoral/terrain.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:15] "GET /regions/catalunya-litoral/landcover.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:15] "GET /regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /mallorca-mobile/waft-0159.html?v=diagnostic-v3 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /mallorca-mobile/region-runtime-catalunya-litoral-001.html?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /regions/catalunya-litoral/local/zones-v1.json?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /regions/catalunya-litoral/terrain.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /regions/catalunya-litoral/landcover.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -
+127.0.0.1 - - [03/Aug/2026 03:16:18] "GET /regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.bin?v=diagnostic-v3-waft-adventure-0159-ac6ed7b3aca1 HTTP/1.1" 304 -

@@ -164,7 +164,15 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;fon
     loading.classList.remove('hide');
     loadText.textContent = 'Cargando ' + REGIONS[regionId].name + '…';
     updateWorldHud();
-    frame.src = REGIONS[regionId].runtime + '?v=' + encodeURIComponent(cacheKey + '-' + BUILD_ID);
+    const runtimeUrl = REGIONS[regionId].runtime + '?v=' + encodeURIComponent(cacheKey + '-' + BUILD_ID);
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('La navegación regional no terminó.')), 120000);
+      frame.addEventListener('load', () => {
+        clearTimeout(timer);
+        resolve();
+      }, { once: true });
+      frame.src = runtimeUrl;
+    });
     const api = await waitForRuntime();
     if (api.metadata.regionId !== regionId) throw new Error('El runtime abrió ' + api.metadata.regionId + ' en lugar de ' + regionId);
     if (api.metadata.buildId !== REGIONS[regionId].expectedBuildId) throw new Error('Build regional inesperada: ' + api.metadata.buildId);
