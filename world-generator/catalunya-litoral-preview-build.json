@@ -1,7 +1,7 @@
 {
   "binaryBytes": 670144,
-  "binarySha256": "682787dfcdb71e734b9c3724c8593626476b625b8d11fbe4816625c988015c54",
-  "buildId": "catalunya-litoral-preview-00eabb66d20c",
+  "binarySha256": "913e30978f667a35ddb7b05af145112b3897c924a6edbfdace44900fb76bc69d",
+  "buildId": "catalunya-litoral-preview-529252c0cbcb",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -33,7 +33,7 @@
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "00eabb66d20cd983074aa99eaef148086764bcf654d873af287139257f824bb8",
+  "inputsSha256": "529252c0cbcbb33c03fb57dc32f7fa2896f882ca05de279fbd4dd42e1f4d23db",
   "regionId": "catalunya-litoral",
   "valid": true
 }

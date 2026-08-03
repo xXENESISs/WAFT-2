@@ -7,21 +7,21 @@
   "endpoint": "https://www.wikidata.org/w/api.php",
   "license": "CC0 1.0",
   "retrievedOn": "2026-08-03",
-  "requestedQids": 100,
-  "requestedQidsSha256": "9210c08dd7e4bf06b00171d8023b7afb959fa43b6a6d158bdceb4571aac9c267",
-  "entityCount": 100,
-  "manualMatchCount": 9,
+  "requestedQids": 98,
+  "requestedQidsSha256": "9fa6bb8b5a5936f1701089b27038243bb34e5a34373d8f3639a8ab4e4442e26f",
+  "entityCount": 98,
+  "manualMatchCount": 7,
   "snapshotFile": "wikidata-landmarks.json.gz",
-  "snapshotBytes": 17550,
-  "snapshotSha256": "9911ed346b9edffdf6d2c1b2140f3a5106ef6662d19f3c9a25c73bb0f0b9c27b",
-  "uncompressedBytes": 102011
+  "snapshotBytes": 17128,
+  "snapshotSha256": "aedda7ec8512d1d4e04595fb8ebb67ac917b6783bfd5c2b352e842e1e4c8ce9c",
+  "uncompressedBytes": 99917
 }
 exit=0
 == rank Wikidata landmarks ==
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52613235,
+  "packageBytes": 52612939,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -36,8 +36,8 @@ exit=0
 == build compact preview ==
 {
   "binaryBytes": 670144,
-  "binarySha256": "682787dfcdb71e734b9c3724c8593626476b625b8d11fbe4816625c988015c54",
-  "buildId": "catalunya-litoral-preview-00eabb66d20c",
+  "binarySha256": "913e30978f667a35ddb7b05af145112b3897c924a6edbfdace44900fb76bc69d",
+  "buildId": "catalunya-litoral-preview-529252c0cbcb",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -69,7 +69,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "00eabb66d20cd983074aa99eaef148086764bcf654d873af287139257f824bb8",
+  "inputsSha256": "529252c0cbcbb33c03fb57dc32f7fa2896f882ca05de279fbd4dd42e1f4d23db",
   "regionId": "catalunya-litoral",
   "valid": true
 }

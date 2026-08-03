@@ -61,9 +61,9 @@
       "sha256": "dcd74f7e7457f8237473c8215ec01d78f0b245f2ddd052908b4c08358da2e984"
     },
     {
-      "bytes": 284443,
+      "bytes": 284149,
       "path": "landmarks.json",
-      "sha256": "8be8924126688f3064b0862eb8f864002363b15f65a298e83aa11c914918b20c"
+      "sha256": "25db6e8d789929048b3325c16b9b6ffb542f95977527cf72989cfa24e9265796"
     },
     {
       "bytes": 10664,
@@ -82,12 +82,12 @@
   "knowledgeGraph": {
     "dataset": "Wikidata landmark enrichment",
     "endpoint": "https://www.wikidata.org/w/api.php",
-    "entityCount": 100,
+    "entityCount": 98,
     "license": "CC0 1.0",
     "provider": "Wikimedia Foundation and Wikidata contributors",
-    "requestedQids": 100,
+    "requestedQids": 98,
     "retrievedOn": "2026-08-03",
-    "snapshotSha256": "9911ed346b9edffdf6d2c1b2140f3a5106ef6662d19f3c9a25c73bb0f0b9c27b"
+    "snapshotSha256": "aedda7ec8512d1d4e04595fb8ebb67ac917b6783bfd5c2b352e842e1e4c8ce9c"
   },
   "landcover": {
     "classDistribution": {
@@ -195,7 +195,7 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 52602858,
+  "packageBytesWithoutManifest": 52602564,
   "packageEncoding": {
     "deterministic": true,
     "json": "compact-utf8-v1"
@@ -254,7 +254,7 @@
     "wikidataSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json",
       "path": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
-      "sha256": "9911ed346b9edffdf6d2c1b2140f3a5106ef6662d19f3c9a25c73bb0f0b9c27b"
+      "sha256": "aedda7ec8512d1d4e04595fb8ebb67ac917b6783bfd5c2b352e842e1e4c8ce9c"
     },
     "worldCoverSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",

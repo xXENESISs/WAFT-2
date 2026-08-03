@@ -4,9 +4,9 @@
     "file": "catalunya-litoral-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "682787dfcdb71e734b9c3724c8593626476b625b8d11fbe4816625c988015c54"
+    "sha256": "913e30978f667a35ddb7b05af145112b3897c924a6edbfdace44900fb76bc69d"
   },
-  "buildId": "catalunya-litoral-preview-00eabb66d20c",
+  "buildId": "catalunya-litoral-preview-529252c0cbcb",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -434,7 +434,7 @@
     {
       "id": "osm-landmark-r9036251",
       "name": "monestir de Santa Maria de Pedralbes",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "monastery",
       "wikidataId": "Q1321526"
     },
@@ -539,7 +539,7 @@
     {
       "id": "osm-landmark-w159513015",
       "name": "Hostal del Santuari de Pinós",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "castle",
       "wikidataId": "Q19677075"
     },
@@ -1396,9 +1396,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "00eabb66d20cd983074aa99eaef148086764bcf654d873af287139257f824bb8",
+    "inputsSha256": "529252c0cbcbb33c03fb57dc32f7fa2896f882ca05de279fbd4dd42e1f4d23db",
     "landcoverSha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b",
-    "regionManifestSha256": "99cc9404c179c39d04cb43f70d91436c9d922210e1150741bad571ca382ab031",
+    "regionManifestSha256": "eb4f9f0877d761c881ed2809ca7a3eb7da97ccab04c18ef9be81bb78e341bde0",
     "terrainSha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
   },
   "terrain": {
