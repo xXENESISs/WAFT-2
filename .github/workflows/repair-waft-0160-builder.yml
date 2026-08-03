@@ -1,0 +1,40 @@
+name: Repair WAFT 0.16.0 builder
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/repair-waft-0160-builder.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Repair malformed shader string boundaries
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          path = Path('world-generator/build-waft-0160.js')
+          text = path.read_text()
+          broken = '}`,' + '\n' + '    "'
+          fixed = '}`",' + '\n' + '    "'
+          count = text.count(broken)
+          if count != 2:
+              raise SystemExit(f'Expected 2 malformed shader boundaries, found {count}')
+          path.write_text(text.replace(broken, fixed))
+          PY
+          node --check world-generator/build-waft-0160.js
+      - name: Commit repaired builder
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/build-waft-0160.js
+          git commit -m "Fix WAFT 0.16.0 builder shader quoting"
+          git push origin HEAD:main
