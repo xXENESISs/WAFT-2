@@ -1,0 +1,140 @@
+name: Build Catalunya litoral terrain
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-catalunya-litoral-terrain.yml
+      - world-generator/configs/catalunya-litoral.region.json
+      - world-generator/overrides/catalunya-litoral.overrides.json
+      - world-generator/scripts/build-region-v2.mjs
+      - world-generator/scripts/import-copernicus-dem.py
+      - world-generator/scripts/import-esa-worldcover.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalunya-litoral-terrain
+  cancel-in-progress: true
+
+jobs:
+  terrain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Record protected files
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-terrain-protected-before.sha256
+
+      - name: Install raster dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy rasterio
+
+      - name: Build terrain stage with persistent diagnostics
+        id: build
+        shell: bash
+        run: |
+          set +e
+          LOG=world-generator/catalunya-litoral-terrain.log
+          STATUS=world-generator/catalunya-litoral-terrain-status.json
+          : > "$LOG"
+          dem=0
+          worldcover=0
+          bootstrap=0
+          deterministic=0
+          protected=0
+
+          run_logged() {
+            label="$1"
+            shift
+            echo "== ${label} ==" >> "$LOG"
+            "$@" >> "$LOG" 2>&1
+            code=$?
+            echo "exit=${code}" >> "$LOG"
+            return "$code"
+          }
+
+          run_logged 'import Copernicus DEM GLO-30' python world-generator/scripts/import-copernicus-dem.py catalunya-litoral --refresh --retrieved-on 2026-08-03 || dem=$?
+          if [ "$dem" = 0 ]; then
+            run_logged 'import ESA WorldCover' python world-generator/scripts/import-esa-worldcover.py catalunya-litoral --refresh --retrieved-on 2026-08-03 || worldcover=$?
+          else
+            worldcover=99
+          fi
+          if [ "$worldcover" = 0 ]; then
+            run_logged 'build generic regional bootstrap' node world-generator/scripts/build-region-v2.mjs catalunya-litoral || bootstrap=$?
+          else
+            bootstrap=99
+          fi
+          if [ "$bootstrap" = 0 ]; then
+            cp regions/catalunya-litoral/terrain.bin /tmp/catalunya-terrain-first.bin
+            cp regions/catalunya-litoral/landcover.bin /tmp/catalunya-landcover-first.bin
+            cp regions/catalunya-litoral/manifest.json /tmp/catalunya-manifest-first.json
+            run_logged 'deterministic regional bootstrap rebuild' node world-generator/scripts/build-region-v2.mjs catalunya-litoral || deterministic=$?
+            cmp /tmp/catalunya-terrain-first.bin regions/catalunya-litoral/terrain.bin >> "$LOG" 2>&1 || deterministic=$?
+            cmp /tmp/catalunya-landcover-first.bin regions/catalunya-litoral/landcover.bin >> "$LOG" 2>&1 || deterministic=$?
+            cmp /tmp/catalunya-manifest-first.json regions/catalunya-litoral/manifest.json >> "$LOG" 2>&1 || deterministic=$?
+          else
+            deterministic=99
+          fi
+
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-terrain-protected-after.sha256
+          diff -u /tmp/catalunya-terrain-protected-before.sha256 /tmp/catalunya-terrain-protected-after.sha256 >> "$LOG" 2>&1 || protected=$?
+
+          printf '{"dem":%s,"worldcover":%s,"bootstrap":%s,"deterministic":%s,"protected":%s}\n' \
+            "$dem" "$worldcover" "$bootstrap" "$deterministic" "$protected" > "$STATUS"
+          cat "$LOG"
+          all=0
+          for code in "$dem" "$worldcover" "$bootstrap" "$deterministic" "$protected"; do
+            [ "$code" = 0 ] || all=1
+          done
+          echo "code=${all}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit terrain stage
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          optional=(
+            world-generator/sources/catalunya-litoral/copernicus-dem-glo30.bin
+            world-generator/sources/catalunya-litoral/copernicus-dem-glo30.json
+            world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.bin
+            world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json
+            regions/catalunya-litoral
+            world-generator/catalunya-litoral-terrain.log
+            world-generator/catalunya-litoral-terrain-status.json
+          )
+          for path in "${optional[@]}"; do [ -e "$path" ] && git add "$path"; done
+          if ! git diff --cached --quiet; then
+            git commit -m "Build Catalunya litoral terrain and landcover"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Require terrain success
+        if: steps.build.outputs.code != '0'
+        run: exit 1
