@@ -42,6 +42,23 @@ jobs:
           test -f world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz
           test -f regions/catalunya-litoral/objects.json
           test -f regions/catalunya-litoral/routes.json
+          test "$(node -p "require('./world-generator/catalunya-litoral-osm-status.json').apply")" = 0
+      - name: Record protected WAFT files
+        run: |
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-preview-protected-before.sha256
       - name: Install browser verifier
         run: npm install --no-save --no-package-lock playwright-core@1.55.0
       - name: Build and verify preview locally
@@ -60,6 +77,7 @@ jobs:
           inline=0
           browser=0
           deterministic=0
+          protected=0
 
           run_logged() {
             echo "== $1 ==" >> "$log"
@@ -83,6 +101,10 @@ jobs:
           scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
           if len(scripts) != 1:
               raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          forbidden = ('Palma', 'Llevant', 'Alcúdia', 'Menorca', 'Eivissa', '../regions/baleares/', 'baleares-preview-v1')
+          remaining = [value for value in forbidden if value in text]
+          if remaining:
+              raise SystemExit(f'Baleares-specific content remains: {remaining}')
           print(scripts[0])
           PY
             run_logged 'check inline JavaScript' node --check /tmp/catalunya-preview-inline.mjs || inline=$?
@@ -103,10 +125,25 @@ jobs:
             sha256sum regions/catalunya-litoral/landmarks.json regions/catalunya-litoral/manifest.json regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.bin regions/catalunya-litoral/preview/catalunya-litoral-preview-v1.json mallorca-mobile/region-preview-catalunya-litoral-001.html > /tmp/catalunya-preview-second.sha
             diff -u /tmp/catalunya-preview-first.sha /tmp/catalunya-preview-second.sha >> "$log" 2>&1 || deterministic=$?
           else deterministic=99; fi
-          printf '{"wikidataImport":%s,"wikidataApply":%s,"preview":%s,"verify":%s,"page":%s,"inline":%s,"browser":%s,"deterministic":%s}\n' "$wikidata_import" "$wikidata_apply" "$preview" "$verify" "$page" "$inline" "$browser" "$deterministic" > "$status"
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70" || protected=$?
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-preview-protected-after.sha256
+          diff -u /tmp/catalunya-preview-protected-before.sha256 /tmp/catalunya-preview-protected-after.sha256 >> "$log" 2>&1 || protected=$?
+          printf '{"wikidataImport":%s,"wikidataApply":%s,"preview":%s,"verify":%s,"page":%s,"inline":%s,"browser":%s,"deterministic":%s,"protected":%s}\n' "$wikidata_import" "$wikidata_apply" "$preview" "$verify" "$page" "$inline" "$browser" "$deterministic" "$protected" > "$status"
           cat "$log"
           all=0
-          for code in "$wikidata_import" "$wikidata_apply" "$preview" "$verify" "$page" "$inline" "$browser" "$deterministic"; do [ "$code" = 0 ] || all=1; done
+          for code in "$wikidata_import" "$wikidata_apply" "$preview" "$verify" "$page" "$inline" "$browser" "$deterministic" "$protected"; do [ "$code" = 0 ] || all=1; done
           echo "code=${all}" >> "$GITHUB_OUTPUT"
           exit 0
       - name: Commit local preview
@@ -149,13 +186,15 @@ jobs:
           done
           exit 1
       - name: Verify public mobile preview
-        run: node world-generator/scripts/verify-region-preview-browser-v2.mjs --region catalunya-litoral --url "$PUBLIC_PREVIEW_URL" --public --output world-generator/catalunya-litoral-preview-public-browser.json --screenshot /tmp/catalunya-preview-public.png
+        run: node world-generator/scripts/verify-region-preview-browser-v2.mjs --region catalunya-litoral --url "$PUBLIC_PREVIEW_URL" --public --output world-generator/catalunya-litoral-preview-public-verification.json --screenshot /tmp/catalunya-preview-public.png
+      - name: Recheck protected stable build
+        run: test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
       - name: Commit public verification
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add world-generator/catalunya-litoral-preview-public-browser.json
+          git add world-generator/catalunya-litoral-preview-public-verification.json
           if ! git diff --cached --quiet; then
             git commit -m "Verify public Catalunya litoral regional preview"
             git pull --rebase origin main
