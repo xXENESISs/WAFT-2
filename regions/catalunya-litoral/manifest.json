@@ -25,10 +25,13 @@
     "faunaSpecies": 9,
     "generatedBuildings": 3534,
     "hotels": 597,
+    "landmarkArchetypes": 76,
     "landmarks": 100,
     "ports": 93,
     "roads": 124461,
-    "settlements": 90
+    "settlements": 90,
+    "uniqueModelCandidates": 24,
+    "wikidataLinkedLandmarks": 100
   },
   "deterministic": true,
   "files": [
@@ -43,9 +46,9 @@
       "sha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b"
     },
     {
-      "bytes": 2928125,
+      "bytes": 4381608,
       "path": "sectors.json",
-      "sha256": "1547bb9520e321bbb06d715b9b25ff62aa11d0f7e353bce076d8fb3d400b1ce4"
+      "sha256": "c05814a825948031cbbbdf5edc67071c8a082c8b922882fc891bffd338458c1b"
     },
     {
       "bytes": 59474,
@@ -58,9 +61,9 @@
       "sha256": "dcd74f7e7457f8237473c8215ec01d78f0b245f2ddd052908b4c08358da2e984"
     },
     {
-      "bytes": 75958,
+      "bytes": 284090,
       "path": "landmarks.json",
-      "sha256": "f584832247c288beb14492d5a690e4c1281fb4d847ffd9b6a5a92f0607f8f235"
+      "sha256": "bb03524eb189801bbe9d7bb49c9164bfeb18649bb2b2785880cdb48d281db7df"
     },
     {
       "bytes": 10664,
@@ -74,8 +77,18 @@
     }
   ],
   "formatVersion": 1,
-  "generationStage": "openstreetmap-physical-network",
+  "generationStage": "wikidata-ranked-landmarks",
   "generatorVersion": "0.2.0",
+  "knowledgeGraph": {
+    "dataset": "Wikidata landmark enrichment",
+    "endpoint": "https://www.wikidata.org/w/api.php",
+    "entityCount": 4458,
+    "license": "CC0 1.0",
+    "provider": "Wikimedia Foundation and Wikidata contributors",
+    "requestedQids": 4458,
+    "retrievedOn": "2026-08-03",
+    "snapshotSha256": "7676acfed3f956e921162ae64b0376346cc671b276ad67490c2d406f951750d4"
+  },
   "landcover": {
     "classDistribution": {
       "0": 77764,
@@ -182,13 +195,12 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 50940890,
+  "packageBytesWithoutManifest": 52602505,
   "packageEncoding": {
     "deterministic": true,
     "json": "compact-utf8-v1"
   },
   "pendingStages": [
-    "wikidata-landmark-ranking",
     "gbif-fauna-candidates",
     "procedural-vegetation-and-buildings"
   ],
@@ -238,6 +250,11 @@
     "overrides": {
       "path": "world-generator/overrides/catalunya-litoral.overrides.json",
       "sha256": "a36bc08b928705e9752fdd7543954b21d42a565f7e9df9bce63d006e04bcc7a6"
+    },
+    "wikidataSnapshot": {
+      "metadataPath": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json",
+      "path": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
+      "sha256": "7676acfed3f956e921162ae64b0376346cc671b276ad67490c2d406f951750d4"
     },
     "worldCoverSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",

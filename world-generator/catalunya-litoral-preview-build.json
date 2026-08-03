@@ -1,0 +1,39 @@
+{
+  "binaryBytes": 670144,
+  "binarySha256": "d1497b513ee03efc36d52c979bf92edeb9a45c4a270081ffae0cef2d15cd89e7",
+  "buildId": "catalunya-litoral-preview-3df795a28d19",
+  "counts": {
+    "buildings": 3534,
+    "hotels": 597,
+    "landmarks": 100,
+    "namedBuildings": 3292,
+    "roadSegments": 17298,
+    "roadVertices": 34596,
+    "selectedRoads": 12500,
+    "settlements": 90
+  },
+  "distributions": {
+    "buildingKinds": {
+      "commercial": 214,
+      "historic": 967,
+      "hotel": 597,
+      "ordinary": 32,
+      "public": 208,
+      "religious": 1516
+    },
+    "landmarkRepresentations": {
+      "archetype": 76,
+      "unique": 6,
+      "unique-candidate": 18
+    },
+    "roadClasses": {
+      "motorway": 4812,
+      "primary": 5406,
+      "trunk": 2282
+    }
+  },
+  "formatVersion": 1,
+  "inputsSha256": "3df795a28d194a9e672797f005a37d7c8d774b85287db92f3f84b2b0a8131753",
+  "regionId": "catalunya-litoral",
+  "valid": true
+}
