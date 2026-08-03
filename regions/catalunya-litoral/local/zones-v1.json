@@ -1,0 +1,13 @@
+{
+  "buildId": "catalunya-litoral-local-zones-empty-v1",
+  "deterministic": true,
+  "formatVersion": 1,
+  "regionId": "catalunya-litoral",
+  "registryType": "waft-local-zone-registry",
+  "source": {
+    "configFile": null,
+    "fingerprint": "pending-local-zone-generation"
+  },
+  "zoneCount": 0,
+  "zones": []
+}
