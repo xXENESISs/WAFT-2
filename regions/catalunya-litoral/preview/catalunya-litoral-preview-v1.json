@@ -4,9 +4,9 @@
     "file": "catalunya-litoral-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "913e30978f667a35ddb7b05af145112b3897c924a6edbfdace44900fb76bc69d"
+    "sha256": "b834462e0465d057eca7ab491ee278c90457b9e558931cd75fc2922ecbe26bd0"
   },
-  "buildId": "catalunya-litoral-preview-529252c0cbcb",
+  "buildId": "catalunya-litoral-preview-66a8808bbaea",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -48,21 +48,21 @@
   "landmarks": [
     {
       "id": "amfiteatre-tarragona",
-      "name": "amfiteatre de Tarragona",
+      "name": "Amfiteatre de Tarragona",
       "representation": "unique",
       "type": "archaeological_site",
       "wikidataId": null
     },
     {
       "id": "castell-montjuic",
-      "name": "castell de Montjuïc",
+      "name": "Castell de Montjuïc",
       "representation": "archetype",
       "type": "castle",
       "wikidataId": null
     },
     {
       "id": "castell-tossa",
-      "name": "far de Tossa",
+      "name": "Vila Vella de Tossa de Mar",
       "representation": "unique",
       "type": "castle",
       "wikidataId": null
@@ -76,14 +76,14 @@
     },
     {
       "id": "monestir-montserrat",
-      "name": "monestir de Montserrat",
+      "name": "Monestir de Montserrat",
       "representation": "unique",
       "type": "monastery",
       "wikidataId": null
     },
     {
       "id": "muralles-girona",
-      "name": "Catedral de Girona",
+      "name": "Muralles de Girona",
       "representation": "archetype",
       "type": "fortress",
       "wikidataId": null
@@ -441,7 +441,7 @@
     {
       "id": "osm-landmark-r9160031",
       "name": "Casa Bonaventura Ferrer",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "castle",
       "wikidataId": "Q8341565"
     },
@@ -700,7 +700,7 @@
     {
       "id": "osm-landmark-w51260215",
       "name": "Santa Maria del Mar",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "church",
       "wikidataId": "Q908802"
     },
@@ -727,21 +727,21 @@
     },
     {
       "id": "park-guell",
-      "name": "Parc Güell",
+      "name": "Park Güell",
       "representation": "unique",
       "type": "monument",
       "wikidataId": null
     },
     {
       "id": "sagrada-familia",
-      "name": "Temple Expiatori de la Sagrada Família",
+      "name": "Basílica de la Sagrada Família",
       "representation": "unique",
       "type": "cathedral",
       "wikidataId": null
     },
     {
       "id": "torre-glories",
-      "name": "Torre de Jaume I",
+      "name": "Torre Glòries",
       "representation": "archetype",
       "type": "tower",
       "wikidataId": null
@@ -1396,9 +1396,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "529252c0cbcbb33c03fb57dc32f7fa2896f882ca05de279fbd4dd42e1f4d23db",
+    "inputsSha256": "66a8808bbaea6b5148b1d958312e41cc12724e89eee6029e8f4d1a62fb707d20",
     "landcoverSha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b",
-    "regionManifestSha256": "eb4f9f0877d761c881ed2809ca7a3eb7da97ccab04c18ef9be81bb78e341bde0",
+    "regionManifestSha256": "40de9be50444be170d6bef00f2d8c30e1ec79843f9c032d5bac5a09628fe5824",
     "terrainSha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
   },
   "terrain": {
