@@ -16,6 +16,36 @@ function replaceOnce(source, search, replacement, label) {
 let builder = fs.readFileSync(sourcePath, 'utf8');
 builder = replaceOnce(
   builder,
+  `function buildRoads(routes, sampleTerrain) {`,
+  `function buildRoads(routes, sampleTerrain, localBounds) {`,
+  'preview road bounds argument'
+);
+builder = replaceOnce(
+  builder,
+  `      for (const point of [road.points[pointIndex], road.points[pointIndex + 1]]) {
+        records[cursor++] = point[0];
+        records[cursor++] = sampleTerrain(point[0], point[1]);
+        records[cursor++] = point[1];
+        records[cursor++] = classCode;
+      }`,
+  `      for (const point of [road.points[pointIndex], road.points[pointIndex + 1]]) {
+        const x = Math.max(localBounds.minX, Math.min(localBounds.maxX, point[0]));
+        const z = Math.max(localBounds.minZ, Math.min(localBounds.maxZ, point[1]));
+        records[cursor++] = x;
+        records[cursor++] = sampleTerrain(x, z);
+        records[cursor++] = z;
+        records[cursor++] = classCode;
+      }`,
+  'preview road vertex constraint'
+);
+builder = replaceOnce(
+  builder,
+  `  const roads = buildRoads(routes, sampleTerrain);`,
+  `  const roads = buildRoads(routes, sampleTerrain, manifest.projection.localBounds);`,
+  'preview road bounds call'
+);
+builder = replaceOnce(
+  builder,
   `  const binaryPath = path.join(outputDirectory, 'baleares-preview-v1.bin');`,
   `  const binaryFilename = \`${'${regionId}'}-preview-v1.bin\`;
   const binaryPath = path.join(outputDirectory, binaryFilename);`,
