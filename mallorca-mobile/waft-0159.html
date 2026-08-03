@@ -71,9 +71,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;fon
     console.error(error);
     state.pageErrors.push(String(error?.message || error));
     errorBox.style.display = 'block';
-    errorBox.textContent = 'No se pudo abrir WAFT Adventure 0.15.9.
-
-' + (error?.stack || error?.message || error);
+    errorBox.textContent = 'No se pudo abrir WAFT Adventure 0.15.9.\n\n' + (error?.stack || error?.message || error);
     loading.classList.add('hide');
     window.__WAFT_ADVENTURE_0159_ERROR__ = String(error?.message || error);
   }
