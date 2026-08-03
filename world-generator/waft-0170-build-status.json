@@ -1,7 +1,7 @@
 {
   "version": "0.17.0",
   "buildId": "waft-adventure-0170-dense-places-v2",
-  "generatedAt": "2026-08-03T09:59:20.918Z",
+  "generatedAt": "2026-08-03T09:59:35.638Z",
   "travel": {
     "directBarcelonaButton": true,
     "directMallorcaButton": true,
@@ -54,6 +54,6 @@
         "maxBuildings": 560
       }
     },
-    "validatedAt": "2026-08-03T09:59:21.074Z"
+    "validatedAt": "2026-08-03T09:59:35.731Z"
   }
 }
