@@ -1,0 +1,53 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/waft-0159.html?v=diagnostic-v4",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390,
+    "webgl2": true
+  },
+  "buildId": "waft-adventure-0159-ac6ed7b3aca1",
+  "capabilities": [
+    "land",
+    "long_water"
+  ],
+  "transitions": 2,
+  "discoveredRegions": [
+    "baleares",
+    "catalunya-litoral"
+  ],
+  "discoveredConnections": [
+    "baleares-catalunya-long-water"
+  ],
+  "regionalBuilds": {
+    "baleares": {
+      "regionId": "baleares",
+      "buildId": "baleares-preview-3068ab4bdb61",
+      "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684"
+    },
+    "catalunyaLitoral": {
+      "regionId": "catalunya-litoral",
+      "buildId": "catalunya-litoral-preview-4ba7b372d799",
+      "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
+    }
+  },
+  "restored": true,
+  "localZones": {
+    "baleares": 2,
+    "catalunyaLitoral": 0
+  },
+  "locomotion": {
+    "catalunyaMountainRise": 1.3499999999999999,
+    "catalunyaWaterRoute": "litoral-catalunya"
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": []
+}
