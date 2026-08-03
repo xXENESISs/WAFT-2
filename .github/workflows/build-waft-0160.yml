@@ -24,15 +24,39 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate, validate and persist diagnostics
+      - name: Repair, generate, validate and persist diagnostics
         shell: bash
         run: |
           set +e
           mkdir -p world-generator
           : > world-generator/waft-0160-workflow.log
 
-          node world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
-          BUILD_CODE=$?
+          python3 >> world-generator/waft-0160-workflow.log 2>&1 <<'PY'
+          from pathlib import Path
+          path = Path('world-generator/build-waft-0160.js')
+          text = path.read_text()
+          broken = '}`,' + '\n' + '    "'
+          fixed = '}`",' + '\n' + '    "'
+          count = text.count(broken)
+          if count == 2:
+              path.write_text(text.replace(broken, fixed))
+              print('Repaired two malformed shader boundaries')
+          elif count == 0:
+              print('Builder quoting already repaired')
+          else:
+              raise SystemExit(f'Unexpected malformed boundary count: {count}')
+          PY
+          REPAIR_CODE=$?
+          if [ "$REPAIR_CODE" -eq 0 ]; then
+            node --check world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
+            REPAIR_CODE=$?
+          fi
+
+          BUILD_CODE=99
+          if [ "$REPAIR_CODE" -eq 0 ]; then
+            node world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
+            BUILD_CODE=$?
+          fi
 
           VALIDATION_CODE=99
           if [ "$BUILD_CODE" -eq 0 ]; then
@@ -94,14 +118,16 @@ jobs:
             VALIDATION_CODE=$?
           fi
 
-          node - "$BUILD_CODE" "$VALIDATION_CODE" <<'NODE'
+          node - "$REPAIR_CODE" "$BUILD_CODE" "$VALIDATION_CODE" <<'NODE'
           const fs = require('fs');
-          const build = Number(process.argv[2]);
-          const validation = Number(process.argv[3]);
+          const repair = Number(process.argv[2]);
+          const build = Number(process.argv[3]);
+          const validation = Number(process.argv[4]);
           const result = {
+            repair,
             build,
             validation,
-            success: build === 0 && validation === 0,
+            success: repair === 0 && build === 0 && validation === 0,
             recordedAt: new Date().toISOString()
           };
           fs.writeFileSync('world-generator/waft-0160-workflow-status.json', JSON.stringify(result, null, 2) + '\n');
@@ -109,7 +135,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add world-generator/waft-0160-workflow.log world-generator/waft-0160-workflow-status.json
+          git add world-generator/build-waft-0160.js world-generator/waft-0160-workflow.log world-generator/waft-0160-workflow-status.json
           [ -f world-generator/waft-0160-build-status.json ] && git add world-generator/waft-0160-build-status.json
           [ -f mallorca-mobile/region-runtime-baleares-012.html ] && git add mallorca-mobile/region-runtime-baleares-012.html
           [ -f mallorca-mobile/region-runtime-catalunya-litoral-002.html ] && git add mallorca-mobile/region-runtime-catalunya-litoral-002.html
@@ -120,6 +146,6 @@ jobs:
             git push origin HEAD:main
           fi
 
-          if [ "$BUILD_CODE" -ne 0 ] || [ "$VALIDATION_CODE" -ne 0 ]; then
+          if [ "$REPAIR_CODE" -ne 0 ] || [ "$BUILD_CODE" -ne 0 ] || [ "$VALIDATION_CODE" -ne 0 ]; then
             exit 1
           fi
