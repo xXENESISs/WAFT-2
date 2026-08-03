@@ -14,7 +14,7 @@
     "width": 844,
     "height": 390
   },
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {
     "buildings": 3534,
@@ -36,7 +36,7 @@
     "selectedRoads": 12500,
     "settlements": 90,
     "webgl2": true,
-    "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+    "buildId": "catalunya-litoral-preview-9851156a227f",
     "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
   },
   "presets": [

@@ -1,9 +1,20 @@
 == import selected Wikidata landmarks ==
 {
+  "formatVersion": 1,
   "regionId": "catalunya-litoral",
-  "snapshot": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
-  "status": "reused",
-  "entities": 98
+  "dataset": "Wikidata landmark enrichment",
+  "provider": "Wikimedia Foundation and Wikidata contributors",
+  "endpoint": "https://www.wikidata.org/w/api.php",
+  "license": "CC0 1.0",
+  "retrievedOn": "2026-08-03",
+  "requestedQids": 98,
+  "requestedQidsSha256": "3f5c0adcd81e493b49c130db0e4cd8cd70e9482b62268b4b987f3ab241179b0b",
+  "entityCount": 98,
+  "manualMatchCount": 7,
+  "snapshotFile": "wikidata-landmarks.json.gz",
+  "snapshotBytes": 17127,
+  "snapshotSha256": "06940f00a975de19c4c611027746c81236c6dfd421c446d759a33bf332675178",
+  "uncompressedBytes": 99917
 }
 exit=0
 == rank Wikidata landmarks ==
@@ -26,7 +37,7 @@ exit=0
 {
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -58,7 +69,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "d7dc4c7c99e280802c0c387e66b67ffc869fcd1d8a9164d32770a5120a489542",
+  "inputsSha256": "9851156a227f86dc3a4fb67457fba2e4c4dabe7ba9dc63aeff0da12be643f2d1",
   "regionId": "catalunya-litoral",
   "valid": true
 }
@@ -69,7 +80,7 @@ exit=0
   "verificationRun": 2,
   "regionId": "catalunya-litoral",
   "valid": true,
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {
@@ -127,7 +138,7 @@ exit=0
     "width": 844,
     "height": 390
   },
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {
     "buildings": 3534,
@@ -149,7 +160,7 @@ exit=0
     "selectedRoads": 12500,
     "settlements": 90,
     "webgl2": true,
-    "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+    "buildId": "catalunya-litoral-preview-9851156a227f",
     "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
   },
   "presets": [
@@ -198,7 +209,7 @@ exit=0
 {
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -230,7 +241,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "d7dc4c7c99e280802c0c387e66b67ffc869fcd1d8a9164d32770a5120a489542",
+  "inputsSha256": "9851156a227f86dc3a4fb67457fba2e4c4dabe7ba9dc63aeff0da12be643f2d1",
   "regionId": "catalunya-litoral",
   "valid": true
 }
@@ -241,7 +252,7 @@ exit=0
   "verificationRun": 2,
   "regionId": "catalunya-litoral",
   "valid": true,
-  "buildId": "catalunya-litoral-preview-d7dc4c7c99e2",
+  "buildId": "catalunya-litoral-preview-9851156a227f",
   "binaryBytes": 670144,
   "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
   "counts": {

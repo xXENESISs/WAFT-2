@@ -87,7 +87,7 @@
     "provider": "Wikimedia Foundation and Wikidata contributors",
     "requestedQids": 98,
     "retrievedOn": "2026-08-03",
-    "snapshotSha256": "aedda7ec8512d1d4e04595fb8ebb67ac917b6783bfd5c2b352e842e1e4c8ce9c"
+    "snapshotSha256": "06940f00a975de19c4c611027746c81236c6dfd421c446d759a33bf332675178"
   },
   "landcover": {
     "classDistribution": {
@@ -254,7 +254,7 @@
     "wikidataSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json",
       "path": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
-      "sha256": "aedda7ec8512d1d4e04595fb8ebb67ac917b6783bfd5c2b352e842e1e4c8ce9c"
+      "sha256": "06940f00a975de19c4c611027746c81236c6dfd421c446d759a33bf332675178"
     },
     "worldCoverSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",
