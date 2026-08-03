@@ -61,11 +61,11 @@ async function approachExit(page) {
   await page.waitForTimeout(Math.max(1400, probe.suggestedMilliseconds));
   await page.evaluate(() => window.WAFTAdventure0159.getRuntime().setInput(0, 0));
   await page.waitForFunction(() => window.WAFTAdventure0159.getState().travelEligible === true, null, { timeout: 15000 });
-  return page.evaluate(() => ({
-    probe,
+  return page.evaluate(currentProbe => ({
+    probe: currentProbe,
     state: window.WAFTAdventure0159.getState(),
     buttonVisible: document.getElementById('travelButton').classList.contains('visible')
-  }));
+  }), probe);
 }
 
 async function performTravel(page, targetRegionId) {
@@ -118,8 +118,8 @@ async function verify() {
     assert(catalunyaProbes.mountain?.rise > 0, 'Catalunya mountain locomotion probe is invalid');
     assert(catalunyaProbes.water?.start, 'Catalunya water locomotion probe is invalid');
     const afterFirstTravel = await page.evaluate(() => window.WAFTAdventure0159.getState());
-    assert(afterFirstTravel.discoveredRegions === 2, `Expected two discovered regions, got ${afterFirstTravel.discoveredRegions}`);
-    assert(afterFirstTravel.discoveredConnections === 1, `Expected one discovered connection, got ${afterFirstTravel.discoveredConnections}`);
+    assert(afterFirstTravel.discoveredRegions.length === 2, `Expected two discovered regions, got ${afterFirstTravel.discoveredRegions.length}`);
+    assert(afterFirstTravel.discoveredConnections.length === 1, `Expected one discovered connection, got ${afterFirstTravel.discoveredConnections.length}`);
     assert(afterFirstTravel.transitionCount === 1, `Expected one transition, got ${afterFirstTravel.transitionCount}`);
 
     await page.evaluate(() => window.WAFTAdventure0159.save());
