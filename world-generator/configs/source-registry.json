@@ -1,5 +1,6 @@
 {
   "formatVersion": 1,
+  "registryRevision": 2,
   "openstreetmap": {
     "baleares": "https://download.geofabrik.de/europe/spain/islas-baleares-latest.osm.pbf",
     "catalunya-litoral": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"
