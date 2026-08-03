@@ -10,6 +10,8 @@ on:
       - world-generator/scripts/import-openstreetmap-v2.py
       - world-generator/scripts/import-openstreetmap.py
       - world-generator/scripts/apply-openstreetmap.mjs
+      - world-generator/scripts/apply-openstreetmap-v2.mjs
+      - world-generator/scripts/compact-region-package.mjs
   workflow_dispatch:
 
 permissions:
@@ -34,6 +36,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Record protected WAFT files
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-osm-protected-before.sha256
       - name: Install parser
         run: python -m pip install osmium
       - name: Import and apply OSM
@@ -47,26 +64,41 @@ jobs:
           import_code=0
           apply_code=0
           deterministic=0
-          python world-generator/scripts/import-openstreetmap-v2.py catalunya-litoral --force --retrieved-on 2026-08-03 >> "$log" 2>&1 || import_code=$?
+          protected=0
+          python world-generator/scripts/import-openstreetmap-v2.py catalunya-litoral --retrieved-on 2026-08-03 >> "$log" 2>&1 || import_code=$?
           if [ "$import_code" = 0 ]; then
-            node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral >> "$log" 2>&1 || apply_code=$?
+            node world-generator/scripts/apply-openstreetmap-v2.mjs catalunya-litoral >> "$log" 2>&1 || apply_code=$?
           else
             apply_code=99
           fi
           if [ "$apply_code" = 0 ]; then
-            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json > /tmp/osm-first.sha
-            node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral >> "$log" 2>&1 || deterministic=$?
-            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json > /tmp/osm-second.sha
+            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json regions/catalunya-litoral/sectors.json > /tmp/osm-first.sha
+            node world-generator/scripts/apply-openstreetmap-v2.mjs catalunya-litoral >> "$log" 2>&1 || deterministic=$?
+            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json regions/catalunya-litoral/sectors.json > /tmp/osm-second.sha
             diff -u /tmp/osm-first.sha /tmp/osm-second.sha >> "$log" 2>&1 || deterministic=$?
           else
             deterministic=99
           fi
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-osm-protected-after.sha256
+          diff -u /tmp/catalunya-osm-protected-before.sha256 /tmp/catalunya-osm-protected-after.sha256 >> "$log" 2>&1 || protected=$?
           bytes=0
           [ -f world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz ] && bytes="$(stat -c%s world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz)"
-          printf '{"import":%s,"apply":%s,"deterministic":%s,"snapshotBytes":%s}\n' "$import_code" "$apply_code" "$deterministic" "$bytes" > "$status"
+          printf '{"import":%s,"apply":%s,"deterministic":%s,"protected":%s,"snapshotBytes":%s}\n' "$import_code" "$apply_code" "$deterministic" "$protected" "$bytes" > "$status"
           cat "$log"
           all=0
-          for code in "$import_code" "$apply_code" "$deterministic"; do [ "$code" = 0 ] || all=1; done
+          for code in "$import_code" "$apply_code" "$deterministic" "$protected"; do [ "$code" = 0 ] || all=1; done
           echo "code=${all}" >> "$GITHUB_OUTPUT"
           exit 0
       - name: Commit OSM stage
