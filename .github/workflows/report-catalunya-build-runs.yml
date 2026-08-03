@@ -1,0 +1,38 @@
+name: Report Catalunya build runs
+
+on:
+  push:
+    paths:
+      - .github/workflows/report-catalunya-build-runs.yml
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Read current workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runs?per_page=40" \
+            --jq '{generatedAt: now | todate, runs: [.workflow_runs[] | select(.name | test("Catalunya litoral")) | {id, name, event, status, conclusion, run_number, created_at, updated_at, head_sha, html_url}]}' \
+            > world-generator/catalunya-litoral-workflow-runs.json
+          cat world-generator/catalunya-litoral-workflow-runs.json
+      - name: Commit workflow report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/catalunya-litoral-workflow-runs.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Report Catalunya litoral workflow runs"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
