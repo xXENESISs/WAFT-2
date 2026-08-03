@@ -1,0 +1,1 @@
+Wait for compact density, verify locally, wait for GitHub Pages and verify publicly.
