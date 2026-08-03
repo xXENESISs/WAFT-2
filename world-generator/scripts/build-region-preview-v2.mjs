@@ -33,28 +33,46 @@ builder = replaceOnce(
     presetFrom(settlementsDocument.items, 'Eivissa', ['Eivissa'], 50, 44)
   ].filter(Boolean);`,
   `  const buildId = \`${'${regionId}'}-preview-${'${inputsSha256.slice(0, 12)}'}\`;
-  const prioritySettlements = [...settlementsDocument.items]
-    .sort((a, b) => Number(Boolean(b.protected)) - Number(Boolean(a.protected)) || (b.priority ?? 0) - (a.priority ?? 0) || a.id.localeCompare(b.id));
-  const presetSettlements = [];
-  const seenPresetNames = new Set();
-  for (const item of prioritySettlements) {
-    const key = String(item.name ?? item.id).normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
-    if (seenPresetNames.has(key)) continue;
-    seenPresetNames.add(key);
-    presetSettlements.push(item);
-    if (presetSettlements.length >= 6) break;
-  }
+  const config = readJson(path.join(ROOT, 'world-generator/configs', \`${'${regionId}'}.region.json\`));
+  const normalized = value => String(value ?? '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+  const settlementPresets = (config.generation?.settlements?.manualInclude ?? []).slice(0, 3).map((manual, index) => {
+    const found = settlementsDocument.items.find(item => normalized(item.name) === normalized(manual.name))
+      ?? settlementsDocument.items.find(item => normalized(item.name).includes(normalized(manual.name)));
+    if (!found) return null;
+    return {
+      id: found.id,
+      name: manual.name,
+      x: found.local.x,
+      z: found.local.z,
+      terrainMeters: found.local.y,
+      altitude: 42 + index * 3,
+      distance: 34 + index * 4
+    };
+  }).filter(Boolean);
+  const project = position => ({
+    x: (position.lon - manifest.projection.origin.lon) * manifest.projection.kmPerDegreeLon * manifest.projection.unitsPerKm,
+    z: -(position.lat - manifest.projection.origin.lat) * manifest.projection.kmPerDegreeLat * manifest.projection.unitsPerKm
+  });
+  const featurePresets = [...(config.geography?.subregions ?? [])]
+    .filter(item => item.type !== 'city')
+    .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0) || a.id.localeCompare(b.id))
+    .slice(0, 3)
+    .map((item, index) => {
+      const local = project(item.center);
+      return {
+        id: \`subregion-${'${item.id}'}\`,
+        name: item.name,
+        x: Number(local.x.toFixed(4)),
+        z: Number(local.z.toFixed(4)),
+        terrainMeters: sampleTerrain(local.x, local.z),
+        altitude: 52 + index * 4,
+        distance: 44 + index * 4
+      };
+    });
   const presets = [
     { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: 310, distance: 0 },
-    ...presetSettlements.map((item, index) => ({
-      id: item.id,
-      name: item.name ?? item.id,
-      x: item.local.x,
-      z: item.local.z,
-      terrainMeters: item.local.y,
-      altitude: 44 + index * 2,
-      distance: 36 + index * 2
-    }))
+    ...settlementPresets,
+    ...featurePresets
   ];`,
   'generic preview presets'
 );
