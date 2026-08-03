@@ -72,11 +72,13 @@ async function enterZone(page, matcher, minimumBuildings) {
     return state.worldMode === 'local' && state.localPackageLoaded && state.localPackageStatus === 'loaded';
   }, null, { timeout: 60000 });
   const state = await page.evaluate(() => window.WAFTAdventure0170.getRuntime().getState());
-  assert(state.localBuildingCount >= minimumBuildings, `${zone.name}: solo ${state.localBuildingCount} edificios locales`);
-  assert(state.localRoadVertexCount >= 20, `${zone.name}: red viaria demasiado pobre`);
+  const buildingCount = Number(state.localCounts?.buildings ?? 0);
+  const roadVertexCount = Number(state.localCounts?.roadVertices ?? 0);
+  assert(buildingCount >= minimumBuildings, `${zone.name}: solo ${buildingCount} edificios locales`);
+  assert(roadVertexCount >= 20, `${zone.name}: red viaria demasiado pobre (${roadVertexCount} vértices)`);
   await page.evaluate(() => window.WAFTAdventure0170.getRuntime().exitLocal());
   await page.waitForFunction(() => window.WAFTAdventure0170.getRuntime().getState().worldMode === 'regional');
-  return { zone, state };
+  return { zone, state, buildingCount, roadVertexCount };
 }
 async function directTravel(page, destination) {
   await page.waitForFunction(() => Boolean(window.WAFTDirectTravel0170?.travel));
@@ -161,8 +163,8 @@ async function verify() {
       transitions: returned.adventure.transitionCount,
       restored: restored.adventure.restored,
       regions: {
-        baleares: { runtimeVersion: baleares.version, zones: baleares.zones.length, totalBuildings: baleares.zones.reduce((sum, zone) => sum + zone.buildingCount, 0), palmaBuildings: palma.state.localBuildingCount },
-        catalunyaLitoral: { runtimeVersion: catalunya.version, zones: catalunya.zones.length, totalBuildings: catalunya.zones.reduce((sum, zone) => sum + zone.buildingCount, 0), barcelonaBuildings: barcelona.state.localBuildingCount }
+        baleares: { runtimeVersion: baleares.version, zones: baleares.zones.length, totalBuildings: baleares.zones.reduce((sum, zone) => sum + zone.buildingCount, 0), palmaBuildings: palma.buildingCount },
+        catalunyaLitoral: { runtimeVersion: catalunya.version, zones: catalunya.zones.length, totalBuildings: catalunya.zones.reduce((sum, zone) => sum + zone.buildingCount, 0), barcelonaBuildings: barcelona.buildingCount }
       },
       pageErrors,
       consoleErrors,
