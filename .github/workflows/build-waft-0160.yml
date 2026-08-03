@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - world-generator/build-waft-0160.js
+      - world-generator/patch-waft-0160-runtime-version.cjs
       - .github/workflows/build-waft-0160.yml
 
 permissions:
@@ -30,7 +31,10 @@ jobs:
           mkdir -p world-generator
           : > world-generator/waft-0160-workflow.log
 
-          python3 >> world-generator/waft-0160-workflow.log 2>&1 <<'PY'
+          node world-generator/patch-waft-0160-runtime-version.cjs >> world-generator/waft-0160-workflow.log 2>&1
+          REPAIR=$?
+          if [ "$REPAIR" -eq 0 ]; then
+            python3 >> world-generator/waft-0160-workflow.log 2>&1 <<'PY'
           from pathlib import Path
           path = Path('world-generator/build-waft-0160.js')
           text = path.read_text()
@@ -46,7 +50,8 @@ jobs:
           path.write_text(text)
           print(f'Repaired {repaired} malformed shader boundary/boundaries')
           PY
-          REPAIR=$?
+            REPAIR=$?
+          fi
           if [ "$REPAIR" -eq 0 ]; then
             node --check world-generator/build-waft-0160.js >> world-generator/waft-0160-workflow.log 2>&1
             REPAIR=$?
@@ -79,8 +84,11 @@ jobs:
           for (const marker of ['waft-adventure-0160-visual-access-v1','region-runtime-baleares-012.html','region-runtime-catalunya-litoral-002.html','state.exitDistance <= 32','state.movementSinceLoad >= .35','travelActivationRadius: 32']) {
             if (!adventure.includes(marker)) throw new Error('Aventura sin marcador: ' + marker);
           }
-          for (const file of files.slice(0, 2)) {
-            const html = fs.readFileSync(file, 'utf8');
+          const baleares = fs.readFileSync(files[0], 'utf8');
+          const catalunya = fs.readFileSync(files[1], 'utf8');
+          if (!baleares.includes("version: '012'")) throw new Error('Baleares no declara runtime 012');
+          if (!catalunya.includes("version: '002'")) throw new Error('Catalunya no declara runtime 002');
+          for (const [file, html] of [[files[0], baleares], [files[1], catalunya]]) {
             for (const marker of ["Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82))","graphicsProfile: 'enhanced-mobile-v3'",'drawPart(0, .67, -.46','createSphereGeometry(gl, 16, 11)','#scaleMode.ready','roofFor(int kind)']) {
               if (!html.includes(marker)) throw new Error(file + ': falta ' + marker);
             }
@@ -95,7 +103,7 @@ jobs:
             if (actual !== expected) throw new Error(file + ': protegido modificado');
           }
           const status = JSON.parse(fs.readFileSync('world-generator/waft-0160-build-status.json','utf8'));
-          status.validation = {syntax:0,protectedSources:0,generatedFiles:0,markers:0,validatedAt:new Date().toISOString()};
+          status.validation = {syntax:0,protectedSources:0,generatedFiles:0,markers:0,runtimeVersions:0,validatedAt:new Date().toISOString()};
           fs.writeFileSync('world-generator/waft-0160-build-status.json',JSON.stringify(status,null,2)+'\n');
           console.log(JSON.stringify({valid:true,files},null,2));
           NODE
