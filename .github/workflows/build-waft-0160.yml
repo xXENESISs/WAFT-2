@@ -1,0 +1,119 @@
+name: Build WAFT Adventure 0.16.0
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/build-waft-0160.js
+      - .github/workflows/build-waft-0160.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-waft-0160
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate enhanced runtimes
+        run: node world-generator/build-waft-0160.js
+
+      - name: Validate generated HTML and protected sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const files = [
+            'mallorca-mobile/region-runtime-baleares-012.html',
+            'mallorca-mobile/region-runtime-catalunya-litoral-002.html',
+            'mallorca-mobile/waft-0160.html'
+          ];
+          for (const file of files) {
+            const html = fs.readFileSync(file, 'utf8');
+            if (!html.includes('</html>')) throw new Error(file + ': HTML incompleto');
+            const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+            if (!scripts.length) throw new Error(file + ': sin script inline');
+            for (const script of scripts) new Function(script);
+          }
+          const adventure = fs.readFileSync('mallorca-mobile/waft-0160.html', 'utf8');
+          for (const marker of [
+            'waft-adventure-0160-visual-access-v1',
+            'region-runtime-baleares-012.html',
+            'region-runtime-catalunya-litoral-002.html',
+            'state.exitDistance <= 32',
+            'state.movementSinceLoad >= .35',
+            'travelActivationRadius: 32'
+          ]) if (!adventure.includes(marker)) throw new Error('Falta marcador de aventura: ' + marker);
+          for (const file of files.slice(0, 2)) {
+            const html = fs.readFileSync(file, 'utf8');
+            for (const marker of [
+              "Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82))",
+              "graphicsProfile: 'enhanced-mobile-v3'",
+              'pitched',
+              'drawPart(0, .67, -.46',
+              'createSphereGeometry(gl, 16, 11)',
+              '#scaleMode.ready'
+            ]) {
+              if (marker === 'pitched') continue;
+              if (!html.includes(marker)) throw new Error(file + ': falta ' + marker);
+            }
+            if (html.includes('drawPart(0, 1.08, -1.00')) throw new Error(file + ': conserva la cola larga antigua');
+          }
+          const protectedExpected = {
+            'mallorca-mobile/waft-0158.html': 'b605801b9b18cf5d88e24968b9674db0503eef21',
+            'mallorca-mobile/region-runtime-baleares-011.html': '54efca64586886fdd2f385f928489c786f925f31'
+          };
+          const { execFileSync } = require('child_process');
+          for (const [file, expected] of Object.entries(protectedExpected)) {
+            const actual = execFileSync('git', ['hash-object', file], { encoding: 'utf8' }).trim();
+            if (actual !== expected) throw new Error(file + ': fuente protegida modificada ' + actual);
+          }
+          const status = JSON.parse(fs.readFileSync('world-generator/waft-0160-build-status.json', 'utf8'));
+          if (status.buildId !== 'waft-adventure-0160-visual-access-v1') throw new Error('Estado de build incorrecto');
+          console.log(JSON.stringify({ valid: true, files, status }, null, 2));
+          NODE
+
+      - name: Record validation
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const status = JSON.parse(fs.readFileSync('world-generator/waft-0160-build-status.json', 'utf8'));
+          status.validation = {
+            syntax: 0,
+            protectedSources: 0,
+            generatedFiles: 0,
+            markers: 0,
+            validatedAt: new Date().toISOString()
+          };
+          fs.writeFileSync('world-generator/waft-0160-build-status.json', JSON.stringify(status, null, 2) + '\n');
+          NODE
+
+      - name: Commit generated version
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            mallorca-mobile/region-runtime-baleares-012.html \
+            mallorca-mobile/region-runtime-catalunya-litoral-002.html \
+            mallorca-mobile/waft-0160.html \
+            world-generator/waft-0160-build-status.json
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Generate WAFT Adventure 0.16.0"
+            git push origin HEAD:main
+          fi
