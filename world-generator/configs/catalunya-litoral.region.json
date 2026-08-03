@@ -1,0 +1,707 @@
+{
+  "$schema": "../schema/region.schema.json",
+  "schemaVersion": 1,
+  "id": "catalunya-litoral",
+  "name": "Catalunya litoral",
+  "version": "0.1.0",
+  "status": "prototype",
+  "continent": "Europe",
+  "countryCodes": ["ES"],
+  "aliases": ["Litoral català", "Catalan coast", "Barcelona region"],
+  "geography": {
+    "bounds": {
+      "west": 1.15,
+      "east": 3.15,
+      "south": 40.95,
+      "north": 42.1
+    },
+    "origin": {
+      "lon": 2.15,
+      "lat": 41.525
+    },
+    "projection": "local-equirectangular",
+    "scale": {
+      "horizontalUnitsPerKm": 3.2,
+      "verticalExaggeration": 1.9,
+      "emptySpaceCompression": {
+        "mode": "none",
+        "factor": 1,
+        "preserveCoastline": true,
+        "anchorIds": []
+      }
+    },
+    "subregions": [
+      {
+        "id": "barcelona-metropolitana",
+        "name": "Barcelona metropolitana",
+        "type": "city",
+        "center": {
+          "lon": 2.17,
+          "lat": 41.39
+        },
+        "priority": 100
+      },
+      {
+        "id": "costa-daurada",
+        "name": "Costa Daurada",
+        "type": "coast",
+        "center": {
+          "lon": 1.45,
+          "lat": 41.08
+        },
+        "priority": 75
+      },
+      {
+        "id": "garraf",
+        "name": "Massís del Garraf",
+        "type": "mountain",
+        "center": {
+          "lon": 1.9,
+          "lat": 41.28
+        },
+        "priority": 72
+      },
+      {
+        "id": "montserrat",
+        "name": "Montserrat",
+        "type": "mountain",
+        "center": {
+          "lon": 1.83,
+          "lat": 41.59
+        },
+        "priority": 95
+      },
+      {
+        "id": "valles",
+        "name": "Vallès",
+        "type": "plain",
+        "center": {
+          "lon": 2.08,
+          "lat": 41.57
+        },
+        "priority": 78
+      },
+      {
+        "id": "montseny",
+        "name": "Montseny",
+        "type": "mountain",
+        "center": {
+          "lon": 2.4,
+          "lat": 41.77
+        },
+        "priority": 88
+      },
+      {
+        "id": "maresme",
+        "name": "Maresme",
+        "type": "coast",
+        "center": {
+          "lon": 2.5,
+          "lat": 41.55
+        },
+        "priority": 82
+      },
+      {
+        "id": "selva-maritim",
+        "name": "Selva marítima",
+        "type": "coast",
+        "center": {
+          "lon": 2.85,
+          "lat": 41.73
+        },
+        "priority": 76
+      },
+      {
+        "id": "delta-llobregat",
+        "name": "Delta del Llobregat",
+        "type": "wetland",
+        "center": {
+          "lon": 2.08,
+          "lat": 41.29
+        },
+        "priority": 80
+      }
+    ]
+  },
+  "sources": {
+    "terrain": {
+      "provider": "Copernicus",
+      "dataset": "Copernicus DEM GLO-30",
+      "license": "Copernicus data policy",
+      "attribution": "Contains modified Copernicus DEM data",
+      "resolutionMeters": 30,
+      "cachePolicy": "build-cache"
+    },
+    "cartography": {
+      "provider": "OpenStreetMap contributors",
+      "dataset": "OpenStreetMap",
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "landcover": {
+      "provider": "European Space Agency",
+      "dataset": "ESA WorldCover",
+      "license": "CC BY 4.0",
+      "attribution": "ESA WorldCover project",
+      "resolutionMeters": 10,
+      "cachePolicy": "build-cache"
+    },
+    "climate": {
+      "provider": "WorldClim",
+      "dataset": "WorldClim 2.1",
+      "license": "CC BY 4.0",
+      "attribution": "WorldClim global climate data",
+      "resolutionMeters": 1000,
+      "cachePolicy": "build-cache"
+    },
+    "landmarks": [
+      {
+        "provider": "OpenStreetMap contributors",
+        "dataset": "OpenStreetMap places and features",
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      },
+      {
+        "provider": "Wikidata",
+        "dataset": "Wikidata geographic entities",
+        "license": "CC0 1.0",
+        "attribution": "Wikidata contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ],
+    "fauna": [
+      {
+        "provider": "GBIF",
+        "dataset": "GBIF occurrence records",
+        "license": "Record-dependent open licence",
+        "attribution": "GBIF.org and contributing datasets",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ]
+  },
+  "generation": {
+    "terrain": {
+      "grid": {
+        "columns": 512,
+        "rows": 384
+      },
+      "lods": [0, 1, 2, 3],
+      "smoothingPasses": 3,
+      "coastalFlattening": true,
+      "maxWalkableSlopeDegrees": 52,
+      "seaLevelMeters": 0
+    },
+    "landcover": {
+      "ruleset": "mediterranean-mainland-v1",
+      "fallbackBiome": "mediterranean-scrub",
+      "season": "dynamic",
+      "snowlineMeters": null
+    },
+    "transport": {
+      "includeRoadClasses": ["motorway", "trunk", "primary", "secondary", "tertiary", "residential"],
+      "includeRailways": true,
+      "includeTrails": true,
+      "simplificationMeters": 24
+    },
+    "settlements": {
+      "maxCount": 90,
+      "minimumPopulation": 700,
+      "coastalTourismBoost": 1.8,
+      "profiles": ["catalan-metropolis", "mediterranean-city", "catalan-interior", "coastal-town"],
+      "manualInclude": [
+        {
+          "id": "barcelona",
+          "name": "Barcelona",
+          "position": {
+            "lon": 2.1734,
+            "lat": 41.3851
+          }
+        },
+        {
+          "id": "tarragona",
+          "name": "Tarragona",
+          "position": {
+            "lon": 1.2445,
+            "lat": 41.1189
+          }
+        },
+        {
+          "id": "girona",
+          "name": "Girona",
+          "position": {
+            "lon": 2.8214,
+            "lat": 41.9794
+          }
+        },
+        {
+          "id": "badalona",
+          "name": "Badalona",
+          "position": {
+            "lon": 2.2474,
+            "lat": 41.4501
+          }
+        },
+        {
+          "id": "mataro",
+          "name": "Mataró",
+          "position": {
+            "lon": 2.4445,
+            "lat": 41.5381
+          }
+        },
+        {
+          "id": "sabadell",
+          "name": "Sabadell",
+          "position": {
+            "lon": 2.1094,
+            "lat": 41.5463
+          }
+        },
+        {
+          "id": "terrassa",
+          "name": "Terrassa",
+          "position": {
+            "lon": 2.0089,
+            "lat": 41.5632
+          }
+        },
+        {
+          "id": "vilanova-geltru",
+          "name": "Vilanova i la Geltrú",
+          "position": {
+            "lon": 1.7252,
+            "lat": 41.2239
+          }
+        },
+        {
+          "id": "sitges",
+          "name": "Sitges",
+          "position": {
+            "lon": 1.8119,
+            "lat": 41.2372
+          }
+        },
+        {
+          "id": "blanes",
+          "name": "Blanes",
+          "position": {
+            "lon": 2.7902,
+            "lat": 41.6742
+          }
+        }
+      ],
+      "manualExcludeIds": []
+    },
+    "buildings": {
+      "useRealFootprints": true,
+      "proceduralFallback": true,
+      "minimumSpacingUnits": 0.7,
+      "maximumPerSector": 90,
+      "roofWalkable": true,
+      "collisionMode": "compound",
+      "architectureProfiles": ["barcelona-eixample", "catalan-stone", "mediterranean-modern", "coastal-resort"],
+      "hotelDetection": true
+    },
+    "landmarks": {
+      "maximumCount": 100,
+      "minimumScore": 22,
+      "uniqueModelScore": 88,
+      "archetypeScore": 48,
+      "protectedRadiusUnits": 10,
+      "allowedTypes": [
+        "castle",
+        "fortress",
+        "cathedral",
+        "church",
+        "monastery",
+        "tower",
+        "lighthouse",
+        "palace",
+        "monument",
+        "archaeological_site",
+        "natural_landmark"
+      ],
+      "manualInclude": [
+        {
+          "id": "sagrada-familia",
+          "name": "Basílica de la Sagrada Família",
+          "type": "cathedral",
+          "position": {
+            "lon": 2.1744,
+            "lat": 41.4036
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "sagrada-familia"
+        },
+        {
+          "id": "park-guell",
+          "name": "Park Güell",
+          "type": "monument",
+          "position": {
+            "lon": 2.1527,
+            "lat": 41.4145
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "park-guell"
+        },
+        {
+          "id": "catedral-barcelona",
+          "name": "Catedral de Barcelona",
+          "type": "cathedral",
+          "position": {
+            "lon": 2.1761,
+            "lat": 41.3839
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "catedral-barcelona"
+        },
+        {
+          "id": "castell-montjuic",
+          "name": "Castell de Montjuïc",
+          "type": "castle",
+          "position": {
+            "lon": 2.1699,
+            "lat": 41.3633
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "catalan-fortress"
+        },
+        {
+          "id": "monestir-montserrat",
+          "name": "Monestir de Montserrat",
+          "type": "monastery",
+          "position": {
+            "lon": 1.8352,
+            "lat": 41.5931
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "monestir-montserrat"
+        },
+        {
+          "id": "amfiteatre-tarragona",
+          "name": "Amfiteatre de Tarragona",
+          "type": "archaeological_site",
+          "position": {
+            "lon": 1.2594,
+            "lat": 41.1149
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "amfiteatre-tarragona"
+        },
+        {
+          "id": "torre-glories",
+          "name": "Torre Glòries",
+          "type": "tower",
+          "position": {
+            "lon": 2.1897,
+            "lat": 41.4035
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "modern-observation-tower"
+        },
+        {
+          "id": "muralles-girona",
+          "name": "Muralles de Girona",
+          "type": "fortress",
+          "position": {
+            "lon": 2.8267,
+            "lat": 41.9874
+          },
+          "preferredRepresentation": "archetype",
+          "assetId": "catalan-city-walls"
+        },
+        {
+          "id": "castell-tossa",
+          "name": "Vila Vella de Tossa de Mar",
+          "type": "castle",
+          "position": {
+            "lon": 2.9344,
+            "lat": 41.7169
+          },
+          "preferredRepresentation": "unique",
+          "assetId": "vila-vella-tossa"
+        }
+      ],
+      "manualExcludeIds": []
+    },
+    "vegetation": {
+      "profiles": ["mediterranean-pine", "holm-oak", "riparian-forest", "coastal-scrub", "vineyard-and-olive"],
+      "densityMultiplier": 0.95,
+      "minimumBuildingClearanceUnits": 1.1,
+      "instancing": true
+    },
+    "fauna": {
+      "ruleset": "catalunya-litoral-fauna-v1",
+      "maximumSpecies": 55,
+      "maximumActiveAnimals": 140,
+      "recordsSinceYear": 1990,
+      "minimumCoordinatePrecisionMeters": 5000,
+      "manualInclude": [
+        {
+          "scientificName": "Sus scrofa",
+          "commonName": "Senglar",
+          "role": "mount",
+          "biomes": ["mediterranean-forest", "agricultural"],
+          "minimumCount": 5,
+          "maximumCount": 14
+        },
+        {
+          "scientificName": "Capreolus capreolus",
+          "commonName": "Cabirol",
+          "role": "mount",
+          "biomes": ["forest", "pasture"],
+          "minimumCount": 4,
+          "maximumCount": 10
+        },
+        {
+          "scientificName": "Vulpes vulpes",
+          "commonName": "Guineu",
+          "role": "encounter",
+          "biomes": ["mediterranean-scrub", "agricultural"],
+          "minimumCount": 4,
+          "maximumCount": 11
+        },
+        {
+          "scientificName": "Meles meles",
+          "commonName": "Teixó",
+          "role": "encounter",
+          "biomes": ["forest", "mediterranean-scrub"],
+          "minimumCount": 3,
+          "maximumCount": 8
+        },
+        {
+          "scientificName": "Genetta genetta",
+          "commonName": "Geneta",
+          "role": "encounter",
+          "biomes": ["mediterranean-forest", "mediterranean-scrub"],
+          "minimumCount": 3,
+          "maximumCount": 7
+        },
+        {
+          "scientificName": "Aquila fasciata",
+          "commonName": "Àguila cuabarrada",
+          "role": "mount",
+          "biomes": ["mountain", "coastal-rock"],
+          "minimumCount": 2,
+          "maximumCount": 5
+        },
+        {
+          "scientificName": "Lutra lutra",
+          "commonName": "Llúdriga",
+          "role": "encounter",
+          "biomes": ["wetland", "forest"],
+          "minimumCount": 2,
+          "maximumCount": 6
+        },
+        {
+          "scientificName": "Caretta caretta",
+          "commonName": "Tortuga babaua",
+          "role": "ambient",
+          "biomes": ["open-sea", "coastal-rock"],
+          "minimumCount": 3,
+          "maximumCount": 8
+        },
+        {
+          "scientificName": "Delphinus delphis",
+          "commonName": "Dofí comú",
+          "role": "mount",
+          "biomes": ["open-sea"],
+          "minimumCount": 3,
+          "maximumCount": 9
+        }
+      ],
+      "manualExcludeScientificNames": []
+    }
+  },
+  "travel": {
+    "entryPoints": [
+      {
+        "id": "port-barcelona",
+        "name": "Port de Barcelona",
+        "position": {
+          "lon": 2.17,
+          "lat": 41.35
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 350
+      },
+      {
+        "id": "port-tarragona",
+        "name": "Port de Tarragona",
+        "position": {
+          "lon": 1.22,
+          "lat": 41.1
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 10
+      },
+      {
+        "id": "port-blanes",
+        "name": "Port de Blanes",
+        "position": {
+          "lon": 2.797,
+          "lat": 41.674
+        },
+        "type": "port",
+        "arrivalHeadingDegrees": 250
+      },
+      {
+        "id": "land-valencia",
+        "name": "Corredor terrestre del sud",
+        "position": {
+          "lon": 1.18,
+          "lat": 40.98
+        },
+        "type": "land",
+        "arrivalHeadingDegrees": 35
+      },
+      {
+        "id": "land-pirineus",
+        "name": "Corredor terrestre del nord",
+        "position": {
+          "lon": 2.82,
+          "lat": 42.08
+        },
+        "type": "land",
+        "arrivalHeadingDegrees": 190
+      }
+    ],
+    "connections": [
+      {
+        "id": "catalunya-baleares-sea",
+        "targetRegionId": "baleares",
+        "entryPointId": "port-barcelona",
+        "requiredCapabilities": ["long_water"],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "catalunya-valencia-land",
+        "targetRegionId": "valencia-litoral",
+        "entryPointId": "land-valencia",
+        "requiredCapabilities": ["land"],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "catalunya-pirineus-land",
+        "targetRegionId": "pirineus-orientals",
+        "entryPointId": "land-pirineus",
+        "requiredCapabilities": ["land"],
+        "distanceClass": "regional",
+        "enabled": true
+      }
+    ]
+  },
+  "gameplay": {
+    "spawnPoints": [
+      {
+        "id": "barcelona-default",
+        "position": {
+          "lon": 2.18,
+          "lat": 41.4
+        },
+        "role": "default"
+      },
+      {
+        "id": "montserrat-mission",
+        "position": {
+          "lon": 1.84,
+          "lat": 41.59
+        },
+        "role": "mission"
+      },
+      {
+        "id": "montseny-secret",
+        "position": {
+          "lon": 2.4,
+          "lat": 41.78
+        },
+        "role": "boss"
+      }
+    ],
+    "reservedZones": [
+      {
+        "id": "sagrada-familia-block",
+        "center": {
+          "lon": 2.1744,
+          "lat": 41.4036
+        },
+        "radiusKm": 0.22,
+        "purpose": "Conservar la silueta y el acceso de la Sagrada Família",
+        "exclude": ["buildings", "vegetation"]
+      },
+      {
+        "id": "park-guell-open-space",
+        "center": {
+          "lon": 2.1527,
+          "lat": 41.4145
+        },
+        "radiusKm": 0.28,
+        "purpose": "Mantener el parque y sus accesos legibles",
+        "exclude": ["buildings"]
+      },
+      {
+        "id": "montserrat-sanctuary",
+        "center": {
+          "lon": 1.8352,
+          "lat": 41.5931
+        },
+        "radiusKm": 0.45,
+        "purpose": "Separar el santuario de la roca y la vegetación procedural",
+        "exclude": ["buildings", "vegetation"]
+      },
+      {
+        "id": "tarragona-amphitheatre",
+        "center": {
+          "lon": 1.2594,
+          "lat": 41.1149
+        },
+        "radiusKm": 0.18,
+        "purpose": "Preservar el anfiteatro y su vista al mar",
+        "exclude": ["buildings"]
+      }
+    ],
+    "contentTargets": {
+      "minimumLandmarks": 24,
+      "minimumFaunaZones": 18,
+      "maximumEmptyTravelSeconds": 18
+    }
+  },
+  "performance": {
+    "targetProfile": "mobile-mid",
+    "sectorSizeUnits": 64,
+    "preloadRadiusSectors": 2,
+    "budgets": {
+      "downloadMb": 75,
+      "runtimeMemoryMb": 340,
+      "visibleTriangles": 480000,
+      "visibleObjects": 2800,
+      "activeColliders": 900,
+      "textureMemoryMb": 136
+    }
+  },
+  "outputs": {
+    "directory": "regions/catalunya-litoral",
+    "manifest": "manifest.json",
+    "terrain": "terrain.bin",
+    "landcover": "landcover.bin",
+    "sectors": "sectors.json",
+    "settlements": "settlements.json",
+    "objects": "objects.json",
+    "landmarks": "landmarks.json",
+    "fauna": "fauna.json",
+    "routes": "routes.json"
+  },
+  "overrides": {
+    "file": "world-generator/overrides/catalunya-litoral.overrides.json",
+    "preserveOnRegenerate": true,
+    "failOnUnknownTarget": true
+  }
+}
