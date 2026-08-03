@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
 
+# Local verification rerun after distinct Catalunya runtime identity fix.
 concurrency:
   group: verify-waft-0160
   cancel-in-progress: true
