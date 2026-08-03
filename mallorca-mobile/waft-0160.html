@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07161d">
+<title>WAFT Adventure 0.16.0 · Accesos y mundo visual</title>
+<style>
+:root{color-scheme:dark;--gold:#e7bd63;--panel:rgba(6,20,27,.91);--line:rgba(231,189,99,.42)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#fff}
+#runtime{position:fixed;inset:0;width:100%;height:100%;border:0;background:#07161d}
+#world{position:fixed;z-index:80;left:50%;top:max(8px,env(safe-area-inset-top));transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid var(--line);border-radius:13px;background:var(--panel);box-shadow:0 8px 30px #0008;backdrop-filter:blur(10px);max-width:calc(100vw - 20px)}
+#world strong{color:var(--gold);font-size:11px;letter-spacing:.06em;white-space:nowrap}
+#world small{font-size:9px;color:#c9dad6;white-space:nowrap}
+#travelButton{display:none;position:fixed;z-index:95;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);border:2px solid #a8efd2;background:linear-gradient(180deg,#347966,#205347);color:#f6fffb;border-radius:16px;padding:14px 20px;font-weight:1000;font-size:13px;letter-spacing:.035em;white-space:nowrap;box-shadow:0 10px 34px #000a,0 0 0 5px rgba(112,224,184,.10)}
+#travelButton.visible{display:block;animation:travelReady 1.35s ease-in-out infinite}
+@keyframes travelReady{50%{transform:translateX(-50%) translateY(-3px);box-shadow:0 13px 38px #000b,0 0 0 9px rgba(112,224,184,.05)}}
+#toast{position:fixed;z-index:90;left:50%;top:62px;transform:translate(-50%,-12px);opacity:0;pointer-events:none;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:#fff2cc;font-size:11px;font-weight:800;transition:.25s;box-shadow:0 7px 25px #0009}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#loading{position:fixed;z-index:100;inset:0;display:grid;place-items:center;text-align:center;padding:25px;background:radial-gradient(circle at 50% 35%,#173642,#07161d 70%);transition:opacity .35s}
+#loading.hide{opacity:0;pointer-events:none}
+#loading b{display:block;color:var(--gold);font-size:28px;letter-spacing:.08em}.loadText{margin-top:9px;color:#d9e4e1;font-weight:700}
+#error{display:none;position:fixed;z-index:110;inset:12%;padding:20px;border:1px solid #d36d60;border-radius:15px;background:#190d0d;color:#ffd7d0;white-space:pre-wrap;overflow:auto}
+@media(max-width:700px){#world{top:6px;padding:5px 7px;gap:5px}#world small{display:none}#world strong{font-size:9px}#travelButton{padding:13px 17px;font-size:11px;max-width:calc(100vw - 24px)}#toast{top:49px}}
+</style>
+</head>
+<body>
+<iframe id="runtime" title="Mundo regional WAFT"></iframe>
+<div id="world"><strong id="regionName">CARGANDO MUNDO</strong><small id="worldStats">land · long_water</small><button id="travelButton"></button></div>
+<div id="toast"></div>
+<div id="loading"><div><b>WAFT 0.16.0</b><div class="loadText" id="loadText">Recuperando la expedición regional…</div></div></div>
+<pre id="error"></pre>
+<script>
+'use strict';
+(() => {
+  const BUILD_ID = "waft-adventure-0160-visual-access-v1";
+  const REGIONS = {"baleares":{"id":"baleares","name":"Baleares","runtime":"region-runtime-baleares-012.html","expectedBuildId":"baleares-preview-3068ab4bdb61","departure":{"id":"port-alcudia","name":"Port d'Alcúdia","type":"port","x":102.9282,"z":-133.3584,"heading":3.577925},"arrival":{"id":"port-alcudia","name":"Port d'Alcúdia","type":"port","x":102.9282,"z":-133.3584,"heading":3.577925}},"catalunya-litoral":{"id":"catalunya-litoral","name":"Catalunya litoral","runtime":"region-runtime-catalunya-litoral-002.html","expectedBuildId":"catalunya-litoral-preview-4ba7b372d799","departure":{"id":"port-barcelona","name":"Port de Barcelona","type":"port","x":5.3339,"z":62.2339,"heading":6.108652},"arrival":{"id":"port-barcelona","name":"Port de Barcelona","type":"port","x":5.3339,"z":62.2339,"heading":6.108652}}};
+  const ROUTE = {"id":"baleares-catalunya-long-water","capability":"long_water","from":"baleares","to":"catalunya-litoral","departures":{"baleares":{"id":"port-alcudia","name":"Port d'Alcúdia","type":"port","x":102.9282,"z":-133.3584,"heading":3.577925},"catalunya-litoral":{"id":"port-barcelona","name":"Port de Barcelona","type":"port","x":5.3339,"z":62.2339,"heading":6.108652}},"arrivals":{"baleares":{"id":"port-alcudia","name":"Port d'Alcúdia","type":"port","x":102.9282,"z":-133.3584,"heading":3.577925},"catalunya-litoral":{"id":"port-barcelona","name":"Port de Barcelona","type":"port","x":5.3339,"z":62.2339,"heading":6.108652}}};
+  const SAVE_KEY = 'waft.adventure.0159.world.v1';
+  const CAPABILITIES = new Set(['land','long_water']);
+  const frame = document.getElementById('runtime');
+  const loading = document.getElementById('loading');
+  const loadText = document.getElementById('loadText');
+  const regionName = document.getElementById('regionName');
+  const worldStats = document.getElementById('worldStats');
+  const travelButton = document.getElementById('travelButton');
+  const toast = document.getElementById('toast');
+  const errorBox = document.getElementById('error');
+  const cacheKey = new URLSearchParams(location.search).get('v') || BUILD_ID;
+  const state = {
+    schemaVersion: 1,
+    currentRegionId: 'baleares',
+    discoveredRegions: new Set(['baleares']),
+    discoveredConnections: new Set(),
+    transitionCount: 0,
+    restored: false,
+    runtimeReady: false,
+    runtimeBuildId: null,
+    runtimeBinarySha256: null,
+    movementSinceLoad: 0,
+    lastPosition: null,
+    exitDistance: null,
+    travelEligible: false,
+    travelInProgress: false,
+    lastSavedAt: 0,
+    saveCount: 0,
+    pageErrors: []
+  };
+
+  function fail(error) {
+    console.error(error);
+    state.pageErrors.push(String(error?.message || error));
+    errorBox.style.display = 'block';
+    errorBox.textContent = 'No se pudo abrir WAFT Adventure 0.16.0.\n\n' + (error?.stack || error?.message || error);
+    loading.classList.add('hide');
+    window.__WAFT_ADVENTURE_0160_ERROR__ = String(error?.message || error);
+  }
+  addEventListener('error', event => fail(event.error || event.message));
+  addEventListener('unhandledrejection', event => fail(event.reason));
+
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+  function snapshot() {
+    return {
+      schemaVersion: state.schemaVersion,
+      buildId: BUILD_ID,
+      currentRegionId: state.currentRegionId,
+      discoveredRegions: [...state.discoveredRegions],
+      discoveredConnections: [...state.discoveredConnections],
+      transitionCount: state.transitionCount,
+      restored: state.restored,
+      lastSavedAt: state.lastSavedAt,
+      saveCount: state.saveCount
+    };
+  }
+  function saveWorld(reason = 'manual') {
+    const payload = { ...snapshot(), reason, lastSavedAt: Date.now(), saveCount: state.saveCount + 1 };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+    state.lastSavedAt = payload.lastSavedAt;
+    state.saveCount = payload.saveCount;
+    try { frame.contentWindow?.WAFTRegionRuntime?.saveProgress(); } catch (error) { console.warn(error); }
+    return snapshot();
+  }
+  function restoreWorld() {
+    try {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (!raw) return false;
+      const payload = JSON.parse(raw);
+      if (payload.schemaVersion !== state.schemaVersion || !REGIONS[payload.currentRegionId]) return false;
+      state.currentRegionId = payload.currentRegionId;
+      state.discoveredRegions = new Set((payload.discoveredRegions || []).filter(id => REGIONS[id]));
+      state.discoveredRegions.add(state.currentRegionId);
+      state.discoveredConnections = new Set(payload.discoveredConnections || []);
+      state.transitionCount = Math.max(0, Number(payload.transitionCount) || 0);
+      state.lastSavedAt = Math.max(0, Number(payload.lastSavedAt) || 0);
+      state.saveCount = Math.max(0, Number(payload.saveCount) || 0);
+      state.restored = true;
+      return true;
+    } catch (error) {
+      console.warn('WAFT world restore failed', error);
+      return false;
+    }
+  }
+  function runtime() {
+    return frame.contentWindow?.WAFTRegionRuntime || null;
+  }
+  function currentRegion() {
+    return REGIONS[state.currentRegionId];
+  }
+  function targetRegionId() {
+    return state.currentRegionId === ROUTE.from ? ROUTE.to : ROUTE.from;
+  }
+  function updateWorldHud() {
+    const region = currentRegion();
+    regionName.textContent = region.name.toUpperCase();
+    worldStats.textContent = 'Regiones ' + state.discoveredRegions.size + '/2 · ruta ' + (state.discoveredConnections.has(ROUTE.id) ? 'descubierta' : 'sin descubrir') + ' · land · long_water';
+    if (state.travelEligible && !state.travelInProgress) {
+      travelButton.textContent = 'NAVEGAR A ' + REGIONS[targetRegionId()].name.toUpperCase();
+      travelButton.classList.add('visible');
+    } else travelButton.classList.remove('visible');
+  }
+  async function waitForRuntime(timeout = 120000) {
+    const started = performance.now();
+    while (performance.now() - started < timeout) {
+      const api = runtime();
+      if (api && frame.contentWindow.__WAFT_RUNTIME_011_READY__ === true) return api;
+      const runtimeError = frame.contentWindow?.__WAFT_RUNTIME_011_ERROR__;
+      if (runtimeError) throw new Error(runtimeError);
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    throw new Error('El runtime regional no terminó de cargar.');
+  }
+  async function loadRegion(regionId, arrival = null) {
+    if (!REGIONS[regionId]) throw new Error('Región desconocida: ' + regionId);
+    state.currentRegionId = regionId;
+    state.runtimeReady = false;
+    state.travelEligible = false;
+    state.travelInProgress = Boolean(arrival);
+    state.movementSinceLoad = 0;
+    state.lastPosition = null;
+    loading.classList.remove('hide');
+    loadText.textContent = 'Cargando ' + REGIONS[regionId].name + '…';
+    updateWorldHud();
+    const runtimeUrl = REGIONS[regionId].runtime + '?v=' + encodeURIComponent(cacheKey + '-' + BUILD_ID);
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('La navegación regional no terminó.')), 120000);
+      frame.addEventListener('load', () => {
+        clearTimeout(timer);
+        resolve();
+      }, { once: true });
+      frame.src = runtimeUrl;
+    });
+    const api = await waitForRuntime();
+    if (api.metadata.regionId !== regionId) throw new Error('El runtime abrió ' + api.metadata.regionId + ' en lugar de ' + regionId);
+    if (api.metadata.buildId !== REGIONS[regionId].expectedBuildId) throw new Error('Build regional inesperada: ' + api.metadata.buildId);
+    if (arrival) {
+      api.setRegionalPosition(arrival.x, arrival.z);
+      api.setHeading(arrival.heading);
+      api.saveProgress();
+    }
+    const runtimeState = api.getState();
+    state.runtimeReady = true;
+    state.runtimeBuildId = api.metadata.buildId;
+    state.runtimeBinarySha256 = api.metadata.binary.sha256;
+    state.lastPosition = { x: runtimeState.position.x, z: runtimeState.position.z };
+    state.discoveredRegions.add(regionId);
+    state.travelInProgress = false;
+    loading.classList.add('hide');
+    updateWorldHud();
+    saveWorld(arrival ? 'region-arrival' : 'region-load');
+    return api;
+  }
+  async function travel() {
+    if (!state.travelEligible || state.travelInProgress) return false;
+    if (!CAPABILITIES.has(ROUTE.capability)) throw new Error('La expedición no dispone de ' + ROUTE.capability);
+    const api = runtime();
+    if (!api) return false;
+    const from = state.currentRegionId;
+    const to = targetRegionId();
+    state.travelInProgress = true;
+    state.travelEligible = false;
+    updateWorldHud();
+    api.saveProgress();
+    state.discoveredConnections.add(ROUTE.id);
+    state.transitionCount++;
+    showToast('Ruta marítima descubierta: ' + currentRegion().name + ' ↔ ' + REGIONS[to].name);
+    await loadRegion(to, ROUTE.arrivals[to]);
+    saveWorld('regional-transition');
+    return true;
+  }
+  function pollRuntime() {
+    if (!state.runtimeReady || state.travelInProgress) return;
+    const api = runtime();
+    if (!api) return;
+    const runtimeState = api.getState();
+    const position = runtimeState.position;
+    if (state.lastPosition) {
+      const delta = Math.hypot(position.x - state.lastPosition.x, position.z - state.lastPosition.z);
+      if (delta >= .002 && delta <= 5) state.movementSinceLoad += delta;
+    }
+    state.lastPosition = { x: position.x, z: position.z };
+    const departure = ROUTE.departures[state.currentRegionId];
+    state.exitDistance = Math.hypot(position.x - departure.x, position.z - departure.z);
+    state.travelEligible = state.movementSinceLoad >= .35 && state.exitDistance <= 32 && CAPABILITIES.has(ROUTE.capability) && runtimeState.worldMode === 'regional';
+    updateWorldHud();
+    window.__WAFT_ADVENTURE_0160_STATS__ = {
+      buildId: BUILD_ID,
+      valid: true,
+      currentRegionId: state.currentRegionId,
+      discoveredRegions: state.discoveredRegions.size,
+      discoveredConnections: state.discoveredConnections.size,
+      transitionCount: state.transitionCount,
+      runtimeReady: state.runtimeReady,
+      runtimeBuildId: state.runtimeBuildId,
+      runtimeBinarySha256: state.runtimeBinarySha256,
+      movementSinceLoad: state.movementSinceLoad,
+      exitDistance: state.exitDistance,
+      travelEligible: state.travelEligible,
+      travelActivationRadius: 32,
+      localAccessProfile: 'wide-area-v1',
+      capabilities: [...CAPABILITIES],
+      restored: state.restored,
+      pageErrors: [...state.pageErrors]
+    };
+  }
+  function prepareExitProbe() {
+    const api = runtime();
+    if (!api) throw new Error('Runtime no disponible');
+    const departure = ROUTE.departures[state.currentRegionId];
+    const candidates = [];
+    for (let radius = 5; radius >= 2; radius -= 1) {
+      for (let index = 0; index < 24; index++) {
+        const angle = index / 24 * Math.PI * 2;
+        const x = departure.x + Math.cos(angle) * radius;
+        const z = departure.z + Math.sin(angle) * radius;
+        const surface = api.sampleSurface(x, z);
+        if (!surface.inside) continue;
+        candidates.push({ x, z, radius, water: !surface.land });
+      }
+    }
+    const candidate = candidates.find(item => item.water) || candidates[0];
+    if (!candidate) throw new Error('No se encontró una aproximación al punto de salida');
+    api.setRegionalPosition(candidate.x, candidate.z);
+    const dx = departure.x - candidate.x;
+    const dz = departure.z - candidate.z;
+    const yaw = Math.atan2(dx, dz);
+    api.setHeading(yaw);
+    state.movementSinceLoad = 0;
+    state.lastPosition = { x: candidate.x, z: candidate.z };
+    return { start: candidate, target: { ...departure }, yaw, suggestedMilliseconds: 1100 };
+  }
+
+  travelButton.addEventListener('click', () => travel().catch(fail));
+  addEventListener('beforeunload', () => { try { saveWorld('beforeunload'); } catch {} });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { try { saveWorld('hidden'); } catch {} } });
+  restoreWorld();
+  setInterval(pollRuntime, 180);
+
+  window.WAFTAdventure0160 = {
+    getState() { return { ...snapshot(), runtimeReady: state.runtimeReady, runtimeBuildId: state.runtimeBuildId, runtimeBinarySha256: state.runtimeBinarySha256, movementSinceLoad: state.movementSinceLoad, exitDistance: state.exitDistance, travelEligible: state.travelEligible, travelActivationRadius: 32, localAccessProfile: 'wide-area-v1', capabilities: [...CAPABILITIES], pageErrors: [...state.pageErrors] }; },
+    getRuntime() { return runtime(); },
+    getRoute() { return JSON.parse(JSON.stringify(ROUTE)); },
+    prepareExitProbe,
+    travel,
+    save() { return saveWorld('api'); },
+    reset() { localStorage.removeItem(SAVE_KEY); localStorage.removeItem('waft.baleares.travel.v1'); localStorage.removeItem('waft.catalunya-litoral.travel.v1'); location.reload(); },
+    buildId: BUILD_ID,
+    regions: JSON.parse(JSON.stringify(REGIONS))
+  };
+
+  loadRegion(state.currentRegionId).then(() => {
+    window.__WAFT_ADVENTURE_0160_READY__ = true;
+  }).catch(fail);
+})();
+</script>
+</body>
+</html>

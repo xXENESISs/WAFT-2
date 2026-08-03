@@ -1,4 +1,3 @@
-Repaired 1 malformed shader boundary/boundaries
 {
   "version": "0.16.0",
   "buildId": "waft-adventure-0160-visual-access-v1",
@@ -32,13 +31,12 @@ Repaired 1 malformed shader boundary/boundaries
       "bytes": 16615,
       "sha256": "b0513dd14b4860739ce57030397d9c7a0966af6e2e4fdbbcad9656421322a2b7"
     }
+  },
+  "validation": {
+    "syntax": 0,
+    "protectedSources": 0,
+    "generatedFiles": 0,
+    "markers": 0,
+    "validatedAt": "2026-08-03T04:38:20.753Z"
   }
-}
-{
-  "valid": true,
-  "files": [
-    "mallorca-mobile/region-runtime-baleares-012.html",
-    "mallorca-mobile/region-runtime-catalunya-litoral-002.html",
-    "mallorca-mobile/waft-0160.html"
-  ]
 }
