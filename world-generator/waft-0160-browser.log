@@ -1,0 +1,3 @@
+Error: Unexpected Catalunya runtime version catalunya-001
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0160-browser.mjs:31:25)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-adventure-0160-browser.mjs:160:5)
