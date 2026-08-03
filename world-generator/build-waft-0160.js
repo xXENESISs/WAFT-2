@@ -139,7 +139,7 @@ function enhanceRuntime(source, options) {
     "      availableZones: localRegistry.zones.map(zone => ({ id: zone.id, presetId: zone.presetId, name: zone.name, buildId: zone.buildId, center: { ...zone.center }, entryRadius: Math.max(6, Math.min(10, Number(zone.regionalRadius) * .32)), discoveryRadius: Math.max(6, Math.min(10, Number(zone.regionalRadius) * .32)) * 2.25 })),",
     "      availableZones: localRegistry.zones.map(zone => ({ id: zone.id, presetId: zone.presetId, name: zone.name, buildId: zone.buildId, center: { ...zone.center }, entryRadius: Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82)), discoveryRadius: Math.max(16, Math.min(32, Number(zone.regionalRadius) * .82)) * 1.75 })),",
     'API de radios locales');
-  output = output.replace("version: '011'", `version: '${options.apiVersion}'`);
+  output = output.replace(/version: '(?:011|catalunya-001)'/, `version: '${options.apiVersion}'`);
   return output;
 }
 

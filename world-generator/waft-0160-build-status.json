@@ -1,7 +1,7 @@
 {
   "version": "0.16.0",
   "buildId": "waft-adventure-0160-visual-access-v1",
-  "generatedAt": "2026-08-03T04:38:20.702Z",
+  "generatedAt": "2026-08-03T04:45:23.615Z",
   "access": {
     "localEntryRadiusMin": 16,
     "localEntryRadiusMax": 32,
@@ -24,8 +24,8 @@
       "sha256": "5b41bb62ae69946cafd21ce64311cecf8fd3284a972a76a00c28098948ef1fa6"
     },
     "mallorca-mobile/region-runtime-catalunya-litoral-002.html": {
-      "bytes": 130278,
-      "sha256": "8cfb53cbd0e275c039d88f918a2d51d254625f5da4d969188b4e7e27d06d946f"
+      "bytes": 130268,
+      "sha256": "4af4090ec41d9d4730db753be49e86873c3ea19f73b00d0b3108149f10a3ab1a"
     },
     "mallorca-mobile/waft-0160.html": {
       "bytes": 16615,
@@ -37,6 +37,7 @@
     "protectedSources": 0,
     "generatedFiles": 0,
     "markers": 0,
-    "validatedAt": "2026-08-03T04:38:20.753Z"
+    "runtimeVersions": 0,
+    "validatedAt": "2026-08-03T04:45:23.670Z"
   }
 }
