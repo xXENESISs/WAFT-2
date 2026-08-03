@@ -1,5 +1,6 @@
 name: Normalize Catalunya litoral config
 
+# Normalization revision 2.
 on:
   push:
     paths:
