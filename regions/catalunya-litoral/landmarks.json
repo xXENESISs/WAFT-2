@@ -138,6 +138,7 @@
         "lon": 2.9390076
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-07-01",
       "source": "openstreetmap",
@@ -167,6 +168,7 @@
         "lon": 2.7999337
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-01",
       "source": "openstreetmap",
@@ -196,6 +198,7 @@
         "lon": 2.6708405
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-01",
       "source": "openstreetmap",
@@ -225,6 +228,7 @@
         "lon": 2.7929328
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
@@ -254,6 +258,7 @@
         "lon": 2.1970388
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
@@ -283,6 +288,7 @@
         "lon": 1.6326506
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
@@ -312,6 +318,7 @@
         "lon": 1.5704282
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
@@ -341,6 +348,7 @@
         "lon": 1.658254
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
@@ -370,6 +378,7 @@
         "lon": 1.3948037
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-05",
       "source": "openstreetmap",
@@ -400,6 +409,7 @@
         "lon": 2.646404
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
@@ -430,6 +440,7 @@
         "lon": 1.5747811
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
@@ -459,6 +470,7 @@
         "lon": 2.0287352
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
@@ -488,6 +500,7 @@
         "lon": 1.237954
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -517,6 +530,7 @@
         "lon": 1.195901
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -546,6 +560,7 @@
         "lon": 1.2652941
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -576,6 +591,7 @@
         "lon": 1.217598
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -605,6 +621,7 @@
         "lon": 2.0243467
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
@@ -634,6 +651,7 @@
         "lon": 2.0486241
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
@@ -663,6 +681,7 @@
         "lon": 1.8703447
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
@@ -693,6 +712,7 @@
         "lon": 1.9195502
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
@@ -722,6 +742,7 @@
         "lon": 1.9231793
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
@@ -751,6 +772,7 @@
         "lon": 2.2225538
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
@@ -780,6 +802,7 @@
         "lon": 2.2187691
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
@@ -809,6 +832,7 @@
         "lon": 1.575457
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
@@ -838,6 +862,7 @@
         "lon": 1.5185335
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-00",
       "source": "openstreetmap",
@@ -867,6 +892,7 @@
         "lon": 3.073334
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
@@ -897,6 +923,7 @@
         "lon": 1.9503286
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-01",
       "source": "openstreetmap",
@@ -927,6 +954,7 @@
         "lon": 2.3859825
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
@@ -956,6 +984,7 @@
         "lon": 1.68561
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
@@ -986,6 +1015,7 @@
         "lon": 1.3353212
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1015,6 +1045,7 @@
         "lon": 1.3626174
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1045,6 +1076,7 @@
         "lon": 1.141006
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -1074,6 +1106,7 @@
         "lon": 1.1442741
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1103,6 +1136,7 @@
         "lon": 1.1311633
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1132,6 +1166,7 @@
         "lon": 1.2599197
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
@@ -1161,6 +1196,7 @@
         "lon": 1.4639282
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
@@ -1190,6 +1226,7 @@
         "lon": 2.1148477
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-02",
       "source": "openstreetmap",
@@ -1220,6 +1257,7 @@
         "lon": 1.3596553
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1249,6 +1287,7 @@
         "lon": 1.7736878
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-02",
       "source": "openstreetmap",
@@ -1278,6 +1317,7 @@
         "lon": 1.6272083
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
@@ -1308,6 +1348,7 @@
         "lon": 1.3761161
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -1337,6 +1378,7 @@
         "lon": 1.3072796
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -1366,6 +1408,7 @@
         "lon": 2.0263856
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
@@ -1395,6 +1438,7 @@
         "lon": 1.2990492
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -1424,6 +1468,7 @@
         "lon": 1.8821966
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-03-00",
       "source": "openstreetmap",
@@ -1454,6 +1499,7 @@
         "lon": 2.6519032
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-00",
       "source": "openstreetmap",
@@ -1483,6 +1529,7 @@
         "lon": 1.552168
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -1512,6 +1559,7 @@
         "lon": 2.1857633
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
@@ -1540,6 +1588,7 @@
         "lon": 1.2927898
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -1569,6 +1618,7 @@
         "lon": 1.3570249
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -1598,6 +1648,7 @@
         "lon": 1.3156382
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -1627,6 +1678,7 @@
         "lon": 1.3588454
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
@@ -1656,6 +1708,7 @@
         "lon": 1.4014711
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
@@ -1685,6 +1738,7 @@
         "lon": 1.7192672
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
@@ -1714,6 +1768,7 @@
         "lon": 1.3598355
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-04",
       "source": "openstreetmap",
@@ -1743,6 +1798,7 @@
         "lon": 1.4762816
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
@@ -1772,6 +1828,7 @@
         "lon": 3.0007939
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-07-00",
       "source": "openstreetmap",
@@ -1801,6 +1858,7 @@
         "lon": 1.5519695
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
@@ -1830,6 +1888,7 @@
         "lon": 1.8100992
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
@@ -1859,6 +1918,7 @@
         "lon": 2.7426829
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-06-01",
       "source": "openstreetmap",
@@ -1887,6 +1947,7 @@
         "lon": 1.4205307
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
@@ -1916,6 +1977,7 @@
         "lon": 1.4615397
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -1945,6 +2007,7 @@
         "lon": 1.5512525
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -1974,6 +2037,7 @@
         "lon": 1.5254143
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
@@ -2003,6 +2067,7 @@
         "lon": 2.3044104
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
@@ -2033,6 +2098,7 @@
         "lon": 1.1609078
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
@@ -2062,6 +2128,7 @@
         "lon": 2.14785
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
@@ -2091,6 +2158,7 @@
         "lon": 1.6945593
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-03",
       "source": "openstreetmap",
@@ -2120,6 +2188,7 @@
         "lon": 1.8139518
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
@@ -2149,6 +2218,7 @@
         "lon": 1.366344
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-04",
       "source": "openstreetmap",
@@ -2178,6 +2248,7 @@
         "lon": 1.3486689
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-03",
       "source": "openstreetmap",
@@ -2207,6 +2278,7 @@
         "lon": 1.5739449
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -2235,6 +2307,7 @@
         "lon": 2.1659475
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
@@ -2265,6 +2338,7 @@
         "lon": 2.4074205
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
@@ -2295,6 +2369,7 @@
         "lon": 1.4848157
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
@@ -2324,6 +2399,7 @@
         "lon": 1.1439289
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -2353,6 +2429,7 @@
         "lon": 1.8463156
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
@@ -2383,6 +2460,7 @@
         "lon": 3.1475915
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
@@ -2412,6 +2490,7 @@
         "lon": 1.3413253
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
@@ -2441,6 +2520,7 @@
         "lon": 2.5329789
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-05-00",
       "source": "openstreetmap",
@@ -2470,6 +2550,7 @@
         "lon": 1.5005535
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
@@ -2499,6 +2580,7 @@
         "lon": 1.3742848
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
@@ -2528,6 +2610,7 @@
         "lon": 2.2501287
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-04-02",
       "source": "openstreetmap",
@@ -2557,6 +2640,7 @@
         "lon": 3.1072008
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-08-00",
       "source": "openstreetmap",
@@ -2586,6 +2670,7 @@
         "lon": 1.5464271
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
@@ -2615,6 +2700,7 @@
         "lon": 1.1605363
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
@@ -2644,6 +2730,7 @@
         "lon": 1.8008458
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-03",
       "source": "openstreetmap",
@@ -2673,6 +2760,7 @@
         "lon": 1.5145962
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -2702,6 +2790,7 @@
         "lon": 1.7228028
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
@@ -2731,6 +2820,7 @@
         "lon": 1.5785745
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
@@ -2759,6 +2849,7 @@
         "lon": 1.4703089
       },
       "preferredRepresentation": "unique-candidate",
+      "protected": true,
       "score": 100,
       "sectorId": "s-01-02",
       "source": "openstreetmap",

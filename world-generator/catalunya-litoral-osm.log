@@ -1,37 +1,4 @@
-{
-  "attribution": "© OpenStreetMap contributors",
-  "counts": {
-    "buildings": 540601,
-    "hotels": 851,
-    "landmarks": 20140,
-    "ports": 93,
-    "roads": 942734,
-    "settlements": 19207
-  },
-  "dataset": "OpenStreetMap regional extract",
-  "distribution": "Geofabrik",
-  "formatVersion": 1,
-  "httpLastModified": "Sun, 02 Aug 2026 23:22:15 GMT",
-  "license": "ODbL 1.0",
-  "osmTimestamp": "2026-08-02T20:21:48Z",
-  "parserStatistics": {
-    "areasSeen": 1723544,
-    "invalidGeometries": 1,
-    "nodesSeen": 36852814,
-    "relationsSeen": 151060,
-    "waysSeen": 3073866
-  },
-  "pbfBytes": 266546921,
-  "pbfSha256": "318a5805be404c4a43f051c5e7c55760e606553f4545414f9e6501df03a1bda2",
-  "provider": "OpenStreetMap contributors",
-  "regionId": "catalunya-litoral",
-  "retrievedOn": "2026-08-03",
-  "snapshotBytes": 84841206,
-  "snapshotFile": "openstreetmap-extract.json.gz",
-  "snapshotSha256": "c46ce94f1142b05cf0eab6bd7e1411c3711d0f0da77c0d95414a1cc1fe067542",
-  "sourceUrl": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf",
-  "uncompressedBytes": 465788935
-}
+{"regionId": "catalunya-litoral", "snapshot": "world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz", "status": "reused"}
 {
   "counts": {
     "buildings": 35593,
@@ -42,14 +9,14 @@
     "settlements": 19207
   },
   "originalCounts": {
-    "buildings": 540601,
+    "buildings": 35593,
     "landmarks": 20140,
     "ports": 93,
-    "roads": 942734,
+    "roads": 152331,
     "settlements": 19207
   },
   "regionId": "catalunya-litoral",
-  "snapshotBytes": 11475814,
+  "snapshotBytes": 11475812,
   "status": "compacted"
 }
 Error: OpenStreetMap package exceeds 75 MB
@@ -59,3 +26,58 @@ Error: OpenStreetMap package exceeds 75 MB
     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+Recovering catalunya-litoral package by compacting generated JSON without dropping regional data.
+{
+  "budgetBytes": 78643200,
+  "compacted": [
+    {
+      "afterBytes": 2928125,
+      "beforeBytes": 4381725,
+      "path": "sectors.json"
+    },
+    {
+      "afterBytes": 2549179,
+      "beforeBytes": 4729354,
+      "path": "objects.json"
+    },
+    {
+      "afterBytes": 44727538,
+      "beforeBytes": 77744539,
+      "path": "routes.json"
+    }
+  ],
+  "packageBytes": 50950520,
+  "packageDirectory": "regions/catalunya-litoral",
+  "regionId": "catalunya-litoral"
+}
+Error: OpenStreetMap package exceeds 75 MB
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/apply-openstreetmap.mjs:33:25)
+    at apply (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/apply-openstreetmap.mjs:469:3)
+    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/apply-openstreetmap.mjs:474:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+Recovering catalunya-litoral package by compacting generated JSON without dropping regional data.
+{
+  "budgetBytes": 78643200,
+  "compacted": [
+    {
+      "afterBytes": 2928125,
+      "beforeBytes": 4381725,
+      "path": "sectors.json"
+    },
+    {
+      "afterBytes": 2549179,
+      "beforeBytes": 4729354,
+      "path": "objects.json"
+    },
+    {
+      "afterBytes": 44727538,
+      "beforeBytes": 77744539,
+      "path": "routes.json"
+    }
+  ],
+  "packageBytes": 50950520,
+  "packageDirectory": "regions/catalunya-litoral",
+  "regionId": "catalunya-litoral"
+}

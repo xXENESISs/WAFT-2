@@ -8,10 +8,10 @@
     "maximumMinorRoadsPerCell": 300,
     "mode": "spatial-priority-v1",
     "originalCounts": {
-      "buildings": 540601,
+      "buildings": 35593,
       "landmarks": 20140,
       "ports": 93,
-      "roads": 942734,
+      "roads": 152331,
       "settlements": 19207
     },
     "tagFiltering": true
@@ -42,9 +42,9 @@
   "provider": "OpenStreetMap contributors",
   "regionId": "catalunya-litoral",
   "retrievedOn": "2026-08-03",
-  "snapshotBytes": 11475814,
+  "snapshotBytes": 11475812,
   "snapshotFile": "openstreetmap-extract.json.gz",
-  "snapshotSha256": "61706e28e3b75aa62d8036b1d3045427b1201566d0457db8e3e37a4c626a15f9",
+  "snapshotSha256": "cb6726fa0ffbf4daeb56b0341916d7383d906bd936f71a2aeaab4dd1d9ab2b08",
   "sourceUrl": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf",
-  "uncompressedBytes": 63003445
+  "uncompressedBytes": 63003444
 }

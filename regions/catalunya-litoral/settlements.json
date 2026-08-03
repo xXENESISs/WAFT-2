@@ -102,6 +102,7 @@
         "lon": 2.0446381
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1389000150",
@@ -130,6 +131,7 @@
         "lon": 1.9967356
       },
       "priority": 116.89,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1389000241",
@@ -158,6 +160,7 @@
         "lon": 2.1265942
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1460477981",
@@ -186,6 +189,7 @@
         "lon": 1.8705935
       },
       "priority": 119,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1460478465",
@@ -214,6 +218,7 @@
         "lon": 1.3959508
       },
       "priority": 118.72,
+      "protected": true,
       "sectorId": "s-01-05",
       "source": "openstreetmap",
       "sourceId": "n1460478559",
@@ -242,6 +247,7 @@
         "lon": 2.7414054
       },
       "priority": 119.34,
+      "protected": true,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1460478645",
@@ -270,6 +276,7 @@
         "lon": 2.1931226
       },
       "priority": 117.98,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1460478680",
@@ -298,6 +305,7 @@
         "lon": 2.0886257
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1460478908",
@@ -326,6 +334,7 @@
         "lon": 2.5491562
       },
       "priority": 118.36,
+      "protected": true,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "n1470838013",
@@ -354,6 +363,7 @@
         "lon": 2.4002787
       },
       "priority": 116.72,
+      "protected": true,
       "sectorId": "s-05-03",
       "source": "openstreetmap",
       "sourceId": "n1470838014",
@@ -382,6 +392,7 @@
         "lon": 2.7653607
       },
       "priority": 119.53,
+      "protected": true,
       "sectorId": "s-06-00",
       "source": "openstreetmap",
       "sourceId": "n1470838085",
@@ -411,6 +422,7 @@
         "lon": 1.8454758
       },
       "priority": 118.63,
+      "protected": true,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
       "sourceId": "n1470838103",
@@ -439,6 +451,7 @@
         "lon": 2.1626124
       },
       "priority": 118.09,
+      "protected": true,
       "sectorId": "s-04-02",
       "source": "openstreetmap",
       "sourceId": "n1470838164",
@@ -467,6 +480,7 @@
         "lon": 2.6576102
       },
       "priority": 119.3,
+      "protected": true,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1470838165",
@@ -495,6 +509,7 @@
         "lon": 2.5777998
       },
       "priority": 118.43,
+      "protected": true,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "n1470838178",
@@ -523,6 +538,7 @@
         "lon": 2.3558408
       },
       "priority": 119.18,
+      "protected": true,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "n1470838185",
@@ -551,6 +567,7 @@
         "lon": 2.0879423
       },
       "priority": 119.36,
+      "protected": true,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "n1470838199",
@@ -579,6 +596,7 @@
         "lon": 1.9824173
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838201",
@@ -607,6 +625,7 @@
         "lon": 1.2729426
       },
       "priority": 116.84,
+      "protected": true,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
       "sourceId": "n1470838211",
@@ -635,6 +654,7 @@
         "lon": 2.0706225
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838232",
@@ -663,6 +683,7 @@
         "lon": 1.6344596
       },
       "priority": 118.69,
+      "protected": true,
       "sectorId": "s-02-05",
       "source": "openstreetmap",
       "sourceId": "n1470838245",
@@ -690,6 +711,7 @@
         "lon": 2.3118347
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470838263",
@@ -718,6 +740,7 @@
         "lon": 2.0930815
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838266",
@@ -746,6 +769,7 @@
         "lon": 1.5348566
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
       "sourceId": "n1470838269",
@@ -774,6 +798,7 @@
         "lon": 2.0063126
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838298",
@@ -802,6 +827,7 @@
         "lon": 2.2876008
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-02",
       "source": "openstreetmap",
       "sourceId": "n1470838306",
@@ -829,6 +855,7 @@
         "lon": 1.617346
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
       "sourceId": "n1470838412",
@@ -857,6 +884,7 @@
         "lon": 3.039616
       },
       "priority": 117.52,
+      "protected": true,
       "sectorId": "s-07-00",
       "source": "openstreetmap",
       "sourceId": "n1470838432",
@@ -885,6 +913,7 @@
         "lon": 2.2865796
       },
       "priority": 118.9,
+      "protected": true,
       "sectorId": "s-04-02",
       "source": "openstreetmap",
       "sourceId": "n1470838435",
@@ -913,6 +942,7 @@
         "lon": 2.8474332
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-07-02",
       "source": "openstreetmap",
       "sourceId": "n1470838480",
@@ -940,6 +970,7 @@
         "lon": 2.2841159
       },
       "priority": 119.59,
+      "protected": true,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "n1470838507",
@@ -968,6 +999,7 @@
         "lon": 1.8286765
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-02-02",
       "source": "openstreetmap",
       "sourceId": "n1470838508",
@@ -996,6 +1028,7 @@
         "lon": 1.9307159
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470838514",
@@ -1024,6 +1057,7 @@
         "lon": 2.0159626
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470838538",
@@ -1052,6 +1086,7 @@
         "lon": 2.2130934
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470838541",
@@ -1080,6 +1115,7 @@
         "lon": 2.2670557
       },
       "priority": 117.98,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470838556",
@@ -1108,6 +1144,7 @@
         "lon": 1.8913809
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470838615",
@@ -1136,6 +1173,7 @@
         "lon": 3.1619905
       },
       "priority": 119.85,
+      "protected": true,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n1470838631",
@@ -1164,6 +1202,7 @@
         "lon": 3.1278785
       },
       "priority": 116.97,
+      "protected": true,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n1470838632",
@@ -1192,6 +1231,7 @@
         "lon": 2.6898707
       },
       "priority": 118.75,
+      "protected": true,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1470838702",
@@ -1220,6 +1260,7 @@
         "lon": 2.3605846
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-05-03",
       "source": "openstreetmap",
       "sourceId": "n1470838783",
@@ -1248,6 +1289,7 @@
         "lon": 1.1440411
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "n1470838821",
@@ -1276,6 +1318,7 @@
         "lon": 2.7949886
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-06-00",
       "source": "openstreetmap",
       "sourceId": "n1470838822",
@@ -1304,6 +1347,7 @@
         "lon": 2.2182775
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470838823",
@@ -1332,6 +1376,7 @@
         "lon": 2.0413673
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838825",
@@ -1361,6 +1406,7 @@
         "lon": 2.0848815
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470838828",
@@ -1388,6 +1434,7 @@
         "lon": 3.0283195
       },
       "priority": 119.8,
+      "protected": true,
       "sectorId": "s-07-01",
       "source": "openstreetmap",
       "sourceId": "n1470838830",
@@ -1417,6 +1464,7 @@
         "lon": 2.0570346
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n1470838836",
@@ -1445,6 +1493,7 @@
         "lon": 2.0757651
       },
       "priority": 119.59,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470838887",
@@ -1473,6 +1522,7 @@
         "lon": 1.7721357
       },
       "priority": 117.94,
+      "protected": true,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "n1470838938",
@@ -1501,6 +1551,7 @@
         "lon": 2.4828158
       },
       "priority": 117.61,
+      "protected": true,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "n1470839142",
@@ -1530,6 +1581,7 @@
         "lon": 1.9719894
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470839144",
@@ -1558,6 +1610,7 @@
         "lon": 1.803625
       },
       "priority": 117.29,
+      "protected": true,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
       "sourceId": "n1470839184",
@@ -1587,6 +1640,7 @@
         "lon": 2.0099482
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1470839216",
@@ -1616,6 +1670,7 @@
         "lon": 2.6659047
       },
       "priority": 117.7,
+      "protected": true,
       "sectorId": "s-06-01",
       "source": "openstreetmap",
       "sourceId": "n1470839251",
@@ -1644,6 +1699,7 @@
         "lon": 2.1835803
       },
       "priority": 119.1,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470839326",
@@ -1672,6 +1728,7 @@
         "lon": 2.1405506
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1470839444",
@@ -1700,6 +1757,7 @@
         "lon": 2.7182911
       },
       "priority": 116.76,
+      "protected": true,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1470839495",
@@ -1727,6 +1785,7 @@
         "lon": 2.2643391
       },
       "priority": 118.45,
+      "protected": true,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "n1470839496",
@@ -1755,6 +1814,7 @@
         "lon": 1.1409115
       },
       "priority": 119.12,
+      "protected": true,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
       "sourceId": "n1470839515",
@@ -1784,6 +1844,7 @@
         "lon": 1.2473637
       },
       "priority": 119.89,
+      "protected": true,
       "sectorId": "s-00-04",
       "source": "openstreetmap",
       "sourceId": "n1470839529",
@@ -1812,6 +1873,7 @@
         "lon": 2.2545943
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "n1470839536",
@@ -1841,6 +1903,7 @@
         "lon": 1.144961
       },
       "priority": 119.21,
+      "protected": true,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "n1470839538",
@@ -1869,6 +1932,7 @@
         "lon": 1.6361449
       },
       "priority": 117.82,
+      "protected": true,
       "sectorId": "s-02-02",
       "source": "openstreetmap",
       "sourceId": "n1470839540",
@@ -1896,6 +1960,7 @@
         "lon": 2.3913883
       },
       "priority": 119.58,
+      "protected": true,
       "sectorId": "s-05-03",
       "source": "openstreetmap",
       "sourceId": "n1470839541",
@@ -1924,6 +1989,7 @@
         "lon": 1.6995213
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "n1470839547",
@@ -1952,6 +2018,7 @@
         "lon": 1.9017313
       },
       "priority": 116.85,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n152364156",
@@ -1980,6 +2047,7 @@
         "lon": 1.5184038
       },
       "priority": 116.72,
+      "protected": true,
       "sectorId": "s-01-00",
       "source": "openstreetmap",
       "sourceId": "n1954570210",
@@ -2008,6 +2076,7 @@
         "lon": 2.0156034
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n2375518653",
@@ -2036,6 +2105,7 @@
         "lon": 2.1153773
       },
       "priority": 117.93,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n2794611208",
@@ -2064,6 +2134,7 @@
         "lon": 3.0687997
       },
       "priority": 116.65,
+      "protected": true,
       "sectorId": "s-07-01",
       "source": "openstreetmap",
       "sourceId": "n290730984",
@@ -2092,6 +2163,7 @@
         "lon": 2.0319476
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n3248338760",
@@ -2119,6 +2191,7 @@
         "lon": 3.1387422
       },
       "priority": 117.02,
+      "protected": true,
       "sectorId": "s-08-00",
       "source": "openstreetmap",
       "sourceId": "n339019326",
@@ -2147,6 +2220,7 @@
         "lon": 2.2080809
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n346353020",
@@ -2175,6 +2249,7 @@
         "lon": 2.1573095
       },
       "priority": 120,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n3538816683",
@@ -2202,6 +2277,7 @@
         "lon": 2.187009
       },
       "priority": 117.92,
+      "protected": true,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n427061659",
@@ -2229,6 +2305,7 @@
         "lon": 2.8742461
       },
       "priority": 117.15,
+      "protected": true,
       "sectorId": "s-07-01",
       "source": "openstreetmap",
       "sourceId": "n5417486419",
@@ -2257,6 +2334,7 @@
         "lon": 2.4914526
       },
       "priority": 118.75,
+      "protected": true,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "n7577933121",
@@ -2285,6 +2363,7 @@
         "lon": 1.7863949
       },
       "priority": 117.8,
+      "protected": true,
       "sectorId": "s-02-03",
       "source": "openstreetmap",
       "sourceId": "n8195286823",
@@ -2313,6 +2392,7 @@
         "lon": 2.0996318
       },
       "priority": 135,
+      "protected": true,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "n939880925",
