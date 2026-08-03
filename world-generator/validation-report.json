@@ -1,7 +1,7 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-03T00:36:20.575Z",
-  "valid": false,
+  "generatedAt": "2026-08-03T00:37:24.257Z",
+  "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
     {
@@ -24,12 +24,8 @@
       "file": "world-generator/configs/catalunya-litoral.region.json",
       "id": "catalunya-litoral",
       "version": "0.1.0",
-      "valid": false,
-      "errors": [
-        "/overrides-document: missing required property $schema",
-        "/overrides-document: missing required property schemaVersion",
-        "/overrides-document/formatVersion: unknown property"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": [],
       "summary": {
         "subregions": 9,
