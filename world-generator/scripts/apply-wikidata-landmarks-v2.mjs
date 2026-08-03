@@ -41,7 +41,9 @@ generated = replaceOnce(
       preferredRepresentation: configured.preferredRepresentation ?? item.preferredRepresentation,
       assetId: configured.assetId ?? item.assetId,
       source: 'manual-config',
-      protected: true
+      protected: true,
+      wikidata: undefined,
+      ranking: undefined
     };
     const match = knowledge.manualMatches?.[item.id];
     const qid = match?.qid ?? qidFromTags(canonical.tags);
@@ -52,8 +54,8 @@ generated = replaceOnce(
 generated = replaceOnce(
   generated,
   `    const candidate = existing ? { ...existing } : buildCandidate(source, projection, sampleTerrain, locateSector);`,
-  `    const candidate = existing ? { ...existing, score: source.score } : buildCandidate(source, projection, sampleTerrain, locateSector);`,
-  'automatic landmark base score reset'
+  `    const candidate = existing ? { ...existing, score: source.score, wikidata: undefined, ranking: undefined } : buildCandidate(source, projection, sampleTerrain, locateSector);`,
+  'automatic landmark enrichment reset'
 );
 
 fs.writeFileSync(temporaryPath, generated);
