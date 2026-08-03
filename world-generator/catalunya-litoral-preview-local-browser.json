@@ -14,8 +14,8 @@
     "width": 844,
     "height": 390
   },
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
+  "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -36,8 +36,8 @@
     "selectedRoads": 12500,
     "settlements": 90,
     "webgl2": true,
-    "buildId": "catalunya-litoral-preview-c73e65c65c64",
-    "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
+    "buildId": "catalunya-litoral-preview-4ba7b372d799",
+    "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
   },
   "presets": [
     "Tot",

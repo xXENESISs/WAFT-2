@@ -4,9 +4,9 @@
     "file": "catalunya-litoral-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
+    "sha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
   },
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -1396,9 +1396,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "c73e65c65c64416a0a9e78a6803a6e351abeabc5c6f10dcac54a1578ce961eb3",
+    "inputsSha256": "4ba7b372d799cd7a9f078a3d88ee171d5460945aa8dc06ab145b433987e1a5b3",
     "landcoverSha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b",
-    "regionManifestSha256": "651d268cbcacc5aed41e1a87e513ed4d454228792fb65f852f21879607656ca4",
+    "regionManifestSha256": "ab01bee0d8689dd81a3265480ae56da6b5e949d737d09fb65ae580a058da5d26",
     "terrainSha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
   },
   "terrain": {

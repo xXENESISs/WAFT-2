@@ -386,61 +386,17 @@
       "protected": true,
       "ranking": {
         "baseScore": 140,
-        "finalScore": 186.02,
+        "finalScore": 140,
         "reasons": [
-          "manual-include",
-          "sitelinks:26",
-          "heritage",
-          "image",
-          "commons",
-          "articles:ca,es,en",
-          "official-website",
-          "coordinate"
+          "manual-include"
         ],
-        "wikidataBoost": 46.02
+        "wikidataBoost": 0
       },
-      "score": 186.02,
+      "score": 140,
       "sectorId": "s-06-00",
       "source": "manual-config",
       "terrainStatus": "exact-cell",
-      "type": "fortress",
-      "wikidata": {
-        "commonsCategory": "Cathedral of Girona",
-        "coordinate": {
-          "lat": 41.9875,
-          "lon": 2.82638889
-        },
-        "description": "edifici religiós de Girona",
-        "heightMeters": 30,
-        "heritageDesignations": [
-          "Q1019352",
-          "Q23712"
-        ],
-        "image": "Girona Cathedral 2020.jpg",
-        "inception": "+1100-00-00T00:00:00Z",
-        "instanceOf": [
-          "Q2977"
-        ],
-        "labels": {
-          "ca": "Catedral de Girona",
-          "de": "Kathedrale von Girona",
-          "en": "Girona Cathedral",
-          "es": "Catedral de Santa María de Gerona",
-          "fr": "cathédrale Sainte-Marie de Gérone",
-          "it": "cattedrale di Santa Maria"
-        },
-        "officialWebsite": "https://catedraldegirona.cat/",
-        "qid": "Q2261322",
-        "sitelinkCount": 26,
-        "sitelinks": {
-          "ca": "Catedral de Girona",
-          "de": "Kathedrale von Girona",
-          "en": "Girona Cathedral",
-          "es": "Catedral de Santa María (Gerona)",
-          "fr": "Cathédrale Sainte-Marie de Gérone",
-          "it": "Cattedrale di Gerona"
-        }
-      }
+      "type": "fortress"
     },
     {
       "areaM2": null,
@@ -11691,6 +11647,6 @@
     "unique-candidate": 18
   },
   "sourceCount": 20140,
-  "wikidataEntityCount": 98,
+  "wikidataEntityCount": 97,
   "wikidataRankingPending": false
 }

@@ -1,16 +1,27 @@
 == import selected Wikidata landmarks ==
 {
+  "formatVersion": 1,
   "regionId": "catalunya-litoral",
-  "snapshot": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
-  "status": "reused",
-  "entities": 98
+  "dataset": "Wikidata landmark enrichment",
+  "provider": "Wikimedia Foundation and Wikidata contributors",
+  "endpoint": "https://www.wikidata.org/w/api.php",
+  "license": "CC0 1.0",
+  "retrievedOn": "2026-08-03",
+  "requestedQids": 97,
+  "requestedQidsSha256": "a4e4e4eaa68916b486248eb9f387682dd6bc900fbbdd3f1f3c3ac67b80199e1b",
+  "entityCount": 97,
+  "manualMatchCount": 6,
+  "snapshotFile": "wikidata-landmarks.json.gz",
+  "snapshotBytes": 16850,
+  "snapshotSha256": "44280a5d06256cd5cf01d230a1942b3b93b883dde9d1ea9d98b2415da39dc06d",
+  "uncompressedBytes": 98516
 }
 exit=0
 == rank Wikidata landmarks ==
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52610764,
+  "packageBytes": 52609390,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -19,14 +30,14 @@ exit=0
     "unique-candidate": 18
   },
   "uniqueModelCandidates": 24,
-  "wikidataLinkedLandmarks": 98
+  "wikidataLinkedLandmarks": 97
 }
 exit=0
 == build compact preview ==
 {
   "binaryBytes": 670144,
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
+  "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df",
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -58,7 +69,7 @@ exit=0
     }
   },
   "formatVersion": 1,
-  "inputsSha256": "c73e65c65c64416a0a9e78a6803a6e351abeabc5c6f10dcac54a1578ce961eb3",
+  "inputsSha256": "4ba7b372d799cd7a9f078a3d88ee171d5460945aa8dc06ab145b433987e1a5b3",
   "regionId": "catalunya-litoral",
   "valid": true
 }
@@ -69,9 +80,9 @@ exit=0
   "verificationRun": 2,
   "regionId": "catalunya-litoral",
   "valid": true,
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
   "binaryBytes": 670144,
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
+  "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -127,8 +138,8 @@ exit=0
     "width": 844,
     "height": 390
   },
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
+  "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -149,8 +160,8 @@ exit=0
     "selectedRoads": 12500,
     "settlements": 90,
     "webgl2": true,
-    "buildId": "catalunya-litoral-preview-c73e65c65c64",
-    "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85"
+    "buildId": "catalunya-litoral-preview-4ba7b372d799",
+    "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
   },
   "presets": [
     "Tot",
@@ -182,7 +193,7 @@ exit=0
 {
   "landmarkArchetypes": 76,
   "landmarks": 100,
-  "packageBytes": 52610764,
+  "packageBytes": 52609390,
   "packageDirectory": "regions/catalunya-litoral",
   "regionId": "catalunya-litoral",
   "representationCounts": {
@@ -191,92 +202,5 @@ exit=0
     "unique-candidate": 18
   },
   "uniqueModelCandidates": 24,
-  "wikidataLinkedLandmarks": 98
+  "wikidataLinkedLandmarks": 97
 }
-exit=0
-== deterministic preview rebuild ==
-{
-  "binaryBytes": 670144,
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
-  "counts": {
-    "buildings": 3534,
-    "hotels": 597,
-    "landmarks": 100,
-    "namedBuildings": 3292,
-    "roadSegments": 17298,
-    "roadVertices": 34596,
-    "selectedRoads": 12500,
-    "settlements": 90
-  },
-  "distributions": {
-    "buildingKinds": {
-      "commercial": 214,
-      "historic": 967,
-      "hotel": 597,
-      "ordinary": 32,
-      "public": 208,
-      "religious": 1516
-    },
-    "landmarkRepresentations": {
-      "archetype": 76,
-      "unique": 6,
-      "unique-candidate": 18
-    },
-    "roadClasses": {
-      "motorway": 4812,
-      "primary": 5406,
-      "trunk": 2282
-    }
-  },
-  "formatVersion": 1,
-  "inputsSha256": "c73e65c65c64416a0a9e78a6803a6e351abeabc5c6f10dcac54a1578ce961eb3",
-  "regionId": "catalunya-litoral",
-  "valid": true
-}
-exit=0
-== deterministic preview verification ==
-{
-  "formatVersion": 1,
-  "verificationRun": 2,
-  "regionId": "catalunya-litoral",
-  "valid": true,
-  "buildId": "catalunya-litoral-preview-c73e65c65c64",
-  "binaryBytes": 670144,
-  "binarySha256": "e8b3aadee7a14eaa5645fa1ff361736dc8b061e25c5fe15b621c7bea94f35e85",
-  "counts": {
-    "buildings": 3534,
-    "hotels": 597,
-    "landmarks": 100,
-    "namedBuildings": 3292,
-    "roadSegments": 17298,
-    "roadVertices": 34596,
-    "selectedRoads": 12500,
-    "settlements": 90
-  },
-  "presets": [
-    "Tot",
-    "Barcelona",
-    "Tarragona",
-    "Girona",
-    "Montserrat",
-    "Montseny",
-    "Maresme"
-  ],
-  "terrain": {
-    "columns": 512,
-    "rows": 384
-  },
-  "generationStage": "wikidata-ranked-landmarks"
-}
-exit=0
-== deterministic preview page rebuild ==
-{
-  "valid": true,
-  "regionId": "catalunya-litoral",
-  "version": "001",
-  "source": "mallorca-mobile/region-preview-baleares-001.html",
-  "output": "mallorca-mobile/region-preview-catalunya-litoral-001.html",
-  "bytes": 36674
-}
-exit=0
