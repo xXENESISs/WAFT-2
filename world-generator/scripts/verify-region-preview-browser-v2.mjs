@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const VERIFIER_VERSION = 1;
+const VERIFIER_VERSION = 2;
 
 function parseArguments(argv) {
   const result = { regionId: null, url: null, output: null, screenshot: null, public: false };
@@ -36,6 +36,16 @@ function findChrome() {
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
+}
+
+function expectedPresetNames(config) {
+  const settlements = (config.generation?.settlements?.manualInclude ?? []).slice(0, 3).map(item => item.name);
+  const features = [...(config.geography?.subregions ?? [])]
+    .filter(item => item.type !== 'city')
+    .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0) || a.id.localeCompare(b.id))
+    .slice(0, 3)
+    .map(item => item.name);
+  return ['Tot', ...settlements, ...features];
 }
 
 async function verify() {
@@ -112,6 +122,12 @@ async function verify() {
     assert(initial.stats.settlements >= 20, `Too few settlements: ${initial.stats.settlements}`);
     assert(initial.presets.length >= 4, `Too few presets: ${initial.presets.length}`);
     assert(initial.presets.some(preset => preset.id === 'overview'), 'Overview preset is missing');
+    const actualPresetNames = initial.presets.map(preset => preset.name);
+    const requiredPresetNames = expectedPresetNames(config);
+    assert(
+      JSON.stringify(actualPresetNames) === JSON.stringify(requiredPresetNames),
+      `Unexpected presets. Expected ${requiredPresetNames.join(', ')}, got ${actualPresetNames.join(', ')}`
+    );
 
     const targetPreset = initial.presets.find(preset => preset.id !== 'overview');
     assert(targetPreset, 'No non-overview preset exists');
@@ -150,6 +166,12 @@ async function verify() {
     assert(consoleErrors.length === 0, `Console errors: ${consoleErrors.join(' | ')}`);
     assert(requestFailures.length === 0, `Request failures: ${requestFailures.join(' | ')}`);
 
+    const stats = {
+      ...initial.metadata.counts,
+      webgl2: true,
+      buildId: initial.metadata.buildId,
+      binarySha256: initial.metadata.binary.sha256
+    };
     const report = {
       formatVersion: 1,
       verifierVersion: VERIFIER_VERSION,
@@ -162,7 +184,8 @@ async function verify() {
       buildId: initial.metadata.buildId,
       binarySha256: initial.metadata.binary.sha256,
       counts: initial.metadata.counts,
-      presets: initial.presets.map(preset => preset.name),
+      stats,
+      presets: actualPresetNames,
       interaction: {
         targetPresetId: targetPreset.id,
         targetPresetName: targetPreset.name,
