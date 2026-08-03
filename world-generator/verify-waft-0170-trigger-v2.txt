@@ -1,0 +1,1 @@
+Verify WAFT Adventure 0.17.0 dense places locally and publicly.
