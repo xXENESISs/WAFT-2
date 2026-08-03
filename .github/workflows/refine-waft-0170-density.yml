@@ -1,0 +1,67 @@
+name: Refine WAFT 0.17.0 Visual Density
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/refine-waft-0170-density-trigger.txt
+      - .github/workflows/refine-waft-0170-density.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refine-waft-0170-density
+  cancel-in-progress: false
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Correct local footprint scale and rebuild
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          path = Path('world-generator/build-waft-0170-v2.js')
+          text = path.read_text()
+          old = "    footprintScale: 1,"
+          new = "    footprintScale: type === 'metropolis' ? 4.8 : 5.1,"
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif new not in text:
+              raise SystemExit('No se encontró la escala de huellas locales')
+          path.write_text(text)
+          PY
+          node --check world-generator/build-waft-0170-v2.js
+          node world-generator/build-waft-0170-v2.js > world-generator/waft-0170-workflow.log 2>&1
+          node <<'NODE'
+          const fs = require('fs');
+          for (const region of ['baleares','catalunya-litoral']) {
+            const base = `regions/${region}/local-0170`;
+            const registry = JSON.parse(fs.readFileSync(`${base}/zones-v1.json`,'utf8'));
+            for (const zone of registry.zones) {
+              const metadata = JSON.parse(fs.readFileSync(`${base}/${zone.metadataFile}`,'utf8'));
+              if (metadata.footprintScale < 4.5) throw new Error(`${zone.name}: escala visual insuficiente`);
+              if (metadata.counts.buildings < 180) throw new Error(`${zone.name}: densidad insuficiente`);
+            }
+          }
+          const status = JSON.parse(fs.readFileSync('world-generator/waft-0170-build-status.json','utf8'));
+          status.visualDensity = {footprintScaleMinimum:4.8,compactBlocks:true,validatedAt:new Date().toISOString()};
+          fs.writeFileSync('world-generator/waft-0170-build-status.json',JSON.stringify(status,null,2)+'\n');
+          NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/build-waft-0170-v2.js world-generator/waft-0170-build-status.json world-generator/waft-0170-workflow.log mallorca-mobile/region-runtime-baleares-013.html mallorca-mobile/region-runtime-catalunya-litoral-003.html mallorca-mobile/waft-0170.html regions/baleares/local-0170 regions/catalunya-litoral/local-0170
+          if ! git diff --cached --quiet; then
+            git commit -m "Refine WAFT 0.17.0 local city density"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
