@@ -1,0 +1,50 @@
+name: Patch WAFT 0.15.9 iframe navigation
+
+on:
+  push:
+    paths:
+      - .github/workflows/patch-waft-0159-navigation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Wait for each regional document navigation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('world-generator/scripts/build-adventure-0159.mjs')
+          text = path.read_text(encoding='utf-8')
+          old = """    frame.src = REGIONS[regionId].runtime + '?v=' + encodeURIComponent(cacheKey + '-' + BUILD_ID);
+              const api = await waitForRuntime();
+          """
+          new = """    const runtimeUrl = REGIONS[regionId].runtime + '?v=' + encodeURIComponent(cacheKey + '-' + BUILD_ID);
+              await new Promise((resolve, reject) => {
+                const timer = setTimeout(() => reject(new Error('La navegación regional no terminó.')), 120000);
+                frame.addEventListener('load', () => {
+                  clearTimeout(timer);
+                  resolve();
+                }, { once: true });
+                frame.src = runtimeUrl;
+              });
+              const api = await waitForRuntime();
+          """
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected one navigation target, found {text.count(old)}')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+      - name: Commit navigation fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/scripts/build-adventure-0159.mjs
+          git commit -m "Wait for regional iframe navigation before validation"
+          git pull --rebase origin main
+          git push origin HEAD:main
