@@ -9,6 +9,7 @@
     "configFile": null,
     "fingerprint": "pending-local-zone-generation"
   },
+  "status": "regional-runtime-ready-local-zones-pending",
   "zoneCount": 0,
   "zones": []
 }
