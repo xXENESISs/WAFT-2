@@ -1,4 +1,5 @@
 {
+  "adventureCompatibility": "0.15.9",
   "buildId": "catalunya-litoral-local-zones-empty-v1",
   "deterministic": true,
   "formatVersion": 1,
