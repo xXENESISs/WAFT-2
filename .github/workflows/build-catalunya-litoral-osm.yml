@@ -1,0 +1,89 @@
+name: Build Catalunya litoral OpenStreetMap
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-catalunya-litoral-osm.yml
+      - world-generator/sources/catalunya-litoral/copernicus-dem-glo30.bin
+      - world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.bin
+      - world-generator/configs/source-registry.json
+      - world-generator/scripts/import-openstreetmap-v2.py
+      - world-generator/scripts/import-openstreetmap.py
+      - world-generator/scripts/apply-openstreetmap.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalunya-litoral-osm
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install parser
+        run: python -m pip install osmium
+      - name: Import and apply OSM
+        id: build
+        shell: bash
+        run: |
+          set +e
+          log=world-generator/catalunya-litoral-osm.log
+          status=world-generator/catalunya-litoral-osm-status.json
+          : > "$log"
+          import_code=0
+          apply_code=0
+          deterministic=0
+          python world-generator/scripts/import-openstreetmap-v2.py catalunya-litoral --force --retrieved-on 2026-08-03 >> "$log" 2>&1 || import_code=$?
+          if [ "$import_code" = 0 ]; then
+            node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral >> "$log" 2>&1 || apply_code=$?
+          else
+            apply_code=99
+          fi
+          if [ "$apply_code" = 0 ]; then
+            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json > /tmp/osm-first.sha
+            node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral >> "$log" 2>&1 || deterministic=$?
+            sha256sum regions/catalunya-litoral/manifest.json regions/catalunya-litoral/objects.json regions/catalunya-litoral/routes.json regions/catalunya-litoral/settlements.json > /tmp/osm-second.sha
+            diff -u /tmp/osm-first.sha /tmp/osm-second.sha >> "$log" 2>&1 || deterministic=$?
+          else
+            deterministic=99
+          fi
+          bytes=0
+          [ -f world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz ] && bytes="$(stat -c%s world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz)"
+          printf '{"import":%s,"apply":%s,"deterministic":%s,"snapshotBytes":%s}\n' "$import_code" "$apply_code" "$deterministic" "$bytes" > "$status"
+          cat "$log"
+          all=0
+          for code in "$import_code" "$apply_code" "$deterministic"; do [ "$code" = 0 ] || all=1; done
+          echo "code=${all}" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit OSM stage
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add regions/catalunya-litoral world-generator/catalunya-litoral-osm.log world-generator/catalunya-litoral-osm-status.json
+          for path in world-generator/sources/catalunya-litoral/openstreetmap-extract.json world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz; do
+            if [ -f "$path" ] && [ "$(stat -c%s "$path")" -lt $((90*1024*1024)) ]; then git add "$path"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Build Catalunya litoral OpenStreetMap network"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Require success
+        if: steps.build.outputs.code != '0'
+        run: exit 1
