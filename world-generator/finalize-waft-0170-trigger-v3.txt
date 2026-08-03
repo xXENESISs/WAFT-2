@@ -1,1 +1,2 @@
 Wait for compact density, verify locally, wait for GitHub Pages and verify publicly.
+Retry after correcting localCounts verification on 2026-08-04.
