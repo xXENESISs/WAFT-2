@@ -1,0 +1,58 @@
+{
+  "formatVersion": 1,
+  "runtimeRevision": 3,
+  "regionId": "baleares",
+  "registryFile": "zones-v2.json",
+  "packageFormat": "WAFTLZ01",
+  "defaults": {
+    "worldScale": 12,
+    "footprintScale": 3.2,
+    "verticalScaleMultiplier": 1,
+    "maxBinaryBytes": 4194304,
+    "terrainPaddingMinimum": 2,
+    "terrainPaddingRatio": 0.1,
+    "featurePadding": 3
+  },
+  "zones": [
+    {
+      "id": "palma",
+      "presetId": "palma",
+      "name": "Palma · Centre–Badia–Ponència",
+      "regionalRadius": 44,
+      "minimumBuildings": 400,
+      "minimumRoadVertices": 3000
+    },
+    {
+      "id": "llevant",
+      "presetId": "llevant",
+      "name": "Llevant · Cala Millor–Sa Coma–Cala Bona",
+      "regionalRadius": 44,
+      "minimumBuildings": 250,
+      "minimumRoadVertices": 1800
+    },
+    {
+      "id": "alcudia",
+      "presetId": "alcúdia",
+      "name": "Alcúdia · Port–Badia–Pollença",
+      "regionalRadius": 36,
+      "minimumBuildings": 340,
+      "minimumRoadVertices": 1400
+    },
+    {
+      "id": "menorca",
+      "presetId": "menorca",
+      "name": "Menorca · Maó–Es Castell–Alaior",
+      "regionalRadius": 36,
+      "minimumBuildings": 430,
+      "minimumRoadVertices": 1900
+    },
+    {
+      "id": "eivissa",
+      "presetId": "eivissa",
+      "name": "Eivissa · Vila–Badia–Sant Jordi",
+      "regionalRadius": 36,
+      "minimumBuildings": 300,
+      "minimumRoadVertices": 2400
+    }
+  ]
+}
