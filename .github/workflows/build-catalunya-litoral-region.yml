@@ -1,0 +1,352 @@
+name: Build Catalunya litoral region
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-catalunya-litoral-region.yml
+      - world-generator/configs/catalunya-litoral.region.json
+      - world-generator/configs/source-registry.json
+      - world-generator/overrides/catalunya-litoral.overrides.json
+      - world-generator/scripts/build-region-v2.mjs
+      - world-generator/scripts/import-openstreetmap-v2.py
+      - world-generator/scripts/build-region-preview-v2.mjs
+      - world-generator/scripts/verify-region-preview-v2.mjs
+      - world-generator/scripts/build-region-preview-page.mjs
+      - world-generator/scripts/verify-region-preview-browser-v2.mjs
+      - world-generator/scripts/import-copernicus-dem.py
+      - world-generator/scripts/import-esa-worldcover.py
+      - world-generator/scripts/import-openstreetmap.py
+      - world-generator/scripts/apply-openstreetmap.mjs
+      - world-generator/scripts/import-wikidata-landmarks.py
+      - world-generator/scripts/apply-wikidata-landmarks.mjs
+      - world-generator/scripts/validate-region.mjs
+      - world-generator/schema/region.schema.json
+      - world-generator/schema/region-overrides.schema.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalunya-litoral-region
+  cancel-in-progress: true
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Record protected WAFT files
+        shell: bash
+        run: |
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-010.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-protected-before.sha256
+
+      - name: Install generator dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy rasterio osmium
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+
+      - name: Build and verify locally
+        id: local
+        shell: bash
+        run: |
+          set +e
+          LOG=world-generator/catalunya-litoral-build.log
+          STATUS=world-generator/catalunya-litoral-build-status.json
+          : > "$LOG"
+
+          run_logged() {
+            label="$1"
+            shift
+            echo "== ${label} ==" >> "$LOG"
+            "$@" >> "$LOG" 2>&1
+            code=$?
+            echo "exit=${code}" >> "$LOG"
+            return "$code"
+          }
+
+          syntax=0
+          config=0
+          dem=0
+          worldcover=0
+          osm=0
+          bootstrap=0
+          osm_apply=0
+          wikidata_import=0
+          wikidata_apply=0
+          preview=0
+          preview_verify=0
+          page=0
+          inline=0
+          deterministic=0
+          browser=0
+          protected=0
+
+          for script in \
+            world-generator/scripts/build-region-v2.mjs \
+            world-generator/scripts/build-region-preview-v2.mjs \
+            world-generator/scripts/verify-region-preview-v2.mjs \
+            world-generator/scripts/build-region-preview-page.mjs \
+            world-generator/scripts/verify-region-preview-browser-v2.mjs; do
+            run_logged "syntax ${script}" node --check "$script" || syntax=$?
+          done
+          for script in \
+            world-generator/scripts/import-copernicus-dem.py \
+            world-generator/scripts/import-esa-worldcover.py \
+            world-generator/scripts/import-openstreetmap.py \
+            world-generator/scripts/import-openstreetmap-v2.py \
+            world-generator/scripts/import-wikidata-landmarks.py; do
+            run_logged "syntax ${script}" python -m py_compile "$script" || syntax=$?
+          done
+
+          if [ "$syntax" = 0 ]; then
+            run_logged 'validate Catalunya litoral config' node world-generator/scripts/validate-region.mjs --config world-generator/configs/catalunya-litoral.region.json || config=$?
+          else
+            config=99
+          fi
+
+          if [ "$config" = 0 ]; then
+            run_logged 'import Copernicus GLO-30' python world-generator/scripts/import-copernicus-dem.py catalunya-litoral --refresh --retrieved-on 2026-08-03 || dem=$?
+          else
+            dem=99
+          fi
+          if [ "$dem" = 0 ]; then
+            run_logged 'import ESA WorldCover' python world-generator/scripts/import-esa-worldcover.py catalunya-litoral --refresh --retrieved-on 2026-08-03 || worldcover=$?
+          else
+            worldcover=99
+          fi
+          if [ "$worldcover" = 0 ]; then
+            run_logged 'import filtered OpenStreetMap' python world-generator/scripts/import-openstreetmap-v2.py catalunya-litoral --force --retrieved-on 2026-08-03 || osm=$?
+          else
+            osm=99
+          fi
+          if [ "$osm" = 0 ]; then
+            run_logged 'build DEM and WorldCover bootstrap' node world-generator/scripts/build-region-v2.mjs catalunya-litoral || bootstrap=$?
+          else
+            bootstrap=99
+          fi
+          if [ "$bootstrap" = 0 ]; then
+            run_logged 'apply OpenStreetMap physical network' node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral || osm_apply=$?
+          else
+            osm_apply=99
+          fi
+          if [ "$osm_apply" = 0 ]; then
+            run_logged 'import Wikidata landmarks' python world-generator/scripts/import-wikidata-landmarks.py catalunya-litoral --retrieved-on 2026-08-03 || wikidata_import=$?
+          else
+            wikidata_import=99
+          fi
+          if [ "$wikidata_import" = 0 ]; then
+            run_logged 'rank Wikidata landmarks' node world-generator/scripts/apply-wikidata-landmarks.mjs catalunya-litoral || wikidata_apply=$?
+          else
+            wikidata_apply=99
+          fi
+          if [ "$wikidata_apply" = 0 ]; then
+            run_logged 'build compact preview' node world-generator/scripts/build-region-preview-v2.mjs catalunya-litoral || preview=$?
+          else
+            preview=99
+          fi
+          if [ "$preview" = 0 ]; then
+            run_logged 'verify compact preview' node world-generator/scripts/verify-region-preview-v2.mjs catalunya-litoral || preview_verify=$?
+          else
+            preview_verify=99
+          fi
+          if [ "$preview_verify" = 0 ]; then
+            run_logged 'build mobile preview page' node world-generator/scripts/build-region-preview-page.mjs catalunya-litoral 001 || page=$?
+          else
+            page=99
+          fi
+
+          if [ "$page" = 0 ]; then
+            python - <<'PY' > /tmp/catalunya-preview-inline.mjs
+          from pathlib import Path
+          import re
+          html = Path('mallorca-mobile/region-preview-catalunya-litoral-001.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f'Expected one inline script, found {len(scripts)}')
+          print(scripts[0])
+          PY
+            run_logged 'syntax Catalunya preview inline JavaScript' node --check /tmp/catalunya-preview-inline.mjs || inline=$?
+          else
+            inline=99
+          fi
+
+          if [ "$inline" = 0 ]; then
+            rm -rf /tmp/catalunya-region-first
+            cp -a regions/catalunya-litoral /tmp/catalunya-region-first
+            cp mallorca-mobile/region-preview-catalunya-litoral-001.html /tmp/catalunya-preview-page-first.html
+            cp world-generator/catalunya-litoral-preview-build.json /tmp/catalunya-preview-build-first.json
+            cp world-generator/catalunya-litoral-preview-validation.json /tmp/catalunya-preview-validation-first.json
+            run_logged 'deterministic bootstrap rebuild' node world-generator/scripts/build-region-v2.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic OSM application' node world-generator/scripts/apply-openstreetmap.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic Wikidata application' node world-generator/scripts/apply-wikidata-landmarks.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic preview rebuild' node world-generator/scripts/build-region-preview-v2.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic preview verification' node world-generator/scripts/verify-region-preview-v2.mjs catalunya-litoral || deterministic=$?
+            run_logged 'deterministic preview page rebuild' node world-generator/scripts/build-region-preview-page.mjs catalunya-litoral 001 || deterministic=$?
+            diff -qr /tmp/catalunya-region-first regions/catalunya-litoral >> "$LOG" 2>&1 || deterministic=$?
+            diff -q /tmp/catalunya-preview-page-first.html mallorca-mobile/region-preview-catalunya-litoral-001.html >> "$LOG" 2>&1 || deterministic=$?
+            diff -q /tmp/catalunya-preview-build-first.json world-generator/catalunya-litoral-preview-build.json >> "$LOG" 2>&1 || deterministic=$?
+            diff -q /tmp/catalunya-preview-validation-first.json world-generator/catalunya-litoral-preview-validation.json >> "$LOG" 2>&1 || deterministic=$?
+          else
+            deterministic=99
+          fi
+
+          if [ "$deterministic" = 0 ]; then
+            python -m http.server 8000 --bind 127.0.0.1 >/tmp/catalunya-preview-server.log 2>&1 &
+            server_pid=$!
+            sleep 2
+            run_logged 'local mobile browser preview' node world-generator/scripts/verify-region-preview-browser-v2.mjs \
+              --region catalunya-litoral \
+              --url http://127.0.0.1:8000/mallorca-mobile/region-preview-catalunya-litoral-001.html?v=local \
+              --output world-generator/catalunya-litoral-preview-local-browser.json \
+              --screenshot /tmp/catalunya-litoral-local.png || browser=$?
+            kill "$server_pid" >/dev/null 2>&1 || true
+          else
+            browser=99
+          fi
+
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-010.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/catalunya-protected-after.sha256
+          diff -u /tmp/catalunya-protected-before.sha256 /tmp/catalunya-protected-after.sha256 >> "$LOG" 2>&1 || protected=$?
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('world-generator/sources/catalunya-litoral')
+          records = []
+          for path in sorted(source.glob('*')):
+              if path.is_file():
+                  records.append({'path': str(path), 'bytes': path.stat().st_size, 'commitEligible': path.stat().st_size < 90 * 1024 * 1024})
+          Path('world-generator/catalunya-litoral-source-commit-policy.json').write_text(json.dumps({'formatVersion': 1, 'files': records}, indent=2) + '\n')
+          PY
+
+          printf '{"syntax":%s,"config":%s,"dem":%s,"worldcover":%s,"osm":%s,"bootstrap":%s,"osmApply":%s,"wikidataImport":%s,"wikidataApply":%s,"preview":%s,"previewVerify":%s,"page":%s,"inlineSyntax":%s,"deterministic":%s,"browser":%s,"protected":%s}\n' \
+            "$syntax" "$config" "$dem" "$worldcover" "$osm" "$bootstrap" "$osm_apply" "$wikidata_import" "$wikidata_apply" "$preview" "$preview_verify" "$page" "$inline" "$deterministic" "$browser" "$protected" > "$STATUS"
+          cat "$LOG"
+          all=0
+          for code in "$syntax" "$config" "$dem" "$worldcover" "$osm" "$bootstrap" "$osm_apply" "$wikidata_import" "$wikidata_apply" "$preview" "$preview_verify" "$page" "$inline" "$deterministic" "$browser" "$protected"; do
+            [ "$code" = 0 ] || all=1
+          done
+          echo "code=${all}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit generated Catalunya region and diagnostics
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          optional=(
+            regions/catalunya-litoral
+            mallorca-mobile/region-preview-catalunya-litoral-001.html
+            world-generator/catalunya-litoral-preview-build.json
+            world-generator/catalunya-litoral-preview-validation.json
+            world-generator/catalunya-litoral-preview-local-browser.json
+            world-generator/catalunya-litoral-build.log
+            world-generator/catalunya-litoral-build-status.json
+            world-generator/catalunya-litoral-source-commit-policy.json
+          )
+          for item in "${optional[@]}"; do [ -e "$item" ] && git add "$item"; done
+          source_dir=world-generator/sources/catalunya-litoral
+          if [ -d "$source_dir" ]; then
+            while IFS= read -r -d '' path; do
+              bytes="$(stat -c%s "$path")"
+              if [ "$bytes" -lt $((90 * 1024 * 1024)) ]; then git add "$path"; fi
+            done < <(find "$source_dir" -maxdepth 1 -type f -print0)
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Build Catalunya litoral regional preview"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          PREVIEW_BLOB="$(git hash-object mallorca-mobile/region-preview-catalunya-litoral-001.html 2>/dev/null || true)"
+          echo "PREVIEW_BLOB=${PREVIEW_BLOB}" >> "$GITHUB_ENV"
+
+      - name: Require local success
+        if: steps.local.outputs.code != '0'
+        run: exit 1
+
+      - name: Wait for public Catalunya preview
+        shell: bash
+        run: |
+          preview_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-catalunya-litoral-001.html?v=${PREVIEW_BLOB}"
+          echo "PUBLIC_PREVIEW_URL=${preview_url}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 120); do
+            body="$(curl -fsS --max-time 20 "$preview_url" || true)"
+            if printf '%s' "$body" | grep -q 'CATALUNYA LITORAL' && printf '%s' "$body" | grep -q 'catalunya-litoral-preview-v1.json'; then
+              echo "GitHub Pages serves Catalunya litoral preview"
+              exit 0
+            fi
+            echo "Waiting for Pages (${attempt}/120)"
+            sleep 5
+          done
+          exit 1
+
+      - name: Verify public mobile Catalunya preview
+        run: |
+          node world-generator/scripts/verify-region-preview-browser-v2.mjs \
+            --region catalunya-litoral \
+            --url "$PUBLIC_PREVIEW_URL" \
+            --public \
+            --output world-generator/catalunya-litoral-preview-public-browser.json \
+            --screenshot /tmp/catalunya-litoral-public.png
+
+      - name: Record public Catalunya verification
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/catalunya-litoral-preview-public-browser.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify public Catalunya litoral regional preview"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload Catalunya preview screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalunya-litoral-region-preview
+          path: |
+            /tmp/catalunya-litoral-local.png
+            /tmp/catalunya-litoral-public.png
+          retention-days: 7
