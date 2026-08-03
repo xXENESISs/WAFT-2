@@ -18,7 +18,7 @@
         "tier": "unique"
       },
       "name": "amfiteatre de Tarragona",
-      "originalName": "Amfiteatre de Tarragona",
+      "originalName": "amfiteatre de Tarragona",
       "position": {
         "lat": 41.1149,
         "lon": 1.2594
@@ -98,7 +98,7 @@
         "tier": "archetype"
       },
       "name": "castell de Montjuïc",
-      "originalName": "Castell de Montjuïc",
+      "originalName": "castell de Montjuïc",
       "position": {
         "lat": 41.3633,
         "lon": 2.1699
@@ -181,7 +181,7 @@
         "tier": "unique"
       },
       "name": "far de Tossa",
-      "originalName": "Vila Vella de Tossa de Mar",
+      "originalName": "far de Tossa",
       "position": {
         "lat": 41.7169,
         "lon": 2.9344
@@ -337,7 +337,7 @@
         "tier": "unique"
       },
       "name": "monestir de Montserrat",
-      "originalName": "Monestir de Montserrat",
+      "originalName": "monestir de Montserrat",
       "position": {
         "lat": 41.5931,
         "lon": 1.8352
@@ -416,7 +416,7 @@
         "tier": "archetype"
       },
       "name": "Catedral de Girona",
-      "originalName": "Muralles de Girona",
+      "originalName": "Catedral de Girona",
       "position": {
         "lat": 41.9874,
         "lon": 2.8267
@@ -505,8 +505,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 69,
-        "finalScore": 102.63,
+        "baseScore": 102.63,
+        "finalScore": 136.26,
         "reasons": [
           "sitelinks:29",
           "image",
@@ -516,7 +516,7 @@
         ],
         "wikidataBoost": 33.63
       },
-      "score": 102.63,
+      "score": 136.26,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n10262292616",
@@ -582,7 +582,7 @@
         "tier": "archetype"
       },
       "name": "Castell palau dels Vescomtes de Cabrera",
-      "originalName": "Castell Palau dels Vescomtes de Cabrera",
+      "originalName": "Castell palau dels Vescomtes de Cabrera",
       "position": {
         "lat": 41.6757565,
         "lon": 2.7929328
@@ -590,8 +590,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -602,7 +602,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n12166457465",
@@ -666,15 +666,15 @@
         "tier": "archetype"
       },
       "name": "Tibidabo",
-      "originalName": "el Tibidabo",
+      "originalName": "Tibidabo",
       "position": {
         "lat": 41.4223678,
         "lon": 2.118914
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 69,
-        "finalScore": 103,
+        "baseScore": 103,
+        "finalScore": 137,
         "reasons": [
           "sitelinks:31",
           "image",
@@ -684,7 +684,7 @@
         ],
         "wikidataBoost": 34
       },
-      "score": 103,
+      "score": 137,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "n1249955905",
@@ -749,15 +749,15 @@
         "tier": "archetype"
       },
       "name": "Roc de Rumbau",
-      "originalName": "Roc de Rombau",
+      "originalName": "Roc de Rumbau",
       "position": {
         "lat": 42.0775214,
         "lon": 1.2816917
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 69,
-        "finalScore": 99,
+        "baseScore": 99,
+        "finalScore": 129,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -768,7 +768,7 @@
         ],
         "wikidataBoost": 30
       },
-      "score": 99,
+      "score": 129,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
       "sourceId": "n1304127509",
@@ -842,8 +842,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -854,7 +854,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
       "sourceId": "n1491216017",
@@ -918,7 +918,7 @@
         "tier": "archetype"
       },
       "name": "castell de Penyafort",
-      "originalName": "Castell de Penyafort",
+      "originalName": "castell de Penyafort",
       "position": {
         "lat": 41.3063861,
         "lon": 1.658254
@@ -926,8 +926,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -938,7 +938,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "n1505187049",
@@ -1002,7 +1002,7 @@
         "tier": "archetype"
       },
       "name": "Far de Torredembarra",
-      "originalName": "Far de Punta de la Galera",
+      "originalName": "Far de Torredembarra",
       "position": {
         "lat": 41.1322395,
         "lon": 1.3948037
@@ -1010,8 +1010,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -1022,7 +1022,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-01-05",
       "source": "openstreetmap",
       "sourceId": "n1566211246",
@@ -1072,6 +1072,7 @@
     },
     {
       "areaM2": null,
+      "assetId": "regional-lighthouse",
       "footprint": null,
       "id": "osm-landmark-n1665606789",
       "local": {
@@ -1080,10 +1081,10 @@
         "z": -29.5669
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-lighthouse",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Far del Capaspre",
       "originalName": "Far del Capaspre",
@@ -1091,11 +1092,11 @@
         "lat": 41.6081412,
         "lon": 2.646404
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 137.23,
+        "baseScore": 137.23,
+        "finalScore": 174.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -1106,7 +1107,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 137.23,
+      "score": 174.46,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "n1665606789",
@@ -1180,8 +1181,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1192,7 +1193,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n1677679948",
@@ -1264,8 +1265,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133,
+        "baseScore": 133,
+        "finalScore": 166,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1277,7 +1278,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 133,
+      "score": 166,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1803278293",
@@ -1344,7 +1345,7 @@
         "tier": "archetype"
       },
       "name": "Castell Vell de Rosanes",
-      "originalName": "Castell de Sant Jaume",
+      "originalName": "Castell Vell de Rosanes",
       "position": {
         "lat": 41.4510444,
         "lon": 1.9195502
@@ -1352,8 +1353,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 135.29,
+        "baseScore": 135.29,
+        "finalScore": 170.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -1364,7 +1365,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 135.29,
+      "score": 170.58,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n1803302223",
@@ -1437,8 +1438,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1449,7 +1450,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "n1876115981",
@@ -1521,8 +1522,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1533,7 +1534,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "n1917268245",
@@ -1605,8 +1606,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1617,7 +1618,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-00",
       "source": "openstreetmap",
       "sourceId": "n1966547138",
@@ -1681,7 +1682,7 @@
         "tier": "archetype"
       },
       "name": "castell de Calonge",
-      "originalName": "Castell de Calonge",
+      "originalName": "castell de Calonge",
       "position": {
         "lat": 41.8630452,
         "lon": 3.073334
@@ -1689,8 +1690,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1701,7 +1702,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n1978539479",
@@ -1773,8 +1774,8 @@
       "preferredRepresentation": "unique-candidate",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 140.8,
+        "baseScore": 140.8,
+        "finalScore": 181.6,
         "reasons": [
           "sitelinks:12",
           "heritage",
@@ -1785,7 +1786,7 @@
         ],
         "wikidataBoost": 40.8
       },
-      "score": 140.8,
+      "score": 181.6,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
       "sourceId": "n2050474584",
@@ -1860,8 +1861,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1872,7 +1873,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "n2054044697",
@@ -1935,7 +1936,7 @@
         "tier": "archetype"
       },
       "name": "castell de Ciutadilla",
-      "originalName": "Castell de Ciutadilla",
+      "originalName": "castell de Ciutadilla",
       "position": {
         "lat": 41.5609038,
         "lon": 1.141006
@@ -1943,8 +1944,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -1955,7 +1956,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-00-02",
       "source": "openstreetmap",
       "sourceId": "n2068349851",
@@ -2019,7 +2020,7 @@
         "tier": "archetype"
       },
       "name": "castell de Castellnou d'Ossó",
-      "originalName": "Castell de Castellnou d'Ossó",
+      "originalName": "castell de Castellnou d'Ossó",
       "position": {
         "lat": 41.7679923,
         "lon": 1.1442741
@@ -2027,8 +2028,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2039,7 +2040,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "n2078630168",
@@ -2111,8 +2112,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2123,7 +2124,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n2169420249",
@@ -2196,8 +2197,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2208,7 +2209,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-03-03",
       "source": "openstreetmap",
       "sourceId": "n2217023135",
@@ -2272,7 +2273,7 @@
         "tier": "archetype"
       },
       "name": "castell de Puig-reig",
-      "originalName": "Castell de Puig-reig",
+      "originalName": "castell de Puig-reig",
       "position": {
         "lat": 41.9713294,
         "lon": 1.8821966
@@ -2280,8 +2281,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2292,7 +2293,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-03-00",
       "source": "openstreetmap",
       "sourceId": "n2244858893",
@@ -2357,7 +2358,7 @@
         "tier": "archetype"
       },
       "name": "Torre del Rellotge",
-      "originalName": "La Torre del Rellotge",
+      "originalName": "Torre del Rellotge",
       "position": {
         "lat": 41.3749318,
         "lon": 2.1857633
@@ -2365,8 +2366,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2377,7 +2378,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n2482266590",
@@ -2449,8 +2450,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2461,7 +2462,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "n3036789750",
@@ -2533,8 +2534,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2545,7 +2546,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-07-00",
       "source": "openstreetmap",
       "sourceId": "n3578876029",
@@ -2617,8 +2618,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2629,7 +2630,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
       "sourceId": "n3718831881",
@@ -2701,8 +2702,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -2713,7 +2714,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
       "sourceId": "n394737758",
@@ -2778,15 +2779,15 @@
         "tier": "archetype"
       },
       "name": "coves del Toll",
-      "originalName": "Cova del Toll",
+      "originalName": "coves del Toll",
       "position": {
         "lat": 41.8051866,
         "lon": 2.1490553
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 92,
-        "finalScore": 126.34,
+        "baseScore": 126.34,
+        "finalScore": 160.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2797,7 +2798,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 126.34,
+      "score": 160.68,
       "sectorId": "s-04-01",
       "source": "openstreetmap",
       "sourceId": "n416645426",
@@ -2863,7 +2864,7 @@
         "tier": "archetype"
       },
       "name": "far de Montjuïc",
-      "originalName": "Far de Montjuïc",
+      "originalName": "far de Montjuïc",
       "position": {
         "lat": 41.3609829,
         "lon": 2.1659475
@@ -2871,8 +2872,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -2883,7 +2884,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "n427959994",
@@ -2956,8 +2957,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -2968,7 +2969,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-02-00",
       "source": "openstreetmap",
       "sourceId": "n4965268654",
@@ -3032,15 +3033,15 @@
         "tier": "archetype"
       },
       "name": "Vespella de Gaià",
-      "originalName": "la Cogulla",
+      "originalName": "Vespella de Gaià",
       "position": {
         "lat": 41.2063711,
         "lon": 1.3921184
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 69,
-        "finalScore": 104.68,
+        "baseScore": 104.68,
+        "finalScore": 140.36,
         "reasons": [
           "sitelinks:35",
           "image",
@@ -3051,7 +3052,7 @@
         ],
         "wikidataBoost": 35.68
       },
-      "score": 104.68,
+      "score": 140.36,
       "sectorId": "s-01-04",
       "source": "openstreetmap",
       "sourceId": "n5002853506",
@@ -3116,7 +3117,7 @@
         "tier": "archetype"
       },
       "name": "castell de Sant Esteve de Mar",
-      "originalName": "Castell de Sant Esteve de Mar",
+      "originalName": "castell de Sant Esteve de Mar",
       "position": {
         "lat": 41.8581975,
         "lon": 3.1475915
@@ -3124,8 +3125,8 @@
       "preferredRepresentation": "archetype",
       "protected": true,
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 136.34,
+        "baseScore": 136.34,
+        "finalScore": 172.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -3136,7 +3137,7 @@
         ],
         "wikidataBoost": 36.34
       },
-      "score": 136.34,
+      "score": 172.68,
       "sectorId": "s-08-01",
       "source": "openstreetmap",
       "sourceId": "n504549153",
@@ -3202,15 +3203,15 @@
         "tier": "archetype"
       },
       "name": "cova del Gat",
-      "originalName": "Cova del Gat",
+      "originalName": "cova del Gat",
       "position": {
         "lat": 41.3450006,
         "lon": 1.2479248
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 76,
-        "finalScore": 99.34,
+        "baseScore": 99.34,
+        "finalScore": 122.68,
         "reasons": [
           "sitelinks:2",
           "heritage",
@@ -3219,7 +3220,7 @@
         ],
         "wikidataBoost": 23.34
       },
-      "score": 99.34,
+      "score": 122.68,
       "sectorId": "s-00-04",
       "source": "openstreetmap",
       "sourceId": "n5095138225",
@@ -3283,15 +3284,15 @@
         "tier": "archetype"
       },
       "name": "castell de Vilademàger",
-      "originalName": "Castell de Vilademàger",
+      "originalName": "castell de Vilademàger",
       "position": {
         "lat": 41.4728049,
         "lon": 1.5503354
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 135.29,
+        "baseScore": 135.29,
+        "finalScore": 170.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -3302,7 +3303,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 135.29,
+      "score": 170.58,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "n6360226505",
@@ -3352,6 +3353,7 @@
     },
     {
       "areaM2": 730.91,
+      "assetId": "regional-castle",
       "footprint": [
         [
           -137.1251,
@@ -3425,21 +3427,21 @@
         "z": 92.5876
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-castle",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "castell de Castellet",
-      "originalName": "Castell de Castellet",
+      "originalName": "castell de Castellet",
       "position": {
         "lat": 41.264646313240185,
         "lon": 1.6361242608052928
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 137.23,
+        "baseScore": 137.23,
+        "finalScore": 174.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -3450,7 +3452,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 137.23,
+      "score": 174.46,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "r10769413",
@@ -3544,8 +3546,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 132.29,
+        "baseScore": 132.29,
+        "finalScore": 165.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -3556,7 +3558,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 132.29,
+      "score": 165.58,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r11259745",
@@ -3701,15 +3703,15 @@
         "tier": "unique-candidate"
       },
       "name": "castell del Montgrí",
-      "originalName": "Castell del Montgrí",
+      "originalName": "castell del Montgrí",
       "position": {
         "lat": 42.0520903102742,
         "lon": 3.1316350879932675
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 138.68,
+        "baseScore": 138.68,
+        "finalScore": 177.36,
         "reasons": [
           "sitelinks:8",
           "heritage",
@@ -3720,7 +3722,7 @@
         ],
         "wikidataBoost": 38.68
       },
-      "score": 138.68,
+      "score": 177.36,
       "sectorId": "s-08-00",
       "source": "openstreetmap",
       "sourceId": "r11815186",
@@ -3847,8 +3849,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 138.84,
+        "baseScore": 138.84,
+        "finalScore": 178.68,
         "reasons": [
           "sitelinks:10",
           "heritage",
@@ -3859,7 +3861,7 @@
         ],
         "wikidataBoost": 39.84
       },
-      "score": 138.84,
+      "score": 178.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r118402",
@@ -3969,8 +3971,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 92,
-        "finalScore": 129.23,
+        "baseScore": 129.23,
+        "finalScore": 166.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -3981,7 +3983,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 129.23,
+      "score": 166.46,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "r17304045",
@@ -4131,15 +4133,15 @@
         "tier": "unique-candidate"
       },
       "name": "castell de Santa Florentina",
-      "originalName": "Castell de Santa Florentina",
+      "originalName": "castell de Santa Florentina",
       "position": {
         "lat": 41.60079170469874,
         "lon": 2.576863107053896
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 139.68,
+        "baseScore": 139.68,
+        "finalScore": 179.36,
         "reasons": [
           "sitelinks:8",
           "heritage",
@@ -4151,7 +4153,7 @@
         ],
         "wikidataBoost": 39.68
       },
-      "score": 139.68,
+      "score": 179.36,
       "sectorId": "s-05-02",
       "source": "openstreetmap",
       "sourceId": "r18405323",
@@ -4294,15 +4296,15 @@
         "tier": "unique-candidate"
       },
       "name": "Basílica Catedral Metropolitana i Primada de Santa Tecla",
-      "originalName": "Catedral de Tarragona",
+      "originalName": "Basílica Catedral Metropolitana i Primada de Santa Tecla",
       "position": {
         "lat": 41.11933702176509,
         "lon": 1.2580083571772178
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 143.35,
+        "baseScore": 143.35,
+        "finalScore": 186.7,
         "reasons": [
           "sitelinks:16",
           "heritage",
@@ -4314,7 +4316,7 @@
         ],
         "wikidataBoost": 43.35
       },
-      "score": 143.35,
+      "score": 186.7,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "r20270010",
@@ -4469,15 +4471,15 @@
         "tier": "archetype"
       },
       "name": "Palau Episcopal de Barcelona",
-      "originalName": "Palau Episcopal",
+      "originalName": "Palau Episcopal de Barcelona",
       "position": {
         "lat": 41.38379721053613,
         "lon": 2.175290943440409
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 135.23,
+        "baseScore": 135.23,
+        "finalScore": 170.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -4488,7 +4490,7 @@
         ],
         "wikidataBoost": 35.23
       },
-      "score": 135.23,
+      "score": 170.46,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r2874766",
@@ -4597,8 +4599,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 140.63,
+        "baseScore": 140.63,
+        "finalScore": 182.26,
         "reasons": [
           "sitelinks:14",
           "heritage",
@@ -4609,7 +4611,7 @@
         ],
         "wikidataBoost": 41.63
       },
-      "score": 140.63,
+      "score": 182.26,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r2874767",
@@ -4720,8 +4722,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -4732,7 +4734,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7331544",
@@ -4858,8 +4860,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -4870,7 +4872,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7363116",
@@ -5021,15 +5023,15 @@
         "tier": "archetype"
       },
       "name": "Ca l'Ardiaca",
-      "originalName": "Casa de l'Ardiaca",
+      "originalName": "Ca l'Ardiaca",
       "position": {
         "lat": 41.384140658599456,
         "lon": 2.175702084932443
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 136.29,
+        "baseScore": 136.29,
+        "finalScore": 173.58,
         "reasons": [
           "sitelinks:9",
           "heritage",
@@ -5040,7 +5042,7 @@
         ],
         "wikidataBoost": 37.29
       },
-      "score": 136.29,
+      "score": 173.58,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7364282",
@@ -5193,10 +5195,10 @@
         "z": 39.4904
       },
       "modelPolicy": {
-        "assetId": "regional-monument",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Hospital de la Santa Creu i Sant Pau",
       "originalName": "Hospital de la Santa Creu i Sant Pau",
@@ -5204,10 +5206,10 @@
         "lat": 41.413954212292595,
         "lon": 2.1744492686052816
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 85,
-        "finalScore": 132.84,
+        "baseScore": 132.84,
+        "finalScore": 180.68,
         "reasons": [
           "sitelinks:36",
           "heritage",
@@ -5219,7 +5221,7 @@
         ],
         "wikidataBoost": 47.84
       },
-      "score": 132.84,
+      "score": 180.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r7422813",
@@ -5367,8 +5369,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 138.84,
+        "baseScore": 138.84,
+        "finalScore": 178.68,
         "reasons": [
           "sitelinks:10",
           "heritage",
@@ -5379,7 +5381,7 @@
         ],
         "wikidataBoost": 39.84
       },
-      "score": 138.84,
+      "score": 178.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r8906532",
@@ -5539,8 +5541,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 136.23,
+        "baseScore": 136.23,
+        "finalScore": 173.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -5551,7 +5553,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 136.23,
+      "score": 173.46,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r8911639",
@@ -5706,15 +5708,15 @@
         "tier": "archetype"
       },
       "name": "monestir de Santa Maria de Pedralbes",
-      "originalName": "Reial Monestir de Santa Maria de Pedralbes",
+      "originalName": "monestir de Santa Maria de Pedralbes",
       "position": {
         "lat": 41.39560007327908,
         "lon": 2.1120474505825073
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 87,
-        "finalScore": 130.35,
+        "baseScore": 130.35,
+        "finalScore": 173.7,
         "reasons": [
           "sitelinks:16",
           "heritage",
@@ -5726,7 +5728,7 @@
         ],
         "wikidataBoost": 43.35
       },
-      "score": 130.35,
+      "score": 173.7,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9036251",
@@ -5815,15 +5817,15 @@
         "tier": "unique-candidate"
       },
       "name": "Casa Bonaventura Ferrer",
-      "originalName": "El Palauet Barcelona",
+      "originalName": "Casa Bonaventura Ferrer",
       "position": {
         "lat": 41.39686910240945,
         "lon": 2.1583138175527545
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 138.23,
+        "baseScore": 138.23,
+        "finalScore": 176.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -5835,7 +5837,7 @@
         ],
         "wikidataBoost": 38.23
       },
-      "score": 138.23,
+      "score": 176.46,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9160031",
@@ -5946,8 +5948,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 138,
+        "baseScore": 138,
+        "finalScore": 177,
         "reasons": [
           "sitelinks:7",
           "heritage",
@@ -5959,7 +5961,7 @@
         ],
         "wikidataBoost": 39
       },
-      "score": 138,
+      "score": 177,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "r9160957",
@@ -6060,15 +6062,15 @@
         "tier": "archetype"
       },
       "name": "Castell Cartoixa de Vallparadís",
-      "originalName": "Castell cartoixa de Vallparadís",
+      "originalName": "Castell Cartoixa de Vallparadís",
       "position": {
         "lat": 41.56461434781753,
         "lon": 2.019122858061748
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 135.34,
+        "baseScore": 135.34,
+        "finalScore": 170.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -6080,7 +6082,7 @@
         ],
         "wikidataBoost": 35.34
       },
-      "score": 135.34,
+      "score": 170.68,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w100770949",
@@ -6184,15 +6186,15 @@
         "tier": "archetype"
       },
       "name": "Far del Llobregat (Torre del Riu)",
-      "originalName": "Far de la Torre del Riu",
+      "originalName": "Far del Llobregat (Torre del Riu)",
       "position": {
         "lat": 41.325072932451675,
         "lon": 2.1522527384017796
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6203,7 +6205,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w1022084360",
@@ -6375,15 +6377,15 @@
         "tier": "archetype"
       },
       "name": "castell de Palafolls",
-      "originalName": "Castell de Palafolls",
+      "originalName": "castell de Palafolls",
       "position": {
         "lat": 41.67878604829143,
         "lon": 2.7353219689245765
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6394,7 +6396,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "w102354386",
@@ -6526,15 +6528,15 @@
         "tier": "archetype"
       },
       "name": "Castell de Vila-seca",
-      "originalName": "Castell de Solcina",
+      "originalName": "Castell de Vila-seca",
       "position": {
         "lat": 41.11466924253233,
         "lon": 1.1475149010137906
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133,
+        "baseScore": 133,
+        "finalScore": 166,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -6546,7 +6548,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 133,
+      "score": 166,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w1136276783",
@@ -6675,8 +6677,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 135.29,
+        "baseScore": 135.29,
+        "finalScore": 170.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -6687,7 +6689,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 135.29,
+      "score": 170.58,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w117479716",
@@ -6795,10 +6797,10 @@
         "z": 43.2054
       },
       "modelPolicy": {
-        "assetId": "regional-monument",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Casa Vicens",
       "originalName": "Casa Vicens",
@@ -6806,10 +6808,10 @@
         "lat": 41.40350758811351,
         "lon": 2.1506195517139908
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 85,
-        "finalScore": 132.35,
+        "baseScore": 132.35,
+        "finalScore": 179.7,
         "reasons": [
           "sitelinks:33",
           "heritage",
@@ -6821,7 +6823,7 @@
         ],
         "wikidataBoost": 47.35
       },
-      "score": 132.35,
+      "score": 179.7,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w132514125",
@@ -6982,15 +6984,15 @@
         "tier": "unique-candidate"
       },
       "name": "catedral de Terrassa",
-      "originalName": "Catedral del Sant Esperit",
+      "originalName": "catedral de Terrassa",
       "position": {
         "lat": 41.562135433407185,
         "lon": 2.011947843616786
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 144.57,
+        "baseScore": 144.57,
+        "finalScore": 189.14,
         "reasons": [
           "sitelinks:20",
           "heritage",
@@ -7002,7 +7004,7 @@
         ],
         "wikidataBoost": 44.57
       },
-      "score": 144.57,
+      "score": 189.14,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w143361299",
@@ -7159,8 +7161,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 139.34,
+        "baseScore": 139.34,
+        "finalScore": 179.68,
         "reasons": [
           "sitelinks:11",
           "heritage",
@@ -7171,7 +7173,7 @@
         ],
         "wikidataBoost": 40.34
       },
-      "score": 139.34,
+      "score": 179.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w1533889825",
@@ -7298,15 +7300,15 @@
         "tier": "archetype"
       },
       "name": "Fortí de Sant Maurici",
-      "originalName": "Castellot del Serrat del Maurici",
+      "originalName": "Fortí de Sant Maurici",
       "position": {
         "lat": 41.86607064832989,
         "lon": 1.8696764027385526
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 132,
+        "baseScore": 132,
+        "finalScore": 164,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -7317,7 +7319,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 132,
+      "score": 164,
       "sectorId": "s-02-01",
       "source": "openstreetmap",
       "sourceId": "w154190284",
@@ -7434,8 +7436,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 136.34,
+        "baseScore": 136.34,
+        "finalScore": 172.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7446,7 +7448,7 @@
         ],
         "wikidataBoost": 36.34
       },
-      "score": 136.34,
+      "score": 172.68,
       "sectorId": "s-02-02",
       "source": "openstreetmap",
       "sourceId": "w154368475",
@@ -7594,15 +7596,15 @@
         "tier": "archetype"
       },
       "name": "cripta de la Colònia Güell",
-      "originalName": "Cripta de la Colònia Güell",
+      "originalName": "cripta de la Colònia Güell",
       "position": {
         "lat": 41.36377907009529,
         "lon": 2.0278455752960376
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 67,
-        "finalScore": 110.99,
+        "baseScore": 110.99,
+        "finalScore": 154.98,
         "reasons": [
           "sitelinks:18",
           "heritage",
@@ -7614,7 +7616,7 @@
         ],
         "wikidataBoost": 43.99
       },
-      "score": 110.99,
+      "score": 154.98,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w154706128",
@@ -7775,8 +7777,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7787,7 +7789,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w158701157",
@@ -7892,15 +7894,15 @@
         "tier": "unique-candidate"
       },
       "name": "Hostal del Santuari de Pinós",
-      "originalName": "Hostal de Pinós",
+      "originalName": "Hostal del Santuari de Pinós",
       "position": {
         "lat": 41.83783741604438,
         "lon": 1.5400916903617707
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 137.34,
+        "baseScore": 137.34,
+        "finalScore": 174.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -7912,7 +7914,7 @@
         ],
         "wikidataBoost": 37.34
       },
-      "score": 137.34,
+      "score": 174.68,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "w159513015",
@@ -8035,8 +8037,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 61,
-        "finalScore": 104.57,
+        "baseScore": 104.57,
+        "finalScore": 148.14,
         "reasons": [
           "sitelinks:20",
           "heritage",
@@ -8047,7 +8049,7 @@
         ],
         "wikidataBoost": 43.57
       },
-      "score": 104.57,
+      "score": 148.14,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w163393541",
@@ -8162,15 +8164,15 @@
         "tier": "unique-candidate"
       },
       "name": "palau Güell",
-      "originalName": "Palau Güell",
+      "originalName": "palau Güell",
       "position": {
         "lat": 41.378822470129144,
         "lon": 2.1742342194552315
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 147.18,
+        "baseScore": 147.18,
+        "finalScore": 194.36,
         "reasons": [
           "sitelinks:32",
           "heritage",
@@ -8182,7 +8184,7 @@
         ],
         "wikidataBoost": 47.18
       },
-      "score": 147.18,
+      "score": 194.36,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w166565579",
@@ -8287,8 +8289,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 74,
-        "finalScore": 106,
+        "baseScore": 106,
+        "finalScore": 138,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -8299,7 +8301,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 106,
+      "score": 138,
       "sectorId": "s-01-02",
       "source": "openstreetmap",
       "sourceId": "w167404725",
@@ -8395,8 +8397,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -8407,7 +8409,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-03-02",
       "source": "openstreetmap",
       "sourceId": "w172425043",
@@ -8509,15 +8511,15 @@
         "tier": "archetype"
       },
       "name": "castell de Subirats",
-      "originalName": "Castell de Subirats",
+      "originalName": "castell de Subirats",
       "position": {
         "lat": 41.41594388510707,
         "lon": 1.8171376158806951
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 134.34,
+        "baseScore": 134.34,
+        "finalScore": 168.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -8528,7 +8530,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 134.34,
+      "score": 168.68,
       "sectorId": "s-02-03",
       "source": "openstreetmap",
       "sourceId": "w173191415",
@@ -8578,6 +8580,7 @@
     },
     {
       "areaM2": 1426.74,
+      "assetId": "regional-castle",
       "footprint": [
         [
           1.5611,
@@ -8639,10 +8642,10 @@
         "z": 56.0176
       },
       "modelPolicy": {
-        "assetId": null,
-        "customAssetRequired": true,
-        "reason": "wikidata-ranking",
-        "tier": "unique-candidate"
+        "assetId": "regional-castle",
+        "customAssetRequired": false,
+        "reason": "regional-archetype",
+        "tier": "archetype"
       },
       "name": "Palauet Albéniz",
       "originalName": "Palauet Albéniz",
@@ -8650,10 +8653,10 @@
         "lat": 41.36748021460135,
         "lon": 2.1560043552928065
       },
-      "preferredRepresentation": "unique-candidate",
+      "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 137.23,
+        "baseScore": 137.23,
+        "finalScore": 174.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -8664,7 +8667,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 137.23,
+      "score": 174.46,
       "sectorId": "s-04-04",
       "source": "openstreetmap",
       "sourceId": "w195771604",
@@ -8771,8 +8774,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 81,
-        "finalScore": 113,
+        "baseScore": 113,
+        "finalScore": 145,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -8783,7 +8786,7 @@
         ],
         "wikidataBoost": 32
       },
-      "score": 113,
+      "score": 145,
       "sectorId": "s-01-01",
       "source": "openstreetmap",
       "sourceId": "w210655995",
@@ -8926,8 +8929,8 @@
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 144.29,
+        "baseScore": 144.29,
+        "finalScore": 188.58,
         "reasons": [
           "sitelinks:19",
           "heritage",
@@ -8939,7 +8942,7 @@
         ],
         "wikidataBoost": 44.29
       },
-      "score": 144.29,
+      "score": 188.58,
       "sectorId": "s-04-00",
       "source": "openstreetmap",
       "sourceId": "w229995175",
@@ -9087,15 +9090,15 @@
         "tier": "archetype"
       },
       "name": "castell de Tamarit",
-      "originalName": "Castell de Tamarit",
+      "originalName": "castell de Tamarit",
       "position": {
         "lat": 41.13009945397858,
         "lon": 1.361167365046749
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9106,7 +9109,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w231854421",
@@ -9209,15 +9212,15 @@
         "tier": "unique-candidate"
       },
       "name": "vil·la romana de Centcelles",
-      "originalName": "Vil·la romana de Centcelles",
+      "originalName": "vil·la romana de Centcelles",
       "position": {
         "lat": 41.155789107880196,
         "lon": 1.2262623291827452
       },
       "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 140.8,
+        "baseScore": 140.8,
+        "finalScore": 181.6,
         "reasons": [
           "sitelinks:12",
           "heritage",
@@ -9228,7 +9231,7 @@
         ],
         "wikidataBoost": 40.8
       },
-      "score": 140.8,
+      "score": 181.6,
       "sectorId": "s-00-05",
       "source": "openstreetmap",
       "sourceId": "w246755544",
@@ -9384,8 +9387,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9396,7 +9399,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w261849239",
@@ -9526,15 +9529,15 @@
         "tier": "archetype"
       },
       "name": "poblat ibèric de Ca n'Oliver",
-      "originalName": "Poblat ibèric de Ca n'Oliver",
+      "originalName": "poblat ibèric de Ca n'Oliver",
       "position": {
         "lat": 41.480713037315034,
         "lon": 2.135209909335786
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 93,
-        "finalScore": 130.23,
+        "baseScore": 130.23,
+        "finalScore": 167.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -9545,7 +9548,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 130.23,
+      "score": 167.46,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w268213121",
@@ -9677,15 +9680,15 @@
         "tier": "archetype"
       },
       "name": "Iesso",
-      "originalName": "Ciutat romana de Iesso",
+      "originalName": "Iesso",
       "position": {
         "lat": 41.787707270712936,
         "lon": 1.289895094667243
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 92,
-        "finalScore": 126.34,
+        "baseScore": 126.34,
+        "finalScore": 160.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -9696,7 +9699,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 126.34,
+      "score": 160.68,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "w268218947",
@@ -9814,8 +9817,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133,
+        "baseScore": 133,
+        "finalScore": 166,
         "reasons": [
           "sitelinks:3",
           "heritage",
@@ -9827,7 +9830,7 @@
         ],
         "wikidataBoost": 33
       },
-      "score": 133,
+      "score": 166,
       "sectorId": "s-05-03",
       "source": "openstreetmap",
       "sourceId": "w279854434",
@@ -9913,15 +9916,15 @@
         "tier": "archetype"
       },
       "name": "castell de Queralt",
-      "originalName": "Castell de Queralt",
+      "originalName": "castell de Queralt",
       "position": {
         "lat": 41.51363361496802,
         "lon": 1.4583748121886229
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -9932,7 +9935,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-01-03",
       "source": "openstreetmap",
       "sourceId": "w284235967",
@@ -10069,8 +10072,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10081,7 +10084,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-00-00",
       "source": "openstreetmap",
       "sourceId": "w335736732",
@@ -10227,8 +10230,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 137.23,
+        "baseScore": 137.23,
+        "finalScore": 174.46,
         "reasons": [
           "sitelinks:6",
           "heritage",
@@ -10239,7 +10242,7 @@
         ],
         "wikidataBoost": 37.23
       },
-      "score": 137.23,
+      "score": 174.46,
       "sectorId": "s-03-04",
       "source": "openstreetmap",
       "sourceId": "w350278938",
@@ -10393,8 +10396,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10405,7 +10408,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-05-01",
       "source": "openstreetmap",
       "sourceId": "w364455957",
@@ -10502,10 +10505,10 @@
         "z": 48.8679
       },
       "modelPolicy": {
-        "assetId": "regional-monument",
-        "customAssetRequired": false,
-        "reason": "regional-archetype",
-        "tier": "archetype"
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Palau de la Música Catalana",
       "originalName": "Palau de la Música Catalana",
@@ -10513,10 +10516,10 @@
         "lat": 41.38758478824917,
         "lon": 2.1752209500754804
       },
-      "preferredRepresentation": "archetype",
+      "preferredRepresentation": "unique-candidate",
       "ranking": {
-        "baseScore": 85,
-        "finalScore": 132.84,
+        "baseScore": 132.84,
+        "finalScore": 180.68,
         "reasons": [
           "sitelinks:43",
           "heritage",
@@ -10527,7 +10530,7 @@
         ],
         "wikidataBoost": 47.84
       },
-      "score": 132.84,
+      "score": 180.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w377216661",
@@ -10636,15 +10639,15 @@
         "tier": "archetype"
       },
       "name": "Via sepulcral de la plaça de la Vila de Madrid",
-      "originalName": "Via Sepulcral Romana",
+      "originalName": "Via sepulcral de la plaça de la Vila de Madrid",
       "position": {
         "lat": 41.38424038726019,
         "lon": 2.172157336421987
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 92,
-        "finalScore": 127.29,
+        "baseScore": 127.29,
+        "finalScore": 162.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10655,7 +10658,7 @@
         ],
         "wikidataBoost": 35.29
       },
-      "score": 127.29,
+      "score": 162.58,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w38655102",
@@ -10766,8 +10769,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -10778,7 +10781,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-00-01",
       "source": "openstreetmap",
       "sourceId": "w414822767",
@@ -10892,8 +10895,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 135,
+        "baseScore": 135,
+        "finalScore": 171,
         "reasons": [
           "sitelinks:7",
           "heritage",
@@ -10904,7 +10907,7 @@
         ],
         "wikidataBoost": 36
       },
-      "score": 135,
+      "score": 171,
       "sectorId": "s-06-02",
       "source": "openstreetmap",
       "sourceId": "w41817535",
@@ -11010,15 +11013,15 @@
         "tier": "archetype"
       },
       "name": "Santa Maria del Mar",
-      "originalName": "Basílica de Santa Maria del Mar",
+      "originalName": "Santa Maria del Mar",
       "position": {
         "lat": 41.383812298417176,
         "lon": 2.1820309732227385
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 74,
-        "finalScore": 120.82,
+        "baseScore": 120.82,
+        "finalScore": 167.64,
         "reasons": [
           "sitelinks:30",
           "heritage",
@@ -11030,7 +11033,7 @@
         ],
         "wikidataBoost": 46.82
       },
-      "score": 120.82,
+      "score": 167.64,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w51260215",
@@ -11150,8 +11153,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 100,
-        "finalScore": 133.29,
+        "baseScore": 133.29,
+        "finalScore": 166.58,
         "reasons": [
           "sitelinks:4",
           "heritage",
@@ -11162,7 +11165,7 @@
         ],
         "wikidataBoost": 33.29
       },
-      "score": 133.29,
+      "score": 166.58,
       "sectorId": "s-02-04",
       "source": "openstreetmap",
       "sourceId": "w610319747",
@@ -11309,15 +11312,15 @@
         "tier": "archetype"
       },
       "name": "Basílica de Santa Maria del Pi",
-      "originalName": "Parròquia Basílica de Santa Maria del Pi",
+      "originalName": "Basílica de Santa Maria del Pi",
       "position": {
         "lat": 41.38204289632755,
         "lon": 2.1739333736332296
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 66,
-        "finalScore": 109.99,
+        "baseScore": 109.99,
+        "finalScore": 153.98,
         "reasons": [
           "sitelinks:18",
           "heritage",
@@ -11329,7 +11332,7 @@
         ],
         "wikidataBoost": 43.99
       },
-      "score": 109.99,
+      "score": 153.98,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w625295824",
@@ -11456,8 +11459,8 @@
       },
       "preferredRepresentation": "archetype",
       "ranking": {
-        "baseScore": 99,
-        "finalScore": 133.34,
+        "baseScore": 133.34,
+        "finalScore": 167.68,
         "reasons": [
           "sitelinks:5",
           "heritage",
@@ -11468,7 +11471,7 @@
         ],
         "wikidataBoost": 34.34
       },
-      "score": 133.34,
+      "score": 167.68,
       "sectorId": "s-04-03",
       "source": "openstreetmap",
       "sourceId": "w650766179",
@@ -11531,7 +11534,7 @@
         "tier": "unique"
       },
       "name": "Parc Güell",
-      "originalName": "Park Güell",
+      "originalName": "Parc Güell",
       "position": {
         "lat": 41.4145,
         "lon": 2.1527
@@ -11614,7 +11617,7 @@
         "tier": "unique"
       },
       "name": "Temple Expiatori de la Sagrada Família",
-      "originalName": "Basílica de la Sagrada Família",
+      "originalName": "Temple Expiatori de la Sagrada Família",
       "position": {
         "lat": 41.4036,
         "lon": 2.1744
@@ -11696,7 +11699,7 @@
         "tier": "archetype"
       },
       "name": "Torre de Jaume I",
-      "originalName": "Torre Glòries",
+      "originalName": "Torre de Jaume I",
       "position": {
         "lat": 41.4035,
         "lon": 2.1897
@@ -11768,6 +11771,6 @@
     "unique-candidate": 18
   },
   "sourceCount": 20140,
-  "wikidataEntityCount": 4458,
+  "wikidataEntityCount": 100,
   "wikidataRankingPending": false
 }

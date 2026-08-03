@@ -4,9 +4,9 @@
     "file": "catalunya-litoral-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "d1497b513ee03efc36d52c979bf92edeb9a45c4a270081ffae0cef2d15cd89e7"
+    "sha256": "682787dfcdb71e734b9c3724c8593626476b625b8d11fbe4816625c988015c54"
   },
-  "buildId": "catalunya-litoral-preview-3df795a28d19",
+  "buildId": "catalunya-litoral-preview-00eabb66d20c",
   "counts": {
     "buildings": 3534,
     "hotels": 597,
@@ -140,7 +140,7 @@
     {
       "id": "osm-landmark-n1665606789",
       "name": "Far del Capaspre",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "lighthouse",
       "wikidataId": "Q15242338"
     },
@@ -329,7 +329,7 @@
     {
       "id": "osm-landmark-r10769413",
       "name": "castell de Castellet",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "castle",
       "wikidataId": "Q5132925"
     },
@@ -413,7 +413,7 @@
     {
       "id": "osm-landmark-r7422813",
       "name": "Hospital de la Santa Creu i Sant Pau",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "monument",
       "wikidataId": "Q507282"
     },
@@ -490,7 +490,7 @@
     {
       "id": "osm-landmark-w132514125",
       "name": "Casa Vicens",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "monument",
       "wikidataId": "Q746333"
     },
@@ -581,7 +581,7 @@
     {
       "id": "osm-landmark-w195771604",
       "name": "Palauet Albéniz",
-      "representation": "unique-candidate",
+      "representation": "archetype",
       "type": "castle",
       "wikidataId": "Q3753144"
     },
@@ -672,7 +672,7 @@
     {
       "id": "osm-landmark-w377216661",
       "name": "Palau de la Música Catalana",
-      "representation": "archetype",
+      "representation": "unique-candidate",
       "type": "monument",
       "wikidataId": "Q327940"
     },
@@ -1396,9 +1396,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "3df795a28d194a9e672797f005a37d7c8d774b85287db92f3f84b2b0a8131753",
+    "inputsSha256": "00eabb66d20cd983074aa99eaef148086764bcf654d873af287139257f824bb8",
     "landcoverSha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b",
-    "regionManifestSha256": "2d794dcafa12fcb1b2a347a751cdde7684f454c458b2a667dfe58d6ab8e1ab89",
+    "regionManifestSha256": "99cc9404c179c39d04cb43f70d91436c9d922210e1150741bad571ca382ab031",
     "terrainSha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
   },
   "terrain": {
