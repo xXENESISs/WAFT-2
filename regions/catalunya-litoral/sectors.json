@@ -1,0 +1,3367 @@
+{
+  "formatVersion": 1,
+  "grid": {
+    "columns": 9,
+    "rows": 7
+  },
+  "localBounds": {
+    "maxX": 266.69298490143785,
+    "maxZ": 204.48287999999852,
+    "minX": -266.69298490143785,
+    "minZ": -204.48288000000105
+  },
+  "regionId": "catalunya-litoral",
+  "sectorSizeUnits": 64,
+  "sectors": [
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1287,
+        "mean": 630.46,
+        "min": 335
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 0
+      },
+      "id": "s-00-00",
+      "landCells": 3598,
+      "landRatio": 0.967204,
+      "landcover": {
+        "agricultural": 554,
+        "mediterranean-forest": 1963,
+        "mediterranean-scrub": 573,
+        "mountain-rock": 168,
+        "pasture": 315,
+        "urban": 25,
+        "water": 122
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": -140.48288000000105,
+        "minX": -266.69298490143785,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-01-00",
+        "s-00-01",
+        "s-01-01"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1385,
+        "mean": 774.63,
+        "min": 466
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 0
+      },
+      "id": "s-01-00",
+      "landCells": 3646,
+      "landRatio": 0.996175,
+      "landcover": {
+        "agricultural": 797,
+        "mediterranean-forest": 1859,
+        "mediterranean-scrub": 214,
+        "mountain-rock": 470,
+        "pasture": 260,
+        "urban": 46,
+        "water": 14
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": -140.48288000000105,
+        "minX": -202.69298490143785,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-00-00",
+        "s-02-00",
+        "s-00-01",
+        "s-01-01",
+        "s-02-01"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1479,
+        "mean": 716.7,
+        "min": 403
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 0
+      },
+      "id": "s-02-00",
+      "landCells": 3659,
+      "landRatio": 0.999727,
+      "landcover": {
+        "agricultural": 822,
+        "mediterranean-forest": 1532,
+        "mediterranean-scrub": 372,
+        "mountain-rock": 563,
+        "pasture": 336,
+        "urban": 34,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": -140.48288000000105,
+        "minX": -138.69298490143785,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-01-00",
+        "s-03-00",
+        "s-01-01",
+        "s-02-01",
+        "s-03-01"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1044,
+        "mean": 622.07,
+        "min": 352
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 0
+      },
+      "id": "s-03-00",
+      "landCells": 3719,
+      "landRatio": 0.999731,
+      "landcover": {
+        "agricultural": 686,
+        "mediterranean-forest": 2201,
+        "mediterranean-scrub": 262,
+        "mountain-rock": 59,
+        "pasture": 456,
+        "urban": 55,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": -140.48288000000105,
+        "minX": -74.69298490143785,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-02-00",
+        "s-04-00",
+        "s-02-01",
+        "s-03-01",
+        "s-04-01"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1157,
+        "mean": 640.63,
+        "min": 426
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 0
+      },
+      "id": "s-04-00",
+      "landCells": 3636,
+      "landRatio": 0.993443,
+      "landcover": {
+        "agricultural": 1020,
+        "mediterranean-forest": 1713,
+        "mediterranean-scrub": 95,
+        "mountain-rock": 93,
+        "pasture": 491,
+        "urban": 224,
+        "water": 24
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": -140.48288000000105,
+        "minX": -10.692984901437853,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-03-00",
+        "s-05-00",
+        "s-03-01",
+        "s-04-01",
+        "s-05-01"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1275,
+        "mean": 707.34,
+        "min": 213
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 0
+      },
+      "id": "s-05-00",
+      "landCells": 3574,
+      "landRatio": 0.976503,
+      "landcover": {
+        "agricultural": 70,
+        "mediterranean-forest": 2398,
+        "mediterranean-scrub": 86,
+        "mountain-rock": 705,
+        "pasture": 299,
+        "urban": 16,
+        "water": 86
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": -140.48288000000105,
+        "minX": 53.30701509856215,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-04-00",
+        "s-06-00",
+        "s-04-01",
+        "s-05-01",
+        "s-06-01"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [
+          "land-pirineus"
+        ],
+        "landmarks": [
+          "muralles-girona"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "girona"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 905,
+        "mean": 274.59,
+        "min": 59
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 0
+      },
+      "id": "s-06-00",
+      "landCells": 3712,
+      "landRatio": 0.997849,
+      "landcover": {
+        "agricultural": 506,
+        "mediterranean-forest": 2753,
+        "mediterranean-scrub": 59,
+        "mountain-rock": 1,
+        "pasture": 177,
+        "urban": 216,
+        "water": 8
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": -140.48288000000105,
+        "minX": 117.30701509856215,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-05-00",
+        "s-07-00",
+        "s-05-01",
+        "s-06-01",
+        "s-07-01"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 450,
+        "mean": 114.29,
+        "min": 10
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 0
+      },
+      "id": "s-07-00",
+      "landCells": 3652,
+      "landRatio": 0.997814,
+      "landcover": {
+        "agricultural": 1163,
+        "mediterranean-forest": 1968,
+        "mediterranean-scrub": 118,
+        "pasture": 285,
+        "urban": 118,
+        "water": 8
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": -140.48288000000105,
+        "minX": 181.30701509856215,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-06-00",
+        "s-08-00",
+        "s-06-01",
+        "s-07-01",
+        "s-08-01"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 279,
+        "mean": 46.61,
+        "min": 1
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 42.1,
+        "south": 41.92003383363928,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 0
+      },
+      "id": "s-08-00",
+      "landCells": 1254,
+      "landRatio": 0.995238,
+      "landcover": {
+        "agricultural": 535,
+        "beach": 1,
+        "mediterranean-forest": 385,
+        "mediterranean-scrub": 73,
+        "pasture": 219,
+        "urban": 39,
+        "water": 6,
+        "wetland": 2
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": -140.48288000000105,
+        "minX": 245.30701509856215,
+        "minZ": -204.48288000000105
+      },
+      "neighbours": [
+        "s-07-00",
+        "s-07-01",
+        "s-08-01"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 778,
+        "mean": 479.9,
+        "min": 350
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 1
+      },
+      "id": "s-00-01",
+      "landCells": 3719,
+      "landRatio": 0.999731,
+      "landcover": {
+        "agricultural": 2291,
+        "mediterranean-forest": 423,
+        "mediterranean-scrub": 340,
+        "mountain-rock": 6,
+        "pasture": 619,
+        "urban": 40,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": -76.48288000000105,
+        "minX": -266.69298490143785,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-00-00",
+        "s-01-00",
+        "s-01-01",
+        "s-00-02",
+        "s-01-02"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 909,
+        "mean": 663.05,
+        "min": 426
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 1
+      },
+      "id": "s-01-01",
+      "landCells": 3660,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 1140,
+        "mediterranean-forest": 1462,
+        "mediterranean-scrub": 525,
+        "mountain-rock": 4,
+        "pasture": 511,
+        "urban": 18
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": -76.48288000000105,
+        "minX": -202.69298490143785,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-00-00",
+        "s-01-00",
+        "s-02-00",
+        "s-00-01",
+        "s-02-01",
+        "s-00-02",
+        "s-01-02",
+        "s-02-02"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 880,
+        "mean": 470.11,
+        "min": 221
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 1
+      },
+      "id": "s-02-01",
+      "landCells": 3659,
+      "landRatio": 0.999727,
+      "landcover": {
+        "agricultural": 851,
+        "mediterranean-forest": 2279,
+        "mediterranean-scrub": 279,
+        "mountain-rock": 3,
+        "pasture": 157,
+        "urban": 90,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": -76.48288000000105,
+        "minX": -138.69298490143785,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-01-00",
+        "s-02-00",
+        "s-03-00",
+        "s-01-01",
+        "s-03-01",
+        "s-01-02",
+        "s-02-02",
+        "s-03-02"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 942,
+        "mean": 492.23,
+        "min": 225
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 1
+      },
+      "id": "s-03-01",
+      "landCells": 3717,
+      "landRatio": 0.999194,
+      "landcover": {
+        "agricultural": 700,
+        "mediterranean-forest": 2468,
+        "mediterranean-scrub": 218,
+        "mountain-rock": 14,
+        "pasture": 178,
+        "urban": 139,
+        "water": 3
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": -76.48288000000105,
+        "minX": -74.69298490143785,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-02-00",
+        "s-03-00",
+        "s-04-00",
+        "s-02-01",
+        "s-04-01",
+        "s-02-02",
+        "s-03-02",
+        "s-04-02"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1311,
+        "mean": 739.74,
+        "min": 364
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 1
+      },
+      "id": "s-04-01",
+      "landCells": 3659,
+      "landRatio": 0.999727,
+      "landcover": {
+        "agricultural": 639,
+        "mediterranean-forest": 1893,
+        "mediterranean-scrub": 205,
+        "mountain-rock": 475,
+        "pasture": 335,
+        "urban": 112,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": -76.48288000000105,
+        "minX": -10.692984901437853,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-03-00",
+        "s-04-00",
+        "s-05-00",
+        "s-03-01",
+        "s-05-01",
+        "s-03-02",
+        "s-04-02",
+        "s-05-02"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": [
+          "montseny-secret"
+        ]
+      },
+      "elevationMeters": {
+        "max": 1646,
+        "mean": 740.97,
+        "min": 112
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 1
+      },
+      "id": "s-05-01",
+      "landCells": 3660,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 17,
+        "mediterranean-forest": 2477,
+        "mediterranean-scrub": 81,
+        "mountain-rock": 946,
+        "pasture": 91,
+        "urban": 48
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": -76.48288000000105,
+        "minX": 53.30701509856215,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-04-00",
+        "s-05-00",
+        "s-06-00",
+        "s-04-01",
+        "s-06-01",
+        "s-04-02",
+        "s-05-02",
+        "s-06-02"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 790,
+        "mean": 176.3,
+        "min": 43
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 1
+      },
+      "id": "s-06-01",
+      "landCells": 3715,
+      "landRatio": 0.998656,
+      "landcover": {
+        "agricultural": 689,
+        "mediterranean-forest": 2294,
+        "mediterranean-scrub": 159,
+        "pasture": 373,
+        "urban": 200,
+        "water": 5
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": -76.48288000000105,
+        "minX": 117.30701509856215,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-05-00",
+        "s-06-00",
+        "s-07-00",
+        "s-05-01",
+        "s-07-01",
+        "s-05-02",
+        "s-06-02",
+        "s-07-02"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 501,
+        "mean": 186.37,
+        "min": 4
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 1
+      },
+      "id": "s-07-01",
+      "landCells": 3372,
+      "landRatio": 0.921311,
+      "landcover": {
+        "agricultural": 402,
+        "beach": 3,
+        "coastal-rock": 1,
+        "mediterranean-forest": 2384,
+        "mediterranean-scrub": 239,
+        "pasture": 204,
+        "urban": 139,
+        "water": 288
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": -76.48288000000105,
+        "minX": 181.30701509856215,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-06-00",
+        "s-07-00",
+        "s-08-00",
+        "s-06-01",
+        "s-08-01",
+        "s-06-02",
+        "s-07-02",
+        "s-08-02"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 322,
+        "mean": 110.18,
+        "min": 3
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.92003383363928,
+        "south": 41.74006766727855,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 1
+      },
+      "id": "s-08-01",
+      "landCells": 562,
+      "landRatio": 0.446032,
+      "landcover": {
+        "agricultural": 33,
+        "beach": 3,
+        "mediterranean-forest": 345,
+        "mediterranean-scrub": 36,
+        "pasture": 86,
+        "urban": 59,
+        "water": 698
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": -76.48288000000105,
+        "minX": 245.30701509856215,
+        "minZ": -140.48288000000105
+      },
+      "neighbours": [
+        "s-07-00",
+        "s-08-00",
+        "s-07-01",
+        "s-07-02",
+        "s-08-02"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 799,
+        "mean": 553.88,
+        "min": 351
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 2
+      },
+      "id": "s-00-02",
+      "landCells": 3719,
+      "landRatio": 0.999731,
+      "landcover": {
+        "agricultural": 2683,
+        "mediterranean-forest": 415,
+        "mediterranean-scrub": 113,
+        "mountain-rock": 14,
+        "pasture": 421,
+        "urban": 73,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": -12.482880000001046,
+        "minX": -266.69298490143785,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-00-01",
+        "s-01-01",
+        "s-01-02",
+        "s-00-03",
+        "s-01-03"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 805,
+        "mean": 608.08,
+        "min": 298
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 2
+      },
+      "id": "s-01-02",
+      "landCells": 3660,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 1390,
+        "mediterranean-forest": 1501,
+        "mediterranean-scrub": 265,
+        "mountain-rock": 17,
+        "pasture": 361,
+        "urban": 126
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": -12.482880000001046,
+        "minX": -202.69298490143785,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-00-01",
+        "s-01-01",
+        "s-02-01",
+        "s-00-02",
+        "s-02-02",
+        "s-00-03",
+        "s-01-03",
+        "s-02-03"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [
+          "monestir-montserrat"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": [
+          "montserrat-mission"
+        ]
+      },
+      "elevationMeters": {
+        "max": 1139,
+        "mean": 443.81,
+        "min": 115
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 2
+      },
+      "id": "s-02-02",
+      "landCells": 3652,
+      "landRatio": 0.997814,
+      "landcover": {
+        "agricultural": 522,
+        "mediterranean-forest": 2148,
+        "mediterranean-scrub": 400,
+        "mountain-rock": 30,
+        "pasture": 319,
+        "urban": 233,
+        "water": 8
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": -12.482880000001046,
+        "minX": -138.69298490143785,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-01-01",
+        "s-02-01",
+        "s-03-01",
+        "s-01-02",
+        "s-03-02",
+        "s-01-03",
+        "s-02-03",
+        "s-03-03"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "terrassa"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1037,
+        "mean": 487.52,
+        "min": 103
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 2
+      },
+      "id": "s-03-02",
+      "landCells": 3716,
+      "landRatio": 0.998925,
+      "landcover": {
+        "agricultural": 87,
+        "mediterranean-forest": 2631,
+        "mediterranean-scrub": 532,
+        "mountain-rock": 38,
+        "pasture": 196,
+        "urban": 232,
+        "water": 4
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": -12.482880000001046,
+        "minX": -74.69298490143785,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-02-01",
+        "s-03-01",
+        "s-04-01",
+        "s-02-02",
+        "s-04-02",
+        "s-02-03",
+        "s-03-03",
+        "s-04-03"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1026,
+        "mean": 344.51,
+        "min": 79
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 2
+      },
+      "id": "s-04-02",
+      "landCells": 3658,
+      "landRatio": 0.999454,
+      "landcover": {
+        "agricultural": 522,
+        "mediterranean-forest": 2020,
+        "mediterranean-scrub": 162,
+        "mountain-rock": 20,
+        "pasture": 438,
+        "urban": 496,
+        "water": 2
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": -12.482880000001046,
+        "minX": -10.692984901437853,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-03-01",
+        "s-04-01",
+        "s-05-01",
+        "s-03-02",
+        "s-05-02",
+        "s-03-03",
+        "s-04-03",
+        "s-05-03"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 1107,
+        "mean": 281.64,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 2
+      },
+      "id": "s-05-02",
+      "landCells": 3568,
+      "landRatio": 0.974863,
+      "landcover": {
+        "agricultural": 182,
+        "beach": 6,
+        "mediterranean-forest": 2641,
+        "mediterranean-scrub": 150,
+        "mountain-rock": 30,
+        "pasture": 275,
+        "urban": 284,
+        "water": 92
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": -12.482880000001046,
+        "minX": 53.30701509856215,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-04-01",
+        "s-05-01",
+        "s-06-01",
+        "s-04-02",
+        "s-06-02",
+        "s-04-03",
+        "s-05-03",
+        "s-06-03"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [
+          "port-blanes"
+        ],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "blanes"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 681,
+        "mean": 131.51,
+        "min": 1
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 2
+      },
+      "id": "s-06-02",
+      "landCells": 2260,
+      "landRatio": 0.607527,
+      "landcover": {
+        "agricultural": 143,
+        "beach": 10,
+        "mediterranean-forest": 1493,
+        "mediterranean-scrub": 159,
+        "pasture": 214,
+        "urban": 241,
+        "water": 1460
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": -12.482880000001046,
+        "minX": 117.30701509856215,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-05-01",
+        "s-06-01",
+        "s-07-01",
+        "s-05-02",
+        "s-07-02",
+        "s-05-03",
+        "s-06-03",
+        "s-07-03"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [
+          "castell-tossa"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 315,
+        "mean": 102.13,
+        "min": 8
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 2
+      },
+      "id": "s-07-02",
+      "landCells": 358,
+      "landRatio": 0.097814,
+      "landcover": {
+        "agricultural": 1,
+        "beach": 2,
+        "mediterranean-forest": 251,
+        "mediterranean-scrub": 36,
+        "pasture": 16,
+        "urban": 52,
+        "water": 3302
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": -12.482880000001046,
+        "minX": 181.30701509856215,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-06-01",
+        "s-07-01",
+        "s-08-01",
+        "s-06-02",
+        "s-08-02",
+        "s-06-03",
+        "s-07-03",
+        "s-08-03"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.74006766727855,
+        "south": 41.56010150091783,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 2
+      },
+      "id": "s-08-02",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1260
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": -12.482880000001046,
+        "minX": 245.30701509856215,
+        "minZ": -76.48288000000105
+      },
+      "neighbours": [
+        "s-07-01",
+        "s-08-01",
+        "s-07-02",
+        "s-07-03",
+        "s-08-03"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 886,
+        "mean": 619.77,
+        "min": 321
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 3
+      },
+      "id": "s-00-03",
+      "landCells": 3720,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 1257,
+        "mediterranean-forest": 1314,
+        "mediterranean-scrub": 407,
+        "mountain-rock": 14,
+        "pasture": 671,
+        "urban": 57
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": 51.517119999998954,
+        "minX": -266.69298490143785,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-00-02",
+        "s-01-02",
+        "s-01-03",
+        "s-00-04",
+        "s-01-04"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 949,
+        "mean": 616.28,
+        "min": 272
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 3
+      },
+      "id": "s-01-03",
+      "landCells": 3660,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 623,
+        "mediterranean-forest": 2325,
+        "mediterranean-scrub": 314,
+        "mountain-rock": 15,
+        "pasture": 341,
+        "urban": 42
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": 51.517119999998954,
+        "minX": -202.69298490143785,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-00-02",
+        "s-01-02",
+        "s-02-02",
+        "s-00-03",
+        "s-02-03",
+        "s-00-04",
+        "s-01-04",
+        "s-02-04"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 671,
+        "mean": 290.67,
+        "min": 83
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 3
+      },
+      "id": "s-02-03",
+      "landCells": 3659,
+      "landRatio": 0.999727,
+      "landcover": {
+        "agricultural": 654,
+        "mediterranean-forest": 1578,
+        "mediterranean-scrub": 393,
+        "mountain-rock": 2,
+        "pasture": 757,
+        "urban": 275,
+        "water": 1
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": 51.517119999998954,
+        "minX": -138.69298490143785,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-01-02",
+        "s-02-02",
+        "s-03-02",
+        "s-01-03",
+        "s-03-03",
+        "s-01-04",
+        "s-02-04",
+        "s-03-04"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "sabadell"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 585,
+        "mean": 190.78,
+        "min": 15
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 3
+      },
+      "id": "s-03-03",
+      "landCells": 3710,
+      "landRatio": 0.997312,
+      "landcover": {
+        "agricultural": 104,
+        "mediterranean-forest": 2127,
+        "mediterranean-scrub": 277,
+        "mountain-rock": 6,
+        "pasture": 282,
+        "urban": 914,
+        "water": 10
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": 51.517119999998954,
+        "minX": -74.69298490143785,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-02-02",
+        "s-03-02",
+        "s-04-02",
+        "s-02-03",
+        "s-04-03",
+        "s-02-04",
+        "s-03-04",
+        "s-04-04"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [
+          "sagrada-familia",
+          "park-guell",
+          "catedral-barcelona",
+          "torre-glories"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "barcelona",
+          "badalona"
+        ],
+        "spawnPoints": [
+          "barcelona-default"
+        ]
+      },
+      "elevationMeters": {
+        "max": 480,
+        "mean": 134.24,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 3
+      },
+      "id": "s-04-03",
+      "landCells": 2768,
+      "landRatio": 0.756284,
+      "landcover": {
+        "agricultural": 157,
+        "beach": 12,
+        "coastal-rock": 2,
+        "mediterranean-forest": 1021,
+        "mediterranean-scrub": 195,
+        "pasture": 265,
+        "urban": 1116,
+        "water": 892
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": 51.517119999998954,
+        "minX": -10.692984901437853,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-03-02",
+        "s-04-02",
+        "s-05-02",
+        "s-03-03",
+        "s-05-03",
+        "s-03-04",
+        "s-04-04",
+        "s-05-04"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "mataro"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 440,
+        "mean": 117.36,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 3
+      },
+      "id": "s-05-03",
+      "landCells": 535,
+      "landRatio": 0.146175,
+      "landcover": {
+        "agricultural": 18,
+        "beach": 4,
+        "mediterranean-forest": 210,
+        "mediterranean-scrub": 38,
+        "pasture": 60,
+        "urban": 205,
+        "water": 3125
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": 51.517119999998954,
+        "minX": 53.30701509856215,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-04-02",
+        "s-05-02",
+        "s-06-02",
+        "s-04-03",
+        "s-06-03",
+        "s-04-04",
+        "s-05-04",
+        "s-06-04"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 3
+      },
+      "id": "s-06-03",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3720
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": 51.517119999998954,
+        "minX": 117.30701509856215,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-05-02",
+        "s-06-02",
+        "s-07-02",
+        "s-05-03",
+        "s-07-03",
+        "s-05-04",
+        "s-06-04",
+        "s-07-04"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 3
+      },
+      "id": "s-07-03",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": 51.517119999998954,
+        "minX": 181.30701509856215,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-06-02",
+        "s-07-02",
+        "s-08-02",
+        "s-06-03",
+        "s-08-03",
+        "s-06-04",
+        "s-07-04",
+        "s-08-04"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.56010150091783,
+        "south": 41.3801353345571,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 3
+      },
+      "id": "s-08-03",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1260
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": 51.517119999998954,
+        "minX": 245.30701509856215,
+        "minZ": -12.482880000001046
+      },
+      "neighbours": [
+        "s-07-02",
+        "s-08-02",
+        "s-07-03",
+        "s-07-04",
+        "s-08-04"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 788,
+        "mean": 284.52,
+        "min": 79
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 4
+      },
+      "id": "s-00-04",
+      "landCells": 3717,
+      "landRatio": 0.999194,
+      "landcover": {
+        "agricultural": 612,
+        "mediterranean-forest": 1236,
+        "mediterranean-scrub": 612,
+        "mountain-rock": 2,
+        "pasture": 1037,
+        "urban": 218,
+        "water": 3
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": 115.51711999999895,
+        "minX": -266.69298490143785,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-00-03",
+        "s-01-03",
+        "s-01-04",
+        "s-00-05",
+        "s-01-05"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 801,
+        "mean": 295.75,
+        "min": 24
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 4
+      },
+      "id": "s-01-04",
+      "landCells": 3660,
+      "landRatio": 1,
+      "landcover": {
+        "agricultural": 378,
+        "mediterranean-forest": 1663,
+        "mediterranean-scrub": 714,
+        "mountain-rock": 1,
+        "pasture": 619,
+        "urban": 285
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": 115.51711999999895,
+        "minX": -202.69298490143785,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-00-03",
+        "s-01-03",
+        "s-02-03",
+        "s-00-04",
+        "s-02-04",
+        "s-00-05",
+        "s-01-05",
+        "s-02-05"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "vilanova-geltru",
+          "sitges"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 542,
+        "mean": 194.76,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 4
+      },
+      "id": "s-02-04",
+      "landCells": 3315,
+      "landRatio": 0.905738,
+      "landcover": {
+        "agricultural": 408,
+        "beach": 9,
+        "mediterranean-forest": 1417,
+        "mediterranean-scrub": 654,
+        "pasture": 441,
+        "urban": 386,
+        "water": 345
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": 115.51711999999895,
+        "minX": -138.69298490143785,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-01-03",
+        "s-02-03",
+        "s-03-03",
+        "s-01-04",
+        "s-03-04",
+        "s-01-05",
+        "s-02-05",
+        "s-03-05"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 600,
+        "mean": 175.39,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 4
+      },
+      "id": "s-03-04",
+      "landCells": 2392,
+      "landRatio": 0.643011,
+      "landcover": {
+        "agricultural": 133,
+        "beach": 6,
+        "coastal-rock": 2,
+        "mediterranean-forest": 1014,
+        "mediterranean-scrub": 389,
+        "mountain-rock": 2,
+        "pasture": 272,
+        "urban": 563,
+        "water": 1328,
+        "wetland": 11
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": 115.51711999999895,
+        "minX": -74.69298490143785,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-02-03",
+        "s-03-03",
+        "s-04-03",
+        "s-02-04",
+        "s-04-04",
+        "s-02-05",
+        "s-03-05",
+        "s-04-05"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [
+          "port-barcelona"
+        ],
+        "landmarks": [
+          "castell-montjuic"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 156,
+        "mean": 18.23,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 4
+      },
+      "id": "s-04-04",
+      "landCells": 387,
+      "landRatio": 0.105738,
+      "landcover": {
+        "agricultural": 8,
+        "beach": 14,
+        "coastal-rock": 3,
+        "mediterranean-forest": 49,
+        "mediterranean-scrub": 12,
+        "pasture": 35,
+        "urban": 262,
+        "water": 3273,
+        "wetland": 4
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": 115.51711999999895,
+        "minX": -10.692984901437853,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-03-03",
+        "s-04-03",
+        "s-05-03",
+        "s-03-04",
+        "s-05-04",
+        "s-03-05",
+        "s-04-05",
+        "s-05-05"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 4
+      },
+      "id": "s-05-04",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": 115.51711999999895,
+        "minX": 53.30701509856215,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-04-03",
+        "s-05-03",
+        "s-06-03",
+        "s-04-04",
+        "s-06-04",
+        "s-04-05",
+        "s-05-05",
+        "s-06-05"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 4
+      },
+      "id": "s-06-04",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3720
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": 115.51711999999895,
+        "minX": 117.30701509856215,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-05-03",
+        "s-06-03",
+        "s-07-03",
+        "s-05-04",
+        "s-07-04",
+        "s-05-05",
+        "s-06-05",
+        "s-07-05"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 4
+      },
+      "id": "s-07-04",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": 115.51711999999895,
+        "minX": 181.30701509856215,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-06-03",
+        "s-07-03",
+        "s-08-03",
+        "s-06-04",
+        "s-08-04",
+        "s-06-05",
+        "s-07-05",
+        "s-08-05"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.3801353345571,
+        "south": 41.20016916819638,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 4
+      },
+      "id": "s-08-04",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1260
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": 115.51711999999895,
+        "minX": 245.30701509856215,
+        "minZ": 51.517119999998954
+      },
+      "neighbours": [
+        "s-07-03",
+        "s-08-03",
+        "s-07-04",
+        "s-07-05",
+        "s-08-05"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [
+          "port-tarragona"
+        ],
+        "landmarks": [
+          "amfiteatre-tarragona"
+        ],
+        "ports": [],
+        "roads": [],
+        "settlements": [
+          "tarragona"
+        ],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 197,
+        "mean": 70.28,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 5
+      },
+      "id": "s-00-05",
+      "landCells": 1921,
+      "landRatio": 0.516398,
+      "landcover": {
+        "agricultural": 130,
+        "beach": 16,
+        "coastal-rock": 3,
+        "mediterranean-forest": 575,
+        "mediterranean-scrub": 312,
+        "pasture": 425,
+        "urban": 459,
+        "water": 1799,
+        "wetland": 1
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": 179.51711999999895,
+        "minX": -266.69298490143785,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-00-04",
+        "s-01-04",
+        "s-01-05",
+        "s-00-06",
+        "s-01-06"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 191,
+        "mean": 52.34,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 5
+      },
+      "id": "s-01-05",
+      "landCells": 612,
+      "landRatio": 0.167213,
+      "landcover": {
+        "agricultural": 22,
+        "beach": 14,
+        "coastal-rock": 1,
+        "mediterranean-forest": 211,
+        "mediterranean-scrub": 65,
+        "pasture": 112,
+        "urban": 187,
+        "water": 3048
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": 179.51711999999895,
+        "minX": -202.69298490143785,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-00-04",
+        "s-01-04",
+        "s-02-04",
+        "s-00-05",
+        "s-02-05",
+        "s-00-06",
+        "s-01-06",
+        "s-02-06"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": true,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": 18,
+        "mean": 5.88,
+        "min": 0
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 5
+      },
+      "id": "s-02-05",
+      "landCells": 24,
+      "landRatio": 0.006557,
+      "landcover": {
+        "agricultural": 1,
+        "beach": 3,
+        "mediterranean-forest": 1,
+        "pasture": 8,
+        "urban": 11,
+        "water": 3636
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": 179.51711999999895,
+        "minX": -138.69298490143785,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-01-04",
+        "s-02-04",
+        "s-03-04",
+        "s-01-05",
+        "s-03-05",
+        "s-01-06",
+        "s-02-06",
+        "s-03-06"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 5
+      },
+      "id": "s-03-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3720
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": 179.51711999999895,
+        "minX": -74.69298490143785,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-02-04",
+        "s-03-04",
+        "s-04-04",
+        "s-02-05",
+        "s-04-05",
+        "s-02-06",
+        "s-03-06",
+        "s-04-06"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 5
+      },
+      "id": "s-04-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": 179.51711999999895,
+        "minX": -10.692984901437853,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-03-04",
+        "s-04-04",
+        "s-05-04",
+        "s-03-05",
+        "s-05-05",
+        "s-03-06",
+        "s-04-06",
+        "s-05-06"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 5
+      },
+      "id": "s-05-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": 179.51711999999895,
+        "minX": 53.30701509856215,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-04-04",
+        "s-05-04",
+        "s-06-04",
+        "s-04-05",
+        "s-06-05",
+        "s-04-06",
+        "s-05-06",
+        "s-06-06"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 5
+      },
+      "id": "s-06-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3720
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": 179.51711999999895,
+        "minX": 117.30701509856215,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-05-04",
+        "s-06-04",
+        "s-07-04",
+        "s-05-05",
+        "s-07-05",
+        "s-05-06",
+        "s-06-06",
+        "s-07-06"
+      ],
+      "totalCells": 3720
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 5
+      },
+      "id": "s-07-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 3660
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": 179.51711999999895,
+        "minX": 181.30701509856215,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-06-04",
+        "s-07-04",
+        "s-08-04",
+        "s-06-05",
+        "s-08-05",
+        "s-06-06",
+        "s-07-06",
+        "s-08-06"
+      ],
+      "totalCells": 3660
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.20016916819638,
+        "south": 41.020203001835654,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 5
+      },
+      "id": "s-08-05",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1260
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": 179.51711999999895,
+        "minX": 245.30701509856215,
+        "minZ": 115.51711999999895
+      },
+      "neighbours": [
+        "s-07-04",
+        "s-08-04",
+        "s-07-05",
+        "s-07-06",
+        "s-08-06"
+      ],
+      "totalCells": 1260
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [
+          "land-valencia"
+        ],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 1.389976315926167,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 1.15
+      },
+      "grid": {
+        "column": 0,
+        "row": 6
+      },
+      "id": "s-00-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1488
+      },
+      "localBounds": {
+        "maxX": -202.69298490143785,
+        "maxZ": 204.48287999999852,
+        "minX": -266.69298490143785,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-00-05",
+        "s-01-05",
+        "s-01-06"
+      ],
+      "totalCells": 1488
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 1.6299526318523343,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 1.389976315926167
+      },
+      "grid": {
+        "column": 1,
+        "row": 6
+      },
+      "id": "s-01-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1464
+      },
+      "localBounds": {
+        "maxX": -138.69298490143785,
+        "maxZ": 204.48287999999852,
+        "minX": -202.69298490143785,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-00-05",
+        "s-01-05",
+        "s-02-05",
+        "s-00-06",
+        "s-02-06"
+      ],
+      "totalCells": 1464
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 1.8699289477785017,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 1.6299526318523343
+      },
+      "grid": {
+        "column": 2,
+        "row": 6
+      },
+      "id": "s-02-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1464
+      },
+      "localBounds": {
+        "maxX": -74.69298490143785,
+        "maxZ": 204.48287999999852,
+        "minX": -138.69298490143785,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-01-05",
+        "s-02-05",
+        "s-03-05",
+        "s-01-06",
+        "s-03-06"
+      ],
+      "totalCells": 1464
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.1099052637046687,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 1.8699289477785017
+      },
+      "grid": {
+        "column": 3,
+        "row": 6
+      },
+      "id": "s-03-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1488
+      },
+      "localBounds": {
+        "maxX": -10.692984901437853,
+        "maxZ": 204.48287999999852,
+        "minX": -74.69298490143785,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-02-05",
+        "s-03-05",
+        "s-04-05",
+        "s-02-06",
+        "s-04-06"
+      ],
+      "totalCells": 1488
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.349881579630836,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 2.1099052637046687
+      },
+      "grid": {
+        "column": 4,
+        "row": 6
+      },
+      "id": "s-04-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1464
+      },
+      "localBounds": {
+        "maxX": 53.30701509856215,
+        "maxZ": 204.48287999999852,
+        "minX": -10.692984901437853,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-03-05",
+        "s-04-05",
+        "s-05-05",
+        "s-03-06",
+        "s-05-06"
+      ],
+      "totalCells": 1464
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.5898578955570035,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 2.349881579630836
+      },
+      "grid": {
+        "column": 5,
+        "row": 6
+      },
+      "id": "s-05-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1464
+      },
+      "localBounds": {
+        "maxX": 117.30701509856215,
+        "maxZ": 204.48287999999852,
+        "minX": 53.30701509856215,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-04-05",
+        "s-05-05",
+        "s-06-05",
+        "s-04-06",
+        "s-06-06"
+      ],
+      "totalCells": 1464
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 2.8298342114831705,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 2.5898578955570035
+      },
+      "grid": {
+        "column": 6,
+        "row": 6
+      },
+      "id": "s-06-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1488
+      },
+      "localBounds": {
+        "maxX": 181.30701509856215,
+        "maxZ": 204.48287999999852,
+        "minX": 117.30701509856215,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-05-05",
+        "s-06-05",
+        "s-07-05",
+        "s-05-06",
+        "s-07-06"
+      ],
+      "totalCells": 1488
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.069810527409338,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 2.8298342114831705
+      },
+      "grid": {
+        "column": 7,
+        "row": 6
+      },
+      "id": "s-07-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 1464
+      },
+      "localBounds": {
+        "maxX": 245.30701509856215,
+        "maxZ": 204.48287999999852,
+        "minX": 181.30701509856215,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-06-05",
+        "s-07-05",
+        "s-08-05",
+        "s-06-06",
+        "s-08-06"
+      ],
+      "totalCells": 1464
+    },
+    {
+      "active": false,
+      "content": {
+        "buildings": [],
+        "entryPoints": [],
+        "landmarks": [],
+        "ports": [],
+        "roads": [],
+        "settlements": [],
+        "spawnPoints": []
+      },
+      "elevationMeters": {
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "geographicBounds": {
+        "east": 3.15,
+        "north": 41.020203001835654,
+        "south": 40.95,
+        "west": 3.069810527409338
+      },
+      "grid": {
+        "column": 8,
+        "row": 6
+      },
+      "id": "s-08-06",
+      "landCells": 0,
+      "landRatio": 0,
+      "landcover": {
+        "water": 504
+      },
+      "localBounds": {
+        "maxX": 266.69298490143785,
+        "maxZ": 204.48287999999852,
+        "minX": 245.30701509856215,
+        "minZ": 179.51711999999895
+      },
+      "neighbours": [
+        "s-07-05",
+        "s-08-05",
+        "s-07-06"
+      ],
+      "totalCells": 504
+    }
+  ]
+}

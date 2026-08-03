@@ -1,0 +1,126 @@
+{
+  "connections": [
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "port-barcelona",
+      "id": "catalunya-baleares-sea",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "baleares"
+    },
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "land-valencia",
+      "id": "catalunya-valencia-land",
+      "requiredCapabilities": [
+        "land"
+      ],
+      "targetRegionId": "valencia-litoral"
+    },
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "land-pirineus",
+      "id": "catalunya-pirineus-land",
+      "requiredCapabilities": [
+        "land"
+      ],
+      "targetRegionId": "pirineus-orientals"
+    }
+  ],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 350,
+      "id": "port-barcelona",
+      "local": {
+        "x": 5.3339,
+        "y": 3,
+        "z": 62.2339
+      },
+      "name": "Port de Barcelona",
+      "position": {
+        "lat": 41.35,
+        "lon": 2.17
+      },
+      "sectorId": "s-04-04",
+      "terrainStatus": "nearest-land-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 10,
+      "id": "port-tarragona",
+      "local": {
+        "x": -248.0245,
+        "y": 1,
+        "z": 151.1395
+      },
+      "name": "Port de Tarragona",
+      "position": {
+        "lat": 41.1,
+        "lon": 1.22
+      },
+      "sectorId": "s-00-05",
+      "terrainStatus": "exact-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 250,
+      "id": "port-blanes",
+      "local": {
+        "x": 172.5504,
+        "y": 32,
+        "z": -52.9877
+      },
+      "name": "Port de Blanes",
+      "position": {
+        "lat": 41.674,
+        "lon": 2.797
+      },
+      "sectorId": "s-06-02",
+      "terrainStatus": "nearest-land-cell",
+      "type": "port"
+    },
+    {
+      "arrivalHeadingDegrees": 35,
+      "id": "land-valencia",
+      "local": {
+        "x": -258.6922,
+        "y": 0,
+        "z": 193.8142
+      },
+      "name": "Corredor terrestre del sud",
+      "position": {
+        "lat": 40.98,
+        "lon": 1.18
+      },
+      "sectorId": "s-00-06",
+      "terrainStatus": "nearest-land-cell",
+      "type": "land_border"
+    },
+    {
+      "arrivalHeadingDegrees": 190,
+      "id": "land-pirineus",
+      "local": {
+        "x": 178.6843,
+        "y": 103,
+        "z": -197.3704
+      },
+      "name": "Corredor terrestre del nord",
+      "position": {
+        "lat": 42.08,
+        "lon": 2.82
+      },
+      "sectorId": "s-06-00",
+      "terrainStatus": "exact-cell",
+      "type": "land_border"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "catalunya-litoral",
+  "roads": []
+}

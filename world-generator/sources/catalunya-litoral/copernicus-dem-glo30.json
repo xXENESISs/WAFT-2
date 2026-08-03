@@ -1,0 +1,102 @@
+{
+  "attribution": "Contains modified Copernicus DEM data",
+  "availableCells": 188550,
+  "binaryBytes": 393280,
+  "binaryFile": "copernicus-dem-glo30.bin",
+  "binarySha256": "e3d82f36f4192cc8562409c34b555d3f2bd84727dc9ac6783d55e9c07b400af6",
+  "bucket": "s3://copernicus-dem-30m",
+  "dataset": "Copernicus DEM GLO-30 Public",
+  "datasetRelease": "2021",
+  "distribution": "Registry of Open Data on AWS",
+  "formatVersion": 1,
+  "license": "Copernicus data policy",
+  "maximumElevationMeters": 1646,
+  "meanElevationMeters": 273.063,
+  "minimumElevationMeters": 0,
+  "nodataCells": 8058,
+  "nominalResolutionMeters": 30,
+  "provider": "Copernicus Programme",
+  "regionId": "catalunya-litoral",
+  "retrievedOn": "2026-08-03",
+  "sourceDocumentation": "https://copernicus-dem-30m.s3.amazonaws.com/readme.html",
+  "targetGrid": {
+    "bounds": {
+      "east": 3.15,
+      "north": 42.1,
+      "south": 40.95,
+      "west": 1.15
+    },
+    "columns": 512,
+    "resampling": "bilinear",
+    "rows": 384
+  },
+  "tiles": [
+    {
+      "bytes": 656353,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N40_00_E003_00_DEM",
+      "sha256": "5054d8627e0e47481d0d224ffb1627b7b1968aa0018ba178994c26427987c050",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N40_00_E003_00_DEM/Copernicus_DSM_COG_10_N40_00_E003_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 37572118,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N41_00_E001_00_DEM",
+      "sha256": "da2bb4db5cbe10e0bd60d35fa0ac809cf3de9aa590d2d7897634e7ab343e71f8",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N41_00_E001_00_DEM/Copernicus_DSM_COG_10_N41_00_E001_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 22233652,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N41_00_E002_00_DEM",
+      "sha256": "1e32cf23530c6d820dc1e0dafbb15bdf7ae7058271f7a39f0fe375842a5609c3",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N41_00_E002_00_DEM/Copernicus_DSM_COG_10_N41_00_E002_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 1971217,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N41_00_E003_00_DEM",
+      "sha256": "d41c48f37ca1106e9529acc1ef94a7b0eb5c106d08d4037ee289d6bcc3e0d434",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N41_00_E003_00_DEM/Copernicus_DSM_COG_10_N41_00_E003_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 42615978,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N42_00_E001_00_DEM",
+      "sha256": "dc92fae94fa1e78dedd5da1ec4864763baeeae67d6e11c7d5d3d26d1d2fe2bad",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N42_00_E001_00_DEM/Copernicus_DSM_COG_10_N42_00_E001_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 44889825,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N42_00_E002_00_DEM",
+      "sha256": "327c8c5fc6c630a89df61b17e84003b5fda1e169aff83824f1eece1509e0524d",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N42_00_E002_00_DEM/Copernicus_DSM_COG_10_N42_00_E002_00_DEM.tif",
+      "width": 3600
+    },
+    {
+      "bytes": 6046009,
+      "crs": "EPSG:4326",
+      "height": 3600,
+      "id": "Copernicus_DSM_COG_10_N42_00_E003_00_DEM",
+      "sha256": "a808ba2a90cffe8465d700fff6b6accf1381b099e7c7b2eadba8ee99aa0701f2",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N42_00_E003_00_DEM/Copernicus_DSM_COG_10_N42_00_E003_00_DEM.tif",
+      "width": 3600
+    }
+  ],
+  "unavailableIntersectingTiles": [
+    "Copernicus_DSM_COG_10_N40_00_E001_00_DEM",
+    "Copernicus_DSM_COG_10_N40_00_E002_00_DEM"
+  ]
+}

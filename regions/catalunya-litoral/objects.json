@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "generatedBuildingsPending": true,
+  "generationStage": "reserved-zones-only",
+  "items": [],
+  "overrideOperations": [],
+  "regionId": "catalunya-litoral",
+  "reservedZones": [
+    {
+      "center": {
+        "lat": 41.4036,
+        "lon": 2.1744
+      },
+      "exclude": [
+        "buildings",
+        "vegetation"
+      ],
+      "id": "sagrada-familia-block",
+      "localCenter": {
+        "x": 6.507308831595077,
+        "z": 43.17255936000046
+      },
+      "purpose": "Conservar la silueta y el acceso de la Sagrada Família",
+      "radiusKm": 0.22
+    },
+    {
+      "center": {
+        "lat": 41.4145,
+        "lon": 2.1527
+      },
+      "exclude": [
+        "buildings"
+      ],
+      "id": "park-guell-open-space",
+      "localCenter": {
+        "x": 0.7200710592338622,
+        "z": 39.29627520000065
+      },
+      "purpose": "Mantener el parque y sus accesos legibles",
+      "radiusKm": 0.28
+    },
+    {
+      "center": {
+        "lat": 41.5931,
+        "lon": 1.8352
+      },
+      "exclude": [
+        "buildings",
+        "vegetation"
+      ],
+      "id": "montserrat-sanctuary",
+      "localCenter": {
+        "x": -83.95495164697263,
+        "z": -24.217885440000416
+      },
+      "purpose": "Separar el santuario de la roca y la vegetación procedural",
+      "radiusKm": 0.45
+    },
+    {
+      "center": {
+        "lat": 41.1149,
+        "lon": 1.2594
+      },
+      "exclude": [
+        "buildings"
+      ],
+      "id": "tarragona-amphitheatre",
+      "localCenter": {
+        "x": -237.51677235322052,
+        "z": 145.84074624
+      },
+      "purpose": "Preservar el anfiteatro y su vista al mar",
+      "radiusKm": 0.18
+    }
+  ]
+}

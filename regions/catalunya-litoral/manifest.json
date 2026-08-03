@@ -1,0 +1,302 @@
+{
+  "budgets": {
+    "activeColliders": 900,
+    "downloadMb": 75,
+    "runtimeMemoryMb": 340,
+    "textureMemoryMb": 136,
+    "visibleObjects": 2800,
+    "visibleTriangles": 480000
+  },
+  "content": {
+    "connections": 3,
+    "entryPoints": 5,
+    "faunaSpecies": 9,
+    "generatedBuildings": 0,
+    "landmarks": 9,
+    "settlements": 10
+  },
+  "deterministic": true,
+  "files": [
+    {
+      "bytes": 393280,
+      "path": "terrain.bin",
+      "sha256": "56a6ade4bbfd6d4db38d2b77e9c4134be496f8a77585d0d39e6a2b26f1923d0c"
+    },
+    {
+      "bytes": 196672,
+      "path": "landcover.bin",
+      "sha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b"
+    },
+    {
+      "bytes": 74277,
+      "path": "sectors.json",
+      "sha256": "ae4c3d1b66d1a33b2f4dc71a4752c6693344a284001bb6054ef43fa707d5415a"
+    },
+    {
+      "bytes": 3075,
+      "path": "settlements.json",
+      "sha256": "f1d14828a2c1be1a15061b299cac8ec9bfc3c8f66d3c747a26494e125ddf94f8"
+    },
+    {
+      "bytes": 1690,
+      "path": "objects.json",
+      "sha256": "2318467ddb3f9c0306642d1cf39fc481434c55b08675b87876107320dd1b37a0"
+    },
+    {
+      "bytes": 3931,
+      "path": "landmarks.json",
+      "sha256": "fb7aaa74a3c2c8c1a7fa64e3439b2f6582d10bb4814361835d588785c0efd8ff"
+    },
+    {
+      "bytes": 10664,
+      "path": "fauna.json",
+      "sha256": "81206e7e1d40a37ed7c3896dbb920a6ed391af89c9cf0a15fcaf593473d4ee24"
+    },
+    {
+      "bytes": 2774,
+      "path": "routes.json",
+      "sha256": "54138fd053f4bbe58eac7809d1c0fe12baac14cd6854ec85dc528d980cd98ee6"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "generatorVersion": "0.2.0",
+  "landcover": {
+    "classDistribution": {
+      "0": 77764,
+      "1": 103,
+      "2": 12,
+      "3": 10133,
+      "4": 60638,
+      "5": 22950,
+      "6": 3698,
+      "7": 18,
+      "8": 8335,
+      "9": 12957
+    },
+    "classes": [
+      {
+        "id": 0,
+        "key": "water",
+        "walkable": false
+      },
+      {
+        "id": 1,
+        "key": "beach",
+        "walkable": true
+      },
+      {
+        "id": 2,
+        "key": "coastal-rock",
+        "walkable": true
+      },
+      {
+        "id": 3,
+        "key": "mediterranean-scrub",
+        "walkable": true
+      },
+      {
+        "id": 4,
+        "key": "mediterranean-forest",
+        "walkable": true
+      },
+      {
+        "id": 5,
+        "key": "agricultural",
+        "walkable": true
+      },
+      {
+        "id": 6,
+        "key": "mountain-rock",
+        "walkable": true
+      },
+      {
+        "id": 7,
+        "key": "wetland",
+        "walkable": true
+      },
+      {
+        "id": 8,
+        "key": "urban",
+        "walkable": true
+      },
+      {
+        "id": 9,
+        "key": "pasture",
+        "walkable": true
+      }
+    ],
+    "externalWorldCoverImportPending": false,
+    "fallbackLandCells": 0,
+    "format": "WAFTLCV1",
+    "quality": "esa-worldcover-2021-v200",
+    "realClassifiedLandCells": 118844,
+    "source": {
+      "algorithmVersion": "v200",
+      "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium",
+      "dataset": "ESA WorldCover 10 m 2021 v200",
+      "datasetYear": 2021,
+      "distribution": "Registry of Open Data on AWS",
+      "doi": "10.5281/zenodo.7254221",
+      "license": "CC BY 4.0",
+      "nominalResolutionMeters": 10,
+      "provider": "European Space Agency WorldCover project",
+      "retrievedOn": "2026-08-03",
+      "snapshotSha256": "7dae55191f3302294e6e984211bc0364d901f289c46f4fe4ffa0a05e48e8b023",
+      "tiles": [
+        {
+          "bytes": 54214296,
+          "id": "N39E000",
+          "sha256": "6e30666f95174faebf25815f76634300eeb53c805ac1f300a31f58bee871dca3"
+        },
+        {
+          "bytes": 7681487,
+          "id": "N39E003",
+          "sha256": "b2992a5222bafe90f2bdfb3cd8a565d08567d65308d37604eb4073aa64b4522c"
+        },
+        {
+          "bytes": 117009669,
+          "id": "N42E000",
+          "sha256": "6f00549b7d0a3df766ca2366b30b98bd2cf3ece726da01aea4ad42143abe9016"
+        },
+        {
+          "bytes": 69615796,
+          "id": "N42E003",
+          "sha256": "5e53545a20a2093b6f1939a79d530302601f536fbfdad3c29359784ce22c356d"
+        }
+      ]
+    }
+  },
+  "packageBytesWithoutManifest": 686363,
+  "pendingStages": [
+    "openstreetmap-settlements-buildings-and-routes",
+    "wikidata-landmark-ranking",
+    "gbif-fauna-candidates",
+    "procedural-vegetation-and-buildings"
+  ],
+  "projection": {
+    "axis": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "compression": {
+      "anchorIds": [],
+      "factor": 1,
+      "mode": "none",
+      "preserveCoastline": true
+    },
+    "kmPerDegreeLat": 111.132,
+    "kmPerDegreeLon": 83.34155778169932,
+    "localBounds": {
+      "maxX": 266.69298490143785,
+      "maxZ": 204.48287999999852,
+      "minX": -266.69298490143785,
+      "minZ": -204.48288000000105
+    },
+    "origin": {
+      "lat": 41.525,
+      "lon": 2.15
+    },
+    "type": "local-equirectangular",
+    "unitsPerKm": 3.2
+  },
+  "provenance": {
+    "config": {
+      "path": "world-generator/configs/catalunya-litoral.region.json",
+      "sha256": "4780c206f47b51c55a2ace80a09cd09b5a9c9f333708ac662ca6f35e2d669327"
+    },
+    "demSnapshot": {
+      "metadataPath": "world-generator/sources/catalunya-litoral/copernicus-dem-glo30.json",
+      "path": "world-generator/sources/catalunya-litoral/copernicus-dem-glo30.bin",
+      "sha256": "e3d82f36f4192cc8562409c34b555d3f2bd84727dc9ac6783d55e9c07b400af6"
+    },
+    "generatorSourcesSha256": "a5de7bdf0e7689082f6ebe9faf75ff872e4f23dfa98bb2456e830abde0b83f1f",
+    "overrides": {
+      "path": "world-generator/overrides/catalunya-litoral.overrides.json",
+      "sha256": "a36bc08b928705e9752fdd7543954b21d42a565f7e9df9bce63d006e04bcc7a6"
+    },
+    "worldCoverSnapshot": {
+      "metadataPath": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",
+      "path": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.bin",
+      "sha256": "7dae55191f3302294e6e984211bc0364d901f289c46f4fe4ffa0a05e48e8b023"
+    }
+  },
+  "region": {
+    "continent": "Europe",
+    "countryCodes": [
+      "ES"
+    ],
+    "id": "catalunya-litoral",
+    "name": "Catalunya litoral",
+    "status": "prototype",
+    "version": "0.1.0"
+  },
+  "sectors": {
+    "active": 40,
+    "columns": 9,
+    "preloadRadius": 2,
+    "rows": 7,
+    "sizeUnits": 64,
+    "total": 63
+  },
+  "terrain": {
+    "cells": 196608,
+    "columns": 512,
+    "elevationSource": {
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "Copernicus DEM GLO-30 Public",
+      "license": "Copernicus data policy",
+      "mode": "copernicus-dem-glo30",
+      "provider": "Copernicus Programme",
+      "retrievedOn": "2026-08-03",
+      "snapshotSha256": "e3d82f36f4192cc8562409c34b555d3f2bd84727dc9ac6783d55e9c07b400af6",
+      "tiles": [
+        {
+          "bytes": 656353,
+          "id": "Copernicus_DSM_COG_10_N40_00_E003_00_DEM",
+          "sha256": "5054d8627e0e47481d0d224ffb1627b7b1968aa0018ba178994c26427987c050"
+        },
+        {
+          "bytes": 37572118,
+          "id": "Copernicus_DSM_COG_10_N41_00_E001_00_DEM",
+          "sha256": "da2bb4db5cbe10e0bd60d35fa0ac809cf3de9aa590d2d7897634e7ab343e71f8"
+        },
+        {
+          "bytes": 22233652,
+          "id": "Copernicus_DSM_COG_10_N41_00_E002_00_DEM",
+          "sha256": "1e32cf23530c6d820dc1e0dafbb15bdf7ae7058271f7a39f0fe375842a5609c3"
+        },
+        {
+          "bytes": 1971217,
+          "id": "Copernicus_DSM_COG_10_N41_00_E003_00_DEM",
+          "sha256": "d41c48f37ca1106e9529acc1ef94a7b0eb5c106d08d4037ee289d6bcc3e0d434"
+        },
+        {
+          "bytes": 42615978,
+          "id": "Copernicus_DSM_COG_10_N42_00_E001_00_DEM",
+          "sha256": "dc92fae94fa1e78dedd5da1ec4864763baeeae67d6e11c7d5d3d26d1d2fe2bad"
+        },
+        {
+          "bytes": 44889825,
+          "id": "Copernicus_DSM_COG_10_N42_00_E002_00_DEM",
+          "sha256": "327c8c5fc6c630a89df61b17e84003b5fda1e169aff83824f1eece1509e0524d"
+        },
+        {
+          "bytes": 6046009,
+          "id": "Copernicus_DSM_COG_10_N42_00_E003_00_DEM",
+          "sha256": "a808ba2a90cffe8465d700fff6b6accf1381b099e7c7b2eadba8ee99aa0701f2"
+        }
+      ]
+    },
+    "format": "WAFTHGT1",
+    "landCells": 118844,
+    "landMaskSource": "esa-worldcover-water-class",
+    "landRatio": 0.604472,
+    "maximumElevationMeters": 1646,
+    "meanElevationMeters": 432.243,
+    "minimumElevationMeters": 0,
+    "nodataElevation": -32768,
+    "rows": 384
+  }
+}

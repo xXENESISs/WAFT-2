@@ -1,0 +1,158 @@
+{
+  "formatVersion": 1,
+  "generationStage": "manual-seed-points",
+  "items": [
+    {
+      "id": "barcelona",
+      "local": {
+        "x": 6.2406,
+        "y": 25,
+        "z": 49.7516
+      },
+      "name": "Barcelona",
+      "position": {
+        "lat": 41.3851,
+        "lon": 2.1734
+      },
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "tarragona",
+      "local": {
+        "x": -241.4905,
+        "y": 32,
+        "z": 144.4183
+      },
+      "name": "Tarragona",
+      "position": {
+        "lat": 41.1189,
+        "lon": 1.2445
+      },
+      "sectorId": "s-00-05",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "girona",
+      "local": {
+        "x": 179.0577,
+        "y": 81,
+        "z": -161.5948
+      },
+      "name": "Girona",
+      "position": {
+        "lat": 41.9794,
+        "lon": 2.8214
+      },
+      "sectorId": "s-06-00",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "badalona",
+      "local": {
+        "x": 25.9759,
+        "y": 22,
+        "z": 26.6361
+      },
+      "name": "Badalona",
+      "position": {
+        "lat": 41.4501,
+        "lon": 2.2474
+      },
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "mataro",
+      "local": {
+        "x": 78.5411,
+        "y": 24,
+        "z": -4.6587
+      },
+      "name": "Mataró",
+      "position": {
+        "lat": 41.5381,
+        "lon": 2.4445
+      },
+      "sectorId": "s-05-03",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "sabadell",
+      "local": {
+        "x": -10.8277,
+        "y": 196,
+        "z": -7.5748
+      },
+      "name": "Sabadell",
+      "position": {
+        "lat": 41.5463,
+        "lon": 2.1094
+      },
+      "sectorId": "s-03-03",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "terrassa",
+      "local": {
+        "x": -37.6304,
+        "y": 284,
+        "z": -13.5848
+      },
+      "name": "Terrassa",
+      "position": {
+        "lat": 41.5632,
+        "lon": 2.0089
+      },
+      "sectorId": "s-03-02",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "vilanova-geltru",
+      "local": {
+        "x": -113.2912,
+        "y": 23,
+        "z": 107.0779
+      },
+      "name": "Vilanova i la Geltrú",
+      "position": {
+        "lat": 41.2239,
+        "lon": 1.7252
+      },
+      "sectorId": "s-02-04",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "sitges",
+      "local": {
+        "x": -90.1689,
+        "y": 25,
+        "z": 102.3481
+      },
+      "name": "Sitges",
+      "position": {
+        "lat": 41.2372,
+        "lon": 1.8119
+      },
+      "sectorId": "s-02-04",
+      "terrainStatus": "exact-cell"
+    },
+    {
+      "id": "blanes",
+      "local": {
+        "x": 170.7368,
+        "y": 22,
+        "z": -53.0589
+      },
+      "name": "Blanes",
+      "position": {
+        "lat": 41.6742,
+        "lon": 2.7902
+      },
+      "sectorId": "s-06-02",
+      "terrainStatus": "exact-cell"
+    }
+  ],
+  "proceduralGenerationPending": true,
+  "regionId": "catalunya-litoral"
+}

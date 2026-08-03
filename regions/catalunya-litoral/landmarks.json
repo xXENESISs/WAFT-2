@@ -1,0 +1,170 @@
+{
+  "automaticDiscoveryPending": true,
+  "formatVersion": 1,
+  "generationStage": "manual-landmark-seeds",
+  "items": [
+    {
+      "assetId": "sagrada-familia",
+      "id": "sagrada-familia",
+      "local": {
+        "x": 6.5073,
+        "y": 38,
+        "z": 43.1726
+      },
+      "name": "Basílica de la Sagrada Família",
+      "position": {
+        "lat": 41.4036,
+        "lon": 2.1744
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "park-guell",
+      "id": "park-guell",
+      "local": {
+        "x": 0.7201,
+        "y": 181,
+        "z": 39.2963
+      },
+      "name": "Park Güell",
+      "position": {
+        "lat": 41.4145,
+        "lon": 2.1527
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell",
+      "type": "monument"
+    },
+    {
+      "assetId": "catedral-barcelona",
+      "id": "catedral-barcelona",
+      "local": {
+        "x": 6.9607,
+        "y": 25,
+        "z": 50.1783
+      },
+      "name": "Catedral de Barcelona",
+      "position": {
+        "lat": 41.3839,
+        "lon": 2.1761
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell",
+      "type": "cathedral"
+    },
+    {
+      "assetId": "catalan-fortress",
+      "id": "castell-montjuic",
+      "local": {
+        "x": 5.3072,
+        "y": 22,
+        "z": 57.5041
+      },
+      "name": "Castell de Montjuïc",
+      "position": {
+        "lat": 41.3633,
+        "lon": 2.1699
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-04-04",
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    },
+    {
+      "assetId": "monestir-montserrat",
+      "id": "monestir-montserrat",
+      "local": {
+        "x": -83.955,
+        "y": 785,
+        "z": -24.2179
+      },
+      "name": "Monestir de Montserrat",
+      "position": {
+        "lat": 41.5931,
+        "lon": 1.8352
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-02-02",
+      "terrainStatus": "exact-cell",
+      "type": "monastery"
+    },
+    {
+      "assetId": "amfiteatre-tarragona",
+      "id": "amfiteatre-tarragona",
+      "local": {
+        "x": -237.5168,
+        "y": 34,
+        "z": 145.8407
+      },
+      "name": "Amfiteatre de Tarragona",
+      "position": {
+        "lat": 41.1149,
+        "lon": 1.2594
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-00-05",
+      "terrainStatus": "exact-cell",
+      "type": "archaeological_site"
+    },
+    {
+      "assetId": "modern-observation-tower",
+      "id": "torre-glories",
+      "local": {
+        "x": 10.5877,
+        "y": 11,
+        "z": 43.2081
+      },
+      "name": "Torre Glòries",
+      "position": {
+        "lat": 41.4035,
+        "lon": 2.1897
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-04-03",
+      "terrainStatus": "exact-cell",
+      "type": "tower"
+    },
+    {
+      "assetId": "catalan-city-walls",
+      "id": "muralles-girona",
+      "local": {
+        "x": 180.4711,
+        "y": 77,
+        "z": -164.4398
+      },
+      "name": "Muralles de Girona",
+      "position": {
+        "lat": 41.9874,
+        "lon": 2.8267
+      },
+      "preferredRepresentation": "archetype",
+      "sectorId": "s-06-00",
+      "terrainStatus": "exact-cell",
+      "type": "fortress"
+    },
+    {
+      "assetId": "vila-vella-tossa",
+      "id": "castell-tossa",
+      "local": {
+        "x": 209.194,
+        "y": 14,
+        "z": -68.2439
+      },
+      "name": "Vila Vella de Tossa de Mar",
+      "position": {
+        "lat": 41.7169,
+        "lon": 2.9344
+      },
+      "preferredRepresentation": "unique",
+      "sectorId": "s-07-02",
+      "terrainStatus": "exact-cell",
+      "type": "castle"
+    }
+  ],
+  "regionId": "catalunya-litoral"
+}

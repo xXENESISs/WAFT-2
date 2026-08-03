@@ -1,0 +1,58 @@
+== import Copernicus DEM GLO-30 ==
+{
+  "availableCells": 188550,
+  "binary": "world-generator/sources/catalunya-litoral/copernicus-dem-glo30.bin",
+  "bytes": 393280,
+  "maximumElevationMeters": 1646,
+  "metadata": "world-generator/sources/catalunya-litoral/copernicus-dem-glo30.json",
+  "mode": "downloaded-and-built",
+  "regionId": "catalunya-litoral",
+  "sha256": "e3d82f36f4192cc8562409c34b555d3f2bd84727dc9ac6783d55e9c07b400af6",
+  "tiles": 7
+}
+exit=0
+== import ESA WorldCover ==
+{
+  "binary": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.bin",
+  "bytes": 196672,
+  "classes": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    90
+  ],
+  "classifiedCells": 169710,
+  "metadata": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",
+  "mode": "downloaded-and-built",
+  "regionId": "catalunya-litoral",
+  "sha256": "7dae55191f3302294e6e984211bc0364d901f289c46f4fe4ffa0a05e48e8b023",
+  "tiles": 4
+}
+exit=0
+== build generic regional bootstrap ==
+{
+  "activeSectors": 40,
+  "files": 9,
+  "landCells": 118844,
+  "maximumElevationMeters": 1646,
+  "outputDirectory": "regions/catalunya-litoral",
+  "packageBytes": 695008,
+  "regionId": "catalunya-litoral"
+}
+exit=0
+== deterministic regional bootstrap rebuild ==
+{
+  "activeSectors": 40,
+  "files": 9,
+  "landCells": 118844,
+  "maximumElevationMeters": 1646,
+  "outputDirectory": "regions/catalunya-litoral",
+  "packageBytes": 695008,
+  "regionId": "catalunya-litoral"
+}
+exit=0
