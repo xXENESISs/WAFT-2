@@ -1,0 +1,50 @@
+{
+  "formatVersion": 1,
+  "runtimeRevision": 3,
+  "regionId": "catalunya-litoral",
+  "registryFile": "zones-v2.json",
+  "packageFormat": "WAFTLZ01",
+  "defaults": {
+    "worldScale": 12,
+    "footprintScale": 3.2,
+    "verticalScaleMultiplier": 1,
+    "maxBinaryBytes": 4194304,
+    "terrainPaddingMinimum": 2,
+    "terrainPaddingRatio": 0.1,
+    "featurePadding": 3
+  },
+  "zones": [
+    {
+      "id": "barcelona",
+      "presetId": "barcelona",
+      "name": "Barcelona · Port–Eixample–Ciutat Vella",
+      "regionalRadius": 44,
+      "minimumBuildings": 270,
+      "minimumRoadVertices": 4000
+    },
+    {
+      "id": "tarragona",
+      "presetId": "tarragona",
+      "name": "Tarragona · Port–Part Alta–Francolí",
+      "regionalRadius": 44,
+      "minimumBuildings": 100,
+      "minimumRoadVertices": 2400
+    },
+    {
+      "id": "girona",
+      "presetId": "girona",
+      "name": "Girona · Barri Vell–Onyar–Salt",
+      "regionalRadius": 52,
+      "minimumBuildings": 170,
+      "minimumRoadVertices": 1500
+    },
+    {
+      "id": "maresme",
+      "presetId": "subregion-maresme",
+      "name": "Maresme · Mataró–Costa–Pinedes",
+      "regionalRadius": 52,
+      "minimumBuildings": 200,
+      "minimumRoadVertices": 1100
+    }
+  ]
+}
