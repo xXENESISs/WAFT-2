@@ -1,0 +1,47 @@
+name: Normalize Catalunya litoral config
+
+on:
+  push:
+    paths:
+      - .github/workflows/fix-catalunya-litoral-config.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Normalize land entry point types
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('world-generator/configs/catalunya-litoral.region.json')
+          text = path.read_text(encoding='utf-8')
+          count = text.count('"type": "land"')
+          if count != 2:
+              raise SystemExit(f'Expected two land entry points, found {count}')
+          path.write_text(text.replace('"type": "land"', '"type": "land_border"'), encoding='utf-8')
+          PY
+          node world-generator/scripts/validate-region.mjs --config world-generator/configs/catalunya-litoral.region.json
+
+      - name: Commit normalized config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/configs/catalunya-litoral.region.json world-generator/validation-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Normalize Catalunya litoral land entry points"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
