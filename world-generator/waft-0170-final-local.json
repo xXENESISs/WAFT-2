@@ -1,0 +1,42 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/waft-0170.html?v=waft-adventure-0170-dense-places-v2",
+  "buildId": "waft-adventure-0170-dense-places-v2",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390,
+    "webgl2": true
+  },
+  "directTravelButton": {
+    "text": "IR A BARCELONA",
+    "width": 225,
+    "height": 48,
+    "visible": true
+  },
+  "transitions": 2,
+  "restored": true,
+  "regions": {
+    "baleares": {
+      "runtimeVersion": "013",
+      "zones": 5,
+      "totalBuildings": 1960,
+      "palmaBuildings": 560
+    },
+    "catalunyaLitoral": {
+      "runtimeVersion": "003",
+      "zones": 6,
+      "totalBuildings": 2210,
+      "barcelonaBuildings": 560
+    }
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": []
+}
