@@ -1,0 +1,191 @@
+name: Finalize WAFT Adventure 0.15.9
+
+on:
+  push:
+    paths:
+      - .github/workflows/finalize-waft-0159.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waft-adventure-0159
+  cancel-in-progress: true
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Record immutable files
+        run: |
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
+          test "$(git hash-object mallorca-mobile/waft-0158.html)" = "b605801b9b18cf5d88e24968b9674db0503eef21"
+          test "$(git hash-object mallorca-mobile/region-runtime-baleares-011.html)" = "54efca64586886fdd2f385f928489c786f925f31"
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/waft-0158.html \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/waft-0159-final-protected-before.sha256
+      - name: Build deterministically
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f world-generator/adventure-0159-public-verification.json
+          node --check world-generator/scripts/build-adventure-0159.mjs
+          node --check world-generator/scripts/verify-adventure-0159-browser.mjs
+          node world-generator/scripts/build-adventure-0159.mjs > world-generator/adventure-0159.log 2>&1
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for source, target in [
+              ('mallorca-mobile/waft-0159.html', '/tmp/waft-0159-final.mjs'),
+              ('mallorca-mobile/region-runtime-catalunya-litoral-001.html', '/tmp/catalunya-runtime-final.mjs'),
+          ]:
+              text = Path(source).read_text(encoding='utf-8')
+              scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
+              if len(scripts) != 1:
+                  raise SystemExit(f'{source}: expected one inline script, found {len(scripts)}')
+              Path(target).write_text(scripts[0], encoding='utf-8')
+          adventure = Path('mallorca-mobile/waft-0159.html').read_text(encoding='utf-8')
+          runtime = Path('mallorca-mobile/region-runtime-catalunya-litoral-001.html').read_text(encoding='utf-8')
+          forbidden = [value for value in ('waft-0158', '../regions/baleares/', 'baleares-preview-v1') if value in runtime or (value == 'waft-0158' and value in adventure)]
+          if forbidden:
+              raise SystemExit(f'Generated regional files retain forbidden references: {forbidden}')
+          PY
+          node --check /tmp/waft-0159-final.mjs
+          node --check /tmp/catalunya-runtime-final.mjs
+          sha256sum mallorca-mobile/waft-0159.html mallorca-mobile/region-runtime-catalunya-litoral-001.html world-generator/adventure-0159-build.json > /tmp/waft-0159-final-first.sha
+          node world-generator/scripts/build-adventure-0159.mjs >> world-generator/adventure-0159.log 2>&1
+          sha256sum mallorca-mobile/waft-0159.html mallorca-mobile/region-runtime-catalunya-litoral-001.html world-generator/adventure-0159-build.json > /tmp/waft-0159-final-second.sha
+          diff -u /tmp/waft-0159-final-first.sha /tmp/waft-0159-final-second.sha >> world-generator/adventure-0159.log
+      - name: Verify mobile integration locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0159-final-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" >/dev/null 2>&1 || true' EXIT
+          sleep 2
+          node world-generator/scripts/verify-adventure-0159-browser.mjs \
+            --url http://127.0.0.1:8000/mallorca-mobile/waft-0159.html?v=final-local \
+            --output world-generator/adventure-0159-local-browser.json \
+            --screenshot /tmp/waft-0159-final-local.png \
+            >> world-generator/adventure-0159.log 2>&1
+          printf '{"build":0,"syntax":0,"browser":0,"deterministic":0,"protected":0}\n' > world-generator/adventure-0159-status.json
+      - name: Recheck immutable files locally
+        run: |
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
+          test "$(git hash-object mallorca-mobile/waft-0158.html)" = "b605801b9b18cf5d88e24968b9674db0503eef21"
+          test "$(git hash-object mallorca-mobile/region-runtime-baleares-011.html)" = "54efca64586886fdd2f385f928489c786f925f31"
+          sha256sum \
+            mallorca-mobile/waft-0155-estable.html \
+            mallorca-mobile/v155direct2-00.js \
+            mallorca-mobile/v155direct2-01.js \
+            mallorca-mobile/v155direct2-02.js \
+            mallorca-mobile/v155direct2-03.js \
+            mallorca-mobile/v155direct2-04.js \
+            mallorca-mobile/v155direct2-05.js \
+            mallorca-mobile/v155direct2-06.js \
+            mallorca-mobile/waft-0158.html \
+            mallorca-mobile/region-preview-baleares-001.html \
+            mallorca-mobile/region-runtime-baleares-011.html \
+            regions/baleares/manifest.json \
+            > /tmp/waft-0159-final-protected-after.sha256
+          diff -u /tmp/waft-0159-final-protected-before.sha256 /tmp/waft-0159-final-protected-after.sha256
+      - name: Commit exact local build
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            mallorca-mobile/waft-0159.html \
+            mallorca-mobile/region-runtime-catalunya-litoral-001.html \
+            world-generator/adventure-0159-build.json \
+            world-generator/adventure-0159-local-browser.json \
+            world-generator/adventure-0159.log \
+            world-generator/adventure-0159-status.json
+          git add -A -- world-generator/adventure-0159-public-verification.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Build WAFT Adventure 0.15.9 regional integration"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Wait for exact GitHub Pages build
+        shell: bash
+        run: |
+          set -euo pipefail
+          build_id="$(node -p "require('./world-generator/adventure-0159-build.json').buildId")"
+          page_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/waft-0159.html?v=${build_id}"
+          runtime_url="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-catalunya-litoral-001.html?v=${build_id}"
+          echo "PUBLIC_ADVENTURE_URL=${page_url}" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 150); do
+            page="$(curl -fsS --max-time 20 "$page_url" || true)"
+            runtime="$(curl -fsS --max-time 20 "$runtime_url" || true)"
+            if printf '%s' "$page" | grep -q "$build_id" \
+              && printf '%s' "$page" | grep -q 'region-runtime-catalunya-litoral-001.html' \
+              && printf '%s' "$runtime" | grep -q '../regions/catalunya-litoral/' \
+              && printf '%s' "$runtime" | grep -q 'catalunya-litoral-preview-v1.json'; then
+              exit 0
+            fi
+            sleep 4
+          done
+          echo "GitHub Pages did not publish exact build ${build_id}" >&2
+          exit 1
+      - name: Verify public mobile round trip
+        run: |
+          node world-generator/scripts/verify-adventure-0159-browser.mjs \
+            --url "$PUBLIC_ADVENTURE_URL" \
+            --public \
+            --output world-generator/adventure-0159-public-verification.json \
+            --screenshot /tmp/waft-0159-final-public.png
+      - name: Require exact public build and immutable inputs
+        run: |
+          node - <<'NODE'
+          const build = require('./world-generator/adventure-0159-build.json');
+          const local = require('./world-generator/adventure-0159-local-browser.json');
+          const published = require('./world-generator/adventure-0159-public-verification.json');
+          if (!published.valid || !published.public) throw new Error('Public Adventure verification is invalid');
+          if (published.buildId !== build.buildId || published.buildId !== local.buildId) throw new Error('Public Adventure build mismatch');
+          if (published.transitions !== 2 || published.discoveredRegions.length !== 2 || published.discoveredConnections.length !== 1) throw new Error('Public regional round trip is incomplete');
+          if (!published.restored) throw new Error('Public save restoration failed');
+          if (published.pageErrors.length || published.consoleErrors.length || published.requestFailures.length) throw new Error('Public browser errors remain');
+          NODE
+          test "$(git hash-object mallorca-mobile/waft-0155-estable.html)" = "5f156699565fd50ac9ce340d694275ad5c803d70"
+          test "$(git hash-object mallorca-mobile/waft-0158.html)" = "b605801b9b18cf5d88e24968b9674db0503eef21"
+          test "$(git hash-object mallorca-mobile/region-runtime-baleares-011.html)" = "54efca64586886fdd2f385f928489c786f925f31"
+      - name: Commit public verification
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/adventure-0159-public-verification.json
+          git commit -m "Verify public WAFT Adventure 0.15.9"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: waft-adventure-0159-final
+          path: |
+            /tmp/waft-0159-final-local.png
+            /tmp/waft-0159-final-public.png
+          retention-days: 7
