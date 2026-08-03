@@ -1,0 +1,101 @@
+name: Build WAFT Adventure 0.17.0 Reliable
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/build-waft-0170-trigger-v3.txt
+      - .github/workflows/build-waft-0170-v3.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-waft-0170-v3
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build dense places and persist all diagnostics
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/waft-0170-workflow.log
+          node --check world-generator/build-waft-0170-v2.js >> world-generator/waft-0170-workflow.log 2>&1
+          SYNTAX=$?
+          BUILD=99
+          VALIDATION=99
+          if [ "$SYNTAX" -eq 0 ]; then
+            node world-generator/build-waft-0170-v2.js >> world-generator/waft-0170-workflow.log 2>&1
+            BUILD=$?
+          fi
+          if [ "$BUILD" -eq 0 ]; then
+            node >> world-generator/waft-0170-workflow.log 2>&1 <<'NODE'
+          const fs = require('fs');
+          const { execFileSync } = require('child_process');
+          for (const file of ['mallorca-mobile/region-runtime-baleares-013.html','mallorca-mobile/region-runtime-catalunya-litoral-003.html','mallorca-mobile/waft-0170.html']) {
+            const html = fs.readFileSync(file,'utf8');
+            const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+            if (!scripts.length) throw new Error(file + ': sin scripts');
+            for (const script of scripts) new Function(script);
+          }
+          const adventure = fs.readFileSync('mallorca-mobile/waft-0170.html','utf8');
+          for (const marker of ['waft-adventure-0170-dense-places-v2','IR A BARCELONA','WAFTDirectTravel0170','region-runtime-baleares-013.html','region-runtime-catalunya-litoral-003.html']) if (!adventure.includes(marker)) throw new Error('Falta ' + marker);
+          const requirements = {
+            'baleares': {zones:4,buildings:850},
+            'catalunya-litoral': {zones:3,buildings:700}
+          };
+          const summary = {};
+          for (const [region, required] of Object.entries(requirements)) {
+            const base = `regions/${region}/local-0170`;
+            const registry = JSON.parse(fs.readFileSync(`${base}/zones-v1.json`,'utf8'));
+            if (registry.zoneCount < required.zones) throw new Error(`${region}: ${registry.zoneCount} zonas`);
+            if (registry.totalBuildings < required.buildings) throw new Error(`${region}: ${registry.totalBuildings} edificios`);
+            for (const zone of registry.zones) {
+              if (zone.buildingCount < 180) throw new Error(`${zone.name}: solo ${zone.buildingCount} edificios`);
+              const binary = fs.readFileSync(`${base}/${zone.binaryFile}`);
+              if (binary.subarray(0,8).toString('utf8') !== 'WAFTLZ01') throw new Error(`${zone.name}: cabecera inválida`);
+              if (binary.readUInt32LE(16) !== zone.buildingCount) throw new Error(`${zone.name}: recuento inválido`);
+              const digest = require('crypto').createHash('sha256').update(binary).digest('hex');
+              if (digest !== zone.binarySha256) throw new Error(`${zone.name}: SHA incorrecto`);
+            }
+            summary[region] = {zones:registry.zoneCount,buildings:registry.totalBuildings,minBuildings:Math.min(...registry.zones.map(zone=>zone.buildingCount)),maxBuildings:Math.max(...registry.zones.map(zone=>zone.buildingCount))};
+          }
+          const catalunya = JSON.parse(fs.readFileSync('regions/catalunya-litoral/local-0170/zones-v1.json','utf8'));
+          if (!catalunya.zones.some(zone => /barcelona/i.test(zone.name))) throw new Error('Barcelona no tiene zona local');
+          const stableSha = execFileSync('sha256sum',['mallorca-mobile/waft-0160.html'],{encoding:'utf8'}).trim().split(/\s+/)[0];
+          if (stableSha !== 'b0513dd14b4860739ce57030397d9c7a0966af6e2e4fdbbcad9656421322a2b7') throw new Error('La 0.16.0 fue modificada');
+          const status = JSON.parse(fs.readFileSync('world-generator/waft-0170-build-status.json','utf8'));
+          status.validation = {syntax:0,html:0,packages:0,density:0,barcelona:0,protectedSources:0,summary,validatedAt:new Date().toISOString()};
+          fs.writeFileSync('world-generator/waft-0170-build-status.json',JSON.stringify(status,null,2)+'\n');
+          console.log(JSON.stringify({valid:true,summary},null,2));
+          NODE
+            VALIDATION=$?
+          fi
+          node - "$SYNTAX" "$BUILD" "$VALIDATION" <<'NODE'
+          const fs = require('fs');
+          const syntax = Number(process.argv[2]);
+          const build = Number(process.argv[3]);
+          const validation = Number(process.argv[4]);
+          fs.writeFileSync('world-generator/waft-0170-workflow-status.json',JSON.stringify({syntax,build,validation,success:syntax===0&&build===0&&validation===0,recordedAt:new Date().toISOString()},null,2)+'\n');
+          NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/waft-0170-workflow.log world-generator/waft-0170-workflow-status.json
+          for file in world-generator/waft-0170-build-status.json mallorca-mobile/region-runtime-baleares-013.html mallorca-mobile/region-runtime-catalunya-litoral-003.html mallorca-mobile/waft-0170.html; do [ -f "$file" ] && git add "$file"; done
+          [ -d regions/baleares/local-0170 ] && git add regions/baleares/local-0170
+          [ -d regions/catalunya-litoral/local-0170 ] && git add regions/catalunya-litoral/local-0170
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate WAFT Adventure 0.17.0 dense places"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          [ "$SYNTAX" -eq 0 ] && [ "$BUILD" -eq 0 ] && [ "$VALIDATION" -eq 0 ]
