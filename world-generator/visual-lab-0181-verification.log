@@ -32,7 +32,7 @@
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {},
-    "createdAt": 855.1999999999534,
+    "createdAt": 698.3000000000029,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -68,12 +68,584 @@
     "hidden": true,
     "visible": true,
     "profile": "NÍTIDO · V2.3",
-    "meshCount": 360
+    "meshCount": 360,
+    "headCandidates": [
+      {
+        "name": "macaqueV2Torso",
+        "material": "macaqueV2Fur",
+        "vertices": 254,
+        "center": [
+          -22.987,
+          3.597,
+          -7.828
+        ],
+        "size": [
+          2.391,
+          2.285,
+          1.985
+        ]
+      },
+      {
+        "name": "macaqueV2Belly",
+        "material": "macaqueV2FurCream",
+        "vertices": 2145,
+        "center": [
+          -23.044,
+          3.463,
+          -8.569
+        ],
+        "size": [
+          1.425,
+          2.009,
+          0.487
+        ]
+      },
+      {
+        "name": "macaqueV2Eyeball-1",
+        "material": "macaqueV2Eye",
+        "vertices": 1431,
+        "center": [
+          -23.287,
+          5.49,
+          -8.791
+        ],
+        "size": [
+          0.206,
+          2.002,
+          0.151
+        ]
+      },
+      {
+        "name": "macaqueV2Eyeball1",
+        "material": "macaqueV2Eye",
+        "vertices": 1431,
+        "center": [
+          -22.838,
+          5.49,
+          -8.825
+        ],
+        "size": [
+          0.206,
+          2.002,
+          0.151
+        ]
+      },
+      {
+        "name": "macaqueV2Iris-1",
+        "material": "macaqueV2Iris",
+        "vertices": 1035,
+        "center": [
+          -23.29,
+          5.491,
+          -8.828
+        ],
+        "size": [
+          0.11,
+          2,
+          0.094
+        ]
+      },
+      {
+        "name": "macaqueV2Catchlight-1",
+        "material": "macaqueV2Catchlight",
+        "vertices": 703,
+        "center": [
+          -23.271,
+          5.519,
+          -8.845
+        ],
+        "size": [
+          0.041,
+          2,
+          0.071
+        ]
+      },
+      {
+        "name": "macaqueV2Iris1",
+        "material": "macaqueV2Iris",
+        "vertices": 1035,
+        "center": [
+          -22.841,
+          5.491,
+          -8.863
+        ],
+        "size": [
+          0.11,
+          2,
+          0.094
+        ]
+      },
+      {
+        "name": "macaqueV2Catchlight1",
+        "material": "macaqueV2Catchlight",
+        "vertices": 703,
+        "center": [
+          -22.862,
+          5.519,
+          -8.877
+        ],
+        "size": [
+          0.041,
+          2,
+          0.071
+        ]
+      },
+      {
+        "name": "macaqueV2UpperArm-1",
+        "material": "macaqueV2Fur",
+        "vertices": 133,
+        "center": [
+          -23.913,
+          3.861,
+          -8.287
+        ],
+        "size": [
+          0.932,
+          1.286,
+          1.115
+        ]
+      },
+      {
+        "name": "macaqueV2UpperArm1",
+        "material": "macaqueV2Fur",
+        "vertices": 133,
+        "center": [
+          -22.142,
+          3.861,
+          -8.425
+        ],
+        "size": [
+          0.932,
+          1.286,
+          1.115
+        ]
+      },
+      {
+        "name": "macaqueV2Head",
+        "material": "macaqueV5HeadFur",
+        "vertices": 212,
+        "center": [
+          -23.013,
+          5.366,
+          -8.3
+        ],
+        "size": [
+          1.699,
+          1.101,
+          1.522
+        ]
+      },
+      {
+        "name": "macaqueV2Shoulder-1",
+        "material": "macaqueV2Fur",
+        "vertices": 1431,
+        "center": [
+          -23.793,
+          4.201,
+          -8.011
+        ],
+        "size": [
+          0.906,
+          1.021,
+          0.947
+        ]
+      },
+      {
+        "name": "macaqueV2Shoulder1",
+        "material": "macaqueV2Fur",
+        "vertices": 1431,
+        "center": [
+          -22.218,
+          4.201,
+          -8.133
+        ],
+        "size": [
+          0.906,
+          1.021,
+          0.947
+        ]
+      },
+      {
+        "name": "macaqueV2FaceMask",
+        "material": "macaqueV2Skin",
+        "vertices": 2145,
+        "center": [
+          -23.046,
+          5.355,
+          -8.592
+        ],
+        "size": [
+          1.182,
+          0.947,
+          0.412
+        ]
+      },
+      {
+        "name": "macaqueV2Neck",
+        "material": "macaqueV2Fur",
+        "vertices": 147,
+        "center": [
+          -23.012,
+          4.633,
+          -8.16
+        ],
+        "size": [
+          1.141,
+          0.917,
+          1.167
+        ]
+      },
+      {
+        "name": "macaqueV2CheekL",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1431,
+        "center": [
+          -23.514,
+          5.311,
+          -8.416
+        ],
+        "size": [
+          0.658,
+          0.732,
+          0.564
+        ]
+      },
+      {
+        "name": "macaqueV2CheekR",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1431,
+        "center": [
+          -22.557,
+          5.311,
+          -8.491
+        ],
+        "size": [
+          0.658,
+          0.732,
+          0.564
+        ]
+      },
+      {
+        "name": "macaqueV3TempleFur-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -23.599,
+          5.566,
+          -8.223
+        ],
+        "size": [
+          0.491,
+          0.59,
+          0.449
+        ]
+      },
+      {
+        "name": "macaqueV3TempleFur1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -22.442,
+          5.566,
+          -8.312
+        ],
+        "size": [
+          0.491,
+          0.59,
+          0.449
+        ]
+      },
+      {
+        "name": "macaqueV2Muzzle",
+        "material": "macaqueV2Skin",
+        "vertices": 1891,
+        "center": [
+          -23.063,
+          5.13,
+          -8.817
+        ],
+        "size": [
+          0.839,
+          0.427,
+          0.343
+        ]
+      },
+      {
+        "name": "macaqueV3LowerCheek-1",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1225,
+        "center": [
+          -23.414,
+          5.107,
+          -8.68
+        ],
+        "size": [
+          0.418,
+          0.406,
+          0.28
+        ]
+      },
+      {
+        "name": "macaqueV3LowerCheek1",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1225,
+        "center": [
+          -22.696,
+          5.107,
+          -8.736
+        ],
+        "size": [
+          0.418,
+          0.406,
+          0.28
+        ]
+      },
+      {
+        "name": "macaqueV4EarOuter-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -23.809,
+          5.413,
+          -8.08
+        ],
+        "size": [
+          0.314,
+          0.382,
+          0.159
+        ]
+      },
+      {
+        "name": "macaqueV4EarOuter1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -22.213,
+          5.413,
+          -8.204
+        ],
+        "size": [
+          0.313,
+          0.382,
+          0.162
+        ]
+      },
+      {
+        "name": "macaqueV2EyeSocket-1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 1431,
+        "center": [
+          -23.284,
+          5.489,
+          -8.746
+        ],
+        "size": [
+          0.297,
+          0.232,
+          0.118
+        ]
+      },
+      {
+        "name": "macaqueV2EyeSocket1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 1431,
+        "center": [
+          -22.835,
+          5.489,
+          -8.781
+        ],
+        "size": [
+          0.297,
+          0.232,
+          0.118
+        ]
+      },
+      {
+        "name": "macaqueV3Chin",
+        "material": "macaqueV2Skin",
+        "vertices": 1431,
+        "center": [
+          -23.063,
+          5,
+          -8.81
+        ],
+        "size": [
+          0.511,
+          0.224,
+          0.204
+        ]
+      },
+      {
+        "name": "macaqueV4EarInner-1",
+        "material": "macaqueV2Skin",
+        "vertices": 1035,
+        "center": [
+          -23.823,
+          5.415,
+          -8.134
+        ],
+        "size": [
+          0.162,
+          0.221,
+          0.065
+        ]
+      },
+      {
+        "name": "macaqueV4EarInner1",
+        "material": "macaqueV2Skin",
+        "vertices": 1035,
+        "center": [
+          -22.208,
+          5.415,
+          -8.259
+        ],
+        "size": [
+          0.161,
+          0.221,
+          0.067
+        ]
+      },
+      {
+        "name": "macaqueV2Nose",
+        "material": "macaqueV2Nose",
+        "vertices": 1431,
+        "center": [
+          -23.074,
+          5.213,
+          -8.95
+        ],
+        "size": [
+          0.326,
+          0.146,
+          0.112
+        ]
+      },
+      {
+        "name": "macaqueV4Brow-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1035,
+        "center": [
+          -23.286,
+          5.62,
+          -8.772
+        ],
+        "size": [
+          0.371,
+          0.127,
+          0.099
+        ]
+      },
+      {
+        "name": "macaqueV4Brow1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1035,
+        "center": [
+          -22.837,
+          5.62,
+          -8.807
+        ],
+        "size": [
+          0.372,
+          0.127,
+          0.1
+        ]
+      },
+      {
+        "name": "macaqueV2Mouth",
+        "material": "macaqueV2Nose",
+        "vertices": 63,
+        "center": [
+          -23.095,
+          4.978,
+          -9.219
+        ],
+        "size": [
+          0.393,
+          0.081,
+          0.097
+        ]
+      },
+      {
+        "name": "macaqueV3LipLower",
+        "material": "macaqueV2Nose",
+        "vertices": 1225,
+        "center": [
+          -23.072,
+          5.043,
+          -8.929
+        ],
+        "size": [
+          0.343,
+          0.065,
+          0.078
+        ]
+      },
+      {
+        "name": "macaqueV4Eyelid-1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 861,
+        "center": [
+          -23.289,
+          5.526,
+          -8.822
+        ],
+        "size": [
+          0.218,
+          0.051,
+          0.054
+        ]
+      },
+      {
+        "name": "macaqueV4Eyelid1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 861,
+        "center": [
+          -22.841,
+          5.526,
+          -8.856
+        ],
+        "size": [
+          0.218,
+          0.051,
+          0.054
+        ]
+      },
+      {
+        "name": "macaqueV2NostrilL",
+        "material": "macaqueV2Eye",
+        "vertices": 703,
+        "center": [
+          -23.136,
+          5.214,
+          -8.983
+        ],
+        "size": [
+          0.047,
+          0.028,
+          0.024
+        ]
+      },
+      {
+        "name": "macaqueV2NostrilR",
+        "material": "macaqueV2Eye",
+        "vertices": 703,
+        "center": [
+          -23.017,
+          5.214,
+          -8.992
+        ],
+        "size": [
+          0.047,
+          0.028,
+          0.024
+        ]
+      }
+    ]
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T22:22:12.096Z"
+  "verifiedAt": "2026-08-05T22:26:14.982Z"
 }
 {
   "formatVersion": 1,
@@ -109,7 +681,7 @@
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {},
-    "createdAt": 632.2999999999884,
+    "createdAt": 669.5999999999913,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -145,10 +717,582 @@
     "hidden": true,
     "visible": true,
     "profile": "NÍTIDO · V2.3",
-    "meshCount": 360
+    "meshCount": 360,
+    "headCandidates": [
+      {
+        "name": "macaqueV2Torso",
+        "material": "macaqueV2Fur",
+        "vertices": 254,
+        "center": [
+          -22.986,
+          3.637,
+          -7.828
+        ],
+        "size": [
+          2.399,
+          2.282,
+          1.995
+        ]
+      },
+      {
+        "name": "macaqueV2Belly",
+        "material": "macaqueV2FurCream",
+        "vertices": 2145,
+        "center": [
+          -23.047,
+          3.506,
+          -8.569
+        ],
+        "size": [
+          1.426,
+          2.005,
+          0.494
+        ]
+      },
+      {
+        "name": "macaqueV2Eyeball-1",
+        "material": "macaqueV2Eye",
+        "vertices": 1431,
+        "center": [
+          -23.291,
+          5.533,
+          -8.789
+        ],
+        "size": [
+          0.207,
+          2.002,
+          0.152
+        ]
+      },
+      {
+        "name": "macaqueV2Eyeball1",
+        "material": "macaqueV2Eye",
+        "vertices": 1431,
+        "center": [
+          -22.842,
+          5.533,
+          -8.826
+        ],
+        "size": [
+          0.207,
+          2.002,
+          0.152
+        ]
+      },
+      {
+        "name": "macaqueV2Iris-1",
+        "material": "macaqueV2Iris",
+        "vertices": 1035,
+        "center": [
+          -23.294,
+          5.534,
+          -8.827
+        ],
+        "size": [
+          0.111,
+          2,
+          0.094
+        ]
+      },
+      {
+        "name": "macaqueV2Catchlight-1",
+        "material": "macaqueV2Catchlight",
+        "vertices": 703,
+        "center": [
+          -23.275,
+          5.562,
+          -8.844
+        ],
+        "size": [
+          0.041,
+          2,
+          0.071
+        ]
+      },
+      {
+        "name": "macaqueV2Iris1",
+        "material": "macaqueV2Iris",
+        "vertices": 1035,
+        "center": [
+          -22.845,
+          5.534,
+          -8.864
+        ],
+        "size": [
+          0.111,
+          2,
+          0.094
+        ]
+      },
+      {
+        "name": "macaqueV2Catchlight1",
+        "material": "macaqueV2Catchlight",
+        "vertices": 703,
+        "center": [
+          -22.867,
+          5.562,
+          -8.878
+        ],
+        "size": [
+          0.041,
+          2,
+          0.071
+        ]
+      },
+      {
+        "name": "macaqueV2UpperArm-1",
+        "material": "macaqueV2Fur",
+        "vertices": 133,
+        "center": [
+          -23.915,
+          3.904,
+          -8.283
+        ],
+        "size": [
+          0.937,
+          1.286,
+          1.119
+        ]
+      },
+      {
+        "name": "macaqueV2UpperArm1",
+        "material": "macaqueV2Fur",
+        "vertices": 133,
+        "center": [
+          -22.144,
+          3.904,
+          -8.429
+        ],
+        "size": [
+          0.937,
+          1.286,
+          1.119
+        ]
+      },
+      {
+        "name": "macaqueV2Head",
+        "material": "macaqueV5HeadFur",
+        "vertices": 212,
+        "center": [
+          -23.012,
+          5.409,
+          -8.3
+        ],
+        "size": [
+          1.7,
+          1.101,
+          1.523
+        ]
+      },
+      {
+        "name": "macaqueV2Shoulder-1",
+        "material": "macaqueV2Fur",
+        "vertices": 1431,
+        "center": [
+          -23.793,
+          4.244,
+          -8.007
+        ],
+        "size": [
+          0.91,
+          1.021,
+          0.951
+        ]
+      },
+      {
+        "name": "macaqueV2Shoulder1",
+        "material": "macaqueV2Fur",
+        "vertices": 1431,
+        "center": [
+          -22.219,
+          4.244,
+          -8.137
+        ],
+        "size": [
+          0.91,
+          1.021,
+          0.951
+        ]
+      },
+      {
+        "name": "macaqueV2FaceMask",
+        "material": "macaqueV2Skin",
+        "vertices": 2145,
+        "center": [
+          -23.049,
+          5.397,
+          -8.592
+        ],
+        "size": [
+          1.183,
+          0.947,
+          0.418
+        ]
+      },
+      {
+        "name": "macaqueV2Neck",
+        "material": "macaqueV2Fur",
+        "vertices": 147,
+        "center": [
+          -23.013,
+          4.676,
+          -8.16
+        ],
+        "size": [
+          1.146,
+          0.917,
+          1.171
+        ]
+      },
+      {
+        "name": "macaqueV2CheekL",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1431,
+        "center": [
+          -23.516,
+          5.354,
+          -8.414
+        ],
+        "size": [
+          0.66,
+          0.732,
+          0.567
+        ]
+      },
+      {
+        "name": "macaqueV2CheekR",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1431,
+        "center": [
+          -22.559,
+          5.354,
+          -8.493
+        ],
+        "size": [
+          0.66,
+          0.732,
+          0.567
+        ]
+      },
+      {
+        "name": "macaqueV3TempleFur-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -23.6,
+          5.609,
+          -8.22
+        ],
+        "size": [
+          0.492,
+          0.59,
+          0.451
+        ]
+      },
+      {
+        "name": "macaqueV3TempleFur1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -22.444,
+          5.609,
+          -8.315
+        ],
+        "size": [
+          0.492,
+          0.59,
+          0.451
+        ]
+      },
+      {
+        "name": "macaqueV2Muzzle",
+        "material": "macaqueV2Skin",
+        "vertices": 1891,
+        "center": [
+          -23.067,
+          5.173,
+          -8.817
+        ],
+        "size": [
+          0.84,
+          0.427,
+          0.347
+        ]
+      },
+      {
+        "name": "macaqueV3LowerCheek-1",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1225,
+        "center": [
+          -23.417,
+          5.15,
+          -8.678
+        ],
+        "size": [
+          0.419,
+          0.406,
+          0.282
+        ]
+      },
+      {
+        "name": "macaqueV3LowerCheek1",
+        "material": "macaqueV5FaceFur",
+        "vertices": 1225,
+        "center": [
+          -22.7,
+          5.15,
+          -8.737
+        ],
+        "size": [
+          0.419,
+          0.406,
+          0.282
+        ]
+      },
+      {
+        "name": "macaqueV4EarOuter-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -23.809,
+          5.456,
+          -8.076
+        ],
+        "size": [
+          0.315,
+          0.382,
+          0.16
+        ]
+      },
+      {
+        "name": "macaqueV4EarOuter1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1431,
+        "center": [
+          -22.214,
+          5.456,
+          -8.207
+        ],
+        "size": [
+          0.313,
+          0.382,
+          0.163
+        ]
+      },
+      {
+        "name": "macaqueV2EyeSocket-1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 1431,
+        "center": [
+          -23.287,
+          5.532,
+          -8.744
+        ],
+        "size": [
+          0.297,
+          0.232,
+          0.119
+        ]
+      },
+      {
+        "name": "macaqueV2EyeSocket1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 1431,
+        "center": [
+          -22.839,
+          5.532,
+          -8.781
+        ],
+        "size": [
+          0.297,
+          0.232,
+          0.119
+        ]
+      },
+      {
+        "name": "macaqueV3Chin",
+        "material": "macaqueV2Skin",
+        "vertices": 1431,
+        "center": [
+          -23.067,
+          5.043,
+          -8.81
+        ],
+        "size": [
+          0.512,
+          0.224,
+          0.206
+        ]
+      },
+      {
+        "name": "macaqueV4EarInner-1",
+        "material": "macaqueV2Skin",
+        "vertices": 1035,
+        "center": [
+          -23.823,
+          5.457,
+          -8.13
+        ],
+        "size": [
+          0.162,
+          0.221,
+          0.066
+        ]
+      },
+      {
+        "name": "macaqueV4EarInner1",
+        "material": "macaqueV2Skin",
+        "vertices": 1035,
+        "center": [
+          -22.209,
+          5.457,
+          -8.263
+        ],
+        "size": [
+          0.161,
+          0.221,
+          0.068
+        ]
+      },
+      {
+        "name": "macaqueV2Nose",
+        "material": "macaqueV2Nose",
+        "vertices": 1431,
+        "center": [
+          -23.078,
+          5.256,
+          -8.949
+        ],
+        "size": [
+          0.326,
+          0.146,
+          0.114
+        ]
+      },
+      {
+        "name": "macaqueV4Brow-1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1035,
+        "center": [
+          -23.289,
+          5.662,
+          -8.771
+        ],
+        "size": [
+          0.372,
+          0.127,
+          0.101
+        ]
+      },
+      {
+        "name": "macaqueV4Brow1",
+        "material": "macaqueV5HeadFur",
+        "vertices": 1035,
+        "center": [
+          -22.841,
+          5.662,
+          -8.808
+        ],
+        "size": [
+          0.372,
+          0.127,
+          0.102
+        ]
+      },
+      {
+        "name": "macaqueV2Mouth",
+        "material": "macaqueV2Nose",
+        "vertices": 63,
+        "center": [
+          -23.1,
+          5.021,
+          -9.219
+        ],
+        "size": [
+          0.393,
+          0.081,
+          0.098
+        ]
+      },
+      {
+        "name": "macaqueV3LipLower",
+        "material": "macaqueV2Nose",
+        "vertices": 1225,
+        "center": [
+          -23.077,
+          5.086,
+          -8.929
+        ],
+        "size": [
+          0.343,
+          0.065,
+          0.079
+        ]
+      },
+      {
+        "name": "macaqueV4Eyelid-1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 861,
+        "center": [
+          -23.293,
+          5.569,
+          -8.82
+        ],
+        "size": [
+          0.218,
+          0.051,
+          0.055
+        ]
+      },
+      {
+        "name": "macaqueV4Eyelid1",
+        "material": "macaqueV2SkinDark",
+        "vertices": 861,
+        "center": [
+          -22.845,
+          5.569,
+          -8.857
+        ],
+        "size": [
+          0.218,
+          0.051,
+          0.055
+        ]
+      },
+      {
+        "name": "macaqueV2NostrilL",
+        "material": "macaqueV2Eye",
+        "vertices": 703,
+        "center": [
+          -23.141,
+          5.257,
+          -8.982
+        ],
+        "size": [
+          0.048,
+          0.028,
+          0.024
+        ]
+      },
+      {
+        "name": "macaqueV2NostrilR",
+        "material": "macaqueV2Eye",
+        "vertices": 703,
+        "center": [
+          -23.022,
+          5.257,
+          -8.992
+        ],
+        "size": [
+          0.048,
+          0.028,
+          0.024
+        ]
+      }
+    ]
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T22:22:34.045Z"
+  "verifiedAt": "2026-08-05T22:26:35.255Z"
 }
