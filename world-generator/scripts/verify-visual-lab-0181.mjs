@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const BUILD_ID = 'waft-visual-lab-0181-v3';
+const BUILD_ID = 'waft-visual-lab-0181-v4';
 const VERSION = '0.18.1';
 
 function parseArgs(argv) {
@@ -51,7 +51,7 @@ async function verify() {
     });
     const response = await page.goto(options.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
     assert(response?.ok(), `La página devolvió ${response?.status()}`);
-    await page.waitForFunction(() => window.__WAFT_VISUAL_LAB_0181_READY__ === true && window.__WAFT_VISUAL_LAB_0181_REFINED__ === true && window.__WAFT_VISUAL_LAB_0181_POLISHED__ === true && Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
+    await page.waitForFunction(() => window.__WAFT_VISUAL_LAB_0181_READY__ === true && window.__WAFT_VISUAL_LAB_0181_REFINED__ === true && window.__WAFT_VISUAL_LAB_0181_POLISHED__ === true && window.__WAFT_VISUAL_LAB_0181_SHARP__ === true && Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
     await page.waitForTimeout(1500);
     const initial = await page.evaluate(() => window.WAFTVisualLab0181.getState());
     assert(initial.version === VERSION, `Versión inesperada: ${initial.version}`);
@@ -59,6 +59,9 @@ async function verify() {
     assert(initial.sectionCount === 8, `Solo hay ${initial.sectionCount} secciones`);
     assert(initial.refinedCharacter === true, 'El macaco refinado no está activo');
     assert(initial.polishedReview === true, 'La pasada de pulido no está activa');
+    assert(initial.crispRender === true, 'La pasada de nitidez no está activa');
+    assert(initial.crispHardwareScaling <= 1.01, `Escalado borroso: ${initial.crispHardwareScaling}`);
+    assert(initial.textureQualityCount >= 20, `Solo se mejoraron ${initial.textureQualityCount} texturas`);
     assert(initial.hiddenSigns >= 8, `Solo se ocultaron ${initial.hiddenSigns} carteles obstructivos`);
     assert(initial.focusPresetCount === 8, `Solo hay ${initial.focusPresetCount} encuadres de revisión`);
     assert(initial.mergedGroups >= 7, `Solo se fusionaron ${initial.mergedGroups} grupos estáticos`);
@@ -89,7 +92,7 @@ async function verify() {
     await page.locator('[data-vote="like"]').click();
     const feedback = await page.evaluate(() => window.WAFTVisualLab0181.getFeedback());
     assert(feedback.macaque === 'like', 'La valoración del diseño no se guardó');
-    await page.waitForTimeout(1900);
+    await page.waitForTimeout(800);
 
     const finalState = await page.evaluate(() => window.WAFTVisualLab0181.getState());
     assert(pageErrors.length === 0, `Errores de página: ${pageErrors.join(' | ')}`);
