@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#102228">
+<title>WAFT Visual Lab 0.18.1</title>
+<link rel="stylesheet" href="visual-lab-0181.css?v=waft-visual-lab-0181-v1">
+</head>
+<body>
+<canvas id="renderCanvas" aria-label="Laboratorio visual 3D de WAFT"></canvas>
+<header id="topbar">
+  <div class="brand"><b>WAFT VISUAL LAB</b><small>NATURALISMO ESTILIZADO · 0.18.1</small></div>
+  <div class="metrics">
+    <div class="metric">FPS <strong id="fps">--</strong></div>
+    <div class="metric">MALLAS <strong id="meshes">--</strong></div>
+    <div class="metric">PERFIL <strong id="profile">MOBILE</strong></div>
+  </div>
+</header>
+<aside id="info">
+  <h1 id="sectionTitle">Macaco protagonista</h1>
+  <div class="code" id="sectionCode">player_barbary_macaque_v1</div>
+  <p id="sectionDescription">Modelo orgánico candidato para sustituir las primitivas actuales.</p>
+  <ul id="sectionRules"></ul>
+  <div class="voteRow">
+    <button type="button" data-vote="like">ME GUSTA</button>
+    <button type="button" data-vote="change">CAMBIARÍA COSAS</button>
+  </div>
+</aside>
+<div id="help"><b>Cómo revisar:</b> arrastra para orbitar, pellizca o usa la rueda para acercarte. Toca una categoría inferior para centrarla. Las valoraciones se guardan solo en este dispositivo.</div>
+<nav id="sectionNav" aria-label="Categorías del laboratorio visual"></nav>
+<div id="toast"></div>
+<div id="loading"><div class="loadingCard"><b>WAFT VISUAL LAB</b><small id="loadingText">Preparando materiales procedurales…</small><div class="progress"><i id="loadingProgress"></i></div></div></div>
+<pre id="error"></pre>
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script src="visual-lab-0181.js?v=waft-visual-lab-0181-v1"></script>
+</body>
+</html>
