@@ -11,6 +11,8 @@ on:
       - mallorca-mobile/visual-lab-0181-polyfills.js
       - mallorca-mobile/visual-lab-0181-refine.js
       - mallorca-mobile/visual-lab-0181-polish.js
+      - mallorca-mobile/visual-lab-0181-sharp.js
+      - mallorca-mobile/visual-lab-0181-macaque-v2.js
       - world-generator/scripts/verify-visual-lab-0181.mjs
       - world-generator/visual-lab-0181-trigger.txt
       - .github/workflows/verify-waft-visual-lab-0181.yml
@@ -40,6 +42,8 @@ jobs:
           node --check mallorca-mobile/visual-lab-0181-polyfills.js
           node --check mallorca-mobile/visual-lab-0181-refine.js
           node --check mallorca-mobile/visual-lab-0181-polish.js
+          node --check mallorca-mobile/visual-lab-0181-sharp.js
+          node --check mallorca-mobile/visual-lab-0181-macaque-v2.js
           node --check world-generator/scripts/verify-visual-lab-0181.mjs
       - name: Install browser verifier
         run: npm install --no-save --no-package-lock playwright-core@1.55.0
@@ -57,19 +61,19 @@ jobs:
           SERVER_PID=$!
           sleep 2
           node world-generator/scripts/verify-visual-lab-0181.mjs \
-            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v3 \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v5 \
             --output world-generator/visual-lab-0181-local.json \
             --screenshot /tmp/visual-lab-0181-local.png \
             >> world-generator/visual-lab-0181-verification.log 2>&1
           LOCAL=$?
           kill "$SERVER_PID" >/dev/null 2>&1 || true
 
-          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v3"
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v5"
           if [ "$LOCAL" -eq 0 ]; then
             for attempt in $(seq 1 180); do
               page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
-              polish="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-polish.js?v=waft-visual-lab-0181-v3" || true)"
-              if printf '%s' "$page" | grep -q 'visual-lab-0181-polish.js' && printf '%s' "$polish" | grep -q 'waft-visual-lab-0181-v3'; then
+              model="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-macaque-v2.js?v=waft-visual-lab-0181-v5" || true)"
+              if printf '%s' "$page" | grep -q 'visual-lab-0181-macaque-v2.js' && printf '%s' "$model" | grep -q 'waft-visual-lab-0181-v5'; then
                 PUBLISHED=0
                 break
               fi
@@ -92,16 +96,17 @@ jobs:
           const success = [syntax,local,published,publicBrowser].every(value => value === 0);
           const status = {
             formatVersion:1,
-            buildId:'waft-visual-lab-0181-v3',
+            buildId:'waft-visual-lab-0181-v5',
             version:'0.18.1',
             syntax,local,published,public:publicBrowser,
             eightSections:success?0:99,
             navigation:success?0:99,
             feedback:success?0:99,
-            refinedCharacter:success?0:99,
-            mergedGeometry:success?0:99,
-            reviewLighting:success?0:99,
-            unobstructedFraming:success?0:99,
+            crispRender:success?0:99,
+            macaqueV2:success?0:99,
+            organicSurfaces:success?0:99,
+            naturalEyes:success?0:99,
+            handsAndFeet:success?0:99,
             webgl2:success?0:99,
             mobileViewport:success?0:99,
             success,
@@ -116,7 +121,7 @@ jobs:
           [ -f world-generator/visual-lab-0181-local.json ] && git add world-generator/visual-lab-0181-local.json
           [ -f world-generator/visual-lab-0181-public.json ] && git add world-generator/visual-lab-0181-public.json
           if ! git diff --cached --quiet; then
-            git commit -m "Record polished WAFT Visual Lab 0.18.1 verification"
+            git commit -m "Record WAFT organic macaque v2 verification"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
