@@ -4,12 +4,12 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const BUILD_ID='waft-visual-lab-0181-v8';
+const BUILD_ID='waft-visual-lab-0181-v9';
 function assert(value,message){if(!value)throw new Error(message);}
 function chromePath(){for(const candidate of [process.env.CHROME_BIN,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].filter(Boolean)){if(fs.existsSync(candidate))return candidate;}throw new Error('Chrome no está disponible');}
-function args(){const out={url:null,output:null,screenshot:null,public:false};const values=process.argv.slice(2);while(values.length){const flag=values.shift();if(flag==='--url')out.url=values.shift();else if(flag==='--output')out.output=values.shift();else if(flag==='--screenshot')out.screenshot=values.shift();else if(flag==='--public')out.public=true;else throw new Error(`Argumento desconocido: ${flag}`);}assert(out.url&&out.output,'--url y --output son obligatorios');return out;}
+function parseArgs(){const out={url:null,output:null,screenshot:null,public:false};const values=process.argv.slice(2);while(values.length){const flag=values.shift();if(flag==='--url')out.url=values.shift();else if(flag==='--output')out.output=values.shift();else if(flag==='--screenshot')out.screenshot=values.shift();else if(flag==='--public')out.public=true;else throw new Error(`Argumento desconocido: ${flag}`);}assert(out.url&&out.output,'--url y --output son obligatorios');return out;}
 
-const options=args();
+const options=parseArgs();
 const browser=await chromium.launch({executablePath:chromePath(),headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--ignore-gpu-blocklist','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
 const pageErrors=[];const consoleErrors=[];const requestFailures=[];
 try{
@@ -20,70 +20,52 @@ try{
   page.on('requestfailed',request=>{if(!request.url().endsWith('/favicon.ico'))requestFailures.push(`${request.url()}: ${request.failure()?.errorText||'failed'}`);});
   const response=await page.goto(options.url,{waitUntil:'domcontentloaded',timeout:120000});
   assert(response?.ok(),`La página devolvió ${response?.status()}`);
-  await page.waitForFunction(()=>window.__WAFT_VISUAL_LAB_0181_MACAQUE_SURFACEFIX__===true&&Boolean(window.WAFTVisualLab0181?.getState),null,{timeout:120000});
-  await page.waitForTimeout(1500);
+  await page.waitForFunction(()=>window.__WAFT_VISUAL_LAB_0181_MACAQUE_HEADSHELL__===true&&Boolean(window.WAFTVisualLab0181?.getState),null,{timeout:120000});
+  await page.waitForTimeout(1600);
   const state=await page.evaluate(()=>window.WAFTVisualLab0181.getState());
   assert(state.buildId===BUILD_ID,`Build inesperada: ${state.buildId}`);
   assert(state.crispRender===true,'La pasada nítida no está activa');
   assert(state.macaqueV2===true,'El macaco v2 no está activo');
-  assert(state.macaqueFaceFix2===true,'La anatomía facial estable no está activa');
-  assert(state.macaqueSurfaceFix===true,'La corrección de superficie no está activa');
-  assert(state.headFurMeshes>=7,`Solo se aplicó el pelaje de cabeza a ${state.headFurMeshes} mallas`);
-  assert(state.faceFurMeshes>=4,`Solo se aplicó el pelaje facial a ${state.faceFurMeshes} mallas`);
-  assert(state.macaqueSurfaceTextures===2,'Faltan texturas de superficie');
-  assert(state.unstableFacePartsHidden>=7,'Quedan piezas faciales inestables');
-  assert(state.macaqueV2Vertices>=6000,`Detalle insuficiente: ${state.macaqueV2Vertices} vértices`);
+  assert(state.macaqueHeadShell===true,'La cabeza orgánica no está activa');
+  assert(state.oldHeadHidden===true,'La cabeza defectuosa sigue visible');
+  assert(state.headShellVertices>=1000,`Cabeza con poco detalle: ${state.headShellVertices} vértices`);
+  assert(state.headShellMeshes>=5,`Solo hay ${state.headShellMeshes} volúmenes de cabeza`);
+  assert(state.headFaceRepositioned===true,'La cara no fue reposicionada');
   assert(state.webgl2===true,'WebGL2 no está activo');
   assert(state.crispHardwareScaling<=1.01,`Escalado borroso: ${state.crispHardwareScaling}`);
 
   const model=await page.evaluate(()=>{
     const scene=BABYLON.Engine.LastCreatedScene;
-    const head=scene.getMeshByName('macaqueV2Head');
-    head?.computeWorldMatrix(true);
-    const headMaterial=head?.material?.name||'';
-    const stretchedMaterial=scene.getMaterialByName('macaqueV2Fur');
-    const hidden=['macaqueV3EarOuter-1','macaqueV3EarOuter1','macaqueV3EarInner-1','macaqueV3EarInner1','macaqueV2Brow-1','macaqueV2Brow1','macaqueV3NoseBridge'].every(name=>{const mesh=scene.getMeshByName(name);return mesh&&!mesh.isEnabled();});
-    const visible=['macaqueV4EarOuter-1','macaqueV4EarOuter1','macaqueV4EarInner-1','macaqueV4EarInner1','macaqueV4Brow-1','macaqueV4Brow1'].every(name=>{const mesh=scene.getMeshByName(name);return mesh&&mesh.isEnabled();});
-    const hb=head?.getBoundingInfo().boundingBox;
-    const min=hb?.minimumWorld;
-    const max=hb?.maximumWorld;
-    const headCandidates=(min&&max?scene.meshes.filter(mesh=>{
-      if(!mesh.isEnabled()||mesh.getTotalVertices()===0)return false;
-      mesh.computeWorldMatrix(true);
-      const box=mesh.getBoundingInfo().boundingBox;
-      const bmin=box.minimumWorld,bmax=box.maximumWorld;
-      return bmax.x>=min.x-.25&&bmin.x<=max.x+.25&&bmax.y>=min.y-.35&&bmin.y<=max.y+.35&&bmax.z>=min.z-.45&&bmin.z<=max.z+.45;
-    }).map(mesh=>{
-      const box=mesh.getBoundingInfo().boundingBox;
-      const size=box.maximumWorld.subtract(box.minimumWorld);
-      const center=box.centerWorld;
-      return{name:mesh.name,material:mesh.material?.name||'',vertices:mesh.getTotalVertices(),center:[+center.x.toFixed(3),+center.y.toFixed(3),+center.z.toFixed(3)],size:[+size.x.toFixed(3),+size.y.toFixed(3),+size.z.toFixed(3)]};
-    }).sort((a,b)=>b.size[1]-a.size[1]):[]);
-    return{headMaterial,stretchedMaterialName:stretchedMaterial?.name||'',hidden,visible,profile:document.getElementById('profile')?.textContent||'',meshCount:scene.meshes.length,headCandidates};
+    const oldHead=scene.getMeshByName('macaqueV2Head');
+    const shell=scene.getMeshByName('macaqueV6HeadShell');
+    const crown=scene.getMeshByName('macaqueV6Crown');
+    const forehead=scene.getMeshByName('macaqueV6Forehead');
+    return{
+      oldHeadHidden:Boolean(oldHead&&!oldHead.isEnabled()),
+      shellEnabled:Boolean(shell?.isEnabled()),
+      shellMaterial:shell?.material?.name||'',
+      shellVertices:shell?.getTotalVertices()||0,
+      crownEnabled:Boolean(crown?.isEnabled()),
+      foreheadEnabled:Boolean(forehead?.isEnabled()),
+      profile:document.getElementById('profile')?.textContent||'',
+      code:document.getElementById('sectionCode')?.textContent||'',
+      meshCount:scene.meshes.length
+    };
   });
-  assert(model.headMaterial==='macaqueV5HeadFur',`Material de cabeza inesperado: ${model.headMaterial}`);
-  assert(model.hidden,'Quedan piezas deformadas visibles');
-  assert(model.visible,'Faltan piezas faciales estables');
-  assert(/V2\.3/.test(model.profile),`Perfil inesperado: ${model.profile}`);
-  assert(model.meshCount<=670,`Demasiadas mallas: ${model.meshCount}`);
+  assert(model.oldHeadHidden,'La malla rayada sigue habilitada');
+  assert(model.shellEnabled&&model.crownEnabled&&model.foreheadEnabled,'La nueva cabeza está incompleta');
+  assert(model.shellMaterial==='macaqueV5HeadFur',`Material inesperado: ${model.shellMaterial}`);
+  assert(model.shellVertices>=1000,`Cabeza demasiado simple: ${model.shellVertices}`);
+  assert(/V2\.4/.test(model.profile),`Perfil inesperado: ${model.profile}`);
+  assert(model.code==='player_barbary_macaque_v2',`Código inesperado: ${model.code}`);
+  assert(model.meshCount<=680,`Demasiadas mallas: ${model.meshCount}`);
 
   const sectionIds=await page.evaluate(()=>window.WAFTVisualLab0181.getSections().map(section=>section.id));
   assert(sectionIds.length===8&&new Set(sectionIds).size===8,'Las ocho secciones no están disponibles');
-  for(const id of sectionIds){await page.evaluate(sectionId=>window.WAFTVisualLab0181.focus(sectionId,true),id);await page.waitForTimeout(70);const active=await page.evaluate(()=>window.WAFTVisualLab0181.getState().activeSection);assert(active===id,`No se pudo enfocar ${id}`);}
+  for(const id of sectionIds){await page.evaluate(sectionId=>window.WAFTVisualLab0181.focus(sectionId,true),id);await page.waitForTimeout(70);assert(await page.evaluate(()=>window.WAFTVisualLab0181.getState().activeSection)===id,`No se pudo enfocar ${id}`);}
   await page.evaluate(()=>window.WAFTVisualLab0181.focus('macaque',true));
-  await page.waitForTimeout(500);
-  if(options.screenshot){
-    await page.screenshot({path:options.screenshot,type:'png'});
-    const ext=path.extname(options.screenshot);
-    const base=options.screenshot.slice(0,-ext.length);
-    await page.evaluate(()=>{const mesh=BABYLON.Engine.LastCreatedScene.getMeshByName('macaqueV2Head');if(mesh)mesh.setEnabled(false);});
-    await page.waitForTimeout(120);
-    await page.screenshot({path:`${base}-nohead${ext}`,type:'png'});
-    await page.evaluate(()=>{const scene=BABYLON.Engine.LastCreatedScene;const mesh=scene.getMeshByName('macaqueV2Head');if(mesh)mesh.setEnabled(true);window.__diagHidden=[];for(const candidate of scene.meshes){if(!candidate.isEnabled())continue;if(/Finger|Toe|Thumb|Mouth|Brow|Lip|NoseBridge/.test(candidate.name)){candidate.setEnabled(false);window.__diagHidden.push(candidate.name);}}});
-    await page.waitForTimeout(120);
-    await page.screenshot({path:`${base}-nothinparts${ext}`,type:'png'});
-    await page.evaluate(()=>{const scene=BABYLON.Engine.LastCreatedScene;for(const name of window.__diagHidden||[]){scene.getMeshByName(name)?.setEnabled(true);}});
-  }
+  await page.waitForTimeout(550);
+  if(options.screenshot)await page.screenshot({path:options.screenshot,type:'png'});
   assert(pageErrors.length===0,`Errores de página: ${pageErrors.join(' | ')}`);
   assert(consoleErrors.length===0,`Errores de consola: ${consoleErrors.join(' | ')}`);
   assert(requestFailures.length===0,`Fallos de red: ${requestFailures.join(' | ')}`);
