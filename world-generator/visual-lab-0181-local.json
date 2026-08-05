@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v11",
-  "buildId": "waft-visual-lab-0181-v11",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v12",
+  "buildId": "waft-visual-lab-0181-v12",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -22,17 +22,17 @@
   ],
   "state": {
     "version": "0.18.1",
-    "buildId": "waft-visual-lab-0181-v11",
+    "buildId": "waft-visual-lab-0181-v12",
     "ready": true,
     "activeSection": "macaque",
     "sectionCount": 8,
-    "meshCount": 366,
+    "meshCount": 1035,
     "materialCount": 36,
     "fps": 1,
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {},
-    "createdAt": 402.1000000000058,
+    "createdAt": 853.8000000000029,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -78,55 +78,59 @@
       "macaqueV2Eyeball1",
       "macaqueV2Iris1",
       "macaqueV2Catchlight1"
-    ]
+    ],
+    "architectureV2": true,
+    "urbanV2Buildings": 3,
+    "villageV2Houses": 6,
+    "oldUrbanMeshesHidden": 6,
+    "oldVillageMeshesHidden": 9,
+    "architectureV2ShadowCasters": 669
   },
   "model": {
+    "allEyesCompact": true,
     "eyeParts": [
       {
         "name": "macaqueV2Eyeball-1",
-        "enabled": true,
         "scaleY": 0.086,
         "sizeY": 0.17409603344276547
       },
       {
         "name": "macaqueV2Eyeball1",
-        "enabled": true,
         "scaleY": 0.086,
         "sizeY": 0.17409603344276547
       },
       {
         "name": "macaqueV2Iris-1",
-        "enabled": true,
         "scaleY": 0.052,
         "sizeY": 0.10486740892520174
       },
       {
         "name": "macaqueV2Iris1",
-        "enabled": true,
         "scaleY": 0.052,
         "sizeY": 0.10486740892520174
       },
       {
         "name": "macaqueV2Catchlight-1",
-        "enabled": true,
         "scaleY": 0.018,
         "sizeY": 0.03643870117957704
       },
       {
         "name": "macaqueV2Catchlight1",
-        "enabled": true,
         "scaleY": 0.018,
         "sizeY": 0.03643870117957704
       }
     ],
-    "allEyesCompact": true,
-    "shellEnabled": true,
-    "profile": "NÍTIDO · V2.6",
-    "code": "player_barbary_macaque_v2",
-    "meshCount": 366
+    "urbanEnabled": true,
+    "urbanMeshes": 507,
+    "villageEnabled": true,
+    "villageMeshes": 162,
+    "urbanBuildingNodes": 3,
+    "villageHouseNodes": 6,
+    "architectureMaterials": 20,
+    "meshCount": 1035
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T22:40:02.486Z"
+  "verifiedAt": "2026-08-05T22:45:30.893Z"
 }

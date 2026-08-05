@@ -1,9 +1,272 @@
-file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181-v8.mjs:8
-function assert(value,message){if(!value)throw new Error(message);}
-                                               ^
-
-Error: Build inesperada: waft-visual-lab-0181-v12
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181-v8.mjs:8:48)
-    at file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181-v8.mjs:26:3
-
-Node.js v20.20.2
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v12",
+  "buildId": "waft-visual-lab-0181-v12",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "state": {
+    "version": "0.18.1",
+    "buildId": "waft-visual-lab-0181-v12",
+    "ready": true,
+    "activeSection": "macaque",
+    "sectionCount": 8,
+    "meshCount": 1035,
+    "materialCount": 36,
+    "fps": 1,
+    "webgl2": true,
+    "hardwareScaling": 1,
+    "feedback": {},
+    "createdAt": 853.8000000000029,
+    "refinedCharacter": true,
+    "mergedGroups": 43,
+    "polishedReview": true,
+    "hiddenSigns": 22,
+    "focusPresetCount": 8,
+    "crispRender": true,
+    "textureQualityCount": 38,
+    "crispHardwareScaling": 1,
+    "crispRenderWidth": 844,
+    "crispRenderHeight": 390,
+    "macaqueV2": true,
+    "macaqueV2MeshCount": 72,
+    "macaqueV2Vertices": 42424,
+    "macaqueV2OrganicSurfaces": 4,
+    "macaqueFaceFix": true,
+    "macaqueFaceAdjusted": true,
+    "hiddenOldEars": 4,
+    "newEarMeshes": 4,
+    "naturalEyePairs": 2,
+    "macaqueFaceFix2": true,
+    "unstableFacePartsHidden": 7,
+    "compactEarParts": 4,
+    "stableBrowParts": 2,
+    "naturalEyePairsV2": 2,
+    "macaqueSurfaceFix": true,
+    "headFurMeshes": 7,
+    "faceFurMeshes": 4,
+    "macaqueSurfaceTextures": 2,
+    "macaqueHeadShell": true,
+    "oldHeadHidden": true,
+    "headShellVertices": 3655,
+    "headShellMeshes": 5,
+    "headFaceRepositioned": true,
+    "headSelfShadowDisabled": true,
+    "headShadowCastersRemoved": 31,
+    "macaqueBlinkFix": true,
+    "correctedEyeParts": 6,
+    "maxCorrectedEyeScaleY": 0.086,
+    "correctedEyeNames": [
+      "macaqueV2Eyeball-1",
+      "macaqueV2Iris-1",
+      "macaqueV2Catchlight-1",
+      "macaqueV2Eyeball1",
+      "macaqueV2Iris1",
+      "macaqueV2Catchlight1"
+    ],
+    "architectureV2": true,
+    "urbanV2Buildings": 3,
+    "villageV2Houses": 6,
+    "oldUrbanMeshesHidden": 6,
+    "oldVillageMeshesHidden": 9,
+    "architectureV2ShadowCasters": 669
+  },
+  "model": {
+    "allEyesCompact": true,
+    "eyeParts": [
+      {
+        "name": "macaqueV2Eyeball-1",
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Eyeball1",
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Iris-1",
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Iris1",
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Catchlight-1",
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      },
+      {
+        "name": "macaqueV2Catchlight1",
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      }
+    ],
+    "urbanEnabled": true,
+    "urbanMeshes": 507,
+    "villageEnabled": true,
+    "villageMeshes": 162,
+    "urbanBuildingNodes": 3,
+    "villageHouseNodes": 6,
+    "architectureMaterials": 20,
+    "meshCount": 1035
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": [],
+  "verifiedAt": "2026-08-05T22:45:30.893Z"
+}
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v12",
+  "buildId": "waft-visual-lab-0181-v12",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "state": {
+    "version": "0.18.1",
+    "buildId": "waft-visual-lab-0181-v12",
+    "ready": true,
+    "activeSection": "macaque",
+    "sectionCount": 8,
+    "meshCount": 1035,
+    "materialCount": 36,
+    "fps": 1,
+    "webgl2": true,
+    "hardwareScaling": 1,
+    "feedback": {},
+    "createdAt": 700.1000000000349,
+    "refinedCharacter": true,
+    "mergedGroups": 43,
+    "polishedReview": true,
+    "hiddenSigns": 22,
+    "focusPresetCount": 8,
+    "crispRender": true,
+    "textureQualityCount": 38,
+    "crispHardwareScaling": 1,
+    "crispRenderWidth": 844,
+    "crispRenderHeight": 390,
+    "macaqueV2": true,
+    "macaqueV2MeshCount": 72,
+    "macaqueV2Vertices": 42424,
+    "macaqueV2OrganicSurfaces": 4,
+    "macaqueFaceFix": true,
+    "macaqueFaceAdjusted": true,
+    "hiddenOldEars": 4,
+    "newEarMeshes": 4,
+    "naturalEyePairs": 2,
+    "macaqueFaceFix2": true,
+    "unstableFacePartsHidden": 7,
+    "compactEarParts": 4,
+    "stableBrowParts": 2,
+    "naturalEyePairsV2": 2,
+    "macaqueSurfaceFix": true,
+    "headFurMeshes": 7,
+    "faceFurMeshes": 4,
+    "macaqueSurfaceTextures": 2,
+    "macaqueHeadShell": true,
+    "oldHeadHidden": true,
+    "headShellVertices": 3655,
+    "headShellMeshes": 5,
+    "headFaceRepositioned": true,
+    "headSelfShadowDisabled": true,
+    "headShadowCastersRemoved": 31,
+    "macaqueBlinkFix": true,
+    "correctedEyeParts": 6,
+    "maxCorrectedEyeScaleY": 0.086,
+    "correctedEyeNames": [
+      "macaqueV2Eyeball-1",
+      "macaqueV2Iris-1",
+      "macaqueV2Catchlight-1",
+      "macaqueV2Eyeball1",
+      "macaqueV2Iris1",
+      "macaqueV2Catchlight1"
+    ],
+    "architectureV2": true,
+    "urbanV2Buildings": 3,
+    "villageV2Houses": 6,
+    "oldUrbanMeshesHidden": 6,
+    "oldVillageMeshesHidden": 9,
+    "architectureV2ShadowCasters": 669
+  },
+  "model": {
+    "allEyesCompact": true,
+    "eyeParts": [
+      {
+        "name": "macaqueV2Eyeball-1",
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Eyeball1",
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Iris-1",
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Iris1",
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Catchlight-1",
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      },
+      {
+        "name": "macaqueV2Catchlight1",
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      }
+    ],
+    "urbanEnabled": true,
+    "urbanMeshes": 507,
+    "villageEnabled": true,
+    "villageMeshes": 162,
+    "urbanBuildingNodes": 3,
+    "villageHouseNodes": 6,
+    "architectureMaterials": 20,
+    "meshCount": 1035
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": [],
+  "verifiedAt": "2026-08-05T22:50:49.505Z"
+}

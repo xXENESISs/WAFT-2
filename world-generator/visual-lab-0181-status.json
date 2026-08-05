@@ -1,16 +1,16 @@
 {
   "formatVersion": 1,
-  "buildId": "waft-visual-lab-0181-v11",
+  "buildId": "waft-visual-lab-0181-v12",
   "version": "0.18.1",
-  "local": 1,
-  "published": 99,
-  "public": 99,
-  "crispRender": 99,
-  "macaqueV2": 99,
-  "organicHeadShell": 99,
-  "compactEyes": 99,
-  "blinkAnimation": 99,
-  "mobileViewport": 99,
-  "success": false,
-  "verifiedAt": "2026-08-05T22:44:00.147Z"
+  "local": 0,
+  "published": 0,
+  "public": 0,
+  "crispRender": 0,
+  "macaqueV2": 0,
+  "correctedEyes": 0,
+  "urbanArchitectureV2": 0,
+  "villageArchitectureV2": 0,
+  "mobileViewport": 0,
+  "success": true,
+  "verifiedAt": "2026-08-05T22:50:49.976Z"
 }
