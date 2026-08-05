@@ -1,0 +1,122 @@
+name: Verify WAFT Visual Lab 0.18.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - mallorca-mobile/visual-lab-0181.html
+      - mallorca-mobile/visual-lab-0181.css
+      - mallorca-mobile/visual-lab-0181.js
+      - world-generator/scripts/verify-visual-lab-0181.mjs
+      - world-generator/visual-lab-0181-trigger.txt
+      - .github/workflows/verify-waft-visual-lab-0181.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-waft-visual-lab-0181
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check JavaScript syntax
+        run: |
+          node --check mallorca-mobile/visual-lab-0181.js
+          node --check world-generator/scripts/verify-visual-lab-0181.mjs
+      - name: Install browser verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Verify local and public laboratory
+        shell: bash
+        run: |
+          set +e
+          : > world-generator/visual-lab-0181-verification.log
+          SYNTAX=0
+          LOCAL=99
+          PUBLISHED=99
+          PUBLIC=99
+
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-visual-lab-server.log 2>&1 &
+          SERVER_PID=$!
+          sleep 2
+          node world-generator/scripts/verify-visual-lab-0181.mjs \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v1 \
+            --output world-generator/visual-lab-0181-local.json \
+            --screenshot /tmp/visual-lab-0181-local.png \
+            >> world-generator/visual-lab-0181-verification.log 2>&1
+          LOCAL=$?
+          kill "$SERVER_PID" >/dev/null 2>&1 || true
+
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v1"
+          if [ "$LOCAL" -eq 0 ]; then
+            for attempt in $(seq 1 180); do
+              page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
+              script="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.js?v=waft-visual-lab-0181-v1" || true)"
+              if printf '%s' "$page" | grep -q 'WAFT VISUAL LAB' && printf '%s' "$script" | grep -q 'waft-visual-lab-0181-v1'; then
+                PUBLISHED=0
+                break
+              fi
+              sleep 4
+            done
+          fi
+          if [ "$PUBLISHED" -eq 0 ]; then
+            node world-generator/scripts/verify-visual-lab-0181.mjs \
+              --url "$PAGE_URL" \
+              --public \
+              --output world-generator/visual-lab-0181-public.json \
+              --screenshot /tmp/visual-lab-0181-public.png \
+              >> world-generator/visual-lab-0181-verification.log 2>&1
+            PUBLIC=$?
+          fi
+
+          node - "$SYNTAX" "$LOCAL" "$PUBLISHED" "$PUBLIC" <<'NODE'
+          const fs = require('fs');
+          const [syntax,local,published,publicBrowser] = process.argv.slice(2).map(Number);
+          const success = [syntax,local,published,publicBrowser].every(value => value === 0);
+          const status = {
+            formatVersion:1,
+            buildId:'waft-visual-lab-0181-v1',
+            version:'0.18.1',
+            syntax,local,published,public:publicBrowser,
+            eightSections:success?0:99,
+            navigation:success?0:99,
+            feedback:success?0:99,
+            webgl2:success?0:99,
+            mobileViewport:success?0:99,
+            success,
+            verifiedAt:new Date().toISOString()
+          };
+          fs.writeFileSync('world-generator/visual-lab-0181-status.json',JSON.stringify(status,null,2)+'\n');
+          NODE
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/visual-lab-0181-verification.log world-generator/visual-lab-0181-status.json
+          [ -f world-generator/visual-lab-0181-local.json ] && git add world-generator/visual-lab-0181-local.json
+          [ -f world-generator/visual-lab-0181-public.json ] && git add world-generator/visual-lab-0181-public.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record WAFT Visual Lab 0.18.1 verification"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          [ "$LOCAL" -eq 0 ] && [ "$PUBLISHED" -eq 0 ] && [ "$PUBLIC" -eq 0 ]
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: waft-visual-lab-0181-screenshots
+          path: |
+            /tmp/visual-lab-0181-local.png
+            /tmp/visual-lab-0181-public.png
+          if-no-files-found: ignore
+          retention-days: 7
