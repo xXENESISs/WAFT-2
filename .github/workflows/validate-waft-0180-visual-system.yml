@@ -1,0 +1,49 @@
+name: Validate WAFT 0.18 Visual System
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - docs/visual/WAFT-ADVENTURE-VISUAL-BIBLE-v1.md
+      - docs/visual/WAFT-0180-TECHNICAL-SPEC-v1.md
+      - world-generator/schema/visual-system.schema.json
+      - world-generator/configs/visual-system-v1.json
+      - world-generator/scripts/validate-visual-system.mjs
+      - world-generator/visual-system-validation-trigger.txt
+      - .github/workflows/validate-waft-0180-visual-system.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-waft-0180-visual-system
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate contracts and semantics
+        run: |
+          node --check world-generator/scripts/validate-visual-system.mjs
+          node world-generator/scripts/validate-visual-system.mjs
+      - name: Commit validation report
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/visual-system-validation-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Validate WAFT 0.18 visual system"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
