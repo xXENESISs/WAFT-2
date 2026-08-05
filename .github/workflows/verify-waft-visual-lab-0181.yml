@@ -16,6 +16,7 @@ on:
       - mallorca-mobile/visual-lab-0181-macaque-facefix.js
       - mallorca-mobile/visual-lab-0181-macaque-facefix2.js
       - mallorca-mobile/visual-lab-0181-macaque-surfacefix.js
+      - mallorca-mobile/visual-lab-0181-macaque-headshell.js
       - world-generator/scripts/verify-visual-lab-0181-v8.mjs
       - .github/workflows/verify-waft-visual-lab-0181.yml
 
@@ -49,6 +50,7 @@ jobs:
           node --check mallorca-mobile/visual-lab-0181-macaque-facefix.js
           node --check mallorca-mobile/visual-lab-0181-macaque-facefix2.js
           node --check mallorca-mobile/visual-lab-0181-macaque-surfacefix.js
+          node --check mallorca-mobile/visual-lab-0181-macaque-headshell.js
           node --check world-generator/scripts/verify-visual-lab-0181-v8.mjs
       - name: Install browser verifier
         run: npm install --no-save --no-package-lock playwright-core@1.55.0
@@ -65,19 +67,19 @@ jobs:
           SERVER_PID=$!
           sleep 2
           node world-generator/scripts/verify-visual-lab-0181-v8.mjs \
-            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v8 \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v9 \
             --output world-generator/visual-lab-0181-local.json \
             --screenshot /tmp/visual-lab-0181-local.png \
             >> world-generator/visual-lab-0181-verification.log 2>&1
           LOCAL=$?
           kill "$SERVER_PID" >/dev/null 2>&1 || true
 
-          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v8"
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v9"
           if [ "$LOCAL" -eq 0 ]; then
             for attempt in $(seq 1 180); do
               page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
-              surface="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-macaque-surfacefix.js?v=waft-visual-lab-0181-v8" || true)"
-              if printf '%s' "$page" | grep -q 'visual-lab-0181-macaque-surfacefix.js' && printf '%s' "$surface" | grep -q 'waft-visual-lab-0181-v8'; then
+              head="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-macaque-headshell.js?v=waft-visual-lab-0181-v9" || true)"
+              if printf '%s' "$page" | grep -q 'visual-lab-0181-macaque-headshell.js' && printf '%s' "$head" | grep -q 'waft-visual-lab-0181-v9'; then
                 PUBLISHED=0
                 break
               fi
@@ -100,14 +102,13 @@ jobs:
           const success=[local,published,publicBrowser].every(value=>value===0);
           fs.writeFileSync('world-generator/visual-lab-0181-status.json',JSON.stringify({
             formatVersion:1,
-            buildId:'waft-visual-lab-0181-v8',
+            buildId:'waft-visual-lab-0181-v9',
             version:'0.18.1',
             local,published,public:publicBrowser,
             crispRender:success?0:99,
             macaqueV2:success?0:99,
-            stableFace:success?0:99,
-            headSurface:success?0:99,
-            unstretchedFur:success?0:99,
+            organicHeadShell:success?0:99,
+            brokenHeadRemoved:success?0:99,
             mobileViewport:success?0:99,
             success,
             verifiedAt:new Date().toISOString()
@@ -120,7 +121,7 @@ jobs:
           [ -f world-generator/visual-lab-0181-local.json ] && git add world-generator/visual-lab-0181-local.json
           [ -f world-generator/visual-lab-0181-public.json ] && git add world-generator/visual-lab-0181-public.json
           if ! git diff --cached --quiet; then
-            git commit -m "Record WAFT macaque surface verification"
+            git commit -m "Record WAFT macaque head shell verification"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
