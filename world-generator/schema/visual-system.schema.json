@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://waft.example/schema/visual-system.schema.json",
+  "title": "WAFT Adventure global visual system",
+  "description": "Authorial registry for the reusable visual language of the WAFT open world.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "version",
+    "status",
+    "style",
+    "compatibility",
+    "assetPipeline",
+    "qualityProfiles",
+    "materialFamilies",
+    "visualBiomes",
+    "environmentModifiers",
+    "culturalFamilies",
+    "architectureFamilies",
+    "vegetationFamilies",
+    "settlementTypes",
+    "districts",
+    "pilots",
+    "transferTest"
+  ],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/slug" },
+    "version": { "$ref": "#/$defs/semver" },
+    "status": { "enum": ["draft", "prototype", "candidate", "stable"] },
+    "style": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction", "naturalismRatio", "stylizationRatio", "forbiddenPatterns"],
+      "properties": {
+        "direction": { "const": "stylized_naturalism" },
+        "naturalismRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "stylizationRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "forbiddenPatterns": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumAdventureVersion", "preserveSaveKeys", "fallbackRuntime", "visualStateIsAuthoritative"],
+      "properties": {
+        "minimumAdventureVersion": { "$ref": "#/$defs/semver" },
+        "preserveSaveKeys": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "fallbackRuntime": { "type": "string", "minLength": 1 },
+        "visualStateIsAuthoritative": { "const": false }
+      }
+    },
+    "assetPipeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelFormat", "textureFormat", "coordinateSystem", "unit", "assetStates", "requiredLods"],
+      "properties": {
+        "modelFormat": { "enum": ["glb", "gltf"] },
+        "textureFormat": { "enum": ["ktx2-basis", "webp", "png"] },
+        "coordinateSystem": { "const": "y-up-right-handed-front-positive-z" },
+        "unit": { "const": "meter" },
+        "assetStates": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "enum": ["placeholder", "candidate", "approved", "deprecated"] }
+        },
+        "requiredLods": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": { "enum": ["lod0", "lod1", "lod2", "shadow"] }
+        }
+      }
+    },
+    "qualityProfiles": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/qualityProfile" }
+    },
+    "materialFamilies": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/materialFamily" }
+    },
+    "visualBiomes": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/visualBiome" }
+    },
+    "environmentModifiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/environmentModifier" }
+    },
+    "culturalFamilies": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/culturalFamily" }
+    },
+    "architectureFamilies": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/architectureFamily" }
+    },
+    "vegetationFamilies": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/vegetationFamily" }
+    },
+    "settlementTypes": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/settlementType" }
+    },
+    "districts": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/district" }
+    },
+    "pilots": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/pilot" }
+    },
+    "transferTest": { "$ref": "#/$defs/transferTest" }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": ["planned", "prototype", "candidate", "implemented", "approved", "deprecated"]
+    },
+    "lodBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lod0", "lod1", "lod2"],
+      "properties": {
+        "lod0": { "type": "integer", "minimum": 1 },
+        "lod1": { "type": "integer", "minimum": 1 },
+        "lod2": { "type": "integer", "minimum": 1 },
+        "shadow": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "softHardBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended", "hardMaximum"],
+      "properties": {
+        "recommended": { "type": "number", "minimum": 0 },
+        "hardMaximum": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "qualityProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "targetFps",
+        "resolutionScale",
+        "maximumTextureSize",
+        "shadowMode",
+        "budgets"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "targetFps": { "type": "integer", "minimum": 24, "maximum": 240 },
+        "aspirationalFps": { "type": "integer", "minimum": 24, "maximum": 240 },
+        "resolutionScale": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+            "maximum": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 }
+          }
+        },
+        "maximumTextureSize": { "type": "integer", "minimum": 256, "maximum": 8192 },
+        "heroTextureSize": { "type": "integer", "minimum": 256, "maximum": 8192 },
+        "shadowMode": { "enum": ["none", "hero-only", "limited-directional", "full-directional"] },
+        "budgets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["visibleTriangles", "drawCalls", "visibleInstances", "residentTexturesMb", "residentGeometryMb", "initialPackageMb", "firstUsefulFrameSeconds"],
+          "properties": {
+            "visibleTriangles": { "$ref": "#/$defs/softHardBudget" },
+            "drawCalls": { "$ref": "#/$defs/softHardBudget" },
+            "visibleInstances": { "$ref": "#/$defs/softHardBudget" },
+            "residentTexturesMb": { "$ref": "#/$defs/softHardBudget" },
+            "residentGeometryMb": { "$ref": "#/$defs/softHardBudget" },
+            "initialPackageMb": { "$ref": "#/$defs/softHardBudget" },
+            "firstUsefulFrameSeconds": { "$ref": "#/$defs/softHardBudget" }
+          }
+        }
+      }
+    },
+    "materialFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "kind", "channels", "maximumResolution", "tags"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "kind": { "enum": ["terrain", "architecture", "vegetation", "water", "character", "prop"] },
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["baseColor", "normal", "roughness", "metallic", "ambientOcclusion", "emissive", "opacity"] }
+        },
+        "maximumResolution": { "type": "integer", "minimum": 256, "maximum": 4096 },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        }
+      }
+    },
+    "visualBiome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "terrainMaterials", "vegetationFamilies", "lightingProfile", "waterProfile", "combatBiomeFallbacks"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "terrainMaterials": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "vegetationFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "lightingProfile": { "$ref": "#/$defs/slug" },
+        "waterProfile": { "$ref": "#/$defs/slug" },
+        "combatBiomeFallbacks": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["arctic", "desert", "jungle", "forest", "marine", "mountain"] }
+        }
+      }
+    },
+    "environmentModifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "effects"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "effects": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["terrain", "vegetation", "architecture", "water", "lighting", "atmosphere", "props"] }
+        }
+      }
+    },
+    "culturalFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "architectureFamilies", "propKits", "paletteTags"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "architectureFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "propKits": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "paletteTags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        }
+      }
+    },
+    "architectureFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "tags", "compatibleBiomes", "compatibleSettlementTypes", "materialFamilies", "requiredModules", "lodTriangleBudgets", "collisionMode", "maximumFoundationSlopeDegrees"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "compatibleBiomes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "compatibleSettlementTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "materialFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "requiredModules": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["masses", "roofs", "corners", "entrances", "windowRhythms", "detailVariants"],
+          "properties": {
+            "masses": { "type": "integer", "minimum": 1 },
+            "roofs": { "type": "integer", "minimum": 1 },
+            "corners": { "type": "integer", "minimum": 1 },
+            "entrances": { "type": "integer", "minimum": 1 },
+            "windowRhythms": { "type": "integer", "minimum": 1 },
+            "detailVariants": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "lodTriangleBudgets": { "$ref": "#/$defs/lodBudget" },
+        "collisionMode": { "enum": ["footprint", "compound", "mesh"] },
+        "maximumFoundationSlopeDegrees": { "type": "number", "minimum": 0, "maximum": 60 }
+      }
+    },
+    "vegetationFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "tags", "compatibleBiomes", "distributionModes", "lodTriangleBudgets", "maximumVisibleInstances"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "compatibleBiomes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "distributionModes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["organic-cluster", "forest-edge", "street-row", "orchard-row", "river-edge", "sparse-rocky", "ground-cover"] }
+        },
+        "lodTriangleBudgets": { "$ref": "#/$defs/lodBudget" },
+        "maximumVisibleInstances": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "settlementType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "buildingRange", "allowedDistricts", "roadHierarchy"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "buildingRange": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": { "type": "integer", "minimum": 0 },
+            "maximum": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "allowedDistricts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "roadHierarchy": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["regional-route", "main-street", "secondary-street", "residential-street", "rural-track", "pedestrian-path", "plaza", "promenade", "quay"] }
+        }
+      }
+    },
+    "district": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "architectureFamilies", "roadClasses", "propKits", "vegetationDensity", "plazaFrequency"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "status": { "$ref": "#/$defs/status" },
+        "architectureFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "roadClasses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["regional-route", "main-street", "secondary-street", "residential-street", "rural-track", "pedestrian-path", "plaza", "promenade", "quay"] }
+        },
+        "propKits": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "vegetationDensity": { "type": "number", "minimum": 0, "maximum": 2 },
+        "plazaFrequency": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "pilot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "regionId", "zoneId", "seed", "visualBiome", "modifiers", "culturalFamily", "settlementType", "districtMix", "acceptance"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "regionId": { "$ref": "#/$defs/slug" },
+        "zoneId": { "$ref": "#/$defs/slug" },
+        "seed": { "type": "integer", "minimum": 0 },
+        "visualBiome": { "$ref": "#/$defs/slug" },
+        "modifiers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "culturalFamily": { "$ref": "#/$defs/slug" },
+        "settlementType": { "$ref": "#/$defs/slug" },
+        "districtMix": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["districtId", "weight"],
+            "properties": {
+              "districtId": { "$ref": "#/$defs/slug" },
+              "weight": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "acceptance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimumVisibleBuildings", "minimumArchitectureFamilies", "minimumVegetationFamilies", "humanReviewRequired"],
+          "properties": {
+            "minimumVisibleBuildings": { "type": "integer", "minimum": 1 },
+            "minimumArchitectureFamilies": { "type": "integer", "minimum": 1 },
+            "minimumVegetationFamilies": { "type": "integer", "minimum": 1 },
+            "humanReviewRequired": { "const": true }
+          }
+        }
+      }
+    },
+    "transferTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateZoneIds", "forbidZoneSpecificRenderBranches", "maximumNewArchitectureFamilies", "requiredQualityProfile"],
+      "properties": {
+        "candidateZoneIds": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "forbidZoneSpecificRenderBranches": { "const": true },
+        "maximumNewArchitectureFamilies": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "requiredQualityProfile": { "$ref": "#/$defs/slug" }
+      }
+    }
+  }
+}
