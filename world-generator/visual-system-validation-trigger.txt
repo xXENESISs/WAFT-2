@@ -1,0 +1,1 @@
+Validate the WAFT 0.18 global visual system contracts and pilot recipes.
