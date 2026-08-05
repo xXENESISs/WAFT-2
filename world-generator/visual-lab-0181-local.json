@@ -1,0 +1,88 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v1",
+  "version": "0.18.1",
+  "buildId": "waft-visual-lab-0181-v1",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "focusResults": [
+    {
+      "id": "macaque",
+      "active": "macaque"
+    },
+    {
+      "id": "urban",
+      "active": "urban"
+    },
+    {
+      "id": "village",
+      "active": "village"
+    },
+    {
+      "id": "port",
+      "active": "port"
+    },
+    {
+      "id": "finca",
+      "active": "finca"
+    },
+    {
+      "id": "mountain",
+      "active": "mountain"
+    },
+    {
+      "id": "vegetation",
+      "active": "vegetation"
+    },
+    {
+      "id": "materials",
+      "active": "materials"
+    }
+  ],
+  "labels": [
+    "01Macaco protagonista",
+    "02Bloque urbano ibérico",
+    "03Pueblo mediterráneo",
+    "04Puerto mediterráneo",
+    "05Finca rural balear",
+    "06Montaña catalana",
+    "07Vegetación base",
+    "08Materiales del terreno"
+  ],
+  "state": {
+    "version": "0.18.1",
+    "buildId": "waft-visual-lab-0181-v1",
+    "ready": true,
+    "activeSection": "macaque",
+    "sectionCount": 8,
+    "meshCount": 992,
+    "materialCount": 36,
+    "fps": 4,
+    "webgl2": true,
+    "hardwareScaling": 1,
+    "feedback": {
+      "macaque": "like"
+    },
+    "createdAt": 778.2000000000044
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": [],
+  "verifiedAt": "2026-08-05T16:52:59.514Z"
+}
