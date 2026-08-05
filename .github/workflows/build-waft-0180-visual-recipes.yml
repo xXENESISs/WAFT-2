@@ -1,0 +1,53 @@
+name: Build WAFT 0.18 Visual Recipes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/configs/visual-system-v1.json
+      - world-generator/schema/visual-system.schema.json
+      - world-generator/schema/visual-zone-recipe.schema.json
+      - world-generator/scripts/validate-visual-system.mjs
+      - world-generator/scripts/resolve-visual-recipes.mjs
+      - world-generator/scripts/validate-visual-recipes.mjs
+      - world-generator/visual-recipe-build-trigger.txt
+      - .github/workflows/build-waft-0180-visual-recipes.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-waft-0180-visual-recipes
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate system and build deterministic recipes
+        run: |
+          node --check world-generator/scripts/validate-visual-system.mjs
+          node --check world-generator/scripts/resolve-visual-recipes.mjs
+          node --check world-generator/scripts/validate-visual-recipes.mjs
+          node world-generator/scripts/validate-visual-system.mjs
+          node world-generator/scripts/resolve-visual-recipes.mjs
+          node world-generator/scripts/validate-visual-recipes.mjs
+      - name: Commit recipes and reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/generated/visual-recipes world-generator/visual-system-validation-report.json world-generator/visual-recipe-build-report.json world-generator/visual-recipe-validation-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Build WAFT 0.18 visual recipes"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
