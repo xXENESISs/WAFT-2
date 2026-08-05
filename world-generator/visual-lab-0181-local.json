@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v1",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v2",
   "version": "0.18.1",
   "buildId": "waft-visual-lab-0181-v2",
   "viewport": {
@@ -73,18 +73,18 @@
     "sectionCount": 8,
     "meshCount": 269,
     "materialCount": 36,
-    "fps": 2,
+    "fps": 5,
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {
       "macaque": "like"
     },
-    "createdAt": 1043.9000000000015,
+    "createdAt": 407.29999999999563,
     "refinedCharacter": true,
     "mergedGroups": 43
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T16:59:10.678Z"
+  "verifiedAt": "2026-08-05T17:00:10.709Z"
 }

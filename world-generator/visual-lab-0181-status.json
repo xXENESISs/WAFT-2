@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "buildId": "waft-visual-lab-0181-v1",
+  "buildId": "waft-visual-lab-0181-v2",
   "version": "0.18.1",
   "syntax": 0,
   "local": 0,
@@ -9,8 +9,10 @@
   "eightSections": 0,
   "navigation": 0,
   "feedback": 0,
+  "refinedCharacter": 0,
+  "mergedGeometry": 0,
   "webgl2": 0,
   "mobileViewport": 0,
   "success": true,
-  "verifiedAt": "2026-08-05T16:59:23.572Z"
+  "verifiedAt": "2026-08-05T17:00:22.682Z"
 }
