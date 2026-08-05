@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const BUILD_ID = 'waft-visual-lab-0181-v5';
+const BUILD_ID = 'waft-visual-lab-0181-v6';
 const VERSION = '0.18.1';
 
 function parseArgs(argv) {
@@ -57,6 +57,7 @@ async function verify() {
       window.__WAFT_VISUAL_LAB_0181_POLISHED__ === true &&
       window.__WAFT_VISUAL_LAB_0181_SHARP__ === true &&
       window.__WAFT_VISUAL_LAB_0181_MACAQUE_V2__ === true &&
+      window.__WAFT_VISUAL_LAB_0181_MACAQUE_FACEFIX__ === true &&
       Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
     await page.waitForTimeout(1700);
     const initial = await page.evaluate(() => window.WAFTVisualLab0181.getState());
@@ -67,6 +68,11 @@ async function verify() {
     assert(initial.polishedReview === true, 'La pasada de pulido no está activa');
     assert(initial.crispRender === true, 'La pasada de nitidez no está activa');
     assert(initial.macaqueV2 === true, 'El macaco v2 no está activo');
+    assert(initial.macaqueFaceFix === true, 'La corrección facial no está activa');
+    assert(initial.macaqueFaceAdjusted === true, 'La cara no fue reajustada');
+    assert(initial.hiddenOldEars === 4, `Solo se ocultaron ${initial.hiddenOldEars} piezas de oreja antiguas`);
+    assert(initial.newEarMeshes === 4, `Se generaron ${initial.newEarMeshes} piezas de oreja nuevas`);
+    assert(initial.naturalEyePairs === 2, `Solo hay ${initial.naturalEyePairs} pares de ojos corregidos`);
     assert(initial.macaqueV2OrganicSurfaces >= 4, `Solo hay ${initial.macaqueV2OrganicSurfaces} superficies orgánicas`);
     assert(initial.macaqueV2MeshCount >= 35, `Macaco v2 incompleto: ${initial.macaqueV2MeshCount} mallas`);
     assert(initial.macaqueV2MeshCount <= 110, `Macaco v2 demasiado fragmentado: ${initial.macaqueV2MeshCount} mallas`);
@@ -77,7 +83,7 @@ async function verify() {
     assert(initial.focusPresetCount === 8, `Solo hay ${initial.focusPresetCount} encuadres de revisión`);
     assert(initial.mergedGroups >= 7, `Solo se fusionaron ${initial.mergedGroups} grupos estáticos`);
     assert(initial.meshCount >= 80, `Escena demasiado vacía: ${initial.meshCount} mallas`);
-    assert(initial.meshCount <= 620, `Escena todavía demasiado fragmentada: ${initial.meshCount} mallas`);
+    assert(initial.meshCount <= 640, `Escena todavía demasiado fragmentada: ${initial.meshCount} mallas`);
     assert(initial.materialCount >= 30, `Catálogo material insuficiente: ${initial.materialCount}`);
     assert(initial.webgl2 === true, 'WebGL2 no está activo');
 
@@ -85,19 +91,27 @@ async function verify() {
       const scene = BABYLON.Engine.LastCreatedScene;
       const v2 = scene.getTransformNodeByName('barbaryMacaqueV2');
       const old = scene.getTransformNodeByName('barbaryMacaqueRefined');
+      const oldEars = ['macaqueV2EarL','macaqueV2EarR','macaqueV2EarLInner','macaqueV2EarRInner'].map(name=>scene.getMeshByName(name));
+      const newEars = ['macaqueV3EarOuter-1','macaqueV3EarOuter1','macaqueV3EarInner-1','macaqueV3EarInner1'].map(name=>scene.getMeshByName(name));
       return {
         v2Enabled: Boolean(v2?.isEnabled()),
         oldEnabled: Boolean(old?.isEnabled()),
+        oldEarsHidden: oldEars.every(mesh=>mesh && !mesh.isEnabled()),
+        newEarsEnabled: newEars.every(mesh=>mesh && mesh.isEnabled()),
         torsoVertices: scene.getMeshByName('macaqueV2Torso')?.getTotalVertices() || 0,
         headVertices: scene.getMeshByName('macaqueV2Head')?.getTotalVertices() || 0,
-        code: document.getElementById('sectionCode')?.textContent || ''
+        code: document.getElementById('sectionCode')?.textContent || '',
+        profile: document.getElementById('profile')?.textContent || ''
       };
     });
     assert(modelState.v2Enabled, 'El nodo del macaco v2 está desactivado');
     assert(!modelState.oldEnabled, 'El macaco anterior sigue visible');
+    assert(modelState.oldEarsHidden, 'Las orejas deformadas siguen visibles');
+    assert(modelState.newEarsEnabled, 'Las orejas compactas no están activas');
     assert(modelState.torsoVertices >= 250, `Torso demasiado simple: ${modelState.torsoVertices}`);
     assert(modelState.headVertices >= 200, `Cabeza demasiado simple: ${modelState.headVertices}`);
     assert(modelState.code === 'player_barbary_macaque_v2', `Código visual inesperado: ${modelState.code}`);
+    assert(/V2\.1/.test(modelState.profile), `Perfil visual inesperado: ${modelState.profile}`);
 
     const sectionIds = await page.evaluate(() => window.WAFTVisualLab0181.getSections().map(section => section.id));
     assert(new Set(sectionIds).size === 8, 'Hay identificadores de sección duplicados');
