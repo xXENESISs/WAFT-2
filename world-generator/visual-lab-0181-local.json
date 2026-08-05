@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v10",
-  "buildId": "waft-visual-lab-0181-v10",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v11",
+  "buildId": "waft-visual-lab-0181-v11",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -22,7 +22,7 @@
   ],
   "state": {
     "version": "0.18.1",
-    "buildId": "waft-visual-lab-0181-v10",
+    "buildId": "waft-visual-lab-0181-v11",
     "ready": true,
     "activeSection": "macaque",
     "sectionCount": 8,
@@ -32,7 +32,7 @@
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {},
-    "createdAt": 816.3999999999942,
+    "createdAt": 402.1000000000058,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -67,22 +67,66 @@
     "headShellMeshes": 5,
     "headFaceRepositioned": true,
     "headSelfShadowDisabled": true,
-    "headShadowCastersRemoved": 31
+    "headShadowCastersRemoved": 31,
+    "macaqueBlinkFix": true,
+    "correctedEyeParts": 6,
+    "maxCorrectedEyeScaleY": 0.086,
+    "correctedEyeNames": [
+      "macaqueV2Eyeball-1",
+      "macaqueV2Iris-1",
+      "macaqueV2Catchlight-1",
+      "macaqueV2Eyeball1",
+      "macaqueV2Iris1",
+      "macaqueV2Catchlight1"
+    ]
   },
   "model": {
-    "oldHeadHidden": true,
+    "eyeParts": [
+      {
+        "name": "macaqueV2Eyeball-1",
+        "enabled": true,
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Eyeball1",
+        "enabled": true,
+        "scaleY": 0.086,
+        "sizeY": 0.17409603344276547
+      },
+      {
+        "name": "macaqueV2Iris-1",
+        "enabled": true,
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Iris1",
+        "enabled": true,
+        "scaleY": 0.052,
+        "sizeY": 0.10486740892520174
+      },
+      {
+        "name": "macaqueV2Catchlight-1",
+        "enabled": true,
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      },
+      {
+        "name": "macaqueV2Catchlight1",
+        "enabled": true,
+        "scaleY": 0.018,
+        "sizeY": 0.03643870117957704
+      }
+    ],
+    "allEyesCompact": true,
     "shellEnabled": true,
-    "shellMaterial": "macaqueV5HeadFur",
-    "shellVertices": 3655,
-    "crownEnabled": true,
-    "foreheadEnabled": true,
-    "noFaceReceivers": true,
-    "profile": "NÍTIDO · V2.5",
+    "profile": "NÍTIDO · V2.6",
     "code": "player_barbary_macaque_v2",
     "meshCount": 366
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T22:35:06.940Z"
+  "verifiedAt": "2026-08-05T22:40:02.486Z"
 }

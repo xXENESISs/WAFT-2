@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "buildId": "waft-visual-lab-0181-v10",
+  "buildId": "waft-visual-lab-0181-v11",
   "version": "0.18.1",
   "local": 0,
   "published": 0,
@@ -8,8 +8,9 @@
   "crispRender": 0,
   "macaqueV2": 0,
   "organicHeadShell": 0,
-  "facialSelfShadowRemoved": 0,
+  "compactEyes": 0,
+  "blinkAnimation": 0,
   "mobileViewport": 0,
   "success": true,
-  "verifiedAt": "2026-08-05T22:35:31.165Z"
+  "verifiedAt": "2026-08-05T22:40:20.627Z"
 }
