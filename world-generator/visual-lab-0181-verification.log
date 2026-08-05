@@ -1,0 +1,3 @@
+Error: Errores de consola: Failed to load resource: the server responded with a status of 404 (File not found)
+    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181.mjs:24:53)
+    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181.mjs:82:5)
