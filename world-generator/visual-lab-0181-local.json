@@ -2,9 +2,9 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v3",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v5",
   "version": "0.18.1",
-  "buildId": "waft-visual-lab-0181-v4",
+  "buildId": "waft-visual-lab-0181-v5",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -65,21 +65,28 @@
     "07Vegetación base",
     "08Materiales del terreno"
   ],
+  "modelState": {
+    "v2Enabled": true,
+    "oldEnabled": false,
+    "torsoVertices": 254,
+    "headVertices": 212,
+    "code": "player_barbary_macaque_v2"
+  },
   "state": {
     "version": "0.18.1",
-    "buildId": "waft-visual-lab-0181-v4",
+    "buildId": "waft-visual-lab-0181-v5",
     "ready": true,
     "activeSection": "macaque",
     "sectionCount": 8,
-    "meshCount": 269,
+    "meshCount": 341,
     "materialCount": 36,
-    "fps": 2,
+    "fps": 3,
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {
       "macaque": "like"
     },
-    "createdAt": 879.0999999999767,
+    "createdAt": 1711.4000000000015,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -89,10 +96,14 @@
     "textureQualityCount": 38,
     "crispHardwareScaling": 1,
     "crispRenderWidth": 844,
-    "crispRenderHeight": 390
+    "crispRenderHeight": 390,
+    "macaqueV2": true,
+    "macaqueV2MeshCount": 72,
+    "macaqueV2Vertices": 42424,
+    "macaqueV2OrganicSurfaces": 4
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T19:35:31.214Z"
+  "verifiedAt": "2026-08-05T22:10:04.360Z"
 }

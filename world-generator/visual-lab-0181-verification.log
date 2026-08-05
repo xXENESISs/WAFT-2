@@ -1,3 +1,218 @@
-Error: Build inesperada: waft-visual-lab-0181-v5
-    at assert (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181.mjs:24:53)
-    at verify (file:///home/runner/work/WAFT-2/WAFT-2/world-generator/scripts/verify-visual-lab-0181.mjs:58:5)
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v5",
+  "version": "0.18.1",
+  "buildId": "waft-visual-lab-0181-v5",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "focusResults": [
+    {
+      "id": "macaque",
+      "active": "macaque"
+    },
+    {
+      "id": "urban",
+      "active": "urban"
+    },
+    {
+      "id": "village",
+      "active": "village"
+    },
+    {
+      "id": "port",
+      "active": "port"
+    },
+    {
+      "id": "finca",
+      "active": "finca"
+    },
+    {
+      "id": "mountain",
+      "active": "mountain"
+    },
+    {
+      "id": "vegetation",
+      "active": "vegetation"
+    },
+    {
+      "id": "materials",
+      "active": "materials"
+    }
+  ],
+  "labels": [
+    "01Macaco protagonista",
+    "02Bloque urbano ibérico",
+    "03Pueblo mediterráneo",
+    "04Puerto mediterráneo",
+    "05Finca rural balear",
+    "06Montaña catalana",
+    "07Vegetación base",
+    "08Materiales del terreno"
+  ],
+  "modelState": {
+    "v2Enabled": true,
+    "oldEnabled": false,
+    "torsoVertices": 254,
+    "headVertices": 212,
+    "code": "player_barbary_macaque_v2"
+  },
+  "state": {
+    "version": "0.18.1",
+    "buildId": "waft-visual-lab-0181-v5",
+    "ready": true,
+    "activeSection": "macaque",
+    "sectionCount": 8,
+    "meshCount": 341,
+    "materialCount": 36,
+    "fps": 3,
+    "webgl2": true,
+    "hardwareScaling": 1,
+    "feedback": {
+      "macaque": "like"
+    },
+    "createdAt": 1711.4000000000015,
+    "refinedCharacter": true,
+    "mergedGroups": 43,
+    "polishedReview": true,
+    "hiddenSigns": 22,
+    "focusPresetCount": 8,
+    "crispRender": true,
+    "textureQualityCount": 38,
+    "crispHardwareScaling": 1,
+    "crispRenderWidth": 844,
+    "crispRenderHeight": 390,
+    "macaqueV2": true,
+    "macaqueV2MeshCount": 72,
+    "macaqueV2Vertices": 42424,
+    "macaqueV2OrganicSurfaces": 4
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": [],
+  "verifiedAt": "2026-08-05T22:10:04.360Z"
+}
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v5",
+  "version": "0.18.1",
+  "buildId": "waft-visual-lab-0181-v5",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "focusResults": [
+    {
+      "id": "macaque",
+      "active": "macaque"
+    },
+    {
+      "id": "urban",
+      "active": "urban"
+    },
+    {
+      "id": "village",
+      "active": "village"
+    },
+    {
+      "id": "port",
+      "active": "port"
+    },
+    {
+      "id": "finca",
+      "active": "finca"
+    },
+    {
+      "id": "mountain",
+      "active": "mountain"
+    },
+    {
+      "id": "vegetation",
+      "active": "vegetation"
+    },
+    {
+      "id": "materials",
+      "active": "materials"
+    }
+  ],
+  "labels": [
+    "01Macaco protagonista",
+    "02Bloque urbano ibérico",
+    "03Pueblo mediterráneo",
+    "04Puerto mediterráneo",
+    "05Finca rural balear",
+    "06Montaña catalana",
+    "07Vegetación base",
+    "08Materiales del terreno"
+  ],
+  "modelState": {
+    "v2Enabled": true,
+    "oldEnabled": false,
+    "torsoVertices": 254,
+    "headVertices": 212,
+    "code": "player_barbary_macaque_v2"
+  },
+  "state": {
+    "version": "0.18.1",
+    "buildId": "waft-visual-lab-0181-v5",
+    "ready": true,
+    "activeSection": "macaque",
+    "sectionCount": 8,
+    "meshCount": 341,
+    "materialCount": 36,
+    "fps": 5,
+    "webgl2": true,
+    "hardwareScaling": 1,
+    "feedback": {
+      "macaque": "like"
+    },
+    "createdAt": 447,
+    "refinedCharacter": true,
+    "mergedGroups": 43,
+    "polishedReview": true,
+    "hiddenSigns": 22,
+    "focusPresetCount": 8,
+    "crispRender": true,
+    "textureQualityCount": 38,
+    "crispHardwareScaling": 1,
+    "crispRenderWidth": 844,
+    "crispRenderHeight": 390,
+    "macaqueV2": true,
+    "macaqueV2MeshCount": 72,
+    "macaqueV2Vertices": 42424,
+    "macaqueV2OrganicSurfaces": 4
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": [],
+  "verifiedAt": "2026-08-05T22:10:21.609Z"
+}
