@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v9",
-  "buildId": "waft-visual-lab-0181-v9",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v10",
+  "buildId": "waft-visual-lab-0181-v10",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -22,7 +22,7 @@
   ],
   "state": {
     "version": "0.18.1",
-    "buildId": "waft-visual-lab-0181-v9",
+    "buildId": "waft-visual-lab-0181-v10",
     "ready": true,
     "activeSection": "macaque",
     "sectionCount": 8,
@@ -32,7 +32,7 @@
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {},
-    "createdAt": 1102.9000000000015,
+    "createdAt": 816.3999999999942,
     "refinedCharacter": true,
     "mergedGroups": 43,
     "polishedReview": true,
@@ -65,7 +65,9 @@
     "oldHeadHidden": true,
     "headShellVertices": 3655,
     "headShellMeshes": 5,
-    "headFaceRepositioned": true
+    "headFaceRepositioned": true,
+    "headSelfShadowDisabled": true,
+    "headShadowCastersRemoved": 31
   },
   "model": {
     "oldHeadHidden": true,
@@ -74,12 +76,13 @@
     "shellVertices": 3655,
     "crownEnabled": true,
     "foreheadEnabled": true,
-    "profile": "NÍTIDO · V2.4",
+    "noFaceReceivers": true,
+    "profile": "NÍTIDO · V2.5",
     "code": "player_barbary_macaque_v2",
     "meshCount": 366
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T22:30:39.824Z"
+  "verifiedAt": "2026-08-05T22:35:06.940Z"
 }
