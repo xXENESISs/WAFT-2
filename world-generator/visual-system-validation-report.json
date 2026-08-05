@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "valid": false,
+  "valid": true,
   "schema": "world-generator/schema/visual-system.schema.json",
   "config": "world-generator/configs/visual-system-v1.json",
   "visualSystemId": "waft-global-visual-system",
@@ -17,15 +17,11 @@
     "districts": 12,
     "pilots": 4
   },
-  "errors": [
-    "/pilots/2/districtMix/4: rural-edge is not allowed by town",
-    "/pilots/3/districtMix/1: port is not allowed by town",
-    "/pilots/3/districtMix/4: rural-edge is not allowed by town"
-  ],
+  "errors": [],
   "warnings": [
     "/architectureFamilies: all families are still planned",
     "/vegetationFamilies: all families are still planned"
   ],
-  "durationMs": 7,
-  "validatedAt": "2026-08-05T13:51:29.337Z"
+  "durationMs": 6,
+  "validatedAt": "2026-08-05T13:52:49.250Z"
 }
