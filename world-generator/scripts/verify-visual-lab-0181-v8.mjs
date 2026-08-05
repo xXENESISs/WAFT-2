@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const BUILD_ID='waft-visual-lab-0181-v9';
+const BUILD_ID='waft-visual-lab-0181-v10';
 function assert(value,message){if(!value)throw new Error(message);}
 function chromePath(){for(const candidate of [process.env.CHROME_BIN,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].filter(Boolean)){if(fs.existsSync(candidate))return candidate;}throw new Error('Chrome no está disponible');}
 function parseArgs(){const out={url:null,output:null,screenshot:null,public:false};const values=process.argv.slice(2);while(values.length){const flag=values.shift();if(flag==='--url')out.url=values.shift();else if(flag==='--output')out.output=values.shift();else if(flag==='--screenshot')out.screenshot=values.shift();else if(flag==='--public')out.public=true;else throw new Error(`Argumento desconocido: ${flag}`);}assert(out.url&&out.output,'--url y --output son obligatorios');return out;}
@@ -31,6 +31,8 @@ try{
   assert(state.headShellVertices>=1000,`Cabeza con poco detalle: ${state.headShellVertices} vértices`);
   assert(state.headShellMeshes>=5,`Solo hay ${state.headShellMeshes} volúmenes de cabeza`);
   assert(state.headFaceRepositioned===true,'La cara no fue reposicionada');
+  assert(state.headSelfShadowDisabled===true,'El autosombreado facial sigue activo');
+  assert(state.headShadowCastersRemoved>=20,`Solo se retiraron ${state.headShadowCastersRemoved} sombras faciales`);
   assert(state.webgl2===true,'WebGL2 no está activo');
   assert(state.crispHardwareScaling<=1.01,`Escalado borroso: ${state.crispHardwareScaling}`);
 
@@ -40,6 +42,7 @@ try{
     const shell=scene.getMeshByName('macaqueV6HeadShell');
     const crown=scene.getMeshByName('macaqueV6Crown');
     const forehead=scene.getMeshByName('macaqueV6Forehead');
+    const faceMeshes=['macaqueV6HeadShell','macaqueV6Crown','macaqueV6Forehead','macaqueV6Temple-1','macaqueV6Temple1','macaqueV2FaceMask','macaqueV2Muzzle','macaqueV2Nose','macaqueV2CheekL','macaqueV2CheekR'].map(name=>scene.getMeshByName(name)).filter(Boolean);
     return{
       oldHeadHidden:Boolean(oldHead&&!oldHead.isEnabled()),
       shellEnabled:Boolean(shell?.isEnabled()),
@@ -47,6 +50,7 @@ try{
       shellVertices:shell?.getTotalVertices()||0,
       crownEnabled:Boolean(crown?.isEnabled()),
       foreheadEnabled:Boolean(forehead?.isEnabled()),
+      noFaceReceivers:faceMeshes.every(mesh=>mesh.receiveShadows===false),
       profile:document.getElementById('profile')?.textContent||'',
       code:document.getElementById('sectionCode')?.textContent||'',
       meshCount:scene.meshes.length
@@ -55,8 +59,9 @@ try{
   assert(model.oldHeadHidden,'La malla rayada sigue habilitada');
   assert(model.shellEnabled&&model.crownEnabled&&model.foreheadEnabled,'La nueva cabeza está incompleta');
   assert(model.shellMaterial==='macaqueV5HeadFur',`Material inesperado: ${model.shellMaterial}`);
+  assert(model.noFaceReceivers,'Quedan receptores de sombra en la cara');
   assert(model.shellVertices>=1000,`Cabeza demasiado simple: ${model.shellVertices}`);
-  assert(/V2\.4/.test(model.profile),`Perfil inesperado: ${model.profile}`);
+  assert(/V2\.5/.test(model.profile),`Perfil inesperado: ${model.profile}`);
   assert(model.code==='player_barbary_macaque_v2',`Código inesperado: ${model.code}`);
   assert(model.meshCount<=680,`Demasiadas mallas: ${model.meshCount}`);
 
