@@ -2,9 +2,9 @@
   "formatVersion": 1,
   "valid": true,
   "public": true,
-  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v2",
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v3",
   "version": "0.18.1",
-  "buildId": "waft-visual-lab-0181-v2",
+  "buildId": "waft-visual-lab-0181-v3",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -67,24 +67,27 @@
   ],
   "state": {
     "version": "0.18.1",
-    "buildId": "waft-visual-lab-0181-v2",
+    "buildId": "waft-visual-lab-0181-v3",
     "ready": true,
     "activeSection": "macaque",
     "sectionCount": 8,
     "meshCount": 269,
     "materialCount": 36,
-    "fps": 4,
+    "fps": 2,
     "webgl2": true,
     "hardwareScaling": 1,
     "feedback": {
       "macaque": "like"
     },
-    "createdAt": 519.5999999999985,
+    "createdAt": 552.8000000000175,
     "refinedCharacter": true,
-    "mergedGroups": 43
+    "mergedGroups": 43,
+    "polishedReview": true,
+    "hiddenSigns": 22,
+    "focusPresetCount": 8
   },
   "pageErrors": [],
   "consoleErrors": [],
   "requestFailures": [],
-  "verifiedAt": "2026-08-05T17:00:22.417Z"
+  "verifiedAt": "2026-08-05T17:06:42.583Z"
 }
