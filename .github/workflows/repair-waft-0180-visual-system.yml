@@ -1,0 +1,45 @@
+name: Repair WAFT 0.18 Visual System
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - world-generator/scripts/repair-visual-system-v1.mjs
+      - world-generator/repair-visual-system-v1-trigger.txt
+      - .github/workflows/repair-waft-0180-visual-system.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repair-waft-0180-visual-system
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply approved grammar correction
+        run: |
+          node --check world-generator/scripts/repair-visual-system-v1.mjs
+          node world-generator/scripts/repair-visual-system-v1.mjs
+          node world-generator/scripts/validate-visual-system.mjs
+      - name: Commit corrected contract and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/configs/visual-system-v1.json world-generator/visual-system-validation-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Repair WAFT 0.18 visual system grammar"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
