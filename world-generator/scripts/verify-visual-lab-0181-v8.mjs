@@ -39,11 +39,27 @@ try{
   const model=await page.evaluate(()=>{
     const scene=BABYLON.Engine.LastCreatedScene;
     const head=scene.getMeshByName('macaqueV2Head');
+    head?.computeWorldMatrix(true);
     const headMaterial=head?.material?.name||'';
     const stretchedMaterial=scene.getMaterialByName('macaqueV2Fur');
     const hidden=['macaqueV3EarOuter-1','macaqueV3EarOuter1','macaqueV3EarInner-1','macaqueV3EarInner1','macaqueV2Brow-1','macaqueV2Brow1','macaqueV3NoseBridge'].every(name=>{const mesh=scene.getMeshByName(name);return mesh&&!mesh.isEnabled();});
     const visible=['macaqueV4EarOuter-1','macaqueV4EarOuter1','macaqueV4EarInner-1','macaqueV4EarInner1','macaqueV4Brow-1','macaqueV4Brow1'].every(name=>{const mesh=scene.getMeshByName(name);return mesh&&mesh.isEnabled();});
-    return{headMaterial,stretchedMaterialName:stretchedMaterial?.name||'',hidden,visible,profile:document.getElementById('profile')?.textContent||'',meshCount:scene.meshes.length};
+    const hb=head?.getBoundingInfo().boundingBox;
+    const min=hb?.minimumWorld;
+    const max=hb?.maximumWorld;
+    const headCandidates=(min&&max?scene.meshes.filter(mesh=>{
+      if(!mesh.isEnabled()||mesh.getTotalVertices()===0)return false;
+      mesh.computeWorldMatrix(true);
+      const box=mesh.getBoundingInfo().boundingBox;
+      const bmin=box.minimumWorld,bmax=box.maximumWorld;
+      return bmax.x>=min.x-.25&&bmin.x<=max.x+.25&&bmax.y>=min.y-.35&&bmin.y<=max.y+.35&&bmax.z>=min.z-.45&&bmin.z<=max.z+.45;
+    }).map(mesh=>{
+      const box=mesh.getBoundingInfo().boundingBox;
+      const size=box.maximumWorld.subtract(box.minimumWorld);
+      const center=box.centerWorld;
+      return{name:mesh.name,material:mesh.material?.name||'',vertices:mesh.getTotalVertices(),center:[+center.x.toFixed(3),+center.y.toFixed(3),+center.z.toFixed(3)],size:[+size.x.toFixed(3),+size.y.toFixed(3),+size.z.toFixed(3)]};
+    }).sort((a,b)=>b.size[1]-a.size[1]):[]);
+    return{headMaterial,stretchedMaterialName:stretchedMaterial?.name||'',hidden,visible,profile:document.getElementById('profile')?.textContent||'',meshCount:scene.meshes.length,headCandidates};
   });
   assert(model.headMaterial==='macaqueV5HeadFur',`Material de cabeza inesperado: ${model.headMaterial}`);
   assert(model.hidden,'Quedan piezas deformadas visibles');
@@ -56,7 +72,18 @@ try{
   for(const id of sectionIds){await page.evaluate(sectionId=>window.WAFTVisualLab0181.focus(sectionId,true),id);await page.waitForTimeout(70);const active=await page.evaluate(()=>window.WAFTVisualLab0181.getState().activeSection);assert(active===id,`No se pudo enfocar ${id}`);}
   await page.evaluate(()=>window.WAFTVisualLab0181.focus('macaque',true));
   await page.waitForTimeout(500);
-  if(options.screenshot)await page.screenshot({path:options.screenshot,type:'png'});
+  if(options.screenshot){
+    await page.screenshot({path:options.screenshot,type:'png'});
+    const ext=path.extname(options.screenshot);
+    const base=options.screenshot.slice(0,-ext.length);
+    await page.evaluate(()=>{const mesh=BABYLON.Engine.LastCreatedScene.getMeshByName('macaqueV2Head');if(mesh)mesh.setEnabled(false);});
+    await page.waitForTimeout(120);
+    await page.screenshot({path:`${base}-nohead${ext}`,type:'png'});
+    await page.evaluate(()=>{const scene=BABYLON.Engine.LastCreatedScene;const mesh=scene.getMeshByName('macaqueV2Head');if(mesh)mesh.setEnabled(true);window.__diagHidden=[];for(const candidate of scene.meshes){if(!candidate.isEnabled())continue;if(/Finger|Toe|Thumb|Mouth|Brow|Lip|NoseBridge/.test(candidate.name)){candidate.setEnabled(false);window.__diagHidden.push(candidate.name);}}});
+    await page.waitForTimeout(120);
+    await page.screenshot({path:`${base}-nothinparts${ext}`,type:'png'});
+    await page.evaluate(()=>{const scene=BABYLON.Engine.LastCreatedScene;for(const name of window.__diagHidden||[]){scene.getMeshByName(name)?.setEnabled(true);}});
+  }
   assert(pageErrors.length===0,`Errores de página: ${pageErrors.join(' | ')}`);
   assert(consoleErrors.length===0,`Errores de consola: ${consoleErrors.join(' | ')}`);
   assert(requestFailures.length===0,`Fallos de red: ${requestFailures.join(' | ')}`);
