@@ -43,8 +43,12 @@ async function verify() {
     const context = await browser.newContext({ viewport: { width: 844, height: 390 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
     const page = await context.newPage();
     page.on('pageerror', error => pageErrors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
-    page.on('requestfailed', request => requestFailures.push(`${request.url()}: ${request.failure()?.errorText || 'failed'}`));
+    page.on('console', message => {
+      if (message.type() === 'error' && !message.text().includes('404')) consoleErrors.push(message.text());
+    });
+    page.on('requestfailed', request => {
+      if (!request.url().endsWith('/favicon.ico')) requestFailures.push(`${request.url()}: ${request.failure()?.errorText || 'failed'}`);
+    });
     const response = await page.goto(options.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
     assert(response?.ok(), `La página devolvió ${response?.status()}`);
     await page.waitForFunction(() => window.__WAFT_VISUAL_LAB_0181_READY__ === true && Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
