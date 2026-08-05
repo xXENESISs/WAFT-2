@@ -3,9 +3,9 @@
   "buildId": "waft-visual-lab-0181-v3",
   "version": "0.18.1",
   "syntax": 0,
-  "local": 0,
-  "published": 0,
-  "public": 1,
+  "local": 1,
+  "published": 99,
+  "public": 99,
   "eightSections": 99,
   "navigation": 99,
   "feedback": 99,
@@ -16,5 +16,5 @@
   "webgl2": 99,
   "mobileViewport": 99,
   "success": false,
-  "verifiedAt": "2026-08-05T19:37:39.578Z"
+  "verifiedAt": "2026-08-05T22:08:23.906Z"
 }
