@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://waft.example/schema/visual-zone-recipe.schema.json",
+  "title": "WAFT Adventure resolved visual zone recipe",
+  "description": "Deterministic output describing how one local zone must be rendered.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recipeType",
+    "visualSystem",
+    "regionId",
+    "zoneId",
+    "pilotId",
+    "seed",
+    "inputs",
+    "resolved",
+    "quality",
+    "acceptance",
+    "explanation",
+    "determinism"
+  ],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "const": 1 },
+    "recipeType": { "const": "waft-visual-zone-recipe" },
+    "visualSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "version": { "$ref": "#/$defs/semver" }
+      }
+    },
+    "regionId": { "$ref": "#/$defs/slug" },
+    "zoneId": { "$ref": "#/$defs/slug" },
+    "pilotId": { "$ref": "#/$defs/slug" },
+    "seed": { "type": "integer", "minimum": 0 },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visualBiome", "modifiers", "culturalFamily", "settlementType", "districtMix"],
+      "properties": {
+        "visualBiome": { "$ref": "#/$defs/slug" },
+        "modifiers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "culturalFamily": { "$ref": "#/$defs/slug" },
+        "settlementType": { "$ref": "#/$defs/slug" },
+        "districtMix": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["districtId", "weight"],
+            "properties": {
+              "districtId": { "$ref": "#/$defs/slug" },
+              "weight": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "resolved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["architectureFamilies", "terrainMaterials", "vegetationFamilies", "propKits", "lightingProfile", "waterProfile"],
+      "properties": {
+        "architectureFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "weight", "sourceDistricts"],
+            "properties": {
+              "id": { "$ref": "#/$defs/slug" },
+              "weight": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+              "sourceDistricts": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "$ref": "#/$defs/slug" }
+              }
+            }
+          }
+        },
+        "terrainMaterials": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "vegetationFamilies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "propKits": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "lightingProfile": { "$ref": "#/$defs/slug" },
+        "waterProfile": { "$ref": "#/$defs/slug" }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileId", "targetFps", "hardBudgets"],
+      "properties": {
+        "profileId": { "$ref": "#/$defs/slug" },
+        "targetFps": { "type": "integer", "minimum": 24 },
+        "hardBudgets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["visibleTriangles", "drawCalls", "visibleInstances", "residentTexturesMb", "residentGeometryMb", "initialPackageMb", "firstUsefulFrameSeconds"],
+          "properties": {
+            "visibleTriangles": { "type": "number", "exclusiveMinimum": 0 },
+            "drawCalls": { "type": "number", "exclusiveMinimum": 0 },
+            "visibleInstances": { "type": "number", "exclusiveMinimum": 0 },
+            "residentTexturesMb": { "type": "number", "exclusiveMinimum": 0 },
+            "residentGeometryMb": { "type": "number", "exclusiveMinimum": 0 },
+            "initialPackageMb": { "type": "number", "exclusiveMinimum": 0 },
+            "firstUsefulFrameSeconds": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumVisibleBuildings", "minimumArchitectureFamilies", "minimumVegetationFamilies", "humanReviewRequired"],
+      "properties": {
+        "minimumVisibleBuildings": { "type": "integer", "minimum": 1 },
+        "minimumArchitectureFamilies": { "type": "integer", "minimum": 1 },
+        "minimumVegetationFamilies": { "type": "integer", "minimum": 1 },
+        "humanReviewRequired": { "const": true }
+      }
+    },
+    "explanation": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stage", "decision", "reason"],
+        "properties": {
+          "stage": { "enum": ["biome", "culture", "settlement", "district", "architecture", "terrain", "vegetation", "props", "quality"] },
+          "decision": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "determinism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "sourceFingerprint", "recipeFingerprint"],
+      "properties": {
+        "algorithm": { "const": "sha256-stable-json-v1" },
+        "sourceFingerprint": { "$ref": "#/$defs/sha256" },
+        "recipeFingerprint": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}
