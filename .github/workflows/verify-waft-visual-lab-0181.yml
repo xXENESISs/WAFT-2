@@ -129,8 +129,6 @@ jobs:
         if: always()
         with:
           name: waft-visual-lab-0181-screenshots
-          path: |
-            /tmp/visual-lab-0181-local.png
-            /tmp/visual-lab-0181-public.png
+          path: /tmp/visual-lab-0181-*.png
           if-no-files-found: ignore
           retention-days: 7
