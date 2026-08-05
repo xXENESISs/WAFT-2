@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const BUILD_ID = 'waft-visual-lab-0181-v2';
+const BUILD_ID = 'waft-visual-lab-0181-v3';
 const VERSION = '0.18.1';
 
 function parseArgs(argv) {
@@ -51,13 +51,16 @@ async function verify() {
     });
     const response = await page.goto(options.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
     assert(response?.ok(), `La página devolvió ${response?.status()}`);
-    await page.waitForFunction(() => window.__WAFT_VISUAL_LAB_0181_READY__ === true && window.__WAFT_VISUAL_LAB_0181_REFINED__ === true && Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
+    await page.waitForFunction(() => window.__WAFT_VISUAL_LAB_0181_READY__ === true && window.__WAFT_VISUAL_LAB_0181_REFINED__ === true && window.__WAFT_VISUAL_LAB_0181_POLISHED__ === true && Boolean(window.WAFTVisualLab0181?.getState), null, { timeout: 120000 });
     await page.waitForTimeout(1500);
     const initial = await page.evaluate(() => window.WAFTVisualLab0181.getState());
     assert(initial.version === VERSION, `Versión inesperada: ${initial.version}`);
     assert(initial.buildId === BUILD_ID, `Build inesperada: ${initial.buildId}`);
     assert(initial.sectionCount === 8, `Solo hay ${initial.sectionCount} secciones`);
     assert(initial.refinedCharacter === true, 'El macaco refinado no está activo');
+    assert(initial.polishedReview === true, 'La pasada de pulido no está activa');
+    assert(initial.hiddenSigns >= 8, `Solo se ocultaron ${initial.hiddenSigns} carteles obstructivos`);
+    assert(initial.focusPresetCount === 8, `Solo hay ${initial.focusPresetCount} encuadres de revisión`);
     assert(initial.mergedGroups >= 7, `Solo se fusionaron ${initial.mergedGroups} grupos estáticos`);
     assert(initial.meshCount >= 80, `Escena demasiado vacía: ${initial.meshCount} mallas`);
     assert(initial.meshCount <= 520, `Escena todavía demasiado fragmentada: ${initial.meshCount} mallas`);
@@ -76,7 +79,7 @@ async function verify() {
     }
 
     await page.evaluate(() => window.WAFTVisualLab0181.focus('macaque', true));
-    await page.waitForTimeout(400);
+    await page.waitForTimeout(500);
     const activeButtons = await page.locator('.sectionButton.active').count();
     assert(activeButtons === 1, `Hay ${activeButtons} botones activos`);
     const labels = await page.locator('.sectionButton').allTextContents();
