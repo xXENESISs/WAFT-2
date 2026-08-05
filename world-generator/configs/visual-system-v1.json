@@ -1,0 +1,653 @@
+{
+  "$schema": "../schema/visual-system.schema.json",
+  "schemaVersion": 1,
+  "id": "waft-global-visual-system",
+  "version": "0.18.0",
+  "status": "prototype",
+  "style": {
+    "direction": "stylized_naturalism",
+    "naturalismRatio": 0.65,
+    "stylizationRatio": 0.35,
+    "forbiddenPatterns": [
+      "visible-primitive-character-construction",
+      "uniform-green-terrain",
+      "single-box-building-language",
+      "random-global-palette",
+      "zone-specific-render-branching"
+    ]
+  },
+  "compatibility": {
+    "minimumAdventureVersion": "0.17.0",
+    "preserveSaveKeys": [
+      "waft.adventure.0170.world.v1",
+      "waft.baleares.travel.v1",
+      "waft.catalunya-litoral.travel.v1"
+    ],
+    "fallbackRuntime": "waft-0170.html",
+    "visualStateIsAuthoritative": false
+  },
+  "assetPipeline": {
+    "modelFormat": "glb",
+    "textureFormat": "ktx2-basis",
+    "coordinateSystem": "y-up-right-handed-front-positive-z",
+    "unit": "meter",
+    "assetStates": ["placeholder", "candidate", "approved", "deprecated"],
+    "requiredLods": ["lod0", "lod1", "lod2", "shadow"]
+  },
+  "qualityProfiles": [
+    {
+      "id": "mobile-low",
+      "status": "prototype",
+      "targetFps": 30,
+      "resolutionScale": { "minimum": 0.65, "maximum": 0.85 },
+      "maximumTextureSize": 1024,
+      "heroTextureSize": 1024,
+      "shadowMode": "hero-only",
+      "budgets": {
+        "visibleTriangles": { "recommended": 320000, "hardMaximum": 480000 },
+        "drawCalls": { "recommended": 120, "hardMaximum": 180 },
+        "visibleInstances": { "recommended": 2500, "hardMaximum": 4500 },
+        "residentTexturesMb": { "recommended": 64, "hardMaximum": 88 },
+        "residentGeometryMb": { "recommended": 32, "hardMaximum": 48 },
+        "initialPackageMb": { "recommended": 24, "hardMaximum": 38 },
+        "firstUsefulFrameSeconds": { "recommended": 6, "hardMaximum": 10 }
+      }
+    },
+    {
+      "id": "mobile-target",
+      "status": "candidate",
+      "targetFps": 30,
+      "aspirationalFps": 60,
+      "resolutionScale": { "minimum": 0.8, "maximum": 1 },
+      "maximumTextureSize": 1024,
+      "heroTextureSize": 2048,
+      "shadowMode": "limited-directional",
+      "budgets": {
+        "visibleTriangles": { "recommended": 550000, "hardMaximum": 750000 },
+        "drawCalls": { "recommended": 180, "hardMaximum": 260 },
+        "visibleInstances": { "recommended": 4000, "hardMaximum": 7500 },
+        "residentTexturesMb": { "recommended": 96, "hardMaximum": 128 },
+        "residentGeometryMb": { "recommended": 48, "hardMaximum": 72 },
+        "initialPackageMb": { "recommended": 35, "hardMaximum": 55 },
+        "firstUsefulFrameSeconds": { "recommended": 6.5, "hardMaximum": 8 }
+      }
+    },
+    {
+      "id": "desktop-capture",
+      "status": "planned",
+      "targetFps": 60,
+      "resolutionScale": { "minimum": 1, "maximum": 1.5 },
+      "maximumTextureSize": 2048,
+      "heroTextureSize": 4096,
+      "shadowMode": "full-directional",
+      "budgets": {
+        "visibleTriangles": { "recommended": 1300000, "hardMaximum": 2000000 },
+        "drawCalls": { "recommended": 320, "hardMaximum": 500 },
+        "visibleInstances": { "recommended": 9000, "hardMaximum": 15000 },
+        "residentTexturesMb": { "recommended": 256, "hardMaximum": 384 },
+        "residentGeometryMb": { "recommended": 120, "hardMaximum": 180 },
+        "initialPackageMb": { "recommended": 55, "hardMaximum": 90 },
+        "firstUsefulFrameSeconds": { "recommended": 5, "hardMaximum": 8 }
+      }
+    }
+  ],
+  "materialFamilies": [
+    {
+      "id": "mediterranean-ground",
+      "status": "prototype",
+      "kind": "terrain",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 1024,
+      "tags": ["dry-grass", "light-soil", "limestone", "compact-dirt"]
+    },
+    {
+      "id": "mountain-humid-ground",
+      "status": "prototype",
+      "kind": "terrain",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 1024,
+      "tags": ["leaf-litter", "dark-soil", "moss", "rock-dark"]
+    },
+    {
+      "id": "urban-mediterranean-surface",
+      "status": "prototype",
+      "kind": "terrain",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 1024,
+      "tags": ["asphalt", "urban-stone", "pavement", "gravel"]
+    },
+    {
+      "id": "balearic-masonry",
+      "status": "planned",
+      "kind": "architecture",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 2048,
+      "tags": ["limestone", "white-plaster", "terracotta", "wood-shutter"]
+    },
+    {
+      "id": "iberian-urban-facade",
+      "status": "planned",
+      "kind": "architecture",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion", "emissive"],
+      "maximumResolution": 2048,
+      "tags": ["stucco", "stone-base", "balcony-metal", "roof-tile"]
+    },
+    {
+      "id": "catalan-mountain-masonry",
+      "status": "planned",
+      "kind": "architecture",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 2048,
+      "tags": ["dark-stone", "timber", "sloped-roof", "weathered-plaster"]
+    },
+    {
+      "id": "mediterranean-foliage",
+      "status": "planned",
+      "kind": "vegetation",
+      "channels": ["baseColor", "normal", "roughness", "opacity"],
+      "maximumResolution": 1024,
+      "tags": ["pine", "olive", "holm-oak", "dry-shrub"]
+    },
+    {
+      "id": "temperate-mountain-foliage",
+      "status": "planned",
+      "kind": "vegetation",
+      "channels": ["baseColor", "normal", "roughness", "opacity"],
+      "maximumResolution": 1024,
+      "tags": ["mountain-pine", "deciduous", "humid-shrub", "moss"]
+    },
+    {
+      "id": "mediterranean-water",
+      "status": "prototype",
+      "kind": "water",
+      "channels": ["baseColor", "normal", "roughness", "opacity"],
+      "maximumResolution": 1024,
+      "tags": ["clear-coast", "harbour", "shallow-depth", "foam-edge"]
+    },
+    {
+      "id": "barbary-macaque-material",
+      "status": "planned",
+      "kind": "character",
+      "channels": ["baseColor", "normal", "roughness", "ambientOcclusion"],
+      "maximumResolution": 2048,
+      "tags": ["fur", "skin", "eyes", "nails"]
+    }
+  ],
+  "visualBiomes": [
+    {
+      "id": "mediterranean-coastal",
+      "status": "candidate",
+      "terrainMaterials": ["mediterranean-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["mediterranean-pine-scrub", "mediterranean-orchard", "urban-mediterranean-trees"],
+      "lightingProfile": "mediterranean-clear-day",
+      "waterProfile": "mediterranean-coastal-water",
+      "combatBiomeFallbacks": ["marine", "forest", "mountain"]
+    },
+    {
+      "id": "mediterranean-inland",
+      "status": "candidate",
+      "terrainMaterials": ["mediterranean-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["mediterranean-pine-scrub", "mediterranean-orchard"],
+      "lightingProfile": "mediterranean-warm-day",
+      "waterProfile": "inland-water-basic",
+      "combatBiomeFallbacks": ["forest", "mountain"]
+    },
+    {
+      "id": "temperate-mountain",
+      "status": "candidate",
+      "terrainMaterials": ["mountain-humid-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["temperate-mountain-forest", "mountain-ground-cover"],
+      "lightingProfile": "humid-mountain-clouds",
+      "waterProfile": "mountain-stream-water",
+      "combatBiomeFallbacks": ["forest", "mountain"]
+    },
+    {
+      "id": "alpine-snow",
+      "status": "planned",
+      "terrainMaterials": ["mountain-humid-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["temperate-mountain-forest"],
+      "lightingProfile": "alpine-snow-day",
+      "waterProfile": "cold-water-basic",
+      "combatBiomeFallbacks": ["arctic", "mountain"]
+    },
+    {
+      "id": "hot-sandy-desert",
+      "status": "planned",
+      "terrainMaterials": ["mediterranean-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["mediterranean-pine-scrub"],
+      "lightingProfile": "desert-clear-day",
+      "waterProfile": "oasis-water-basic",
+      "combatBiomeFallbacks": ["desert"]
+    },
+    {
+      "id": "tropical-rainforest",
+      "status": "planned",
+      "terrainMaterials": ["mountain-humid-ground", "urban-mediterranean-surface"],
+      "vegetationFamilies": ["temperate-mountain-forest", "mountain-ground-cover"],
+      "lightingProfile": "tropical-humid-day",
+      "waterProfile": "tropical-water-basic",
+      "combatBiomeFallbacks": ["jungle"]
+    }
+  ],
+  "environmentModifiers": [
+    { "id": "humid", "status": "candidate", "effects": ["terrain", "vegetation", "lighting", "atmosphere"] },
+    { "id": "dry", "status": "candidate", "effects": ["terrain", "vegetation", "architecture", "lighting"] },
+    { "id": "rocky", "status": "candidate", "effects": ["terrain", "vegetation", "props"] },
+    { "id": "agricultural", "status": "candidate", "effects": ["terrain", "vegetation", "architecture", "props"] },
+    { "id": "coastal-salt", "status": "candidate", "effects": ["terrain", "vegetation", "architecture", "water", "atmosphere"] },
+    { "id": "urban-heat", "status": "prototype", "effects": ["terrain", "vegetation", "architecture", "lighting"] },
+    { "id": "wind-exposed", "status": "planned", "effects": ["vegetation", "atmosphere"] },
+    { "id": "snow-seasonal", "status": "planned", "effects": ["terrain", "vegetation", "architecture", "water", "lighting"] }
+  ],
+  "culturalFamilies": [
+    {
+      "id": "balearic",
+      "status": "candidate",
+      "architectureFamilies": ["balearic-rural", "mediterranean-village", "mediterranean-port", "modern-mediterranean-residential"],
+      "propKits": ["balearic-rural-kit", "mediterranean-street-kit", "mediterranean-port-kit", "agriculture-kit"],
+      "paletteTags": ["limestone", "white-plaster", "terracotta", "olive-green", "sea-blue"]
+    },
+    {
+      "id": "iberian-east",
+      "status": "candidate",
+      "architectureFamilies": ["mediterranean-village", "iberian-urban-block", "mediterranean-port", "modern-mediterranean-residential"],
+      "propKits": ["mediterranean-street-kit", "mediterranean-port-kit", "plaza-promenade-kit", "road-signage-kit"],
+      "paletteTags": ["warm-stucco", "stone", "terracotta", "muted-ochre", "blue-green"]
+    },
+    {
+      "id": "catalan-mountain",
+      "status": "candidate",
+      "architectureFamilies": ["catalan-mountain-building", "mediterranean-village"],
+      "propKits": ["catalan-mountain-kit", "road-signage-kit", "agriculture-kit"],
+      "paletteTags": ["dark-stone", "weathered-plaster", "timber", "forest-green", "slate"]
+    }
+  ],
+  "architectureFamilies": [
+    {
+      "id": "balearic-rural",
+      "status": "planned",
+      "tags": ["rural", "courtyard", "stone-wall", "terracotta-roof"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland"],
+      "compatibleSettlementTypes": ["hamlet", "village", "rural-scattered"],
+      "materialFamilies": ["balearic-masonry"],
+      "requiredModules": { "masses": 4, "roofs": 3, "corners": 2, "entrances": 3, "windowRhythms": 4, "detailVariants": 2 },
+      "lodTriangleBudgets": { "lod0": 18000, "lod1": 7500, "lod2": 2200, "shadow": 600 },
+      "collisionMode": "compound",
+      "maximumFoundationSlopeDegrees": 12
+    },
+    {
+      "id": "mediterranean-village",
+      "status": "planned",
+      "tags": ["village", "narrow-facade", "small-balcony", "compact-street"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland", "temperate-mountain"],
+      "compatibleSettlementTypes": ["village", "town", "mountain-settlement"],
+      "materialFamilies": ["balearic-masonry", "iberian-urban-facade"],
+      "requiredModules": { "masses": 4, "roofs": 3, "corners": 2, "entrances": 3, "windowRhythms": 4, "detailVariants": 3 },
+      "lodTriangleBudgets": { "lod0": 22000, "lod1": 9000, "lod2": 2600, "shadow": 700 },
+      "collisionMode": "footprint",
+      "maximumFoundationSlopeDegrees": 16
+    },
+    {
+      "id": "iberian-urban-block",
+      "status": "planned",
+      "tags": ["urban", "mixed-use", "balcony-rhythm", "corner-building"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland"],
+      "compatibleSettlementTypes": ["town", "city", "metropolis"],
+      "materialFamilies": ["iberian-urban-facade"],
+      "requiredModules": { "masses": 6, "roofs": 3, "corners": 3, "entrances": 4, "windowRhythms": 6, "detailVariants": 4 },
+      "lodTriangleBudgets": { "lod0": 32000, "lod1": 12500, "lod2": 3500, "shadow": 900 },
+      "collisionMode": "footprint",
+      "maximumFoundationSlopeDegrees": 8
+    },
+    {
+      "id": "catalan-mountain-building",
+      "status": "planned",
+      "tags": ["mountain", "dark-stone", "sloped-roof", "retaining-wall"],
+      "compatibleBiomes": ["temperate-mountain", "mediterranean-inland", "alpine-snow"],
+      "compatibleSettlementTypes": ["hamlet", "village", "mountain-settlement"],
+      "materialFamilies": ["catalan-mountain-masonry"],
+      "requiredModules": { "masses": 4, "roofs": 4, "corners": 2, "entrances": 3, "windowRhythms": 3, "detailVariants": 3 },
+      "lodTriangleBudgets": { "lod0": 24000, "lod1": 9500, "lod2": 2800, "shadow": 750 },
+      "collisionMode": "compound",
+      "maximumFoundationSlopeDegrees": 24
+    },
+    {
+      "id": "mediterranean-port",
+      "status": "planned",
+      "tags": ["port", "warehouse", "promenade", "maritime-commerce"],
+      "compatibleBiomes": ["mediterranean-coastal"],
+      "compatibleSettlementTypes": ["port-settlement", "town", "city", "metropolis"],
+      "materialFamilies": ["balearic-masonry", "iberian-urban-facade"],
+      "requiredModules": { "masses": 4, "roofs": 3, "corners": 2, "entrances": 4, "windowRhythms": 3, "detailVariants": 3 },
+      "lodTriangleBudgets": { "lod0": 26000, "lod1": 10000, "lod2": 3000, "shadow": 800 },
+      "collisionMode": "compound",
+      "maximumFoundationSlopeDegrees": 6
+    },
+    {
+      "id": "modern-mediterranean-residential",
+      "status": "planned",
+      "tags": ["apartment", "hotel", "terrace", "tourism"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland"],
+      "compatibleSettlementTypes": ["town", "city", "metropolis", "port-settlement"],
+      "materialFamilies": ["iberian-urban-facade"],
+      "requiredModules": { "masses": 5, "roofs": 2, "corners": 2, "entrances": 3, "windowRhythms": 4, "detailVariants": 4 },
+      "lodTriangleBudgets": { "lod0": 30000, "lod1": 11500, "lod2": 3200, "shadow": 850 },
+      "collisionMode": "footprint",
+      "maximumFoundationSlopeDegrees": 10
+    }
+  ],
+  "vegetationFamilies": [
+    {
+      "id": "mediterranean-pine-scrub",
+      "status": "planned",
+      "tags": ["pine", "holm-oak", "dry-shrub", "rocky-ground"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland", "hot-sandy-desert"],
+      "distributionModes": ["organic-cluster", "forest-edge", "sparse-rocky", "ground-cover"],
+      "lodTriangleBudgets": { "lod0": 6500, "lod1": 2200, "lod2": 320, "shadow": 180 },
+      "maximumVisibleInstances": 2600
+    },
+    {
+      "id": "mediterranean-orchard",
+      "status": "planned",
+      "tags": ["olive", "almond", "orchard", "agriculture"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland"],
+      "distributionModes": ["orchard-row", "organic-cluster"],
+      "lodTriangleBudgets": { "lod0": 4800, "lod1": 1600, "lod2": 260, "shadow": 140 },
+      "maximumVisibleInstances": 1800
+    },
+    {
+      "id": "urban-mediterranean-trees",
+      "status": "planned",
+      "tags": ["street-tree", "plane-tree", "cypress", "promenade"],
+      "compatibleBiomes": ["mediterranean-coastal", "mediterranean-inland"],
+      "distributionModes": ["street-row", "organic-cluster"],
+      "lodTriangleBudgets": { "lod0": 5200, "lod1": 1800, "lod2": 280, "shadow": 150 },
+      "maximumVisibleInstances": 1200
+    },
+    {
+      "id": "temperate-mountain-forest",
+      "status": "planned",
+      "tags": ["mountain-pine", "deciduous", "humid-forest", "forest-edge"],
+      "compatibleBiomes": ["temperate-mountain", "alpine-snow", "tropical-rainforest"],
+      "distributionModes": ["organic-cluster", "forest-edge", "river-edge"],
+      "lodTriangleBudgets": { "lod0": 7200, "lod1": 2400, "lod2": 340, "shadow": 190 },
+      "maximumVisibleInstances": 3400
+    },
+    {
+      "id": "mountain-ground-cover",
+      "status": "planned",
+      "tags": ["humid-shrub", "fern", "moss", "leaf-litter"],
+      "compatibleBiomes": ["temperate-mountain", "tropical-rainforest"],
+      "distributionModes": ["ground-cover", "forest-edge", "river-edge"],
+      "lodTriangleBudgets": { "lod0": 900, "lod1": 300, "lod2": 80 },
+      "maximumVisibleInstances": 4000
+    }
+  ],
+  "settlementTypes": [
+    {
+      "id": "hamlet",
+      "status": "candidate",
+      "buildingRange": { "minimum": 5, "maximum": 25 },
+      "allowedDistricts": ["rural-edge", "mountain-village"],
+      "roadHierarchy": ["regional-route", "rural-track", "pedestrian-path"]
+    },
+    {
+      "id": "village",
+      "status": "candidate",
+      "buildingRange": { "minimum": 25, "maximum": 120 },
+      "allowedDistricts": ["historic-core", "residential-low", "rural-edge", "mountain-village"],
+      "roadHierarchy": ["regional-route", "main-street", "residential-street", "rural-track", "pedestrian-path", "plaza"]
+    },
+    {
+      "id": "town",
+      "status": "candidate",
+      "buildingRange": { "minimum": 120, "maximum": 600 },
+      "allowedDistricts": ["historic-core", "urban-grid", "residential-low", "seafront", "tourism", "agricultural-edge"],
+      "roadHierarchy": ["regional-route", "main-street", "secondary-street", "residential-street", "pedestrian-path", "plaza", "promenade"]
+    },
+    {
+      "id": "city",
+      "status": "candidate",
+      "buildingRange": { "minimum": 600, "maximum": 3000 },
+      "allowedDistricts": ["historic-core", "urban-grid", "residential-dense", "residential-low", "seafront", "port", "civic-center", "tourism", "light-industrial"],
+      "roadHierarchy": ["regional-route", "main-street", "secondary-street", "residential-street", "pedestrian-path", "plaza", "promenade", "quay"]
+    },
+    {
+      "id": "metropolis",
+      "status": "candidate",
+      "buildingRange": { "minimum": 1200, "maximum": 10000 },
+      "allowedDistricts": ["historic-core", "urban-grid", "residential-dense", "residential-low", "seafront", "port", "civic-center", "tourism", "light-industrial"],
+      "roadHierarchy": ["regional-route", "main-street", "secondary-street", "residential-street", "pedestrian-path", "plaza", "promenade", "quay"]
+    },
+    {
+      "id": "rural-scattered",
+      "status": "candidate",
+      "buildingRange": { "minimum": 5, "maximum": 180 },
+      "allowedDistricts": ["rural-edge", "agricultural-edge"],
+      "roadHierarchy": ["regional-route", "rural-track", "pedestrian-path"]
+    },
+    {
+      "id": "port-settlement",
+      "status": "candidate",
+      "buildingRange": { "minimum": 40, "maximum": 1200 },
+      "allowedDistricts": ["port", "seafront", "historic-core", "tourism", "residential-low"],
+      "roadHierarchy": ["regional-route", "main-street", "secondary-street", "pedestrian-path", "promenade", "quay"]
+    },
+    {
+      "id": "mountain-settlement",
+      "status": "candidate",
+      "buildingRange": { "minimum": 10, "maximum": 400 },
+      "allowedDistricts": ["mountain-village", "historic-core", "rural-edge"],
+      "roadHierarchy": ["regional-route", "main-street", "residential-street", "rural-track", "pedestrian-path", "plaza"]
+    }
+  ],
+  "districts": [
+    {
+      "id": "historic-core",
+      "status": "candidate",
+      "architectureFamilies": ["mediterranean-village", "iberian-urban-block"],
+      "roadClasses": ["main-street", "residential-street", "pedestrian-path", "plaza"],
+      "propKits": ["mediterranean-street-kit", "plaza-promenade-kit"],
+      "vegetationDensity": 0.35,
+      "plazaFrequency": 0.18
+    },
+    {
+      "id": "urban-grid",
+      "status": "candidate",
+      "architectureFamilies": ["iberian-urban-block", "modern-mediterranean-residential"],
+      "roadClasses": ["main-street", "secondary-street", "residential-street", "plaza"],
+      "propKits": ["mediterranean-street-kit", "road-signage-kit"],
+      "vegetationDensity": 0.45,
+      "plazaFrequency": 0.08
+    },
+    {
+      "id": "residential-dense",
+      "status": "candidate",
+      "architectureFamilies": ["iberian-urban-block", "modern-mediterranean-residential"],
+      "roadClasses": ["secondary-street", "residential-street", "pedestrian-path"],
+      "propKits": ["mediterranean-street-kit", "road-signage-kit"],
+      "vegetationDensity": 0.55,
+      "plazaFrequency": 0.05
+    },
+    {
+      "id": "residential-low",
+      "status": "candidate",
+      "architectureFamilies": ["mediterranean-village", "modern-mediterranean-residential"],
+      "roadClasses": ["residential-street", "pedestrian-path"],
+      "propKits": ["mediterranean-street-kit"],
+      "vegetationDensity": 0.75,
+      "plazaFrequency": 0.04
+    },
+    {
+      "id": "seafront",
+      "status": "candidate",
+      "architectureFamilies": ["mediterranean-port", "modern-mediterranean-residential"],
+      "roadClasses": ["main-street", "pedestrian-path", "promenade"],
+      "propKits": ["mediterranean-port-kit", "plaza-promenade-kit"],
+      "vegetationDensity": 0.5,
+      "plazaFrequency": 0.12
+    },
+    {
+      "id": "port",
+      "status": "candidate",
+      "architectureFamilies": ["mediterranean-port", "iberian-urban-block"],
+      "roadClasses": ["regional-route", "main-street", "secondary-street", "promenade", "quay"],
+      "propKits": ["mediterranean-port-kit", "road-signage-kit"],
+      "vegetationDensity": 0.18,
+      "plazaFrequency": 0.04
+    },
+    {
+      "id": "civic-center",
+      "status": "candidate",
+      "architectureFamilies": ["iberian-urban-block", "mediterranean-village"],
+      "roadClasses": ["main-street", "secondary-street", "pedestrian-path", "plaza"],
+      "propKits": ["plaza-promenade-kit", "mediterranean-street-kit"],
+      "vegetationDensity": 0.55,
+      "plazaFrequency": 0.24
+    },
+    {
+      "id": "tourism",
+      "status": "candidate",
+      "architectureFamilies": ["modern-mediterranean-residential", "mediterranean-port"],
+      "roadClasses": ["main-street", "secondary-street", "pedestrian-path", "promenade"],
+      "propKits": ["mediterranean-street-kit", "plaza-promenade-kit"],
+      "vegetationDensity": 0.65,
+      "plazaFrequency": 0.1
+    },
+    {
+      "id": "light-industrial",
+      "status": "prototype",
+      "architectureFamilies": ["mediterranean-port", "modern-mediterranean-residential"],
+      "roadClasses": ["regional-route", "main-street", "secondary-street"],
+      "propKits": ["road-signage-kit", "mediterranean-port-kit"],
+      "vegetationDensity": 0.12,
+      "plazaFrequency": 0.01
+    },
+    {
+      "id": "rural-edge",
+      "status": "candidate",
+      "architectureFamilies": ["balearic-rural", "mediterranean-village", "catalan-mountain-building"],
+      "roadClasses": ["regional-route", "rural-track", "pedestrian-path"],
+      "propKits": ["balearic-rural-kit", "agriculture-kit"],
+      "vegetationDensity": 0.95,
+      "plazaFrequency": 0.01
+    },
+    {
+      "id": "agricultural-edge",
+      "status": "candidate",
+      "architectureFamilies": ["balearic-rural", "mediterranean-village"],
+      "roadClasses": ["regional-route", "rural-track", "pedestrian-path"],
+      "propKits": ["agriculture-kit", "balearic-rural-kit"],
+      "vegetationDensity": 1.1,
+      "plazaFrequency": 0.01
+    },
+    {
+      "id": "mountain-village",
+      "status": "candidate",
+      "architectureFamilies": ["catalan-mountain-building", "mediterranean-village"],
+      "roadClasses": ["main-street", "residential-street", "rural-track", "pedestrian-path", "plaza"],
+      "propKits": ["catalan-mountain-kit", "road-signage-kit"],
+      "vegetationDensity": 0.9,
+      "plazaFrequency": 0.08
+    }
+  ],
+  "pilots": [
+    {
+      "id": "pilot-barcelona",
+      "regionId": "catalunya-litoral",
+      "zoneId": "barcelona",
+      "seed": 180001,
+      "visualBiome": "mediterranean-coastal",
+      "modifiers": ["urban-heat", "coastal-salt"],
+      "culturalFamily": "iberian-east",
+      "settlementType": "metropolis",
+      "districtMix": [
+        { "districtId": "urban-grid", "weight": 0.34 },
+        { "districtId": "historic-core", "weight": 0.18 },
+        { "districtId": "port", "weight": 0.15 },
+        { "districtId": "residential-dense", "weight": 0.15 },
+        { "districtId": "civic-center", "weight": 0.1 },
+        { "districtId": "seafront", "weight": 0.08 }
+      ],
+      "acceptance": {
+        "minimumVisibleBuildings": 600,
+        "minimumArchitectureFamilies": 3,
+        "minimumVegetationFamilies": 2,
+        "humanReviewRequired": true
+      }
+    },
+    {
+      "id": "pilot-montseny",
+      "regionId": "catalunya-litoral",
+      "zoneId": "subregion-montseny",
+      "seed": 180002,
+      "visualBiome": "temperate-mountain",
+      "modifiers": ["humid", "rocky"],
+      "culturalFamily": "catalan-mountain",
+      "settlementType": "mountain-settlement",
+      "districtMix": [
+        { "districtId": "mountain-village", "weight": 0.55 },
+        { "districtId": "rural-edge", "weight": 0.3 },
+        { "districtId": "historic-core", "weight": 0.15 }
+      ],
+      "acceptance": {
+        "minimumVisibleBuildings": 120,
+        "minimumArchitectureFamilies": 2,
+        "minimumVegetationFamilies": 2,
+        "humanReviewRequired": true
+      }
+    },
+    {
+      "id": "pilot-llevant",
+      "regionId": "baleares",
+      "zoneId": "llevant",
+      "seed": 180003,
+      "visualBiome": "mediterranean-coastal",
+      "modifiers": ["dry", "agricultural", "coastal-salt"],
+      "culturalFamily": "balearic",
+      "settlementType": "town",
+      "districtMix": [
+        { "districtId": "seafront", "weight": 0.24 },
+        { "districtId": "tourism", "weight": 0.2 },
+        { "districtId": "residential-low", "weight": 0.18 },
+        { "districtId": "agricultural-edge", "weight": 0.22 },
+        { "districtId": "rural-edge", "weight": 0.16 }
+      ],
+      "acceptance": {
+        "minimumVisibleBuildings": 260,
+        "minimumArchitectureFamilies": 3,
+        "minimumVegetationFamilies": 3,
+        "humanReviewRequired": true
+      }
+    },
+    {
+      "id": "pilot-alcudia",
+      "regionId": "baleares",
+      "zoneId": "alcudia",
+      "seed": 180004,
+      "visualBiome": "mediterranean-coastal",
+      "modifiers": ["dry", "coastal-salt"],
+      "culturalFamily": "balearic",
+      "settlementType": "town",
+      "districtMix": [
+        { "districtId": "historic-core", "weight": 0.36 },
+        { "districtId": "port", "weight": 0.2 },
+        { "districtId": "residential-low", "weight": 0.18 },
+        { "districtId": "seafront", "weight": 0.12 },
+        { "districtId": "rural-edge", "weight": 0.14 }
+      ],
+      "acceptance": {
+        "minimumVisibleBuildings": 320,
+        "minimumArchitectureFamilies": 3,
+        "minimumVegetationFamilies": 2,
+        "humanReviewRequired": true
+      }
+    }
+  ],
+  "transferTest": {
+    "candidateZoneIds": ["tarragona", "girona", "eivissa", "subregion-maresme"],
+    "forbidZoneSpecificRenderBranches": true,
+    "maximumNewArchitectureFamilies": 0,
+    "requiredQualityProfile": "mobile-target"
+  }
+}
