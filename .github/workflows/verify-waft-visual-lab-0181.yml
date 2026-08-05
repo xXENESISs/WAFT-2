@@ -67,19 +67,19 @@ jobs:
           SERVER_PID=$!
           sleep 2
           node world-generator/scripts/verify-visual-lab-0181-v8.mjs \
-            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v9 \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v10 \
             --output world-generator/visual-lab-0181-local.json \
             --screenshot /tmp/visual-lab-0181-local.png \
             >> world-generator/visual-lab-0181-verification.log 2>&1
           LOCAL=$?
           kill "$SERVER_PID" >/dev/null 2>&1 || true
 
-          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v9"
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181.html?v=waft-visual-lab-0181-v10"
           if [ "$LOCAL" -eq 0 ]; then
             for attempt in $(seq 1 180); do
               page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
-              head="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-macaque-headshell.js?v=waft-visual-lab-0181-v9" || true)"
-              if printf '%s' "$page" | grep -q 'visual-lab-0181-macaque-headshell.js' && printf '%s' "$head" | grep -q 'waft-visual-lab-0181-v9'; then
+              head="$(curl -fsS --max-time 20 "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-lab-0181-macaque-headshell.js?v=waft-visual-lab-0181-v10" || true)"
+              if printf '%s' "$page" | grep -q 'visual-lab-0181-macaque-headshell.js' && printf '%s' "$head" | grep -q 'waft-visual-lab-0181-v10'; then
                 PUBLISHED=0
                 break
               fi
@@ -102,13 +102,13 @@ jobs:
           const success=[local,published,publicBrowser].every(value=>value===0);
           fs.writeFileSync('world-generator/visual-lab-0181-status.json',JSON.stringify({
             formatVersion:1,
-            buildId:'waft-visual-lab-0181-v9',
+            buildId:'waft-visual-lab-0181-v10',
             version:'0.18.1',
             local,published,public:publicBrowser,
             crispRender:success?0:99,
             macaqueV2:success?0:99,
             organicHeadShell:success?0:99,
-            brokenHeadRemoved:success?0:99,
+            facialSelfShadowRemoved:success?0:99,
             mobileViewport:success?0:99,
             success,
             verifiedAt:new Date().toISOString()
@@ -121,7 +121,7 @@ jobs:
           [ -f world-generator/visual-lab-0181-local.json ] && git add world-generator/visual-lab-0181-local.json
           [ -f world-generator/visual-lab-0181-public.json ] && git add world-generator/visual-lab-0181-public.json
           if ! git diff --cached --quiet; then
-            git commit -m "Record WAFT macaque head shell verification"
+            git commit -m "Record stable macaque facial shading verification"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
