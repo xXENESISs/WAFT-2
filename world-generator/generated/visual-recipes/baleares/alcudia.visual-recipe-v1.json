@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/visual-zone-recipe.schema.json",
+  "schemaVersion": 1,
+  "recipeType": "waft-visual-zone-recipe",
+  "visualSystem": {
+    "id": "waft-global-visual-system",
+    "version": "0.18.0"
+  },
+  "regionId": "baleares",
+  "zoneId": "alcudia",
+  "pilotId": "pilot-alcudia",
+  "seed": 180004,
+  "inputs": {
+    "visualBiome": "mediterranean-coastal",
+    "modifiers": [
+      "dry",
+      "coastal-salt"
+    ],
+    "culturalFamily": "balearic",
+    "settlementType": "town",
+    "districtMix": [
+      {
+        "districtId": "historic-core",
+        "weight": 0.36
+      },
+      {
+        "districtId": "port",
+        "weight": 0.2
+      },
+      {
+        "districtId": "residential-low",
+        "weight": 0.18
+      },
+      {
+        "districtId": "seafront",
+        "weight": 0.12
+      },
+      {
+        "districtId": "rural-edge",
+        "weight": 0.14
+      }
+    ]
+  },
+  "resolved": {
+    "architectureFamilies": [
+      {
+        "id": "mediterranean-village",
+        "weight": 0.59,
+        "sourceDistricts": [
+          "historic-core",
+          "residential-low",
+          "rural-edge"
+        ]
+      },
+      {
+        "id": "mediterranean-port",
+        "weight": 0.26,
+        "sourceDistricts": [
+          "port",
+          "seafront"
+        ]
+      },
+      {
+        "id": "modern-mediterranean-residential",
+        "weight": 0.15,
+        "sourceDistricts": [
+          "residential-low",
+          "seafront"
+        ]
+      }
+    ],
+    "terrainMaterials": [
+      "mediterranean-ground",
+      "urban-mediterranean-surface"
+    ],
+    "vegetationFamilies": [
+      "mediterranean-pine-scrub",
+      "mediterranean-orchard",
+      "urban-mediterranean-trees"
+    ],
+    "propKits": [
+      "agriculture-kit",
+      "balearic-rural-kit",
+      "mediterranean-port-kit",
+      "mediterranean-street-kit",
+      "plaza-promenade-kit",
+      "road-signage-kit"
+    ],
+    "lightingProfile": "mediterranean-clear-day",
+    "waterProfile": "mediterranean-coastal-water"
+  },
+  "quality": {
+    "profileId": "mobile-target",
+    "targetFps": 30,
+    "hardBudgets": {
+      "visibleTriangles": 750000,
+      "drawCalls": 260,
+      "visibleInstances": 7500,
+      "residentTexturesMb": 128,
+      "residentGeometryMb": 72,
+      "initialPackageMb": 55,
+      "firstUsefulFrameSeconds": 8
+    }
+  },
+  "acceptance": {
+    "minimumVisibleBuildings": 320,
+    "minimumArchitectureFamilies": 3,
+    "minimumVegetationFamilies": 2,
+    "humanReviewRequired": true
+  },
+  "explanation": [
+    {
+      "stage": "biome",
+      "decision": "Use mediterranean-coastal",
+      "reason": "Pilot pilot-alcudia declares mediterranean-coastal as the physical visual base."
+    },
+    {
+      "stage": "culture",
+      "decision": "Use balearic",
+      "reason": "The cultural family limits architecture, palettes and prop kits without changing geography."
+    },
+    {
+      "stage": "settlement",
+      "decision": "Use town",
+      "reason": "The settlement grammar defines building scale, valid districts and road hierarchy."
+    },
+    {
+      "stage": "district",
+      "decision": "Blend historic-core, port, residential-low, seafront, rural-edge",
+      "reason": "District weights total one and distribute the zone into visually distinct functions."
+    },
+    {
+      "stage": "architecture",
+      "decision": "Resolve mediterranean-village, mediterranean-port, modern-mediterranean-residential",
+      "reason": "Families survive the intersection of district, culture, biome and settlement compatibility."
+    },
+    {
+      "stage": "terrain",
+      "decision": "Blend mediterranean-ground, urban-mediterranean-surface",
+      "reason": "Terrain materials come from the biome and will be modified by dry, coastal-salt."
+    },
+    {
+      "stage": "vegetation",
+      "decision": "Use mediterranean-pine-scrub, mediterranean-orchard, urban-mediterranean-trees",
+      "reason": "Vegetation families are ecologically compatible with mediterranean-coastal; placement mode is resolved per land-use mask."
+    },
+    {
+      "stage": "props",
+      "decision": "Enable agriculture-kit, balearic-rural-kit, mediterranean-port-kit, mediterranean-street-kit, plaza-promenade-kit, road-signage-kit",
+      "reason": "Prop kits are the deterministic union of cultural and active district kits."
+    },
+    {
+      "stage": "quality",
+      "decision": "Compile for mobile-target",
+      "reason": "All pilots must fit the mobile target hard budgets before publication."
+    }
+  ],
+  "determinism": {
+    "algorithm": "sha256-stable-json-v1",
+    "sourceFingerprint": "cfe704a84a7a96a575317ac56b3bc19d9b4ca6a69f179b98970ae0aff9bb6313",
+    "recipeFingerprint": "25c0343d30a39e898c00f0b9e5c9ffe9a71cf4a86008e941b83af2e2a1144c34"
+  }
+}

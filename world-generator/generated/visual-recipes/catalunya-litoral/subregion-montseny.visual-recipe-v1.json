@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/visual-zone-recipe.schema.json",
+  "schemaVersion": 1,
+  "recipeType": "waft-visual-zone-recipe",
+  "visualSystem": {
+    "id": "waft-global-visual-system",
+    "version": "0.18.0"
+  },
+  "regionId": "catalunya-litoral",
+  "zoneId": "subregion-montseny",
+  "pilotId": "pilot-montseny",
+  "seed": 180002,
+  "inputs": {
+    "visualBiome": "temperate-mountain",
+    "modifiers": [
+      "humid",
+      "rocky"
+    ],
+    "culturalFamily": "catalan-mountain",
+    "settlementType": "mountain-settlement",
+    "districtMix": [
+      {
+        "districtId": "mountain-village",
+        "weight": 0.55
+      },
+      {
+        "districtId": "rural-edge",
+        "weight": 0.3
+      },
+      {
+        "districtId": "historic-core",
+        "weight": 0.15
+      }
+    ]
+  },
+  "resolved": {
+    "architectureFamilies": [
+      {
+        "id": "mediterranean-village",
+        "weight": 0.575,
+        "sourceDistricts": [
+          "historic-core",
+          "mountain-village",
+          "rural-edge"
+        ]
+      },
+      {
+        "id": "catalan-mountain-building",
+        "weight": 0.425,
+        "sourceDistricts": [
+          "mountain-village",
+          "rural-edge"
+        ]
+      }
+    ],
+    "terrainMaterials": [
+      "mountain-humid-ground",
+      "urban-mediterranean-surface"
+    ],
+    "vegetationFamilies": [
+      "temperate-mountain-forest",
+      "mountain-ground-cover"
+    ],
+    "propKits": [
+      "agriculture-kit",
+      "balearic-rural-kit",
+      "catalan-mountain-kit",
+      "mediterranean-street-kit",
+      "plaza-promenade-kit",
+      "road-signage-kit"
+    ],
+    "lightingProfile": "humid-mountain-clouds",
+    "waterProfile": "mountain-stream-water"
+  },
+  "quality": {
+    "profileId": "mobile-target",
+    "targetFps": 30,
+    "hardBudgets": {
+      "visibleTriangles": 750000,
+      "drawCalls": 260,
+      "visibleInstances": 7500,
+      "residentTexturesMb": 128,
+      "residentGeometryMb": 72,
+      "initialPackageMb": 55,
+      "firstUsefulFrameSeconds": 8
+    }
+  },
+  "acceptance": {
+    "minimumVisibleBuildings": 120,
+    "minimumArchitectureFamilies": 2,
+    "minimumVegetationFamilies": 2,
+    "humanReviewRequired": true
+  },
+  "explanation": [
+    {
+      "stage": "biome",
+      "decision": "Use temperate-mountain",
+      "reason": "Pilot pilot-montseny declares temperate-mountain as the physical visual base."
+    },
+    {
+      "stage": "culture",
+      "decision": "Use catalan-mountain",
+      "reason": "The cultural family limits architecture, palettes and prop kits without changing geography."
+    },
+    {
+      "stage": "settlement",
+      "decision": "Use mountain-settlement",
+      "reason": "The settlement grammar defines building scale, valid districts and road hierarchy."
+    },
+    {
+      "stage": "district",
+      "decision": "Blend mountain-village, rural-edge, historic-core",
+      "reason": "District weights total one and distribute the zone into visually distinct functions."
+    },
+    {
+      "stage": "architecture",
+      "decision": "Resolve mediterranean-village, catalan-mountain-building",
+      "reason": "Families survive the intersection of district, culture, biome and settlement compatibility."
+    },
+    {
+      "stage": "terrain",
+      "decision": "Blend mountain-humid-ground, urban-mediterranean-surface",
+      "reason": "Terrain materials come from the biome and will be modified by humid, rocky."
+    },
+    {
+      "stage": "vegetation",
+      "decision": "Use temperate-mountain-forest, mountain-ground-cover",
+      "reason": "Vegetation families are ecologically compatible with temperate-mountain; placement mode is resolved per land-use mask."
+    },
+    {
+      "stage": "props",
+      "decision": "Enable agriculture-kit, balearic-rural-kit, catalan-mountain-kit, mediterranean-street-kit, plaza-promenade-kit, road-signage-kit",
+      "reason": "Prop kits are the deterministic union of cultural and active district kits."
+    },
+    {
+      "stage": "quality",
+      "decision": "Compile for mobile-target",
+      "reason": "All pilots must fit the mobile target hard budgets before publication."
+    }
+  ],
+  "determinism": {
+    "algorithm": "sha256-stable-json-v1",
+    "sourceFingerprint": "cfe704a84a7a96a575317ac56b3bc19d9b4ca6a69f179b98970ae0aff9bb6313",
+    "recipeFingerprint": "f2f2bd97ed5b845ffc360b5ef9e6a1b70c852b19e19479f1051802ecf4422400"
+  }
+}

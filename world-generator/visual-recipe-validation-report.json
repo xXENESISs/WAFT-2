@@ -1,0 +1,52 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "schema": "world-generator/schema/visual-zone-recipe.schema.json",
+  "recipeRoot": "world-generator/generated/visual-recipes",
+  "recipes": [
+    {
+      "file": "world-generator/generated/visual-recipes/baleares/alcudia.visual-recipe-v1.json",
+      "valid": true,
+      "regionId": "baleares",
+      "zoneId": "alcudia",
+      "recipeFingerprint": "25c0343d30a39e898c00f0b9e5c9ffe9a71cf4a86008e941b83af2e2a1144c34",
+      "architectureFamilies": 3,
+      "vegetationFamilies": 3,
+      "errors": []
+    },
+    {
+      "file": "world-generator/generated/visual-recipes/baleares/llevant.visual-recipe-v1.json",
+      "valid": true,
+      "regionId": "baleares",
+      "zoneId": "llevant",
+      "recipeFingerprint": "d3668deb18a15ee3040ade5a112669b28d1ac3856a4844accaaea3135772fcdc",
+      "architectureFamilies": 3,
+      "vegetationFamilies": 3,
+      "errors": []
+    },
+    {
+      "file": "world-generator/generated/visual-recipes/catalunya-litoral/barcelona.visual-recipe-v1.json",
+      "valid": true,
+      "regionId": "catalunya-litoral",
+      "zoneId": "barcelona",
+      "recipeFingerprint": "880ad22a214e3068242991be5ad358499e26d176044c34f74056a2253b4b90c6",
+      "architectureFamilies": 3,
+      "vegetationFamilies": 3,
+      "errors": []
+    },
+    {
+      "file": "world-generator/generated/visual-recipes/catalunya-litoral/subregion-montseny.visual-recipe-v1.json",
+      "valid": true,
+      "regionId": "catalunya-litoral",
+      "zoneId": "subregion-montseny",
+      "recipeFingerprint": "f2f2bd97ed5b845ffc360b5ef9e6a1b70c852b19e19479f1051802ecf4422400",
+      "architectureFamilies": 2,
+      "vegetationFamilies": 2,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "durationMs": 4,
+  "validatedAt": "2026-08-05T13:57:38.730Z"
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "../../../schema/visual-zone-recipe.schema.json",
+  "schemaVersion": 1,
+  "recipeType": "waft-visual-zone-recipe",
+  "visualSystem": {
+    "id": "waft-global-visual-system",
+    "version": "0.18.0"
+  },
+  "regionId": "catalunya-litoral",
+  "zoneId": "barcelona",
+  "pilotId": "pilot-barcelona",
+  "seed": 180001,
+  "inputs": {
+    "visualBiome": "mediterranean-coastal",
+    "modifiers": [
+      "urban-heat",
+      "coastal-salt"
+    ],
+    "culturalFamily": "iberian-east",
+    "settlementType": "metropolis",
+    "districtMix": [
+      {
+        "districtId": "urban-grid",
+        "weight": 0.34
+      },
+      {
+        "districtId": "historic-core",
+        "weight": 0.18
+      },
+      {
+        "districtId": "port",
+        "weight": 0.15
+      },
+      {
+        "districtId": "residential-dense",
+        "weight": 0.15
+      },
+      {
+        "districtId": "civic-center",
+        "weight": 0.1
+      },
+      {
+        "districtId": "seafront",
+        "weight": 0.08
+      }
+    ]
+  },
+  "resolved": {
+    "architectureFamilies": [
+      {
+        "id": "iberian-urban-block",
+        "weight": 0.6,
+        "sourceDistricts": [
+          "civic-center",
+          "historic-core",
+          "port",
+          "residential-dense",
+          "urban-grid"
+        ]
+      },
+      {
+        "id": "modern-mediterranean-residential",
+        "weight": 0.285,
+        "sourceDistricts": [
+          "residential-dense",
+          "seafront",
+          "urban-grid"
+        ]
+      },
+      {
+        "id": "mediterranean-port",
+        "weight": 0.115,
+        "sourceDistricts": [
+          "port",
+          "seafront"
+        ]
+      }
+    ],
+    "terrainMaterials": [
+      "mediterranean-ground",
+      "urban-mediterranean-surface"
+    ],
+    "vegetationFamilies": [
+      "mediterranean-pine-scrub",
+      "mediterranean-orchard",
+      "urban-mediterranean-trees"
+    ],
+    "propKits": [
+      "mediterranean-port-kit",
+      "mediterranean-street-kit",
+      "plaza-promenade-kit",
+      "road-signage-kit"
+    ],
+    "lightingProfile": "mediterranean-clear-day",
+    "waterProfile": "mediterranean-coastal-water"
+  },
+  "quality": {
+    "profileId": "mobile-target",
+    "targetFps": 30,
+    "hardBudgets": {
+      "visibleTriangles": 750000,
+      "drawCalls": 260,
+      "visibleInstances": 7500,
+      "residentTexturesMb": 128,
+      "residentGeometryMb": 72,
+      "initialPackageMb": 55,
+      "firstUsefulFrameSeconds": 8
+    }
+  },
+  "acceptance": {
+    "minimumVisibleBuildings": 600,
+    "minimumArchitectureFamilies": 3,
+    "minimumVegetationFamilies": 2,
+    "humanReviewRequired": true
+  },
+  "explanation": [
+    {
+      "stage": "biome",
+      "decision": "Use mediterranean-coastal",
+      "reason": "Pilot pilot-barcelona declares mediterranean-coastal as the physical visual base."
+    },
+    {
+      "stage": "culture",
+      "decision": "Use iberian-east",
+      "reason": "The cultural family limits architecture, palettes and prop kits without changing geography."
+    },
+    {
+      "stage": "settlement",
+      "decision": "Use metropolis",
+      "reason": "The settlement grammar defines building scale, valid districts and road hierarchy."
+    },
+    {
+      "stage": "district",
+      "decision": "Blend urban-grid, historic-core, port, residential-dense, civic-center, seafront",
+      "reason": "District weights total one and distribute the zone into visually distinct functions."
+    },
+    {
+      "stage": "architecture",
+      "decision": "Resolve iberian-urban-block, modern-mediterranean-residential, mediterranean-port",
+      "reason": "Families survive the intersection of district, culture, biome and settlement compatibility."
+    },
+    {
+      "stage": "terrain",
+      "decision": "Blend mediterranean-ground, urban-mediterranean-surface",
+      "reason": "Terrain materials come from the biome and will be modified by urban-heat, coastal-salt."
+    },
+    {
+      "stage": "vegetation",
+      "decision": "Use mediterranean-pine-scrub, mediterranean-orchard, urban-mediterranean-trees",
+      "reason": "Vegetation families are ecologically compatible with mediterranean-coastal; placement mode is resolved per land-use mask."
+    },
+    {
+      "stage": "props",
+      "decision": "Enable mediterranean-port-kit, mediterranean-street-kit, plaza-promenade-kit, road-signage-kit",
+      "reason": "Prop kits are the deterministic union of cultural and active district kits."
+    },
+    {
+      "stage": "quality",
+      "decision": "Compile for mobile-target",
+      "reason": "All pilots must fit the mobile target hard budgets before publication."
+    }
+  ],
+  "determinism": {
+    "algorithm": "sha256-stable-json-v1",
+    "sourceFingerprint": "cfe704a84a7a96a575317ac56b3bc19d9b4ca6a69f179b98970ae0aff9bb6313",
+    "recipeFingerprint": "880ad22a214e3068242991be5ad358499e26d176044c34f74056a2253b4b90c6"
+  }
+}
