@@ -1,0 +1,1 @@
+Verify the standalone WAFT Visual Lab 0.18.1 locally and on GitHub Pages.
