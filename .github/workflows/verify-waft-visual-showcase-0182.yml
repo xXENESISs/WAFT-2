@@ -1,0 +1,103 @@
+name: Verify WAFT Visual Showcase 0.18.2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - mallorca-mobile/visual-showcase-0182.html
+      - mallorca-mobile/visual-showcase-0182.css
+      - mallorca-mobile/visual-showcase-0182.js
+      - mallorca-mobile/assets/visual/waft-visual-showcase-mediterranean-v1.webp
+      - world-generator/scripts/verify-visual-showcase-0182.mjs
+      - world-generator/visual-showcase-0182-trigger.txt
+      - .github/workflows/verify-waft-visual-showcase-0182.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-waft-visual-showcase-0182
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check syntax
+        run: |
+          node --check mallorca-mobile/visual-showcase-0182.js
+          node --check world-generator/scripts/verify-visual-showcase-0182.mjs
+      - name: Install verifier
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Verify local and public showcase
+        shell: bash
+        run: |
+          set +e
+          LOCAL=99
+          PUBLISHED=99
+          PUBLIC=99
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-showcase-server.log 2>&1 &
+          SERVER_PID=$!
+          sleep 2
+          node world-generator/scripts/verify-visual-showcase-0182.mjs \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1 \
+            --output world-generator/visual-showcase-0182-local.json \
+            --screenshot /tmp/visual-showcase-0182-local.png
+          LOCAL=$?
+          kill "$SERVER_PID" >/dev/null 2>&1 || true
+
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1"
+          if [ "$LOCAL" -eq 0 ]; then
+            for attempt in $(seq 1 180); do
+              page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
+              image_status="$(curl -L -sS -o /dev/null -w '%{http_code}' --max-time 20 'https://xxenesiss.github.io/WAFT-2/mallorca-mobile/assets/visual/waft-visual-showcase-mediterranean-v1.webp' || true)"
+              if printf '%s' "$page" | grep -q 'WAFT VISUAL SHOWCASE' && [ "$image_status" = "200" ]; then
+                PUBLISHED=0
+                break
+              fi
+              sleep 4
+            done
+          fi
+          if [ "$PUBLISHED" -eq 0 ]; then
+            node world-generator/scripts/verify-visual-showcase-0182.mjs \
+              --url "$PAGE_URL" \
+              --public \
+              --output world-generator/visual-showcase-0182-public.json \
+              --screenshot /tmp/visual-showcase-0182-public.png
+            PUBLIC=$?
+          fi
+
+          node - "$LOCAL" "$PUBLISHED" "$PUBLIC" <<'NODE'
+          const fs=require('fs');
+          const [local,published,publicBrowser]=process.argv.slice(2).map(Number);
+          const success=[local,published,publicBrowser].every(value=>value===0);
+          fs.writeFileSync('world-generator/visual-showcase-0182-status.json',JSON.stringify({formatVersion:1,buildId:'waft-showcase-0182-v1',local,published,public:publicBrowser,eightSections:success?0:99,sharpArtwork:success?0:99,mobileNavigation:success?0:99,feedback:success?0:99,success,verifiedAt:new Date().toISOString()},null,2)+'\n');
+          NODE
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/visual-showcase-0182-*.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record WAFT Visual Showcase 0.18.2 verification"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          [ "$LOCAL" -eq 0 ] && [ "$PUBLISHED" -eq 0 ] && [ "$PUBLIC" -eq 0 ]
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: waft-visual-showcase-0182-screenshots
+          path: |
+            /tmp/visual-showcase-0182-local.png
+            /tmp/visual-showcase-0182-public.png
+          if-no-files-found: ignore
+          retention-days: 7
