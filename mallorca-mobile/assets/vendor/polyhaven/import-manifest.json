@@ -1,16 +1,38 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-06T06:37:02.008Z",
-  "importer": "WAFT Adventure Asset Importer 0.19.3",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T16:41:47.453Z",
+  "importer": "WAFT Adventure Asset Importer 0.19.4",
   "provider": "Poly Haven",
   "providerUrl": "https://polyhaven.com",
   "apiCredit": "Powered by Poly Haven",
   "license": "CC0-1.0",
+  "resolution": "1k",
+  "totalBytes": 112964835,
+  "maxTotalBytes": 240000000,
+  "categoryCounts": {
+    "containers": 6,
+    "furniture": 8,
+    "household": 3,
+    "tools": 5,
+    "architecture": 1,
+    "lighting": 1,
+    "structures": 1,
+    "nature": 1,
+    "plaster": 5,
+    "stone": 3,
+    "roofing": 3,
+    "wood": 3,
+    "ground": 7,
+    "paving": 4
+  },
+  "importedCount": 51,
+  "rejectedCount": 0,
   "assets": [
     {
       "id": "wooden_crate_02",
       "type": "model",
-      "role": "farmhouse-maritime-prop",
+      "category": "containers",
+      "role": "farmhouse-maritime-crate",
       "sourcePage": "https://polyhaven.com/a/wooden_crate_02",
       "apiUrl": "https://api.polyhaven.com/files/wooden_crate_02",
       "license": "CC0-1.0",
@@ -51,9 +73,1182 @@
       ]
     },
     {
+      "id": "wooden_crate_01",
+      "type": "model",
+      "category": "containers",
+      "role": "rope-handled-maritime-crate",
+      "sourcePage": "https://polyhaven.com/a/wooden_crate_01",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_crate_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_crate_01/",
+      "entryFile": "wooden_crate_01_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_crate_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_crate_01/wooden_crate_01_1k.gltf",
+          "bytes": 5612,
+          "sha256": "fd9c6073acfc671e12b64666053f2805ae33aff5d3dbbcfe5c97c08c06644927"
+        },
+        {
+          "file": "wooden_crate_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_crate_01/wooden_crate_01.bin",
+          "bytes": 189408,
+          "sha256": "85f381f8035f7a6f2f3b848640894c6d3333b261946dd8a338c0fe19e0bea21e"
+        },
+        {
+          "file": "textures/wooden_crate_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_nor_gl_1k.jpg",
+          "bytes": 594076,
+          "sha256": "f4ea44c7dc1686123d337039cb713d74e8a2dbc6d1bd2beeac276d06f5df3fab"
+        },
+        {
+          "file": "textures/wooden_crate_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_diff_1k.jpg",
+          "bytes": 711292,
+          "sha256": "16653f4abaf4c1d9bca94bde3bd8c54d0ea9a5298d1648abcf57de1f7ecc34cc"
+        },
+        {
+          "file": "textures/wooden_crate_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_arm_1k.jpg",
+          "bytes": 776699,
+          "sha256": "cd0b031c3924905e16ffd78ead062c2cc274148c4104d09635310097738b4679"
+        }
+      ]
+    },
+    {
+      "id": "wooden_barrels_01",
+      "type": "model",
+      "category": "containers",
+      "role": "farmhouse-cellar-barrel-set",
+      "sourcePage": "https://polyhaven.com/a/wooden_barrels_01",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_barrels_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_barrels_01/",
+      "entryFile": "wooden_barrels_01_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_barrels_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_barrels_01/wooden_barrels_01_1k.gltf",
+          "bytes": 31017,
+          "sha256": "ff785e2150198c4cdb3cc74e532b02ce9574d6a7fc3606f5801fcbf68e3136af"
+        },
+        {
+          "file": "wooden_barrels_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_barrels_01/wooden_barrels_01.bin",
+          "bytes": 1243556,
+          "sha256": "7de8294b07ecb6bd57ea3542760fa45bbefc296a47dd044723eb599ffc56084f"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel01_nor_gl_1k.jpg",
+          "bytes": 538634,
+          "sha256": "3dfa658b4a38a711887c9e4a492a319b20e2a821e4e08435368f98fe0c78a1b8"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel01_diff_1k.jpg",
+          "bytes": 605063,
+          "sha256": "639e616e8d69acaadbf69725bb3d13f07a28fdff6c6b15e1d7f0574336564c72"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel01_arm_1k.jpg",
+          "bytes": 852652,
+          "sha256": "35e34115f7657cadce27422730e936418a30e23397fb5c126591dff711acbf4b"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel02_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel02_nor_gl_1k.jpg",
+          "bytes": 555954,
+          "sha256": "57c3d5682f299c97270228e3ec08f6c982fb2c2696ec30a74d0edbfe067235dd"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel02_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel02_diff_1k.jpg",
+          "bytes": 618495,
+          "sha256": "c75f506a0c31093d4d3d425d4c979f49fce2dc99a8e6caefb50809fcf329845e"
+        },
+        {
+          "file": "textures/wooden_barrels_01_barrel02_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_barrel02_arm_1k.jpg",
+          "bytes": 848051,
+          "sha256": "970de5e9f682d4ac2a2098c88dafc1e5a6c27cf1dbe31eb7ed3f8bc2a92eb58f"
+        },
+        {
+          "file": "textures/wooden_barrels_01_pieces_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_pieces_nor_gl_1k.jpg",
+          "bytes": 620276,
+          "sha256": "3be77f6310507c9c37414809ba31c39c89621e8bde916893bd676d54a5ceade2"
+        },
+        {
+          "file": "textures/wooden_barrels_01_pieces_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_pieces_diff_1k.jpg",
+          "bytes": 672604,
+          "sha256": "399134703c974ad4c8bc71107d513e8c89f5ca09f9b6175dc02e2e607b75c43d"
+        },
+        {
+          "file": "textures/wooden_barrels_01_pieces_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_barrels_01/wooden_barrels_01_pieces_arm_1k.jpg",
+          "bytes": 904545,
+          "sha256": "785b59a19add1951bcd54d7607c18fcafa5a09068349ac437640d495b45a62fd"
+        }
+      ]
+    },
+    {
+      "id": "wooden_bucket_01",
+      "type": "model",
+      "category": "containers",
+      "role": "rustic-water-bucket",
+      "sourcePage": "https://polyhaven.com/a/wooden_bucket_01",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_bucket_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_bucket_01/",
+      "entryFile": "wooden_bucket_01_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_bucket_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_bucket_01/wooden_bucket_01_1k.gltf",
+          "bytes": 4248,
+          "sha256": "f5338d760391b1f6183f09cbb3dfcb0d6b5d954d9a1d388e7debabce46fd999d"
+        },
+        {
+          "file": "wooden_bucket_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_bucket_01/wooden_bucket_01.bin",
+          "bytes": 158408,
+          "sha256": "7dbce867270cbb1efe7b0970ebeb9b0d40dd53bcb62f57bfa541c04726ed4b7e"
+        },
+        {
+          "file": "textures/wooden_bucket_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bucket_01/wooden_bucket_01_nor_gl_1k.jpg",
+          "bytes": 693440,
+          "sha256": "ae12106f8dd1e69813d42d714e9c99b70af3b5fcce6953cfbf8d8a741b4da40f"
+        },
+        {
+          "file": "textures/wooden_bucket_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bucket_01/wooden_bucket_01_diff_1k.jpg",
+          "bytes": 698083,
+          "sha256": "d9a8ec311099bc94510abdc4b246b67c893df5e829ada4a1014021dbc7c84561"
+        },
+        {
+          "file": "textures/wooden_bucket_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bucket_01/wooden_bucket_01_arm_1k.jpg",
+          "bytes": 777463,
+          "sha256": "3f093ca45792584632bbcc94fcc6a6521e5338a19202545f143303de6f6e8f17"
+        }
+      ]
+    },
+    {
+      "id": "wicker_basket_01",
+      "type": "model",
+      "category": "containers",
+      "role": "rural-wicker-basket",
+      "sourcePage": "https://polyhaven.com/a/wicker_basket_01",
+      "apiUrl": "https://api.polyhaven.com/files/wicker_basket_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wicker_basket_01/",
+      "entryFile": "wicker_basket_01_1k.gltf",
+      "files": [
+        {
+          "file": "wicker_basket_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wicker_basket_01/wicker_basket_01_1k.gltf",
+          "bytes": 2792,
+          "sha256": "9ad86c33f00f46a18c9bc8bfc28c0036090ee819f7270d0028ec408512c04094"
+        },
+        {
+          "file": "wicker_basket_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wicker_basket_01/wicker_basket_01.bin",
+          "bytes": 624920,
+          "sha256": "8e96025ffcdc64a7e75d1aa980f2491b1219912a4554272cd1e192a966c399f8"
+        },
+        {
+          "file": "textures/wicker_basket_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_01/wicker_basket_01_nor_gl_1k.jpg",
+          "bytes": 549218,
+          "sha256": "d06024a37ef330d05bf128b8488f72769af05e72d266ffbc810d7f09ea2b32f9"
+        },
+        {
+          "file": "textures/wicker_basket_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_01/wicker_basket_01_diff_1k.jpg",
+          "bytes": 679110,
+          "sha256": "15156c7855d5642f6bb594edfad5bcdcfe11f87f3e109956cb9e8fdb15fef921"
+        },
+        {
+          "file": "textures/wicker_basket_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_01/wicker_basket_01_arm_1k.jpg",
+          "bytes": 874111,
+          "sha256": "5150638cbcd8f1bc07b76af3b60b31a4c5e7d38ce66ac8906b9c3192f3283b9a"
+        }
+      ]
+    },
+    {
+      "id": "wicker_basket_02",
+      "type": "model",
+      "category": "containers",
+      "role": "lidded-wicker-basket",
+      "sourcePage": "https://polyhaven.com/a/wicker_basket_02",
+      "apiUrl": "https://api.polyhaven.com/files/wicker_basket_02",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wicker_basket_02/",
+      "entryFile": "wicker_basket_02_1k.gltf",
+      "files": [
+        {
+          "file": "wicker_basket_02_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wicker_basket_02/wicker_basket_02_1k.gltf",
+          "bytes": 4497,
+          "sha256": "78c7a3bdd7025eb092b3ac744e9d83e9a75fbb242696b5dce87ec215af617768"
+        },
+        {
+          "file": "wicker_basket_02.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wicker_basket_02/wicker_basket_02.bin",
+          "bytes": 432572,
+          "sha256": "bd92d61a377879fa28c2bdb18fd0b0a42c42c7333c04e324f346b68689655fdb"
+        },
+        {
+          "file": "textures/wicker_basket_02_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_02/wicker_basket_02_nor_gl_1k.jpg",
+          "bytes": 1041220,
+          "sha256": "d3de9d9ec34955ed866a819763eb323a0dee571f55b02f5b4c44b0fc34cf2376"
+        },
+        {
+          "file": "textures/wicker_basket_02_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_02/wicker_basket_02_diff_1k.jpg",
+          "bytes": 867277,
+          "sha256": "c03525c27579160bcd71054aa17796570a074ff4cdd560bfed3fb9770c9ba975"
+        },
+        {
+          "file": "textures/wicker_basket_02_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wicker_basket_02/wicker_basket_02_arm_1k.jpg",
+          "bytes": 718943,
+          "sha256": "641013be798757f4bf2c82cf335b80db2b6d2b52f8fbf0b1f1e2e22196bc60ee"
+        }
+      ]
+    },
+    {
+      "id": "wooden_table_02",
+      "type": "model",
+      "category": "furniture",
+      "role": "simple-rural-table",
+      "sourcePage": "https://polyhaven.com/a/wooden_table_02",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_table_02",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_table_02/",
+      "entryFile": "wooden_table_02_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_table_02_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_table_02/wooden_table_02_1k.gltf",
+          "bytes": 2687,
+          "sha256": "bb38e301840cb629d72c43c83fdb7fb308518efe2d0bc01e1ed0e9a9e43ed9d3"
+        },
+        {
+          "file": "wooden_table_02.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wooden_table_02/wooden_table_02.bin",
+          "bytes": 7576,
+          "sha256": "52ed7cc67b3aa403375cf9bd18050e8cc21bcced6532a0183c1a733f0965df6d"
+        },
+        {
+          "file": "textures/wooden_table_02_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_table_02/wooden_table_02_nor_gl_1k.jpg",
+          "bytes": 122129,
+          "sha256": "9470e08e5dab4ab6a7cafab2a488a50fb54fa8f38890e9032c39dcbf7f5846d2"
+        },
+        {
+          "file": "textures/wooden_table_02_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_table_02/wooden_table_02_diff_1k.jpg",
+          "bytes": 178379,
+          "sha256": "2334ac3e23d69222322515d9bad066b4e90d7d81989fe231b8fb12f39179ad9e"
+        },
+        {
+          "file": "textures/wooden_table_02_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_table_02/wooden_table_02_arm_1k.jpg",
+          "bytes": 174545,
+          "sha256": "b970a81e4b03f3b8a341c9eb639f112fff1782d681c846255ebc9073cd803ced"
+        }
+      ]
+    },
+    {
+      "id": "small_wooden_table_01",
+      "type": "model",
+      "category": "furniture",
+      "role": "small-aged-table",
+      "sourcePage": "https://polyhaven.com/a/small_wooden_table_01",
+      "apiUrl": "https://api.polyhaven.com/files/small_wooden_table_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/small_wooden_table_01/",
+      "entryFile": "small_wooden_table_01_1k.gltf",
+      "files": [
+        {
+          "file": "small_wooden_table_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/small_wooden_table_01/small_wooden_table_01_1k.gltf",
+          "bytes": 2764,
+          "sha256": "2a33fb09785a9553c3cd4d0c5f8b874bb0fb9f26c8ef2613b65607524411f352"
+        },
+        {
+          "file": "small_wooden_table_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/small_wooden_table_01/small_wooden_table_01.bin",
+          "bytes": 92428,
+          "sha256": "f0ca88dac6cf094e1ba260ee1bc21756a84a27b5456bcf45bda2227819458d84"
+        },
+        {
+          "file": "textures/small_wooden_table_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_wooden_table_01/small_wooden_table_01_nor_gl_1k.jpg",
+          "bytes": 26935,
+          "sha256": "7f675805966ce02cd7678687c4fc86c0dfe4b20106486bb0c772143ea8ca3b4b"
+        },
+        {
+          "file": "textures/small_wooden_table_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_wooden_table_01/small_wooden_table_01_diff_1k.jpg",
+          "bytes": 138301,
+          "sha256": "ef587bffaf9f65ec81e0777fa6f25d835ed354cef055669c8a783086fd45b9dd"
+        },
+        {
+          "file": "textures/small_wooden_table_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_wooden_table_01/small_wooden_table_01_arm_1k.jpg",
+          "bytes": 154335,
+          "sha256": "e1d01aaf54338b61f224e8b08c5b9e9879126ae3908a92cb8ad161bf54078c34"
+        }
+      ]
+    },
+    {
+      "id": "painted_wooden_bench",
+      "type": "model",
+      "category": "furniture",
+      "role": "rustic-painted-bench",
+      "sourcePage": "https://polyhaven.com/a/painted_wooden_bench",
+      "apiUrl": "https://api.polyhaven.com/files/painted_wooden_bench",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/painted_wooden_bench/",
+      "entryFile": "painted_wooden_bench_1k.gltf",
+      "files": [
+        {
+          "file": "painted_wooden_bench_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_bench/painted_wooden_bench_1k.gltf",
+          "bytes": 2835,
+          "sha256": "2289ab82f3fe3045bf18f7b9541743d2c65b9f071cb34bbe424d2bc998f3e507"
+        },
+        {
+          "file": "painted_wooden_bench.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_bench/painted_wooden_bench.bin",
+          "bytes": 25444,
+          "sha256": "5799bcb20924105cccd6424de8cdb8e67eb57fddc19c395befeac634a7b2e013"
+        },
+        {
+          "file": "textures/painted_wooden_bench_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_nor_gl_1k.jpg",
+          "bytes": 830104,
+          "sha256": "a0f53740d77fc61aac01de0b7e1ae6109445d1756839f739ae31fdf10c9911f2"
+        },
+        {
+          "file": "textures/painted_wooden_bench_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_diff_1k.jpg",
+          "bytes": 545216,
+          "sha256": "9bc533313091ee71eaca5fa6334b71d27935d9d75311f64df6a53c28a67c435c"
+        },
+        {
+          "file": "textures/painted_wooden_bench_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_arm_1k.jpg",
+          "bytes": 586040,
+          "sha256": "878785565eeff706b8f1e4db7e3d794a544e9cf0e56cee424d9a271ab4ead47e"
+        }
+      ]
+    },
+    {
+      "id": "painted_wooden_stool",
+      "type": "model",
+      "category": "furniture",
+      "role": "rustic-painted-stool",
+      "sourcePage": "https://polyhaven.com/a/painted_wooden_stool",
+      "apiUrl": "https://api.polyhaven.com/files/painted_wooden_stool",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/painted_wooden_stool/",
+      "entryFile": "painted_wooden_stool_1k.gltf",
+      "files": [
+        {
+          "file": "painted_wooden_stool_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_stool/painted_wooden_stool_1k.gltf",
+          "bytes": 2848,
+          "sha256": "f9a9a4a7c38b3421c30dac35d91c41c8864452d6dbb398911494b8324d312ef9"
+        },
+        {
+          "file": "painted_wooden_stool.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_stool/painted_wooden_stool.bin",
+          "bytes": 23384,
+          "sha256": "d336c1eb8832e4441f69bb5618e2289703a7ca71d3884a9087d658051eee0b66"
+        },
+        {
+          "file": "textures/painted_wooden_stool_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_stool/painted_wooden_stool_nor_gl_1k.jpg",
+          "bytes": 489911,
+          "sha256": "39fed6e0a14b464bf5b9555d4ac02df0f85b0bfc89d383e4b8e00c343598384e"
+        },
+        {
+          "file": "textures/painted_wooden_stool_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_stool/painted_wooden_stool_diff_1k.jpg",
+          "bytes": 607519,
+          "sha256": "db0322de5e3c588465d0894515a7c1bdacde9e2a469a9ac154206bfe96746d3f"
+        },
+        {
+          "file": "textures/painted_wooden_stool_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_stool/painted_wooden_stool_arm_1k.jpg",
+          "bytes": 751171,
+          "sha256": "2088f99a25050d6666348388d279b65993fdd50ad8c14d3419a64f1caea6472d"
+        }
+      ]
+    },
+    {
+      "id": "folding_wooden_stool",
+      "type": "model",
+      "category": "furniture",
+      "role": "portable-outdoor-stool",
+      "sourcePage": "https://polyhaven.com/a/folding_wooden_stool",
+      "apiUrl": "https://api.polyhaven.com/files/folding_wooden_stool",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/folding_wooden_stool/",
+      "entryFile": "folding_wooden_stool_1k.gltf",
+      "files": [
+        {
+          "file": "folding_wooden_stool_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/folding_wooden_stool/folding_wooden_stool_1k.gltf",
+          "bytes": 2842,
+          "sha256": "c8ae926ce28737ca8b8f2ef928094fe114d7c71ca32e1040bace53337290a819"
+        },
+        {
+          "file": "folding_wooden_stool.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/folding_wooden_stool/folding_wooden_stool.bin",
+          "bytes": 193016,
+          "sha256": "84fcfeea3355ff011b9e821691fca04110705cfddba8b8617db868b4c33864fa"
+        },
+        {
+          "file": "textures/folding_wooden_stool_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/folding_wooden_stool/folding_wooden_stool_nor_gl_1k.jpg",
+          "bytes": 726559,
+          "sha256": "f1c2220760d244a846cf2f0281597f18052b2d96ebb84b5eef473a72c7fd4586"
+        },
+        {
+          "file": "textures/folding_wooden_stool_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/folding_wooden_stool/folding_wooden_stool_diff_1k.jpg",
+          "bytes": 661939,
+          "sha256": "e5927deb2ce44e6204cfd39a05960f4811cf752bacb2b687d96e04af12a4d3ad"
+        },
+        {
+          "file": "textures/folding_wooden_stool_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/folding_wooden_stool/folding_wooden_stool_arm_1k.jpg",
+          "bytes": 683576,
+          "sha256": "1133c852e5ba6b1b05fe643926847d8a9b710e8ba869d825076c3d94cafa700b"
+        }
+      ]
+    },
+    {
+      "id": "wooden_stool_01",
+      "type": "model",
+      "category": "furniture",
+      "role": "worn-workshop-stool",
+      "sourcePage": "https://polyhaven.com/a/wooden_stool_01",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_stool_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_stool_01/",
+      "entryFile": "wooden_stool_01_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_stool_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_stool_01/wooden_stool_01_1k.gltf",
+          "bytes": 2715,
+          "sha256": "f28566454af27175839c10645a37a2a16b373e4be8aecddd0d8a3d704cfc0330"
+        },
+        {
+          "file": "wooden_stool_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_stool_01/wooden_stool_01.bin",
+          "bytes": 290924,
+          "sha256": "a9b21b8c75719057db549dfee5b8c1cc76edc2727367790fb9fc49963e34ae7a"
+        },
+        {
+          "file": "textures/wooden_stool_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_stool_01/wooden_stool_01_nor_gl_1k.jpg",
+          "bytes": 230812,
+          "sha256": "10b587d76b74e752f15d03d2c4725cddb439b174dcddae2444e1534de61d77dc"
+        },
+        {
+          "file": "textures/wooden_stool_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_stool_01/wooden_stool_01_diff_1k.jpg",
+          "bytes": 233863,
+          "sha256": "cb5c7ec2e27f5ad2ced7791da5e2cc9f1d03ab2c6ffbb63df8256dc271869206"
+        },
+        {
+          "file": "textures/wooden_stool_01_rough_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_stool_01/wooden_stool_01_rough_1k.jpg",
+          "bytes": 203406,
+          "sha256": "23b43e05961731de864e4902a14c614b33d804fd91821c284fa90a8d2ca23fe1"
+        }
+      ]
+    },
+    {
+      "id": "wooden_picnic_table",
+      "type": "model",
+      "category": "furniture",
+      "role": "outdoor-table-and-benches",
+      "sourcePage": "https://polyhaven.com/a/wooden_picnic_table",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_picnic_table",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_picnic_table/",
+      "entryFile": "wooden_picnic_table_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_picnic_table_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_picnic_table/wooden_picnic_table_1k.gltf",
+          "bytes": 5099,
+          "sha256": "6b0dd9916fd87dba2e5baad06e20c0badf68bc68a5761a13854fa9a215c6bd50"
+        },
+        {
+          "file": "wooden_picnic_table.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wooden_picnic_table/wooden_picnic_table.bin",
+          "bytes": 279116,
+          "sha256": "1efd51c292843194fbd709452d56d06c9ddc770f43a013db57ca79bfc2731b01"
+        },
+        {
+          "file": "textures/wooden_picnic_table_bottom_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_bottom_nor_gl_1k.jpg",
+          "bytes": 548315,
+          "sha256": "c5d6eb388eceb6d98e92ff31d3f3346d411b1bbcb15c05dc9da71e4a7e398539"
+        },
+        {
+          "file": "textures/wooden_picnic_table_bottom_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_bottom_diff_1k.jpg",
+          "bytes": 680087,
+          "sha256": "887b9a57213f87196fb090419e14d00095af8fa56c93ca6cd7d0d70ef4e5fd27"
+        },
+        {
+          "file": "textures/wooden_picnic_table_bottom_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_bottom_arm_1k.jpg",
+          "bytes": 699984,
+          "sha256": "555226136c1d754d4aa5da42385a9152a146c5175382c77cced611a6880efd35"
+        },
+        {
+          "file": "textures/wooden_picnic_table_top_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_top_nor_gl_1k.jpg",
+          "bytes": 625681,
+          "sha256": "1e65787457f9edfdd04f1ee3f777ac2d2a9d43bfbbd3cb40c1e086f939bba419"
+        },
+        {
+          "file": "textures/wooden_picnic_table_top_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_top_diff_1k.jpg",
+          "bytes": 722582,
+          "sha256": "4aefdef35bf343410dbebd8577dfc968f1d6420ccddc601b19912e84b2accc0a"
+        },
+        {
+          "file": "textures/wooden_picnic_table_top_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_picnic_table/wooden_picnic_table_top_arm_1k.jpg",
+          "bytes": 747432,
+          "sha256": "50d2b7a0b15c56bf82bc0c918e6eaa5f590a6fd61d32311c8da85c414ace297d"
+        }
+      ]
+    },
+    {
+      "id": "Shelf_01",
+      "type": "model",
+      "category": "furniture",
+      "role": "weathered-farmhouse-shelf",
+      "sourcePage": "https://polyhaven.com/a/Shelf_01",
+      "apiUrl": "https://api.polyhaven.com/files/Shelf_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/Shelf_01/",
+      "entryFile": "Shelf_01_1k.gltf",
+      "files": [
+        {
+          "file": "Shelf_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Shelf_01/Shelf_01_1k.gltf",
+          "bytes": 2617,
+          "sha256": "715bce6ff1886eccdd43d558f5cf9242a24396e0eb9e8ae391905186bb339e52"
+        },
+        {
+          "file": "Shelf_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/Shelf_01/Shelf_01.bin",
+          "bytes": 12676,
+          "sha256": "21ee76dda6320ba423e76d192cfd38885e334ae394c03978d092f96b508f175b"
+        },
+        {
+          "file": "textures/Shelf_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Shelf_01/Shelf_01_nor_gl_1k.jpg",
+          "bytes": 231393,
+          "sha256": "c817d7966974be2da13e4b0a57918e8e142edc50eb41d438229c3bad70df0f91"
+        },
+        {
+          "file": "textures/Shelf_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Shelf_01/Shelf_01_diff_1k.jpg",
+          "bytes": 153220,
+          "sha256": "875bb8110dec4f409d9127cba95f7c0ead02bdfeef6dd47232df939e4de35a5c"
+        },
+        {
+          "file": "textures/Shelf_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Shelf_01/Shelf_01_arm_1k.jpg",
+          "bytes": 205542,
+          "sha256": "d5d180b15c48ed6ab7b27a663de8f399f813ed0c32ff2706520d677a1e387cdc"
+        }
+      ]
+    },
+    {
+      "id": "metal_jug",
+      "type": "model",
+      "category": "household",
+      "role": "weathered-farmhouse-milk-jug",
+      "sourcePage": "https://polyhaven.com/a/metal_jug",
+      "apiUrl": "https://api.polyhaven.com/files/metal_jug",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/metal_jug/",
+      "entryFile": "metal_jug_1k.gltf",
+      "files": [
+        {
+          "file": "metal_jug_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_jug/metal_jug_1k.gltf",
+          "bytes": 2752,
+          "sha256": "951357b6ec89a0d2b87674930eb832ae33d4b9c95781c8855f330bf7b2947759"
+        },
+        {
+          "file": "metal_jug.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/metal_jug/metal_jug.bin",
+          "bytes": 144496,
+          "sha256": "ebc6f19187f81cacfd6546cf486474e49bf60548a72bb96cef039545f9016db9"
+        },
+        {
+          "file": "textures/metal_jug_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_jug/metal_jug_nor_gl_1k.jpg",
+          "bytes": 605048,
+          "sha256": "cbcf2f03640e7671542ce98ddb7ad71c322098da0ba2ccecffb0af3de65691c6"
+        },
+        {
+          "file": "textures/metal_jug_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_jug/metal_jug_diff_1k.jpg",
+          "bytes": 476536,
+          "sha256": "66586743bdb15719955bc2b71740cc3fb07da96936e25b18afb14a92809c8c31"
+        },
+        {
+          "file": "textures/metal_jug_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_jug/metal_jug_arm_1k.jpg",
+          "bytes": 565389,
+          "sha256": "d3e085f6292bed3ec645fbffd7de4e2667035a6fd184a4272ace795df77f712f"
+        }
+      ]
+    },
+    {
+      "id": "planter_pot_clay",
+      "type": "model",
+      "category": "household",
+      "role": "weathered-terracotta-planter",
+      "sourcePage": "https://polyhaven.com/a/planter_pot_clay",
+      "apiUrl": "https://api.polyhaven.com/files/planter_pot_clay",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/planter_pot_clay/",
+      "entryFile": "planter_pot_clay_1k.gltf",
+      "files": [
+        {
+          "file": "planter_pot_clay_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/planter_pot_clay/planter_pot_clay_1k.gltf",
+          "bytes": 2813,
+          "sha256": "f2989068dcff9737c9f3d49d435b70e36d553822ac87134daac055ae9706af1e"
+        },
+        {
+          "file": "planter_pot_clay.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/planter_pot_clay/planter_pot_clay.bin",
+          "bytes": 78096,
+          "sha256": "effd0a038a75a054e55e2f5f71a84c57c1c6efc4e453ae3e62d4ce5167a2913c"
+        },
+        {
+          "file": "textures/planter_pot_clay_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/planter_pot_clay/planter_pot_clay_nor_gl_1k.jpg",
+          "bytes": 506446,
+          "sha256": "25a564e55b247a94863b513853b1aeaad5c894dd78e92e1fd89e794b83b483c4"
+        },
+        {
+          "file": "textures/planter_pot_clay_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/planter_pot_clay/planter_pot_clay_diff_1k.jpg",
+          "bytes": 596319,
+          "sha256": "4f2962fd238401e49fd400596fdccd1ee9e2cca9ed21e44bb924dca3076f524c"
+        },
+        {
+          "file": "textures/planter_pot_clay_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/planter_pot_clay/planter_pot_clay_arm_1k.jpg",
+          "bytes": 613484,
+          "sha256": "68e9e509db4e330b48924c606d4a9a99b54e105c1fe1690ff2811a05d95a0def"
+        }
+      ]
+    },
+    {
+      "id": "pot_enamel_01",
+      "type": "model",
+      "category": "household",
+      "role": "worn-enamel-cooking-pot",
+      "sourcePage": "https://polyhaven.com/a/pot_enamel_01",
+      "apiUrl": "https://api.polyhaven.com/files/pot_enamel_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/pot_enamel_01/",
+      "entryFile": "pot_enamel_01_1k.gltf",
+      "files": [
+        {
+          "file": "pot_enamel_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/pot_enamel_01/pot_enamel_01_1k.gltf",
+          "bytes": 4018,
+          "sha256": "ca60a8399463429cf23e04784334cbe344886e5c8747860ad9ad44c044e03dde"
+        },
+        {
+          "file": "pot_enamel_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/pot_enamel_01/pot_enamel_01.bin",
+          "bytes": 270448,
+          "sha256": "134771c9f71269f791ad9e52910f25542e94b5e83adff1c9acc620c93d486d13"
+        },
+        {
+          "file": "textures/pot_enamel_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pot_enamel_01/pot_enamel_01_nor_gl_1k.jpg",
+          "bytes": 434214,
+          "sha256": "e489edcf2014fa96c3dfca2c966a5b3bb8c0d02e88c9adeea96465d44662f56e"
+        },
+        {
+          "file": "textures/pot_enamel_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pot_enamel_01/pot_enamel_01_diff_1k.jpg",
+          "bytes": 538938,
+          "sha256": "b8b15e6cbdeebc49034f06418f5daf097fd954a4df1e63f1efbc85c96dec2c7d"
+        },
+        {
+          "file": "textures/pot_enamel_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pot_enamel_01/pot_enamel_01_arm_1k.jpg",
+          "bytes": 497109,
+          "sha256": "e8ab66b9a9f3e136d78dc393d30a9436b53570a4aaea26d5ae46913752bf15fe"
+        }
+      ]
+    },
+    {
+      "id": "watering_can_metal_01",
+      "type": "model",
+      "category": "tools",
+      "role": "rustic-metal-watering-can",
+      "sourcePage": "https://polyhaven.com/a/watering_can_metal_01",
+      "apiUrl": "https://api.polyhaven.com/files/watering_can_metal_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/watering_can_metal_01/",
+      "entryFile": "watering_can_metal_01_1k.gltf",
+      "files": [
+        {
+          "file": "watering_can_metal_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/watering_can_metal_01/watering_can_metal_01_1k.gltf",
+          "bytes": 3183,
+          "sha256": "aaf3cdf52d64d1081fc7a9113a1ee91a0f8c9bcf569b5ac9927c713b65bbbd2e"
+        },
+        {
+          "file": "watering_can_metal_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/watering_can_metal_01/watering_can_metal_01.bin",
+          "bytes": 318736,
+          "sha256": "8d8db62f70b3a0a8887dbc31f6507bd2dfb93b2878527cc06362dca766493a32"
+        },
+        {
+          "file": "textures/watering_can_metal_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/watering_can_metal_01/watering_can_metal_01_nor_gl_1k.jpg",
+          "bytes": 725001,
+          "sha256": "13aaedd908aba518ab28d3401881529c9d2ee656459a110f5619b9aad2e86be7"
+        },
+        {
+          "file": "textures/watering_can_metal_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/watering_can_metal_01/watering_can_metal_01_diff_1k.jpg",
+          "bytes": 619613,
+          "sha256": "e684096ed02bf20dbe46875185aeef02bbc50d31730badfe5853a36ccc5ee2fe"
+        },
+        {
+          "file": "textures/watering_can_metal_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/watering_can_metal_01/watering_can_metal_01_arm_1k.jpg",
+          "bytes": 944654,
+          "sha256": "966f78fca72dd7ae358c3199f6f7734830a7b09c782673e3e4bdfd0ce2d16689"
+        }
+      ]
+    },
+    {
+      "id": "trowel_01",
+      "type": "model",
+      "category": "tools",
+      "role": "weathered-garden-trowel",
+      "sourcePage": "https://polyhaven.com/a/trowel_01",
+      "apiUrl": "https://api.polyhaven.com/files/trowel_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/trowel_01/",
+      "entryFile": "trowel_01_1k.gltf",
+      "files": [
+        {
+          "file": "trowel_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/trowel_01/trowel_01_1k.gltf",
+          "bytes": 2738,
+          "sha256": "8d392c5572a388067be6d4f87c17be4385a9ee9a740aa26fce057ace66cfac94"
+        },
+        {
+          "file": "trowel_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/trowel_01/trowel_01.bin",
+          "bytes": 127964,
+          "sha256": "458119c747365f7e06637810de0391949567055a2df0a07cea8161764b7e1f65"
+        },
+        {
+          "file": "textures/trowel_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trowel_01/trowel_01_nor_gl_1k.jpg",
+          "bytes": 712535,
+          "sha256": "19350e51cc592519b89ee00321014d8aec8568c86579d5d6b2b9d1daa6bb18de"
+        },
+        {
+          "file": "textures/trowel_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trowel_01/trowel_01_diff_1k.jpg",
+          "bytes": 495321,
+          "sha256": "13c3a0a96a7949001d77043fe6b3e211307e0dc64fa4a54beced3e4475b4b9be"
+        },
+        {
+          "file": "textures/trowel_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trowel_01/trowel_01_arm_1k.jpg",
+          "bytes": 634828,
+          "sha256": "3a772dd71306f633506a6aa3185c9c3be9575faa2f3f8642d8b80101f5e5b79c"
+        }
+      ]
+    },
+    {
+      "id": "rusted_spade_01",
+      "type": "model",
+      "category": "tools",
+      "role": "rustic-farm-spade",
+      "sourcePage": "https://polyhaven.com/a/rusted_spade_01",
+      "apiUrl": "https://api.polyhaven.com/files/rusted_spade_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/rusted_spade_01/",
+      "entryFile": "rusted_spade_01_1k.gltf",
+      "files": [
+        {
+          "file": "rusted_spade_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rusted_spade_01/rusted_spade_01_1k.gltf",
+          "bytes": 2799,
+          "sha256": "6395b52cd430b718b690e4c52b2f1792837b78f938b0fb79b9583c22e8a1ce62"
+        },
+        {
+          "file": "rusted_spade_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/rusted_spade_01/rusted_spade_01.bin",
+          "bytes": 281064,
+          "sha256": "43b162f092edc382e6f10fc9df1ae0fd1101cfc0f7d7d545773b37114c94310f"
+        },
+        {
+          "file": "textures/rusted_spade_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_spade_01/rusted_spade_01_nor_gl_1k.jpg",
+          "bytes": 737050,
+          "sha256": "fd2c47c4f7ea5f72cb4ba45c1f2113d516b83c6462509d152776eb1e0a22cd96"
+        },
+        {
+          "file": "textures/rusted_spade_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_spade_01/rusted_spade_01_diff_1k.jpg",
+          "bytes": 625643,
+          "sha256": "9f7e1647cfffb8d0ce48c0ed4876092c2e70155910b7948d1b9fd8015d6dbec8"
+        },
+        {
+          "file": "textures/rusted_spade_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_spade_01/rusted_spade_01_arm_1k.jpg",
+          "bytes": 776600,
+          "sha256": "8d39c9c1be0df4146267331a962d25e5f3b670b915fea7833cf665680322a539"
+        }
+      ]
+    },
+    {
+      "id": "handsaw_wood",
+      "type": "model",
+      "category": "tools",
+      "role": "weathered-carpentry-saw",
+      "sourcePage": "https://polyhaven.com/a/handsaw_wood",
+      "apiUrl": "https://api.polyhaven.com/files/handsaw_wood",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/handsaw_wood/",
+      "entryFile": "handsaw_wood_1k.gltf",
+      "files": [
+        {
+          "file": "handsaw_wood_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/handsaw_wood/handsaw_wood_1k.gltf",
+          "bytes": 2762,
+          "sha256": "b2815ea7de69c2cec56f16cbdf65822aa0380673c76039edac1f92b9a6c4da79"
+        },
+        {
+          "file": "handsaw_wood.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/handsaw_wood/handsaw_wood.bin",
+          "bytes": 89624,
+          "sha256": "15563872e8c8e55bf24b00f1aafb9722d38d06f8c395bc7441914543761fc58b"
+        },
+        {
+          "file": "textures/handsaw_wood_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/handsaw_wood/handsaw_wood_nor_gl_1k.jpg",
+          "bytes": 716898,
+          "sha256": "e6500ee722af2de1bce76d341c3a334588f83a426bc3bb3a1792b461c7016327"
+        },
+        {
+          "file": "textures/handsaw_wood_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/handsaw_wood/handsaw_wood_diff_1k.jpg",
+          "bytes": 737874,
+          "sha256": "bf210b9862fc8d13e7ad6d2066c10d4aa577f50467ac75a25a1117f2b5935ed4"
+        },
+        {
+          "file": "textures/handsaw_wood_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/handsaw_wood/handsaw_wood_arm_1k.jpg",
+          "bytes": 932131,
+          "sha256": "548e7436ec0cd42d8a4ad254187b76eb25947dabc5f4de56daeca89fb446372f"
+        }
+      ]
+    },
+    {
+      "id": "wooden_axe",
+      "type": "model",
+      "category": "tools",
+      "role": "weathered-woodcutting-axe",
+      "sourcePage": "https://polyhaven.com/a/wooden_axe",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_axe",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_axe/",
+      "entryFile": "wooden_axe_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_axe_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_axe/wooden_axe_1k.gltf",
+          "bytes": 2744,
+          "sha256": "c1f0015f482a7ac0dd0378e28df5948d4281f951c89485015d392c8b7b1218ee"
+        },
+        {
+          "file": "wooden_axe.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wooden_axe/wooden_axe.bin",
+          "bytes": 91288,
+          "sha256": "f94ea2e160f43b6a50e7d0ca270faf55a3fa5cd6b6e424f6e56b8623da26f658"
+        },
+        {
+          "file": "textures/wooden_axe_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_axe/wooden_axe_nor_gl_1k.jpg",
+          "bytes": 542696,
+          "sha256": "003712db67956ee8a96557a7f5f997037fbe5fb9f5c1fe286c7197af04eeff7c"
+        },
+        {
+          "file": "textures/wooden_axe_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_axe/wooden_axe_diff_1k.jpg",
+          "bytes": 694821,
+          "sha256": "941e5af6c2152ecc3e031d6044385d3949d758cf51e9dd65c61bead9b78f1d95"
+        },
+        {
+          "file": "textures/wooden_axe_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_axe/wooden_axe_arm_1k.jpg",
+          "bytes": 698691,
+          "sha256": "32b74d486ac8246965f5ae1c168f589328baca306a6206a4fcb0f0f44a312a8e"
+        }
+      ]
+    },
+    {
+      "id": "gate_latch_01",
+      "type": "model",
+      "category": "architecture",
+      "role": "farmhouse-gate-latch",
+      "sourcePage": "https://polyhaven.com/a/gate_latch_01",
+      "apiUrl": "https://api.polyhaven.com/files/gate_latch_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/gate_latch_01/",
+      "entryFile": "gate_latch_01_1k.gltf",
+      "files": [
+        {
+          "file": "gate_latch_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/gate_latch_01/gate_latch_01_1k.gltf",
+          "bytes": 5885,
+          "sha256": "beec03d2607181bf9fd414a8ee7e419cca4e1b082c2ffb25d97dc0986f7ef2ab"
+        },
+        {
+          "file": "gate_latch_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/gate_latch_01/gate_latch_01.bin",
+          "bytes": 154608,
+          "sha256": "26defdbd7815ff7370a17eea9597b13087c9ab3e1ec34c5185decfff3256e471"
+        },
+        {
+          "file": "textures/gate_latch_01_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/gate_latch_01/gate_latch_01_nor_gl_1k.jpg",
+          "bytes": 607584,
+          "sha256": "a804378a896c99b2cdebf358f8477c313fc630a2d2858629e74d464baad9730e"
+        },
+        {
+          "file": "textures/gate_latch_01_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/gate_latch_01/gate_latch_01_diff_1k.jpg",
+          "bytes": 664394,
+          "sha256": "bc007d7fc182879bfff8cab350a4225f5700b159bf3c0b1b6c6b0974a4b7d1a9"
+        },
+        {
+          "file": "textures/gate_latch_01_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/gate_latch_01/gate_latch_01_arm_1k.jpg",
+          "bytes": 647224,
+          "sha256": "9b7241c7a6885daccd2a20bef96529b4fbc665c55bde1b1fd1b6313b2b80f475"
+        }
+      ]
+    },
+    {
+      "id": "Lantern_01",
+      "type": "model",
+      "category": "lighting",
+      "role": "antique-hurricane-lantern",
+      "sourcePage": "https://polyhaven.com/a/Lantern_01",
+      "apiUrl": "https://api.polyhaven.com/files/Lantern_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/Lantern_01/",
+      "entryFile": "Lantern_01_1k.gltf",
+      "files": [
+        {
+          "file": "Lantern_01_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Lantern_01/Lantern_01_1k.gltf",
+          "bytes": 4866,
+          "sha256": "d3f8d7a7afec96d55d3b7f20c3e329c909d19d37047902a826bc157f77c27819"
+        },
+        {
+          "file": "Lantern_01.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/Lantern_01/Lantern_01.bin",
+          "bytes": 864852,
+          "sha256": "cb0c7eaaea361546201ba1c4324581ac7147c221851657b6e23d2f854beabe49"
+        },
+        {
+          "file": "textures/Lantern_01_brass_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Lantern_01/Lantern_01_brass_nor_gl_1k.jpg",
+          "bytes": 180646,
+          "sha256": "95f89554c659712c7591a2a3d61178c9c0c0ef2c26e133005f24e2366a10f9b8"
+        },
+        {
+          "file": "textures/Lantern_01_brass_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Lantern_01/Lantern_01_brass_diff_1k.jpg",
+          "bytes": 140998,
+          "sha256": "d19d4c9417719a89ad824ce3a142f38f5e58c47b8640edca5eacca66918b608e"
+        },
+        {
+          "file": "textures/Lantern_01_brass_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Lantern_01/Lantern_01_brass_arm_1k.jpg",
+          "bytes": 229054,
+          "sha256": "479e7105b170713373fdcca0c2f7dcce81913990f60cd4cfba1631f80f550191"
+        }
+      ]
+    },
+    {
+      "id": "modular_wooden_pier",
+      "type": "model",
+      "category": "structures",
+      "role": "weathered-maritime-pier-kit",
+      "sourcePage": "https://polyhaven.com/a/modular_wooden_pier",
+      "apiUrl": "https://api.polyhaven.com/files/modular_wooden_pier",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/modular_wooden_pier/",
+      "entryFile": "modular_wooden_pier_1k.gltf",
+      "files": [
+        {
+          "file": "modular_wooden_pier_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modular_wooden_pier/modular_wooden_pier_1k.gltf",
+          "bytes": 21127,
+          "sha256": "eeea9853deb63e43510f8d9d6af21963c88adab77e17ccac9f9b8d3a7d34a923"
+        },
+        {
+          "file": "modular_wooden_pier.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modular_wooden_pier/modular_wooden_pier.bin",
+          "bytes": 2651092,
+          "sha256": "6ec10b84aaaa02800b095850fc92cf850632e5becd76698dc6609f40f05e1b60"
+        },
+        {
+          "file": "textures/modular_wooden_pier_poles_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_poles_nor_gl_1k.jpg",
+          "bytes": 978238,
+          "sha256": "9b2d7ca04642e249428969fa32189f36fcea8577a282dbccca1ac15d59dce18e"
+        },
+        {
+          "file": "textures/modular_wooden_pier_poles_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_poles_diff_1k.jpg",
+          "bytes": 836152,
+          "sha256": "da9e017b41e052d5e47558bb98e61b577f66e9d44eb2d26dc9b085e317bede9e"
+        },
+        {
+          "file": "textures/modular_wooden_pier_poles_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_poles_arm_1k.jpg",
+          "bytes": 813524,
+          "sha256": "dacaff86f936bef10220aa60843efadae53039f064ad1a6fad735b912f1ba285"
+        },
+        {
+          "file": "textures/modular_wooden_pier_planks_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_planks_nor_gl_1k.jpg",
+          "bytes": 1055218,
+          "sha256": "b23d7b0c23c9a41d50b7e1691e183902765aa4c21ac6ca6da678e874c4ddfb04"
+        },
+        {
+          "file": "textures/modular_wooden_pier_planks_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_planks_diff_1k.jpg",
+          "bytes": 764066,
+          "sha256": "2670a7eae2a3104e8537e61d90a8d8b169c7eb0f69b51622bec10e9472dc4573"
+        },
+        {
+          "file": "textures/modular_wooden_pier_planks_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_wooden_pier/modular_wooden_pier_planks_arm_1k.jpg",
+          "bytes": 722511,
+          "sha256": "4c03bcee7d0fb9708be5e5ebc4dd5fd73789f4eb24b6391dff6167f11c3ce95d"
+        }
+      ]
+    },
+    {
+      "id": "rock_09",
+      "type": "model",
+      "category": "nature",
+      "role": "small-weathered-landscape-rock",
+      "sourcePage": "https://polyhaven.com/a/rock_09",
+      "apiUrl": "https://api.polyhaven.com/files/rock_09",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/rock_09/",
+      "entryFile": "rock_09_1k.gltf",
+      "files": [
+        {
+          "file": "rock_09_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rock_09/rock_09_1k.gltf",
+          "bytes": 2745,
+          "sha256": "636e57eb0090889627da18edaec202ff9f65f83101b94f91b7da4d21dc080ab9"
+        },
+        {
+          "file": "rock_09.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rock_09/rock_09.bin",
+          "bytes": 286592,
+          "sha256": "780c37d6fc11ca3a01c3763535ef883908b6007271a46bd446d2289ded820751"
+        },
+        {
+          "file": "textures/rock_09_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_09/rock_09_nor_gl_1k.jpg",
+          "bytes": 757031,
+          "sha256": "2195b5c7da3a23af2a5f93dbb20f38bc069028509b106397bc8d2aee0bc55729"
+        },
+        {
+          "file": "textures/rock_09_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_09/rock_09_diff_1k.jpg",
+          "bytes": 595103,
+          "sha256": "afb7ae5ae82238d304aba589391ac6bc87f7cf1dbfe50980c21f762cfdd87efd"
+        },
+        {
+          "file": "textures/rock_09_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_09/rock_09_arm_1k.jpg",
+          "bytes": 322950,
+          "sha256": "594e2cec49e6bb40bd9bab2649e37dcc261079456cf4d6f680f56770c19db5ea"
+        }
+      ]
+    },
+    {
       "id": "white_plaster_02",
       "type": "texture",
-      "role": "mallorcan-plaster",
+      "category": "plaster",
+      "role": "clean-mallorcan-plaster",
       "sourcePage": "https://polyhaven.com/a/white_plaster_02",
       "apiUrl": "https://api.polyhaven.com/files/white_plaster_02",
       "license": "CC0-1.0",
@@ -86,8 +1281,153 @@
       ]
     },
     {
+      "id": "white_plaster_rough_01",
+      "type": "texture",
+      "category": "plaster",
+      "role": "weathered-white-exterior-plaster",
+      "sourcePage": "https://polyhaven.com/a/white_plaster_rough_01",
+      "apiUrl": "https://api.polyhaven.com/files/white_plaster_rough_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/white_plaster_rough_01/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_rough_01/white_plaster_rough_01_diff_1k.jpg",
+          "bytes": 628421,
+          "sha256": "8d3b209ec5bbcee3db7a883c6c2eee982b7c18a268e6f43766ee540c7c28ebcb"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_rough_01/white_plaster_rough_01_nor_gl_1k.jpg",
+          "bytes": 384190,
+          "sha256": "f9d15f0adb27a3cbcffe11bea7a14d486d036b0251e01ec24c3ca0ae05aef54b"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_rough_01/white_plaster_rough_01_diff_1k.jpg",
+          "bytes": 628421,
+          "sha256": "8d3b209ec5bbcee3db7a883c6c2eee982b7c18a268e6f43766ee540c7c28ebcb"
+        }
+      ]
+    },
+    {
+      "id": "worn_plaster_wall",
+      "type": "texture",
+      "category": "plaster",
+      "role": "aged-chipped-plaster",
+      "sourcePage": "https://polyhaven.com/a/worn_plaster_wall",
+      "apiUrl": "https://api.polyhaven.com/files/worn_plaster_wall",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/worn_plaster_wall/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+          "bytes": 750361,
+          "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.jpg",
+          "bytes": 680164,
+          "sha256": "5d1dc80a354fc7de3f0ada286176b56d50067c85c9f95140aadf7d5db15adee1"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+          "bytes": 242497,
+          "sha256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6"
+        }
+      ]
+    },
+    {
+      "id": "plaster_stone_wall_01",
+      "type": "texture",
+      "category": "plaster",
+      "role": "beige-stone-revealing-plaster",
+      "sourcePage": "https://polyhaven.com/a/plaster_stone_wall_01",
+      "apiUrl": "https://api.polyhaven.com/files/plaster_stone_wall_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/plaster_stone_wall_01/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plaster_stone_wall_01/plaster_stone_wall_01_diff_1k.jpg",
+          "bytes": 704992,
+          "sha256": "53f220d923dca17a209b64695c1edbdb7e3fa945a4e1965263dabeef75fa36e1"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plaster_stone_wall_01/plaster_stone_wall_01_nor_gl_1k.jpg",
+          "bytes": 985509,
+          "sha256": "21a9eda84881c603773bc856d9ed709551a8e55c0527ce3c30b208e1d92a3a45"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plaster_stone_wall_01/plaster_stone_wall_01_rough_1k.jpg",
+          "bytes": 153750,
+          "sha256": "4156e5d34e86b9cd0640ea5b4f4033da46a3016e5044f5f9267dca9b32c169bc"
+        }
+      ]
+    },
+    {
+      "id": "plastered_stone_wall",
+      "type": "texture",
+      "category": "plaster",
+      "role": "cracked-plaster-over-stone",
+      "sourcePage": "https://polyhaven.com/a/plastered_stone_wall",
+      "apiUrl": "https://api.polyhaven.com/files/plastered_stone_wall",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/plastered_stone_wall/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_diff_1k.jpg",
+          "bytes": 680077,
+          "sha256": "b86e9a408aac5b493c31a4ec221e5022b0b704d2f51596006f7d6840a6a3300a"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_nor_gl_1k.jpg",
+          "bytes": 1041406,
+          "sha256": "c64dc8d1ad382b8832e430e738f099343ed959b7ae7d9390919a497536d1191e"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_rough_1k.jpg",
+          "bytes": 508548,
+          "sha256": "978bd1d9f8d4132564d40375f705975e897ca588c2d756e6257f68946651bab0"
+        }
+      ]
+    },
+    {
       "id": "stone_wall",
       "type": "texture",
+      "category": "stone",
       "role": "dry-stone-and-finca-walls",
       "sourcePage": "https://polyhaven.com/a/stone_wall",
       "apiUrl": "https://api.polyhaven.com/files/stone_wall",
@@ -119,6 +1459,691 @@
           "sha256": "8c06e7c67d0d9701966732cc90c4e356b5bd5656aa35bf82650576e78322cbdd"
         }
       ]
+    },
+    {
+      "id": "stone_wall_05",
+      "type": "texture",
+      "category": "stone",
+      "role": "timeworn-exterior-stone-blocks",
+      "sourcePage": "https://polyhaven.com/a/stone_wall_05",
+      "apiUrl": "https://api.polyhaven.com/files/stone_wall_05",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/stone_wall_05/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall_05/stone_wall_05_diff_1k.jpg",
+          "bytes": 837539,
+          "sha256": "0dbdc815a88f3f4365254fa5a927dfcac46031a28a9b6bdc01654b34a1d4ac7a"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall_05/stone_wall_05_nor_gl_1k.jpg",
+          "bytes": 1281194,
+          "sha256": "e726242629e27941f0027d059ac14328d094664616ebd0b7edc629d9ac4dc100"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall_05/stone_wall_05_rough_1k.jpg",
+          "bytes": 231944,
+          "sha256": "95daa537104a049e8a80fa9ce857cad0d3d4697004d9e397b733bd2fc1bd83d7"
+        }
+      ]
+    },
+    {
+      "id": "stone_tile_wall",
+      "type": "texture",
+      "category": "stone",
+      "role": "light-rough-hewn-masonry",
+      "sourcePage": "https://polyhaven.com/a/stone_tile_wall",
+      "apiUrl": "https://api.polyhaven.com/files/stone_tile_wall",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/stone_tile_wall/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tile_wall/stone_tile_wall_diff_1k.jpg",
+          "bytes": 640274,
+          "sha256": "3e93afc3a1fe84acba1184d816474166c26e04a3e0cc7d7b6e1097be48b1b90c"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tile_wall/stone_tile_wall_nor_gl_1k.jpg",
+          "bytes": 681190,
+          "sha256": "a8c93f867e4b8428d7543c4c1146667619311983c60dd9fe524e53c1a365bc49"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tile_wall/stone_tile_wall_rough_1k.jpg",
+          "bytes": 135280,
+          "sha256": "416cb51752adbe662034197b6853a4d72c8d5d78e769f038dd32dc763bc87b0e"
+        }
+      ]
+    },
+    {
+      "id": "roof_tiles",
+      "type": "texture",
+      "category": "roofing",
+      "role": "weathered-terracotta-roof",
+      "sourcePage": "https://polyhaven.com/a/roof_tiles",
+      "apiUrl": "https://api.polyhaven.com/files/roof_tiles",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/roof_tiles/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_tiles/roof_tiles_diff_1k.jpg",
+          "bytes": 1105673,
+          "sha256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_tiles/roof_tiles_nor_gl_1k.jpg",
+          "bytes": 883229,
+          "sha256": "1eb4e911e3d1b38c7c3b06bdecb6fde5f9646dca5498caf67ffa651cb6cb8d8c"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_tiles/roof_tiles_rough_1k.jpg",
+          "bytes": 919232,
+          "sha256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c"
+        }
+      ]
+    },
+    {
+      "id": "clay_roof_tiles",
+      "type": "texture",
+      "category": "roofing",
+      "role": "uneven-rustic-clay-roof",
+      "sourcePage": "https://polyhaven.com/a/clay_roof_tiles",
+      "apiUrl": "https://api.polyhaven.com/files/clay_roof_tiles",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/clay_roof_tiles/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles/clay_roof_tiles_diff_1k.jpg",
+          "bytes": 878367,
+          "sha256": "aac0f4e742a2cce21afb5dfb523b47c720c6a8e2782a312b823608fe3f80eae6"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles/clay_roof_tiles_nor_gl_1k.jpg",
+          "bytes": 1101177,
+          "sha256": "e6b364661f6c3045bf5268f684047968fc6550e5fa9b22b4b1266df47b495faa"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles/clay_roof_tiles_rough_1k.jpg",
+          "bytes": 306665,
+          "sha256": "9dbddfda928ea582e520d5e6fe7fadcfb886a169df9aa8ecaefa689363679b58"
+        }
+      ]
+    },
+    {
+      "id": "clay_roof_tiles_03",
+      "type": "texture",
+      "category": "roofing",
+      "role": "decorative-aged-clay-roof",
+      "sourcePage": "https://polyhaven.com/a/clay_roof_tiles_03",
+      "apiUrl": "https://api.polyhaven.com/files/clay_roof_tiles_03",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/clay_roof_tiles_03/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles_03/clay_roof_tiles_03_diff_1k.jpg",
+          "bytes": 970368,
+          "sha256": "6719293429932a27c8ed3526b22cd65d1cd1d43194ce30fa5f4590bb3c513844"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles_03/clay_roof_tiles_03_nor_gl_1k.jpg",
+          "bytes": 974757,
+          "sha256": "7db087939613b6b0ef1d0c21a3956eafcf7e9d0f146267290e409448f1adc17b"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles_03/clay_roof_tiles_03_rough_1k.jpg",
+          "bytes": 440788,
+          "sha256": "7fff6d8344688df8aa3abddeb7d099700ebba291f05a516d4d9dcaeb47f2da8b"
+        }
+      ]
+    },
+    {
+      "id": "wooden_planks",
+      "type": "texture",
+      "category": "wood",
+      "role": "dry-worn-timber-planks",
+      "sourcePage": "https://polyhaven.com/a/wooden_planks",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_planks",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_planks/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_planks/wooden_planks_diff_1k.jpg",
+          "bytes": 489587,
+          "sha256": "1273876d6f92fb1a1d29c1bb28f548a9256154187531e84f993b56e347f1d17b"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_planks/wooden_planks_nor_gl_1k.jpg",
+          "bytes": 705118,
+          "sha256": "6c85ff0a410a2993cc09d25859d7d735bc05e9f15dc51393d2e58aa2ce8a0916"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_planks/wooden_planks_rough_1k.jpg",
+          "bytes": 233217,
+          "sha256": "c1b1a7e3266a082d66f1c786a28a05674227158684d655e42ab2420e47ae746e"
+        }
+      ]
+    },
+    {
+      "id": "weathered_planks",
+      "type": "texture",
+      "category": "wood",
+      "role": "dark-cracked-exterior-planks",
+      "sourcePage": "https://polyhaven.com/a/weathered_planks",
+      "apiUrl": "https://api.polyhaven.com/files/weathered_planks",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/weathered_planks/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_diff_1k.jpg",
+          "bytes": 599581,
+          "sha256": "01c9a372cfd7a7bf471b59c2458ed3ccecc93448aebf7ba0cc5b3b5b6ed24349"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_nor_gl_1k.jpg",
+          "bytes": 681552,
+          "sha256": "381d298f3194ec4961b04b4912b9b6efea4b2ff7b914dac57e24c8b6b0be6a25"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_rough_1k.jpg",
+          "bytes": 218802,
+          "sha256": "a017728183597417a350d1846a5a46db9702ee6d472a21c5da2f23015d606aa3"
+        }
+      ]
+    },
+    {
+      "id": "wooden_gate",
+      "type": "texture",
+      "category": "wood",
+      "role": "varnished-gate-planks",
+      "sourcePage": "https://polyhaven.com/a/wooden_gate",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_gate",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_gate/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_gate/wooden_gate_diff_1k.jpg",
+          "bytes": 647867,
+          "sha256": "b9f1ead6ccad0e7c847c9fb07f67b8f29f623a57dbbeeb5f5819ab29296fef56"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_gate/wooden_gate_nor_gl_1k.jpg",
+          "bytes": 588443,
+          "sha256": "d5c5e8f48595628a510337528b4222d71a18cb0f25f458e7647c394483b7c4b7"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wooden_gate/wooden_gate_rough_1k.jpg",
+          "bytes": 671682,
+          "sha256": "25d827e4625070c29e463bff4648987ff716a0eaf21022954acc6150b682310a"
+        }
+      ]
+    },
+    {
+      "id": "dirt",
+      "type": "texture",
+      "category": "ground",
+      "role": "compacted-dusty-earth",
+      "sourcePage": "https://polyhaven.com/a/dirt",
+      "apiUrl": "https://api.polyhaven.com/files/dirt",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/dirt/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+          "bytes": 730425,
+          "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_nor_gl_1k.jpg",
+          "bytes": 1202783,
+          "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_rough_1k.jpg",
+          "bytes": 253549,
+          "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704"
+        }
+      ]
+    },
+    {
+      "id": "stony_dirt_path",
+      "type": "texture",
+      "category": "ground",
+      "role": "pebbled-rural-path",
+      "sourcePage": "https://polyhaven.com/a/stony_dirt_path",
+      "apiUrl": "https://api.polyhaven.com/files/stony_dirt_path",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/stony_dirt_path/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stony_dirt_path/stony_dirt_path_diff_1k.jpg",
+          "bytes": 1234067,
+          "sha256": "a662000ff3f7f64e23c25d2b8cd5947b9c8fd893510c5ed49c0daa2847004758"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stony_dirt_path/stony_dirt_path_nor_gl_1k.jpg",
+          "bytes": 1416394,
+          "sha256": "2866303f71066f42bd218410bf6d38d9a21cda34c6e3543a8ac92900b7a09c75"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stony_dirt_path/stony_dirt_path_rough_1k.jpg",
+          "bytes": 448566,
+          "sha256": "05b4f087b3b6571e60e9f21872e36118530f702a20db45092d4f6dc576d34086"
+        }
+      ]
+    },
+    {
+      "id": "dirt_aerial_03",
+      "type": "texture",
+      "category": "ground",
+      "role": "dry-dirt-with-gravel",
+      "sourcePage": "https://polyhaven.com/a/dirt_aerial_03",
+      "apiUrl": "https://api.polyhaven.com/files/dirt_aerial_03",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/dirt_aerial_03/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt_aerial_03/dirt_aerial_03_diff_1k.jpg",
+          "bytes": 284273,
+          "sha256": "963ae022dcc8af3e2c3c7ba0e055b761e3855ecd7a224e0bbd9434bc22532b58"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt_aerial_03/dirt_aerial_03_nor_gl_1k.jpg",
+          "bytes": 295302,
+          "sha256": "eba2aec73ace64160fe51f23b299fed7d619e600d1c0241c42d464dffb010c86"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt_aerial_03/dirt_aerial_03_rough_1k.jpg",
+          "bytes": 200426,
+          "sha256": "1399513b2983430914225ba3a63368952f7e1bdb8962f06c29a5817fd4ef808e"
+        }
+      ]
+    },
+    {
+      "id": "gravel",
+      "type": "texture",
+      "category": "ground",
+      "role": "compacted-driveway-gravel",
+      "sourcePage": "https://polyhaven.com/a/gravel",
+      "apiUrl": "https://api.polyhaven.com/files/gravel",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/gravel/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel/gravel_diff_1k.jpg",
+          "bytes": 925640,
+          "sha256": "9f668e7926d2e8347eddc9090360da26848b55a12ba306e332cd08ac98c534cf"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel/gravel_nor_gl_1k.jpg",
+          "bytes": 1527382,
+          "sha256": "c991b6a99a0f29c5096d2d502b33a8bd98ff643c536987427ef31276c6183f04"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel/gravel_rough_1k.jpg",
+          "bytes": 439593,
+          "sha256": "169e7d0d78cec8bbe271dfa80ed6d639a1d4bdcb042a7e274a52c0a80f707bda"
+        }
+      ]
+    },
+    {
+      "id": "gravelly_sand",
+      "type": "texture",
+      "category": "ground",
+      "role": "coarse-gravelly-sand",
+      "sourcePage": "https://polyhaven.com/a/gravelly_sand",
+      "apiUrl": "https://api.polyhaven.com/files/gravelly_sand",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/gravelly_sand/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_diff_1k.jpg",
+          "bytes": 1062525,
+          "sha256": "bc1624594ce807f04eaa023f6f9df93ffefd20904570cd46ca302b954ef80eec"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_nor_gl_1k.jpg",
+          "bytes": 1387739,
+          "sha256": "7ccb08525d46520a6d00262f4f73483b3569cc6cbc2908da069f033290d1c2f8"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_rough_1k.jpg",
+          "bytes": 419895,
+          "sha256": "57188f62c17950f96a5f2b8ce11bc9776e2b5bff8eff5c903402d89553ba3654"
+        }
+      ]
+    },
+    {
+      "id": "sand_01",
+      "type": "texture",
+      "category": "ground",
+      "role": "dry-trampled-sand-clay",
+      "sourcePage": "https://polyhaven.com/a/sand_01",
+      "apiUrl": "https://api.polyhaven.com/files/sand_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/sand_01/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_diff_1k.jpg",
+          "bytes": 485088,
+          "sha256": "a73b90eaa6d675ef57e7d48a8cf23e1f412e353ab2e29cf73930b8ecd4e76875"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_nor_gl_1k.jpg",
+          "bytes": 877821,
+          "sha256": "73984aecdc35b1ffbc322d64b7f8d8165b06970d11f37dd47010609fcb532704"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_rough_1k.jpg",
+          "bytes": 189667,
+          "sha256": "ccb179b12c56a9032d60e4f4e2da690b3612a58e1784eb14576372690cdcd1cb"
+        }
+      ]
+    },
+    {
+      "id": "dry_ground_01",
+      "type": "texture",
+      "category": "ground",
+      "role": "dry-cracked-summer-earth",
+      "sourcePage": "https://polyhaven.com/a/dry_ground_01",
+      "apiUrl": "https://api.polyhaven.com/files/dry_ground_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/dry_ground_01/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_ground_01/dry_ground_01_diff_1k.jpg",
+          "bytes": 604799,
+          "sha256": "75222fc97a82b635a09cf8f2891dd58bc42e49599b9fda920b2c50193fe85e9f"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_ground_01/dry_ground_01_nor_gl_1k.jpg",
+          "bytes": 243523,
+          "sha256": "8faf30f0656721f861dba573006c3f90e38fcda8dad481d2369145b114c6b45e"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_ground_01/dry_ground_01_rough_ao_1k.jpg",
+          "bytes": 734512,
+          "sha256": "08088fa0e9f48f54a2bbb4bafaab1cb881396bfe87965de6d56594c4fb43f9eb"
+        }
+      ]
+    },
+    {
+      "id": "cobblestone_floor_13",
+      "type": "texture",
+      "category": "paving",
+      "role": "old-farm-cobblestones",
+      "sourcePage": "https://polyhaven.com/a/cobblestone_floor_13",
+      "apiUrl": "https://api.polyhaven.com/files/cobblestone_floor_13",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/cobblestone_floor_13/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_13/cobblestone_floor_13_diff_1k.jpg",
+          "bytes": 883189,
+          "sha256": "4da5d474e410b0859042c188a9093efc3c3d9170399e7f5f5e0464af1b61dbf2"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_13/cobblestone_floor_13_nor_gl_1k.jpg",
+          "bytes": 451866,
+          "sha256": "925d0f4a72d836f338a76661ae39cb23206169262e3cdc52cc519877a0383c52"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_13/cobblestone_floor_13_rough_1k.jpg",
+          "bytes": 737972,
+          "sha256": "30901e6c3f90c8617aec6c6c6211499db0a512091aa08a4f66a4a06a359f60db"
+        }
+      ]
+    },
+    {
+      "id": "patio_tiles",
+      "type": "texture",
+      "category": "paving",
+      "role": "warm-terracotta-patio",
+      "sourcePage": "https://polyhaven.com/a/patio_tiles",
+      "apiUrl": "https://api.polyhaven.com/files/patio_tiles",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/patio_tiles/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/patio_tiles/patio_tiles_diff_1k.jpg",
+          "bytes": 700816,
+          "sha256": "bc9a54329dc5b3aa90b388a9b743a50b39f429393537acd63f715aa88e3f72d6"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/patio_tiles/patio_tiles_nor_gl_1k.jpg",
+          "bytes": 302459,
+          "sha256": "984682eda2d632a1f45f0c4633079f43178450374ea5f2311a110f717f10f560"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/patio_tiles/patio_tiles_rough_1k.jpg",
+          "bytes": 379224,
+          "sha256": "5238ae14e1f3c794ef7d55061a01eb6462162ba8327bc8957718a6428969cd70"
+        }
+      ]
+    },
+    {
+      "id": "terracotta_floor_tiles",
+      "type": "texture",
+      "category": "paving",
+      "role": "aged-terracotta-floor",
+      "sourcePage": "https://polyhaven.com/a/terracotta_floor_tiles",
+      "apiUrl": "https://api.polyhaven.com/files/terracotta_floor_tiles",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/terracotta_floor_tiles/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terracotta_floor_tiles/terracotta_floor_tiles_diff_1k.jpg",
+          "bytes": 649304,
+          "sha256": "966ff423065e4a4ce9490864fba61fdb491985d4a2c60eb2b85181c7e7edcd5d"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terracotta_floor_tiles/terracotta_floor_tiles_nor_gl_1k.jpg",
+          "bytes": 593169,
+          "sha256": "7d9a6935951f3b2c1f6ae372dd512969dd5c7c27efbbfe6941ed3ec1b7da9758"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terracotta_floor_tiles/terracotta_floor_tiles_rough_1k.jpg",
+          "bytes": 626503,
+          "sha256": "df263e7205e36a6249db10e85f4d55b93b3f6793871fc79d2d10531433de109e"
+        }
+      ]
+    },
+    {
+      "id": "stone_pathway",
+      "type": "texture",
+      "category": "paving",
+      "role": "weathered-irregular-stone-path",
+      "sourcePage": "https://polyhaven.com/a/stone_pathway",
+      "apiUrl": "https://api.polyhaven.com/files/stone_pathway",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/stone_pathway/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_pathway/stone_pathway_diff_1k.jpg",
+          "bytes": 694047,
+          "sha256": "d348dfd4a8c2c16b753618e2787fd4b165b398739f60efbf18a320d0816982b7"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_pathway/stone_pathway_nor_gl_1k.jpg",
+          "bytes": 873229,
+          "sha256": "02fc0aade372a4e69f2d4b4703ad85a939e2092a91d2982ef6d49dc6f4384f7d"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_pathway/stone_pathway_rough_1k.jpg",
+          "bytes": 513172,
+          "sha256": "3502fe618088acd207229cf6cf37fcdf46bb40753909693a3256716f5964d775"
+        }
+      ]
     }
-  ]
+  ],
+  "rejected": []
 }
