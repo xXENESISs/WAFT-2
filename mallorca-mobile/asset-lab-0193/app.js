@@ -48,6 +48,9 @@ function applyTextureSet(asset, index) {
   material.albedoTexture = new B.Texture(`${rootUrl}${asset.maps.diffuse}`, scene);
   material.bumpTexture = new B.Texture(`${rootUrl}${asset.maps.normal_gl}`, scene);
   material.bumpTexture.level = 0.65;
+  material.metallicTexture = new B.Texture(`${rootUrl}${asset.maps.roughness}`, scene);
+  material.useRoughnessFromMetallicTextureGreen = true;
+  material.useMetallnessFromMetallicTextureBlue = false;
   material.metallic = 0;
   material.roughness = 0.9;
   const sample = B.MeshBuilder.CreateBox(`sample-${asset.id}`, { width: 2.6, height: 2.6, depth: 0.35 }, scene);
