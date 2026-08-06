@@ -1,0 +1,1 @@
+Verify the clean WAFT Visual Showcase 0.18.2 locally and on GitHub Pages.
