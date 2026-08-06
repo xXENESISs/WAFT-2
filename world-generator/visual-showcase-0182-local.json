@@ -1,0 +1,38 @@
+{
+  "formatVersion": 1,
+  "valid": true,
+  "public": false,
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1",
+  "buildId": "waft-showcase-0182-v1",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "touch": true
+  },
+  "sectionIds": [
+    "macaque",
+    "urban",
+    "village",
+    "port",
+    "finca",
+    "mountain",
+    "vegetation",
+    "materials"
+  ],
+  "state": {
+    "buildId": "waft-showcase-0182-v1",
+    "ready": true,
+    "overview": true,
+    "activeSection": "urban",
+    "sectionCount": 8,
+    "imageWidth": 900,
+    "imageHeight": 637,
+    "feedback": {
+      "urban": "approved"
+    }
+  },
+  "errors": [],
+  "failed": [],
+  "verifiedAt": "2026-08-06T00:43:37.082Z"
+}
