@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#101713" />
+  <title>WAFT Adventure — Golden Slice 0.19.0</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+  <main id="app" aria-label="WAFT Adventure Golden Slice">
+    <canvas id="renderCanvas" aria-label="Escena 3D de WAFT Adventure"></canvas>
+
+    <header class="topbar glass">
+      <div>
+        <p class="eyebrow">WAFT ADVENTURE · GOLDEN SLICE</p>
+        <h1>Llevant de Mallorca</h1>
+      </div>
+      <div class="top-actions">
+        <span id="qualityBadge" class="badge">AUTO</span>
+        <button id="saveButton" type="button" class="icon-button" aria-label="Guardar partida">Guardar</button>
+      </div>
+    </header>
+
+    <section class="objective glass" aria-live="polite">
+      <p class="eyebrow">OBJETIVO</p>
+      <p id="objectiveText">Cargando la expedición…</p>
+    </section>
+
+    <section class="location glass" aria-live="polite">
+      <span id="locationName">Camí de sa costa</span>
+      <span id="distanceText">0 m</span>
+    </section>
+
+    <div id="interactionPrompt" class="interaction glass" hidden>
+      <span id="interactionText">Interactuar</span>
+      <strong>E</strong>
+    </div>
+
+    <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
+
+    <section id="mobileControls" class="mobile-controls" aria-label="Controles táctiles">
+      <div id="joystick" class="joystick" aria-label="Movimiento">
+        <div id="joystickKnob" class="joystick-knob"></div>
+      </div>
+      <div class="touch-actions">
+        <button id="runButton" type="button" class="touch-button run">Correr</button>
+        <button id="actionButton" type="button" class="touch-button action">Acción</button>
+      </div>
+    </section>
+
+    <aside class="desktop-help glass">
+      <span>WASD / flechas · mover</span>
+      <span>Ratón · cámara</span>
+      <span>Shift · correr</span>
+      <span>E · acción</span>
+      <span>S toque · guardar / mantener · atrás</span>
+    </aside>
+
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-card glass">
+        <p class="eyebrow">WAFT ADVENTURE</p>
+        <h2>Preparando Llevant</h2>
+        <div class="loading-track"><div id="loadingBar" class="loading-bar"></div></div>
+        <p id="loadingText">Iniciando motor 3D…</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
