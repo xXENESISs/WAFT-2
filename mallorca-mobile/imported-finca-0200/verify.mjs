@@ -14,9 +14,12 @@ assert.ok(css.includes(".joystick"));
 assert.ok(app.includes("yaw += dx"), "drag right must turn right");
 assert.ok(app.includes("pitch - dy"), "drag up must look up");
 assert.ok(app.includes("moveWithCollisions"));
+assert.ok(!app.includes('id: "wooden_gate"'), "wooden_gate is a material, not a GLTF model");
+assert.ok(app.includes('gate: makePBR("gate-wood", "wooden_gate"'), "gate must use the real wooden_gate PBR set");
 
 const modelIds = [...app.matchAll(/\{ id: "([^"]+)"/g)].map((match) => match[1]);
-assert.ok(modelIds.length >= 15, `expected at least 15 imported models, found ${modelIds.length}`);
+assert.equal(modelIds.length, 26, `expected all 26 imported models, found ${modelIds.length}`);
+assert.equal(new Set(modelIds).size, 26, "model placements must not contain duplicates");
 for (const id of modelIds) {
   const entry = path.join(vendor, id, `${id}_1k.gltf`);
   assert.ok(fs.existsSync(entry), `missing GLTF entry: ${entry}`);
@@ -31,6 +34,7 @@ const textureIds = [
   "stone_wall_05",
   "clay_roof_tiles_03",
   "weathered_planks",
+  "wooden_gate",
 ];
 for (const id of textureIds) {
   for (const file of ["diffuse.jpg", "normal_gl.jpg", "roughness.jpg"]) {
