@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#88a9b8" />
+  <title>WAFT Adventure — Llevant 0.19.1</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+  <main id="game">
+    <canvas id="renderCanvas" aria-label="WAFT Adventure"></canvas>
+    <header class="hud-top">
+      <section class="mission-panel">
+        <span class="kicker">WAFT ADVENTURE · 0.19.1</span>
+        <strong id="placeName">Camí de sa Talaia</strong>
+        <p id="objectiveText">Sigue el camino hasta la finca.</p>
+      </section>
+      <button id="saveButton" class="save-button" type="button">Guardar</button>
+    </header>
+    <div id="interactionPrompt" class="interaction-prompt" hidden>
+      <span id="interactionText">Examinar</span><b id="interactionKey">E</b>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <section id="moveZone" class="move-zone" aria-label="Movimiento táctil">
+      <div id="joystickBase" class="joystick-base" hidden><div id="joystickKnob" class="joystick-knob"></div></div>
+    </section>
+    <section class="touch-actions" aria-label="Acciones táctiles">
+      <button id="runButton" type="button" class="round-action secondary">CORRER</button>
+      <button id="actionButton" type="button" class="round-action primary">ACCIÓN</button>
+    </section>
+    <div class="desktop-help">WASD · mover &nbsp; Shift · correr &nbsp; Arrastrar · cámara &nbsp; E · acción</div>
+    <div id="loading" class="loading">
+      <div class="loading-content">
+        <span class="kicker">LLEVANT DE MALLORCA</span><h1>Camí de sa Talaia</h1>
+        <div class="loading-line"><i id="loadingBar"></i></div><p id="loadingText">Preparando el terreno…</p>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
