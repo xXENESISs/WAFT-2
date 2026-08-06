@@ -3,6 +3,7 @@ name: Verify Imported Finca 0.20.0
 on:
   push:
     branches:
+      - main
       - agent/imported-finca-0200
     paths:
       - mallorca-mobile/imported-finca-0200/**
