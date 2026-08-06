@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const BUILD_ID='waft-showcase-0182-v1';
+  const BUILD_ID='waft-showcase-0182-v3';
   const STORAGE_KEY='waft.visual-showcase.0182.feedback';
   const board=document.getElementById('board');
   const viewer=document.getElementById('viewer');
@@ -28,7 +28,7 @@
   try{feedback=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')||{};}catch{feedback={};}
 
   function dimensions(){
-    return {w:viewer.clientWidth,h:viewer.clientHeight,nw:board.naturalWidth||900,nh:board.naturalHeight||637};
+    return {w:viewer.clientWidth,h:viewer.clientHeight,nw:board.naturalWidth||500,nh:board.naturalHeight||354};
   }
 
   function applyTransform(){
