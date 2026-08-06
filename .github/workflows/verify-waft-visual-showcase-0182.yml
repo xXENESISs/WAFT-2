@@ -49,18 +49,19 @@ jobs:
           SERVER_PID=$!
           sleep 2
           node world-generator/scripts/verify-visual-showcase-0182.mjs \
-            --url http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1 \
+            --url http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v3 \
             --output world-generator/visual-showcase-0182-local.json \
             --screenshot /tmp/visual-showcase-0182-local.png
           LOCAL=$?
           kill "$SERVER_PID" >/dev/null 2>&1 || true
 
-          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1"
+          PAGE_URL="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v3"
+          ART_URL='https://xxenesiss.github.io/WAFT-2/mallorca-mobile/assets/visual/waft-visual-showcase-mediterranean-v1.webp?v=waft-showcase-art-v2'
           if [ "$LOCAL" -eq 0 ]; then
             for attempt in $(seq 1 180); do
               page="$(curl -fsS --max-time 20 "$PAGE_URL" || true)"
-              image_status="$(curl -L -sS -o /dev/null -w '%{http_code}' --max-time 20 'https://xxenesiss.github.io/WAFT-2/mallorca-mobile/assets/visual/waft-visual-showcase-mediterranean-v1.webp' || true)"
-              if printf '%s' "$page" | grep -q 'WAFT VISUAL SHOWCASE' && [ "$image_status" = "200" ]; then
+              image_bytes="$(curl -L -sS --max-time 20 "$ART_URL" | wc -c || true)"
+              if printf '%s' "$page" | grep -q 'waft-showcase-0182-v3' && [ "$image_bytes" -eq 34592 ]; then
                 PUBLISHED=0
                 break
               fi
@@ -80,14 +81,14 @@ jobs:
           const fs=require('fs');
           const [local,published,publicBrowser]=process.argv.slice(2).map(Number);
           const success=[local,published,publicBrowser].every(value=>value===0);
-          fs.writeFileSync('world-generator/visual-showcase-0182-status.json',JSON.stringify({formatVersion:1,buildId:'waft-showcase-0182-v1',local,published,public:publicBrowser,eightSections:success?0:99,sharpArtwork:success?0:99,mobileNavigation:success?0:99,feedback:success?0:99,success,verifiedAt:new Date().toISOString()},null,2)+'\n');
+          fs.writeFileSync('world-generator/visual-showcase-0182-status.json',JSON.stringify({formatVersion:1,buildId:'waft-showcase-0182-v3',local,published,public:publicBrowser,eightSections:success?0:99,approvedArtwork:success?0:99,sharpArtwork:success?0:99,mobileNavigation:success?0:99,feedback:success?0:99,success,verifiedAt:new Date().toISOString()},null,2)+'\n');
           NODE
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add world-generator/visual-showcase-0182-*.json
           if ! git diff --cached --quiet; then
-            git commit -m "Record WAFT Visual Showcase 0.18.2 verification"
+            git commit -m "Record final WAFT Visual Showcase 0.18.2 verification"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
