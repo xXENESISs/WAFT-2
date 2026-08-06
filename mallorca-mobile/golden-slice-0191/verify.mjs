@@ -50,7 +50,16 @@ assert.ok(Math.abs(x) < 1e-10, `straight movement drifted laterally by ${x}`);
 assert.ok(z < -9.9, "straight movement should advance forward");
 
 const input = fs.readFileSync(path.join(root, "js/input.js"), "utf8");
+const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 assert.ok(input.includes("KeyS"));
 assert.ok(!input.includes("sHoldThreshold"));
+assert.ok(input.includes("getBoundingClientRect"), "fixed joystick must use its actual screen centre");
+assert.ok(!input.includes("joystickBase.style.left"), "joystick base must not jump to the touch point");
+assert.ok(!input.includes("joystickBase.style.top"), "joystick base must not jump to the touch point");
+assert.ok(!input.includes("joystickBase.hidden"), "fixed joystick must remain visible");
+assert.ok(html.includes('id="joystickBase" class="joystick-base"'));
+assert.ok(!html.includes('id="joystickBase" class="joystick-base" hidden'));
+assert.ok(css.includes(".move-zone{position:fixed"));
 
-console.log("WAFT control foundation 0.19.2: movement tests passed.");
+console.log("WAFT control foundation 0.19.3: fixed joystick and movement tests passed.");
