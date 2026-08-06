@@ -47,8 +47,10 @@ export class Player {
   update(dt) {
     const delta = Math.min(dt, 0.05);
     const cameraDelta = this.input.consumeCamera();
-    this.cameraYaw -= cameraDelta.x * 0.0039;
-    this.cameraPitch = B.Scalar.Clamp(this.cameraPitch + cameraDelta.y * 0.0028, 0.16, 0.61);
+
+    // Touch camera uses direct screen motion: swipe right turns right, swipe up looks up.
+    this.cameraYaw += cameraDelta.x * 0.0039;
+    this.cameraPitch = B.Scalar.Clamp(this.cameraPitch - cameraDelta.y * 0.0028, 0.16, 0.61);
 
     const stick = this.input.movement();
     const moving = stick.magnitude > 0.001;
