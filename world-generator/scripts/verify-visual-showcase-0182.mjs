@@ -21,22 +21,27 @@ try{
   const response=await page.goto(options.url,{waitUntil:'domcontentloaded',timeout:120000});
   assert(response?.ok(),`La página devolvió ${response?.status()}`);
   await page.waitForFunction(()=>window.__WAFT_VISUAL_SHOWCASE_0182_READY__===true&&Boolean(window.WAFTVisualShowcase0182?.getState),null,{timeout:120000});
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(650);
   const initial=await page.evaluate(()=>window.WAFTVisualShowcase0182.getState());
   assert(initial.buildId===BUILD_ID,`Build inesperada: ${initial.buildId}`);
   assert(initial.sectionCount===8,`Secciones inesperadas: ${initial.sectionCount}`);
   assert(initial.imageWidth>=900&&initial.imageHeight>=630,`Imagen insuficiente: ${initial.imageWidth}x${initial.imageHeight}`);
+  const initialGeometry=await page.evaluate(()=>{const image=document.getElementById('board').getBoundingClientRect();const viewer=document.getElementById('viewer').getBoundingClientRect();return{image,viewer,overlap:image.right>viewer.left&&image.left<viewer.right&&image.bottom>viewer.top&&image.top<viewer.bottom};});
+  assert(initialGeometry.overlap,'La imagen inicial no cruza el visor');
   const ids=await page.evaluate(()=>window.WAFTVisualShowcase0182.getSections().map(item=>item.id));
-  for(const id of ids){await page.evaluate(value=>window.WAFTVisualShowcase0182.focus(value),id);await page.waitForTimeout(90);assert(await page.evaluate(()=>window.WAFTVisualShowcase0182.getState().activeSection)===id,`No se enfocó ${id}`);}
+  for(const id of ids){await page.evaluate(value=>window.WAFTVisualShowcase0182.focus(value),id);await page.waitForTimeout(100);assert(await page.evaluate(()=>window.WAFTVisualShowcase0182.getState().activeSection)===id,`No se enfocó ${id}`);}
   await page.evaluate(()=>window.WAFTVisualShowcase0182.focus('urban'));
   await page.locator('[data-vote="approved"]').click();
   const voted=await page.evaluate(()=>window.WAFTVisualShowcase0182.getState().feedback.urban);
   assert(voted==='approved','La aprobación no se guardó');
   await page.evaluate(()=>window.WAFTVisualShowcase0182.overview());
+  await page.waitForTimeout(700);
   assert(await page.evaluate(()=>window.WAFTVisualShowcase0182.getState().overview)===true,'La vista general no se restauró');
+  const finalGeometry=await page.evaluate(()=>{const image=document.getElementById('board').getBoundingClientRect();const viewer=document.getElementById('viewer').getBoundingClientRect();return{image,viewer,overlap:image.right>viewer.left&&image.left<viewer.right&&image.bottom>viewer.top&&image.top<viewer.bottom};});
+  assert(finalGeometry.overlap,'La imagen final no cruza el visor');
   assert(errors.length===0,`Errores: ${errors.join(' | ')}`);
   assert(failed.length===0,`Fallos de red: ${failed.join(' | ')}`);
   if(options.screenshot)await page.screenshot({path:options.screenshot,type:'png'});
-  const report={formatVersion:1,valid:true,public:options.public,url:options.url,buildId:BUILD_ID,viewport:{width:844,height:390,mobile:true,touch:true},sectionIds:ids,state:await page.evaluate(()=>window.WAFTVisualShowcase0182.getState()),errors,failed,verifiedAt:new Date().toISOString()};
+  const report={formatVersion:1,valid:true,public:options.public,url:options.url,buildId:BUILD_ID,viewport:{width:844,height:390,mobile:true,touch:true},sectionIds:ids,state:await page.evaluate(()=>window.WAFTVisualShowcase0182.getState()),initialGeometry,finalGeometry,errors,failed,verifiedAt:new Date().toISOString()};
   const output=path.resolve(ROOT,options.output);fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
 }finally{await browser.close();}
