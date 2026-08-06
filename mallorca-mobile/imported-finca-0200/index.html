@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#151815" />
+  <title>WAFT Adventure — Finca importada 0.20.0</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas" aria-label="WAFT Adventure: finca importada"></canvas>
+
+  <header class="hud">
+    <div>
+      <span>WAFT ADVENTURE · 0.20.0</span>
+      <strong>Finca de sa Marina</strong>
+      <p id="statusText">Cargando materiales y mallas reales…</p>
+    </div>
+    <button id="resetButton" type="button">Recentrar</button>
+  </header>
+
+  <section class="asset-badge" aria-live="polite">
+    <b id="assetCount">0</b>
+    <span>mallas reales colocadas</span>
+  </section>
+
+  <section id="joystick" class="joystick" aria-label="Joystick de movimiento">
+    <div class="joystick-ring"></div>
+    <div id="joystickKnob" class="joystick-knob"></div>
+  </section>
+
+  <button id="runButton" class="run-button" type="button">CORRER</button>
+
+  <div id="loading" class="loading">
+    <div class="loading-card">
+      <span>VERTICAL SLICE IMPORTADO</span>
+      <h1>Finca de sa Marina</h1>
+      <p id="loadingLabel">Preparando la finca…</p>
+      <div class="loading-track"><i id="loadingBar"></i></div>
+    </div>
+  </div>
+
+  <footer>Arrastra la pantalla para mirar · Joystick para caminar · Powered by Poly Haven</footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
