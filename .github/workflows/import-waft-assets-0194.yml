@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: import-waft-assets-0194
+  group: import-waft-assets-0194-alt
   cancel-in-progress: true
 
 jobs:
