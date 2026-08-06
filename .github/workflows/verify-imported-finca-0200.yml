@@ -1,0 +1,28 @@
+name: Verify Imported Finca 0.20.0
+
+on:
+  push:
+    branches:
+      - agent/imported-finca-0200
+    paths:
+      - mallorca-mobile/imported-finca-0200/**
+      - .github/workflows/verify-imported-finca-0200.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: Validate JavaScript and assets
+        working-directory: repo
+        run: |
+          node --check mallorca-mobile/imported-finca-0200/app.js
+          node mallorca-mobile/imported-finca-0200/verify.mjs
