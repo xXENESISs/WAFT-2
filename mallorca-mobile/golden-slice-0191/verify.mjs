@@ -50,6 +50,7 @@ assert.ok(Math.abs(x) < 1e-10, `straight movement drifted laterally by ${x}`);
 assert.ok(z < -9.9, "straight movement should advance forward");
 
 const input = fs.readFileSync(path.join(root, "js/input.js"), "utf8");
+const player = fs.readFileSync(path.join(root, "js/player.js"), "utf8");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 assert.ok(input.includes("KeyS"));
@@ -61,5 +62,13 @@ assert.ok(!input.includes("joystickBase.hidden"), "fixed joystick must remain vi
 assert.ok(html.includes('id="joystickBase" class="joystick-base"'));
 assert.ok(!html.includes('id="joystickBase" class="joystick-base" hidden'));
 assert.ok(css.includes(".move-zone{position:fixed"));
+assert.ok(
+  player.includes("this.cameraYaw += cameraDelta.x"),
+  "swiping right must turn the camera right",
+);
+assert.ok(
+  player.includes("this.cameraPitch - cameraDelta.y"),
+  "swiping up must look up",
+);
 
-console.log("WAFT control foundation 0.19.3: fixed joystick and movement tests passed.");
+console.log("WAFT control foundation 0.19.4: joystick, movement and direct camera tests passed.");
