@@ -1,0 +1,43 @@
+name: Discover WAFT Assets 0.19.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [agent/cc0-library-0194]
+    paths:
+      - mallorca-mobile/tools/discover-polyhaven-assets-0194.mjs
+      - .github/workflows/discover-waft-assets-0194.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: discover-waft-assets-0194
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/cc0-library-0194
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build curated candidate report
+        run: |
+          node --check mallorca-mobile/tools/discover-polyhaven-assets-0194.mjs
+          node mallorca-mobile/tools/discover-polyhaven-assets-0194.mjs
+      - name: Commit candidate report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/assets-shortlist-0194.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Discover CC0 candidates for WAFT 0.19.4"
+            git pull --rebase origin agent/cc0-library-0194
+            git push origin HEAD:agent/cc0-library-0194
+          fi
