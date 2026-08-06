@@ -1,3 +1,4 @@
 WAFT Adventure Pages redeploy trigger
 Source library merge: 1639ba697162642cae80e1cf90735f6349668963
-Generated: 2026-08-06
+Forced redeploy: 2026-08-06T20:17:00+02:00
+Reason: previous Pages build remained stuck in building state.
