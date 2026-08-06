@@ -9,6 +9,7 @@ on:
       - mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
       - mallorca-mobile/golden-slice-0191/verify.mjs
       - mallorca-mobile/golden-slice-0191/js/player.js
+      - mallorca-mobile/asset-library-0194/**
       - .github/workflows/import-waft-assets-0194.yml
 
 permissions:
@@ -30,10 +31,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Verify corrected controls
+      - name: Verify controls and library viewer
         run: |
           node --check mallorca-mobile/golden-slice-0191/js/player.js
           node mallorca-mobile/golden-slice-0191/verify.mjs
+          node --check mallorca-mobile/asset-library-0194/app.js
+          test -f mallorca-mobile/asset-library-0194/index.html
+          test -f mallorca-mobile/asset-library-0194/styles.css
       - name: Import curated CC0 library
         run: |
           node --check mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
