@@ -1,2 +1,2 @@
 Poly Haven assets are dedicated to the public domain under CC0 1.0.
-Source and hashes are recorded in import-manifest.json.
+Source URLs, file sizes and SHA-256 hashes are recorded in import-manifest.json.
