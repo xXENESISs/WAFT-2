@@ -7,6 +7,11 @@ on:
     paths:
       - mallorca-mobile/assets-import-plan-0193.json
       - mallorca-mobile/tools/import-polyhaven-assets-0193.mjs
+      - mallorca-mobile/asset-lab-0193/**
+      - mallorca-mobile/golden-slice-0191/index.html
+      - mallorca-mobile/golden-slice-0191/styles.css
+      - mallorca-mobile/golden-slice-0191/js/input.js
+      - mallorca-mobile/golden-slice-0191/verify.mjs
       - .github/workflows/import-waft-assets-0193.yml
 
 permissions:
@@ -28,6 +33,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Verify controls and asset lab
+        run: |
+          node --check mallorca-mobile/golden-slice-0191/js/input.js
+          node --check mallorca-mobile/asset-lab-0193/app.js
+          node mallorca-mobile/golden-slice-0191/verify.mjs
       - name: Import licensed 1K assets
         run: |
           node --check mallorca-mobile/tools/import-polyhaven-assets-0193.mjs
