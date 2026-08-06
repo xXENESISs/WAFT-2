@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
 
+// This verifier is intentionally changed after the workflow exists on main so GitHub runs it.
 const root = path.dirname(new URL(import.meta.url).pathname);
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
