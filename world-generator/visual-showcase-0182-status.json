@@ -1,13 +1,13 @@
 {
   "formatVersion": 1,
   "buildId": "waft-showcase-0182-v1",
-  "local": 0,
-  "published": 0,
-  "public": 0,
-  "eightSections": 0,
-  "sharpArtwork": 0,
-  "mobileNavigation": 0,
-  "feedback": 0,
-  "success": true,
-  "verifiedAt": "2026-08-06T00:48:18.691Z"
+  "local": 1,
+  "published": 99,
+  "public": 99,
+  "eightSections": 99,
+  "sharpArtwork": 99,
+  "mobileNavigation": 99,
+  "feedback": 99,
+  "success": false,
+  "verifiedAt": "2026-08-06T01:15:36.741Z"
 }
