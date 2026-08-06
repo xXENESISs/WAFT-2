@@ -1,0 +1,3 @@
+export function remapDeadzone(value,deadzone=.14){const abs=Math.abs(value);if(abs<=deadzone)return 0;return Math.sign(value)*Math.min(1,(abs-deadzone)/(1-deadzone));}
+export function shapeStick(x,y){let sx=remapDeadzone(x),sy=remapDeadzone(y);const magnitude=Math.hypot(sx,sy);if(magnitude>1){sx/=magnitude;sy/=magnitude;}if(Math.abs(sx)<.19&&Math.abs(sy)>.38)sx=0;if(Math.abs(sy)<.15&&Math.abs(sx)>.42)sy=0;return{x:sx,y:sy,magnitude:Math.min(1,Math.hypot(sx,sy))};}
+export function cameraRelativeDirection(x,forward,cameraYaw){const fx=-Math.sin(cameraYaw),fz=-Math.cos(cameraYaw),rx=Math.cos(cameraYaw),rz=-Math.sin(cameraYaw);const dx=rx*x+fx*forward,dz=rz*x+fz*forward,length=Math.hypot(dx,dz);if(length<1e-6)return{x:0,z:0};return{x:dx/length,z:dz/length};}
