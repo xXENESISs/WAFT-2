@@ -1,0 +1,27 @@
+{
+  "version": "0.19.3",
+  "provider": "Poly Haven",
+  "providerUrl": "https://polyhaven.com",
+  "license": "CC0-1.0",
+  "apiCredit": "Powered by Poly Haven",
+  "resolution": "1k",
+  "models": [
+    {
+      "id": "wooden_crate_02",
+      "role": "farmhouse-maritime-prop",
+      "maxDownloadedBytes": 30000000
+    }
+  ],
+  "textures": [
+    {
+      "id": "white_plaster_02",
+      "role": "mallorcan-plaster",
+      "maps": ["diffuse", "normal_gl", "roughness"]
+    },
+    {
+      "id": "stone_wall",
+      "role": "dry-stone-and-finca-walls",
+      "maps": ["diffuse", "normal_gl", "roughness"]
+    }
+  ]
+}
