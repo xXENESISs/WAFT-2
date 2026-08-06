@@ -32,7 +32,53 @@
       "urban": "approved"
     }
   },
+  "initialGeometry": {
+    "image": {
+      "x": 276.4740905761719,
+      "y": 61,
+      "width": 291.0517883300781,
+      "height": 206,
+      "top": 61,
+      "right": 567.52587890625,
+      "bottom": 267,
+      "left": 276.4740905761719
+    },
+    "viewer": {
+      "x": 8,
+      "y": 60,
+      "width": 828,
+      "height": 208,
+      "top": 60,
+      "right": 836,
+      "bottom": 268,
+      "left": 8
+    },
+    "overlap": true
+  },
+  "finalGeometry": {
+    "image": {
+      "x": 276.4740905761719,
+      "y": 61,
+      "width": 291.0517883300781,
+      "height": 206,
+      "top": 61,
+      "right": 567.52587890625,
+      "bottom": 267,
+      "left": 276.4740905761719
+    },
+    "viewer": {
+      "x": 8,
+      "y": 60,
+      "width": 828,
+      "height": 208,
+      "top": 60,
+      "right": 836,
+      "bottom": 268,
+      "left": 8
+    },
+    "overlap": true
+  },
   "errors": [],
   "failed": [],
-  "verifiedAt": "2026-08-06T00:43:37.082Z"
+  "verifiedAt": "2026-08-06T00:46:07.330Z"
 }
