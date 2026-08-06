@@ -17,7 +17,6 @@ export class Input {
     this.runningTouch = false;
     this.movePointer = null;
     this.cameraPointer = null;
-    this.moveOrigin = { x: 0, y: 0 };
     this.lastCameraPoint = null;
     this.abort = new AbortController();
 
@@ -41,12 +40,9 @@ export class Input {
     window.addEventListener("blur", () => this.reset(), { signal });
 
     this.moveZone.addEventListener("pointerdown", (event) => {
+      if (this.movePointer !== null) return;
       event.preventDefault();
       this.movePointer = event.pointerId;
-      this.moveOrigin = { x: event.clientX, y: event.clientY };
-      this.joystickBase.hidden = false;
-      this.joystickBase.style.left = `${event.clientX}px`;
-      this.joystickBase.style.top = `${event.clientY}px`;
       this.moveZone.setPointerCapture(event.pointerId);
       this.updateStick(event);
     }, { signal });
@@ -59,15 +55,16 @@ export class Input {
       if (event.pointerId !== this.movePointer) return;
       this.movePointer = null;
       this.stick = { x: 0, y: 0, magnitude: 0, axis: "none" };
-      this.joystickKnob.style.transform = "translate(0px, 0px)";
-      this.joystickBase.hidden = true;
+      this.joystickKnob.style.transform = "translate3d(0px, 0px, 0)";
+      this.joystickBase.classList.remove("active");
     };
 
     this.moveZone.addEventListener("pointerup", releaseMove, { signal });
     this.moveZone.addEventListener("pointercancel", releaseMove, { signal });
+    this.moveZone.addEventListener("lostpointercapture", releaseMove, { signal });
 
     this.canvas.addEventListener("pointerdown", (event) => {
-      if (event.pointerType === "touch" && event.clientX < innerWidth * 0.43) return;
+      if (this.cameraPointer !== null) return;
       this.cameraPointer = event.pointerId;
       this.lastCameraPoint = { x: event.clientX, y: event.clientY };
       this.canvas.setPointerCapture(event.pointerId);
@@ -112,9 +109,13 @@ export class Input {
   }
 
   updateStick(event) {
-    const radius = 48;
-    let dx = event.clientX - this.moveOrigin.x;
-    let dy = event.clientY - this.moveOrigin.y;
+    const rect = this.joystickBase.getBoundingClientRect();
+    const centerX = rect.left + rect.width * 0.5;
+    const centerY = rect.top + rect.height * 0.5;
+    const radius = Math.max(38, rect.width * 0.34);
+
+    let dx = event.clientX - centerX;
+    let dy = event.clientY - centerY;
     const length = Math.hypot(dx, dy);
 
     if (length > radius) {
@@ -122,7 +123,8 @@ export class Input {
       dy = (dy / length) * radius;
     }
 
-    this.joystickKnob.style.transform = `translate(${dx}px, ${dy}px)`;
+    this.joystickBase.classList.add("active");
+    this.joystickKnob.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
     this.stick = shapeStick(dx / radius, -dy / radius);
   }
 
@@ -165,7 +167,8 @@ export class Input {
     this.runningTouch = false;
     this.movePointer = null;
     this.cameraPointer = null;
-    this.joystickBase.hidden = true;
+    this.joystickKnob.style.transform = "translate3d(0px, 0px, 0)";
+    this.joystickBase.classList.remove("active");
   }
 
   dispose() {
