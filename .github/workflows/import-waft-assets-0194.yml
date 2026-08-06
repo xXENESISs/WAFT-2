@@ -1,0 +1,50 @@
+name: Import WAFT Assets 0.19.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [agent/cc0-library-0194]
+    paths:
+      - mallorca-mobile/assets-import-plan-0194.json
+      - mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
+      - mallorca-mobile/golden-slice-0191/verify.mjs
+      - mallorca-mobile/golden-slice-0191/js/player.js
+      - .github/workflows/import-waft-assets-0194.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-waft-assets-0194
+  cancel-in-progress: true
+
+jobs:
+  import-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/cc0-library-0194
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify corrected controls
+        run: |
+          node --check mallorca-mobile/golden-slice-0191/js/player.js
+          node mallorca-mobile/golden-slice-0191/verify.mjs
+      - name: Import curated CC0 library
+        run: |
+          node --check mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
+          node mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
+      - name: Commit assets and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/assets/vendor/polyhaven
+          if ! git diff --cached --quiet; then
+            git commit -m "Import expanded CC0 library for WAFT 0.19.4"
+            git pull --rebase origin agent/cc0-library-0194
+            git push origin HEAD:agent/cc0-library-0194
+          fi
