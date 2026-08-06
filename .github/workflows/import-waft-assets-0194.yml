@@ -23,15 +23,20 @@ jobs:
   import-assets:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      WAFT_BRANCH: agent/cc0-library-0194
+      GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: agent/cc0-library-0194
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Clone branch without marketplace actions
+        run: |
+          git clone --single-branch --branch "$WAFT_BRANCH" \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" waft-repo
+          cd waft-repo
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          node --version
+          git --version
       - name: Verify controls and library viewer
+        working-directory: waft-repo
         run: |
           node --check mallorca-mobile/golden-slice-0191/js/player.js
           node mallorca-mobile/golden-slice-0191/verify.mjs
@@ -39,16 +44,18 @@ jobs:
           test -f mallorca-mobile/asset-library-0194/index.html
           test -f mallorca-mobile/asset-library-0194/styles.css
       - name: Import curated CC0 library
+        working-directory: waft-repo
         run: |
           node --check mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
           node mallorca-mobile/tools/import-polyhaven-assets-0194.mjs
       - name: Commit assets and provenance
+        working-directory: waft-repo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add mallorca-mobile/assets/vendor/polyhaven
           if ! git diff --cached --quiet; then
             git commit -m "Import expanded CC0 library for WAFT 0.19.4"
-            git pull --rebase origin agent/cc0-library-0194
-            git push origin HEAD:agent/cc0-library-0194
+            git pull --rebase origin "$WAFT_BRANCH"
+            git push origin "HEAD:$WAFT_BRANCH"
           fi
