@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-06T06:34:34.985Z",
+  "importer": "WAFT Adventure Asset Importer 0.19.3",
+  "provider": "Poly Haven",
+  "providerUrl": "https://polyhaven.com",
+  "apiCredit": "Powered by Poly Haven",
+  "license": "CC0-1.0",
+  "assets": [
+    {
+      "id": "wooden_crate_02",
+      "type": "model",
+      "role": "farmhouse-maritime-prop",
+      "sourcePage": "https://polyhaven.com/a/wooden_crate_02",
+      "apiUrl": "https://api.polyhaven.com/files/wooden_crate_02",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/wooden_crate_02/",
+      "entryFile": "wooden_crate_02_1k.gltf",
+      "files": [
+        {
+          "file": "wooden_crate_02_1k.gltf",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_crate_02/wooden_crate_02_1k.gltf",
+          "bytes": 4150,
+          "sha256": "e90985d317664668988cb95ce707784c94ab0ccc6d13c980ca789fa69a5cf7b6"
+        },
+        {
+          "file": "wooden_crate_02.bin",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_crate_02/wooden_crate_02.bin",
+          "bytes": 150064,
+          "sha256": "e68e272641f704e5241e4108894f0b97363d511944db8b991a48787d0160ea5e"
+        },
+        {
+          "file": "textures/wooden_crate_02_nor_gl_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_02/wooden_crate_02_nor_gl_1k.jpg",
+          "bytes": 546319,
+          "sha256": "59342f730c9f336950f796ef5e4c3b8c794ce5adbd54d98a2ecb679a7e4ae5e8"
+        },
+        {
+          "file": "textures/wooden_crate_02_diff_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_02/wooden_crate_02_diff_1k.jpg",
+          "bytes": 716110,
+          "sha256": "a6e57123110d2899af9493c22b1918174f1c96c707e7126ac67738d98ee10c07"
+        },
+        {
+          "file": "textures/wooden_crate_02_arm_1k.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_02/wooden_crate_02_arm_1k.jpg",
+          "bytes": 819577,
+          "sha256": "a76af97005a66fe8c7cdcabf20174f06813e6a6d5cd9502157c93a57f3c89d5a"
+        }
+      ]
+    },
+    {
+      "id": "white_plaster_02",
+      "type": "texture",
+      "role": "mallorcan-plaster",
+      "sourcePage": "https://polyhaven.com/a/white_plaster_02",
+      "apiUrl": "https://api.polyhaven.com/files/white_plaster_02",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/white_plaster_02/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_diff_1k.jpg",
+          "bytes": 527219,
+          "sha256": "a1ebbe091bd1ae93d2abd5de8d69f9003a8d0ee6532bcf9a87c2492c97051f23"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_nor_gl_1k.jpg",
+          "bytes": 652310,
+          "sha256": "eb572ca3630d5bfde72e2601b1f02412da23ca005cd19384dced8690be4cb783"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_rough_1k.jpg",
+          "bytes": 295900,
+          "sha256": "4ff1fe957cd161b07f721fe6c28a9459c8c2e8ec65627a26c16e483a07c80d85"
+        }
+      ]
+    },
+    {
+      "id": "stone_wall",
+      "type": "texture",
+      "role": "dry-stone-and-finca-walls",
+      "sourcePage": "https://polyhaven.com/a/stone_wall",
+      "apiUrl": "https://api.polyhaven.com/files/stone_wall",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "localRoot": "mallorca-mobile/assets/vendor/polyhaven/stone_wall/",
+      "maps": {
+        "diffuse": "diffuse.jpg",
+        "normal_gl": "normal_gl.jpg",
+        "roughness": "roughness.jpg"
+      },
+      "files": [
+        {
+          "file": "diffuse.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall/stone_wall_diff_1k.jpg",
+          "bytes": 836975,
+          "sha256": "390969aead48d9a10ac731a5e0af8761cc4ed89faa02ba775b913930b4398d87"
+        },
+        {
+          "file": "normal_gl.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall/stone_wall_nor_gl_1k.jpg",
+          "bytes": 1172420,
+          "sha256": "801d7ff8bc472e5ad95872546c19a4c63cc776060b4ced629fece2d08591964e"
+        },
+        {
+          "file": "roughness.jpg",
+          "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_wall/stone_wall_rough_1k.jpg",
+          "bytes": 301003,
+          "sha256": "8c06e7c67d0d9701966732cc90c4e356b5bd5656aa35bf82650576e78322cbdd"
+        }
+      ]
+    }
+  ]
+}
