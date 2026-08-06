@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "valid": true,
   "public": false,
-  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1",
+  "url": "http://127.0.0.1:8000/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v3",
   "buildId": "waft-showcase-0182-v3",
   "viewport": {
     "width": 844,
@@ -85,5 +85,5 @@
   },
   "errors": [],
   "failed": [],
-  "verifiedAt": "2026-08-06T01:16:16.138Z"
+  "verifiedAt": "2026-08-06T01:16:43.485Z"
 }

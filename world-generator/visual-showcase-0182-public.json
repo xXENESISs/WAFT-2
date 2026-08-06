@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "valid": true,
   "public": true,
-  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v1",
-  "buildId": "waft-showcase-0182-v1",
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/visual-showcase-0182.html?v=waft-showcase-0182-v3",
+  "buildId": "waft-showcase-0182-v3",
   "viewport": {
     "width": 844,
     "height": 390,
@@ -21,27 +21,32 @@
     "materials"
   ],
   "state": {
-    "buildId": "waft-showcase-0182-v1",
+    "buildId": "waft-showcase-0182-v3",
     "ready": true,
     "overview": true,
     "activeSection": "urban",
     "sectionCount": 8,
-    "imageWidth": 900,
-    "imageHeight": 637,
+    "imageWidth": 500,
+    "imageHeight": 354,
     "feedback": {
       "urban": "approved"
     }
   },
+  "artwork": {
+    "distinctColors": 226,
+    "luminanceRange": 187.7128,
+    "luminanceStd": 39.164032967584774
+  },
   "initialGeometry": {
     "image": {
-      "x": 276.4740905761719,
+      "x": 276.519775390625,
       "y": 61,
-      "width": 291.0517883300781,
+      "width": 290.96044921875,
       "height": 206,
       "top": 61,
-      "right": 567.52587890625,
+      "right": 567.480224609375,
       "bottom": 267,
-      "left": 276.4740905761719
+      "left": 276.519775390625
     },
     "viewer": {
       "x": 8,
@@ -57,14 +62,14 @@
   },
   "finalGeometry": {
     "image": {
-      "x": 276.4740905761719,
+      "x": 276.519775390625,
       "y": 61,
-      "width": 291.0517883300781,
+      "width": 290.96044921875,
       "height": 206,
       "top": 61,
-      "right": 567.52587890625,
+      "right": 567.480224609375,
       "bottom": 267,
-      "left": 276.4740905761719
+      "left": 276.519775390625
     },
     "viewer": {
       "x": 8,
@@ -80,5 +85,5 @@
   },
   "errors": [],
   "failed": [],
-  "verifiedAt": "2026-08-06T00:48:18.594Z"
+  "verifiedAt": "2026-08-06T01:17:16.122Z"
 }
