@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#151815" />
+  <title>WAFT Adventure — Finca jugable 0.20.1</title>
+  <link rel="stylesheet" href="../imported-finca-0200/styles.css" />
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas" aria-label="WAFT Adventure: finca jugable"></canvas>
+  <header class="hud"><div><span>WAFT ADVENTURE · 0.20.1</span><strong>Finca de sa Marina</strong><p id="statusText">Tercera persona · avatar temporal · joystick y WASD</p></div><button id="resetButton" type="button">Recentrar</button></header>
+  <section class="asset-badge"><b id="assetCount">0</b><span>mallas reales colocadas</span></section>
+  <section id="joystick" class="joystick" aria-label="Joystick de movimiento"><div class="joystick-ring"></div><div id="joystickKnob" class="joystick-knob"></div></section>
+  <button id="runButton" class="run-button" type="button">CORRER</button>
+  <div id="loading" class="loading"><div class="loading-card"><span>VERTICAL SLICE JUGABLE</span><h1>Finca de sa Marina</h1><p id="loadingLabel">Preparando tercera persona…</p><div class="loading-track"><i id="loadingBar"></i></div></div></div>
+  <footer>Arrastra para girar cámara · Joystick/WASD para caminar · Avatar temporal sin cola</footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
