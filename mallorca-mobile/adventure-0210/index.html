@@ -21,57 +21,41 @@
     const errorBox = document.getElementById('error');
     const params = new URLSearchParams(location.search);
     const regionId = params.get('region') === 'catalunya-litoral' ? 'catalunya-litoral' : 'baleares';
-    const builds = {
-      baleares: '../region-runtime-baleares-013.html',
-      'catalunya-litoral': '../region-runtime-catalunya-litoral-003.html'
-    };
-    const build = builds[regionId];
+    const builds = { baleares:'../region-runtime-baleares-013.html', 'catalunya-litoral':'../region-runtime-catalunya-litoral-003.html' };
     const version = params.get('v') || 'waft-adventure-0233';
     try {
-      status.textContent = 'Cargando ' + (regionId === 'baleares' ? 'Baleares' : 'Catalunya litoral') + '…';
-      const response = await fetch(build + '?v=' + encodeURIComponent(version), { cache: 'no-store' });
-      if (!response.ok) throw new Error(response.status + ' al cargar ' + build);
+      const response = await fetch(builds[regionId] + '?v=' + encodeURIComponent(version), { cache:'no-store' });
+      if (!response.ok) throw new Error(response.status + ' al cargar el runtime regional');
       let source = await response.text();
-      const patch = (from, to, label) => {
-        if (!source.includes(from)) throw new Error('El runtime regional cambió: ' + label);
-        source = source.replace(from, to);
+      const replaceOne = (pattern, replacement, label) => {
+        const before = source;
+        source = source.replace(pattern, replacement);
+        if (source === before) throw new Error('El runtime regional cambió: ' + label);
       };
 
-      patch('<head>', '<head>\n<base href="../">', 'base del documento');
-      patch(
-        '</style>',
-        `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`,
-        'estilos integrados'
-      );
+      replaceOne('<head>', '<head>\n<base href="../">', 'base');
+      replaceOne('</style>', `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`, 'estilos');
 
-      // Cámara: vuelve al sentido, sensibilidad y rango vertical del Mundo 1.
-      patch(
+      // Cámara del Mundo 1: gesto natural, más rápida y casi vertical hacia cielo/suelo.
+      replaceOne(
         `      state.yaw -= dx * .0042;\n      state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));`,
         `      state.yaw -= dx * .0053;\n      state.pitch = Math.max(-1.05, Math.min(1.46, state.pitch + dy * .0043));`,
-        'control orbital de cámara'
+        'cámara orbital'
       );
-      patch('    pitch: .24,', '    pitch: .50,', 'pitch inicial');
-      patch('      state.pitch = .24;', '      state.pitch = .50;', 'pitch al reaparecer');
-      patch(
-        'state.pitch = Number.isFinite(Number(payload.pitch)) ? Math.max(-.12, Math.min(.72, Number(payload.pitch))) : state.pitch;',
-        'state.pitch = Number.isFinite(Number(payload.pitch)) ? Math.max(-1.05, Math.min(1.46, Number(payload.pitch))) : state.pitch;',
-        'pitch restaurado desde guardado'
-      );
+      replaceOne('    pitch: .24,', '    pitch: .50,', 'pitch inicial');
+      replaceOne('      state.pitch = .24;', '      state.pitch = .50;', 'pitch respawn');
+      replaceOne(/state\.pitch = Number\.isFinite\(Number\(payload\.pitch\)\) \? Math\.max\(-\.12, Math\.min\(\.72, Number\(payload\.pitch\)\)\) : state\.pitch;/,
+        'state.pitch = Number.isFinite(Number(payload.pitch)) ? Math.max(-1.05, Math.min(1.46, Number(payload.pitch))) : state.pitch;', 'pitch guardado');
       source = source.replace('perspective(projection, Math.PI / 3, canvas.width / canvas.height, .12,', 'perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06,');
+      replaceOne('    gravity: 13.5,', '    gravity: 20.5,', 'gravedad');
 
-      patch('    gravity: 13.5,', '    gravity: 20.5,', 'gravedad terrestre');
-      patch(
-        '    swimStroke: 0,',
-        `    swimStroke: 0,
+      replaceOne('    swimStroke: 0,', `    swimStroke: 0,
     adventureFlight: false,
     adventureFlightVy: 0,
     adventureFlightFlap: 0,
-    adventureFlightGravity: 2.0,
-    adventureFlightMinClearance: 1.45,
     adventureFlightBank: 0,
-    adventureFlightSpeed: 12.4,
+    adventureFlightMinClearance: 1.45,
     adventureMountType: null,
-    adventureAquaticMount: false,
     adventureWaterJump: false,
     adventureSharkBreachSpeed: 0,
     adventureCurrentSpeed: 0,
@@ -82,374 +66,121 @@
     adventureJumpBuffer: 0,
     adventureQueuedJumpVelocity: 0,
     adventureQueuedHorizontalBoost: 1,
-    adventureRoofClearance: .06,`,
-        'estado Adventure'
-      );
+    adventureRoofClearance: .06,`, 'estado Adventure');
 
-      // Colisiones 3D y tejados pisables, conservando la reparación 0.23.2.
-      patch(
-        '    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
-        `    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
+      // Edificios: altura real, tejado pisable y oclusión de fauna por terreno/edificios.
+      replaceOne('    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);', `    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
     const buildingContactAt = (x, z, radius = state.playerCollisionRadius) => {
       const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
       const exaggeration = metadata.display.buildingHorizontalExaggeration;
       const terrainVerticalScale = (state.worldMode === 'local' ? localAssets.terrainMesh?.verticalScale : terrainMesh.verticalScale) || metadata.terrain.verticalScale;
       let best = null;
-      for (let offset = 0; offset < records.length; offset += 8) {
-        const dx = x - records[offset], dz = z - records[offset + 2], angle = records[offset + 6];
-        const c = Math.cos(angle), s = Math.sin(angle);
-        const localX = dx * c + dz * s, localZ = -dx * s + dz * c;
-        const halfX = (records[offset + 3] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
-        const halfZ = (records[offset + 5] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
-        if (Math.abs(localX) >= halfX || Math.abs(localZ) >= halfZ) continue;
-        const top = records[offset + 1] * terrainVerticalScale + records[offset + 4] * metadata.display.buildingVerticalScale * 1.18 + .06;
-        if (!best || top > best.top) best = { offset, top, localX, localZ, halfX, halfZ, c, s, centerX: records[offset], centerZ: records[offset + 2] };
+      for (let offset=0; offset<records.length; offset+=8) {
+        const dx=x-records[offset], dz=z-records[offset+2], angle=records[offset+6], c=Math.cos(angle), s=Math.sin(angle);
+        const lx=dx*c+dz*s, lz=-dx*s+dz*c;
+        const hx=(records[offset+3]*exaggeration*state.footprintScale*.5+radius)/state.worldScale;
+        const hz=(records[offset+5]*exaggeration*state.footprintScale*.5+radius)/state.worldScale;
+        if (Math.abs(lx)>=hx || Math.abs(lz)>=hz) continue;
+        const top=records[offset+1]*terrainVerticalScale+records[offset+4]*metadata.display.buildingVerticalScale*1.18+.06;
+        if (!best || top>best.top) best={top,lx,lz,hx,hz,c,s,cx:records[offset],cz:records[offset+2]};
       }
       return best;
     };
-    const buildingTopAt = (x, z, radius = 0) => buildingContactAt(x, z, radius)?.top ?? null;
-    const collidesBuildingAtPlayerHeight = (x, z) => {
-      const hit = buildingContactAt(x, z, state.playerCollisionRadius);
-      if (!hit) return false;
-      return state.camera.y - state.playerEyeHeight < hit.top - state.adventureRoofClearance;
+    const buildingTopAt=(x,z,radius=0)=>buildingContactAt(x,z,radius)?.top??null;
+    const collidesBuildingAtPlayerHeight=(x,z)=>{const hit=buildingContactAt(x,z,state.playerCollisionRadius);return !!hit && state.camera.y-state.playerEyeHeight<hit.top-state.adventureRoofClearance;};
+    const resolveBuildingOverlap=()=>{
+      const hit=buildingContactAt(state.camera.x,state.camera.z,state.playerCollisionRadius);
+      if(!hit || state.camera.y-state.playerEyeHeight>=hit.top-state.adventureRoofClearance)return false;
+      const margin=.045/Math.max(.01,state.worldScale), px=hit.hx-Math.abs(hit.lx), pz=hit.hz-Math.abs(hit.lz);
+      let lx=hit.lx,lz=hit.lz;if(px<=pz)lx=(lx<0?-1:1)*(hit.hx+margin);else lz=(lz<0?-1:1)*(hit.hz+margin);
+      state.camera.x=hit.cx+lx*hit.c-lz*hit.s;state.camera.z=hit.cz+lx*hit.s+lz*hit.c;state.collisions++;return true;
     };
-    const resolveBuildingOverlap = () => {
-      const hit = buildingContactAt(state.camera.x, state.camera.z, state.playerCollisionRadius);
-      if (!hit || state.camera.y - state.playerEyeHeight >= hit.top - state.adventureRoofClearance) return false;
-      const margin = .045 / Math.max(.01, state.worldScale);
-      const pushX = hit.halfX - Math.abs(hit.localX), pushZ = hit.halfZ - Math.abs(hit.localZ);
-      let localX = hit.localX, localZ = hit.localZ;
-      if (pushX <= pushZ) localX = (localX < 0 ? -1 : 1) * (hit.halfX + margin);
-      else localZ = (localZ < 0 ? -1 : 1) * (hit.halfZ + margin);
-      const dx = localX * hit.c - localZ * hit.s, dz = localX * hit.s + localZ * hit.c;
-      state.camera.x = hit.centerX + dx; state.camera.z = hit.centerZ + dz; state.collisions++;
+    const adventureVisible=(x,y,z)=>{
+      const eyeRegional=toRegionalXZ(state.cameraEye.x,state.cameraEye.z),dx=x-eyeRegional.x,dz=z-eyeRegional.z,d=Math.hypot(dx,dz);
+      if(d<5)return true;const steps=Math.max(6,Math.min(40,Math.ceil(d*.34)));
+      for(let i=1;i<steps-2;i++){const t=i/steps,px=eyeRegional.x+dx*t,pz=eyeRegional.z+dz*t,rayY=state.cameraEye.y+(y-state.cameraEye.y)*t,s=sampleTerrainInfo(px,pz);
+        if(s?.land&&s.height+.28>rayY)return false;const roof=buildingTopAt(px,pz,0);if(roof!==null&&roof+.12>rayY)return false;}
       return true;
-    };
-    const adventureVisible = (x, y, z) => {
-      const eyeRegional = toRegionalXZ(state.cameraEye.x, state.cameraEye.z);
-      const dx = x - eyeRegional.x, dz = z - eyeRegional.z;
-      const distance = Math.hypot(dx, dz);
-      if (distance < 4) return true;
-      const steps = Math.max(6, Math.min(34, Math.ceil(distance * .32)));
-      for (let i = 1; i < steps - 2; i++) {
-        const t = i / steps, px = eyeRegional.x + dx * t, pz = eyeRegional.z + dz * t;
-        const rayY = state.cameraEye.y + (y - state.cameraEye.y) * t;
-        const surface = sampleTerrainInfo(px, pz);
-        if (surface?.land && surface.height + .24 > rayY) return false;
-        const roof = buildingTopAt(px, pz, 0);
-        if (roof !== null && roof + .12 > rayY) return false;
+    };`, 'colisión/oclusión');
+      replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);', 'solape');
+      replaceOne('if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {', `if (xTerrain.inside
+          && !(state.adventureMountType==='shark'&&!state.adventureWaterJump&&xTerrain.land)
+          && (state.adventureFlight||state.adventureWaterJump||!xTerrain.land||!collidesBuildingAtPlayerHeight(nextX,state.camera.z))) {`, 'colisión X');
+      replaceOne('if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {', `if (zTerrain.inside
+          && !(state.adventureMountType==='shark'&&!state.adventureWaterJump&&zTerrain.land)
+          && (state.adventureFlight||state.adventureWaterJump||!zTerrain.land||!collidesBuildingAtPlayerHeight(state.camera.x,nextZ))) {`, 'colisión Z');
+
+      replaceOne('const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;', 'const swimmingBeforeMove = !state.adventureFlight && !state.adventureWaterJump && terrainBeforeMove.inside && !terrainBeforeMove.land;', 'modo locomoción');
+      replaceOne(/      const boosted = state\.boost \|\| keys\.has\('ShiftLeft'\) \|\| keys\.has\('ShiftRight'\);[\s\S]*?      const moveZ = inputZ \* speed \* dt;/, `      const boosted = state.boost || keys.has('ShiftLeft') || keys.has('ShiftRight');
+      let speed=0;
+      if(state.adventureFlight) speed=inputLength<.06?8.2:(boosted||inputLength>.93?26.5:inputLength>.70?19.0:12.4);
+      else if(state.adventureMountType==='shark'){const waterDrive=boosted||inputLength>.93?42:inputLength>.70?30:18;speed=state.adventureWaterJump?Math.max(waterDrive,state.adventureSharkBreachSpeed):waterDrive;}
+      else if(state.adventureMountType==='goat'&&!swimmingBeforeMove) speed=boosted||inputLength>.93?15.8:inputLength>.70?9.2:4.0;
+      else speed=swimmingBeforeMove?state.swimSpeed*(boosted?1.75:1):state.runSpeed*(boosted?2.4:1)*state.slopeSpeedFactor;
+      const coast=(state.adventureFlight||state.adventureWaterJump)&&inputLength<.06;
+      const driveX=coast?Math.sin(state.playerFacing):inputX,driveZ=coast?Math.cos(state.playerFacing):inputZ;
+      const moveX=driveX*speed*dt,moveZ=driveZ*speed*dt;
+      state.adventureCurrentSpeed=Math.hypot(driveX,driveZ)*speed;
+      if(state.adventureWaterJump&&state.adventureSharkBreachSpeed>0)state.adventureSharkBreachSpeed=Math.max(0,state.adventureSharkBreachSpeed-dt*6.2);`, 'velocidades de montura');
+
+      // Sustituye la física vertical completa para no convertir el salto acuático en una simple brazada.
+      replaceOne(/      const wasSwimming = state\.swimming;[\s\S]*?      state\.jumpQueued = false;/, `      const wasSwimming=state.swimming;
+      state.swimming=!state.adventureFlight&&!state.adventureWaterJump&&terrainNow.inside&&!terrainNow.land;
+      state.movementMode=state.adventureFlight?'flight':state.adventureWaterJump?'water-jump':state.swimming?'swimming':state.grounded?'ground':'air';
+      state.groundHeight=terrainNow.height;state.waterSurfaceHeight=terrainNow.waterHeight;state.slopeAngle=terrainNow.land?terrainNow.slopeAngle:0;
+      if(state.adventureMountType==='shark'&&terrainNow.inside&&!terrainNow.land){state.adventureLastWaterX=state.camera.x;state.adventureLastWaterZ=state.camera.z;}
+      const feetBefore=state.camera.y-state.playerEyeHeight,roofTop=terrainNow.land?buildingTopAt(state.camera.x,state.camera.z,0):null;
+      const standOnRoof=roofTop!==null&&feetBefore>=roofTop-.48,groundSurface=standOnRoof?Math.max(terrainNow.height,roofTop):terrainNow.height;
+      const ground=groundSurface+state.playerEyeHeight,swimSurface=terrainNow.waterHeight+state.playerSwimEyeHeight,sharkSwimSurface=terrainNow.waterHeight-.22;
+      if(state.adventureFlight){
+        if(state.jumpQueued)state.adventureFlightFlap=Math.max(state.adventureFlightFlap,5.2);
+        if(state.adventureFlightFlap>0){state.adventureFlightVy=Math.max(state.adventureFlightVy,state.adventureFlightFlap);state.adventureFlightFlap=0;}
+        state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.camera.y+=state.adventureFlightVy*dt;
+        state.adventureFlightBank+=(-normalizedStrafe*.52-state.adventureFlightBank)*(1-Math.exp(-dt*5.5));
+        const floor=(terrainNow.land?terrainNow.height:terrainNow.waterHeight)+1.45;if(state.camera.y<floor){state.camera.y=floor;state.adventureFlightVy=Math.max(0,state.adventureFlightVy*.15);}state.velocityY=state.adventureFlightVy;state.grounded=false;
+      }else if(state.adventureWaterJump){
+        state.swimming=false;state.grounded=false;state.velocityY-=18*dt;state.camera.y+=state.velocityY*dt;
+        if(terrainNow.land&&state.velocityY<=0&&state.camera.y-state.playerEyeHeight<=groundSurface){state.camera.y=ground;state.velocityY=0;state.grounded=true;state.adventureWaterJump=false;state.adventureSharkBreachSpeed=0;if(state.adventureMountType==='shark'){state.adventureMountType=null;state.adventureMountEject='shark-land';}}
+        else if(!terrainNow.land&&state.velocityY<=0){const landingY=state.adventureMountType==='shark'?sharkSwimSurface:swimSurface;if(state.camera.y<=landingY){state.camera.y=landingY;state.velocityY=0;state.swimming=true;state.adventureWaterJump=false;state.adventureSharkBreachSpeed=0;state.swimStroke=1;}}
+      }else if(state.swimming){
+        if(state.jumpQueued&&state.adventureQueuedJumpVelocity>0){state.velocityY=state.adventureQueuedJumpVelocity;state.adventureWaterJump=true;state.swimming=false;state.grounded=false;if(state.adventureMountType==='shark'){const baseSpeed=Math.max(18,state.adventureCurrentSpeed||0);state.adventureSharkBreachSpeed=Math.min(132,baseSpeed*Math.max(1,state.adventureQueuedHorizontalBoost||1));}state.adventureQueuedJumpVelocity=0;state.adventureQueuedHorizontalBoost=1;state.adventureJumpBuffer=0;}
+        else{if(state.jumpQueued)state.swimStroke=1;state.velocityY=0;state.grounded=false;const targetY=state.adventureMountType==='shark'?sharkSwimSurface:swimSurface;state.camera.y+=(targetY-state.camera.y)*Math.min(1,dt*(state.adventureMountType==='shark'?11:7));}
+      }else{
+        if(wasSwimming&&!state.adventureWaterJump){state.velocityY=0;state.grounded=true;state.camera.y=ground;}
+        if(state.grounded)state.adventureCoyote=.12;else state.adventureCoyote=Math.max(0,state.adventureCoyote-dt);
+        if(state.jumpQueued){state.adventureJumpBuffer=.14;if(!(state.adventureQueuedJumpVelocity>0))state.adventureQueuedJumpVelocity=state.jumpVelocity;}else state.adventureJumpBuffer=Math.max(0,state.adventureJumpBuffer-dt);
+        if(state.adventureJumpBuffer>0&&(state.grounded||state.adventureCoyote>0)){state.velocityY=state.adventureQueuedJumpVelocity||state.jumpVelocity;state.grounded=false;state.adventureCoyote=0;state.adventureJumpBuffer=0;state.adventureQueuedJumpVelocity=0;state.adventureQueuedHorizontalBoost=1;}
+        if(!state.grounded){state.velocityY-=state.gravity*dt;state.camera.y+=state.velocityY*dt;if(state.camera.y<=ground){state.camera.y=ground;state.velocityY=0;state.grounded=true;}}
+        else{const drop=state.camera.y-ground;if(drop>.42){state.grounded=false;state.adventureCoyote=.12;}else state.camera.y+=(ground-state.camera.y)*Math.min(1,dt*18);}
       }
-      return true;
-    };`,
-        'colisión tridimensional'
-      );
-      patch(
-        '    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);',
-        '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);',
-        'recuperación de solape'
-      );
-      patch(
-        'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
-        `if (xTerrain.inside
-          && !(state.adventureMountType === 'shark' && !state.adventureWaterJump && xTerrain.land)
-          && (state.adventureFlight || state.adventureWaterJump || !xTerrain.land || !collidesBuildingAtPlayerHeight(nextX, state.camera.z))) {`,
-        'colisión horizontal X'
-      );
-      patch(
-        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {',
-        `if (zTerrain.inside
-          && !(state.adventureMountType === 'shark' && !state.adventureWaterJump && zTerrain.land)
-          && (state.adventureFlight || state.adventureWaterJump || !zTerrain.land || !collidesBuildingAtPlayerHeight(state.camera.x, nextZ))) {`,
-        'colisión horizontal Z'
-      );
+      state.jumpQueued=false;`, 'física vertical');
 
-      patch(
-        'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
-        'const swimmingBeforeMove = !state.adventureFlight && terrainBeforeMove.inside && !terrainBeforeMove.land;',
-        'selección de locomoción'
-      );
-      patch(
-        `      const boosted = state.boost || keys.has('ShiftLeft') || keys.has('ShiftRight');
-      const speed = swimmingBeforeMove
-        ? state.swimSpeed * (boosted ? 1.75 : 1)
-        : state.runSpeed * (boosted ? 2.4 : 1) * state.slopeSpeedFactor;
-      const moveX = inputX * speed * dt;
-      const moveZ = inputZ * speed * dt;`,
-        `      const boosted = state.boost || keys.has('ShiftLeft') || keys.has('ShiftRight');
-      let speed;
-      if (state.adventureFlight) {
-        speed = inputLength < .06 ? 8.2 : (boosted || inputLength > .93 ? 26.5 : inputLength > .70 ? 19.0 : 12.4);
-      } else if (state.adventureMountType === 'shark') {
-        const waterDrive = boosted || inputLength > .93 ? 42 : inputLength > .70 ? 30 : 18;
-        speed = state.adventureWaterJump ? Math.max(waterDrive, state.adventureSharkBreachSpeed) : waterDrive;
-      } else if (state.adventureMountType === 'goat' && !swimmingBeforeMove) {
-        speed = boosted || inputLength > .93 ? 15.8 : inputLength > .70 ? 9.2 : 4.0;
-      } else {
-        speed = swimmingBeforeMove
-          ? state.swimSpeed * (boosted ? 1.75 : 1)
-          : state.runSpeed * (boosted ? 2.4 : 1) * state.slopeSpeedFactor;
-      }
-      const coast = (state.adventureFlight || state.adventureWaterJump) && inputLength < .06;
-      const driveX = coast ? Math.sin(state.playerFacing) : inputX;
-      const driveZ = coast ? Math.cos(state.playerFacing) : inputZ;
-      const moveX = driveX * speed * dt;
-      const moveZ = driveZ * speed * dt;
-      state.adventureCurrentSpeed = Math.hypot(driveX, driveZ) * speed;
-      if (state.adventureWaterJump && state.adventureSharkBreachSpeed > 0) state.adventureSharkBreachSpeed = Math.max(0, state.adventureSharkBreachSpeed - dt * 6.2);`,
-        'velocidades de montura del Mundo 1'
-      );
+      replaceOne('    const updateTerrainAlignment = dt => {\n      if (state.swimming) {', `    const updateTerrainAlignment = dt => {
+      if(state.adventureFlight){const blend=Math.min(1,dt*5.5),targetPitch=Math.max(-.42,Math.min(.30,-state.adventureFlightVy*.07));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(state.adventureFlightBank-state.terrainRoll)*blend;state.slopeAngle=0;return;}
+      if(state.adventureWaterJump&&state.adventureMountType==='shark'){const blend=Math.min(1,dt*8),targetPitch=Math.max(-.48,Math.min(.48,-state.velocityY*.025));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(0-state.terrainRoll)*blend;state.slopeAngle=0;return;}
+      if (state.swimming) {`, 'orientación monturas');
 
-      patch(
-        `      state.swimming = terrainNow.inside && !terrainNow.land;
-      state.movementMode = state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';`,
-        `      state.swimming = (state.adventureFlight || state.adventureWaterJump) ? false : terrainNow.inside && !terrainNow.land;
-      state.movementMode = state.adventureFlight ? 'flight' : state.adventureWaterJump ? 'water-jump' : state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';
-      if (state.adventureMountType === 'shark' && terrainNow.inside && !terrainNow.land) {
-        state.adventureLastWaterX = state.camera.x;
-        state.adventureLastWaterZ = state.camera.z;
-      }`,
-        'estado agua/aire'
-      );
-      patch(
-        '      const ground = terrainNow.height + state.playerEyeHeight;',
-        `      const feetBefore = state.camera.y - state.playerEyeHeight;
-      const roofTop = terrainNow.land ? buildingTopAt(state.camera.x, state.camera.z, 0) : null;
-      const standOnRoof = roofTop !== null && feetBefore >= roofTop - .48;
-      const groundSurface = standOnRoof ? Math.max(terrainNow.height, roofTop) : terrainNow.height;
-      const ground = groundSurface + state.playerEyeHeight;`,
-        'superficie de tejado'
-      );
-      patch(
-        `      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;
-      if (state.swimming) {`,
-        `      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;
-      const sharkSwimSurface = terrainNow.waterHeight - .22;
-      const flightFloor = (terrainNow.land ? terrainNow.height : terrainNow.waterHeight) + state.adventureFlightMinClearance;
-      if (state.adventureFlight) {
-        if (state.jumpQueued) state.adventureFlightFlap = Math.max(state.adventureFlightFlap, 5.2);
-        if (state.adventureFlightFlap > 0) {
-          state.adventureFlightVy = Math.max(state.adventureFlightVy, state.adventureFlightFlap);
-          state.adventureFlightFlap = 0;
-        }
-        state.adventureFlightVy -= state.adventureFlightGravity * dt;
-        if (inputLength > .93) state.adventureFlightVy -= 1.25 * dt;
-        state.adventureFlightVy = Math.max(-5.2, Math.min(12.0, state.adventureFlightVy));
-        state.camera.y += state.adventureFlightVy * dt;
-        state.adventureFlightBank += (-normalizedStrafe * .52 - state.adventureFlightBank) * (1 - Math.exp(-dt * 5.5));
-        if (state.camera.y < flightFloor) {
-          state.camera.y = flightFloor;
-          state.adventureFlightVy = Math.max(0, state.adventureFlightVy * .15);
-        }
-        state.velocityY = state.adventureFlightVy;
-        state.grounded = false;
-      } else if (state.adventureWaterJump) {
-        state.swimming = false;
-        state.grounded = false;
-        state.velocityY -= 18.0 * dt;
-        state.camera.y += state.velocityY * dt;
-        if (terrainNow.land && state.velocityY <= 0 && state.camera.y - state.playerEyeHeight <= groundSurface) {
-          state.camera.y = ground;
-          state.velocityY = 0;
-          state.grounded = true;
-          state.swimming = false;
-          state.adventureWaterJump = false;
-          state.adventureSharkBreachSpeed = 0;
-          if (state.adventureMountType === 'shark') {
-            state.adventureMountType = null;
-            state.adventureAquaticMount = false;
-            state.adventureMountEject = 'shark-land';
-          }
-        } else if (!terrainNow.land && state.velocityY <= 0) {
-          const landingY = state.adventureMountType === 'shark' ? sharkSwimSurface : swimSurface;
-          if (state.camera.y <= landingY) {
-            state.camera.y = landingY;
-            state.velocityY = 0;
-            state.swimming = true;
-            state.grounded = false;
-            state.adventureWaterJump = false;
-            state.adventureSharkBreachSpeed = 0;
-            state.swimStroke = 1;
-          }
-        }
-      } else if (state.swimming) {`,
-        'vuelo y salto acuático'
-      );
-      patch(
-        `      if (state.swimming) {
-        if (state.jumpQueued) state.swimStroke = 1;
-        state.velocityY = 0;
-        state.grounded = false;
-        state.camera.y += (swimSurface - state.camera.y) * Math.min(1, dt * 7);`,
-        `      if (state.swimming) {
-        if (state.jumpQueued && state.adventureQueuedJumpVelocity > 0) {
-          const impulse = state.adventureQueuedJumpVelocity;
-          state.velocityY = impulse;
-          state.adventureWaterJump = true;
-          state.swimming = false;
-          state.grounded = false;
-          if (state.adventureMountType === 'shark') {
-            const baseSpeed = Math.max(18, state.adventureCurrentSpeed || 0);
-            state.adventureSharkBreachSpeed = Math.min(132, baseSpeed * Math.max(1, state.adventureQueuedHorizontalBoost || 1));
-          }
-          state.adventureQueuedJumpVelocity = 0;
-          state.adventureQueuedHorizontalBoost = 1;
-          state.adventureJumpBuffer = 0;
-        } else {
-          if (state.jumpQueued) state.swimStroke = 1;
-          state.velocityY = 0;
-          state.grounded = false;
-          const targetWaterY = state.adventureMountType === 'shark' ? sharkSwimSurface : swimSurface;
-          state.camera.y += (targetWaterY - state.camera.y) * Math.min(1, dt * (state.adventureMountType === 'shark' ? 11 : 7));
-        }`,
-        'impulso desde el agua'
-      );
+      replaceOne('      drawCharacter(now, eye);', '      if(!window.WAFTAdventurePlugin?.hideBaseCharacter)drawCharacter(now,eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now,eye,pv);', 'hook render');
 
-      // Salto terrestre con buffer/coyote del Mundo 1.
-      patch(
-        `        if (state.jumpQueued && state.grounded) {
-          state.velocityY = state.jumpVelocity;
-          state.grounded = false;
-        }`,
-        `        if (state.grounded) state.adventureCoyote = .12;
-        else state.adventureCoyote = Math.max(0, state.adventureCoyote - dt);
-        if (state.jumpQueued) {
-          state.adventureJumpBuffer = .14;
-          if (!(state.adventureQueuedJumpVelocity > 0)) state.adventureQueuedJumpVelocity = state.jumpVelocity;
-        } else state.adventureJumpBuffer = Math.max(0, state.adventureJumpBuffer - dt);
-        if (state.adventureJumpBuffer > 0 && (state.grounded || state.adventureCoyote > 0)) {
-          state.velocityY = state.adventureQueuedJumpVelocity || state.jumpVelocity;
-          state.grounded = false;
-          state.adventureCoyote = 0;
-          state.adventureJumpBuffer = 0;
-          state.adventureQueuedJumpVelocity = 0;
-          state.adventureQueuedHorizontalBoost = 1;
-        }`,
-        'buffer de salto terrestre'
-      );
-      patch(
-        `        } else {
-          state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
-        }`,
-        `        } else {
-          const drop = state.camera.y - ground;
-          if (drop > .42) {
-            state.grounded = false;
-            state.adventureCoyote = Math.max(state.adventureCoyote, .12);
-          } else state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
-        }`,
-        'caída desde tejado'
-      );
-      patch(
-        `    const updateTerrainAlignment = dt => {
-      if (state.swimming) {`,
-        `    const updateTerrainAlignment = dt => {
-      if (state.adventureFlight) {
-        const blend = Math.min(1, dt * 5.5);
-        const targetPitch = Math.max(-.42, Math.min(.30, -state.adventureFlightVy * .07));
-        state.terrainPitch += (targetPitch - state.terrainPitch) * blend;
-        state.terrainRoll += (state.adventureFlightBank - state.terrainRoll) * blend;
-        state.slopeAngle = 0;
-        return;
-      }
-      if (state.adventureWaterJump && state.adventureMountType === 'shark') {
-        const blend = Math.min(1, dt * 8);
-        const targetPitch = Math.max(-.48, Math.min(.48, -state.velocityY * .025));
-        state.terrainPitch += (targetPitch - state.terrainPitch) * blend;
-        state.terrainRoll += (0 - state.terrainRoll) * blend;
-        state.slopeAngle = 0;
-        return;
-      }
-      if (state.swimming) {`,
-        'orientación de monturas'
-      );
-
-      patch(
-        '      drawCharacter(now, eye);',
-        '      if (!window.WAFTAdventurePlugin?.hideBaseCharacter) drawCharacter(now, eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now, eye, pv);',
-        'render Adventure'
-      );
-
-      patch(
-        '      jump() { state.jumpQueued = true; },',
-        `      jump() { state.jumpQueued = true; },
-      queueAdventureJump(velocity, options = {}) {
-        const impulse = Number(velocity);
-        const boost = Number(options.horizontalBoost);
-        state.adventureQueuedJumpVelocity = Number.isFinite(impulse) ? Math.max(2, Math.min(34, impulse)) : state.jumpVelocity;
-        state.adventureQueuedHorizontalBoost = Number.isFinite(boost) ? Math.max(1, Math.min(3.2, boost)) : 1;
-        state.adventureJumpBuffer = .16;
-        state.jumpQueued = true;
-        return state.adventureQueuedJumpVelocity;
+      replaceOne('      jump() { state.jumpQueued = true; },', `      jump() { state.jumpQueued = true; },
+      queueAdventureJump(velocity,options={}){const impulse=Number(velocity),boost=Number(options.horizontalBoost);state.adventureQueuedJumpVelocity=Number.isFinite(impulse)?Math.max(2,Math.min(34,impulse)):state.jumpVelocity;state.adventureQueuedHorizontalBoost=Number.isFinite(boost)?Math.max(1,Math.min(3.2,boost)):1;state.adventureJumpBuffer=.16;state.jumpQueued=true;return state.adventureQueuedJumpVelocity;},
+      setAdventureModifiers(modifiers={}){
+        const num=v=>Number.isFinite(Number(v))?Number(v):null,run=num(modifiers.runSpeed),swim=num(modifiers.swimSpeed),jump=num(modifiers.jumpVelocity),flap=num(modifiers.flightFlap);
+        if(run!==null)state.runSpeed=Math.max(1,Math.min(34,run));if(swim!==null)state.swimSpeed=Math.max(1,Math.min(24,swim));if(jump!==null)state.jumpVelocity=Math.max(2,Math.min(24,jump));if('boost'in modifiers)state.boost=Boolean(modifiers.boost);
+        if('mountType'in modifiers){state.adventureMountType=['shark','vulture','goat'].includes(modifiers.mountType)?modifiers.mountType:null;state.adventureMountEject=null;if(state.adventureMountType==='shark'){const s=sampleTerrainInfo(state.camera.x,state.camera.z);if(!s.land){state.adventureLastWaterX=state.camera.x;state.adventureLastWaterZ=state.camera.z;state.camera.y=s.waterHeight-.22;state.swimming=true;state.grounded=false;state.adventureWaterJump=false;state.velocityY=0;}}else{state.adventureWaterJump=false;state.adventureSharkBreachSpeed=0;}}
+        if(modifiers.clearMountEject)state.adventureMountEject=null;
+        if('flight'in modifiers){const next=Boolean(modifiers.flight);if(next&&!state.adventureFlight){state.adventureFlight=true;state.adventureFlightVy=0;state.adventureFlightFlap=0;state.adventureFlightBank=0;state.swimming=false;state.grounded=false;const s=sampleTerrainInfo(state.camera.x,state.camera.z),floor=(s.land?s.height:s.waterHeight)+1.45;state.camera.y=Math.max(state.camera.y,floor);}else if(!next&&state.adventureFlight){state.adventureFlight=false;state.velocityY=state.adventureFlightVy;state.grounded=false;state.adventureFlightBank=0;}}
+        if(flap!==null)state.adventureFlightFlap=Math.max(state.adventureFlightFlap,Math.max(0,Math.min(12,flap)));
+        return{runSpeed:state.runSpeed,swimSpeed:state.swimSpeed,jumpVelocity:state.jumpVelocity,boost:state.boost,flight:state.adventureFlight,mountType:state.adventureMountType,waterJump:state.adventureWaterJump};
       },
-      setAdventureModifiers(modifiers = {}) {
-        const number = value => Number.isFinite(Number(value)) ? Number(value) : null;
-        const runSpeed = number(modifiers.runSpeed), swimSpeed = number(modifiers.swimSpeed), jumpVelocity = number(modifiers.jumpVelocity), flightFlap = number(modifiers.flightFlap), flightSpeed = number(modifiers.flightSpeed);
-        if (runSpeed !== null) state.runSpeed = Math.max(1, Math.min(34, runSpeed));
-        if (swimSpeed !== null) state.swimSpeed = Math.max(1, Math.min(24, swimSpeed));
-        if (jumpVelocity !== null) state.jumpVelocity = Math.max(2, Math.min(24, jumpVelocity));
-        if (flightSpeed !== null) state.adventureFlightSpeed = Math.max(4, Math.min(30, flightSpeed));
-        if ('boost' in modifiers) state.boost = Boolean(modifiers.boost);
-        if ('mountType' in modifiers) {
-          const next = ['shark','vulture','goat'].includes(modifiers.mountType) ? modifiers.mountType : null;
-          state.adventureMountType = next;
-          state.adventureAquaticMount = next === 'shark';
-          state.adventureMountEject = null;
-          if (next === 'shark') {
-            const surface = sampleTerrainInfo(state.camera.x, state.camera.z);
-            if (!surface.land) {
-              state.adventureLastWaterX = state.camera.x;
-              state.adventureLastWaterZ = state.camera.z;
-              state.camera.y = surface.waterHeight - .22;
-              state.swimming = true;
-              state.grounded = false;
-              state.adventureWaterJump = false;
-              state.velocityY = 0;
-            }
-          } else {
-            state.adventureWaterJump = false;
-            state.adventureSharkBreachSpeed = 0;
-          }
-        }
-        if ('clearMountEject' in modifiers && modifiers.clearMountEject) state.adventureMountEject = null;
-        if ('flight' in modifiers) {
-          const nextFlight = Boolean(modifiers.flight);
-          if (nextFlight && !state.adventureFlight) {
-            state.adventureFlight = true; state.adventureFlightVy = 0; state.adventureFlightFlap = 0; state.adventureFlightBank = 0; state.swimming = false; state.grounded = false;
-            const surface = sampleTerrainInfo(state.camera.x, state.camera.z);
-            const floor = (surface.land ? surface.height : surface.waterHeight) + state.adventureFlightMinClearance;
-            state.camera.y = Math.max(state.camera.y, floor);
-          } else if (!nextFlight && state.adventureFlight) {
-            state.adventureFlight = false; state.velocityY = state.adventureFlightVy; state.grounded = false; state.adventureFlightBank = 0;
-          }
-        }
-        if (flightFlap !== null) state.adventureFlightFlap = Math.max(state.adventureFlightFlap, Math.max(0, Math.min(12, flightFlap)));
-        return { runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, boost: state.boost, flight: state.adventureFlight, flightVy: state.adventureFlightVy, mountType: state.adventureMountType, waterJump: state.adventureWaterJump };
-      },
-      isAdventureVisible(x, y, z) { return adventureVisible(Number(x), Number(y), Number(z)); },`,
-        'API Adventure'
-      );
-      patch(
-        'movementMode: state.movementMode, swimming: state.swimming,',
-        `movementMode: state.movementMode, swimming: state.swimming,
-        adventureMountType: state.adventureMountType, adventureWaterJump: state.adventureWaterJump, adventureMountEject: state.adventureMountEject,
-        adventureLastWaterX: state.adventureLastWaterX, adventureLastWaterZ: state.adventureLastWaterZ, adventureCurrentSpeed: state.adventureCurrentSpeed,`,
-        'estado público Adventure'
-      );
+      isAdventureVisible(x,y,z){return adventureVisible(Number(x),Number(y),Number(z));},`, 'API Adventure');
 
-      patch(
-        '</body>',
-        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.3';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`,
-        'bootstrap Adventure'
-      );
+      replaceOne('movementMode: state.movementMode, swimming: state.swimming,', `movementMode: state.movementMode, swimming: state.swimming, adventureMountType: state.adventureMountType, adventureWaterJump: state.adventureWaterJump, adventureMountEject: state.adventureMountEject, adventureLastWaterX: state.adventureLastWaterX, adventureLastWaterZ: state.adventureLastWaterZ, adventureCurrentSpeed: state.adventureCurrentSpeed,`, 'estado público');
+      replaceOne('</body>', `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.3';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`, 'bootstrap');
 
-      document.open();
-      document.write(source);
-      document.close();
-    } catch (error) {
-      console.error(error);
-      status.textContent = 'No se pudo iniciar el mundo integrado.';
-      errorBox.style.display = 'block';
-      errorBox.textContent = error.stack || error.message || String(error);
+      document.open();document.write(source);document.close();
+    } catch(error) {
+      console.error(error);status.textContent='No se pudo iniciar el mundo integrado.';errorBox.style.display='block';errorBox.textContent=error.stack||error.message||String(error);
     }
   })();
   </script>
