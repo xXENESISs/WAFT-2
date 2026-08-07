@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#07161d" />
-  <title>WAFT Adventure 0.23.1 · Mundo integrado</title>
+  <title>WAFT Adventure 0.23.2 · Mundo integrado</title>
   <style>
     html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;color:#fff;font-family:system-ui,sans-serif}
     #boot{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 35%,#173642,#07161d 72%)}
@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  <main id="boot"><div><b>WAFT 0.23.1</b><p id="status">Cargando mundo, navegación y fauna…</p><pre id="error"></pre></div></main>
+  <main id="boot"><div><b>WAFT 0.23.2</b><p id="status">Restaurando movilidad, tejados y monturas…</p><pre id="error"></pre></div></main>
   <script>
   'use strict';
   (async () => {
@@ -26,7 +26,7 @@
       'catalunya-litoral': '../region-runtime-catalunya-litoral-003.html'
     };
     const build = builds[regionId];
-    const version = params.get('v') || 'waft-adventure-0231';
+    const version = params.get('v') || 'waft-adventure-0232';
     try {
       status.textContent = 'Cargando ' + (regionId === 'baleares' ? 'Baleares' : 'Catalunya litoral') + '…';
       const response = await fetch(build + '?v=' + encodeURIComponent(version));
@@ -37,21 +37,30 @@
         'jump() { state.jumpQueued = true; },',
         'window.WAFTRegionRuntime = {',
         'swimStroke: 0,',
+        'gravity: 13.5,',
         'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
         'state.swimming = terrainNow.inside && !terrainNow.land;',
         'const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;',
         'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
-        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {'
+        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {',
+        'const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
+        'const movePlayer = (dx, dz) => {',
+        'const ground = terrainNow.height + state.playerEyeHeight;',
+        'if (state.jumpQueued && state.grounded) {',
+        'state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);'
       ];
       for (const anchor of requiredAnchors) {
         if (!source.includes(anchor)) throw new Error('El runtime regional cambió y falta el punto de integración: ' + anchor);
       }
+
       source = source.replace('<head>', '<head>\n<base href="../">');
       source = source.replace(
         '</style>',
         `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`
       );
       source = source.replace('state.yaw -= dx * .0042;', 'state.yaw += dx * .0042;');
+      source = source.replace('    gravity: 13.5,', '    gravity: 20.5,');
+
       source = source.replace(
         '    swimStroke: 0,',
         `    swimStroke: 0,
@@ -59,24 +68,92 @@
     adventureFlightVy: 0,
     adventureFlightFlap: 0,
     adventureFlightGravity: 2.0,
-    adventureFlightMinClearance: 1.45,`
+    adventureFlightMinClearance: 1.45,
+    adventureCoyote: .12,
+    adventureJumpBuffer: 0,
+    adventureQueuedJumpVelocity: 0,
+    adventureRoofClearance: .06,`
       );
+
+      source = source.replace(
+        '    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
+        `    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
+    const buildingContactAt = (x, z, radius = state.playerCollisionRadius) => {
+      const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
+      const exaggeration = metadata.display.buildingHorizontalExaggeration;
+      const terrainVerticalScale = (state.worldMode === 'local' ? localAssets.terrainMesh?.verticalScale : terrainMesh.verticalScale) || metadata.terrain.verticalScale;
+      let best = null;
+      for (let offset = 0; offset < records.length; offset += 8) {
+        const dx = x - records[offset];
+        const dz = z - records[offset + 2];
+        const angle = records[offset + 6];
+        const c = Math.cos(angle), s = Math.sin(angle);
+        const localX = dx * c + dz * s;
+        const localZ = -dx * s + dz * c;
+        const halfX = (records[offset + 3] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        const halfZ = (records[offset + 5] * exaggeration * state.footprintScale * .5 + radius) / state.worldScale;
+        if (Math.abs(localX) >= halfX || Math.abs(localZ) >= halfZ) continue;
+        const top = records[offset + 1] * terrainVerticalScale + records[offset + 4] * metadata.display.buildingVerticalScale * 1.18 + .06;
+        if (!best || top > best.top) best = { offset, top, localX, localZ, halfX, halfZ, c, s, centerX: records[offset], centerZ: records[offset + 2] };
+      }
+      return best;
+    };
+    const buildingTopAt = (x, z, radius = 0) => buildingContactAt(x, z, radius)?.top ?? null;
+    const collidesBuildingAtPlayerHeight = (x, z) => {
+      const hit = buildingContactAt(x, z, state.playerCollisionRadius);
+      if (!hit) return false;
+      const feet = state.camera.y - state.playerEyeHeight;
+      return feet < hit.top - state.adventureRoofClearance;
+    };
+    const resolveBuildingOverlap = () => {
+      const hit = buildingContactAt(state.camera.x, state.camera.z, state.playerCollisionRadius);
+      if (!hit) return false;
+      const feet = state.camera.y - state.playerEyeHeight;
+      if (feet >= hit.top - state.adventureRoofClearance) return false;
+      const margin = .045 / Math.max(.01, state.worldScale);
+      const pushX = hit.halfX - Math.abs(hit.localX);
+      const pushZ = hit.halfZ - Math.abs(hit.localZ);
+      let localX = hit.localX, localZ = hit.localZ;
+      if (pushX <= pushZ) localX = (localX < 0 ? -1 : 1) * (hit.halfX + margin);
+      else localZ = (localZ < 0 ? -1 : 1) * (hit.halfZ + margin);
+      const dx = localX * hit.c - localZ * hit.s;
+      const dz = localX * hit.s + localZ * hit.c;
+      state.camera.x = hit.centerX + dx;
+      state.camera.z = hit.centerZ + dz;
+      state.collisions++;
+      return true;
+    };`
+      );
+
+      source = source.replace(
+        '    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);',
+        '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);'
+      );
+      source = source.replace(
+        'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
+        'if (xTerrain.inside && (state.adventureFlight || !xTerrain.land || !collidesBuildingAtPlayerHeight(nextX, state.camera.z))) {'
+      );
+      source = source.replace(
+        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {',
+        'if (zTerrain.inside && (state.adventureFlight || !zTerrain.land || !collidesBuildingAtPlayerHeight(state.camera.x, nextZ))) {'
+      );
+
       source = source.replace(
         'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
         'const swimmingBeforeMove = !state.adventureFlight && terrainBeforeMove.inside && !terrainBeforeMove.land;'
       );
       source = source.replace(
-        'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
-        'if (xTerrain.inside && (state.adventureFlight || !xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {'
-      );
-      source = source.replace(
-        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {',
-        'if (zTerrain.inside && (state.adventureFlight || !zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {'
-      );
-      source = source.replace(
         '      state.swimming = terrainNow.inside && !terrainNow.land;\n      state.movementMode = state.swimming ? \'swimming\' : state.grounded ? \'ground\' : \'air\';',
         `      state.swimming = state.adventureFlight ? false : terrainNow.inside && !terrainNow.land;
       state.movementMode = state.adventureFlight ? 'flight' : state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';`
+      );
+      source = source.replace(
+        '      const ground = terrainNow.height + state.playerEyeHeight;',
+        `      const feetBefore = state.camera.y - state.playerEyeHeight;
+      const roofTop = terrainNow.land ? buildingTopAt(state.camera.x, state.camera.z, 0) : null;
+      const standOnRoof = roofTop !== null && feetBefore >= roofTop - .48;
+      const groundSurface = standOnRoof ? Math.max(terrainNow.height, roofTop) : terrainNow.height;
+      const ground = groundSurface + state.playerEyeHeight;`
       );
       source = source.replace(
         '      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;\n      if (state.swimming) {',
@@ -101,6 +178,37 @@
       } else if (state.swimming) {`
       );
       source = source.replace(
+        `        if (state.jumpQueued && state.grounded) {
+          state.velocityY = state.jumpVelocity;
+          state.grounded = false;
+        }`,
+        `        if (state.grounded) state.adventureCoyote = .12;
+        else state.adventureCoyote = Math.max(0, state.adventureCoyote - dt);
+        if (state.jumpQueued) {
+          state.adventureJumpBuffer = .14;
+          if (!(state.adventureQueuedJumpVelocity > 0)) state.adventureQueuedJumpVelocity = state.jumpVelocity;
+        } else state.adventureJumpBuffer = Math.max(0, state.adventureJumpBuffer - dt);
+        if (state.adventureJumpBuffer > 0 && (state.grounded || state.adventureCoyote > 0)) {
+          state.velocityY = state.adventureQueuedJumpVelocity || state.jumpVelocity;
+          state.grounded = false;
+          state.adventureCoyote = 0;
+          state.adventureJumpBuffer = 0;
+          state.adventureQueuedJumpVelocity = 0;
+        }`
+      );
+      source = source.replace(
+        `        } else {
+          state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
+        }`,
+        `        } else {
+          const drop = state.camera.y - ground;
+          if (drop > .42) {
+            state.grounded = false;
+            state.adventureCoyote = Math.max(state.adventureCoyote, .12);
+          } else state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
+        }`
+      );
+      source = source.replace(
         '    const updateTerrainAlignment = dt => {\n      if (state.swimming) {',
         `    const updateTerrainAlignment = dt => {
       if (state.adventureFlight) {
@@ -120,6 +228,13 @@
       source = source.replace(
         '      jump() { state.jumpQueued = true; },',
         `      jump() { state.jumpQueued = true; },
+      queueAdventureJump(velocity) {
+        const impulse = Number(velocity);
+        state.adventureQueuedJumpVelocity = Number.isFinite(impulse) ? Math.max(2, Math.min(32, impulse)) : state.jumpVelocity;
+        state.adventureJumpBuffer = .16;
+        state.jumpQueued = true;
+        return state.adventureQueuedJumpVelocity;
+      },
       setAdventureModifiers(modifiers = {}) {
         const number = value => Number.isFinite(Number(value)) ? Number(value) : null;
         const runSpeed = number(modifiers.runSpeed);
@@ -153,8 +268,9 @@
       );
       source = source.replace(
         '</body>',
-        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.1';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
+        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.2';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
       );
+
       document.open();
       document.write(source);
       document.close();
