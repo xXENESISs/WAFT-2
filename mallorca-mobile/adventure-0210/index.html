@@ -102,6 +102,24 @@
         if(s?.land&&s.height+.28>rayY)return false;const roof=buildingTopAt(px,pz,0);if(roof!==null&&roof+.12>rayY)return false;}
       return true;
     };`, 'colisión/oclusión');
+
+      // La cámara ya no ignora el primer 30 % del recorrido: evita meterse dentro de laderas y usa tejados reales.
+      replaceOne(/    const resolveThirdPersonCamera = \(target, desired\) => \{[\s\S]*?      return last;\n    \};/, `    const resolveThirdPersonCamera = (target, desired) => {
+      const deltaX=desired[0]-target[0],deltaY=desired[1]-target[1],deltaZ=desired[2]-target[2];
+      const desiredDistance=Math.hypot(deltaX,deltaY,deltaZ)||1;
+      const minimumDistance=Math.min(.28,desiredDistance*.055),minimumT=minimumDistance/desiredDistance;
+      let last=[target[0]+deltaX*minimumT,target[1]+deltaY*minimumT,target[2]+deltaZ*minimumT];
+      let blocked=false;const steps=40;
+      for(let step=1;step<=steps;step++){
+        const t=step/steps,point=[target[0]+deltaX*t,target[1]+deltaY*t,target[2]+deltaZ*t];
+        if(t<=minimumT){last=point;continue;}
+        const regional=toRegionalXZ(point[0],point[2]),terrain=sampleTerrainInfo(regional.x,regional.z),roof=buildingTopAt(regional.x,regional.z,0);
+        if((terrain.land&&terrain.height+.20>point[1])||(roof!==null&&roof+.10>point[1])){blocked=true;break;}
+        last=point;
+      }
+      state.cameraBlocked=blocked;return last;
+    };`, 'cámara contra terreno');
+
       replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);', 'solape');
       replaceOne('if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {', `if (xTerrain.inside
           && !(state.adventureMountType==='shark'&&!state.adventureWaterJump&&xTerrain.land)
@@ -159,6 +177,10 @@
       if(state.adventureFlight){const blend=Math.min(1,dt*5.5),targetPitch=Math.max(-.42,Math.min(.30,-state.adventureFlightVy*.07));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(state.adventureFlightBank-state.terrainRoll)*blend;state.slopeAngle=0;return;}
       if(state.adventureWaterJump&&state.adventureMountType==='shark'){const blend=Math.min(1,dt*8),targetPitch=Math.max(-.48,Math.min(.48,-state.velocityY*.025));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(0-state.terrainRoll)*blend;state.slopeAngle=0;return;}
       if (state.swimming) {`, 'orientación monturas');
+
+      // El Mundo 1 elevaba el objetivo al mirar hacia arriba; sin esto solo orbitábamos por debajo del personaje.
+      replaceOne('      const center = [target[0], target[1] + .18, target[2]];', `      const lookUpLift=Math.max(0,-state.pitch)*state.cameraDistance*.92;
+      const center=[target[0],target[1]+.18+lookUpLift,target[2]];`, 'objetivo vertical de cámara');
 
       replaceOne('      drawCharacter(now, eye);', '      if(!window.WAFTAdventurePlugin?.hideBaseCharacter)drawCharacter(now,eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now,eye,pv);', 'hook render');
 
