@@ -1,10 +1,11 @@
-name: Verify World 2 Adventure 0.23.0
+name: Verify World 2 Adventure 0.23.1
 
 on:
   push:
     branches:
       - agent/world2-penguin-integration-0210
       - agent/playability-0230
+      - agent/mobile-hud-shark-0231
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -31,5 +32,6 @@ jobs:
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
           node --check mallorca-mobile/adventure-0210/gameplay-plugin.js
           node --check mallorca-mobile/adventure-0210/playability-0230.js
+          node --check mallorca-mobile/adventure-0210/mobile-polish-0231.js
           node mallorca-mobile/adventure-0210/verify.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
