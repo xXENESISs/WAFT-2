@@ -1,0 +1,216 @@
+        ['cow-cat','cow','Vaca pirenaica',land(menorca, -5, 6),{mountable:true,speed:.18}],
+        ['pig-cat','pig','Jabalí',land(llevant, 6, -6),{mountable:true,speed:.24}],
+        ['warbler-cat','warbler','Curruca cabecinegra',land(eivissa, 4, 3),{flying:true,speed:.4}],
+        ['vulture-cat','vulture','Buitre leonado',land(alcudia, -10, -8),{flying:true,speed:.34}],
+        ['shark-cat','shark','Tintorera',water(palma, 16, 10),{aquatic:true,mountable:true,speed:.34}]
+      );
+    }
+    game.animals = positions.map(([id,type,name,position,options]) => {
+      const animal = createAnimal(id,type,name,position.x,position.z,options);
+      animal.y = position.y;
+      return animal;
+    });
+    updateObjective();
+  }
+
+  const observationLines = {
+    lizard: ['Se calienta sobre la piedra y huye con una aceleración seca.'],
+    gineta: ['Se mueve pegada al sotobosque y mantiene siempre una salida abierta.'],
+    myotragus: ['Sus patas cortas y cuerpo compacto están adaptados a la pendiente rocosa.'],
+    goat: ['Apoya las pezuñas con precisión incluso sobre la roca inclinada.'],
+    cow: ['Avanza con paso pesado y estable entre caminos y muros.'],
+    pig: ['Remueve la tierra, se detiene a olfatear y cambia de dirección.'],
+    warbler: ['Vuela bajo con aleteos cortos y precisos antes de posarse.'],
+    shark: ['La espalda azul se confunde con el mar cuando gana profundidad.'],
+    vulture: ['Apenas bate las alas: aprovecha el aire ascendente para sostenerse.']
+  };
+
+  function talkNpc() {
+    if (REGION_ID !== 'baleares') {
+      showDialogue(game.npc.name, ['La ruta de Barcelona conecta el mundo continental con la expedición de Baleares.', 'Puedes observar la fauna, guardar puntos y regresar al puerto cuando quieras.']);
+      return;
+    }
+    if (game.missionStage === 0) {
+      showDialogue('Aina', ['Necesito comprobar cómo responde la fauna al paso de la expedición.', 'Empieza por la lagartija que se esconde junto al campamento.'], () => setStage(1, 'Nueva misión: fauna del Llevant'));
+    } else if (game.missionStage === 4) {
+      showDialogue('Aina', ['Bien. La gineta está sana y conserva su territorio.', 'La última señal viene de la sierra: busca al Myotragus cerca de Alcúdia.'], () => setStage(5, 'Rumbo a la sierra'));
+    } else if (game.missionStage < 4) {
+      showDialogue('Aina', ['Sigue la pista marcada en el objetivo. No hace falta capturar ningún animal.']);
+    } else {
+      showDialogue('Aina', ['La expedición de Tramuntana queda registrada. Ahora puedes explorar las islas libremente.']);
+    }
+  }
+
+  function observeAnimal(animal) {
+    game.observed[animal.id] = true;
+    const line = observationLines[animal.type]?.[0] || 'El animal mantiene la distancia y sigue observando.';
+    if (animal.mission === 'lizard' && game.missionStage === 1) {
+      showDialogue(animal.name, [line, 'La observación queda registrada. Hay huellas de gineta hacia los pinos.'], () => setStage(2, 'Pista nueva: gineta'));
+    } else if (animal.mission === 'gineta' && game.missionStage === 2) {
+      animal.fleeing = true;
+      animal.fleeTime = 0;
+      showDialogue(animal.name, ['Te detecta y sale disparada hacia un roquedo. Síguela sin acercarte demasiado.'], () => setStage(3, 'La gineta ha echado a correr'));
+    } else if (animal.mission === 'gineta' && game.missionStage === 3 && !animal.fleeing) {
+      showDialogue(animal.name, [line, 'Respira con normalidad y no presenta heridas. Regresa con Aina.'], () => setStage(4, 'La gineta está sana'));
+    } else if (animal.mission === 'myotragus' && game.missionStage === 5) {
+      game.discoveries.myotragus = true;
+      showDialogue(animal.name, [line, 'DESCUBRIMIENTO REGISTRADO: Myotragus balearicus.'], completeMission);
+    } else {
+      showDialogue(animal.name, [line, game.observed[animal.id] ? 'Observación registrada en el archivo de expedición.' : '']);
+    }
+    saveGame('animal-observed');
+  }
+
+  function completeMission() {
+    if (game.missionStage < 5) return;
+    game.missionStage = 6;
+    game.missionComplete = true;
+    updateObjective();
+    saveGame('mission-complete');
+    const banner = document.getElementById('waftMissionComplete');
+    banner.classList.add('show');
+    setTimeout(() => banner.classList.remove('show'), 4300);
+  }
+
+  function mountAnimal(animal) {
+    if (!animal.mountable) return;
+    const state = runtime()?.getState?.();
+    if (animal.aquatic && !state?.swimming) { showToast('La tintorera solo puede montarse en el agua'); return; }
+    game.mountedAnimalId = animal.id;
+    animal.hidden = true;
+    const modifiers = animal.type === 'shark'
+      ? { runSpeed: BASE_SPEEDS.runSpeed, swimSpeed: 8.6, boost: true }
+      : animal.type === 'cow'
+        ? { runSpeed: 8.4, swimSpeed: BASE_SPEEDS.swimSpeed, boost: false }
+        : { runSpeed: 10.4, swimSpeed: BASE_SPEEDS.swimSpeed, boost: true };
+    runtime().setAdventureModifiers(modifiers);
+    showToast('Montando ' + animal.name);
+  }
+
+  function dismountAnimal() {
+    const animal = game.animals.find(item => item.id === game.mountedAnimalId);
+    if (animal) animal.hidden = false;
+    game.mountedAnimalId = null;
+    runtime()?.setAdventureModifiers?.({ ...BASE_SPEEDS, boost: false });
+    showToast('Has desmontado');
+  }
+
+  function updateAnimals(dt, now) {
+    const api = runtime();
+    for (const animal of game.animals) {
+      if (animal.fleeing) {
+        animal.fleeTime += dt;
+        animal.yaw += Math.sin(now * .002) * .025;
+        animal.x += Math.sin(animal.yaw) * dt * 2.2;
+        animal.z += Math.cos(animal.yaw) * dt * 2.2;
+        if (animal.fleeTime > 4.2) { animal.fleeing = false; animal.speed = 0; }
+      } else if (animal.flying) {
+        const radius = animal.type === 'vulture' ? 8 : 3.5;
+        const angular = animal.type === 'vulture' ? .10 : .22;
+        animal.x = animal.originX + Math.sin(now * .001 * angular + animal.phase) * radius;
+        animal.z = animal.originZ + Math.cos(now * .001 * angular + animal.phase) * radius;
+        animal.yaw = -now * .001 * angular - animal.phase;
+      } else if (animal.speed > 0 && !animal.hidden) {
+        animal.yaw += Math.sin(now * .0007 + animal.phase) * dt * .28;
+        const nx = animal.x + Math.sin(animal.yaw) * animal.speed * dt;
+        const nz = animal.z + Math.cos(animal.yaw) * animal.speed * dt;
+        const surface = api.sampleSurface(nx, nz);
+        if ((animal.aquatic && surface.water) || (!animal.aquatic && surface.land)) {
+          animal.x = nx; animal.z = nz;
+        } else animal.yaw += Math.PI * .7;
+        if (Math.hypot(animal.x - animal.originX, animal.z - animal.originZ) > 9) animal.yaw = Math.atan2(animal.originX-animal.x, animal.originZ-animal.z);
+      }
+      const surface = api.sampleSurface(animal.x, animal.z);
+      animal.y = animal.flying ? (surface.land ? surface.height : surface.waterHeight) + (animal.type === 'vulture' ? 6.5 : 2.1) : surface.height;
+    }
+  }
+
+  function updateInteraction(playerState) {
+    if (game.dialogueOpen) return setCurrentInteractable(null);
+    if (game.mountedAnimalId) {
+      setCurrentInteractable({ label: 'DESMONTAR', action: dismountAnimal });
+      return;
+    }
+    const api = runtime();
+    const playerDisplay = playerState.displayPosition;
+    const candidates = [];
+    const add = (x, z, radius, item) => {
+      const display = api.regionalToDisplay(x, z);
+      const distance = Math.hypot(display.x - playerDisplay.x, display.z - playerDisplay.z);
+      if (distance <= radius) candidates.push({ ...item, distance });
+    };
+    if (game.npc) add(game.npc.x, game.npc.z, 4.8, { label: 'HABLAR', action: talkNpc });
+    for (const animal of game.animals) {
+      if (animal.hidden || (animal.mission === 'gineta' && animal.fleeing)) continue;
+      const label = animal.mountable ? 'MONTAR ' + animal.name.toUpperCase() : 'OBSERVAR ' + animal.name.toUpperCase();
+      add(animal.x, animal.z, animal.type === 'shark' ? 7 : 5, {
+        label,
+        action: animal.mountable ? () => mountAnimal(animal) : () => observeAnimal(animal),
+        secondaryLabel: animal.mountable ? 'OBSERVAR' : null,
+        secondaryAction: animal.mountable ? () => observeAnimal(animal) : null
+      });
+    }
+    candidates.sort((a,b) => a.distance - b.distance);
+    setCurrentInteractable(candidates[0] || null);
+  }
+
+  function setCurrentInteractable(interactable) {
+    game.currentInteractable = interactable;
+    const action = document.getElementById('waftAdventureAction');
+    const observe = document.getElementById('waftObserveAction');
+    if (!action || !observe) return;
+    action.classList.toggle('visible', Boolean(interactable));
+    observe.classList.toggle('visible', Boolean(interactable?.secondaryAction));
+    if (interactable) action.textContent = interactable.label;
+    if (interactable?.secondaryAction) observe.textContent = interactable.secondaryLabel || 'OBSERVAR';
+  }
+
+  function updateTravelButton(playerState) {
+    const port = PORTS[REGION_ID];
+    const button = document.getElementById('waftTravelAction');
+    if (!port || !button) return;
+    const distance = Math.hypot(playerState.position.x - port.x, playerState.position.z - port.z);
+    const visible = playerState.worldMode === 'regional' && distance < 18;
+    button.classList.toggle('visible', visible);
+    button.textContent = 'NAVEGAR A ' + REGION_NAMES[port.target].toUpperCase();
+  }
+
+  function updateFrame(now) {
+    const api = runtime();
+    const state = api?.getState?.();
+    if (!state) return;
+    const dt = Math.min(.05, Math.max(0, (now - game.lastFrameAt) / 1000));
+    game.lastFrameAt = now;
+    if (game.previousPlayer) game.playerSpeed = Math.hypot(state.displayPosition.x-game.previousPlayer.x, state.displayPosition.z-game.previousPlayer.z) / Math.max(.001, dt);
+    game.previousPlayer = { x: state.displayPosition.x, z: state.displayPosition.z };
+    if (game.autoRun && !game.dialogueOpen) api.setInput(0, -1);
+    updateAnimals(dt, now);
+    updateInteraction(state);
+    updateTravelButton(state);
+    if (game.jumpPointer !== null) {
+      const charge = Math.min(1, Math.max(0, (performance.now() - game.jumpChargeStartedAt) / 1250));
+      document.getElementById('waftJump')?.style.setProperty('--charge', charge);
+    }
+  }
+
+  const renderer = {
+    ready: false,
+    canvas: null,
+    gl: null,
+    program: null,
+    sphere: null,
+    cylinder: null,
+    uniforms: null,
+    init() {
+      this.canvas = document.getElementById('waftAdventureCanvas');
+      const gl = this.canvas.getContext('webgl2', { alpha: true, antialias: true, premultipliedAlpha: false });
+      if (!gl) { console.warn('No overlay WebGL2'); return; }
+      this.gl = gl;
+      const vertex = `#version 300 es
+        layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aNormal;
+        uniform mat4 uPV;uniform mat4 uModel;out vec3 vNormal;out vec3 vWorld;
+        void main(){vec4 world=uModel*vec4(aPosition,1.0);vWorld=world.xyz;vNormal=normalize(mat3(uModel)*aNormal);gl_Position=uPV*world;}`;
+      const fragment = `#version 300 es
+        precision highp float;in vec3 vNormal;in vec3 vWorld;uniform vec3 uColor;uniform vec3 uCamera;out vec4 outColor;
+        void main(){vec3 n=normalize(vNormal);float sun=max(dot(n,normalize(vec3(.38,.90,.24))),0.0);float fill=.38+.25*max(n.y,0.0);float rim=pow(1.0-max(dot(n,normalize(uCamera-vWorld)),0.0),2.0)*.15;outColor=vec4(uColor*(fill+sun*.55)+rim,1.0);}`;
+      this.program = createProgram(gl, vertex, fragment);
