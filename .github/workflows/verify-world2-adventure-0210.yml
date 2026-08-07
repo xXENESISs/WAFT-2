@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.23.2
+name: Verify World 2 Adventure 0.23.3
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       - agent/playability-0230
       - agent/mobile-hud-shark-0231
       - agent/mobility-regression-0232
+      - agent/world1-parity-0233
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -27,7 +28,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
-      - name: Validate complete regional Adventure integration
+      - name: Validate World 1 parity over regional runtimes
         working-directory: repo
         run: |
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
@@ -35,5 +36,6 @@ jobs:
           node --check mallorca-mobile/adventure-0210/playability-0230.js
           node --check mallorca-mobile/adventure-0210/mobile-polish-0231.js
           node --check mallorca-mobile/adventure-0210/mechanics-0232.js
+          node --check mallorca-mobile/adventure-0210/world1-parity-0233.js
           node mallorca-mobile/adventure-0210/verify.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
