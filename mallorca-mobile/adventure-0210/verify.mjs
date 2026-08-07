@@ -23,6 +23,11 @@ for(const pattern of [
   /WAFT Adventure 0\.23\.3/,
   /state\.yaw -= dx \* \.0053/,
   /Math\.max\(-1\.05, Math\.min\(1\.46, state\.pitch \+ dy \* \.0043\)\)/,
+  /lookUpLift=Math\.max\(0,-state\.pitch\)\*state\.cameraDistance\*\.92/,
+  /minimumDistance=Math\.min\(\.28,desiredDistance\*\.055\)/,
+  /let blocked=false;const steps=40/,
+  /roof=buildingTopAt\(regional\.x,regional\.z,0\)/,
+  /terrain\.land&&terrain\.height\+\.20>point\[1\]/,
   /gravity: 20\.5/,
   /adventureWaterJump/,
   /adventureSharkBreachSpeed/,
@@ -39,6 +44,7 @@ for(const pattern of [
   /__WAFT_ADVENTURE_BUILD__='0\.23\.3'/
 ]) assert.match(index,pattern,`index missing ${pattern}`);
 assert.doesNotMatch(index,/state\.yaw \+= dx/,'camera drag was re-inverted');
+assert.doesNotMatch(index,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/,'old near-camera terrain blind spot survived');
 
 for(const pattern of [
   /world1-parity-0233\.js/,
@@ -83,6 +89,9 @@ for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-cat
     'state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));',
     'gravity: 13.5,',
     'const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
+    'const resolveThirdPersonCamera = (target, desired) => {',
+    'const minimumDistance = Math.min(1.05, desiredDistance * .30);',
+    'const center = [target[0], target[1] + .18, target[2]];',
     'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
     'const wasSwimming = state.swimming;',
     'jump() { state.jumpQueued = true; },',
@@ -93,7 +102,7 @@ for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-cat
 const reference=path.join(here,'reference','world1-015-source.html');
 if(fs.existsSync(reference)){
   const world1=fs.readFileSync(reference,'utf8');
-  for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);
+  for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);
 }
 
-console.log('WAFT 0.23.3 static verification passed: World 1 camera, shark breach, vulture glide, goat mount, roof collision and fauna occlusion hooks are present.');
+console.log('WAFT 0.23.3 static verification passed: World 1 camera/sky look, terrain-aware camera collision, shark breach, vulture glide, goat mount, roof collision and fauna occlusion hooks are present.');
