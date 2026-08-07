@@ -13,25 +13,25 @@ const files=new Map([
   ['mechanics-0232.js',fs.readFileSync(path.join(adventure,'mechanics-0232.js'),'utf8')],
   ['world1-parity-0233.js',fs.readFileSync(path.join(adventure,'world1-parity-0233.js'),'utf8')]
 ]);
-const captured=[];
+const captured=[],errors=[];
+const testConsole={...console,error:(...args)=>{errors.push(args.map(value=>value?.stack||value?.message||String(value)).join(' '));console.error(...args);}};
 const currentScript={src:'https://example.test/mallorca-mobile/adventure-0210/plugin-loader.js?v=ci'};
 const context={
-  console,URL,Promise,setTimeout,clearTimeout,innerWidth:700,
+  console:testConsole,URL,Promise,setTimeout,clearTimeout,innerWidth:700,
   document:{currentScript,getElementById(){return null;}},
-  fetch:async url=>{
-    const name=new URL(String(url)).pathname.split('/').pop();
-    const body=files.get(name);
-    return {ok:body!==undefined,status:body!==undefined?200:404,text:async()=>body??''};
-  },
+  fetch:async url=>{const name=new URL(String(url)).pathname.split('/').pop(),body=files.get(name);return{ok:body!==undefined,status:body!==undefined?200:404,text:async()=>body??''};},
   eval:source=>{captured.push(String(source));}
 };
-context.window=context;context.globalThis=context;
-vm.createContext(context);
+context.window=context;context.globalThis=context;vm.createContext(context);
 new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
-for(let i=0;i<100&&captured.length<5;i++)await new Promise(resolve=>setTimeout(resolve,5));
+for(let i=0;i<100&&captured.length<5&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
+if(errors.length){console.log(`::error title=Loader0233::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
 assert.equal(captured.length,5,'loader should produce gameplay + four support modules');
 
-for(const [index,source] of captured.entries())new vm.Script(source,{filename:`loader-output-${index}.js`});
+for(const [index,source] of captured.entries()){
+  try{new vm.Script(source,{filename:`loader-output-${index}.js`});}
+  catch(error){console.log(`::error title=LoaderOutput${index}::${String(error.message).replace(/%/g,'%25')}`);throw error;}
+}
 const gameplay=captured[0];
 for(const pattern of [
   /const fromWater=Boolean\(state\?\.swimming\|\|mounted\?\.type==='shark'\)/,
