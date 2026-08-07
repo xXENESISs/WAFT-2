@@ -50,14 +50,25 @@ for (const test of cases) {
     const bootError = elements.get('error')?.textContent || elements.get('status')?.textContent || 'unknown boot error';
     throw new Error(`${test.id}: boot did not write patched runtime: ${bootError}`);
   }
-  assert.match(written, /WAFTAdventurePlugin\?\.afterWorldDraw/);
-  assert.match(written, /setAdventureModifiers/);
-  assert.match(written, /adventureFlight: false/);
-  assert.match(written, /state\.adventureFlight \? 'flight'/);
-  assert.match(written, /flightFloor/);
-  assert.match(written, /adventureFlightFlap/);
-  assert.match(written, /state\.yaw \+= dx \* \.0042/);
-  assert.match(written, /plugin-loader\.js/);
+
+  for (const pattern of [
+    /WAFTAdventurePlugin\?\.afterWorldDraw/,
+    /setAdventureModifiers/,
+    /queueAdventureJump/,
+    /adventureFlight: false/,
+    /adventureCoyote: \.12/,
+    /adventureJumpBuffer: 0/,
+    /buildingContactAt/,
+    /buildingTopAt/,
+    /collidesBuildingAtPlayerHeight/,
+    /resolveBuildingOverlap/,
+    /standOnRoof/,
+    /drop > \.42/,
+    /state\.yaw \+= dx \* \.0042/,
+    /plugin-loader\.js/
+  ]) assert.match(written, pattern, `${test.id}: missing patched mechanic ${pattern}`);
+
+  assert.doesNotMatch(written, /state\.adventureFlight \|\| !xTerrain\.land \|\| !collidesBuilding\(nextX/, `${test.id}: infinite-height building collision survived`);
 
   const scripts = [...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]).filter(Boolean);
   assert.ok(scripts.length >= 2, `${test.id}: expected runtime + Adventure bootstrap scripts`);
@@ -68,7 +79,7 @@ for (const test of cases) {
       throw new Error(`${test.id}: patched runtime JavaScript does not compile: ${error.message}`, { cause: error });
     }
   }
-  console.log(`${test.id}: patched runtime compiled (${written.length} chars)`);
+  console.log(`${test.id}: patched 0.23.2 runtime compiled (${written.length} chars)`);
 }
 
-console.log('Both exact World 2 runtimes survive the complete Adventure 0.22.0 patch.');
+console.log('Both exact World 2 runtimes survive the complete Adventure 0.23.2 mobility patch.');
