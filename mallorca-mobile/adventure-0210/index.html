@@ -37,6 +37,7 @@
         'jump() { state.jumpQueued = true; },',
         'window.WAFTRegionRuntime = {',
         'swimStroke: 0,',
+        'gravity: 13.5,',
         'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
         'state.swimming = terrainNow.inside && !terrainNow.land;',
         'const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;',
@@ -58,6 +59,7 @@
         `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`
       );
       source = source.replace('state.yaw -= dx * .0042;', 'state.yaw += dx * .0042;');
+      source = source.replace('    gravity: 13.5,', '    gravity: 20.5,');
 
       source = source.replace(
         '    swimStroke: 0,',
@@ -73,8 +75,6 @@
     adventureRoofClearance: .06,`
       );
 
-      // The regional runtime originally used a 2D building footprint as an infinite wall.
-      // Restore World 1 semantics: walls have finite height, roofs are standable, and overlap can resolve outward.
       source = source.replace(
         '    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
         `    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
@@ -129,7 +129,6 @@
         '    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);',
         '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);'
       );
-
       source = source.replace(
         'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
         'if (xTerrain.inside && (state.adventureFlight || !xTerrain.land || !collidesBuildingAtPlayerHeight(nextX, state.camera.z))) {'
@@ -148,7 +147,6 @@
         `      state.swimming = state.adventureFlight ? false : terrainNow.inside && !terrainNow.land;
       state.movementMode = state.adventureFlight ? 'flight' : state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';`
       );
-
       source = source.replace(
         '      const ground = terrainNow.height + state.playerEyeHeight;',
         `      const feetBefore = state.camera.y - state.playerEyeHeight;
@@ -157,7 +155,6 @@
       const groundSurface = standOnRoof ? Math.max(terrainNow.height, roofTop) : terrainNow.height;
       const ground = groundSurface + state.playerEyeHeight;`
       );
-
       source = source.replace(
         '      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;\n      if (state.swimming) {',
         `      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;
@@ -180,7 +177,6 @@
         state.grounded = false;
       } else if (state.swimming) {`
       );
-
       source = source.replace(
         `        if (state.jumpQueued && state.grounded) {
           state.velocityY = state.jumpVelocity;
@@ -200,7 +196,6 @@
           state.adventureQueuedJumpVelocity = 0;
         }`
       );
-
       source = source.replace(
         `        } else {
           state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
@@ -213,7 +208,6 @@
           } else state.camera.y += (ground - state.camera.y) * Math.min(1, dt * 18);
         }`
       );
-
       source = source.replace(
         '    const updateTerrainAlignment = dt => {\n      if (state.swimming) {',
         `    const updateTerrainAlignment = dt => {
@@ -227,12 +221,10 @@
       }
       if (state.swimming) {`
       );
-
       source = source.replace(
         '      drawCharacter(now, eye);',
         '      if (!window.WAFTAdventurePlugin?.hideBaseCharacter) drawCharacter(now, eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now, eye, pv);'
       );
-
       source = source.replace(
         '      jump() { state.jumpQueued = true; },',
         `      jump() { state.jumpQueued = true; },
@@ -274,7 +266,6 @@
         return { runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, boost: state.boost, flight: state.adventureFlight, flightVy: state.adventureFlightVy };
       },`
       );
-
       source = source.replace(
         '</body>',
         `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.2';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
