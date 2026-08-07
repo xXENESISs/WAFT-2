@@ -8,6 +8,7 @@ on:
       - agent/mobile-hud-shark-0231
       - agent/mobility-regression-0232
       - agent/world1-parity-0233
+      - agent/mobile-stability-performance-hotfix
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
