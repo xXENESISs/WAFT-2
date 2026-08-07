@@ -46,7 +46,10 @@ for (const test of cases) {
   vm.createContext(context);
   new vm.Script(boot, { filename: `boot-${test.id}.js` }).runInContext(context);
   for (let i = 0; i < 80 && !written; i++) await new Promise(resolve => setTimeout(resolve, 5));
-  assert.ok(written, `${test.id}: boot did not write patched runtime`);
+  if (!written) {
+    const bootError = elements.get('error')?.textContent || elements.get('status')?.textContent || 'unknown boot error';
+    throw new Error(`${test.id}: boot did not write patched runtime: ${bootError}`);
+  }
   assert.match(written, /WAFTAdventurePlugin\?\.afterWorldDraw/);
   assert.match(written, /setAdventureModifiers/);
   assert.match(written, /adventureFlight: false/);
@@ -58,7 +61,13 @@ for (const test of cases) {
 
   const scripts = [...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]).filter(Boolean);
   assert.ok(scripts.length >= 2, `${test.id}: expected runtime + Adventure bootstrap scripts`);
-  for (const script of scripts) new vm.Script(script, { filename: `patched-${test.id}.js` });
+  for (const script of scripts) {
+    try {
+      new vm.Script(script, { filename: `patched-${test.id}.js` });
+    } catch (error) {
+      throw new Error(`${test.id}: patched runtime JavaScript does not compile: ${error.message}`, { cause: error });
+    }
+  }
   console.log(`${test.id}: patched runtime compiled (${written.length} chars)`);
 }
 
