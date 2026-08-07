@@ -8,13 +8,14 @@ const mobile = path.resolve(here, '..');
 const index = fs.readFileSync(path.join(here, 'index.html'), 'utf8');
 const loader = fs.readFileSync(path.join(here, 'plugin-loader.js'), 'utf8');
 const plugin = fs.readFileSync(path.join(here, 'gameplay-plugin.js'), 'utf8');
+const playability = fs.readFileSync(path.join(here, 'playability-0230.js'), 'utf8');
 const world1Reference = path.join(here, 'reference', 'world1-015-source.html');
 const runtimes = [
   path.join(mobile, 'region-runtime-baleares-013.html'),
   path.join(mobile, 'region-runtime-catalunya-litoral-003.html'),
 ];
 
-assert.match(index, /WAFT Adventure 0\.22\.0/);
+assert.match(index, /WAFT Adventure 0\.23\.0/);
 assert.match(index, /region-runtime-baleares-013\.html/);
 assert.match(index, /region-runtime-catalunya-litoral-003\.html/);
 assert.match(index, /state\.yaw \+= dx \* \.0042/);
@@ -25,9 +26,25 @@ assert.match(index, /adventureFlightFlap/);
 assert.match(index, /flightFloor/);
 assert.match(index, /state\.adventureFlight \|\| !xTerrain\.land/);
 assert.match(index, /plugin-loader\.js/);
+assert.match(index, /__WAFT_ADVENTURE_BUILD__='0\.23\.0'/);
+
 assert.match(loader, /gameplay-plugin\.js/);
+assert.match(loader, /playability-0230\.js/);
+assert.match(loader, /__WAFT_INTERNAL_GAME__/);
+assert.match(loader, /WAFTAnimalRenderer0230/);
 new vm.Script(loader, { filename: 'plugin-loader.js' });
 new vm.Script(plugin, { filename: 'gameplay-plugin.js' });
+new vm.Script(playability, { filename: 'playability-0230.js' });
+
+const patchedPlugin = plugin
+  .replace('  const plugin = window.WAFTAdventurePlugin = {', '  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {')
+  .replace(
+    'base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){',
+    'base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){'
+  );
+assert.match(patchedPlugin, /__WAFT_INTERNAL_GAME__/);
+assert.match(patchedPlugin, /WAFTAnimalRenderer0230/);
+new vm.Script(patchedPlugin, { filename: 'gameplay-plugin-patched-0230.js' });
 
 const bootScripts = [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]);
 assert.ok(bootScripts.length >= 1, 'integrated index has no boot script');
@@ -54,32 +71,24 @@ for (const runtimePath of runtimes) {
 }
 
 for (const pattern of [
-  /function drawPenguin/,
-  /function buildAdventurePopulation/,
-  /Lagartija balear/,
-  /Sargantana de las Pitiusas/,
-  /Conejo europeo/,
-  /Comadreja/,
-  /Salamandra/,
-  /Gineta/,
-  /Myotragus balearicus/,
-  /Cabra mallorquina/,
-  /Vaca vermella menorquina/,
-  /Porc negre mallorquí/,
-  /Curruca balear/,
-  /Tintorera/,
-  /Buitre negro/,
-  /function mountAnimal/,
-  /flightMountReady/,
-  /flightFlap: 3\.8 \+ charge \* 6\.4/,
-  /ALETEAR/,
-  /function drawCheckpointRoute/,
-  /function checkpointAction/,
-  /RUTA DE EXPEDICIÓN/,
-  /function travelToOtherRegion/,
+  /function drawPenguin/, /function buildAdventurePopulation/, /Lagartija balear/, /Sargantana de las Pitiusas/,
+  /Conejo europeo/, /Comadreja/, /Salamandra/, /Gineta/, /Myotragus balearicus/, /Cabra mallorquina/,
+  /Vaca vermella menorquina/, /Porc negre mallorquí/, /Curruca balear/, /Tintorera/, /Buitre negro/,
+  /function mountAnimal/, /flightMountReady/, /flightFlap: 3\.8 \+ charge \* 6\.4/, /ALETEAR/,
+  /function drawCheckpointRoute/, /function checkpointAction/, /RUTA DE EXPEDICIÓN/, /function travelToOtherRegion/,
   /waft\.adventure\.integration\.0210\.v1/
 ]) assert.match(plugin, pattern);
 assert.doesNotMatch(plugin, /createTerrainMesh|parseTerrain|terrain\.bin/);
+
+for (const pattern of [
+  /const PROJECTIONS/, /compression: \.76/, /function regionalToGeo/, /function geoToRegional/, /function geoDistanceBearing/,
+  /waftGeoHud/, /m s\.n\.m\./, /norte geográfico/, /Port d'Alcúdia/, /Port de Barcelona/,
+  /waft\.adventure\.0230\.sea-arrival/, /beginSeaCrossing\('catalunya-litoral'/, /beginSeaCrossing\('baleares'/,
+  /targetCount=.*68/, /targetCount=.*54/, /Fauna regional ampliada/, /WAFTAnimalRenderer0230/,
+  /case'lizard'/, /case'gineta'/, /case'myotragus'/, /case'goat'/, /case'cow'/, /case'pig'/,
+  /case'rabbit'/, /case'weasel'/, /case'salamander'/, /case'warbler'/, /case'vulture'/, /case'shark'/,
+  /#vertical,#help\{display:none!important\}/, /waftDestinations/, /waftRun/, /waftRespawn/
+]) assert.match(playability, pattern);
 
 const faunaEntries = [...plugin.matchAll(/\['[^']+','(?:lizard|gineta|myotragus|goat|cow|pig|warbler|vulture|shark|rabbit|weasel|salamander)'/g)];
 assert.ok(faunaEntries.length >= 24, `expected at least 24 integrated fauna entries, got ${faunaEntries.length}`);
@@ -95,4 +104,4 @@ if (fs.existsSync(world1Reference)) {
   ]) assert.ok(world1.includes(originalFeature), `World 1 reference lost ${originalFeature}`);
 }
 
-console.log(`WAFT Adventure 0.22.0 validated: exact World 2 runtimes + World 1 penguin gameplay, ${faunaEntries.length} fauna placements, ground/aquatic/aerial mounts, charged jump/flap, route checkpoints, saves, mission and physical Baleares↔Barcelona travel.`);
+console.log(`WAFT Adventure 0.23.0 validated: exact World 2 runtimes + World 1 gameplay + geographic HUD, port guidance, open-sea region crossing, denser fauna and redesigned animal renderer.`);
