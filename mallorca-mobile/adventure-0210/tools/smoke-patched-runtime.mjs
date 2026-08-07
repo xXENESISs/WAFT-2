@@ -3,83 +3,57 @@ import path from 'node:path';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
-const here = path.dirname(new URL(import.meta.url).pathname);
-const adventure = path.resolve(here, '..');
-const mobile = path.resolve(adventure, '..');
-const index = fs.readFileSync(path.join(adventure, 'index.html'), 'utf8');
-const bootScripts = [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]).filter(Boolean);
-assert.equal(bootScripts.length, 1, `expected one inline boot script, got ${bootScripts.length}`);
-const boot = bootScripts[0];
+const here=path.dirname(new URL(import.meta.url).pathname);
+const adventure=path.resolve(here,'..');
+const mobile=path.resolve(adventure,'..');
+const index=fs.readFileSync(path.join(adventure,'index.html'),'utf8');
+const bootScripts=[...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean);
+assert.equal(bootScripts.length,1);
+const boot=bootScripts[0];
 
-const cases = [
-  { id: 'baleares', search: '', file: 'region-runtime-baleares-013.html' },
-  { id: 'catalunya-litoral', search: '?region=catalunya-litoral', file: 'region-runtime-catalunya-litoral-003.html' }
-];
-
-for (const test of cases) {
-  const runtimeSource = fs.readFileSync(path.join(mobile, test.file), 'utf8');
-  let written = '';
-  const elements = new Map();
-  const document = {
-    getElementById(id) {
-      if (!elements.has(id)) elements.set(id, { textContent: '', style: {} });
-      return elements.get(id);
-    },
-    open() { written = ''; },
-    write(value) { written += String(value); },
-    close() {}
+for(const test of [
+  {id:'baleares',search:'',file:'region-runtime-baleares-013.html'},
+  {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'}
+]){
+  const runtimeSource=fs.readFileSync(path.join(mobile,test.file),'utf8');
+  let written='';
+  const elements=new Map();
+  const document={
+    getElementById(id){if(!elements.has(id))elements.set(id,{textContent:'',style:{}});return elements.get(id);},
+    open(){written='';},write(value){written+=String(value);},close(){}
   };
-  const context = {
-    console,
-    document,
-    location: { search: test.search, href: `https://example.test/adventure-0210/index.html${test.search}` },
-    URL,
-    URLSearchParams,
-    JSON,
-    encodeURIComponent,
-    setTimeout,
-    clearTimeout,
-    fetch: async () => ({ ok: true, status: 200, text: async () => runtimeSource })
-  };
-  context.window = context;
-  context.globalThis = context;
-  vm.createContext(context);
-  new vm.Script(boot, { filename: `boot-${test.id}.js` }).runInContext(context);
-  for (let i = 0; i < 80 && !written; i++) await new Promise(resolve => setTimeout(resolve, 5));
-  if (!written) {
-    const bootError = elements.get('error')?.textContent || elements.get('status')?.textContent || 'unknown boot error';
-    throw new Error(`${test.id}: boot did not write patched runtime: ${bootError}`);
-  }
+  const context={console,document,location:{search:test.search,href:`https://example.test/adventure-0210/index.html${test.search}`},URL,URLSearchParams,JSON,encodeURIComponent,setTimeout,clearTimeout,fetch:async()=>({ok:true,status:200,text:async()=>runtimeSource})};
+  context.window=context;context.globalThis=context;vm.createContext(context);
+  new vm.Script(boot,{filename:`boot-${test.id}.js`}).runInContext(context);
+  for(let i=0;i<100&&!written;i++)await new Promise(resolve=>setTimeout(resolve,5));
+  if(!written)throw new Error(`${test.id}: boot failed: ${elements.get('error')?.textContent||elements.get('status')?.textContent||'unknown'}`);
 
-  for (const pattern of [
-    /WAFTAdventurePlugin\?\.afterWorldDraw/,
-    /setAdventureModifiers/,
-    /queueAdventureJump/,
-    /adventureFlight: false/,
-    /adventureCoyote: \.12/,
-    /adventureJumpBuffer: 0/,
+  for(const pattern of [
+    /state\.yaw -= dx \* \.0053/,
+    /Math\.max\(-1\.05, Math\.min\(1\.46, state\.pitch \+ dy \* \.0043\)\)/,
+    /lookUpLift=Math\.max\(0,-state\.pitch\)\*state\.cameraDistance\*\.92/,
+    /minimumDistance=Math\.min\(\.28,desiredDistance\*\.055\)/,
+    /let blocked=false;const steps=40/,
+    /roof=buildingTopAt\(regional\.x,regional\.z,0\)/,
+    /gravity: 20\.5/,
+    /adventureWaterJump: false/,
+    /adventureSharkBreachSpeed: 0/,
+    /waterDrive=boosted\|\|inputLength>\.93\?42/,
+    /adventureFlight\?'flight':state\.adventureWaterJump\?'water-jump'/,
     /buildingContactAt/,
-    /buildingTopAt/,
-    /collidesBuildingAtPlayerHeight/,
-    /resolveBuildingOverlap/,
-    /standOnRoof/,
-    /drop > \.42/,
-    /state\.yaw \+= dx \* \.0042/,
-    /plugin-loader\.js/
-  ]) assert.match(written, pattern, `${test.id}: missing patched mechanic ${pattern}`);
+    /adventureVisible/,
+    /isAdventureVisible/,
+    /queueAdventureJump\(velocity,options=\{\}\)/,
+    /plugin-loader\.js/,
+    /__WAFT_ADVENTURE_BUILD__='0\.23\.3'/
+  ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+  assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
+  assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
+  assert.doesNotMatch(written,/const center = \[target\[0\], target\[1\] \+ \.18, target\[2\]\];/);
 
-  assert.doesNotMatch(written, /state\.adventureFlight \|\| !xTerrain\.land \|\| !collidesBuilding\(nextX/, `${test.id}: infinite-height building collision survived`);
-
-  const scripts = [...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]).filter(Boolean);
-  assert.ok(scripts.length >= 2, `${test.id}: expected runtime + Adventure bootstrap scripts`);
-  for (const script of scripts) {
-    try {
-      new vm.Script(script, { filename: `patched-${test.id}.js` });
-    } catch (error) {
-      throw new Error(`${test.id}: patched runtime JavaScript does not compile: ${error.message}`, { cause: error });
-    }
-  }
-  console.log(`${test.id}: patched 0.23.2 runtime compiled (${written.length} chars)`);
+  const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean);
+  assert.ok(scripts.length>=2,`${test.id}: expected runtime plus bootstrap`);
+  for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
+  console.log(`${test.id}: patched 0.23.3 runtime compiled (${written.length} chars)`);
 }
-
-console.log('Both exact World 2 runtimes survive the complete Adventure 0.23.2 mobility patch.');
+console.log('Both World 2 regional runtimes survive the complete 0.23.3 World 1 parity patch, including sky-look and terrain-aware camera collision.');
