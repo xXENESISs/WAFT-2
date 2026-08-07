@@ -1,0 +1,31 @@
+name: Verify World 2 Adventure 0.21.0
+
+on:
+  push:
+    branches:
+      - agent/world2-penguin-integration-0210
+      - main
+    paths:
+      - mallorca-mobile/adventure-0210/**
+      - mallorca-mobile/region-runtime-baleares-013.html
+      - mallorca-mobile/region-runtime-catalunya-litoral-003.html
+      - .github/workflows/verify-world2-adventure-0210.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone exact branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: Validate regional integration
+        working-directory: repo
+        run: |
+          node --check mallorca-mobile/adventure-0210/plugin-loader.js
+          node mallorca-mobile/adventure-0210/verify.mjs
