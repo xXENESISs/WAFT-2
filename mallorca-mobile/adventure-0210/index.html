@@ -36,7 +36,6 @@
       replaceOne('<head>', '<head>\n<base href="../">', 'base');
       replaceOne('</style>', `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`, 'estilos');
 
-      // Cámara del Mundo 1: gesto natural, más rápida y casi vertical hacia cielo/suelo.
       replaceOne(
         `      state.yaw -= dx * .0042;\n      state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));`,
         `      state.yaw -= dx * .0053;\n      state.pitch = Math.max(-1.05, Math.min(1.46, state.pitch + dy * .0043));`,
@@ -68,59 +67,63 @@
     adventureQueuedHorizontalBoost: 1,
     adventureRoofClearance: .06,`, 'estado Adventure');
 
-      // Edificios: altura real, tejado pisable y oclusión de fauna por terreno/edificios.
+      // Hot path 0.23.3p1: spatial hash. Camera, roofs and fauna no longer scan every active building per probe.
       replaceOne('    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);', `    const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);
-    const buildingContactAt = (x, z, radius = state.playerCollisionRadius) => {
-      const records = state.worldMode === 'local' ? localAssets.preview.buildings : streamer.active;
-      const exaggeration = metadata.display.buildingHorizontalExaggeration;
-      const terrainVerticalScale = (state.worldMode === 'local' ? localAssets.terrainMesh?.verticalScale : terrainMesh.verticalScale) || metadata.terrain.verticalScale;
-      let best = null;
-      for (let offset=0; offset<records.length; offset+=8) {
-        const dx=x-records[offset], dz=z-records[offset+2], angle=records[offset+6], c=Math.cos(angle), s=Math.sin(angle);
-        const lx=dx*c+dz*s, lz=-dx*s+dz*c;
-        const hx=(records[offset+3]*exaggeration*state.footprintScale*.5+radius)/state.worldScale;
-        const hz=(records[offset+5]*exaggeration*state.footprintScale*.5+radius)/state.worldScale;
-        if (Math.abs(lx)>=hx || Math.abs(lz)>=hz) continue;
-        const top=records[offset+1]*terrainVerticalScale+records[offset+4]*metadata.display.buildingVerticalScale*1.18+.06;
-        if (!best || top>best.top) best={top,lx,lz,hx,hz,c,s,cx:records[offset],cz:records[offset+2]};
+    const adventureBuildingGrid={key:'',builtAt:0,cellSize:12,cells:new Map(),records:null};
+    const currentAdventureBuildings=()=>state.worldMode==='local'?localAssets.preview?.buildings:streamer.active;
+    const ensureAdventureBuildingGrid=()=>{
+      const records=currentAdventureBuildings()||[];
+      const len=records.length,mid=len>=16?Math.floor((len/8)/2)*8:0,last=len>=8?len-8:0;
+      const coarseX=Math.floor(state.camera.x/24),coarseZ=Math.floor(state.camera.z/24);
+      const key=[state.worldMode,len,state.worldScale,state.footprintScale,state.activeBuildings,state.loadedCells,coarseX,coarseZ,records[0]||0,records[2]||0,records[mid]||0,records[mid+2]||0,records[last]||0,records[last+2]||0].join('|');
+      const now=performance.now();
+      if(key===adventureBuildingGrid.key&&now-adventureBuildingGrid.builtAt<850)return adventureBuildingGrid;
+      const cells=new Map(),cellSize=state.worldMode==='local'?Math.max(1.4,3.6/Math.max(.6,state.worldScale)):12;
+      const exaggeration=metadata.display.buildingHorizontalExaggeration,verticalScale=(state.worldMode==='local'?localAssets.terrainMesh?.verticalScale:terrainMesh.verticalScale)||metadata.terrain.verticalScale;
+      for(let offset=0;offset<len;offset+=8){
+        const cx=records[offset],cz=records[offset+2],angle=records[offset+6],c=Math.cos(angle),s=Math.sin(angle);
+        const hx0=records[offset+3]*exaggeration*state.footprintScale*.5/state.worldScale,hz0=records[offset+5]*exaggeration*state.footprintScale*.5/state.worldScale;
+        const margin=.48/Math.max(.6,state.worldScale),ex=Math.abs(c)*(hx0+margin)+Math.abs(s)*(hz0+margin),ez=Math.abs(s)*(hx0+margin)+Math.abs(c)*(hz0+margin);
+        const top=records[offset+1]*verticalScale+records[offset+4]*metadata.display.buildingVerticalScale*1.18+.06;
+        const item={cx,cz,c,s,hx0,hz0,top};
+        const minX=Math.floor((cx-ex)/cellSize),maxX=Math.floor((cx+ex)/cellSize),minZ=Math.floor((cz-ez)/cellSize),maxZ=Math.floor((cz+ez)/cellSize);
+        for(let gx=minX;gx<=maxX;gx++)for(let gz=minZ;gz<=maxZ;gz++){const k=gx+':'+gz;let list=cells.get(k);if(!list)cells.set(k,list=[]);list.push(item);}
       }
+      adventureBuildingGrid.key=key;adventureBuildingGrid.builtAt=now;adventureBuildingGrid.cellSize=cellSize;adventureBuildingGrid.cells=cells;adventureBuildingGrid.records=records;return adventureBuildingGrid;
+    };
+    const buildingContactAt=(x,z,radius=state.playerCollisionRadius)=>{
+      const grid=ensureAdventureBuildingGrid(),list=grid.cells.get(Math.floor(x/grid.cellSize)+':'+Math.floor(z/grid.cellSize));if(!list)return null;
+      const extra=radius/state.worldScale;let best=null;
+      for(const item of list){const dx=x-item.cx,dz=z-item.cz,lx=dx*item.c+dz*item.s,lz=-dx*item.s+dz*item.c,hx=item.hx0+extra,hz=item.hz0+extra;if(Math.abs(lx)>=hx||Math.abs(lz)>=hz)continue;if(!best||item.top>best.top)best={top:item.top,lx,lz,hx,hz,c:item.c,s:item.s,cx:item.cx,cz:item.cz};}
       return best;
     };
     const buildingTopAt=(x,z,radius=0)=>buildingContactAt(x,z,radius)?.top??null;
-    const collidesBuildingAtPlayerHeight=(x,z)=>{const hit=buildingContactAt(x,z,state.playerCollisionRadius);return !!hit && state.camera.y-state.playerEyeHeight<hit.top-state.adventureRoofClearance;};
+    const collidesBuildingAtPlayerHeight=(x,z)=>{const hit=buildingContactAt(x,z,state.playerCollisionRadius);return !!hit&&state.camera.y-state.playerEyeHeight<hit.top-state.adventureRoofClearance;};
     const resolveBuildingOverlap=()=>{
-      const hit=buildingContactAt(state.camera.x,state.camera.z,state.playerCollisionRadius);
-      if(!hit || state.camera.y-state.playerEyeHeight>=hit.top-state.adventureRoofClearance)return false;
-      const margin=.045/Math.max(.01,state.worldScale), px=hit.hx-Math.abs(hit.lx), pz=hit.hz-Math.abs(hit.lz);
-      let lx=hit.lx,lz=hit.lz;if(px<=pz)lx=(lx<0?-1:1)*(hit.hx+margin);else lz=(lz<0?-1:1)*(hit.hz+margin);
+      const hit=buildingContactAt(state.camera.x,state.camera.z,state.playerCollisionRadius);if(!hit||state.camera.y-state.playerEyeHeight>=hit.top-state.adventureRoofClearance)return false;
+      const margin=.045/Math.max(.01,state.worldScale),px=hit.hx-Math.abs(hit.lx),pz=hit.hz-Math.abs(hit.lz);let lx=hit.lx,lz=hit.lz;if(px<=pz)lx=(lx<0?-1:1)*(hit.hx+margin);else lz=(lz<0?-1:1)*(hit.hz+margin);
       state.camera.x=hit.cx+lx*hit.c-lz*hit.s;state.camera.z=hit.cz+lx*hit.s+lz*hit.c;state.collisions++;return true;
     };
     const adventureVisible=(x,y,z)=>{
-      const eyeRegional=toRegionalXZ(state.cameraEye.x,state.cameraEye.z),dx=x-eyeRegional.x,dz=z-eyeRegional.z,d=Math.hypot(dx,dz);
-      if(d<5)return true;const steps=Math.max(6,Math.min(40,Math.ceil(d*.34)));
-      for(let i=1;i<steps-2;i++){const t=i/steps,px=eyeRegional.x+dx*t,pz=eyeRegional.z+dz*t,rayY=state.cameraEye.y+(y-state.cameraEye.y)*t,s=sampleTerrainInfo(px,pz);
-        if(s?.land&&s.height+.28>rayY)return false;const roof=buildingTopAt(px,pz,0);if(roof!==null&&roof+.12>rayY)return false;}
-      return true;
+      const eyeRegional=toRegionalXZ(state.cameraEye.x,state.cameraEye.z),dx=x-eyeRegional.x,dz=z-eyeRegional.z,d=Math.hypot(dx,dz);if(d<5)return true;
+      const steps=Math.max(6,Math.min(26,Math.ceil(d*.24)));
+      for(let i=1;i<steps-2;i++){const t=i/steps,px=eyeRegional.x+dx*t,pz=eyeRegional.z+dz*t,rayY=state.cameraEye.y+(y-state.cameraEye.y)*t,s=sampleTerrainInfo(px,pz);if(s?.land&&s.height+.28>rayY)return false;const roof=buildingTopAt(px,pz,0);if(roof!==null&&roof+.12>rayY)return false;}return true;
     };`, 'colisión/oclusión');
 
-      // La cámara ya no ignora el primer 30 % del recorrido: evita meterse dentro de laderas y usa tejados reales.
-      replaceOne(/    const resolveThirdPersonCamera = \(target, desired\) => \{[\s\S]*?      return last;\n    \};/, `    const resolveThirdPersonCamera = (target, desired) => {
-      const deltaX=desired[0]-target[0],deltaY=desired[1]-target[1],deltaZ=desired[2]-target[2];
-      const desiredDistance=Math.hypot(deltaX,deltaY,deltaZ)||1;
-      const minimumDistance=Math.min(.28,desiredDistance*.055),minimumT=minimumDistance/desiredDistance;
-      let last=[target[0]+deltaX*minimumT,target[1]+deltaY*minimumT,target[2]+deltaZ*minimumT];
-      let blocked=false;const steps=40;
-      for(let step=1;step<=steps;step++){
-        const t=step/steps,point=[target[0]+deltaX*t,target[1]+deltaY*t,target[2]+deltaZ*t];
-        if(t<=minimumT){last=point;continue;}
-        const regional=toRegionalXZ(point[0],point[2]),terrain=sampleTerrainInfo(regional.x,regional.z),roof=buildingTopAt(regional.x,regional.z,0);
-        if((terrain.land&&terrain.height+.20>point[1])||(roof!==null&&roof+.10>point[1])){blocked=true;break;}
-        last=point;
-      }
+      replaceOne(/    const resolveThirdPersonCamera = \(target, desired\) => \{[\s\S]*?      return last;\n    \};/, `    const resolveThirdPersonCamera=(target,desired)=>{
+      const deltaX=desired[0]-target[0],deltaY=desired[1]-target[1],deltaZ=desired[2]-target[2],desiredDistance=Math.hypot(deltaX,deltaY,deltaZ)||1;
+      const minimumDistance=Math.min(.28,desiredDistance*.055),minimumT=minimumDistance/desiredDistance;let last=[target[0]+deltaX*minimumT,target[1]+deltaY*minimumT,target[2]+deltaZ*minimumT],blocked=false;
+      const steps=Math.max(12,Math.min(24,Math.ceil(desiredDistance/.28)));
+      for(let step=1;step<=steps;step++){const t=step/steps,point=[target[0]+deltaX*t,target[1]+deltaY*t,target[2]+deltaZ*t];if(t<=minimumT){last=point;continue;}const regional=toRegionalXZ(point[0],point[2]),terrain=sampleTerrainInfo(regional.x,regional.z),roof=buildingTopAt(regional.x,regional.z,0);if((terrain.land&&terrain.height+.20>point[1])||(roof!==null&&roof+.10>point[1])){blocked=true;break;}last=point;}
       state.cameraBlocked=blocked;return last;
     };`, 'cámara contra terreno');
 
-      replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', '    const movePlayer = (dx, dz) => {\n      resolveBuildingOverlap();\n      const distance = Math.hypot(dx, dz);', 'solape');
+      replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', `    const movePlayer = (dx, dz) => {
+      if(!state.adventureFlight&&!state.adventureWaterJump&&state.adventureMountType!=='shark')resolveBuildingOverlap();
+      const distance = Math.hypot(dx, dz);`, 'solape');
+      replaceOne('      const steps = Math.max(1, Math.ceil(distance / .12));', `      const adventureStepSize=state.adventureFlight?.72:state.adventureWaterJump?.52:state.adventureMountType==='shark'?.28:.16;
+      const adventureMaxSteps=state.adventureFlight?10:state.adventureWaterJump?14:26;
+      const steps=Math.max(1,Math.min(adventureMaxSteps,Math.ceil(distance/adventureStepSize)));`, 'subpasos adaptativos');
       replaceOne('if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {', `if (xTerrain.inside
           && !(state.adventureMountType==='shark'&&!state.adventureWaterJump&&xTerrain.land)
           && (state.adventureFlight||state.adventureWaterJump||!xTerrain.land||!collidesBuildingAtPlayerHeight(nextX,state.camera.z))) {`, 'colisión X');
@@ -141,7 +144,6 @@
       state.adventureCurrentSpeed=Math.hypot(driveX,driveZ)*speed;
       if(state.adventureWaterJump&&state.adventureSharkBreachSpeed>0)state.adventureSharkBreachSpeed=Math.max(0,state.adventureSharkBreachSpeed-dt*6.2);`, 'velocidades de montura');
 
-      // Sustituye la física vertical completa para no convertir el salto acuático en una simple brazada.
       replaceOne(/      const wasSwimming = state\.swimming;[\s\S]*?      state\.jumpQueued = false;/, `      const wasSwimming=state.swimming;
       state.swimming=!state.adventureFlight&&!state.adventureWaterJump&&terrainNow.inside&&!terrainNow.land;
       state.movementMode=state.adventureFlight?'flight':state.adventureWaterJump?'water-jump':state.swimming?'swimming':state.grounded?'ground':'air';
@@ -178,7 +180,6 @@
       if(state.adventureWaterJump&&state.adventureMountType==='shark'){const blend=Math.min(1,dt*8),targetPitch=Math.max(-.48,Math.min(.48,-state.velocityY*.025));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(0-state.terrainRoll)*blend;state.slopeAngle=0;return;}
       if (state.swimming) {`, 'orientación monturas');
 
-      // El Mundo 1 elevaba el objetivo al mirar hacia arriba; sin esto solo orbitábamos por debajo del personaje.
       replaceOne('      const center = [target[0], target[1] + .18, target[2]];', `      const lookUpLift=Math.max(0,-state.pitch)*state.cameraDistance*.92;
       const center=[target[0],target[1]+.18+lookUpLift,target[2]];`, 'objetivo vertical de cámara');
 
@@ -198,7 +199,9 @@
       isAdventureVisible(x,y,z){return adventureVisible(Number(x),Number(y),Number(z));},`, 'API Adventure');
 
       replaceOne('movementMode: state.movementMode, swimming: state.swimming,', `movementMode: state.movementMode, swimming: state.swimming, adventureMountType: state.adventureMountType, adventureWaterJump: state.adventureWaterJump, adventureMountEject: state.adventureMountEject, adventureLastWaterX: state.adventureLastWaterX, adventureLastWaterZ: state.adventureLastWaterZ, adventureCurrentSpeed: state.adventureCurrentSpeed,`, 'estado público');
-      replaceOne('</body>', `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.3';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`, 'bootstrap');
+
+      const uiSafety=`<script>(()=>{let tries=0;const timer=setInterval(()=>{const panel=document.getElementById('waftCheckpointPanel'),route=document.getElementById('waftCheckpoints');if(!panel||!route){if(++tries>300)clearInterval(timer);return;}clearInterval(timer);const close=()=>{panel.classList.remove('visible');route.classList.remove('active');route.setAttribute('aria-expanded','false');};panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Ruta de expedición');route.setAttribute('aria-controls','waftCheckpointPanel');route.setAttribute('aria-expanded',panel.classList.contains('visible')?'true':'false');if(!panel.querySelector('.waftPanelClose')){const x=document.createElement('button');x.type='button';x.className='waftPanelClose';x.textContent='×';x.setAttribute('aria-label','Cerrar');Object.assign(x.style,{position:'absolute',right:'8px',top:'7px',width:'32px',height:'32px',padding:'0',borderRadius:'50%',fontSize:'20px',lineHeight:'28px',zIndex:'2'});x.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();close();});panel.style.paddingTop='42px';panel.appendChild(x);}route.addEventListener('click',()=>requestAnimationFrame(()=>{const open=panel.classList.contains('visible');route.classList.toggle('active',open);route.setAttribute('aria-expanded',open?'true':'false');if(open)document.body.classList.remove('waft-mobile-menu-open');}));document.addEventListener('pointerdown',e=>{if(panel.classList.contains('visible')&&!e.target.closest('#waftCheckpointPanel,#waftCheckpoints'))close();if(document.body.classList.contains('waft-destinations-open')&&!e.target.closest('#presets,#waftDestinations'))document.body.classList.remove('waft-destinations-open');},true);addEventListener('keydown',e=>{if(e.key==='Escape')close();});window.__WAFT_UI_SAFETY_READY__=true;},20);})();<\/script>`;
+      replaceOne('</body>', `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.3';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n${uiSafety}\n</body>`, 'bootstrap');
 
       document.open();document.write(source);document.close();
     } catch(error) {
