@@ -1,0 +1,149 @@
+'use strict';
+(() => {
+  const REGION_ID = window.__WAFT_ADVENTURE_REGION__ || 'baleares';
+  const BUILD_ID = window.__WAFT_ADVENTURE_BUILD__ || '0.21.0';
+  const SAVE_KEY = 'waft.adventure.integration.0210.v1';
+  const BASE_SPEEDS = { runSpeed: 7.2, swimSpeed: 5.2, jumpVelocity: 8.8 };
+  const REGION_NAMES = { baleares: 'Baleares', 'catalunya-litoral': 'Catalunya litoral' };
+  const PORTS = {
+    baleares: { x: 102.9282, z: -133.3584, heading: 3.577925, name: "Port d'Alcúdia", target: 'catalunya-litoral' },
+    'catalunya-litoral': { x: 5.3339, z: 62.2339, heading: 6.108652, name: 'Port de Barcelona', target: 'baleares' }
+  };
+
+  const game = {
+    schemaVersion: 1,
+    regionId: REGION_ID,
+    missionStage: 0,
+    missionComplete: false,
+    discoveries: {},
+    observed: {},
+    mountedAnimalId: null,
+    checkpoints: [null, null, null],
+    autoRun: false,
+    saveCount: 0,
+    lastSavedAt: 0,
+    dialogueOpen: false,
+    currentInteractable: null,
+    animals: [],
+    npc: null,
+    initialized: false,
+    previousPlayer: null,
+    playerSpeed: 0,
+    lastFrameAt: performance.now(),
+    jumpChargeStartedAt: 0,
+    jumpPointer: null,
+    pendingArrivalApplied: false,
+    statusText: 'Preparando Adventure…'
+  };
+
+  const plugin = window.WAFTAdventurePlugin = {
+    hideBaseCharacter: true,
+    afterWorldDraw(now, eye, pv) {
+      if (!game.initialized || !renderer.ready) return;
+      updateFrame(now);
+      renderer.render(now, eye, pv);
+    }
+  };
+
+  function injectUi() {
+    const style = document.createElement('style');
+    style.textContent = `
+      #waftAdventureHud{position:fixed;z-index:25;left:max(10px,env(safe-area-inset-left));top:82px;width:min(310px,54vw);padding:10px 39px 10px 12px;border-radius:14px;background:rgba(5,18,24,.91);border:1px solid rgba(231,189,99,.43);box-shadow:0 9px 30px #0009;backdrop-filter:blur(10px);color:#f4f6f2}
+      #waftAdventureHud b{display:block;color:#e7bd63;font-size:10px;letter-spacing:.11em}#waftObjective{display:block;margin-top:4px;font-size:12px;font-weight:800;line-height:1.25}#waftProgress{display:block;margin-top:4px;color:#a9c3bf;font-size:9px;font-weight:700}
+      #waftCollapse{position:absolute;right:6px;top:6px;width:28px;height:28px;padding:0;border-radius:50%;border:1px solid #fff3;background:#173640;color:#fff;font-weight:900}#waftAdventureHud.collapsed{width:44px;height:44px;padding:0;border-radius:50%}#waftAdventureHud.collapsed .waftBody{display:none}#waftAdventureHud.collapsed #waftCollapse{right:7px;top:7px}
+      #waftTopActions{position:fixed;z-index:26;right:max(10px,env(safe-area-inset-right));top:max(10px,env(safe-area-inset-top));display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:44vw}#waftTopActions button,#waftAdventureAction,#waftObserveAction,#waftJump,#waftTravelAction{border:1px solid #ffffff32;background:rgba(7,22,28,.91);color:#fff;border-radius:12px;padding:9px 11px;font-weight:900;box-shadow:0 6px 20px #0008;touch-action:none}#waftTopActions button.active{background:#8a6b32;color:#fff8df}
+      #waftJump{--charge:0;position:fixed;z-index:27;right:max(20px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));width:88px;height:88px;border-radius:50%;padding:0;background:radial-gradient(circle,#245d70 0 57%,transparent 59%),conic-gradient(#f2c766 calc(var(--charge)*1turn),#ffffff25 0);font-size:12px}#waftJump.charging{transform:scale(calc(.98 + var(--charge)*.07));filter:brightness(1.18)}
+      #waftAdventureAction{display:none;position:fixed;z-index:28;right:max(18px,env(safe-area-inset-right));bottom:max(125px,calc(env(safe-area-inset-bottom) + 125px));min-width:128px;background:#e7bd63;color:#181207;border-color:#fff8}#waftAdventureAction.visible{display:block}#waftObserveAction{display:none;position:fixed;z-index:28;right:max(18px,env(safe-area-inset-right));bottom:max(172px,calc(env(safe-area-inset-bottom) + 172px));min-width:128px}#waftObserveAction.visible{display:block}
+      #waftTravelAction{display:none;position:fixed;z-index:29;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);border:2px solid #a8efd2;background:linear-gradient(#347966,#205347);min-width:230px}#waftTravelAction.visible{display:block;animation:waftPulse 1.2s ease-in-out infinite}@keyframes waftPulse{50%{transform:translateX(-50%) translateY(-3px)}}
+      #waftDialogue{display:none;position:fixed;z-index:45;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(720px,calc(100vw - 24px));padding:16px;border-radius:18px;background:rgba(5,17,23,.97);border:1px solid #ffffff32;box-shadow:0 18px 56px #000d}#waftDialogue.visible{display:block}#waftSpeaker{color:#e7bd63;font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}#waftDialogueText{margin-top:8px;font-size:14px;line-height:1.45;font-weight:650;min-height:42px}#waftDialogueActions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}#waftDialogueActions button{border:1px solid #fff3;background:#234b58;color:#fff;border-radius:11px;padding:9px 13px;font-weight:850}
+      #waftCheckpointPanel{display:none;position:fixed;z-index:31;right:max(10px,env(safe-area-inset-right));top:62px;width:min(300px,calc(100vw - 20px));padding:12px;border-radius:15px;background:rgba(5,17,23,.96);border:1px solid #ffffff32;box-shadow:0 14px 42px #000b}#waftCheckpointPanel.visible{display:block}.waftCheckpointRow{display:grid;grid-template-columns:28px 1fr 1fr 1fr;gap:5px;align-items:center;margin-top:7px}.waftCheckpointRow button{padding:7px 4px;border:1px solid #fff3;border-radius:8px;background:#173a45;color:#fff;font-size:10px;font-weight:850}.waftCheckpointRow b{color:#e7bd63;text-align:center}
+      #waftToast{position:fixed;z-index:55;left:50%;top:max(16px,env(safe-area-inset-top));transform:translate(-50%,-12px);opacity:0;pointer-events:none;padding:9px 14px;border-radius:999px;background:rgba(5,17,23,.96);border:1px solid #ffffff32;color:#fff2cc;font-size:11px;font-weight:850;transition:.25s}#waftToast.show{opacity:1;transform:translate(-50%,0)}
+      #waftMissionComplete{position:fixed;z-index:54;left:50%;top:22%;transform:translate(-50%,-18px) scale(.96);opacity:0;pointer-events:none;width:min(460px,calc(100vw - 30px));padding:18px;border-radius:18px;text-align:center;background:linear-gradient(145deg,#0b2528f5,#183d38f5);border:1px solid #e7bd6388;box-shadow:0 18px 60px #000c;transition:.35s}#waftMissionComplete.show{opacity:1;transform:translate(-50%,0) scale(1)}#waftMissionComplete small{display:block;color:#e7bd63;font-weight:950;letter-spacing:.15em}#waftMissionComplete strong{display:block;margin-top:7px;font-size:18px}
+      #waftAdventureCanvas{position:fixed;z-index:6;inset:0;width:100%;height:100%;pointer-events:none;background:transparent}
+      body.waft-dialogue-open #joystick,body.waft-dialogue-open #vertical,body.waft-dialogue-open #presets,body.waft-dialogue-open #waftJump,body.waft-dialogue-open #waftTopActions{opacity:.2;pointer-events:none}
+      @media(max-width:700px){#waftAdventureHud{top:61px;width:min(255px,58vw);padding:8px 36px 8px 9px}#waftObjective{font-size:10px}#waftTopActions button{font-size:10px;padding:8px}#waftJump{width:78px;height:78px}#waftAdventureAction{bottom:108px;min-width:105px;font-size:10px}#waftObserveAction{bottom:150px;min-width:105px;font-size:10px}}
+    `;
+    document.head.appendChild(style);
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'waftAdventureCanvas';
+    document.body.appendChild(canvas);
+
+    const hud = document.createElement('section');
+    hud.id = 'waftAdventureHud';
+    hud.innerHTML = `<button id="waftCollapse" type="button">−</button><div class="waftBody"><b>EXPEDICIÓN · ${BUILD_ID}</b><span id="waftObjective"></span><small id="waftProgress"></small></div>`;
+    document.body.appendChild(hud);
+
+    const top = document.createElement('div');
+    top.id = 'waftTopActions';
+    top.innerHTML = '<button id="waftAuto" type="button">AUTO</button><button id="waftCheckpoints" type="button">PUNTOS</button><button id="waftSave" type="button">GUARDAR</button>';
+    document.body.appendChild(top);
+
+    const jump = document.createElement('button');
+    jump.id = 'waftJump';
+    jump.type = 'button';
+    jump.textContent = 'SALTAR';
+    document.body.appendChild(jump);
+
+    const action = document.createElement('button');
+    action.id = 'waftAdventureAction';
+    action.type = 'button';
+    document.body.appendChild(action);
+
+    const observe = document.createElement('button');
+    observe.id = 'waftObserveAction';
+    observe.type = 'button';
+    observe.textContent = 'OBSERVAR';
+    document.body.appendChild(observe);
+
+    const travel = document.createElement('button');
+    travel.id = 'waftTravelAction';
+    travel.type = 'button';
+    document.body.appendChild(travel);
+
+    const dialogue = document.createElement('section');
+    dialogue.id = 'waftDialogue';
+    dialogue.innerHTML = '<div id="waftSpeaker"></div><div id="waftDialogueText"></div><div id="waftDialogueActions"></div>';
+    document.body.appendChild(dialogue);
+
+    const panel = document.createElement('section');
+    panel.id = 'waftCheckpointPanel';
+    panel.innerHTML = '<strong>PUNTOS DE EXPEDICIÓN</strong><small>Guarda tres posiciones del mapa regional.</small>' + ['A','B','C'].map((letter,index)=>`<div class="waftCheckpointRow" data-index="${index}"><b>${letter}</b><button data-action="set">MARCAR</button><button data-action="return">VOLVER</button><button data-action="clear">BORRAR</button></div>`).join('');
+    document.body.appendChild(panel);
+
+    const toast = document.createElement('div');
+    toast.id = 'waftToast';
+    document.body.appendChild(toast);
+    const complete = document.createElement('div');
+    complete.id = 'waftMissionComplete';
+    complete.innerHTML = '<small>EXPEDICIÓN COMPLETADA</small><strong>Tramuntana · Myotragus localizado</strong>';
+    document.body.appendChild(complete);
+
+    document.getElementById('waftCollapse').addEventListener('click', () => {
+      hud.classList.toggle('collapsed');
+      document.getElementById('waftCollapse').textContent = hud.classList.contains('collapsed') ? '+' : '−';
+    });
+    document.getElementById('waftAuto').addEventListener('click', () => setAutoRun(!game.autoRun));
+    document.getElementById('waftCheckpoints').addEventListener('click', () => panel.classList.toggle('visible'));
+    document.getElementById('waftSave').addEventListener('click', () => saveGame('manual', true));
+    action.addEventListener('click', () => game.currentInteractable?.action?.());
+    observe.addEventListener('click', () => game.currentInteractable?.secondaryAction?.());
+    travel.addEventListener('click', travelToOtherRegion);
+    panel.addEventListener('click', event => checkpointAction(event));
+
+    jump.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      game.jumpPointer = event.pointerId;
+      jump.setPointerCapture(event.pointerId);
+      game.jumpChargeStartedAt = performance.now();
+      jump.classList.add('charging');
+    });
+    const releaseJump = event => {
+      if (game.jumpPointer !== null && event.pointerId !== game.jumpPointer) return;
+      game.jumpPointer = null;
+      const held = Math.max(0, performance.now() - game.jumpChargeStartedAt);
+      const charge = Math.min(1, held / 1250);
+      jump.classList.remove('charging');
+      jump.style.setProperty('--charge', 0);
+      const api = runtime();
+      if (!api || game.dialogueOpen) return;
