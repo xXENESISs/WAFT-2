@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <meta name="theme-color" content="#07161d" />
+  <title>WAFT Adventure 0.21.0 · Mundo integrado</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;color:#fff;font-family:system-ui,sans-serif}
+    #boot{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 35%,#173642,#07161d 72%)}
+    #boot b{display:block;color:#e7bd63;font-size:30px;letter-spacing:.08em}#boot p{color:#d8e5e1;font-weight:700;max-width:560px;line-height:1.5}
+    #error{display:none;white-space:pre-wrap;color:#ffd6cf;background:#230f0f;border:1px solid #d4695c;border-radius:16px;padding:20px;max-width:760px;text-align:left}
+  </style>
+</head>
+<body>
+  <main id="boot"><div><b>WAFT 0.21.0</b><p id="status">Uniendo el mapa regional con Adventure…</p><pre id="error"></pre></div></main>
+  <script>
+  'use strict';
+  (async () => {
+    const status = document.getElementById('status');
+    const errorBox = document.getElementById('error');
+    const params = new URLSearchParams(location.search);
+    const regionId = params.get('region') === 'catalunya-litoral' ? 'catalunya-litoral' : 'baleares';
+    const builds = {
+      baleares: '../region-runtime-baleares-013.html',
+      'catalunya-litoral': '../region-runtime-catalunya-litoral-003.html'
+    };
+    const build = builds[regionId];
+    const version = params.get('v') || 'waft-adventure-0210';
+    try {
+      status.textContent = 'Cargando ' + (regionId === 'baleares' ? 'Baleares' : 'Catalunya litoral') + '…';
+      const response = await fetch(build + '?v=' + encodeURIComponent(version));
+      if (!response.ok) throw new Error(response.status + ' al cargar ' + build);
+      let source = await response.text();
+      const requiredAnchors = [
+        'drawCharacter(now, eye);',
+        'jump() { state.jumpQueued = true; },',
+        'window.WAFTRegionRuntime = {'
+      ];
+      for (const anchor of requiredAnchors) {
+        if (!source.includes(anchor)) throw new Error('El runtime regional cambió y falta el punto de integración: ' + anchor);
+      }
+      source = source.replace('<head>', '<head>\n<base href="../">');
+      source = source.replace(
+        '</style>',
+        `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`
+      );
+      source = source.replace('state.yaw -= dx * .0042;', 'state.yaw += dx * .0042;');
+      source = source.replace(
+        '      drawCharacter(now, eye);',
+        '      if (!window.WAFTAdventurePlugin?.hideBaseCharacter) drawCharacter(now, eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now, eye, pv);'
+      );
+      source = source.replace(
+        '      jump() { state.jumpQueued = true; },',
+        `      jump() { state.jumpQueued = true; },
+      setAdventureModifiers(modifiers = {}) {
+        const number = value => Number.isFinite(Number(value)) ? Number(value) : null;
+        const runSpeed = number(modifiers.runSpeed);
+        const swimSpeed = number(modifiers.swimSpeed);
+        const jumpVelocity = number(modifiers.jumpVelocity);
+        if (runSpeed !== null) state.runSpeed = Math.max(1, Math.min(30, runSpeed));
+        if (swimSpeed !== null) state.swimSpeed = Math.max(1, Math.min(24, swimSpeed));
+        if (jumpVelocity !== null) state.jumpVelocity = Math.max(2, Math.min(24, jumpVelocity));
+        if ('boost' in modifiers) state.boost = Boolean(modifiers.boost);
+        return { runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, boost: state.boost };
+      },`
+      );
+      source = source.replace(
+        '</body>',
+        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.21.0';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
+      );
+      document.open();
+      document.write(source);
+      document.close();
+    } catch (error) {
+      console.error(error);
+      status.textContent = 'No se pudo iniciar el mundo integrado.';
+      errorBox.style.display = 'block';
+      errorBox.textContent = error.stack || error.message || String(error);
+    }
+  })();
+  </script>
+</body>
+</html>
