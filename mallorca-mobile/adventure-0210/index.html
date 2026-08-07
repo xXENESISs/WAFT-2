@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#07161d" />
-  <title>WAFT Adventure 0.21.0 · Mundo integrado</title>
+  <title>WAFT Adventure 0.22.0 · Mundo integrado</title>
   <style>
     html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07161d;color:#fff;font-family:system-ui,sans-serif}
     #boot{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 35%,#173642,#07161d 72%)}
@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  <main id="boot"><div><b>WAFT 0.21.0</b><p id="status">Uniendo el mapa regional con Adventure…</p><pre id="error"></pre></div></main>
+  <main id="boot"><div><b>WAFT 0.22.0</b><p id="status">Uniendo el mapa regional con Adventure…</p><pre id="error"></pre></div></main>
   <script>
   'use strict';
   (async () => {
@@ -26,7 +26,7 @@
       'catalunya-litoral': '../region-runtime-catalunya-litoral-003.html'
     };
     const build = builds[regionId];
-    const version = params.get('v') || 'waft-adventure-0210';
+    const version = params.get('v') || 'waft-adventure-0220';
     try {
       status.textContent = 'Cargando ' + (regionId === 'baleares' ? 'Baleares' : 'Catalunya litoral') + '…';
       const response = await fetch(build + '?v=' + encodeURIComponent(version));
@@ -35,7 +35,13 @@
       const requiredAnchors = [
         'drawCharacter(now, eye);',
         'jump() { state.jumpQueued = true; },',
-        'window.WAFTRegionRuntime = {'
+        'window.WAFTRegionRuntime = {',
+        'swimStroke: 0,',
+        'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
+        'state.swimming = terrainNow.inside && !terrainNow.land;',
+        'const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;',
+        'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
+        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {'
       ];
       for (const anchor of requiredAnchors) {
         if (!source.includes(anchor)) throw new Error('El runtime regional cambió y falta el punto de integración: ' + anchor);
@@ -46,6 +52,67 @@
         `#layers,#travel,#placesGuide{display:none!important}\n#hud{top:max(8px,env(safe-area-inset-top));max-width:min(56vw,430px)}\n#presets{opacity:.42;transition:opacity .2s}#presets:hover,#presets:focus-within{opacity:1}\n#up{display:none!important}\n</style>`
       );
       source = source.replace('state.yaw -= dx * .0042;', 'state.yaw += dx * .0042;');
+      source = source.replace(
+        '    swimStroke: 0,',
+        `    swimStroke: 0,
+    adventureFlight: false,
+    adventureFlightVy: 0,
+    adventureFlightFlap: 0,
+    adventureFlightGravity: 2.0,
+    adventureFlightMinClearance: 1.45,`
+      );
+      source = source.replace(
+        'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
+        'const swimmingBeforeMove = !state.adventureFlight && terrainBeforeMove.inside && !terrainBeforeMove.land;'
+      );
+      source = source.replace(
+        'if (xTerrain.inside && (!xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {',
+        'if (xTerrain.inside && (state.adventureFlight || !xTerrain.land || !collidesBuilding(nextX, state.camera.z))) {'
+      );
+      source = source.replace(
+        'if (zTerrain.inside && (!zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {',
+        'if (zTerrain.inside && (state.adventureFlight || !zTerrain.land || !collidesBuilding(state.camera.x, nextZ))) {'
+      );
+      source = source.replace(
+        '      state.swimming = terrainNow.inside && !terrainNow.land;\n      state.movementMode = state.swimming ? \'swimming\' : state.grounded ? \'ground\' : \'air\';',
+        `      state.swimming = state.adventureFlight ? false : terrainNow.inside && !terrainNow.land;
+      state.movementMode = state.adventureFlight ? 'flight' : state.swimming ? 'swimming' : state.grounded ? 'ground' : 'air';`
+      );
+      source = source.replace(
+        '      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;\n      if (state.swimming) {',
+        `      const swimSurface = terrainNow.waterHeight + state.playerSwimEyeHeight;
+      const flightFloor = (terrainNow.land ? terrainNow.height : terrainNow.waterHeight) + state.adventureFlightMinClearance;
+      if (state.adventureFlight) {
+        if (state.jumpQueued) state.adventureFlightFlap = Math.max(state.adventureFlightFlap, 5.2);
+        if (state.adventureFlightFlap > 0) {
+          state.adventureFlightVy = Math.max(state.adventureFlightVy, state.adventureFlightFlap);
+          state.adventureFlightFlap = 0;
+        }
+        state.adventureFlightVy -= state.adventureFlightGravity * dt;
+        if (state.boost) state.adventureFlightVy -= 1.25 * dt;
+        state.adventureFlightVy = Math.max(-5.2, Math.min(12.0, state.adventureFlightVy));
+        state.camera.y += state.adventureFlightVy * dt;
+        if (state.camera.y < flightFloor) {
+          state.camera.y = flightFloor;
+          state.adventureFlightVy = Math.max(0, state.adventureFlightVy * .15);
+        }
+        state.velocityY = state.adventureFlightVy;
+        state.grounded = false;
+      } else if (state.swimming) {`
+      );
+      source = source.replace(
+        '    const updateTerrainAlignment = dt => {\n      if (state.swimming) {',
+        `    const updateTerrainAlignment = dt => {
+      if (state.adventureFlight) {
+        const blend = Math.min(1, dt * 5.5);
+        const targetPitch = Math.max(-.42, Math.min(.30, -state.adventureFlightVy * .07));
+        state.terrainPitch += (targetPitch - state.terrainPitch) * blend;
+        state.terrainRoll += (0 - state.terrainRoll) * blend;
+        state.slopeAngle = 0;
+        return;
+      }
+      if (state.swimming) {`
+      );
       source = source.replace(
         '      drawCharacter(now, eye);',
         '      if (!window.WAFTAdventurePlugin?.hideBaseCharacter) drawCharacter(now, eye);\n      window.WAFTAdventurePlugin?.afterWorldDraw?.(now, eye, pv);'
@@ -58,16 +125,35 @@
         const runSpeed = number(modifiers.runSpeed);
         const swimSpeed = number(modifiers.swimSpeed);
         const jumpVelocity = number(modifiers.jumpVelocity);
-        if (runSpeed !== null) state.runSpeed = Math.max(1, Math.min(30, runSpeed));
+        const flightFlap = number(modifiers.flightFlap);
+        if (runSpeed !== null) state.runSpeed = Math.max(1, Math.min(34, runSpeed));
         if (swimSpeed !== null) state.swimSpeed = Math.max(1, Math.min(24, swimSpeed));
         if (jumpVelocity !== null) state.jumpVelocity = Math.max(2, Math.min(24, jumpVelocity));
         if ('boost' in modifiers) state.boost = Boolean(modifiers.boost);
-        return { runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, boost: state.boost };
+        if ('flight' in modifiers) {
+          const nextFlight = Boolean(modifiers.flight);
+          if (nextFlight && !state.adventureFlight) {
+            state.adventureFlight = true;
+            state.adventureFlightVy = 0;
+            state.adventureFlightFlap = 0;
+            state.swimming = false;
+            state.grounded = false;
+            const surface = sampleTerrainInfo(state.camera.x, state.camera.z);
+            const floor = (surface.land ? surface.height : surface.waterHeight) + state.adventureFlightMinClearance;
+            state.camera.y = Math.max(state.camera.y, floor);
+          } else if (!nextFlight && state.adventureFlight) {
+            state.adventureFlight = false;
+            state.velocityY = state.adventureFlightVy;
+            state.grounded = false;
+          }
+        }
+        if (flightFlap !== null) state.adventureFlightFlap = Math.max(state.adventureFlightFlap, Math.max(0, Math.min(12, flightFlap)));
+        return { runSpeed: state.runSpeed, swimSpeed: state.swimSpeed, jumpVelocity: state.jumpVelocity, boost: state.boost, flight: state.adventureFlight, flightVy: state.adventureFlightVy };
       },`
       );
       source = source.replace(
         '</body>',
-        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.21.0';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
+        `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.22.0';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n</body>`
       );
       document.open();
       document.write(source);

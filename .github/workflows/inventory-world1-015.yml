@@ -1,0 +1,37 @@
+name: Inventory World 1 0.15
+
+on:
+  push:
+    branches:
+      - agent/world2-penguin-integration-0210
+    paths:
+      - mallorca-mobile/adventure-0210/tools/reconstruct-world1.mjs
+      - .github/workflows/inventory-world1-015.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone integration branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: Reconstruct World 1 and build inventory
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/reconstruct-world1.mjs
+      - name: Commit reconstructed reference
+        working-directory: repo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/adventure-0210/reference/world1-015-inventory.json mallorca-mobile/adventure-0210/reference/world1-015-source.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Persist reconstructed World 1 0.15 reference"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

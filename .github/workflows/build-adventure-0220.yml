@@ -1,0 +1,40 @@
+name: Build Adventure 0.22.0
+
+on:
+  push:
+    branches:
+      - agent/world2-penguin-integration-0210
+    paths:
+      - mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+      - mallorca-mobile/adventure-0210/gameplay-plugin.part*.txt
+      - .github/workflows/build-adventure-0220.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone integration branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: Build complete gameplay module
+        working-directory: repo
+        run: |
+          node mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+          node --check mallorca-mobile/adventure-0210/gameplay-plugin.js
+      - name: Commit generated gameplay module
+        working-directory: repo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/adventure-0210/gameplay-plugin.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Generate complete Adventure 0.22.0 gameplay module"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
