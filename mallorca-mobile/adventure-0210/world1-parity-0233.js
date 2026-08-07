@@ -39,12 +39,8 @@
     drawSphere(r,base,0,.78,0,.79,.45,1.03,fur);
     drawSphere(r,base,0,.93,.96,.31,.29,.39,fur2);
     drawSphere(r,base,0,.84,1.28,.22,.17,.25,[.58,.44,.31]);
-    const legs=[[-.45,-.50,1], [.45,-.50,-1],[-.45,.48,-1],[.45,.48,1]];
-    for(const [x,z,sign] of legs){
-      const swing=stride*sign;
-      drawCylinderPart(r,base,x,.34,z+swing*.16,.075,.62,.075,fur,M.rx(swing));
-      drawSphere(r,base,x,.055,z+swing*.29,.10,.075,.17,dark);
-    }
+    const legs=[[-.45,-.50,1],[.45,-.50,-1],[-.45,.48,-1],[.45,.48,1]];
+    for(const [x,z,sign] of legs){const swing=stride*sign;drawCylinderPart(r,base,x,.34,z+swing*.16,.075,.62,.075,fur,M.rx(swing));drawSphere(r,base,x,.055,z+swing*.29,.10,.075,.17,dark);}
     drawCylinderPart(r,base,-.18,1.25,.91,.045,.38,.045,horn,M.rz(-.42));
     drawCylinderPart(r,base,.18,1.25,.91,.045,.38,.045,horn,M.rz(.42));
     drawSphere(r,base,0,.66,1.19,.08,.18,.07,[.30,.24,.19]);
@@ -54,7 +50,6 @@
     const {r,a,now,drawSphere,drawCylinderPart,M}=ctx;
     const phase=now*.0042+a.phase,stride=Math.sin(phase)*.22,bounce=Math.abs(Math.sin(phase*2))*.018;
     const base=M.compose(ctx.base,M.t(0,bounce,0));
-    // Más baja y ancha: elimina la silueta de "muñeco gigante" que se veía en la captura.
     const hide=[.52,.22,.12],dark=[.17,.10,.07],cream=[.73,.61,.45],horn=[.74,.69,.57];
     drawSphere(r,base,0,.72,-.05,1.05,.56,1.28,hide);
     drawSphere(r,base,0,1.08,1.08,.43,.37,.43,hide);
@@ -93,13 +88,11 @@
       if(window.__WAFT_INTERNAL_GAME__&&window.WAFTRegionRuntime&&window.WAFTAnimalRenderer0230)break;
       await new Promise(resolve=>setTimeout(resolve,20));
     }
-    normalizeMounts();
-    installRenderer();
+    normalizeMounts();installRenderer();
     const timer=setInterval(()=>{normalizeMounts();installRenderer();},900);
     addEventListener('pagehide',()=>clearInterval(timer),{once:true});
     window.WAFTParity0233={version:BUILD,normalizeMounts,installRenderer};
     window.__WAFT_PARITY_0233_READY__=true;
   }
-
   init().catch(error=>console.error('WAFT 0.23.3 parity failed',error));
 })();
