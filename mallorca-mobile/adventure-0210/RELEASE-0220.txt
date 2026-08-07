@@ -1,0 +1,3 @@
+WAFT Adventure 0.22.0
+World 2 precise geography + World 1 0.15 gameplay parity
+Validated: Baleares and Catalunya litoral patched runtimes compile successfully.
