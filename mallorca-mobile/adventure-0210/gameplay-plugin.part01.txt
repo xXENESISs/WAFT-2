@@ -1,0 +1,264 @@
+      api.setAdventureModifiers({ jumpVelocity: BASE_SPEEDS.jumpVelocity + charge * 7.2 });
+      api.jump();
+      setTimeout(() => api.setAdventureModifiers({ jumpVelocity: BASE_SPEEDS.jumpVelocity }), 220);
+    };
+    jump.addEventListener('pointerup', releaseJump);
+    jump.addEventListener('pointercancel', releaseJump);
+
+    addEventListener('keydown', event => {
+      if (event.code === 'KeyE' && !event.repeat) game.currentInteractable?.action?.();
+      if (event.code === 'KeyF' && !event.repeat) game.currentInteractable?.secondaryAction?.();
+      if (event.code === 'KeyC' && !event.repeat) panel.classList.toggle('visible');
+    });
+  }
+
+  function runtime() { return window.WAFTRegionRuntime || null; }
+
+  function loadSave() {
+    try {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (!raw) return false;
+      const save = JSON.parse(raw);
+      if (save.schemaVersion !== game.schemaVersion) return false;
+      game.missionStage = Math.max(0, Math.min(6, Number(save.missionStage) || 0));
+      game.missionComplete = Boolean(save.missionComplete);
+      game.discoveries = save.discoveries && typeof save.discoveries === 'object' ? save.discoveries : {};
+      game.observed = save.observed && typeof save.observed === 'object' ? save.observed : {};
+      game.checkpoints = Array.isArray(save.checkpoints) ? save.checkpoints.slice(0,3).concat([null,null,null]).slice(0,3) : [null,null,null];
+      game.saveCount = Math.max(0, Number(save.saveCount) || 0);
+      game.lastSavedAt = Math.max(0, Number(save.lastSavedAt) || 0);
+      return true;
+    } catch (error) {
+      console.warn('Adventure save restore failed', error);
+      return false;
+    }
+  }
+
+  function saveGame(reason = 'autosave', notify = false) {
+    try {
+      const api = runtime();
+      const payload = {
+        schemaVersion: game.schemaVersion,
+        buildId: BUILD_ID,
+        missionStage: game.missionStage,
+        missionComplete: game.missionComplete,
+        discoveries: game.discoveries,
+        observed: game.observed,
+        checkpoints: game.checkpoints,
+        saveCount: game.saveCount + 1,
+        lastSavedAt: Date.now(),
+        reason
+      };
+      localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+      game.saveCount = payload.saveCount;
+      game.lastSavedAt = payload.lastSavedAt;
+      api?.saveProgress?.();
+      if (notify) showToast('Expedición guardada');
+      updateObjective();
+      return true;
+    } catch (error) {
+      console.warn('Adventure save failed', error);
+      if (notify) showToast('No se pudo guardar');
+      return false;
+    }
+  }
+
+  function showToast(text) {
+    const element = document.getElementById('waftToast');
+    if (!element) return;
+    element.textContent = text;
+    element.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => element.classList.remove('show'), 2600);
+  }
+
+  function showDialogue(speaker, lines, onClose = null) {
+    const dialogue = document.getElementById('waftDialogue');
+    const speakerElement = document.getElementById('waftSpeaker');
+    const text = document.getElementById('waftDialogueText');
+    const actions = document.getElementById('waftDialogueActions');
+    const queue = Array.isArray(lines) ? [...lines] : [String(lines)];
+    game.dialogueOpen = true;
+    document.body.classList.add('waft-dialogue-open');
+    dialogue.classList.add('visible');
+    speakerElement.textContent = speaker;
+    let index = 0;
+    const render = () => {
+      text.textContent = queue[index];
+      actions.innerHTML = '';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = index < queue.length - 1 ? 'SIGUIENTE' : 'CERRAR';
+      button.addEventListener('click', () => {
+        if (index < queue.length - 1) { index++; render(); return; }
+        dialogue.classList.remove('visible');
+        document.body.classList.remove('waft-dialogue-open');
+        game.dialogueOpen = false;
+        onClose?.();
+      });
+      actions.appendChild(button);
+    };
+    render();
+  }
+
+  function missionObjective() {
+    if (REGION_ID !== 'baleares') return 'Explora Catalunya y descubre su fauna antes de regresar al puerto.';
+    return [
+      'Habla con Aina en el campamento del Llevant.',
+      'Observa la lagartija balear cerca del campamento.',
+      'Encuentra la gineta entre los pinos.',
+      'Sigue a la gineta hasta el roquedo y vuelve a observarla.',
+      'Regresa con Aina e informa de la gineta.',
+      'Localiza y observa al Myotragus en la sierra.',
+      'Expedición de Tramuntana completada. Explora libremente.'
+    ][game.missionStage] || 'Explora libremente.';
+  }
+
+  function updateObjective() {
+    const objective = document.getElementById('waftObjective');
+    const progress = document.getElementById('waftProgress');
+    if (!objective || !progress) return;
+    objective.textContent = missionObjective();
+    const observedCount = Object.values(game.observed).filter(Boolean).length;
+    progress.textContent = REGION_NAMES[REGION_ID] + ' · fauna ' + observedCount + '/' + game.animals.length + ' · guardados ' + game.saveCount;
+  }
+
+  function setStage(stage, toast = '') {
+    if (stage <= game.missionStage) return;
+    game.missionStage = Math.min(6, stage);
+    if (toast) showToast(toast);
+    updateObjective();
+    saveGame('mission-stage');
+  }
+
+  function setAutoRun(value) {
+    game.autoRun = Boolean(value);
+    document.getElementById('waftAuto')?.classList.toggle('active', game.autoRun);
+    if (!game.autoRun) runtime()?.setInput?.(0, 0);
+    showToast(game.autoRun ? 'Carrera automática activada' : 'Carrera automática desactivada');
+  }
+
+  function checkpointAction(event) {
+    const button = event.target.closest('button[data-action]');
+    const row = event.target.closest('.waftCheckpointRow');
+    if (!button || !row) return;
+    const index = Number(row.dataset.index);
+    const api = runtime();
+    const state = api?.getState?.();
+    if (!api || !state) return;
+    if (button.dataset.action === 'set') {
+      game.checkpoints[index] = { regionId: REGION_ID, x: state.position.x, z: state.position.z, heading: state.playerFacing };
+      showToast('Punto ' + 'ABC'[index] + ' guardado');
+    } else if (button.dataset.action === 'return') {
+      const point = game.checkpoints[index];
+      if (!point) { showToast('Ese punto está vacío'); return; }
+      if (point.regionId !== REGION_ID) { showToast('Ese punto pertenece a ' + REGION_NAMES[point.regionId]); return; }
+      api.setRegionalPosition(point.x, point.z);
+      api.setHeading(point.heading || 0);
+      showToast('Regreso al punto ' + 'ABC'[index]);
+    } else {
+      game.checkpoints[index] = null;
+      showToast('Punto ' + 'ABC'[index] + ' eliminado');
+    }
+    saveGame('checkpoint');
+  }
+
+  function travelToOtherRegion() {
+    const port = PORTS[REGION_ID];
+    if (!port) return;
+    saveGame('regional-departure');
+    try {
+      localStorage.setItem('waft.adventure.0210.pending-arrival', JSON.stringify({
+        target: port.target,
+        from: REGION_ID,
+        createdAt: Date.now()
+      }));
+    } catch {}
+    const url = new URL(location.href);
+    url.searchParams.set('region', port.target);
+    url.searchParams.set('v', BUILD_ID + '-' + Date.now());
+    location.href = url.href;
+  }
+
+  function applyPendingArrival() {
+    if (game.pendingArrivalApplied) return;
+    game.pendingArrivalApplied = true;
+    try {
+      const raw = localStorage.getItem('waft.adventure.0210.pending-arrival');
+      if (!raw) return;
+      const pending = JSON.parse(raw);
+      if (pending.target !== REGION_ID || Date.now() - pending.createdAt > 120000) return;
+      localStorage.removeItem('waft.adventure.0210.pending-arrival');
+      const port = PORTS[REGION_ID];
+      runtime().setRegionalPosition(port.x, port.z);
+      runtime().setHeading(port.heading);
+      showToast('Llegada a ' + port.name);
+    } catch (error) { console.warn(error); }
+  }
+
+  function findPreset(api, terms, fallbackIndex = 0) {
+    const presets = api.metadata?.presets || [];
+    for (const term of terms) {
+      const found = presets.find(item => String(item.id + ' ' + item.name).toLowerCase().includes(term));
+      if (found) return found;
+    }
+    return presets[fallbackIndex] || { x: 0, z: 0, name: 'origen' };
+  }
+
+  function findSurface(api, x, z, kind = 'land') {
+    const desiredLand = kind !== 'water';
+    for (const radius of [0, 1.2, 2.4, 4, 6, 9, 13, 18, 25]) {
+      const samples = radius === 0 ? 1 : 24;
+      for (let index = 0; index < samples; index++) {
+        const angle = index / samples * Math.PI * 2;
+        const px = x + Math.cos(angle) * radius;
+        const pz = z + Math.sin(angle) * radius;
+        const surface = api.sampleSurface(px, pz);
+        if (!surface?.inside) continue;
+        if ((desiredLand && surface.land) || (!desiredLand && surface.water)) return { x: px, z: pz, y: surface.height, surface };
+      }
+    }
+    const surface = api.sampleSurface(x, z);
+    return { x, z, y: surface?.height || 0, surface };
+  }
+
+  function createAnimal(id, type, name, x, z, options = {}) {
+    return {
+      id, type, name, x, z, originX: x, originZ: z,
+      y: 0, yaw: options.yaw || 0, phase: Math.random() * Math.PI * 2,
+      speed: options.speed || 0, radius: options.radius || 3.5,
+      mountable: Boolean(options.mountable), aquatic: Boolean(options.aquatic), flying: Boolean(options.flying),
+      mission: options.mission || null, fleeing: false, fleeTime: 0, hidden: false
+    };
+  }
+
+  function buildAdventurePopulation(api) {
+    const palma = findPreset(api, ['palma'], 0);
+    const llevant = findPreset(api, ['llevant', 'manacor'], 1);
+    const alcudia = findPreset(api, ['alcúdia', 'alcudia'], 2);
+    const menorca = findPreset(api, ['menorca', 'maó', 'mao'], 3);
+    const eivissa = findPreset(api, ['eivissa', 'ibiza'], 4);
+    const positions = [];
+    const land = (base, dx, dz) => findSurface(api, base.x + dx, base.z + dz, 'land');
+    const water = (base, dx, dz) => findSurface(api, base.x + dx, base.z + dz, 'water');
+
+    if (REGION_ID === 'baleares') {
+      const camp = land(llevant, 3.5, -2.5);
+      game.npc = { id: 'aina', name: 'Aina', x: camp.x, z: camp.z, y: camp.y, yaw: .6 };
+      positions.push(
+        ['lizard-mission','lizard','Lagartija balear',land(llevant, 6, -1),{mission:'lizard'}],
+        ['gineta-mission','gineta','Gineta',land(llevant, 12, 7),{mission:'gineta'}],
+        ['myotragus-mission','myotragus','Myotragus balearicus',land(alcudia, -10, 11),{mission:'myotragus'}],
+        ['goat-1','goat','Cabra mallorquina',land(alcudia, 5, -7),{mountable:true,speed:.32}],
+        ['goat-2','goat','Cabra mallorquina',land(alcudia, 8, -4),{mountable:true,speed:.27}],
+        ['cow-1','cow','Vaca menorquina',land(menorca, 5, 4),{mountable:true,speed:.18}],
+        ['pig-1','pig','Porc negre mallorquí',land(llevant, -7, 8),{mountable:true,speed:.22}],
+        ['warbler-1','warbler','Curruca balear',land(eivissa, 5, 3),{flying:true,speed:.42}],
+        ['vulture-1','vulture','Buitre negro',land(alcudia, -14, -8),{flying:true,speed:.34}],
+        ['shark-1','shark','Tintorera',water(palma, 18, 12),{aquatic:true,mountable:true,speed:.34}]
+      );
+    } else {
+      const camp = land(palma, 4, -3);
+      game.npc = { id: 'explorer', name: 'Núria', x: camp.x, z: camp.z, y: camp.y, yaw: -.4 };
+      positions.push(
+        ['goat-cat','goat','Cabra montés',land(alcudia, 8, 5),{mountable:true,speed:.3}],
