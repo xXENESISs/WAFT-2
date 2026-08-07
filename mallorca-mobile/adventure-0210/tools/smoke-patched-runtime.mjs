@@ -57,7 +57,7 @@ for (const test of cases) {
   assert.match(written, /flightFloor/);
   assert.match(written, /adventureFlightFlap/);
   assert.match(written, /state\.yaw \+= dx \* \.0042/);
-  assert.match(written, /gameplay-plugin\.js/);
+  assert.match(written, /plugin-loader\.js/);
 
   const scripts = [...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]).filter(Boolean);
   assert.ok(scripts.length >= 2, `${test.id}: expected runtime + Adventure bootstrap scripts`);
