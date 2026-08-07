@@ -11,7 +11,6 @@
   const replaceOne=(pattern,replacement,label)=>{const before=source;source=source.replace(pattern,replacement);if(source===before)throw new Error('No se pudo restaurar '+label);};
 
   replaceOne('  const plugin = window.WAFTAdventurePlugin = {','  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {','estado Adventure');
-  replaceOne('base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){','base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){','renderizador de fauna');
   replaceOne("    if (animal.type === 'shark' && !state.swimming) { showToast('La tintorera solo puede montarse en el agua'); return; }","    if (animal.type === 'shark' && !api.sampleSurface(animal.x, animal.z)?.water) { showToast('La tintorera debe estar en el agua'); return; }",'monta de tintorera');
   replaceOne("        && (animal.type !== 'shark' || playerState.swimming);","        && (animal.type !== 'shark' || api.sampleSurface(animal.x, animal.z)?.water);",'interacción de tintorera');
   replaceOne("    const visible = playerState.worldMode === 'regional' && distance < 18;","    const visible = playerState.worldMode === 'regional' && distance < 1.6;",'radio de puerto');
@@ -72,7 +71,6 @@
 
   function updateAnimals`,
     'desmontaje de monturas');
-
   replaceOne(
     `    const state = api?.getState?.();
     if (!state) return;
@@ -84,8 +82,11 @@
     'expulsión de tintorera en tierra'
   );
 
+  // Primero unificamos la transformada de montura; después conectamos el renderer externo.
   replaceOne("function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",
     "function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=mounted?a.y:(a.flying?a.y:(surface?.height??a.y)),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",'transformada de montura');
+  replaceOne('base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){','base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){','renderizador de fauna');
+
   replaceOne('  function drawPenguin(r, state, now, mountedOffset=0) {\n    const display=state.displayPosition;\n    const baseY=state.position.y-(state.swimming?.46:.82)+mountedOffset;\n    const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming;',
     `  function drawPenguin(r,state,now,mountedOffset=0,mountType=null){
     const display=state.displayPosition,eyeOffset=mountType==='shark'?0.46:(state.swimming?0.46:0.82);
