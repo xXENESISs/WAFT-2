@@ -9,13 +9,14 @@ const index = fs.readFileSync(path.join(here, 'index.html'), 'utf8');
 const loader = fs.readFileSync(path.join(here, 'plugin-loader.js'), 'utf8');
 const plugin = fs.readFileSync(path.join(here, 'gameplay-plugin.js'), 'utf8');
 const playability = fs.readFileSync(path.join(here, 'playability-0230.js'), 'utf8');
+const mobilePolish = fs.readFileSync(path.join(here, 'mobile-polish-0231.js'), 'utf8');
 const world1Reference = path.join(here, 'reference', 'world1-015-source.html');
 const runtimes = [
   path.join(mobile, 'region-runtime-baleares-013.html'),
   path.join(mobile, 'region-runtime-catalunya-litoral-003.html'),
 ];
 
-assert.match(index, /WAFT Adventure 0\.23\.0/);
+assert.match(index, /WAFT Adventure 0\.23\.1/);
 assert.match(index, /region-runtime-baleares-013\.html/);
 assert.match(index, /region-runtime-catalunya-litoral-003\.html/);
 assert.match(index, /state\.yaw \+= dx \* \.0042/);
@@ -26,25 +27,49 @@ assert.match(index, /adventureFlightFlap/);
 assert.match(index, /flightFloor/);
 assert.match(index, /state\.adventureFlight \|\| !xTerrain\.land/);
 assert.match(index, /plugin-loader\.js/);
-assert.match(index, /__WAFT_ADVENTURE_BUILD__='0\.23\.0'/);
+assert.match(index, /__WAFT_ADVENTURE_BUILD__='0\.23\.1'/);
 
 assert.match(loader, /gameplay-plugin\.js/);
 assert.match(loader, /playability-0230\.js/);
+assert.match(loader, /mobile-polish-0231\.js/);
 assert.match(loader, /__WAFT_INTERNAL_GAME__/);
 assert.match(loader, /WAFTAnimalRenderer0230/);
+assert.match(loader, /distance < 1\.6/);
+assert.match(loader, /api\.sampleSurface\(animal\.x, animal\.z\)\?\.water/);
+assert.match(loader, /⚓/);
 new vm.Script(loader, { filename: 'plugin-loader.js' });
 new vm.Script(plugin, { filename: 'gameplay-plugin.js' });
 new vm.Script(playability, { filename: 'playability-0230.js' });
+new vm.Script(mobilePolish, { filename: 'mobile-polish-0231.js' });
 
 const patchedPlugin = plugin
   .replace('  const plugin = window.WAFTAdventurePlugin = {', '  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {')
   .replace(
     'base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){',
     'base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){'
+  )
+  .replace(
+    "    if (animal.type === 'shark' && !state.swimming) { showToast('La tintorera solo puede montarse en el agua'); return; }",
+    "    if (animal.type === 'shark' && !api.sampleSurface(animal.x, animal.z)?.water) { showToast('La tintorera debe estar en el agua'); return; }"
+  )
+  .replace(
+    "        && (animal.type !== 'shark' || playerState.swimming);",
+    "        && (animal.type !== 'shark' || api.sampleSurface(animal.x, animal.z)?.water);"
+  )
+  .replace(
+    "    const visible = playerState.worldMode === 'regional' && distance < 18;",
+    "    const visible = playerState.worldMode === 'regional' && distance < 1.6;"
+  )
+  .replace(
+    "    button.textContent = 'NAVEGAR A ' + REGION_NAMES[port.target].toUpperCase();",
+    "    button.textContent = '⚓ ' + REGION_NAMES[port.target].toUpperCase();"
   );
 assert.match(patchedPlugin, /__WAFT_INTERNAL_GAME__/);
 assert.match(patchedPlugin, /WAFTAnimalRenderer0230/);
-new vm.Script(patchedPlugin, { filename: 'gameplay-plugin-patched-0230.js' });
+assert.match(patchedPlugin, /distance < 1\.6/);
+assert.match(patchedPlugin, /api\.sampleSurface\(animal\.x, animal\.z\)\?\.water/);
+assert.doesNotMatch(patchedPlugin, /tintorera solo puede montarse en el agua/i);
+new vm.Script(patchedPlugin, { filename: 'gameplay-plugin-patched-0231.js' });
 
 const bootScripts = [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]);
 assert.ok(bootScripts.length >= 1, 'integrated index has no boot script');
@@ -90,6 +115,14 @@ for (const pattern of [
   /#vertical,#help\{display:none!important\}/, /waftDestinations/, /waftRun/, /waftRespawn/
 ]) assert.match(playability, pattern);
 
+for (const pattern of [
+  /PHONE_LANDSCAPE/, /waftMobileMenuButton/, /waft-mobile-menu-open/, /#hudStats,#nearest\{display:none!important\}/,
+  /#joystick\{[^}]*width:84px!important/, /#waftJump\{[^}]*width:60px!important/,
+  /#waftAdventureAction\{[^}]*right:max\(76px/, /#waftMountBadge\{display:none!important\}/,
+  /installSharkRenderer/, /long pointed body/, /vertical caudal fin/, /tailSwing/, /M\.compose\(tailRot/,
+  /__WAFT_MOBILE_POLISH_0231_READY__/
+]) assert.match(mobilePolish, pattern);
+
 const faunaEntries = [...plugin.matchAll(/\['[^']+','(?:lizard|gineta|myotragus|goat|cow|pig|warbler|vulture|shark|rabbit|weasel|salamander)'/g)];
 assert.ok(faunaEntries.length >= 24, `expected at least 24 integrated fauna entries, got ${faunaEntries.length}`);
 for (const type of ['lizard','gineta','myotragus','goat','cow','pig','warbler','vulture','shark','rabbit','weasel','salamander']) {
@@ -104,4 +137,4 @@ if (fs.existsSync(world1Reference)) {
   ]) assert.ok(world1.includes(originalFeature), `World 1 reference lost ${originalFeature}`);
 }
 
-console.log(`WAFT Adventure 0.23.0 validated: exact World 2 runtimes + World 1 gameplay + geographic HUD, port guidance, open-sea region crossing, denser fauna and redesigned animal renderer.`);
+console.log(`WAFT Adventure 0.23.1 validated: mobile landscape HUD compacted, contextual actions cleared from the playfield, shark mounting fixed, port prompt limited to dock range and tintorera silhouette rebuilt.`);
