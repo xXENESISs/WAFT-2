@@ -19,7 +19,7 @@
     if(pd&&Math.hypot(a.x-pd.x,a.z-pd.z)<7)return true;
     const now=performance.now(),cached=visibilityCache.get(a.id);
     if(cached&&now-cached.at<180)return cached.visible;
-    const height=a.type==='vulture'?1.0:(a.type==='cow'?1.1:(a.type==='goat'?.85:.55));
+    const height=a.type==='vulture'?1.0:(a.type==='cow'?1.1:(a.type==='goat'?0.85:0.55));
     const value=api.isAdventureVisible(a.x,(baseY??a.y??0)+height,a.z);
     visibilityCache.set(a.id,{at:now,visible:value});
     return value;
@@ -29,9 +29,9 @@
     const {r,a,now,mounted,drawSphere,drawCylinderPart,M}=ctx;
     const game=window.__WAFT_INTERNAL_GAME__;
     const speed=mounted?Math.min(1.8,(game?.playerSpeed||0)/8):Math.min(.65,Math.max(.15,a.speed||.2)*1.8);
-    const phase=now*(mounted?.014:.0065)+a.phase;
+    const phase=now*(mounted?0.014:0.0065)+a.phase;
     const stride=Math.sin(phase)*Math.min(.58,.18+speed*.34);
-    const bounce=Math.abs(Math.sin(phase*2))*(mounted?.055:.025)*Math.min(1,speed+.2);
+    const bounce=Math.abs(Math.sin(phase*2))*(mounted?0.055:0.025)*Math.min(1,speed+.2);
     const base=M.compose(ctx.base,M.t(0,bounce,0),mounted?M.rx(Math.max(-.22,Math.min(.22,ctx.api.getState?.().terrainPitch||0))):M.identity());
     const fur=[.55,.43,.29],fur2=[.65,.51,.35],dark=[.16,.12,.08],horn=[.74,.68,.54];
     drawSphere(r,base,0,.78,0,.79,.45,1.03,fur);drawSphere(r,base,0,.93,.96,.31,.29,.39,fur2);drawSphere(r,base,0,.84,1.28,.22,.17,.25,[.58,.44,.31]);
