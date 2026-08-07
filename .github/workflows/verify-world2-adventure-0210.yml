@@ -26,9 +26,8 @@ jobs:
       - name: Clone exact branch
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
-      - name: Validate World 1 parity over regional runtimes
+        run: git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: Syntax checks
         working-directory: repo
         run: |
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
@@ -37,6 +36,12 @@ jobs:
           node --check mallorca-mobile/adventure-0210/mobile-polish-0231.js
           node --check mallorca-mobile/adventure-0210/mechanics-0232.js
           node --check mallorca-mobile/adventure-0210/world1-parity-0233.js
-          node mallorca-mobile/adventure-0210/verify.mjs
-          node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
-          node mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
+      - name: Static parity verification
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/verify.mjs
+      - name: Compile patched regional runtimes
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
+      - name: Compile actual gameplay loader output
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
