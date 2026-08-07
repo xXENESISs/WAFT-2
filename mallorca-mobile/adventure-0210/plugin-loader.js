@@ -18,7 +18,6 @@
   replaceOne("    button.textContent = 'NAVEGAR A ' + REGION_NAMES[port.target].toUpperCase();","    button.textContent = '⚓ ' + REGION_NAMES[port.target].toUpperCase();",'etiqueta de puerto');
   replaceOne("const BUILD_ID = window.__WAFT_ADVENTURE_BUILD__ || '0.22.0';","const BUILD_ID = window.__WAFT_ADVENTURE_BUILD__ || '0.23.3';",'build id');
 
-  // Carga idéntica al Mundo 1: MAX y segundo tramo MEGA.
   replaceOne('      const charge = Math.min(1, held / 1250);',"      const charge = Math.max(0, Math.min(2, (held / 1000 - .10) / .88));",'carga de salto');
   replaceOne("      jump.classList.remove('charging');","      jump.classList.remove('charging','maxed','mega');",'feedback de salto');
   replaceOne('        api.setAdventureModifiers({ flightFlap: 3.8 + charge * 6.4 });','        api.setAdventureModifiers({ flightFlap: 3.8 + Math.min(1, charge) * 6.4 });','aleteo');
@@ -32,7 +31,7 @@
       const normalMax=(fromWater?12.15:13.05)*mountBoost,megaMax=(fromWater?21.30:23.55)*mountBoost,minImpulse=(fromWater?5.45:7.25)*mountBoost;
       const impulse=charge<=1?minImpulse+(normalMax-minImpulse)*Math.pow(charge,.72):normalMax+(megaMax-normalMax)*Math.pow(charge-1,.76);
       const special=mounted?.type==='shark'?1.55:mounted?.type==='goat'?1.10:1;
-      const horizontalBoost=((fromWater?1.18:1)+(fromWater?.42:.17)*Math.min(1,charge)+(fromWater?.38:.27)*Math.max(0,charge-1))*special;
+      const horizontalBoost=((fromWater ? 1.18 : 1)+(fromWater ? 0.42 : 0.17)*Math.min(1,charge)+(fromWater ? 0.38 : 0.27)*Math.max(0,charge-1))*special;
       if(api.queueAdventureJump)api.queueAdventureJump(impulse,{horizontalBoost});else{api.setAdventureModifiers({jumpVelocity:impulse});api.jump();setTimeout(()=>api.setAdventureModifiers({jumpVelocity:BASE_SPEEDS.jumpVelocity}),350);}`,
     'curva de salto del Mundo 1'
   );
@@ -49,7 +48,6 @@
     'feedback MAX/MEGA'
   );
 
-  // Monturas: velocidades del Mundo 1 y sin boost permanentemente forzado.
   replaceOne(/    if \(animal\.type === 'vulture'\) \{[\s\S]*?    \} else \{\n      api\.setAdventureModifiers\(\{ runSpeed: 10\.4, swimSpeed: BASE_SPEEDS\.swimSpeed, boost: true, flight: false \}\);\n    \}/,
     `    if(animal.type==='vulture')api.setAdventureModifiers({mountType:'vulture',runSpeed:12.4,swimSpeed:BASE_SPEEDS.swimSpeed,boost:false,flight:true});
     else if(animal.type==='shark')api.setAdventureModifiers({mountType:'shark',runSpeed:BASE_SPEEDS.runSpeed,swimSpeed:18,boost:false,flight:false});
@@ -57,7 +55,6 @@
     else api.setAdventureModifiers({mountType:null,runSpeed:BASE_SPEEDS.runSpeed,swimSpeed:BASE_SPEEDS.swimSpeed,boost:false,flight:false});`,
     'velocidades de montura');
 
-  // Desmontaje seguro: la tintorera vuelve a su último punto de mar si aterriza en tierra.
   replaceOne(/  function dismountAnimal\(\) \{[\s\S]*?\n  \}\n\n  function updateAnimals/,
     `  function dismountAnimal(reason='') {
     const animal=mountedAnimal(),api=runtime(),state=api?.getState?.();
@@ -76,7 +73,6 @@
   function updateAnimals`,
     'desmontaje de monturas');
 
-  // Si el salto de tintorera acaba en tierra, el runtime marca la expulsión y el animal reaparece en el mar.
   replaceOne(
     `    const state = api?.getState?.();
     if (!state) return;
@@ -88,22 +84,21 @@
     'expulsión de tintorera en tierra'
   );
 
-  // Una sola transformada para jinete y montura: el animal ya no queda abajo cuando el pingüino salta.
   replaceOne("function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",
     "function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=mounted?a.y:(a.flying?a.y:(surface?.height??a.y)),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",'transformada de montura');
   replaceOne('  function drawPenguin(r, state, now, mountedOffset=0) {\n    const display=state.displayPosition;\n    const baseY=state.position.y-(state.swimming?.46:.82)+mountedOffset;\n    const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming;',
     `  function drawPenguin(r,state,now,mountedOffset=0,mountType=null){
-    const display=state.displayPosition,eyeOffset=mountType==='shark'?.46:(state.swimming?.46:.82);
+    const display=state.displayPosition,eyeOffset=mountType==='shark'?0.46:(state.swimming?0.46:0.82);
     const baseY=state.position.y-eyeOffset+mountedOffset;
     const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming&&!mountType;`, 'jinete sobre montura');
   replaceOne(
     `        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing };
         drawAnimal(this, visual, now, true);
         drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05);`,
-    `        const mountedEye=mounted.type==='shark'?.46:.82;
+    `        const mountedEye=mounted.type==='shark'?0.46:0.82;
         const visual={...mounted,x:player.position.x,z:player.position.z,y:player.position.y-mountedEye,yaw:player.playerFacing,landed:false,flying:mounted.type==='vulture'};
         drawAnimal(this,visual,now,true);
-        drawPenguin(this,player,now,mounted.type==='shark'?.52:mounted.type==='goat'?.78:.82,mounted.type);`,
+        drawPenguin(this,player,now,mounted.type==='shark'?0.52:(mounted.type==='goat'?0.78:0.82),mounted.type);`,
     'render conjunto de montura'
   );
 
@@ -112,6 +107,5 @@
   (0,eval)(mobileSource+'\n//# sourceURL=waft-adventure-0231-mobile.js');
   (0,eval)(mechanicsSource+'\n//# sourceURL=waft-adventure-0232-mechanics.js');
   (0,eval)(paritySource+'\n//# sourceURL=waft-adventure-0233-parity.js');
-
   const destinations=document.getElementById('waftDestinations');if(destinations){destinations.classList.remove('waft-hide-narrow');if(innerWidth<900)destinations.textContent='MAPA';}
 })().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.3: '+(error?.message||error);});
