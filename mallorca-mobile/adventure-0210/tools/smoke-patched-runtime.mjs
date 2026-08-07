@@ -31,6 +31,10 @@ for(const test of [
   for(const pattern of [
     /state\.yaw -= dx \* \.0053/,
     /Math\.max\(-1\.05, Math\.min\(1\.46, state\.pitch \+ dy \* \.0043\)\)/,
+    /lookUpLift=Math\.max\(0,-state\.pitch\)\*state\.cameraDistance\*\.92/,
+    /minimumDistance=Math\.min\(\.28,desiredDistance\*\.055\)/,
+    /let blocked=false;const steps=40/,
+    /roof=buildingTopAt\(regional\.x,regional\.z,0\)/,
     /gravity: 20\.5/,
     /adventureWaterJump: false/,
     /adventureSharkBreachSpeed: 0/,
@@ -44,10 +48,12 @@ for(const test of [
     /__WAFT_ADVENTURE_BUILD__='0\.23\.3'/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
   assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
+  assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
+  assert.doesNotMatch(written,/const center = \[target\[0\], target\[1\] \+ \.18, target\[2\]\];/);
 
   const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean);
   assert.ok(scripts.length>=2,`${test.id}: expected runtime plus bootstrap`);
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
   console.log(`${test.id}: patched 0.23.3 runtime compiled (${written.length} chars)`);
 }
-console.log('Both World 2 regional runtimes survive the complete 0.23.3 World 1 parity patch.');
+console.log('Both World 2 regional runtimes survive the complete 0.23.3 World 1 parity patch, including sky-look and terrain-aware camera collision.');
