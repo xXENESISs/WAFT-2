@@ -28,6 +28,27 @@
 
   (0, eval)(source + '\n//# sourceURL=waft-adventure-0230-gameplay.js');
   (0, eval)(playabilitySource + '\n//# sourceURL=waft-adventure-0230-playability.js');
+
+  // The desktop layout can afford a full DESTINOS label. On mobile landscape it must remain
+  // reachable without stealing the lower controls, so keep it visible as a compact MAPA button.
+  const destinations = document.getElementById('waftDestinations');
+  if (destinations) {
+    destinations.classList.remove('waft-hide-narrow');
+    if (innerWidth < 900) destinations.textContent = 'MAPA';
+  }
+  const responsiveStyle = document.createElement('style');
+  responsiveStyle.id = 'waftResponsive0230';
+  responsiveStyle.textContent = `
+    @media(max-width:900px){
+      #hud{max-width:29vw!important}
+      #waftAdventureHud{width:29vw!important;max-width:29vw!important}
+      #waftTopActions{max-width:31vw!important}
+      #waftGeoHud{width:32vw!important;min-width:0!important;max-width:32vw!important}
+      #waftPortNav{max-width:34vw!important;overflow:hidden!important;text-overflow:ellipsis!important}
+      #waftDestinations{display:inline-flex!important;align-items:center!important;justify-content:center!important}
+    }
+  `;
+  document.head.appendChild(responsiveStyle);
 })().catch(error => {
   console.error(error);
   window.__WAFT_ADVENTURE_0210_ERROR__ = String(error?.message || error);
