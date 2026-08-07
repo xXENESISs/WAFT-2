@@ -39,3 +39,4 @@ jobs:
           node --check mallorca-mobile/adventure-0210/world1-parity-0233.js
           node mallorca-mobile/adventure-0210/verify.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
+          node mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
