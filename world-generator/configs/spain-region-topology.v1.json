@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "status": "design-topology",
+  "purpose": "Technical streaming regions for WAFT. Boundaries are transition corridors, not administrative walls. Ecological zones remain finer-grained than these regions.",
+  "rules": {
+    "noProvincePerRuntime": true,
+    "transitionsPreservePlayerState": true,
+    "transitionCorridorsPreferNaturalGeography": true,
+    "ecologyIndependentFromTechnicalRegion": true,
+    "islandsMayUseDedicatedRegions": true
+  },
+  "regions": [
+    {
+      "id": "baleares",
+      "name": "Illes Balears",
+      "status": "implemented",
+      "contains": ["Mallorca", "Menorca", "Eivissa", "Formentera", "Cabrera", "illots"],
+      "neighbors": ["catalunya-litoral", "levante"]
+    },
+    {
+      "id": "catalunya-litoral",
+      "name": "Nord-est mediterrani / Catalunya",
+      "status": "implemented-partial",
+      "contains": ["Barcelona", "Vallès", "Maresme", "Garraf", "Montserrat", "Montseny", "Catalunya Central", "Girona", "Costa Brava", "Tarragona", "Costa Daurada"],
+      "transitionCorridors": {
+        "north": "pirineus-orientals",
+        "west": "ebro-interior",
+        "south": "levante",
+        "sea": "baleares"
+      },
+      "neighbors": ["pirineus", "ebro-interior", "levante", "baleares"]
+    },
+    {
+      "id": "pirineus",
+      "name": "Pirineus",
+      "status": "planned",
+      "contains": ["Pirineu català", "Pirineu aragonès", "Pirineu navarrès"],
+      "neighbors": ["catalunya-litoral", "ebro-interior", "cantabrico-galicia", "france-south"]
+    },
+    {
+      "id": "ebro-interior",
+      "name": "Vall de l'Ebre i nord-est interior",
+      "status": "planned",
+      "contains": ["Lleida occidental", "Aragó central", "Ribera de l'Ebre interior", "Navarra meridional"],
+      "neighbors": ["catalunya-litoral", "pirineus", "meseta-norte", "centro-meseta", "levante"]
+    },
+    {
+      "id": "levante",
+      "name": "Llevant peninsular",
+      "status": "planned",
+      "contains": ["Castelló", "València", "Alacant", "Múrcia"],
+      "neighbors": ["catalunya-litoral", "ebro-interior", "centro-meseta", "andalucia-sureste", "baleares"]
+    },
+    {
+      "id": "cantabrico-galicia",
+      "name": "Cantàbric i Galícia",
+      "status": "planned",
+      "contains": ["Galícia", "Astúries", "Cantàbria", "Euskadi atlàntic"],
+      "neighbors": ["pirineus", "meseta-norte", "portugal-north"]
+    },
+    {
+      "id": "meseta-norte",
+      "name": "Meseta Nord",
+      "status": "planned",
+      "contains": ["Castella i Lleó", "Sistema Central nord"],
+      "neighbors": ["cantabrico-galicia", "ebro-interior", "centro-meseta", "portugal-north"]
+    },
+    {
+      "id": "centro-meseta",
+      "name": "Centre i Meseta Sud",
+      "status": "planned",
+      "contains": ["Madrid", "Castella-La Manxa", "Extremadura oriental", "Sistema Central sud"],
+      "neighbors": ["meseta-norte", "ebro-interior", "levante", "andalucia-sureste", "portugal-center"]
+    },
+    {
+      "id": "andalucia-sureste",
+      "name": "Andalusia i sud-est",
+      "status": "planned",
+      "contains": ["Andalusia", "Sierra Morena", "Bètiques", "litoral andalús"],
+      "neighbors": ["centro-meseta", "levante", "portugal-south", "gibraltar-north-africa"]
+    },
+    {
+      "id": "canarias",
+      "name": "Canàries",
+      "status": "planned-island-region",
+      "contains": ["Tenerife", "Gran Canaria", "Lanzarote", "Fuerteventura", "La Palma", "La Gomera", "El Hierro", "La Graciosa"],
+      "neighbors": []
+    }
+  ]
+}
