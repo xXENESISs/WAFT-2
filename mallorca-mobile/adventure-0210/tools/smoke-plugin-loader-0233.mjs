@@ -26,7 +26,7 @@ const context={
 context.window=context;context.globalThis=context;vm.createContext(context);
 new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
 for(let i=0;i<100&&captured.length<6&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
-if(errors.length){console.log(`::error title=Loader0234::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
+if(errors.length){console.log(`::error title=Loader0235::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
 assert.equal(captured.length,6,'loader should produce gameplay + five support modules');
 
 for(const [index,source] of captured.entries()){
@@ -60,8 +60,11 @@ for(const pattern of [
   /towardKm>=8/,
   /seaWaterKm>=10/,
   /target:'catalunya-litoral'/,
-  /corridor-0234/,
-  /__WAFT_NAVIGATION_0234_READY__/
+  /corridor-0235/,
+  /STORAGE_CONTINUITY/,
+  /pending\.mountType==='shark'/,
+  /__WAFT_NAVIGATION_0234_READY__/,
+  /__WAFT_NAVIGATION_0235_CONTINUITY_READY__/
 ])assert.match(navigation,pattern,`navigation layer missing ${pattern}`);
 
-console.log('Actual 0.23.4 plugin-loader transformations compile, preserve unified mount physics, and load Barcelona sea navigation/place labels.');
+console.log('Actual 0.23.5 plugin-loader transformations compile, preserve unified mount physics, and load Barcelona sea continuity/place labels.');
