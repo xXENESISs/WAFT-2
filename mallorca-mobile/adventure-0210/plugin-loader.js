@@ -1,13 +1,13 @@
 'use strict';
 (async () => {
   const script=document.currentScript;
-  const version=new URL(script.src).searchParams.get('v')||'0.23.3';
-  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
+  const version=new URL(script.src).searchParams.get('v')||'0.23.4';
+  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
   const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'})));
-  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3'];
+  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3','navegación 0.23.4'];
   responses.forEach((response,i)=>{if(!response.ok)throw new Error(`${response.status} al cargar ${labels[i]}`);});
   let source=await responses[0].text();
-  const [playabilitySource,mobileSource,mechanicsSource,paritySource]=await Promise.all(responses.slice(1).map(r=>r.text()));
+  const [playabilitySource,mobileSource,mechanicsSource,paritySource,navigationSource]=await Promise.all(responses.slice(1).map(r=>r.text()));
   const replaceOne=(pattern,replacement,label)=>{const before=source;source=source.replace(pattern,replacement);if(source===before)throw new Error('No se pudo restaurar '+label);};
 
   replaceOne('  const plugin = window.WAFTAdventurePlugin = {','  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {','estado Adventure');
@@ -82,7 +82,6 @@
     'expulsión de tintorera en tierra'
   );
 
-  // Primero unificamos la transformada de montura; después conectamos el renderer externo.
   replaceOne("function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",
     "function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=mounted?a.y:(a.flying?a.y:(surface?.height??a.y)),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",'transformada de montura');
   replaceOne('base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){','base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){','renderizador de fauna');
@@ -108,5 +107,6 @@
   (0,eval)(mobileSource+'\n//# sourceURL=waft-adventure-0231-mobile.js');
   (0,eval)(mechanicsSource+'\n//# sourceURL=waft-adventure-0232-mechanics.js');
   (0,eval)(paritySource+'\n//# sourceURL=waft-adventure-0233-parity.js');
+  (0,eval)(navigationSource+'\n//# sourceURL=waft-adventure-0234-navigation.js');
   const destinations=document.getElementById('waftDestinations');if(destinations){destinations.classList.remove('waft-hide-narrow');if(innerWidth<900)destinations.textContent='MAPA';}
-})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.3: '+(error?.message||error);});
+})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.4: '+(error?.message||error);});

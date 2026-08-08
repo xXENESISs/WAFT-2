@@ -11,7 +11,8 @@ const files=new Map([
   ['playability-0230.js',fs.readFileSync(path.join(adventure,'playability-0230.js'),'utf8')],
   ['mobile-polish-0231.js',fs.readFileSync(path.join(adventure,'mobile-polish-0231.js'),'utf8')],
   ['mechanics-0232.js',fs.readFileSync(path.join(adventure,'mechanics-0232.js'),'utf8')],
-  ['world1-parity-0233.js',fs.readFileSync(path.join(adventure,'world1-parity-0233.js'),'utf8')]
+  ['world1-parity-0233.js',fs.readFileSync(path.join(adventure,'world1-parity-0233.js'),'utf8')],
+  ['navigation-0234.js',fs.readFileSync(path.join(adventure,'navigation-0234.js'),'utf8')]
 ]);
 const captured=[],errors=[];
 const testConsole={...console,error:(...args)=>{errors.push(args.map(value=>value?.stack||value?.message||String(value)).join(' '));console.error(...args);}};
@@ -24,9 +25,9 @@ const context={
 };
 context.window=context;context.globalThis=context;vm.createContext(context);
 new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
-for(let i=0;i<100&&captured.length<5&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
-if(errors.length){console.log(`::error title=Loader0233::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
-assert.equal(captured.length,5,'loader should produce gameplay + four support modules');
+for(let i=0;i<100&&captured.length<6&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
+if(errors.length){console.log(`::error title=Loader0234::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
+assert.equal(captured.length,6,'loader should produce gameplay + five support modules');
 
 for(const [index,source] of captured.entries()){
   try{new vm.Script(source,{filename:`loader-output-${index}.js`});}
@@ -48,4 +49,19 @@ for(const pattern of [
   /¡MEGA!/
 ])assert.match(gameplay,pattern,`patched gameplay missing ${pattern}`);
 assert.doesNotMatch(gameplay,/baseY=a\.flying\?a\.y:\(surface\?\.height\?\?a\.y\)/,'mounted animal still snaps to surface');
-console.log('Actual 0.23.3 plugin-loader transformations compile and preserve unified mount physics.');
+
+const navigation=captured[5];
+for(const pattern of [
+  /TARGET_BCN/,
+  /manual-orient/,
+  /waftPlaceHud/,
+  /waftBarcelonaRoute/,
+  /openWaterToward/,
+  /towardKm>=8/,
+  /seaWaterKm>=10/,
+  /target:'catalunya-litoral'/,
+  /corridor-0234/,
+  /__WAFT_NAVIGATION_0234_READY__/
+])assert.match(navigation,pattern,`navigation layer missing ${pattern}`);
+
+console.log('Actual 0.23.4 plugin-loader transformations compile, preserve unified mount physics, and load Barcelona sea navigation/place labels.');
