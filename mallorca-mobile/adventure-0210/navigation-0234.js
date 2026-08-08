@@ -189,8 +189,8 @@
     const towardKm=Math.max(0,route.seaStartDistance-route.seaBestDistance);
     const open=openWaterToward(api,state,toBcn.bearing),aligned=angleDifference(heading,toBcn.bearing)<=58;
     const elapsed=performance.now()-route.seaStartedAt;
-    const progress=Math.min(12,towardKm);
-    if(!route.seaLoading&&REGION_ID==='baleares'&&open&&aligned&&elapsed>=8000&&towardKm>=8&&route.seaWaterKm>=10){beginBarcelonaCrossing(api,state,toBcn.bearing);}
+    const progress=Math.min(1,towardKm);
+    if(!route.seaLoading&&REGION_ID==='baleares'&&open&&aligned&&towardKm>=.65&&route.seaWaterKm>=.8){beginBarcelonaCrossing(api,state,toBcn.bearing);}
     return {inWater:true,open,aligned,progress,towardKm,waterKm:route.seaWaterKm,elapsed};
   }
 
@@ -253,7 +253,7 @@
       if(!sea.inWater)nav.textContent=`${arrow} BARCELONA · ${Math.round(toBcn.distance)} km ${cardinal} · entra al mar para cruzar`;
       else if(!sea.open)nav.textContent=`${arrow} BARCELONA · ${Math.round(toBcn.distance)} km · bordea la costa hasta tener mar abierto`;
       else if(!sea.aligned)nav.textContent=`${arrow} BARCELONA · gira hacia ${cardinal} · mar abierto`;
-      else nav.textContent=`${arrow} BARCELONA · MAR ABIERTO ${sea.progress.toFixed(1)}/12 km · sigue ${cardinal}`;
+      else nav.textContent=`${arrow} BARCELONA · MAR ABIERTO ${sea.progress.toFixed(1)}/1.0 km · sigue ${cardinal}`;
     }else{
       if(toBcn.distance<1.5)nav.textContent='★ BARCELONA · HAS LLEGADO';
       else nav.textContent=`${arrow} BARCELONA · ${toBcn.distance<10?toBcn.distance.toFixed(1):Math.round(toBcn.distance)} km ${cardinal} · continúa hasta la costa`;
