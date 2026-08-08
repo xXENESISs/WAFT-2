@@ -1,13 +1,13 @@
 'use strict';
 (async () => {
   const script=document.currentScript;
-  const version=new URL(script.src).searchParams.get('v')||'0.23.4';
-  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
+  const version=new URL(script.src).searchParams.get('v')||'0.23.6';
+  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js','multimodal-crossing-0236.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
   const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'})));
-  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3','navegación 0.23.4'];
+  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3','navegación 0.23.4','cruce multimodal 0.23.6'];
   responses.forEach((response,i)=>{if(!response.ok)throw new Error(`${response.status} al cargar ${labels[i]}`);});
   let source=await responses[0].text();
-  const [playabilitySource,mobileSource,mechanicsSource,paritySource,navigationSource]=await Promise.all(responses.slice(1).map(r=>r.text()));
+  const [playabilitySource,mobileSource,mechanicsSource,paritySource,navigationSource,multimodalSource]=await Promise.all(responses.slice(1).map(r=>r.text()));
   const replaceOne=(pattern,replacement,label)=>{const before=source;source=source.replace(pattern,replacement);if(source===before)throw new Error('No se pudo restaurar '+label);};
 
   replaceOne('  const plugin = window.WAFTAdventurePlugin = {','  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {','estado Adventure');
@@ -108,5 +108,6 @@
   (0,eval)(mechanicsSource+'\n//# sourceURL=waft-adventure-0232-mechanics.js');
   (0,eval)(paritySource+'\n//# sourceURL=waft-adventure-0233-parity.js');
   (0,eval)(navigationSource+'\n//# sourceURL=waft-adventure-0234-navigation.js');
+  (0,eval)(multimodalSource+'\n//# sourceURL=waft-adventure-0236-multimodal-crossing.js');
   const destinations=document.getElementById('waftDestinations');if(destinations){destinations.classList.remove('waft-hide-narrow');if(innerWidth<900)destinations.textContent='MAPA';}
-})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.4: '+(error?.message||error);});
+})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.6: '+(error?.message||error);});
