@@ -1,13 +1,13 @@
 'use strict';
 (async () => {
   const script=document.currentScript;
-  const version=new URL(script.src).searchParams.get('v')||'0.23.8';
-  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js','multimodal-crossing-0236.js','bidirectional-crossing-0237.js','barcelona-playability-0238.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
+  const version=new URL(script.src).searchParams.get('v')||'0.23.9';
+  const urls=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js','multimodal-crossing-0236.js','bidirectional-crossing-0237.js','barcelona-playability-0238.js','ecology-0239.js'].map(name=>{const url=new URL(name,script.src);url.searchParams.set('v',version);return url;});
   const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'})));
-  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3','navegación 0.23.4','cruce multimodal 0.23.6','retorno bidireccional 0.23.7','Barcelona jugable 0.23.8'];
+  const labels=['Adventure','jugabilidad','capa móvil','mecánicas 0.23.2','paridad Mundo 1 0.23.3','navegación 0.23.4','cruce multimodal 0.23.6','retorno bidireccional 0.23.7','Barcelona jugable 0.23.8','ecología y fauna 0.23.9'];
   responses.forEach((response,i)=>{if(!response.ok)throw new Error(`${response.status} al cargar ${labels[i]}`);});
   let source=await responses[0].text();
-  const [playabilitySource,mobileSource,mechanicsSource,paritySource,navigationSource,multimodalSource,bidirectionalSource,barcelonaSource]=await Promise.all(responses.slice(1).map(r=>r.text()));
+  const [playabilitySource,mobileSource,mechanicsSource,paritySource,navigationSource,multimodalSource,bidirectionalSource,barcelonaSource,ecologySource]=await Promise.all(responses.slice(1).map(r=>r.text()));
   const replaceOne=(pattern,replacement,label)=>{const before=source;source=source.replace(pattern,replacement);if(source===before)throw new Error('No se pudo restaurar '+label);};
 
   replaceOne('  const plugin = window.WAFTAdventurePlugin = {','  window.__WAFT_INTERNAL_GAME__ = game;\n  const plugin = window.WAFTAdventurePlugin = {','estado Adventure');
@@ -111,5 +111,6 @@
   (0,eval)(multimodalSource+'\n//# sourceURL=waft-adventure-0236-multimodal-crossing.js');
   (0,eval)(bidirectionalSource+'\n//# sourceURL=waft-adventure-0237-bidirectional-crossing.js');
   (0,eval)(barcelonaSource+'\n//# sourceURL=waft-adventure-0238-barcelona-playability.js');
+  (0,eval)(ecologySource+'\n//# sourceURL=waft-adventure-0239-ecology.js');
   const destinations=document.getElementById('waftDestinations');if(destinations){destinations.classList.remove('waft-hide-narrow');if(innerWidth<900)destinations.textContent='MAPA';}
-})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.8: '+(error?.message||error);});
+})().catch(error=>{console.error(error);window.__WAFT_ADVENTURE_0210_ERROR__=String(error?.message||error);const status=document.getElementById('loadText')||document.getElementById('status');if(status)status.textContent='Falló Adventure 0.23.9: '+(error?.message||error);});
