@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.23.8
+name: Verify World 2 Adventure 0.23.9
 
 on:
   push:
@@ -15,11 +15,13 @@ on:
       - agent/multimodal-barcelona-crossing-0236
       - agent/bidirectional-barcelona-return-0237
       - agent/barcelona-playability-0238
+      - agent/ecozones-fauna-0239
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
       - mallorca-mobile/region-runtime-baleares-013.html
       - mallorca-mobile/region-runtime-catalunya-litoral-003.html
+      - world-generator/configs/spain-region-topology.v1.json
       - .github/workflows/verify-world2-adventure-0210.yml
   workflow_dispatch:
 
@@ -47,11 +49,14 @@ jobs:
           node --check mallorca-mobile/adventure-0210/multimodal-crossing-0236.js
           node --check mallorca-mobile/adventure-0210/bidirectional-crossing-0237.js
           node --check mallorca-mobile/adventure-0210/barcelona-playability-0238.js
+          node --check mallorca-mobile/adventure-0210/ecology-0239.js
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
-          node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0239.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-bidirectional-0237.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-barcelona-0238.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
+          node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/spain-region-topology.v1.json','utf8'))"
       - name: Static parity verification
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/verify.mjs
@@ -60,7 +65,7 @@ jobs:
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
       - name: Compile actual gameplay loader output
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
+        run: node mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0239.mjs
       - name: Verify navigation continuity
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
@@ -73,3 +78,6 @@ jobs:
       - name: Verify Barcelona playability
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-barcelona-0238.mjs
+      - name: Verify ecological zones and fauna placement
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
