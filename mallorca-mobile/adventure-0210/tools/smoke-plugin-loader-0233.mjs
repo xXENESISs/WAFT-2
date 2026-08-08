@@ -57,8 +57,8 @@ for(const pattern of [
   /waftPlaceHud/,
   /waftBarcelonaRoute/,
   /openWaterToward/,
-  /towardKm>=8/,
-  /seaWaterKm>=10/,
+  /towardKm>=\.65/,
+  /seaWaterKm>=\.8/,
   /target:'catalunya-litoral'/,
   /corridor-0235/,
   /STORAGE_CONTINUITY/,
@@ -66,5 +66,6 @@ for(const pattern of [
   /__WAFT_NAVIGATION_0234_READY__/,
   /__WAFT_NAVIGATION_0235_CONTINUITY_READY__/
 ])assert.match(navigation,pattern,`navigation layer missing ${pattern}`);
+assert.doesNotMatch(navigation,/elapsed>=8000/,'loader output must not restore the old terrain-edge race');
 
-console.log('Actual 0.23.5 plugin-loader transformations compile, preserve unified mount physics, and load Barcelona sea continuity/place labels.');
+console.log('Actual 0.23.5 plugin-loader transformations compile, preserve unified mount physics, and transition to Catalunya before the Baleares terrain edge.');

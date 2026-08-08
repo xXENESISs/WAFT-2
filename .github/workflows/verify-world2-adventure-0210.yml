@@ -11,6 +11,7 @@ on:
       - agent/mobile-stability-performance-hotfix
       - agent/barcelona-swim-place-labels-0234
       - agent/barcelona-continuity-0235
+      - agent/barcelona-corridor-edge-hotfix
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
