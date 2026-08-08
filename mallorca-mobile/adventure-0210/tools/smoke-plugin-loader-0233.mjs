@@ -13,7 +13,8 @@ const files=new Map([
   ['mechanics-0232.js',fs.readFileSync(path.join(adventure,'mechanics-0232.js'),'utf8')],
   ['world1-parity-0233.js',fs.readFileSync(path.join(adventure,'world1-parity-0233.js'),'utf8')],
   ['navigation-0234.js',fs.readFileSync(path.join(adventure,'navigation-0234.js'),'utf8')],
-  ['multimodal-crossing-0236.js',fs.readFileSync(path.join(adventure,'multimodal-crossing-0236.js'),'utf8')]
+  ['multimodal-crossing-0236.js',fs.readFileSync(path.join(adventure,'multimodal-crossing-0236.js'),'utf8')],
+  ['bidirectional-crossing-0237.js',fs.readFileSync(path.join(adventure,'bidirectional-crossing-0237.js'),'utf8')]
 ]);
 const captured=[],errors=[];
 const testConsole={...console,error:(...args)=>{errors.push(args.map(value=>value?.stack||value?.message||String(value)).join(' '));console.error(...args);}};
@@ -26,9 +27,9 @@ const context={
 };
 context.window=context;context.globalThis=context;vm.createContext(context);
 new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
-for(let i=0;i<100&&captured.length<7&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
-if(errors.length){console.log(`::error title=Loader0236::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
-assert.equal(captured.length,7,'loader should produce gameplay + six support modules');
+for(let i=0;i<100&&captured.length<8&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
+if(errors.length){console.log(`::error title=Loader0237::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
+assert.equal(captured.length,8,'loader should produce gameplay + seven support modules');
 
 for(const [index,source] of captured.entries()){
   try{new vm.Script(source,{filename:`loader-output-${index}.js`});}
@@ -80,4 +81,20 @@ for(const pattern of [
   /__WAFT_MULTIMODAL_CROSSING_0236_READY__/
 ])assert.match(multimodal,pattern,`multimodal layer missing ${pattern}`);
 
-console.log('Actual 0.23.6 plugin-loader output compiles and supports both sea and vulture crossings from Baleares to Catalunya.');
+const bidirectional=captured[7];
+for(const pattern of [
+  /TARGET_MALLORCA/,
+  /target:'baleares'/,
+  /from:'catalunya-litoral'/,
+  /sea-corridor-0237/,
+  /air-corridor-0237/,
+  /STORAGE_SEA/,
+  /STORAGE_AIR/,
+  /MEDITERRANI OCCIDENTAL → MAR BALEAR/,
+  /CORREDOR AÉREO CATALUNYA → BALEARES/,
+  /towardKm>=\.65/,
+  /crossing\.travelKm>=\.8/,
+  /__WAFT_BIDIRECTIONAL_CROSSING_0237_READY__/
+])assert.match(bidirectional,pattern,`bidirectional layer missing ${pattern}`);
+
+console.log('Actual 0.23.7 plugin-loader output compiles and supports sea and vulture crossings in both directions between Baleares and Catalunya.');
