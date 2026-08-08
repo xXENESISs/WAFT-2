@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.23.6
+name: Verify World 2 Adventure 0.23.7
 
 on:
   push:
@@ -13,6 +13,7 @@ on:
       - agent/barcelona-continuity-0235
       - agent/barcelona-corridor-edge-hotfix
       - agent/multimodal-barcelona-crossing-0236
+      - agent/bidirectional-barcelona-return-0237
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -43,9 +44,11 @@ jobs:
           node --check mallorca-mobile/adventure-0210/world1-parity-0233.js
           node --check mallorca-mobile/adventure-0210/navigation-0234.js
           node --check mallorca-mobile/adventure-0210/multimodal-crossing-0236.js
+          node --check mallorca-mobile/adventure-0210/bidirectional-crossing-0237.js
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-bidirectional-0237.mjs
       - name: Static parity verification
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/verify.mjs
@@ -61,3 +64,6 @@ jobs:
       - name: Verify multimodal Barcelona crossing
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
+      - name: Verify bidirectional Mallorca return
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/smoke-bidirectional-0237.mjs
