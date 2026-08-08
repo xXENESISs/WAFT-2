@@ -4,14 +4,15 @@
   const TARGET_BCN = { lat: 41.3554, lon: 2.1703, name: 'Barcelona' };
   const STORAGE_ROUTE = 'waft.adventure.0234.route-bcn';
   const STORAGE_ARRIVAL = 'waft.adventure.0230.sea-arrival';
+  const STORAGE_CONTINUITY = 'waft.adventure.0235.sea-continuity';
   const PROJECTIONS = {
     baleares: {
       origin: { lat: 39.6, lon: 2.9 }, kmPerDegreeLat: 111.132, kmPerDegreeLon: 85.77353418580084, unitsPerKm: 5,
       compression: .76,
       anchors: [
-        { id:'mallorca', lat:39.65, lon:2.9 }, { id:'menorca', lat:39.97, lon:4.08 },
-        { id:'ibiza', lat:38.98, lon:1.43 }, { id:'formentera', lat:38.7, lon:1.47 },
-        { id:'cabrera', lat:39.15, lon:2.95 }
+        { id:'mallorca', name:'Mallorca', lat:39.65, lon:2.9 }, { id:'menorca', name:'Menorca', lat:39.97, lon:4.08 },
+        { id:'ibiza', name:'Ibiza', lat:38.98, lon:1.43 }, { id:'formentera', name:'Formentera', lat:38.7, lon:1.47 },
+        { id:'cabrera', name:'Cabrera', lat:39.15, lon:2.95 }
       ]
     },
     'catalunya-litoral': {
@@ -31,6 +32,7 @@
     places: [],
     placeLoaded: false,
     lastPlaceUpdate: 0,
+    lastEnteredPlace: null,
     seaActive: false,
     seaStartedAt: 0,
     seaStartDistance: Infinity,
@@ -86,6 +88,17 @@
     const y=Math.sin(dl)*Math.cos(p2),x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
     return {distance,bearing:normDeg(deg(Math.atan2(y,x)))};
   }
+  function areaLabel(geo){
+    if(REGION_ID!=='baleares')return 'Catalunya';
+    let best=null;
+    for(const anchor of PROJECTIONS.baleares.anchors){const info=geoDistanceBearing(geo,anchor);if(!best||info.distance<best.distance)best={name:anchor.name,distance:info.distance};}
+    return best&&best.distance<=62?best.name:'Baleares';
+  }
+  function toast(text){
+    const el=document.getElementById('waftToast')||document.getElementById('waftPlayToast');
+    if(!el)return;
+    el.textContent=text;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2600);
+  }
 
   function installUi(){
     if(document.getElementById('waftNavigation0234Style'))return;
@@ -111,7 +124,7 @@
       const nav=document.createElement('div');nav.id='waftBcnNav';nav.textContent='Barcelona · calculando rumbo…';document.body.appendChild(nav);
     }
     if(!document.getElementById('waftSeaLoading')){
-      const loading=document.createElement('div');loading.id='waftSeaLoading';loading.innerHTML='<div><b>MAR ABIERTO</b><span>Dejando Baleares atrás…<br>cargando el corredor hacia Catalunya.</span></div>';document.body.appendChild(loading);
+      const loading=document.createElement('div');loading.id='waftSeaLoading';loading.innerHTML='<div><b>MAR BALEAR → MEDITERRANI OCCIDENTAL</b><span>La ruta continúa en mar abierto…<br>conservando rumbo y estado de la expedición.</span></div>';document.body.appendChild(loading);
     }
     const top=document.getElementById('waftTopActions');
     if(top&&!document.getElementById('waftBarcelonaRoute')){
@@ -132,7 +145,7 @@
       const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(String(response.status));
       const data=await response.json();const items=Array.isArray(data?.items)?data.items:[];
       route.places=items.filter(item=>item?.name&&Number.isFinite(Number(item?.position?.lat))&&Number.isFinite(Number(item?.position?.lon))).map(item=>({name:item.name,place:item.place||'settlement',position:{lat:Number(item.position.lat),lon:Number(item.position.lon)}}));
-    }catch(error){console.warn('WAFT 0.23.4 settlements unavailable',error);route.places=[];}
+    }catch(error){console.warn('WAFT 0.23.5 settlements unavailable',error);route.places=[];}
     for(const extra of EXTRA_PLACES[REGION_ID]||[]){if(!route.places.some(item=>item.name===extra.name))route.places.push(extra);}
     route.placeLoaded=true;
   }
@@ -142,10 +155,13 @@
     if(!route.placeLoaded){el.textContent='Localizando población…';return;}
     let best=null;
     for(const place of route.places){const info=geoDistanceBearing(geo,place.position);if(!best||info.distance<best.distance)best={...place,...info};}
-    if(!best){el.textContent=REGION_ID==='baleares'?'Baleares':'Catalunya litoral';return;}
-    if(best.distance<.9)el.textContent=best.name.toUpperCase();
-    else if(best.distance<8)el.textContent=`Cerca de ${best.name} · ${best.distance.toFixed(1)} km`;
-    else el.textContent=`${best.name} · ${Math.round(best.distance)} km ${compassName(best.bearing)}`;
+    const area=areaLabel(geo);
+    if(!best){el.textContent=area;return;}
+    if(best.distance<.9)el.textContent=`${best.name.toUpperCase()} · ${area}`;
+    else if(best.distance<8)el.textContent=`Cerca de ${best.name} · ${best.distance.toFixed(1)} km · ${area}`;
+    else el.textContent=`${best.name} · ${Math.round(best.distance)} km ${compassName(best.bearing)} · ${area}`;
+    if(best.distance<1.15&&route.lastEnteredPlace!==best.name){route.lastEnteredPlace=best.name;toast(`${best.name.toUpperCase()} · ${area}`);}
+    else if(best.distance>=2&&route.lastEnteredPlace===best.name)route.lastEnteredPlace=null;
   }
 
   function openWaterToward(api,state,bearing){
@@ -174,18 +190,59 @@
     const open=openWaterToward(api,state,toBcn.bearing),aligned=angleDifference(heading,toBcn.bearing)<=58;
     const elapsed=performance.now()-route.seaStartedAt;
     const progress=Math.min(12,towardKm);
-    if(!route.seaLoading&&REGION_ID==='baleares'&&open&&aligned&&elapsed>=8000&&towardKm>=8&&route.seaWaterKm>=10){beginBarcelonaCrossing(toBcn.bearing);}
+    if(!route.seaLoading&&REGION_ID==='baleares'&&open&&aligned&&elapsed>=8000&&towardKm>=8&&route.seaWaterKm>=10){beginBarcelonaCrossing(api,state,toBcn.bearing);}
     return {inWater:true,open,aligned,progress,towardKm,waterKm:route.seaWaterKm,elapsed};
   }
 
-  function beginBarcelonaCrossing(bearing){
+  function mountedType(state){
+    if(state?.adventureMountType)return state.adventureMountType;
+    const game=window.__WAFT_INTERNAL_GAME__,mounted=game?.animals?.find?.(item=>item.id===game.mountedAnimalId);
+    return mounted?.type||null;
+  }
+
+  function beginBarcelonaCrossing(api,state,bearing){
     if(route.seaLoading)return;route.seaLoading=true;
+    const createdAt=Date.now(),mountType=mountedType(state),boost=Boolean(state?.boost),speed=Math.max(0,Number(state?.adventureCurrentSpeed)||0);
     try{window.WAFTAdventure?.save?.();}catch{}
-    try{localStorage.setItem(STORAGE_ARRIVAL,JSON.stringify({target:'catalunya-litoral',from:'baleares',bearing,mode:'corridor-0234',createdAt:Date.now()}));}catch{}
+    try{
+      localStorage.setItem(STORAGE_ARRIVAL,JSON.stringify({target:'catalunya-litoral',from:'baleares',bearing,mode:'corridor-0235',createdAt}));
+      localStorage.setItem(STORAGE_CONTINUITY,JSON.stringify({target:'catalunya-litoral',from:'baleares',bearing,mountType,boost,speed,mode:'corridor-0235',createdAt}));
+    }catch{}
     document.getElementById('waftSeaLoading')?.classList.add('visible');
     setTimeout(()=>{
-      const url=new URL(location.href);url.searchParams.set('region','catalunya-litoral');url.searchParams.set('v',`0234-bcn-${Date.now()}`);location.href=url.href;
+      const url=new URL(location.href);url.searchParams.set('region','catalunya-litoral');url.searchParams.set('v',`0235-bcn-${Date.now()}`);location.href=url.href;
     },720);
+  }
+
+  async function restoreCrossingContinuity(api){
+    let pending=null;
+    try{pending=JSON.parse(localStorage.getItem(STORAGE_CONTINUITY)||'null');}catch{}
+    if(!pending||pending.target!==REGION_ID||Date.now()-Number(pending.createdAt||0)>180000)return;
+    for(let i=0;i<120;i++){
+      let arrivalPending=false;try{arrivalPending=Boolean(localStorage.getItem(STORAGE_ARRIVAL));}catch{}
+      if(!arrivalPending)break;
+      await new Promise(resolve=>setTimeout(resolve,25));
+    }
+    const game=window.__WAFT_INTERNAL_GAME__,state=api?.getState?.();
+    if(!game||!state)return;
+    const boost=Boolean(pending.boost);
+    if(pending.mountType==='shark'){
+      const surface=api.sampleSurface(state.position.x,state.position.z);
+      const shark=game.animals?.find?.(animal=>animal.type==='shark'&&animal.mountable)||game.animals?.find?.(animal=>animal.type==='shark');
+      if(shark&&surface?.water){
+        game.mountedAnimalId=shark.id;shark.hidden=true;shark.x=state.position.x;shark.z=state.position.z;shark.y=(surface.waterHeight??state.position.y)-.68;shark.originX=shark.x;shark.originZ=shark.z;
+        api.setAdventureModifiers?.({mountType:'shark',runSpeed:7.2,swimSpeed:18,boost,flight:false});
+        const badge=document.getElementById('waftMountBadge');if(badge){badge.classList.add('visible');badge.textContent='MONTURA · TINTORERA';}
+        const jump=document.getElementById('waftJump');if(jump&&window.__WAFT_INTERNAL_GAME__?.jumpPointer==null)jump.textContent='IMPULSO';
+        toast('MEDITERRANI OCCIDENTAL · tintorera y rumbo conservados');
+      }
+    }else{
+      api.setAdventureModifiers?.({boost});
+      toast('MEDITERRANI OCCIDENTAL · rumbo conservado');
+    }
+    const boostButton=document.getElementById('boost');if(boostButton)boostButton.classList.toggle('active',boost);
+    const runButton=document.getElementById('waftRun');if(runButton){runButton.classList.toggle('active',boost);runButton.textContent=boost?'CORRIENDO':'CORRER';}
+    try{localStorage.removeItem(STORAGE_CONTINUITY);}catch{}
   }
 
   function updateNavigation(api,state,geo){
@@ -205,11 +262,12 @@
 
   async function init(){
     for(let i=0;i<400;i++){
-      if(window.WAFTRegionRuntime?.getState&&document.getElementById('hud'))break;
+      if(window.WAFTRegionRuntime?.getState&&window.__WAFT_ADVENTURE_0210_READY__&&document.getElementById('hud'))break;
       await new Promise(resolve=>setTimeout(resolve,25));
     }
     if(!window.WAFTRegionRuntime?.getState)return;
     installUi();loadPlaces();
+    await restoreCrossingContinuity(window.WAFTRegionRuntime);
     const tick=()=>{
       const api=window.WAFTRegionRuntime,state=api?.getState?.();if(!api||!state||route.seaLoading){requestAnimationFrame(tick);return;}
       const now=performance.now();
@@ -222,7 +280,8 @@
     };
     requestAnimationFrame(tick);
     window.__WAFT_NAVIGATION_0234_READY__=true;
+    window.__WAFT_NAVIGATION_0235_CONTINUITY_READY__=true;
   }
 
-  init().catch(error=>console.error('WAFT 0.23.4 navigation failed',error));
+  init().catch(error=>console.error('WAFT 0.23.5 navigation failed',error));
 })();
