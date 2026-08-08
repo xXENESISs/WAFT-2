@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+
+const here=path.dirname(new URL(import.meta.url).pathname);
+const adventure=path.resolve(here,'..');
+const names=['gameplay-plugin.js','playability-0230.js','mobile-polish-0231.js','mechanics-0232.js','world1-parity-0233.js','navigation-0234.js','multimodal-crossing-0236.js','bidirectional-crossing-0237.js','barcelona-playability-0238.js','ecology-0239.js'];
+const files=new Map(names.map(name=>[name,fs.readFileSync(path.join(adventure,name),'utf8')]));
+const loader=fs.readFileSync(path.join(adventure,'plugin-loader.js'),'utf8');
+const captured=[],errors=[];
+const context={console:{...console,error:(...args)=>errors.push(args.join(' '))},URL,Promise,setTimeout,clearTimeout,innerWidth:700,document:{currentScript:{src:'https://example.test/plugin-loader.js?v=ci'},getElementById(){return null;}},fetch:async url=>{const name=new URL(String(url)).pathname.split('/').pop(),body=files.get(name);return{ok:body!==undefined,status:body!==undefined?200:404,text:async()=>body??''};},eval:source=>captured.push(String(source))};
+context.window=context;context.globalThis=context;vm.createContext(context);
+new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
+for(let i=0;i<120&&captured.length<10&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
+assert.deepEqual(errors,[],'loader errors');
+assert.equal(captured.length,10,'0.23.9 loader should evaluate gameplay plus nine support layers');
+for(const [i,source] of captured.entries())new vm.Script(source,{filename:`loader-output-${i}.js`});
+assert.match(captured[5],/__WAFT_NAVIGATION_0235_CONTINUITY_READY__/);
+assert.match(captured[6],/__WAFT_MULTIMODAL_CROSSING_0236_READY__/);
+assert.match(captured[7],/__WAFT_BIDIRECTIONAL_CROSSING_0237_READY__/);
+assert.match(captured[8],/__WAFT_BARCELONA_PLAYABILITY_0238_READY__/);
+for(const pattern of [/BUILD='0\.23\.9'/,/Alytes muletensis/,/Podarcis lilfordi/,/Podarcis pityusensis/,/collserola/,/Sciurus vulgaris/,/barcelona-urbana/,/sargantana-cabrera/,/__WAFT_ECOLOGY_0239_READY__/])assert.match(captured[9],pattern,`ecology output missing ${pattern}`);
+console.log('0.23.9 loader compiles all ten layers and retains 0.23.5–0.23.8 while adding ecology 0.23.9.');
