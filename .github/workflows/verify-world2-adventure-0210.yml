@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.23.3
+name: Verify World 2 Adventure 0.23.4
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - agent/mobility-regression-0232
       - agent/world1-parity-0233
       - agent/mobile-stability-performance-hotfix
+      - agent/barcelona-swim-place-labels-0234
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -37,6 +38,7 @@ jobs:
           node --check mallorca-mobile/adventure-0210/mobile-polish-0231.js
           node --check mallorca-mobile/adventure-0210/mechanics-0232.js
           node --check mallorca-mobile/adventure-0210/world1-parity-0233.js
+          node --check mallorca-mobile/adventure-0210/navigation-0234.js
       - name: Static parity verification
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/verify.mjs
