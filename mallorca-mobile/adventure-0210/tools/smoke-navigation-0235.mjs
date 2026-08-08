@@ -20,11 +20,14 @@ for(const pattern of [
   /Formentera/,
   /Cerca de \$\{best\.name\}/,
   /MAR BALEAR → MEDITERRANI OCCIDENTAL/,
+  /towardKm>=\.65/,
+  /seaWaterKm>=\.8/,
   /__WAFT_NAVIGATION_0235_CONTINUITY_READY__/
 ]) assert.match(source,pattern,`navigation continuity missing ${pattern}`);
 
+assert.doesNotMatch(source,/elapsed>=8000/,'Barcelona seam must not wait long enough to collide with the Baleares terrain edge');
 assert.match(source,/localStorage\.setItem\(STORAGE_ARRIVAL,[\s\S]*mode:'corridor-0235'/,'sea arrival must use the 0.23.5 corridor marker');
 assert.match(source,/localStorage\.setItem\(STORAGE_CONTINUITY,[\s\S]*mountType,boost,speed/,'crossing must persist mount and movement state');
 assert.match(source,/pending\.mountType==='shark'[\s\S]*game\.mountedAnimalId=shark\.id/,'Catalunya arrival must remount a tintorera');
 
-console.log('WAFT 0.23.5 navigation preserves place context and Mallorca → Barcelona mount continuity.');
+console.log('WAFT 0.23.5 navigation preserves place context and crosses before the Baleares terrain edge while keeping mount continuity.');
