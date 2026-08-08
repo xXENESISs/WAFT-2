@@ -12,7 +12,8 @@ const files=new Map([
   ['mobile-polish-0231.js',fs.readFileSync(path.join(adventure,'mobile-polish-0231.js'),'utf8')],
   ['mechanics-0232.js',fs.readFileSync(path.join(adventure,'mechanics-0232.js'),'utf8')],
   ['world1-parity-0233.js',fs.readFileSync(path.join(adventure,'world1-parity-0233.js'),'utf8')],
-  ['navigation-0234.js',fs.readFileSync(path.join(adventure,'navigation-0234.js'),'utf8')]
+  ['navigation-0234.js',fs.readFileSync(path.join(adventure,'navigation-0234.js'),'utf8')],
+  ['multimodal-crossing-0236.js',fs.readFileSync(path.join(adventure,'multimodal-crossing-0236.js'),'utf8')]
 ]);
 const captured=[],errors=[];
 const testConsole={...console,error:(...args)=>{errors.push(args.map(value=>value?.stack||value?.message||String(value)).join(' '));console.error(...args);}};
@@ -25,9 +26,9 @@ const context={
 };
 context.window=context;context.globalThis=context;vm.createContext(context);
 new vm.Script(loader,{filename:'plugin-loader.js'}).runInContext(context);
-for(let i=0;i<100&&captured.length<6&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
-if(errors.length){console.log(`::error title=Loader0235::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
-assert.equal(captured.length,6,'loader should produce gameplay + five support modules');
+for(let i=0;i<100&&captured.length<7&&!errors.length;i++)await new Promise(resolve=>setTimeout(resolve,5));
+if(errors.length){console.log(`::error title=Loader0236::${errors.join(' | ').replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A')}`);throw new Error(errors.join(' | '));}
+assert.equal(captured.length,7,'loader should produce gameplay + six support modules');
 
 for(const [index,source] of captured.entries()){
   try{new vm.Script(source,{filename:`loader-output-${index}.js`});}
@@ -68,4 +69,15 @@ for(const pattern of [
 ])assert.match(navigation,pattern,`navigation layer missing ${pattern}`);
 assert.doesNotMatch(navigation,/elapsed>=8000/,'loader output must not restore the old terrain-edge race');
 
-console.log('Actual 0.23.5 plugin-loader transformations compile, preserve unified mount physics, and transition to Catalunya before the Baleares terrain edge.');
+const multimodal=captured[6];
+for(const pattern of [
+  /air-corridor-0236/,
+  /movementMode==='flight'/,
+  /mountedType\(state\)==='vulture'/,
+  /CORREDOR AÉREO BALEAR → CATALUNYA/,
+  /mountType:'vulture'.*flight:true/,
+  /game\.mountedAnimalId=vulture\.id/,
+  /__WAFT_MULTIMODAL_CROSSING_0236_READY__/
+])assert.match(multimodal,pattern,`multimodal layer missing ${pattern}`);
+
+console.log('Actual 0.23.6 plugin-loader output compiles and supports both sea and vulture crossings from Baleares to Catalunya.');
