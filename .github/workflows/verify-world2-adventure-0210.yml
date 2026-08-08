@@ -45,6 +45,7 @@ jobs:
           node --check mallorca-mobile/adventure-0210/multimodal-crossing-0236.js
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0233.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
       - name: Static parity verification
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/verify.mjs
@@ -57,3 +58,6 @@ jobs:
       - name: Verify navigation continuity
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
+      - name: Verify multimodal Barcelona crossing
+        working-directory: repo
+        run: node mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
