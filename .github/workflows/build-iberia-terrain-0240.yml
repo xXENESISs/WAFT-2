@@ -1,4 +1,4 @@
-name: Build Iberia explorer 0.24.2
+name: Build Iberia explorer 0.24.3
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - agent/iberia-terrain-0240
       - agent/iberia-runtime-0241
       - agent/iberia-explorer-0242
+      - agent/iberia-polish-0243
     paths:
       - .github/workflows/build-iberia-terrain-0240.yml
       - world-generator/configs/iberia.region.json
@@ -13,10 +14,13 @@ on:
       - world-generator/scripts/import-copernicus-dem-glo90.py
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/build-spain-settlement-markers-0242.py
+      - world-generator/scripts/count-spain-settlement-candidates-0243.py
       - world-generator/scripts/prepare-iberia-0240.mjs
       - world-generator/scripts/prepare-iberia-0242.mjs
+      - world-generator/scripts/prepare-iberia-0243.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
       - mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+      - mallorca-mobile/adventure-0210/iberia-polish-0243.js
       - mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
       - mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs
   workflow_dispatch:
@@ -53,11 +57,11 @@ jobs:
           path: world-generator/.cache/copernicus-dem-glo90
           key: waft-iberia-glo90-2021-v1
 
-      - name: Cache GeoNames city dump
+      - name: Cache GeoNames city dumps
         uses: actions/cache@v4
         with:
           path: world-generator/.cache/geonames
-          key: waft-geonames-cities15000-2026-08-09-v1
+          key: waft-geonames-cities5000-2026-08-09-v1
 
       - name: Install dependencies
         run: |
@@ -70,19 +74,26 @@ jobs:
           python -m py_compile world-generator/scripts/import-copernicus-dem-glo90.py
           python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
           python -m py_compile world-generator/scripts/build-spain-settlement-markers-0242.py
+          python -m py_compile world-generator/scripts/count-spain-settlement-candidates-0243.py
           node --check world-generator/scripts/prepare-iberia-0240.mjs
           node --check world-generator/scripts/prepare-iberia-0242.mjs
+          node --check world-generator/scripts/prepare-iberia-0243.mjs
           node --check mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+          node --check mallorca-mobile/adventure-0210/iberia-polish-0243.js
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs
           node world-generator/scripts/validate-region.mjs
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
 
+      - name: Measure 10k settlement option
+        run: python world-generator/scripts/count-spain-settlement-candidates-0243.py
+
       - name: Prepare scale-aware runtime
         run: |
           node world-generator/scripts/prepare-iberia-0240.mjs
           node world-generator/scripts/prepare-iberia-0242.mjs
+          node world-generator/scripts/prepare-iberia-0243.mjs
 
       - name: Import Copernicus GLO-90
         run: python world-generator/scripts/import-copernicus-dem-glo90.py iberia --retrieved-on 2026-08-09
@@ -99,10 +110,11 @@ jobs:
       - name: Build mobile preview package
         run: node world-generator/scripts/build-region-preview-v2.mjs iberia
 
-      - name: Verify compressed Iberia
+      - name: Verify Iberia 0.24.3
         run: |
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
           node --check mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+          node --check mallorca-mobile/adventure-0210/iberia-polish-0243.js
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
 
@@ -115,14 +127,14 @@ jobs:
           sleep 2
           node mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs \
             "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
-            /tmp/waft-iberia-0242.png
+            /tmp/waft-iberia-0243.png
 
       - name: Upload Iberia browser screenshot
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: iberia-adventure-0242-browser
-          path: /tmp/waft-iberia-0242.png
+          name: iberia-adventure-0243-browser
+          path: /tmp/waft-iberia-0243.png
           retention-days: 7
           if-no-files-found: ignore
 
@@ -140,8 +152,8 @@ jobs:
             regions/iberia \
             world-generator/iberia-preview-build.json
           if git diff --cached --quiet; then
-            echo "Iberia explorer data is already deterministic and current."
+            echo "Iberia 0.24.3 data is already deterministic and current."
             exit 0
           fi
-          git commit -m "Build Iberian Peninsula explorer runtime 0.24.2"
+          git commit -m "Build Iberian Peninsula explorer runtime 0.24.3"
           git push origin HEAD:${GITHUB_REF_NAME}
