@@ -108,10 +108,25 @@ try{
 
   const jumps=await page.evaluate(async()=>{
     const api=window.WAFTRegionRuntime;
-    const run=async impulse=>{api.setAdventureModifiers({flight:false,mountType:null});api.setRegionalPosition(0,0);await new Promise(r=>setTimeout(r,220));const y0=api.getState().position.y;api.queueAdventureJump(impulse,{horizontalBoost:1});await new Promise(r=>setTimeout(r,260));return api.getState().position.y-y0;};
-    return{normal:await run(8.8),mega:await run(23.55)};
+    const run=async impulse=>{
+      api.setAdventureModifiers({flight:false,mountType:null});
+      api.setRegionalPosition(0,0);
+      api.setInput(0,0);
+      await new Promise(r=>setTimeout(r,420));
+      const y0=api.getState().position.y;
+      api.queueAdventureJump(impulse,{horizontalBoost:1});
+      let peak=0;
+      for(let i=0;i<28;i++){
+        await new Promise(r=>setTimeout(r,50));
+        peak=Math.max(peak,api.getState().position.y-y0);
+      }
+      return peak;
+    };
+    const normal=await run(8.8);
+    const mega=await run(23.55);
+    return{normal,mega};
   });
-  requireValue(jumps.mega>jumps.normal*1.65&&jumps.mega>3,`Super jump is not stronger enough: normal=${jumps.normal} mega=${jumps.mega}`);
+  requireValue(jumps.mega>jumps.normal*1.65&&jumps.mega>4,`Super jump peak is not strong enough: normal=${jumps.normal} mega=${jumps.mega}`);
 
   const flight=await page.evaluate(async()=>{
     const api=window.WAFTRegionRuntime;window.WAFTIberiaExplorer.mountBird();await new Promise(r=>setTimeout(r,220));
