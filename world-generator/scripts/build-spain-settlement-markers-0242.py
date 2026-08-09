@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 import hashlib
-import io
 import json
-import math
-import os
 import struct
 import urllib.request
 import zipfile
@@ -92,7 +89,6 @@ def terrain_sampler():
         return x, z
     def elevation_at(lat, lon):
         col = max(0, min(columns - 1, round((lon - west) / (east - west) * (columns - 1))))
-        # Terrain rows are north -> south.
         row = max(0, min(rows - 1, round((north - lat) / (north - south) * (rows - 1))))
         value = struct.unpack_from('<h', data, header_bytes + (row * columns + col) * 2)[0]
         if value == nodata:
@@ -126,6 +122,28 @@ def tier(population):
     return 'large', 100, .68, 58
 
 
+def capital_level(feature_code):
+    if feature_code == 'PPLC':
+        return 'national'
+    if feature_code == 'PPLA':
+        return 'regional'
+    if feature_code == 'PPLA2':
+        return 'provincial'
+    return None
+
+
+def capital_style(level, priority, half, height):
+    # Population still defines the basic tier; capital status only makes the same
+    # marker more legible at a distance, as requested for visual navigation.
+    if level == 'national':
+        return max(priority, 120), max(half, .82), max(height, 90)
+    if level == 'regional':
+        return max(priority, 106), max(half, .62), max(height, 72)
+    if level == 'provincial':
+        return max(priority, 86), max(half, .50), max(height, 54)
+    return priority, half, height
+
+
 def main():
     zip_path = download()
     rows = read_geonames(zip_path)
@@ -136,6 +154,8 @@ def main():
         x, z = project(item['lat'], item['lon'])
         y = elevation_at(item['lat'], item['lon'])
         level, priority, half, height = tier(item['population'])
+        capital = capital_level(item['featureCode'])
+        priority, half, height = capital_style(capital, priority, half, height)
         sid = sector_id(x, z, manifest)
         ident = f"es-{item['geonameId']}"
         settlements.append({
@@ -145,6 +165,7 @@ def main():
             'place': item['featureCode'],
             'population': item['population'],
             'populationTier': level,
+            'capitalLevel': capital,
             'position': {'lat': item['lat'], 'lon': item['lon']},
             'priority': priority,
             'protected': True,
@@ -158,6 +179,9 @@ def main():
             [round(x+half,4), round(z+half,4)], [round(x-half,4), round(z+half,4)],
             [round(x-half,4), round(z-half,4)]
         ]
+        tags = {'population': str(item['population']), 'waft:population_tier': level}
+        if capital:
+            tags['waft:capital_level'] = capital
         objects.append({
             'areaM2': None,
             'collisionMode': 'none',
@@ -174,7 +198,7 @@ def main():
             'sectorId': sid,
             'source': 'geonames-cities15000',
             'sourceId': item['geonameId'],
-            'tags': {'population': str(item['population']), 'waft:population_tier': level},
+            'tags': tags,
             'terrainStatus': 'dem-cell'
         })
 
@@ -202,6 +226,11 @@ def main():
     manifest['settlementMarkers'] = {
         'minimumPopulation': MIN_POPULATION,
         'tiers': {'small':[20000,49999], 'medium':[50000,199999], 'large':[200000,None]},
+        'capitalStyle': {
+            'provincial': {'minimumHeightMeters':54},
+            'regional': {'minimumHeightMeters':72},
+            'national': {'minimumHeightMeters':90}
+        },
         'source': source
     }
     for filename, raw in [('settlements.json', settlement_bytes), ('objects.json', object_bytes)]:
@@ -212,8 +241,12 @@ def main():
     (REGION / 'manifest.json').write_text(stable_json(manifest), 'utf-8')
 
     counts = {'small':0,'medium':0,'large':0}
-    for item in settlements: counts[item['populationTier']] += 1
-    print(json.dumps({'regionId':'iberia','settlements':len(settlements),'tiers':counts,'minPopulation':MIN_POPULATION,'sourceSha256':sha256_bytes(zip_path.read_bytes())}, indent=2))
+    capitals = {'provincial':0,'regional':0,'national':0}
+    for item in settlements:
+        counts[item['populationTier']] += 1
+        if item['capitalLevel']:
+            capitals[item['capitalLevel']] += 1
+    print(json.dumps({'regionId':'iberia','settlements':len(settlements),'tiers':counts,'capitals':capitals,'minPopulation':MIN_POPULATION,'sourceSha256':sha256_bytes(zip_path.read_bytes())}, indent=2))
 
 if __name__ == '__main__':
     main()
