@@ -209,27 +209,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          156.9547,
-          125.3928
+          156.8747,
+          125.3128
         ],
         [
-          157.7947,
-          125.3928
+          157.8747,
+          125.3128
         ],
         [
-          157.7947,
-          126.2328
+          157.8747,
+          126.3128
         ],
         [
-          156.9547,
-          126.2328
+          156.8747,
+          126.3128
         ],
         [
-          156.9547,
-          125.3928
+          156.8747,
+          125.3128
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2522258",
       "kind": "public",
       "local": {
@@ -242,7 +242,7 @@
         "lat": 38.99424,
         "lon": -1.85643
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-15-12",
@@ -250,6 +250,7 @@
       "sourceId": "2522258",
       "tags": {
         "population": "173050",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -1100,6 +1101,7 @@
       "sourceId": "2521978",
       "tags": {
         "population": "348901",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -1259,27 +1261,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          82.11,
-          472.8297
+          82.03,
+          472.7497
         ],
         [
-          82.95,
-          472.8297
+          83.03,
+          472.7497
         ],
         [
-          82.95,
-          473.6697
+          83.03,
+          473.7497
         ],
         [
-          82.11,
-          473.6697
+          82.03,
+          473.7497
         ],
         [
-          82.11,
-          472.8297
+          82.03,
+          472.7497
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2521886",
       "kind": "public",
       "local": {
@@ -1292,7 +1294,7 @@
         "lat": 36.83814,
         "lon": -2.45974
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-13-17",
@@ -1300,6 +1302,7 @@
       "sourceId": "2521886",
       "tags": {
         "population": "196851",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -2729,7 +2732,7 @@
           -260.7284
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3128760",
       "kind": "public",
       "local": {
@@ -2742,7 +2745,7 @@
         "lat": 41.38879,
         "lon": 2.15899
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-22-06",
@@ -2750,6 +2753,7 @@
       "sourceId": "3128760",
       "tags": {
         "population": "1686208",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -3050,6 +3054,7 @@
       "sourceId": "3128026",
       "tags": {
         "population": "347342",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -3159,27 +3164,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -71.9809,
-          -413.9185
+          -72.0609,
+          -413.9985
         ],
         [
-          -71.1409,
-          -413.9185
+          -71.0609,
+          -413.9985
         ],
         [
-          -71.1409,
-          -413.0785
+          -71.0609,
+          -412.9985
         ],
         [
-          -71.9809,
-          -413.0785
+          -72.0609,
+          -412.9985
         ],
         [
-          -71.9809,
-          -413.9185
+          -72.0609,
+          -413.9985
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3127461",
       "kind": "public",
       "local": {
@@ -3192,7 +3197,7 @@
         "lat": 42.34106,
         "lon": -3.70184
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-11-03",
@@ -3200,6 +3205,7 @@
       "sourceId": "3127461",
       "tags": {
         "population": "176418",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -3409,27 +3415,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -392.9481,
-          523.0124
+          -393.0281,
+          522.9324
         ],
         [
-          -392.1081,
-          523.0124
+          -392.0281,
+          522.9324
         ],
         [
-          -392.1081,
-          523.8524
+          -392.0281,
+          523.9324
         ],
         [
-          -392.9481,
-          523.8524
+          -393.0281,
+          523.9324
         ],
         [
-          -392.9481,
-          523.0124
+          -393.0281,
+          522.9324
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2520600",
       "kind": "public",
       "local": {
@@ -3442,7 +3448,7 @@
         "lat": 36.52672,
         "lon": -6.2891
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-06-18",
@@ -3450,6 +3456,7 @@
       "sourceId": "2520600",
       "tags": {
         "population": "116979",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -4309,27 +4316,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          381.1353,
-          -34.3677
+          381.0553,
+          -34.4477
         ],
         [
-          381.9753,
-          -34.3677
+          382.0553,
+          -34.4477
         ],
         [
-          381.9753,
-          -33.5277
+          382.0553,
+          -33.4477
         ],
         [
-          381.1353,
-          -33.5277
+          381.0553,
+          -33.4477
         ],
         [
-          381.1353,
-          -34.3677
+          381.0553,
+          -34.4477
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2519752",
       "kind": "public",
       "local": {
@@ -4342,7 +4349,7 @@
         "lat": 39.98567,
         "lon": -0.04935
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-18-09",
@@ -4350,6 +4357,7 @@
       "sourceId": "2519752",
       "tags": {
         "population": "171857",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -4759,27 +4767,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -100.1703,
-          126.6787
+          -100.2503,
+          126.5987
         ],
         [
-          -99.3303,
-          126.6787
+          -99.2503,
+          126.5987
         ],
         [
-          -99.3303,
-          127.5187
+          -99.2503,
+          127.5987
         ],
         [
-          -100.1703,
-          127.5187
+          -100.2503,
+          127.5987
         ],
         [
-          -100.1703,
-          126.6787
+          -100.2503,
+          126.5987
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2519402",
       "kind": "public",
       "local": {
@@ -4792,7 +4800,7 @@
         "lat": 38.98626,
         "lon": -3.92907
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-10-12",
@@ -4800,6 +4808,7 @@
       "sourceId": "2519402",
       "tags": {
         "population": "74743",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -5209,27 +5218,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          122.6034,
-          -47.4201
+          122.5234,
+          -47.5001
         ],
         [
-          123.4434,
-          -47.4201
+          123.5234,
+          -47.5001
         ],
         [
-          123.4434,
-          -46.5801
+          123.5234,
+          -46.5001
         ],
         [
-          122.6034,
-          -46.5801
+          122.5234,
+          -46.5001
         ],
         [
-          122.6034,
-          -47.4201
+          122.5234,
+          -47.5001
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3124132",
       "kind": "public",
       "local": {
@@ -5242,7 +5251,7 @@
         "lat": 40.06667,
         "lon": -2.13333
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-14-09",
@@ -5250,6 +5259,7 @@
       "sourceId": "3124132",
       "tags": {
         "population": "54898",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -5359,27 +5369,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -403.2622,
-          47.6823
+          -403.3422,
+          47.6023
         ],
         [
-          -402.4222,
-          47.6823
+          -402.3422,
+          47.6023
         ],
         [
-          -402.4222,
-          48.5223
+          -402.3422,
+          48.6023
         ],
         [
-          -403.2622,
-          48.5223
+          -403.3422,
+          48.6023
         ],
         [
-          -403.2622,
-          47.6823
+          -403.3422,
+          47.6023
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2520611",
       "kind": "public",
       "local": {
@@ -5392,7 +5402,7 @@
         "lat": 39.47649,
         "lon": -6.37224
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-06-10",
@@ -5400,6 +5410,7 @@
       "sourceId": "2520611",
       "tags": {
         "population": "96068",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -5500,6 +5511,7 @@
       "sourceId": "2519240",
       "tags": {
         "population": "325708",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -5609,27 +5621,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          142.2465,
-          -570.5109
+          142.1665,
+          -570.5909
         ],
         [
-          143.0865,
-          -570.5109
+          143.1665,
+          -570.5909
         ],
         [
-          143.0865,
-          -569.6709
+          143.1665,
+          -569.5909
         ],
         [
-          142.2465,
-          -569.6709
+          142.1665,
+          -569.5909
         ],
         [
-          142.2465,
-          -570.5109
+          142.1665,
+          -570.5909
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3110044",
       "kind": "public",
       "local": {
@@ -5642,7 +5654,7 @@
         "lat": 43.31283,
         "lon": -1.97499
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-14-01",
@@ -5650,6 +5662,7 @@
       "sourceId": "3110044",
       "tags": {
         "population": "185357",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -6829,7 +6842,7 @@
           -496.1866
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3104499",
       "kind": "public",
       "local": {
@@ -6842,7 +6855,7 @@
         "lat": 42.84998,
         "lon": -2.67268
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-13-02",
@@ -6850,6 +6863,7 @@
       "sourceId": "3104499",
       "tags": {
         "population": "257407",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -7059,27 +7073,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          737.7092,
-          -356.2379
+          737.6292,
+          -356.3179
         ],
         [
-          738.5492,
-          -356.2379
+          738.6292,
+          -356.3179
         ],
         [
-          738.5492,
-          -355.3979
+          738.6292,
+          -355.3179
         ],
         [
-          737.7092,
-          -355.3979
+          737.6292,
+          -355.3179
         ],
         [
-          737.7092,
-          -356.2379
+          737.6292,
+          -356.3179
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3121456",
       "kind": "public",
       "local": {
@@ -7092,7 +7106,7 @@
         "lat": 41.98311,
         "lon": 2.82493
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-24-04",
@@ -7100,6 +7114,7 @@
       "sourceId": "3121456",
       "tags": {
         "population": "100266",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -7150,6 +7165,7 @@
       "sourceId": "2517117",
       "tags": {
         "population": "233532",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -7259,27 +7275,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -4.9915,
-          -137.9735
+          -5.0715,
+          -138.0535
         ],
         [
-          -4.1515,
-          -137.9735
+          -4.0715,
+          -138.0535
         ],
         [
-          -4.1515,
-          -137.1335
+          -4.0715,
+          -137.0535
         ],
         [
-          -4.9915,
-          -137.1335
+          -5.0715,
+          -137.0535
         ],
         [
-          -4.9915,
-          -137.9735
+          -5.0715,
+          -138.0535
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3121070",
       "kind": "public",
       "local": {
@@ -7292,7 +7308,7 @@
         "lat": 40.62862,
         "lon": -3.16185
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-12-07",
@@ -7300,6 +7316,7 @@
       "sourceId": "3121070",
       "tags": {
         "population": "93470",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -7409,27 +7426,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -473.7016,
-          403.8225
+          -473.7816,
+          403.7425
         ],
         [
-          -472.8616,
-          403.8225
+          -472.7816,
+          403.7425
         ],
         [
-          -472.8616,
-          404.6625
+          -472.7816,
+          404.7425
         ],
         [
-          -473.7016,
-          404.6625
+          -473.7816,
+          404.7425
         ],
         [
-          -473.7016,
-          403.8225
+          -473.7816,
+          403.7425
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2516548",
       "kind": "public",
       "local": {
@@ -7442,7 +7459,7 @@
         "lat": 37.26638,
         "lon": -6.94004
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-05-16",
@@ -7450,6 +7467,7 @@
       "sourceId": "2516548",
       "tags": {
         "population": "144258",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -7459,27 +7477,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          336.5555,
-          -380.899
+          336.4755,
+          -380.979
         ],
         [
-          337.3955,
-          -380.899
+          337.4755,
+          -380.979
         ],
         [
-          337.3955,
-          -380.059
+          337.4755,
+          -379.979
         ],
         [
-          336.5555,
-          -380.059
+          336.4755,
+          -379.979
         ],
         [
-          336.5555,
-          -380.899
+          336.4755,
+          -380.979
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3120514",
       "kind": "public",
       "local": {
@@ -7492,7 +7510,7 @@
         "lat": 42.13615,
         "lon": -0.4087
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-17-04",
@@ -7500,6 +7518,7 @@
       "sourceId": "3120514",
       "tags": {
         "population": "53956",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -7809,27 +7828,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -82.9525,
-          322.7942
+          -83.0325,
+          322.7142
         ],
         [
-          -82.1125,
-          322.7942
+          -82.0325,
+          322.7142
         ],
         [
-          -82.1125,
-          323.6342
+          -82.0325,
+          323.7142
         ],
         [
-          -82.9525,
-          323.6342
+          -83.0325,
+          323.7142
         ],
         [
-          -82.9525,
-          322.7942
+          -83.0325,
+          322.7142
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-2516395",
       "kind": "public",
       "local": {
@@ -7842,7 +7861,7 @@
         "lat": 37.76922,
         "lon": -3.79028
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-11-15",
@@ -7850,6 +7869,7 @@
       "sourceId": "2516395",
       "tags": {
         "population": "113457",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -8659,27 +8679,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -303.7785,
-          -455.6493
+          -303.8585,
+          -455.7293
         ],
         [
-          -302.9385,
-          -455.6493
+          -302.8585,
+          -455.7293
         ],
         [
-          -302.9385,
-          -454.8093
+          -302.8585,
+          -454.7293
         ],
         [
-          -303.7785,
-          -454.8093
+          -303.8585,
+          -454.7293
         ],
         [
-          -303.7785,
-          -455.6493
+          -303.8585,
+          -455.7293
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3118532",
       "kind": "public",
       "local": {
@@ -8692,7 +8712,7 @@
         "lat": 42.60003,
         "lon": -5.57032
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-07-03",
@@ -8700,6 +8720,7 @@
       "sourceId": "3118532",
       "tags": {
         "population": "124772",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -8809,27 +8830,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          464.4431,
-          -297.2006
+          464.3631,
+          -297.2806
         ],
         [
-          465.2831,
-          -297.2006
+          465.3631,
+          -297.2806
         ],
         [
-          465.2831,
-          -296.3606
+          465.3631,
+          -296.2806
         ],
         [
-          464.4431,
-          -296.3606
+          464.3631,
+          -296.2806
         ],
         [
-          464.4431,
-          -297.2006
+          464.3631,
+          -297.2806
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3118514",
       "kind": "public",
       "local": {
@@ -8842,7 +8863,7 @@
         "lat": 41.61674,
         "lon": 0.62218
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-19-05",
@@ -8850,6 +8871,7 @@
       "sourceId": "3118514",
       "tags": {
         "population": "140797",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -8959,27 +8981,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          83.1757,
-          -434.0757
+          82.9757,
+          -434.2757
         ],
         [
-          84.0157,
-          -434.0757
+          84.2157,
+          -434.2757
         ],
         [
-          84.0157,
-          -433.2357
+          84.2157,
+          -433.0357
         ],
         [
-          83.1757,
-          -433.2357
+          82.9757,
+          -433.0357
         ],
         [
-          83.1757,
-          -434.0757
+          82.9757,
+          -434.2757
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 72,
       "id": "city-marker-3118150",
       "kind": "public",
       "local": {
@@ -8992,7 +9014,7 @@
         "lat": 42.46615,
         "lon": -2.45115
       },
-      "priority": 72,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-13-03",
@@ -9000,6 +9022,7 @@
       "sourceId": "3118150",
       "tags": {
         "population": "151164",
+        "waft:capital_level": "regional",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -9259,27 +9282,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -550.1181,
-          -521.6995
+          -550.1981,
+          -521.7795
         ],
         [
-          -549.2781,
-          -521.6995
+          -549.1981,
+          -521.7795
         ],
         [
-          -549.2781,
-          -520.8595
+          -549.1981,
+          -520.7795
         ],
         [
-          -550.1181,
-          -520.8595
+          -550.1981,
+          -520.7795
         ],
         [
-          -550.1181,
-          -521.6995
+          -550.1981,
+          -521.7795
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3117814",
       "kind": "public",
       "local": {
@@ -9292,7 +9315,7 @@
         "lat": 43.00992,
         "lon": -7.55602
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-03-01",
@@ -9300,6 +9323,7 @@
       "sourceId": "3117814",
       "tags": {
         "population": "98025",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -9309,27 +9333,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -72.3302,
-          -104.0522
+          -72.4702,
+          -104.1922
         ],
         [
-          -70.9702,
-          -104.0522
+          -70.8302,
+          -104.1922
         ],
         [
-          -70.9702,
-          -102.6922
+          -70.8302,
+          -102.5522
         ],
         [
-          -72.3302,
-          -102.6922
+          -72.4702,
+          -102.5522
         ],
         [
-          -72.3302,
-          -104.0522
+          -72.4702,
+          -104.1922
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 90,
       "id": "city-marker-3117735",
       "kind": "public",
       "local": {
@@ -9342,7 +9366,7 @@
         "lat": 40.4165,
         "lon": -3.70256
       },
-      "priority": 100,
+      "priority": 120,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-11-08",
@@ -9350,6 +9374,7 @@
       "sourceId": "3117735",
       "tags": {
         "population": "3255944",
+        "waft:capital_level": "national",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -10729,7 +10754,7 @@
           287.4344
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-2513416",
       "kind": "public",
       "local": {
@@ -10742,7 +10767,7 @@
         "lat": 37.98704,
         "lon": -1.13004
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-16-14",
@@ -10750,6 +10775,7 @@
       "sourceId": "2513416",
       "tags": {
         "population": "471982",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -10850,6 +10876,7 @@
       "sourceId": "2514256",
       "tags": {
         "population": "592346",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -10859,27 +10886,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -399.6248,
-          137.675
+          -399.8248,
+          137.475
         ],
         [
-          -398.7848,
-          137.675
+          -398.5848,
+          137.475
         ],
         [
-          -398.7848,
-          138.515
+          -398.5848,
+          138.715
         ],
         [
-          -399.6248,
-          138.515
+          -399.8248,
+          138.715
         ],
         [
-          -399.6248,
-          137.675
+          -399.8248,
+          137.475
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 72,
       "id": "city-marker-2513917",
       "kind": "public",
       "local": {
@@ -10892,7 +10919,7 @@
         "lat": 38.91802,
         "lon": -6.34292
       },
-      "priority": 72,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-06-12",
@@ -10900,6 +10927,7 @@
       "sourceId": "2513917",
       "tags": {
         "population": "59857",
+        "waft:capital_level": "regional",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -11609,27 +11637,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -588.3338,
-          -413.2143
+          -588.4138,
+          -413.2943
         ],
         [
-          -587.4938,
-          -413.2143
+          -587.4138,
+          -413.2943
         ],
         [
-          -587.4938,
-          -412.3743
+          -587.4138,
+          -412.2943
         ],
         [
-          -588.3338,
-          -412.3743
+          -588.4138,
+          -412.2943
         ],
         [
-          -588.3338,
-          -413.2143
+          -588.4138,
+          -413.2943
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3114965",
       "kind": "public",
       "local": {
@@ -11642,7 +11670,7 @@
         "lat": 42.33669,
         "lon": -7.86407
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-03-03",
@@ -11650,6 +11678,7 @@
       "sourceId": "3114965",
       "tags": {
         "population": "105233",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -11679,7 +11708,7 @@
           -578.4187
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3114711",
       "kind": "public",
       "local": {
@@ -11692,7 +11721,7 @@
         "lat": 43.36029,
         "lon": -5.84476
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-07-01",
@@ -11700,6 +11729,7 @@
       "sourceId": "3114711",
       "tags": {
         "population": "220027",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -11809,27 +11839,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -173.9829,
-          -360.4985
+          -174.0629,
+          -360.5785
         ],
         [
-          -173.1429,
-          -360.4985
+          -173.0629,
+          -360.5785
         ],
         [
-          -173.1429,
-          -359.6585
+          -173.0629,
+          -359.5785
         ],
         [
-          -173.9829,
-          -359.6585
+          -174.0629,
+          -359.5785
         ],
         [
-          -173.9829,
-          -360.4985
+          -174.0629,
+          -360.5785
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3114531",
       "kind": "public",
       "local": {
@@ -11842,7 +11872,7 @@
         "lat": 42.00955,
         "lon": -4.52406
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-09-04",
@@ -11850,6 +11880,7 @@
       "sourceId": "3114531",
       "tags": {
         "population": "78629",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -11929,7 +11960,7 @@
           -490.8512
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3114472",
       "kind": "public",
       "local": {
@@ -11942,7 +11973,7 @@
         "lat": 42.81687,
         "lon": -1.64323
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-15-02",
@@ -11950,6 +11981,7 @@
       "sourceId": "3114472",
       "tags": {
         "population": "208243",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -12359,27 +12391,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -685.1328,
-          -428.4116
+          -685.2128,
+          -428.4916
         ],
         [
-          -684.2928,
-          -428.4116
+          -684.2128,
+          -428.4916
         ],
         [
-          -684.2928,
-          -427.5716
+          -684.2128,
+          -427.4916
         ],
         [
-          -685.1328,
-          -427.5716
+          -685.2128,
+          -427.4916
         ],
         [
-          -685.1328,
-          -428.4116
+          -685.2128,
+          -428.4916
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3113209",
       "kind": "public",
       "local": {
@@ -12392,7 +12424,7 @@
         "lat": 42.431,
         "lon": -8.64435
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-01-03",
@@ -12400,6 +12432,7 @@
       "sourceId": "3113209",
       "tags": {
         "population": "82802",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -13559,27 +13592,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -315.3853,
-          -192.7938
+          -315.4653,
+          -192.8738
         ],
         [
-          -314.5453,
-          -192.7938
+          -314.4653,
+          -192.8738
         ],
         [
-          -314.5453,
-          -191.9538
+          -314.4653,
+          -191.8738
         ],
         [
-          -315.3853,
-          -191.9538
+          -315.4653,
+          -191.8738
         ],
         [
-          -315.3853,
-          -192.7938
+          -315.4653,
+          -192.8738
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3111108",
       "kind": "public",
       "local": {
@@ -13592,7 +13625,7 @@
         "lat": 40.96882,
         "lon": -5.66388
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-07-07",
@@ -13600,6 +13633,7 @@
       "sourceId": "3111108",
       "tags": {
         "population": "144825",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -15009,27 +15043,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -84.7699,
-          -595.1752
+          -84.9699,
+          -595.3752
         ],
         [
-          -83.9299,
-          -595.1752
+          -83.7299,
+          -595.3752
         ],
         [
-          -83.9299,
-          -594.3352
+          -83.7299,
+          -594.1352
         ],
         [
-          -84.7699,
-          -594.3352
+          -84.9699,
+          -594.1352
         ],
         [
-          -84.7699,
-          -595.1752
+          -84.9699,
+          -595.3752
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 72,
       "id": "city-marker-3109718",
       "kind": "public",
       "local": {
@@ -15042,7 +15076,7 @@
         "lat": 43.46589,
         "lon": -3.80493
       },
-      "priority": 72,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-11-00",
@@ -15050,6 +15084,7 @@
       "sourceId": "3109718",
       "tags": {
         "population": "173635",
+        "waft:capital_level": "regional",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -15059,27 +15094,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -672.8934,
-          -500.8478
+          -673.0934,
+          -501.0478
         ],
         [
-          -672.0534,
-          -500.8478
+          -671.8534,
+          -501.0478
         ],
         [
-          -672.0534,
-          -500.0078
+          -671.8534,
+          -499.8078
         ],
         [
-          -672.8934,
-          -500.0078
+          -673.0934,
+          -499.8078
         ],
         [
-          -672.8934,
-          -500.8478
+          -673.0934,
+          -501.0478
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 72,
       "id": "city-marker-3109642",
       "kind": "public",
       "local": {
@@ -15092,7 +15127,7 @@
         "lat": 42.88052,
         "lon": -8.54569
       },
-      "priority": 72,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-02-02",
@@ -15100,6 +15135,7 @@
       "sourceId": "3109642",
       "tags": {
         "population": "99536",
+        "waft:capital_level": "regional",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -15209,27 +15245,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -123.6568,
-          -189.4518
+          -123.7368,
+          -189.5318
         ],
         [
-          -122.8168,
-          -189.4518
+          -122.7368,
+          -189.5318
         ],
         [
-          -122.8168,
-          -188.6118
+          -122.7368,
+          -188.5318
         ],
         [
-          -123.6568,
-          -188.6118
+          -123.7368,
+          -188.5318
         ],
         [
-          -123.6568,
-          -189.4518
+          -123.7368,
+          -189.5318
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3109256",
       "kind": "public",
       "local": {
@@ -15242,7 +15278,7 @@
         "lat": 40.94808,
         "lon": -4.11839
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-10-07",
@@ -15250,6 +15286,7 @@
       "sourceId": "3109256",
       "tags": {
         "population": "51683",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -15329,7 +15366,7 @@
           384.7976
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-2510911",
       "kind": "public",
       "local": {
@@ -15342,7 +15379,7 @@
         "lat": 37.38283,
         "lon": -5.97317
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-07-16",
@@ -15350,6 +15387,7 @@
       "sourceId": "2510911",
       "tags": {
         "population": "686741",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -15409,27 +15447,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          81.1423,
-          -320.7719
+          80.9023,
+          -321.0119
         ],
         [
-          81.6623,
-          -320.7719
+          81.9023,
+          -321.0119
         ],
         [
-          81.6623,
-          -320.2519
+          81.9023,
+          -320.0119
         ],
         [
-          81.1423,
-          -320.2519
+          80.9023,
+          -320.0119
         ],
         [
-          81.1423,
-          -320.7719
+          80.9023,
+          -321.0119
         ]
       ],
-      "heightMeters": 18,
+      "heightMeters": 54,
       "id": "city-marker-3108681",
       "kind": "public",
       "local": {
@@ -15442,7 +15480,7 @@
         "lat": 41.76401,
         "lon": -2.46883
       },
-      "priority": 48,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-13-05",
@@ -15450,6 +15488,7 @@
       "sourceId": "3108681",
       "tags": {
         "population": "39112",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -15559,27 +15598,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          541.7627,
-          -217.0021
+          541.6827,
+          -217.0821
         ],
         [
-          542.6027,
-          -217.0021
+          542.6827,
+          -217.0821
         ],
         [
-          542.6027,
-          -216.1621
+          542.6827,
+          -216.0821
         ],
         [
-          541.7627,
-          -216.1621
+          541.6827,
+          -216.0821
         ],
         [
-          541.7627,
-          -217.0021
+          541.6827,
+          -217.0821
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3108288",
       "kind": "public",
       "local": {
@@ -15592,7 +15631,7 @@
         "lat": 41.11905,
         "lon": 1.24544
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-21-06",
@@ -15600,6 +15639,7 @@
       "sourceId": "3108288",
       "tags": {
         "population": "141542",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -15659,27 +15699,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          250.1536,
-          -92.2073
+          249.9136,
+          -92.4473
         ],
         [
-          250.6736,
-          -92.2073
+          250.9136,
+          -92.4473
         ],
         [
-          250.6736,
-          -91.6873
+          250.9136,
+          -91.4473
         ],
         [
-          250.1536,
-          -91.6873
+          249.9136,
+          -91.4473
         ],
         [
-          250.1536,
-          -92.2073
+          249.9136,
+          -92.4473
         ]
       ],
-      "heightMeters": 18,
+      "heightMeters": 54,
       "id": "city-marker-3108126",
       "kind": "public",
       "local": {
@@ -15692,7 +15732,7 @@
         "lat": 40.3456,
         "lon": -1.10646
       },
-      "priority": 48,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-16-08",
@@ -15700,6 +15740,7 @@
       "sourceId": "3108126",
       "tags": {
         "population": "36240",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -15709,27 +15750,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -111.7771,
-          -13.8109
+          -111.9771,
+          -14.0109
         ],
         [
-          -110.9371,
-          -13.8109
+          -110.7371,
+          -14.0109
         ],
         [
-          -110.9371,
-          -12.9709
+          -110.7371,
+          -12.7709
         ],
         [
-          -111.7771,
-          -12.9709
+          -111.9771,
+          -12.7709
         ],
         [
-          -111.7771,
-          -13.8109
+          -111.9771,
+          -14.0109
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 72,
       "id": "city-marker-2510409",
       "kind": "public",
       "local": {
@@ -15742,7 +15783,7 @@
         "lat": 39.8581,
         "lon": -4.02263
       },
-      "priority": 72,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-10-09",
@@ -15750,6 +15791,7 @@
       "sourceId": "2510409",
       "tags": {
         "population": "86526",
+        "waft:capital_level": "regional",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -16629,7 +16671,7 @@
           47.8381
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-2509954",
       "kind": "public",
       "local": {
@@ -16642,7 +16684,7 @@
         "lat": 39.47391,
         "lon": -0.37966
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-17-10",
@@ -16650,6 +16692,7 @@
       "sourceId": "2509954",
       "tags": {
         "population": "824340",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -16679,7 +16722,7 @@
           -303.6919
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3106672",
       "kind": "public",
       "local": {
@@ -16692,7 +16735,7 @@
         "lat": 41.65541,
         "lon": -4.72353
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-09-05",
@@ -16700,6 +16743,7 @@
       "sourceId": "3106672",
       "tags": {
         "population": "300618",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -17759,27 +17803,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -325.3942,
-          -279.4089
+          -325.4742,
+          -279.4889
         ],
         [
-          -324.5542,
-          -279.4089
+          -324.4742,
+          -279.4889
         ],
         [
-          -324.5542,
-          -278.5689
+          -324.4742,
+          -278.4889
         ],
         [
-          -325.3942,
-          -278.5689
+          -325.4742,
+          -278.4889
         ],
         [
-          -325.3942,
-          -279.4089
+          -325.4742,
+          -279.4889
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3104342",
       "kind": "public",
       "local": {
@@ -17792,7 +17836,7 @@
         "lat": 41.50633,
         "lon": -5.74456
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-07-05",
@@ -17800,6 +17844,7 @@
       "sourceId": "3104342",
       "tags": {
         "population": "61827",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -17829,7 +17874,7 @@
           -303.7966
         ]
       ],
-      "heightMeters": 58,
+      "heightMeters": 72,
       "id": "city-marker-3104324",
       "kind": "public",
       "local": {
@@ -17842,7 +17887,7 @@
         "lat": 41.65606,
         "lon": -0.87734
       },
-      "priority": 100,
+      "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-16-05",
@@ -17850,6 +17895,7 @@
       "sourceId": "3104324",
       "tags": {
         "population": "686986",
+        "waft:capital_level": "regional",
         "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
@@ -17959,27 +18005,27 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -195.7487,
-          -142.5854
+          -195.8287,
+          -142.6654
         ],
         [
-          -194.9087,
-          -142.5854
+          -194.8287,
+          -142.6654
         ],
         [
-          -194.9087,
-          -141.7454
+          -194.8287,
+          -141.6654
         ],
         [
-          -195.7487,
-          -141.7454
+          -195.8287,
+          -141.6654
         ],
         [
-          -195.7487,
-          -142.5854
+          -195.8287,
+          -142.6654
         ]
       ],
-      "heightMeters": 34,
+      "heightMeters": 54,
       "id": "city-marker-3129136",
       "kind": "public",
       "local": {
@@ -17992,7 +18038,7 @@
         "lat": 40.65724,
         "lon": -4.69951
       },
-      "priority": 72,
+      "priority": 86,
       "roofWalkable": false,
       "scaleY": 1,
       "sectorId": "s-09-07",
@@ -18000,6 +18046,7 @@
       "sourceId": "3129136",
       "tags": {
         "population": "57657",
+        "waft:capital_level": "provincial",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"

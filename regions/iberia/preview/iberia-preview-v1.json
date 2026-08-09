@@ -4,9 +4,9 @@
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "dc4ab3661d256f3f3d4414e7e6e4fe67f9abd7cdfd07b9e89692c61a9dd9cb06"
+    "sha256": "65904fee4660601c35b144ed4eb826640a813a888c1a8eaa9cf380dcd50fd0a1"
   },
-  "buildId": "iberia-preview-f716dc8a48a5",
+  "buildId": "iberia-preview-eead2a469411",
   "counts": {
     "buildings": 362,
     "hotels": 0,
@@ -2287,9 +2287,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "f716dc8a48a55eea00ca24cd308327a59684aefc64d387b1f273d4e73e14284c",
+    "inputsSha256": "eead2a469411b0ce0657e4012338479538cee144e16b31e771ebc9d4ed072c3c",
     "landcoverSha256": "c866dab2eb8c040d8b08aba567eadec3e7f4cfe1b81cddae287e03ac65e9ff08",
-    "regionManifestSha256": "b0985ae4741571ed82c73355621480ccf1035a1ef0c20b89fe04ae7342c2453a",
+    "regionManifestSha256": "d2edf7dca9456310065652554a736209d0e0a351a4a681da8ec5d4da7e71e4b1",
     "terrainSha256": "3c725ec8a19acf04728f03241d1106f087957e1c02d9fea7062975608bf20b1e"
   },
   "terrain": {

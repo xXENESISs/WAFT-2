@@ -33,14 +33,14 @@
       "sha256": "014dffdd4445cbeefdbaa90bf8c8967ef460d1e85bd0a1dbea27ef8e5d90f91a"
     },
     {
-      "bytes": 180459,
+      "bytes": 190946,
       "path": "settlements.json",
-      "sha256": "38bc4f3a3793c22c1674448fb8bc001b62aa40c80e2b5b4ce9104dea0312e147"
+      "sha256": "2a5934617d0fe5c470b34aa211c935240a58a72d7fc0b67d0f0b438aafc30606"
     },
     {
-      "bytes": 353807,
+      "bytes": 355850,
       "path": "objects.json",
-      "sha256": "abd11d3049114fb02868335837aa839a8d8861c95f9b40db2a47e5325ac0d3fb"
+      "sha256": "ba4ef7ad886ccd222e1f09eab59f84158b94eb3927fc9746bf2fc88a52da3951"
     },
     {
       "bytes": 147,
@@ -215,6 +215,17 @@
     "total": 546
   },
   "settlementMarkers": {
+    "capitalStyle": {
+      "national": {
+        "minimumHeightMeters": 90
+      },
+      "provincial": {
+        "minimumHeightMeters": 54
+      },
+      "regional": {
+        "minimumHeightMeters": 72
+      }
+    },
     "minimumPopulation": 20000,
     "source": {
       "country": "ES",
