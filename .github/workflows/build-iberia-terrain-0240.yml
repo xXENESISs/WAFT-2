@@ -1,9 +1,10 @@
-name: Build Iberia terrain 0.24.0
+name: Build Iberia terrain 0.24.1
 
 on:
   push:
     branches:
       - agent/iberia-terrain-0240
+      - agent/iberia-runtime-0241
     paths:
       - .github/workflows/build-iberia-terrain-0240.yml
       - world-generator/configs/iberia.region.json
@@ -12,6 +13,7 @@ on:
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/prepare-iberia-0240.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
+      - mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
   workflow_dispatch:
 
 permissions:
@@ -57,6 +59,7 @@ jobs:
           python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
           node --check world-generator/scripts/prepare-iberia-0240.mjs
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/validate-region.mjs
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
 
@@ -79,6 +82,7 @@ jobs:
         run: |
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
 
       - name: Commit generated Iberia terrain to branch
         shell: bash
@@ -97,5 +101,5 @@ jobs:
             echo "Iberia terrain is already deterministic and current."
             exit 0
           fi
-          git commit -m "Build compressed Iberian Peninsula terrain"
+          git commit -m "Build compressed Iberian Peninsula terrain runtime 0.24.1"
           git push origin HEAD:${GITHUB_REF_NAME}
