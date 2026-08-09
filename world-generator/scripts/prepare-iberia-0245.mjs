@@ -13,6 +13,9 @@ const replaceExact=(search,replacement,label)=>{
   source=source.replace(search,replacement);
 };
 
+const flight0245BeforeDiveInterrupt="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*1.45);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(58,state.adventureFlightVy));}";
+const flight0245WithDiveInterrupt="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',wasIberiaDive=Boolean(state.iberiaDive);state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;if(!wasIberiaDive&&state.adventureFlightVy>0)state.adventureFlightVy=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*1.45);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(58,state.adventureFlightVy));}";
+
 if(!source.includes('WAFT_IBERIA_WORLD_0245')){
   const oldSpeed="if(state.adventureFlight){const bearded=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',dive=bearded&&state.joyY>.55;speed=bearded?(dive?(boosted?58:52):(inputLength<.06?18:(boosted||inputLength>.93?38:inputLength>.70?30:22))):(inputLength<.06?8.2:(boosted||inputLength>.93?26.5:inputLength>.70?19.0:12.4));}";
   const newSpeed="if(state.adventureFlight){const bearded=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',dive=bearded&&state.joyY>.55;speed=bearded?(dive?(boosted?58:52):(inputLength<.06?24:(boosted||inputLength>.93?46:inputLength>.70?38:30))):(inputLength<.06?8.2:(boosted||inputLength>.93?26.5:inputLength>.70?19.0:12.4));}";
@@ -23,8 +26,7 @@ if(!source.includes('WAFT_IBERIA_WORLD_0245')){
   replaceExact(oldFlap,newFlap,'impulso vertical del quebrantahuesos');
 
   const oldFlight="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*1.15);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(44,state.adventureFlightVy));}";
-  const newFlight="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*1.45);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(58,state.adventureFlightVy));}";
-  replaceExact(oldFlight,newFlight,'recuperación neutral sin tocar el picado');
+  replaceExact(oldFlight,flight0245WithDiveInterrupt,'recuperación neutral y entrada inmediata en picado');
 
   const runtimeAnchor='      const uiSafety=`<script>(()=>{';
   const runtimePatches=`      // WAFT 0.24.5: real adjacent terrain sampler plus explicit regional GPU release/restore.\n      replaceOne('    const terrainMesh = createTerrainMesh(gl, terrain, landcover, metadata);',\n        \`    let terrainMesh=captureMesh(()=>createTerrainMesh(gl,terrain,landcover,metadata));\\n    state.adventureRegionalTerrainReleased=false;\`, 'captura GPU terreno regional 0.24.5');\n      replaceOne('    const sampleTerrainInfo = (x, z) => {',\n        \`    const sampleTerrainInfo=(x,z)=>{\\n      if(state.worldMode==='regional'){const streamed=window.WAFTWorldStreaming0245?.sampleSurface?.(x,z);if(streamed)return streamed;}\`, 'sampler France 0.24.5');\n      replaceOne('      if (state.terrain) { gl.useProgram(terrainProgram);',\n        \`      if(state.terrain&&!(state.worldMode==='regional'&&state.adventureRegionalTerrainReleased)){ gl.useProgram(terrainProgram);\`, 'release visual Iberia 0.24.5');\n      replaceOne('      sampleSurface(x, z) { return sampleTerrainInfo(Number(x), Number(z)); },',\n        \`      sampleSurface(x,z){return sampleTerrainInfo(Number(x),Number(z));},\\n      releaseRegionalTerrainGpu(){if(state.adventureRegionalTerrainReleased)return 0;const released=disposeMesh(gl,terrainMesh);state.adventureRegionalTerrainReleased=true;return released;},\\n      restoreRegionalTerrainGpu(){if(!state.adventureRegionalTerrainReleased)return 0;terrainMesh=captureMesh(()=>createTerrainMesh(gl,terrain,landcover,metadata));state.adventureRegionalTerrainReleased=false;return 1+(terrainMesh.gpuBuffers?.length||0);},\`, 'API release/restore Iberia 0.24.5');\n      replaceOne('adventureCurrentSpeed: state.adventureCurrentSpeed, iberiaDive: Boolean(state.iberiaDive),',\n        'adventureCurrentSpeed: state.adventureCurrentSpeed, iberiaDive: Boolean(state.iberiaDive), adventureRegionalTerrainReleased: Boolean(state.adventureRegionalTerrainReleased),', 'estado GPU público 0.24.5');\n\n`;
@@ -41,6 +43,19 @@ if(!source.includes('WAFT_IBERIA_WORLD_0245')){
   console.log('mallorca-mobile/adventure-0210/index.html: prepared 0.24.5');
 }else{
   console.log('mallorca-mobile/adventure-0210/index.html: already prepared 0.24.5');
+}
+
+// 0.24.5 hotfix: stronger flap must never make the first dive frame keep climbing.
+// Cancel only positive vertical momentum on dive entry; the established 52/58 horizontal
+// dive speeds and -30..-58 vertical target remain unchanged.
+if(source.includes(flight0245BeforeDiveInterrupt)){
+  source=source.replace(flight0245BeforeDiveInterrupt,flight0245WithDiveInterrupt);
+  fs.writeFileSync(indexFile,source);
+  console.log('mallorca-mobile/adventure-0210/index.html: dive interrupt hotfix applied');
+}else if(source.includes(flight0245WithDiveInterrupt)){
+  console.log('mallorca-mobile/adventure-0210/index.html: dive interrupt hotfix already present');
+}else{
+  throw new Error('index.html: 0.24.5 bearded-vulture flight block not found');
 }
 
 let loader=fs.readFileSync(loaderFile,'utf8');
