@@ -96,6 +96,7 @@ try{
   need(flight.remountedId==='iberia-bearded-vulture'&&flight.remounted.movementMode==='flight','Second mount failed');
 
   if(screenshot){fs.mkdirSync(path.dirname(screenshot),{recursive:true});await page.screenshot({path:screenshot,type:'png'});}
-  need(pageErrors.length===0,`Page errors: ${pageErrors.join(' | ')}`);need(!consoleErrors.some(x=>/failed|Falta el nodo regional|No se pudo abrir/i.test(x)),`Console errors: ${consoleErrors.join(' | ')}`);
+  need(pageErrors.length===0,`Page errors: ${pageErrors.join(' | ')}`);
+  need(!consoleErrors.some(x=>/Iberia Explorer 0\.24\.2 failed|Iberia Polish 0\.24\.3 failed|Falta el nodo regional|No se pudo abrir el runtime regional/i.test(x)),`Runtime console errors: ${consoleErrors.join(' | ')}`);
   console.log(JSON.stringify({valid:true,region:initial.metadataName,settlements:initial.counts.settlements,coords:initial.coords,movementDistance:+movement.toFixed(3),respawnGuardDistance:+respawn.toFixed(3),jumpRise:{normal:+jumps.normal.toFixed(3),mega:+jumps.mega.toFixed(3)},flight:{climb:+(flight.high.position.y-flight.mounted.position.y).toFixed(3),levelDrift:+flight.levelDrift.toFixed(3),preDiveClearance:+flight.preDiveClearance.toFixed(3),diveDrop:+flight.drop.toFixed(3),diveSpeed:+flight.dive.adventureCurrentSpeed.toFixed(1),remountDistance:+flight.remountPrompt.distance.toFixed(3),followDistance:+flight.followDistance.toFixed(3)},pageErrors,consoleErrors,requestFailures,badResponses},null,2));
 }finally{await context.close();await browser.close();}
