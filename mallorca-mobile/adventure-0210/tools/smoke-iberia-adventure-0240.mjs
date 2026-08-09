@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
+// This smoke runs again after the deterministic generated 0.24.2 package is committed.
 const here=path.dirname(new URL(import.meta.url).pathname);
 const adventure=path.resolve(here,'..');
 const root=path.resolve(adventure,'../..');
