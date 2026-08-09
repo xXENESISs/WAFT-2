@@ -18,14 +18,14 @@
       "emptySpaceCompression": {"mode":"none","factor":1,"preserveCoastline":true,"anchorIds":[]}
     },
     "subregions": [
-      {"id":"tenerife","name":"Tenerife","type":"island-volcanic","center":{"lon":-16.58,"lat":28.27},"priority":100},
-      {"id":"gran-canaria","name":"Gran Canaria","type":"island-volcanic","center":{"lon":-15.58,"lat":27.96},"priority":100},
-      {"id":"lanzarote","name":"Lanzarote","type":"island-volcanic","center":{"lon":-13.63,"lat":29.03},"priority":96},
-      {"id":"fuerteventura","name":"Fuerteventura","type":"island-arid","center":{"lon":-14.01,"lat":28.36},"priority":96},
-      {"id":"la-palma","name":"La Palma","type":"island-volcanic","center":{"lon":-17.86,"lat":28.68},"priority":94},
-      {"id":"la-gomera","name":"La Gomera","type":"island-mountain","center":{"lon":-17.24,"lat":28.12},"priority":92},
-      {"id":"el-hierro","name":"El Hierro","type":"island-volcanic","center":{"lon":-17.98,"lat":27.74},"priority":92},
-      {"id":"la-graciosa","name":"La Graciosa","type":"island-arid","center":{"lon":-13.50,"lat":29.25},"priority":88}
+      {"id":"tenerife","name":"Tenerife","type":"island","center":{"lon":-16.58,"lat":28.27},"priority":100},
+      {"id":"gran-canaria","name":"Gran Canaria","type":"island","center":{"lon":-15.58,"lat":27.96},"priority":100},
+      {"id":"lanzarote","name":"Lanzarote","type":"island","center":{"lon":-13.63,"lat":29.03},"priority":96},
+      {"id":"fuerteventura","name":"Fuerteventura","type":"island","center":{"lon":-14.01,"lat":28.36},"priority":96},
+      {"id":"la-palma","name":"La Palma","type":"island","center":{"lon":-17.86,"lat":28.68},"priority":94},
+      {"id":"la-gomera","name":"La Gomera","type":"island","center":{"lon":-17.24,"lat":28.12},"priority":92},
+      {"id":"el-hierro","name":"El Hierro","type":"island","center":{"lon":-17.98,"lat":27.74},"priority":92},
+      {"id":"la-graciosa","name":"La Graciosa","type":"island","center":{"lon":-13.50,"lat":29.25},"priority":88}
     ]
   },
   "sources": {
@@ -33,8 +33,8 @@
     "cartography": {"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"},
     "landcover": {"provider":"WAFT terrain bootstrap","dataset":"Land/water mask derived from Copernicus DEM","license":"Copernicus data policy","attribution":"Derived from modified Copernicus DEM data","resolutionMeters":90,"cachePolicy":"build-cache"},
     "climate": {"provider":"WorldClim","dataset":"WorldClim 2.1","license":"CC BY 4.0","attribution":"WorldClim global climate data","resolutionMeters":1000,"cachePolicy":"build-cache"},
-    "landmarks": [],
-    "fauna": []
+    "landmarks": [{"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap places and features","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"}],
+    "fauna": [{"provider":"GBIF","dataset":"GBIF occurrence records","license":"Record-dependent open licence","attribution":"GBIF.org and contributing datasets","resolutionMeters":null,"cachePolicy":"build-cache"}]
   },
   "generation": {
     "terrain": {"grid":{"columns":384,"rows":192},"lods":[0,1,2,3],"smoothingPasses":1,"coastalFlattening":true,"maxWalkableSlopeDegrees":52,"seaLevelMeters":0},
@@ -47,7 +47,7 @@
     "fauna": {"ruleset":"canarias-terrain-only-v1","maximumSpecies":0,"maximumActiveAnimals":0,"recordsSinceYear":1990,"minimumCoordinatePrecisionMeters":10000,"manualInclude":[],"manualExcludeScientificNames":[]}
   },
   "travel": {
-    "entryPoints": [{"id":"atlantic-iberia","name":"Corredor Atlántico · Iberia","position":{"lon":-15.43,"lat":28.10},"type":"air_sea","arrivalHeadingDegrees":35}],
+    "entryPoints": [{"id":"atlantic-iberia","name":"Corredor Atlántico · Iberia","position":{"lon":-15.43,"lat":28.10},"type":"air","arrivalHeadingDegrees":35}],
     "connections": [{"id":"canarias-iberia-continuous","targetRegionId":"iberia","entryPointId":"atlantic-iberia","requiredCapabilities":["long_water"],"distanceClass":"long","enabled":true}]
   },
   "gameplay": {
