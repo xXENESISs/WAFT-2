@@ -3,6 +3,7 @@
   if (window.__WAFT_ADVENTURE_REGION__ !== 'iberia') return;
   const VERSION='0.24.3';
   const BIRD_ID='iberia-bearded-vulture';
+  const PROJECTION={origin:{lat:39.775,lon:-3.125},kmPerDegreeLat:111.132,kmPerDegreeLon:85.55640544079021,unitsPerKm:1.45,verticalScale:0.013594};
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   let lastFollowAt=performance.now();
 
@@ -34,23 +35,20 @@
     hud.appendChild(el);
   }
 
-  function geoFromState(api,state){
-    const projection=api.metadata?.projection;
-    if(!projection||!state?.position)return null;
-    const units=Number(projection.unitsPerKm)||1;
-    const lat=projection.origin.lat-state.position.z/((Number(projection.kmPerDegreeLat)||111.132)*units);
-    const lon=projection.origin.lon+state.position.x/((Number(projection.kmPerDegreeLon)||85.56)*units);
+  function geoFromState(state){
+    if(!state?.position)return null;
+    const lat=PROJECTION.origin.lat-state.position.z/(PROJECTION.kmPerDegreeLat*PROJECTION.unitsPerKm);
+    const lon=PROJECTION.origin.lon+state.position.x/(PROJECTION.kmPerDegreeLon*PROJECTION.unitsPerKm);
     return{lat,lon};
   }
 
   function updateCoords(){
     const api=window.WAFTRegionRuntime,state=api?.getState?.(),el=document.getElementById('waftIberiaCoords');
     if(!api||!state||!el)return;
-    const geo=geoFromState(api,state);if(!geo)return;
-    const surface=api.sampleSurface?.(state.position.x,state.position.z);
-    const verticalScale=Number(api.metadata?.terrain?.verticalScale)||0.013594;
-    const terrainY=Number(surface?.height);
-    const altitude=Number.isFinite(terrainY)&&verticalScale>0?Math.max(0,Math.round(terrainY/verticalScale)):0;
+    const geo=geoFromState(state);if(!geo)return;
+    const swimming=state.movementMode==='swimming';
+    const eyeOffset=swimming?.46:.82;
+    const altitude=swimming?0:Math.max(0,Math.round((Number(state.position.y)-eyeOffset)/PROJECTION.verticalScale));
     el.textContent=`ALT ${altitude.toLocaleString('es-ES')} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;
   }
 
