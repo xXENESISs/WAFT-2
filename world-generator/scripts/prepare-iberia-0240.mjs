@@ -17,6 +17,17 @@ function patch(relative,changes,marker){
   console.log(`${relative}: patched`);
 }
 
+function patchLast(relative,search,replacement,label,marker){
+  const file=path.join(ROOT,relative);
+  let source=fs.readFileSync(file,'utf8');
+  if(marker&&source.includes(marker)){console.log(`${relative}: already prepared`);return;}
+  const index=source.lastIndexOf(search);
+  if(index<0)throw new Error(`${relative}: missing ${label}`);
+  source=source.slice(0,index)+replacement+source.slice(index+search.length);
+  fs.writeFileSync(file,source);
+  console.log(`${relative}: patched last ${label}`);
+}
+
 patch('world-generator/scripts/build-region-preview.mjs',[
   ["  assert(manifest.generationStage === 'wikidata-ranked-landmarks', `Preview requires Wikidata stage, got ${manifest.generationStage}`);",
    "  assert(['wikidata-ranked-landmarks','dem-worldcover-bootstrap'].includes(manifest.generationStage), `Preview requires terrain bootstrap or Wikidata stage, got ${manifest.generationStage}`);",
@@ -26,11 +37,13 @@ patch('world-generator/scripts/build-region-preview.mjs',[
    'scale-aware terrain height']
 ],"dem-worldcover-bootstrap'].includes(manifest.generationStage)");
 
-patch('world-generator/scripts/build-region-preview-v2.mjs',[
-  ["    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: 310, distance: 0 },",
-   "    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: regionId === 'iberia' ? 980 : 310, distance: 0 },",
-   'Iberia overview altitude']
-],"regionId === 'iberia' ? 980 : 310");
+patchLast(
+  'world-generator/scripts/build-region-preview-v2.mjs',
+  "    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: 310, distance: 0 },",
+  "    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: regionId === 'iberia' ? 980 : 310, distance: 0 },",
+  'Iberia overview altitude',
+  "regionId === 'iberia' ? 980 : 310"
+);
 
 patch('mallorca-mobile/adventure-0210/index.html',[
   ["    const regionId = params.get('region') === 'catalunya-litoral' ? 'catalunya-litoral' : 'baleares';",
