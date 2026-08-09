@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "streaming-foundation",
+  "worldScaleUnitsPerKm": 1.45,
+  "canonicalCoordinates": "WGS84-latlon",
+  "streaming": {
+    "target": "seamless-no-loading-screen",
+    "activeChunkRadius": 1,
+    "prefetchChunkRadius": 1,
+    "releaseBehindPlayer": true,
+    "retainPlayerStateAcrossChunkSwap": ["position", "heading", "altitude", "mount", "speed", "questState"],
+    "terrainBudgetPolicy": "only-nearby-chunks-on-GPU"
+  },
+  "chunks": [
+    {"id":"iberia","status":"implemented","neighbors":["france","canarias","future-maghreb"]},
+    {"id":"france","status":"terrain-build","neighbors":["iberia","future-benelux-germany","future-alps-italy"]},
+    {"id":"canarias","status":"terrain-build","neighbors":["iberia","future-morocco-atlantic"]},
+    {"id":"future-maghreb","status":"planned","neighbors":["iberia","canarias"]}
+  ],
+  "designRules": [
+    "Never enlarge one regional terrain mesh until mobile detail collapses.",
+    "Adjacent chunks must overlap enough for the next terrain to be ready before the player reaches the seam.",
+    "No visible wall and no explicit loading screen at a land border.",
+    "Ocean routes may stream empty-water chunks while retaining the same player and mount state.",
+    "Local city zones are higher-detail subchunks layered over regional chunks rather than replacements for world geography."
+  ]
+}
