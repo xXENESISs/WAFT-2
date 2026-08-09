@@ -65,6 +65,12 @@ patch('mallorca-mobile/adventure-0210/index.html',[
    'Adventure build marker']
 ],"requestedRegion==='iberia'");
 
+patch('mallorca-mobile/adventure-0210/index.html',[
+  ["        source=source.replace(\"if (!Array.isArray(localRegistry.zones) || localRegistry.zones.length < 1) throw new Error('El registro local no contiene destinos.');\",\"if (!Array.isArray(localRegistry.zones)) throw new Error('El registro local no es válido.');\");",
+   "        source=source.replace(\"if (!Array.isArray(localRegistry.zones) || localRegistry.zones.length < 1) throw new Error('El registro local no contiene destinos.');\",\"if (!Array.isArray(localRegistry.zones)) throw new Error('El registro local no es válido.');\");\n        source=source.replace(\"    const travelNodeIds = ['barcelona','tarragona','girona','subregion-montserrat','subregion-montseny','subregion-maresme'];\",\"    const travelNodeIds = [];\"); // WAFT_IBERIA_RUNTIME_0241",
+   'disable Catalunya travel nodes in Iberia terrain runtime']
+],"WAFT_IBERIA_RUNTIME_0241");
+
 patch('mallorca-mobile/adventure-0210/plugin-loader.js',[
   ["  (0,eval)(source+'\\n//# sourceURL=waft-adventure-0233-gameplay.js');",
    `  const terrainOnly=window.__WAFT_ADVENTURE_REGION__==='iberia';
@@ -80,4 +86,4 @@ patch('mallorca-mobile/adventure-0210/plugin-loader.js',[
    'terrain-only Adventure branch']
 ],"__WAFT_IBERIA_TERRAIN_0240_READY__");
 
-console.log('WAFT 0.24.0 Iberia runtime preparation complete.');
+console.log('WAFT 0.24.1 Iberia runtime preparation complete.');

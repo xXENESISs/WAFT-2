@@ -1,9 +1,10 @@
-name: Build Iberia terrain 0.24.0
+name: Build Iberia terrain 0.24.1
 
 on:
   push:
     branches:
       - agent/iberia-terrain-0240
+      - agent/iberia-runtime-0241
     paths:
       - .github/workflows/build-iberia-terrain-0240.yml
       - world-generator/configs/iberia.region.json
@@ -12,6 +13,8 @@ on:
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/prepare-iberia-0240.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
+      - mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs
   workflow_dispatch:
 
 permissions:
@@ -46,10 +49,11 @@ jobs:
           path: world-generator/.cache/copernicus-dem-glo90
           key: waft-iberia-glo90-2021-v1
 
-      - name: Install raster dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install numpy rasterio
+          npm install --no-save --no-package-lock playwright-core@1.55.0
 
       - name: Syntax and region contract
         run: |
@@ -57,6 +61,8 @@ jobs:
           python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
           node --check world-generator/scripts/prepare-iberia-0240.mjs
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          node --check mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs
           node world-generator/scripts/validate-region.mjs
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
 
@@ -79,6 +85,27 @@ jobs:
         run: |
           node --check mallorca-mobile/adventure-0210/plugin-loader.js
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
+
+      - name: Verify Iberia Adventure in Chromium
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-iberia-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0241.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
+            /tmp/waft-iberia-0241.png
+
+      - name: Upload Iberia browser screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iberia-adventure-0241-browser
+          path: /tmp/waft-iberia-0241.png
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Commit generated Iberia terrain to branch
         shell: bash
@@ -97,5 +124,5 @@ jobs:
             echo "Iberia terrain is already deterministic and current."
             exit 0
           fi
-          git commit -m "Build compressed Iberian Peninsula terrain"
+          git commit -m "Build compressed Iberian Peninsula terrain runtime 0.24.1"
           git push origin HEAD:${GITHUB_REF_NAME}

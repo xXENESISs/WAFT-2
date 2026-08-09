@@ -33,6 +33,7 @@
         source=source.replaceAll('catalunya-litoral','iberia').replaceAll('CATALUNYA LITORAL','PENÍNSULA IBÉRICA').replaceAll('Catalunya litoral','Península Ibérica');
         source=source.replace("fetchJson(`${localBase}zones-v1.json`)","Promise.resolve({registryType:'waft-local-zone-registry',regionId:'iberia',zones:[]})");
         source=source.replace("if (!Array.isArray(localRegistry.zones) || localRegistry.zones.length < 1) throw new Error('El registro local no contiene destinos.');","if (!Array.isArray(localRegistry.zones)) throw new Error('El registro local no es válido.');");
+        source=source.replace("    const travelNodeIds = ['barcelona','tarragona','girona','subregion-montserrat','subregion-montseny','subregion-maresme'];","    const travelNodeIds = [];"); // WAFT_IBERIA_RUNTIME_0241
       }
       const replaceOne = (pattern, replacement, label) => {
         const before = source;
