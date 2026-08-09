@@ -110,3 +110,5 @@ jobs:
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
+
+# Final branch verification trigger: runtime/geography are identical to the browser-validated 0.24.4 state.
