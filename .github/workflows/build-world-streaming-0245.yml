@@ -25,6 +25,7 @@ permissions:
 
 # GITHUB_TOKEN-generated pushes intentionally do not recursively start Actions.
 # Deterministic browser validation is therefore triggered by a normal CI/source commit after generation.
+# This pass must stay clean before the branch is eligible for merge.
 concurrency:
   group: waft-world-0245-${{ github.ref }}
   cancel-in-progress: true
