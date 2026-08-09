@@ -36,7 +36,7 @@ for(const pattern of [
   /state\.joyY>\.55/,
   /targetDiveVy=-\(30\+28\*diveAmount\)/,
   /Math\.max\(42\.0,state\.adventureFlightFlap\*2\.4\)/,
-  /state\.iberiaFlapMomentum=\.64/,
+  /state\.iberiaFlapMomentum=\.42/,
   /Math\.min\(44,state\.adventureFlightVy\)/,
   /else state\.adventureFlightVy=0/,
   /if\(window\.__WAFT_ADVENTURE_REGION__!=='iberia'\)state\.respawnQueued = true/
@@ -95,4 +95,4 @@ assert.equal(byName.get('Ayódar').specialMarker,'christmas-tree');
 assert.equal(byName.get('Peñíscola').specialMarker,'castle');
 for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla'])assert.equal(byName.get(name).warImpact?.fictional,true,`${name} war lore must remain explicitly fictional`);
 
-console.log(`WAFT 0.24.4 Iberia world: ${preview.counts.settlements} regional/special markers, Menorca + Gibraltar/Ceuta/Melilla, stronger bearded-vulture climb and streaming foundation present.`);
+console.log(`WAFT 0.24.4 Iberia world: ${preview.counts.settlements} regional/special markers, Menorca + Gibraltar/Ceuta/Melilla, sharp bearded-vulture flap with quick level recovery and streaming foundation present.`);
