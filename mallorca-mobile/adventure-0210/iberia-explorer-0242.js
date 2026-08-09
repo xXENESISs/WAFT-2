@@ -24,7 +24,6 @@
       @media(max-width:700px){#waftIberiaPlaces{width:min(166px,38vw);font-size:8px;max-height:38vh}#waftIberiaPlaces header{height:24px;font-size:7px}.waftPlace{padding:2px}.waftPlace em{font-size:7px}}
     `;
     document.head.appendChild(style);
-    document.getElementById('down')?.remove();
     const panel=document.createElement('aside');
     panel.id='waftIberiaPlaces';
     panel.innerHTML='<header><span>LUGARES · 20K+</span><button type="button" aria-label="Ocultar lugares">−</button></header><div class="list"><div class="waftPlace"><span>Cargando…</span></div></div>';
@@ -85,18 +84,15 @@
       const flap=airborne?Math.sin(now*.009+a.phase)*(.18+.18*Math.max(0,1-speed)):.035;
       const oriented=mounted&&state?M.compose(base,M.rx(state.terrainPitch||0),M.rz(-(state.terrainRoll||0))):base;
       const dark=[.105,.092,.074],dark2=[.155,.132,.10],cream=[.77,.65,.48],rust=[.58,.31,.15],head=[.84,.72,.54],black=[.025,.022,.019],gold=[.80,.57,.20];
-      // Long cream/rust body and characteristic pale head.
       drawSphere(r,oriented,0,.43,0,.46,.48,.92,cream);
       drawSphere(r,oriented,0,.54,.54,.31,.34,.38,rust);
       drawSphere(r,oriented,0,.62,.88,.25,.25,.28,head);
       drawSphere(r,oriented,0,.60,1.12,.13,.10,.23,gold);
-      // Black facial mask and the beard that gives the species its silhouette.
       drawSphere(r,oriented,-.105,.68,1.00,.095,.065,.08,black);
       drawSphere(r,oriented,.105,.68,1.00,.095,.065,.08,black);
       drawSphere(r,oriented,-.085,.70,1.08,.026,.028,.023,[.005,.005,.004]);
       drawSphere(r,oriented,.085,.70,1.08,.026,.028,.023,[.005,.005,.004]);
       drawCylinderPart(r,oriented,0,.47,1.10,.035,.27,.035,black,M.rx(.36));
-      // Very long dark wings. Layered outer feathers stop it reading as a flat oval.
       const wing=(side)=>{
         const sx=side<0?-1:1;
         drawSphere(r,oriented,sx*.88,.46,-.05,1.12,.075,.52,dark,M.rz(sx*(-.16-flap)));
@@ -105,7 +101,6 @@
         for(let i=0;i<4;i++)drawSphere(r,oriented,sx*(1.45+i*.24),.37,-.31-i*.09,.30,.035,.16,dark,M.rz(sx*(-.28-i*.035-flap*.55)));
       };
       wing(-1);wing(1);
-      // Long wedge/diamond tail.
       drawSphere(r,oriented,-.16,.32,-.98,.22,.055,.63,dark,M.rz(-.08));
       drawSphere(r,oriented,.16,.32,-.98,.22,.055,.63,dark,M.rz(.08));
       drawSphere(r,oriented,0,.30,-1.48,.12,.045,.42,dark2);
