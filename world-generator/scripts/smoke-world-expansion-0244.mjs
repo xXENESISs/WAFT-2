@@ -11,7 +11,7 @@ for(const id of ['iberia','france','canarias']){
   const c=cfg(id);assert.equal(c.geography.scale.horizontalUnitsPerKm,1.45,`${id} scale drift`);assert.ok(tri(c)<=c.performance.budgets.visibleTriangles,`${id} terrain budget exceeded`);
   const p=createLocalProjection(c.geography);assert.ok(Number.isFinite(p.localBounds.minX)&&Number.isFinite(p.localBounds.maxZ),`${id} projection invalid`);
   const dir=path.join(ROOT,`regions/${id}`);if(fs.existsSync(path.join(dir,'manifest.json'))){
-    const m=read(`regions/${id}/manifest.json`);assert.equal(m.region.id,id);assert.ok(m.terrain.maximumElevationMeters>id==='canarias'?1000:2000);assert.ok(m.content.settlements>0,`${id} settlement layer missing`);
+    const m=read(`regions/${id}/manifest.json`);assert.equal(m.region.id,id);const minPeak=id==='canarias'?1000:2000;assert.ok(m.terrain.maximumElevationMeters>minPeak,`${id} relief peak too low`);assert.ok(m.content.settlements>0,`${id} settlement layer missing`);
   }
 }
 const ib=cfg('iberia');assert.ok(ib.geography.bounds.south<=35.3,'Melilla still outside Iberia terrain');
