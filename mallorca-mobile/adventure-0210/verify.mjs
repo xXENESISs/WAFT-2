@@ -52,7 +52,7 @@ for(const pattern of [
   /__WAFT_ADVENTURE_BUILD__='0\.24\.4'/,
   /WAFT_IBERIA_WORLD_0244/,
   /Math\.max\(42\.0,state\.adventureFlightFlap\*2\.4\)/,
-  /state\.iberiaFlapMomentum=\.64/,
+  /state\.iberiaFlapMomentum=\.42/,
   /Math\.min\(44,state\.adventureFlightVy\)/
 ]) assert.match(index,pattern,`index missing ${pattern}`);
 assert.doesNotMatch(index,/state\.yaw \+= dx/,'camera drag was re-inverted');
@@ -101,4 +101,4 @@ for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-cat
 const reference=path.join(here,'reference','world1-015-source.html');
 if(fs.existsSync(reference)){const world1=fs.readFileSync(reference,'utf8');for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);}
 
-console.log('WAFT 0.24.4 verification passed: World 1 parity remains intact while Iberia world foundation uses the current Adventure build marker and stronger flap tuning.');
+console.log('WAFT 0.24.4 verification passed: World 1 parity remains intact while Iberia world foundation keeps a strong flap, fast return to level flight and unchanged dive.');
