@@ -25,8 +25,7 @@ permissions:
   contents: write
 
 # GITHUB_TOKEN-generated pushes intentionally do not recursively start Actions.
-# Deterministic browser validation is therefore triggered by a normal CI/source commit after generation.
-# Final generated state is detected explicitly so repeated runs do not try to reapply an intermediate flight patch.
+# Once the 0.24.5 runtime marker exists, version-specific final tuning is handled by its own idempotent script.
 concurrency:
   group: waft-world-0245-${{ github.ref }}
   cancel-in-progress: true
@@ -65,9 +64,8 @@ jobs:
       - name: Prepare Adventure 0.24.5
         shell: bash
         run: |
-          if grep -Fq "Math.max(68.0,state.adventureFlightFlap*3.5)" mallorca-mobile/adventure-0210/index.html \
-            && grep -Fq "Math.max(-58,Math.min(68,state.adventureFlightVy))" mallorca-mobile/adventure-0210/index.html; then
-            echo "Adventure 0.24.5 final flight state already generated; skipping intermediate preparer."
+          if grep -Fq "WAFT_IBERIA_WORLD_0245" mallorca-mobile/adventure-0210/index.html; then
+            echo "Adventure 0.24.5 runtime already prepared; skipping base preparer."
           else
             node world-generator/scripts/prepare-iberia-0245.mjs
           fi
