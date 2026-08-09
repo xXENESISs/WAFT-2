@@ -103,6 +103,7 @@
     window.__WAFT_IBERIA_POLISH_0243_READY__=true;
   }
 
+  // This layer is intentionally data-free: final deterministic checks can rerun without rebuilding Iberia.
   init().catch(error=>{
     console.error('WAFT Iberia Polish 0.24.3 failed',error);
     window.__WAFT_IBERIA_POLISH_0243_ERROR__=String(error?.message||error);
