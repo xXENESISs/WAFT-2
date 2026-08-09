@@ -1,0 +1,26 @@
+{
+  "binaryBytes": 1520,
+  "binarySha256": "2e3923f0349ec226920a831af47ea4cb64d4a937d4b27d56604c2267b84336c9",
+  "buildId": "canarias-preview-21ec85e89cf9",
+  "counts": {
+    "buildings": 30,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 30,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 30
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 30
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "inputsSha256": "21ec85e89cf9cb992982f22fb643dbc822fab49390d2eb1d5bb5b78b557260b2",
+  "regionId": "canarias",
+  "valid": true
+}

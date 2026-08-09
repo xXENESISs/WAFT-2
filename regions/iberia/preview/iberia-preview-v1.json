@@ -1,21 +1,21 @@
 {
   "binary": {
-    "bytes": 17456,
+    "bytes": 17696,
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "3c30b1f15b761b07b0ddca3f60786db3d4c8f8775d202685d82738cdb823ac10"
+    "sha256": "fd51dd2cdf94a22cac8f7a6f268f81c48c73fa53de191a167696181e0af9cf1c"
   },
-  "buildId": "iberia-preview-43f14aaa5345",
+  "buildId": "iberia-preview-2be7b7e0e027",
   "counts": {
-    "buildings": 362,
+    "buildings": 367,
     "hotels": 0,
     "landmarks": 0,
-    "namedBuildings": 362,
+    "namedBuildings": 367,
     "roadSegments": 0,
     "roadVertices": 0,
     "selectedRoads": 0,
-    "settlements": 362
+    "settlements": 367
   },
   "display": {
     "buildingHorizontalExaggeration": 2.7,
@@ -25,7 +25,7 @@
   },
   "distributions": {
     "buildingKinds": {
-      "public": 362
+      "public": 367
     },
     "landmarkRepresentations": {},
     "roadClasses": {}
@@ -94,20 +94,20 @@
     {
       "altitude": 56,
       "distance": 48,
-      "id": "subregion-sierra-nevada",
-      "name": "Sierra Nevada",
-      "terrainMeters": 2986,
-      "x": -27.9128,
-      "z": 437.4989
+      "id": "subregion-gibraltar",
+      "name": "Gibraltar",
+      "terrainMeters": 340,
+      "x": -276.0264,
+      "z": 585.749
     },
     {
       "altitude": 60,
       "distance": 52,
-      "id": "subregion-sistema-central",
-      "name": "Sistema Central",
-      "terrainMeters": 965,
-      "x": -151.9696,
-      "z": -103.9362
+      "id": "subregion-ceuta",
+      "name": "Ceuta",
+      "terrainMeters": 82,
+      "x": -272.3568,
+      "z": 626.1649
     }
   ],
   "regionId": "iberia",
@@ -390,6 +390,12 @@
       "population": 20883
     },
     {
+      "id": "es-waft-ayodar",
+      "name": "Ayódar",
+      "place": "PPL",
+      "population": 153
+    },
+    {
       "id": "es-3129046",
       "name": "Azuqueca de Henares",
       "place": "PPLA3",
@@ -652,6 +658,12 @@
       "name": "Cerdanyola del Vallès",
       "place": "PPL",
       "population": 58747
+    },
+    {
+      "id": "es-6362987",
+      "name": "Ceuta",
+      "place": "PPLA",
+      "population": 83179
     },
     {
       "id": "es-3125239",
@@ -952,6 +964,12 @@
       "name": "Getxo",
       "place": "PPL",
       "population": 80770
+    },
+    {
+      "id": "gi-2411585",
+      "name": "Gibraltar",
+      "place": "PPLC",
+      "population": 26544
     },
     {
       "id": "es-3121424",
@@ -1326,6 +1344,12 @@
       "population": 22488
     },
     {
+      "id": "es-2513947",
+      "name": "Melilla",
+      "place": "PPLA",
+      "population": 85985
+    },
+    {
       "id": "es-3116789",
       "name": "Mieres",
       "place": "PPLA3",
@@ -1558,6 +1582,12 @@
       "name": "Paterna",
       "place": "PPLA3",
       "population": 64023
+    },
+    {
+      "id": "es-waft-peniscola",
+      "name": "Peñíscola",
+      "place": "PPL",
+      "population": 7447
     },
     {
       "id": "es-2512581",
@@ -2287,10 +2317,10 @@
     }
   ],
   "sources": {
-    "inputsSha256": "43f14aaa5345055e1785509615d79eb529178727e9a7941ac09900e040359935",
-    "landcoverSha256": "3ea25dfb4de64c4c5e0a0417aaef46871b44a3912f7945b9a35f1fcb8a919328",
-    "regionManifestSha256": "da62824387be17b2768f98c3f2d4d0637172b45662db82a293b515939a02796b",
-    "terrainSha256": "e1244aac8e59f412121a26b2c7916e4b1d50645a7fd4d5e224020ac46d135193"
+    "inputsSha256": "2be7b7e0e0271580575e9ba81ed47fc9754835b695865f7de091a1856b374c5c",
+    "landcoverSha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668",
+    "regionManifestSha256": "ef8cd2db0d73c8eee6e4fd81c6f61da2c6f2323442382123a2e9a2cc1121b97e",
+    "terrainSha256": "3330513a236f9a959454e004305113831ef36cb02d8c9ee386dffa2d911966ef"
   },
   "terrain": {
     "columns": 560,
@@ -2298,7 +2328,7 @@
     "landcoverFile": "../landcover.bin",
     "localBounds": {
       "maxX": 958.3386864436513,
-      "maxZ": 648.5941349999997,
+      "maxZ": 745.278975,
       "minX": -803.267701582219,
       "minZ": -648.5941349999997
     },

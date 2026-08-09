@@ -1,0 +1,26 @@
+{
+  "binaryBytes": 22208,
+  "binarySha256": "a31f9a6d8ff89838ef440588797e9d11533aa2c132fe21762c8de4d8141b7d1b",
+  "buildId": "france-preview-21d543340113",
+  "counts": {
+    "buildings": 461,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 461,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 461
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 461
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "inputsSha256": "21d5433401137a35d6b32ff07c4d0abfb44ca39916895e0561d606cfb80f3c57",
+  "regionId": "france",
+  "valid": true
+}

@@ -1,0 +1,72 @@
+{
+  "connections": [
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "pyrenees-south",
+      "id": "france-iberia-continuous",
+      "requiredCapabilities": [
+        "land"
+      ],
+      "targetRegionId": "iberia"
+    }
+  ],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 180,
+      "id": "pyrenees-south",
+      "local": {
+        "x": -176.1216,
+        "y": 349,
+        "z": 451.1959
+      },
+      "name": "Pyrénées · frontière sud",
+      "position": {
+        "lat": 43.35,
+        "lon": 0.55
+      },
+      "sectorId": "s-10-19",
+      "terrainStatus": "exact-cell",
+      "type": "land_border"
+    },
+    {
+      "arrivalHeadingDegrees": 170,
+      "id": "bayonne-south",
+      "local": {
+        "x": -402.0045,
+        "y": 52,
+        "z": 428.6361
+      },
+      "name": "Bayonne · côte basque",
+      "position": {
+        "lat": 43.49,
+        "lon": -1.47
+      },
+      "sectorId": "s-07-19",
+      "terrainStatus": "exact-cell",
+      "type": "land_border"
+    },
+    {
+      "arrivalHeadingDegrees": 185,
+      "id": "perpignan-south",
+      "local": {
+        "x": 85.5448,
+        "y": 66,
+        "z": 555.9378
+      },
+      "name": "Perpignan · Méditerranée",
+      "position": {
+        "lat": 42.7,
+        "lon": 2.89
+      },
+      "sectorId": "s-14-21",
+      "terrainStatus": "exact-cell",
+      "type": "land_border"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "france",
+  "roads": []
+}

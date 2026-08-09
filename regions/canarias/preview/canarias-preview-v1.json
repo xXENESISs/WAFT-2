@@ -1,0 +1,316 @@
+{
+  "binary": {
+    "bytes": 1520,
+    "file": "canarias-preview-v1.bin",
+    "headerBytes": 80,
+    "magic": "WAFTRPV1",
+    "sha256": "2e3923f0349ec226920a831af47ea4cb64d4a937d4b27d56604c2267b84336c9"
+  },
+  "buildId": "canarias-preview-21ec85e89cf9",
+  "counts": {
+    "buildings": 30,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 30,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 30
+  },
+  "display": {
+    "buildingHorizontalExaggeration": 2.7,
+    "buildingVerticalScale": 0.075,
+    "landmarkLift": 2.6,
+    "roadLift": 0.16
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 30
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "landmarks": [],
+  "mappings": {
+    "buildingKinds": {
+      "commercial": 5,
+      "historic": 3,
+      "hotel": 1,
+      "ordinary": 0,
+      "public": 4,
+      "religious": 2
+    },
+    "representations": {
+      "archetype": 0,
+      "marker": 0,
+      "unique": 2,
+      "unique-candidate": 1
+    },
+    "roadClasses": {
+      "bridleway": 9,
+      "cycleway": 9,
+      "footway": 8,
+      "living_street": 5,
+      "motorway": 0,
+      "motorway_link": 0,
+      "path": 8,
+      "pedestrian": 8,
+      "primary": 2,
+      "primary_link": 2,
+      "residential": 5,
+      "secondary": 3,
+      "secondary_link": 3,
+      "service": 6,
+      "steps": 10,
+      "tertiary": 4,
+      "tertiary_link": 4,
+      "track": 7,
+      "trunk": 1,
+      "trunk_link": 1,
+      "unclassified": 6
+    }
+  },
+  "presets": [
+    {
+      "altitude": 310,
+      "distance": 0,
+      "id": "overview",
+      "name": "Tot",
+      "terrainMeters": 0,
+      "x": 0,
+      "z": 0
+    },
+    {
+      "altitude": 52,
+      "distance": 44,
+      "id": "subregion-gran-canaria",
+      "name": "Gran Canaria",
+      "terrainMeters": 1862,
+      "x": 38.2823,
+      "z": 95.0734
+    },
+    {
+      "altitude": 56,
+      "distance": 48,
+      "id": "subregion-tenerife",
+      "name": "Tenerife",
+      "terrainMeters": 2294,
+      "x": -103.5039,
+      "z": 45.1196
+    },
+    {
+      "altitude": 60,
+      "distance": 52,
+      "id": "subregion-fuerteventura",
+      "name": "Fuerteventura",
+      "terrainMeters": 433,
+      "x": 260.8865,
+      "z": 30.6169
+    }
+  ],
+  "regionId": "canarias",
+  "regionName": "Canarias",
+  "settlements": [
+    {
+      "id": "es-2522437",
+      "name": "Adeje",
+      "place": "PPLA3",
+      "population": 43204
+    },
+    {
+      "id": "es-2522325",
+      "name": "Agüimes",
+      "place": "PPLA3",
+      "population": 28924
+    },
+    {
+      "id": "es-2521582",
+      "name": "Arona",
+      "place": "PPLA3",
+      "population": 78614
+    },
+    {
+      "id": "es-2521570",
+      "name": "Arrecife",
+      "place": "PPLA3",
+      "population": 61351
+    },
+    {
+      "id": "es-2521519",
+      "name": "Arucas",
+      "place": "PPLA3",
+      "population": 36259
+    },
+    {
+      "id": "es-2520283",
+      "name": "Candelaria",
+      "place": "PPLA3",
+      "population": 24319
+    },
+    {
+      "id": "es-2520069",
+      "name": "Carrizal",
+      "place": "PPL",
+      "population": 22000
+    },
+    {
+      "id": "es-2517111",
+      "name": "Granadilla de Abona",
+      "place": "PPLA3",
+      "population": 39993
+    },
+    {
+      "id": "es-2516860",
+      "name": "Guía de Isora",
+      "place": "PPLA3",
+      "population": 20536
+    },
+    {
+      "id": "es-2517436",
+      "name": "Gáldar",
+      "place": "PPLA3",
+      "population": 24209
+    },
+    {
+      "id": "es-2516474",
+      "name": "Icod de los Vinos",
+      "place": "PPLA3",
+      "population": 24024
+    },
+    {
+      "id": "es-2516443",
+      "name": "Ingenio",
+      "place": "PPLA3",
+      "population": 29319
+    },
+    {
+      "id": "es-2511401",
+      "name": "La Laguna",
+      "place": "PPL",
+      "population": 150661
+    },
+    {
+      "id": "es-2515698",
+      "name": "La Oliva",
+      "place": "PPL",
+      "population": 25884
+    },
+    {
+      "id": "es-2515692",
+      "name": "La Orotava",
+      "place": "PPL",
+      "population": 41833
+    },
+    {
+      "id": "es-2515270",
+      "name": "Las Palmas de Gran Canaria",
+      "place": "PPLA",
+      "population": 383516
+    },
+    {
+      "id": "es-2514651",
+      "name": "Los Llanos de Aridane",
+      "place": "PPL",
+      "population": 20171
+    },
+    {
+      "id": "es-6692471",
+      "name": "Los Realejos",
+      "place": "PPLA3",
+      "population": 36405
+    },
+    {
+      "id": "es-2514042",
+      "name": "Maspalomas",
+      "place": "PPL",
+      "population": 36065
+    },
+    {
+      "id": "es-2513798",
+      "name": "Mogán",
+      "place": "PPLA3",
+      "population": 21690
+    },
+    {
+      "id": "es-2512196",
+      "name": "Puerto de la Cruz",
+      "place": "PPLA3",
+      "population": 32219
+    },
+    {
+      "id": "es-6355013",
+      "name": "Puerto del Carmen",
+      "place": "PPL",
+      "population": 30000
+    },
+    {
+      "id": "es-2512186",
+      "name": "Puerto del Rosario",
+      "place": "PPLA3",
+      "population": 35667
+    },
+    {
+      "id": "es-2513026",
+      "name": "Pájara",
+      "place": "PPLA3",
+      "population": 20821
+    },
+    {
+      "id": "es-2511994",
+      "name": "Realejo Alto",
+      "place": "PPL",
+      "population": 35963
+    },
+    {
+      "id": "es-2511440",
+      "name": "San Bartolomé de Tirajana",
+      "place": "PPL",
+      "population": 53588
+    },
+    {
+      "id": "es-2511174",
+      "name": "Santa Cruz de Tenerife",
+      "place": "PPLA",
+      "population": 211359
+    },
+    {
+      "id": "es-2511150",
+      "name": "Santa Lucía",
+      "place": "PPL",
+      "population": 71863
+    },
+    {
+      "id": "es-2510725",
+      "name": "Tacoronte",
+      "place": "PPLA3",
+      "population": 23562
+    },
+    {
+      "id": "es-2510542",
+      "name": "Telde",
+      "place": "PPLA3",
+      "population": 123265
+    }
+  ],
+  "sources": {
+    "inputsSha256": "21ec85e89cf9cb992982f22fb643dbc822fab49390d2eb1d5bb5b78b557260b2",
+    "landcoverSha256": "6b409c00928be91abbcb6711f0084c7556b1a30629cbbd17be595c31b70df56e",
+    "regionManifestSha256": "805395230005af0877fd816bf87fe84f8afa695a0e6ba43b2fed80262880e4fe",
+    "terrainSha256": "c814bd03fb38e777518d43924f2a37e86c9de5040d3e380a65cf1c8ab1972dd5"
+  },
+  "terrain": {
+    "columns": 384,
+    "file": "../terrain.bin",
+    "landcoverFile": "../landcover.bin",
+    "localBounds": {
+      "maxX": 375.7332145487033,
+      "maxZ": 185.31261000000035,
+      "minX": -375.7332145487033,
+      "minZ": -185.31260999999978
+    },
+    "rows": 192,
+    "verticalScale": 0.013594
+  }
+}
