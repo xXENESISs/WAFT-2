@@ -1,0 +1,27 @@
+{
+  "connections": [],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 0,
+      "id": "gibraltar-south",
+      "local": {
+        "x": -276.0264,
+        "y": 307,
+        "z": 585.749
+      },
+      "name": "Gibraltar",
+      "position": {
+        "lat": 36.14,
+        "lon": -5.35
+      },
+      "sectorId": "s-08-19",
+      "terrainStatus": "exact-cell",
+      "type": "coast"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "iberia",
+  "roads": []
+}

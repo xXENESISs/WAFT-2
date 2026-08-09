@@ -100,7 +100,7 @@ builder = replaceOnce(
       };
     });
   const presets = [
-    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: 310, distance: 0 },
+    { id: 'overview', name: 'Tot', x: 0, z: 0, terrainMeters: 0, altitude: regionId === 'iberia' ? 980 : 310, distance: 0 },
     ...settlementPresets,
     ...featurePresets
   ];`,
