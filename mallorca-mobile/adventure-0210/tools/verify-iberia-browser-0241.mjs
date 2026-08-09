@@ -16,9 +16,17 @@ if(!url)throw new Error('Usage: node verify-iberia-browser-0241.mjs <url> [scree
 const browser=await chromium.launch({
   executablePath:findChrome(),
   headless:true,
-  args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist']
+  args:[
+    '--no-sandbox',
+    '--disable-dev-shm-usage',
+    '--ignore-gpu-blocklist',
+    '--enable-webgl',
+    '--use-gl=angle',
+    '--use-angle=swiftshader',
+    '--disable-background-networking'
+  ]
 });
-const context=await browser.newContext({viewport:{width:1280,height:720},deviceScaleFactor:1});
+const context=await browser.newContext({viewport:{width:844,height:390},deviceScaleFactor:1,isMobile:true,hasTouch:true});
 const page=await context.newPage();
 const pageErrors=[];
 const consoleMessages=[];
@@ -74,16 +82,7 @@ try{
   if(screenshot){fs.mkdirSync(path.dirname(screenshot),{recursive:true});await page.screenshot({path:screenshot,type:'png'});}
 
   if(!(initial.runtimeReady&&initial.terrainReady)){
-    const diagnostic={
-      valid:false,
-      phase:'boot',
-      url,
-      initial,
-      pageErrors,
-      consoleMessages,
-      requestFailures,
-      badResponses
-    };
+    const diagnostic={valid:false,phase:'boot',url,initial,pageErrors,consoleMessages,requestFailures,badResponses};
     console.error('IBERIA_BROWSER_DIAGNOSTIC '+JSON.stringify(diagnostic,null,2));
     throw new Error(`Iberia did not finish booting: runtimeReady=${initial.runtimeReady} terrainReady=${initial.terrainReady} error=${initial.errorText||'none'} load=${initial.loadText||initial.statusText||'none'}`);
   }
@@ -100,7 +99,7 @@ try{
   requireValue(initial.animals===0&&!initial.npc,'Terrain-only Adventure spawned fauna or NPCs');
   requireValue(!initial.errorText,`Runtime error box: ${initial.errorText}`);
   requireValue(initial.webgl2,'WebGL2 is not available');
-  requireValue(initial.canvas.width>=1000&&initial.canvas.height>=600,`Unexpected canvas ${initial.canvas.width}x${initial.canvas.height}`);
+  requireValue(initial.canvas.width>=800&&initial.canvas.height>=350,`Unexpected canvas ${initial.canvas.width}x${initial.canvas.height}`);
   requireValue(initial.state?.worldMode==='regional','Iberia did not start in regional mode');
   requireValue(Number.isFinite(initial.state?.position?.x)&&Number.isFinite(initial.state?.position?.z),'Invalid initial position');
 
