@@ -12,10 +12,11 @@ const ip=createLocalProjection(iberia.geography),cp=createLocalProjection(cat.ge
 const width=p=>p.localBounds.maxX-p.localBounds.minX,height=p=>p.localBounds.maxZ-p.localBounds.minZ;
 const wr=width(ip)/width(cp),hr=height(ip)/height(cp);
 assert.ok(wr>=3.15&&wr<=3.45,`Expanded Iberia width ratio ${wr.toFixed(3)} is outside Menorca-inclusive target`);
-assert.ok(hr>=3.0&&hr<=3.3,`Iberia height ratio ${hr.toFixed(3)} is outside ~3x target`);
+assert.ok(hr>=3.0&&hr<=3.5,`Iberia height ratio ${hr.toFixed(3)} is outside Menorca/Melilla-inclusive target`);
 assert.deepEqual(iberia.countryCodes,['ES','PT','AD']);
 assert.equal(iberia.geography.scale.horizontalUnitsPerKm,1.45);
 assert.ok(iberia.geography.bounds.east>=4.5,'Iberia east edge still clips Menorca');
+assert.ok(iberia.geography.bounds.south<=35.3,'Iberia south edge still clips Melilla');
 assert.deepEqual(iberia.generation.terrain.grid,{columns:560,rows:416});
 const triangles=(560-1)*(416-1)*2;
 assert.ok(triangles<=iberia.performance.budgets.visibleTriangles,`${triangles} terrain triangles exceed mobile budget`);

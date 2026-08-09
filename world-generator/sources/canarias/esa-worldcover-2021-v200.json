@@ -1,0 +1,42 @@
+{
+  "algorithmVersion": "terrain-only-v1",
+  "attribution": "Contains modified Copernicus DEM data",
+  "binaryBytes": 73792,
+  "binaryFile": "esa-worldcover-2021-v200.bin",
+  "binarySha256": "93339d61c43352117bc36db9303feb9aa6a7919baf97bfb85f12ba3ed2aa8bac",
+  "classDistribution": {
+    "30": {
+      "cells": 4778,
+      "name": "Grassland placeholder",
+      "ratio": 0.06480577
+    },
+    "80": {
+      "cells": 68950,
+      "name": "Water",
+      "ratio": 0.93519423
+    }
+  },
+  "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
+  "datasetYear": 2021,
+  "distribution": "Derived build artifact",
+  "doi": null,
+  "formatVersion": 1,
+  "license": "Copernicus data policy",
+  "nominalResolutionMeters": 90,
+  "provider": "WAFT / Copernicus Programme",
+  "regionId": "canarias",
+  "retrievedOn": "2026-08-09",
+  "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+  "targetGrid": {
+    "bounds": {
+      "east": -13.2,
+      "north": 29.7,
+      "south": 27.4,
+      "west": -18.5
+    },
+    "columns": 384,
+    "method": "DEM elevation > 0",
+    "rows": 192
+  },
+  "tiles": []
+}

@@ -1,9 +1,9 @@
 {
   "attribution": "Contains modified Copernicus DEM data",
-  "availableCells": 204331,
+  "availableCells": 203173,
   "binaryBytes": 465984,
   "binaryFile": "copernicus-dem-glo30.bin",
-  "binarySha256": "309c7162e724d9e3748e719e14d22934b2f983d4f5eb91c571a39a9645f710c9",
+  "binarySha256": "53d657f9cda8e40a5bb879105c3ad8f4017279595601a1620622af45e68b8a90",
   "bucket": "s3://copernicus-dem-90m",
   "dataset": "Copernicus DEM GLO-90",
   "datasetRelease": "2021",
@@ -11,9 +11,9 @@
   "formatVersion": 1,
   "license": "Copernicus data policy",
   "maximumElevationMeters": 3460,
-  "meanElevationMeters": 525.574,
+  "meanElevationMeters": 519.488,
   "minimumElevationMeters": 0,
-  "nodataCells": 28629,
+  "nodataCells": 29787,
   "nominalResolutionMeters": 90,
   "provider": "Copernicus Programme",
   "regionId": "iberia",
@@ -23,7 +23,7 @@
     "bounds": {
       "east": 4.6,
       "north": 43.8,
-      "south": 35.75,
+      "south": 35.15,
       "west": -9.6
     },
     "columns": 560,

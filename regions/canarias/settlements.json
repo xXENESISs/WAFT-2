@@ -1,0 +1,950 @@
+{
+  "formatVersion": 1,
+  "generationStage": "population-war-lore-markers-0244",
+  "items": [
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2522437",
+      "local": {
+        "x": -124.2046,
+        "y": 505,
+        "z": 68.8541
+      },
+      "name": "Adeje",
+      "place": "PPLA3",
+      "population": 43204,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.12271,
+        "lon": -16.726
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-03-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2522437",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 27635,
+        "rate": 0.6397,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15569
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2522325",
+      "local": {
+        "x": 57.2688,
+        "y": 345,
+        "z": 103.8734
+      },
+      "name": "Agüimes",
+      "place": "PPLA3",
+      "population": 28924,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.90539,
+        "lon": -15.44609
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2522325",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13107,
+        "rate": 0.4531,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15817
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2521582",
+      "local": {
+        "x": -117.8271,
+        "y": 761,
+        "z": 72.5749
+      },
+      "name": "Arona",
+      "place": "PPLA3",
+      "population": 78614,
+      "populationTier": "medium",
+      "position": {
+        "lat": 28.09962,
+        "lon": -16.68102
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-04-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2521582",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 62597,
+        "rate": 0.7963,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16017
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2521570",
+      "local": {
+        "x": 326.4356,
+        "y": 36,
+        "z": -66.5546
+      },
+      "name": "Arrecife",
+      "place": "PPLA3",
+      "population": 61351,
+      "populationTier": "medium",
+      "position": {
+        "lat": 28.96302,
+        "lon": -13.54769
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2521570",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 34068,
+        "rate": 0.5553,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 27283
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2521519",
+      "local": {
+        "x": 46.3286,
+        "y": 400,
+        "z": 69.3182
+      },
+      "name": "Arucas",
+      "place": "PPLA3",
+      "population": 36259,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.11983,
+        "lon": -15.52325
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2521519",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 23885,
+        "rate": 0.6587,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12374
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2520283",
+      "local": {
+        "x": -74.1088,
+        "y": 77,
+        "z": 31.4548
+      },
+      "name": "Candelaria",
+      "place": "PPLA3",
+      "population": 24319,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.3548,
+        "lon": -16.37268
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2520283",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18047,
+        "rate": 0.7421,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 6272
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2520069",
+      "local": {
+        "x": 63.0126,
+        "y": 100,
+        "z": 102.8711
+      },
+      "name": "Carrizal",
+      "place": "PPL",
+      "population": 22000,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.91161,
+        "lon": -15.40558
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2520069",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14796,
+        "rate": 0.6726,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7204
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2517111",
+      "local": {
+        "x": -102.9353,
+        "y": 787,
+        "z": 69.4809
+      },
+      "name": "Granadilla de Abona",
+      "place": "PPLA3",
+      "population": 39993,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.11882,
+        "lon": -16.57599
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2517111",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 17471,
+        "rate": 0.4368,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 22522
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2516860",
+      "local": {
+        "x": -131.7859,
+        "y": 641,
+        "z": 54.5399
+      },
+      "name": "Guía de Isora",
+      "place": "PPLA3",
+      "population": 20536,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.21154,
+        "lon": -16.77947
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-03-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2516860",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13250,
+        "rate": 0.6452,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7286
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2517436",
+      "local": {
+        "x": 28.3289,
+        "y": 326,
+        "z": 64.9384
+      },
+      "name": "Gáldar",
+      "place": "PPLA3",
+      "population": 24209,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.14701,
+        "lon": -15.6502
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2517436",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14946,
+        "rate": 0.6174,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9263
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2516474",
+      "local": {
+        "x": -122.2026,
+        "y": 316,
+        "z": 28.6171
+      },
+      "name": "Icod de los Vinos",
+      "place": "PPLA3",
+      "population": 24024,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.37241,
+        "lon": -16.71188
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-03-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2516474",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15738,
+        "rate": 0.6551,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8286
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2516443",
+      "local": {
+        "x": 58.9362,
+        "y": 285,
+        "z": 101.7527
+      },
+      "name": "Ingenio",
+      "place": "PPLA3",
+      "population": 29319,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.91855,
+        "lon": -15.43433
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2516443",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19283,
+        "rate": 0.6577,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10036
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2511401",
+      "local": {
+        "x": -66.6593,
+        "y": 639,
+        "z": 10.4258
+      },
+      "name": "La Laguna",
+      "place": "PPL",
+      "population": 150661,
+      "populationTier": "medium",
+      "position": {
+        "lat": 28.4853,
+        "lon": -16.32014
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2511401",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 80170,
+        "rate": 0.5321,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 70491
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2515698",
+      "local": {
+        "x": 272.3541,
+        "y": 241,
+        "z": -9.7523
+      },
+      "name": "La Oliva",
+      "place": "PPL",
+      "population": 25884,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.61052,
+        "lon": -13.92912
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2515698",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16460,
+        "rate": 0.6359,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9424
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2515692",
+      "local": {
+        "x": -95.4348,
+        "y": 580,
+        "z": 25.6602
+      },
+      "name": "La Orotava",
+      "place": "PPL",
+      "population": 41833,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.39076,
+        "lon": -16.52309
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2515692",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 23976,
+        "rate": 0.5731,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17857
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "ES",
+      "id": "es-2515270",
+      "local": {
+        "x": 61.5735,
+        "y": 123,
+        "z": 72.2268
+      },
+      "name": "Las Palmas de Gran Canaria",
+      "place": "PPLA",
+      "population": 383516,
+      "populationTier": "large",
+      "position": {
+        "lat": 28.10178,
+        "lon": -15.41573
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2515270",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 275739,
+        "rate": 0.719,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 107777
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2514651",
+      "local": {
+        "x": -293.2435,
+        "y": 500,
+        "z": -17.4855
+      },
+      "name": "Los Llanos de Aridane",
+      "place": "PPL",
+      "population": 20171,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.65851,
+        "lon": -17.91821
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2514651",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13968,
+        "rate": 0.6925,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 6203
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-6692471",
+      "local": {
+        "x": -103.8938,
+        "y": 381,
+        "z": 26.6093
+      },
+      "name": "Los Realejos",
+      "place": "PPLA3",
+      "population": 36405,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.38487,
+        "lon": -16.58275
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "6692471",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18117,
+        "rate": 0.4977,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 18288
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2514042",
+      "local": {
+        "x": 37.4287,
+        "y": 104,
+        "z": 127.2115
+      },
+      "name": "Maspalomas",
+      "place": "PPL",
+      "population": 36065,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.76056,
+        "lon": -15.58602
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2514042",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20698,
+        "rate": 0.5739,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15367
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2513798",
+      "local": {
+        "x": 17.6694,
+        "y": 805,
+        "z": 107.3443
+      },
+      "name": "Mogán",
+      "place": "PPLA3",
+      "population": 21690,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.88385,
+        "lon": -15.72538
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2513798",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14307,
+        "rate": 0.6596,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7383
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2512196",
+      "local": {
+        "x": -99.3708,
+        "y": 132,
+        "z": 21.4544
+      },
+      "name": "Puerto de la Cruz",
+      "place": "PPLA3",
+      "population": 32219,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.41686,
+        "lon": -16.55085
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2512196",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16626,
+        "rate": 0.516,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15593
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-6355013",
+      "local": {
+        "x": 309.6907,
+        "y": 40,
+        "z": -60.1267
+      },
+      "name": "Puerto del Carmen",
+      "place": "PPL",
+      "population": 30000,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.92313,
+        "lon": -13.66579
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-01",
+      "source": "geonames-cities15000",
+      "sourceId": "6355013",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16268,
+        "rate": 0.5423,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13732
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2512186",
+      "local": {
+        "x": 281.7687,
+        "y": 72,
+        "z": 7.9958
+      },
+      "name": "Puerto del Rosario",
+      "place": "PPLA3",
+      "population": 35667,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.50038,
+        "lon": -13.86272
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2512186",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18602,
+        "rate": 0.5215,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17065
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2513026",
+      "local": {
+        "x": 247.0481,
+        "y": 343,
+        "z": 32.1654
+      },
+      "name": "Pájara",
+      "place": "PPLA3",
+      "population": 20821,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.35039,
+        "lon": -14.1076
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2513026",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 12480,
+        "rate": 0.5994,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8341
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2511994",
+      "local": {
+        "x": -104.3191,
+        "y": 781,
+        "z": 27.9661
+      },
+      "name": "Realejo Alto",
+      "place": "PPL",
+      "population": 35963,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.37645,
+        "lon": -16.58575
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2511994",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16556,
+        "rate": 0.4604,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 19407
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2511440",
+      "local": {
+        "x": 39.2336,
+        "y": 1198,
+        "z": 100.744
+      },
+      "name": "San Bartolomé de Tirajana",
+      "place": "PPL",
+      "population": 53588,
+      "populationTier": "medium",
+      "position": {
+        "lat": 27.92481,
+        "lon": -15.57329
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2511440",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 35191,
+        "rate": 0.6567,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 18397
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "ES",
+      "id": "es-2511174",
+      "local": {
+        "x": -57.3695,
+        "y": 330,
+        "z": 13.1749
+      },
+      "name": "Santa Cruz de Tenerife",
+      "place": "PPLA",
+      "population": 211359,
+      "populationTier": "large",
+      "position": {
+        "lat": 28.46824,
+        "lon": -16.25462
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2511174",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 196476,
+        "rate": 0.9296,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14883
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2511150",
+      "local": {
+        "x": 43.853,
+        "y": 808,
+        "z": 102.8501
+      },
+      "name": "Santa Lucía",
+      "place": "PPL",
+      "population": 71863,
+      "populationTier": "medium",
+      "position": {
+        "lat": 27.91174,
+        "lon": -15.54071
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2511150",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 39356,
+        "rate": 0.5476,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 32507
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2510725",
+      "local": {
+        "x": -79.4229,
+        "y": 771,
+        "z": 11.7827
+      },
+      "name": "Tacoronte",
+      "place": "PPLA3",
+      "population": 23562,
+      "populationTier": "small",
+      "position": {
+        "lat": 28.47688,
+        "lon": -16.41016
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2510725",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15169,
+        "rate": 0.6438,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8393
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "ES",
+      "id": "es-2510542",
+      "local": {
+        "x": 61.0885,
+        "y": 171,
+        "z": 89.8476
+      },
+      "name": "Telde",
+      "place": "PPLA3",
+      "population": 123265,
+      "populationTier": "medium",
+      "position": {
+        "lat": 27.99243,
+        "lon": -15.41915
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2510542",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 89975,
+        "rate": 0.7299,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 33290
+      }
+    }
+  ],
+  "regionId": "canarias",
+  "source": {
+    "countries": [
+      "ES"
+    ],
+    "dataset": "cities15000",
+    "fictionalWarImpact": true,
+    "license": "GeoNames CC BY 4.0; WAFT manual metadata",
+    "minimumPopulation": 20000,
+    "provider": "GeoNames + WAFT manual exceptions",
+    "regionId": "canarias",
+    "retrievedOn": "2026-08-09",
+    "url": "https://download.geonames.org/export/dump/cities15000.zip"
+  }
+}

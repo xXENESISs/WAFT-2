@@ -1,0 +1,71 @@
+{
+  "$schema": "../schema/region.schema.json",
+  "schemaVersion": 1,
+  "id": "france",
+  "name": "France métropolitaine",
+  "version": "0.24.4",
+  "status": "prototype",
+  "continent": "Europe",
+  "countryCodes": ["FR"],
+  "aliases": ["France", "Francia", "France métropolitaine"],
+  "geography": {
+    "bounds": {"west": -5.5, "east": 9.75, "south": 41.1, "north": 51.2},
+    "origin": {"lon": 2.125, "lat": 46.15},
+    "projection": "local-equirectangular",
+    "scale": {
+      "horizontalUnitsPerKm": 1.45,
+      "verticalExaggeration": 1.9,
+      "emptySpaceCompression": {"mode": "none", "factor": 1, "preserveCoastline": true, "anchorIds": []}
+    },
+    "subregions": [
+      {"id":"occitanie","name":"Occitanie","type":"plain","center":{"lon":3.1,"lat":43.7},"priority":100},
+      {"id":"montpellier","name":"Montpellier","type":"city","center":{"lon":3.8767,"lat":43.6119},"priority":100},
+      {"id":"nimes","name":"Nîmes","type":"city","center":{"lon":4.3601,"lat":43.8367},"priority":98},
+      {"id":"avignon","name":"Avignon","type":"city","center":{"lon":4.8055,"lat":43.9493},"priority":98},
+      {"id":"bayonne","name":"Bayonne","type":"coast","center":{"lon":-1.4748,"lat":43.4929},"priority":98},
+      {"id":"pyrenees","name":"Pyrénées","type":"mountain","center":{"lon":0.4,"lat":42.95},"priority":100},
+      {"id":"alpes","name":"Alpes françaises","type":"mountain","center":{"lon":6.5,"lat":45.4},"priority":100},
+      {"id":"massif-central","name":"Massif central","type":"mountain","center":{"lon":3.0,"lat":45.3},"priority":94},
+      {"id":"paris-basin","name":"Bassin parisien","type":"plain","center":{"lon":2.35,"lat":48.85},"priority":92},
+      {"id":"bretagne","name":"Bretagne","type":"coast","center":{"lon":-3.0,"lat":48.2},"priority":90},
+      {"id":"corse","name":"Corse","type":"island","center":{"lon":9.05,"lat":42.15},"priority":96}
+    ]
+  },
+  "sources": {
+    "terrain": {"provider":"Copernicus","dataset":"Copernicus DEM GLO-90","license":"Copernicus data policy","attribution":"Contains modified Copernicus DEM data","resolutionMeters":90,"cachePolicy":"build-cache"},
+    "cartography": {"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"},
+    "landcover": {"provider":"WAFT terrain bootstrap","dataset":"Land/water mask derived from Copernicus DEM","license":"Copernicus data policy","attribution":"Derived from modified Copernicus DEM data","resolutionMeters":90,"cachePolicy":"build-cache"},
+    "climate": {"provider":"WorldClim","dataset":"WorldClim 2.1","license":"CC BY 4.0","attribution":"WorldClim global climate data","resolutionMeters":1000,"cachePolicy":"build-cache"},
+    "landmarks": [{"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap places and features","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"}],
+    "fauna": [{"provider":"GBIF","dataset":"GBIF occurrence records","license":"Record-dependent open licence","attribution":"GBIF.org and contributing datasets","resolutionMeters":null,"cachePolicy":"build-cache"}]
+  },
+  "generation": {
+    "terrain": {"grid":{"columns":488,"rows":488},"lods":[0,1,2,3],"smoothingPasses":1,"coastalFlattening":true,"maxWalkableSlopeDegrees":52,"seaLevelMeters":0},
+    "landcover": {"ruleset":"france-terrain-only-v1","fallbackBiome":"pasture","season":"dynamic","snowlineMeters":null},
+    "transport": {"includeRoadClasses":[],"includeRailways":false,"includeTrails":false,"simplificationMeters":100},
+    "settlements": {"maxCount":0,"minimumPopulation":0,"coastalTourismBoost":0,"profiles":["terrain-only"],"manualInclude":[],"manualExcludeIds":[]},
+    "buildings": {"useRealFootprints":false,"proceduralFallback":false,"minimumSpacingUnits":0,"maximumPerSector":0,"roofWalkable":false,"collisionMode":"none","architectureProfiles":["terrain-only"],"hotelDetection":false},
+    "landmarks": {"maximumCount":0,"minimumScore":100,"uniqueModelScore":100,"archetypeScore":100,"protectedRadiusUnits":0,"allowedTypes":["natural_landmark"],"manualInclude":[],"manualExcludeIds":[]},
+    "vegetation": {"profiles":["terrain-only"],"densityMultiplier":0,"minimumBuildingClearanceUnits":0,"instancing":true},
+    "fauna": {"ruleset":"france-terrain-only-v1","maximumSpecies":0,"maximumActiveAnimals":0,"recordsSinceYear":1990,"minimumCoordinatePrecisionMeters":10000,"manualInclude":[],"manualExcludeScientificNames":[]}
+  },
+  "travel": {
+    "entryPoints": [
+      {"id":"pyrenees-south","name":"Pyrénées · frontière sud","position":{"lon":0.55,"lat":43.35},"type":"land_border","arrivalHeadingDegrees":180},
+      {"id":"bayonne-south","name":"Bayonne · côte basque","position":{"lon":-1.47,"lat":43.49},"type":"land_border","arrivalHeadingDegrees":170},
+      {"id":"perpignan-south","name":"Perpignan · Méditerranée","position":{"lon":2.89,"lat":42.70},"type":"land_border","arrivalHeadingDegrees":185}
+    ],
+    "connections": [{"id":"france-iberia-continuous","targetRegionId":"iberia","entryPointId":"pyrenees-south","requiredCapabilities":["land"],"distanceClass":"regional","enabled":true}]
+  },
+  "gameplay": {
+    "spawnPoints": [{"id":"montpellier-world-test","position":{"lon":3.8767,"lat":43.6119},"role":"default"}],
+    "reservedZones": [],
+    "contentTargets": {"minimumLandmarks":0,"minimumFaunaZones":0,"maximumEmptyTravelSeconds":9999}
+  },
+  "performance": {
+    "targetProfile":"mobile-mid","sectorSizeUnits":64,"preloadRadiusSectors":2,
+    "budgets":{"downloadMb":12,"runtimeMemoryMb":300,"visibleTriangles":480000,"visibleObjects":130,"activeColliders":20,"textureMemoryMb":32}
+  },
+  "outputs": {"directory":"regions/france","manifest":"manifest.json","terrain":"terrain.bin","landcover":"landcover.bin","sectors":"sectors.json","settlements":"settlements.json","objects":"objects.json","landmarks":"landmarks.json","fauna":"fauna.json","routes":"routes.json"},
+  "overrides": {"file":"world-generator/overrides/france.overrides.json","preserveOnRegenerate":true,"failOnUnknownTarget":true}
+}

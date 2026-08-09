@@ -1,0 +1,331 @@
+{
+  "budgets": {
+    "activeColliders": 12,
+    "downloadMb": 8,
+    "runtimeMemoryMb": 180,
+    "textureMemoryMb": 24,
+    "visibleObjects": 80,
+    "visibleTriangles": 200000
+  },
+  "content": {
+    "connections": 1,
+    "entryPoints": 1,
+    "faunaSpecies": 0,
+    "generatedBuildings": 30,
+    "landmarks": 0,
+    "settlements": 30
+  },
+  "deterministic": true,
+  "files": [
+    {
+      "bytes": 147520,
+      "path": "terrain.bin",
+      "sha256": "c814bd03fb38e777518d43924f2a37e86c9de5040d3e380a65cf1c8ab1972dd5"
+    },
+    {
+      "bytes": 73792,
+      "path": "landcover.bin",
+      "sha256": "6b409c00928be91abbcb6711f0084c7556b1a30629cbbd17be595c31b70df56e"
+    },
+    {
+      "bytes": 76742,
+      "path": "sectors.json",
+      "sha256": "96174f074bbf099bceb3b679ae55557158108ce4ba765cec993d6032c9d8ffd7"
+    },
+    {
+      "bytes": 23098,
+      "path": "settlements.json",
+      "sha256": "756c1497646b6eeac62dd50b335d454b8f977f6fa395ea1f05e8e1ca5eb0c177"
+    },
+    {
+      "bytes": 32082,
+      "path": "objects.json",
+      "sha256": "b4975cf1fe48e3e92ac02e50745d4c093dfb67f8a78cb13b2bae3339dc7c8057"
+    },
+    {
+      "bytes": 149,
+      "path": "landmarks.json",
+      "sha256": "eb172fe363b677f01a062e74ffef8885efb25d3ed4b0deec7131c43c8a461a7b"
+    },
+    {
+      "bytes": 153,
+      "path": "fauna.json",
+      "sha256": "316a70387415b54f6c033cd2768b770047c5d094912a6ea38baebedce7d95a56"
+    },
+    {
+      "bytes": 794,
+      "path": "routes.json",
+      "sha256": "26ffeec502419e855220196a9edff240b89d52825a62a84290cde2288f4d8bd9"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "generatorVersion": "0.2.0",
+  "landcover": {
+    "classDistribution": {
+      "0": 68950,
+      "6": 852,
+      "9": 3926
+    },
+    "classes": [
+      {
+        "id": 0,
+        "key": "water",
+        "walkable": false
+      },
+      {
+        "id": 1,
+        "key": "beach",
+        "walkable": true
+      },
+      {
+        "id": 2,
+        "key": "coastal-rock",
+        "walkable": true
+      },
+      {
+        "id": 3,
+        "key": "mediterranean-scrub",
+        "walkable": true
+      },
+      {
+        "id": 4,
+        "key": "mediterranean-forest",
+        "walkable": true
+      },
+      {
+        "id": 5,
+        "key": "agricultural",
+        "walkable": true
+      },
+      {
+        "id": 6,
+        "key": "mountain-rock",
+        "walkable": true
+      },
+      {
+        "id": 7,
+        "key": "wetland",
+        "walkable": true
+      },
+      {
+        "id": 8,
+        "key": "urban",
+        "walkable": true
+      },
+      {
+        "id": 9,
+        "key": "pasture",
+        "walkable": true
+      }
+    ],
+    "externalWorldCoverImportPending": false,
+    "fallbackLandCells": 0,
+    "format": "WAFTLCV1",
+    "quality": "esa-worldcover-2021-v200",
+    "realClassifiedLandCells": 4778,
+    "source": {
+      "algorithmVersion": "terrain-only-v1",
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
+      "datasetYear": 2021,
+      "distribution": "Derived build artifact",
+      "doi": null,
+      "license": "Copernicus data policy",
+      "nominalResolutionMeters": 90,
+      "provider": "WAFT / Copernicus Programme",
+      "retrievedOn": "2026-08-09",
+      "snapshotSha256": "93339d61c43352117bc36db9303feb9aa6a7919baf97bfb85f12ba3ed2aa8bac",
+      "tiles": []
+    }
+  },
+  "packageBytesWithoutManifest": 299496,
+  "pendingStages": [
+    "openstreetmap-settlements-buildings-and-routes",
+    "wikidata-landmark-ranking",
+    "gbif-fauna-candidates",
+    "procedural-vegetation-and-buildings"
+  ],
+  "projection": {
+    "axis": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "compression": {
+      "anchorIds": [],
+      "factor": 1,
+      "mode": "none",
+      "preserveCoastline": true
+    },
+    "kmPerDegreeLat": 111.132,
+    "kmPerDegreeLon": 97.78353013629234,
+    "localBounds": {
+      "maxX": 375.7332145487033,
+      "maxZ": 185.31261000000035,
+      "minX": -375.7332145487033,
+      "minZ": -185.31260999999978
+    },
+    "origin": {
+      "lat": 28.55,
+      "lon": -15.85
+    },
+    "type": "local-equirectangular",
+    "unitsPerKm": 1.45
+  },
+  "provenance": {
+    "config": {
+      "path": "world-generator/configs/canarias.region.json",
+      "sha256": "6dffa78cb149cd097a70e4b575293749f7c34e148ac7435df0fe597bf9501c79"
+    },
+    "demSnapshot": {
+      "metadataPath": "world-generator/sources/canarias/copernicus-dem-glo30.json",
+      "path": "world-generator/sources/canarias/copernicus-dem-glo30.bin",
+      "sha256": "4b40be765f99aa092cde653307e27c4da047cb046695bdced2838aa3d8e744ca"
+    },
+    "generatorSourcesSha256": "2d6eb165f11b8a953e0f7ffdd186ccfc3d13f20f0fc6579ad042332a58b8b9b8",
+    "overrides": {
+      "path": "world-generator/overrides/canarias.overrides.json",
+      "sha256": "33178fe9f0b4f301d109f56677f33ab8b711147e309bc6787b1f82d6534a5c1f"
+    },
+    "worldCoverSnapshot": {
+      "metadataPath": "world-generator/sources/canarias/esa-worldcover-2021-v200.json",
+      "path": "world-generator/sources/canarias/esa-worldcover-2021-v200.bin",
+      "sha256": "93339d61c43352117bc36db9303feb9aa6a7919baf97bfb85f12ba3ed2aa8bac"
+    }
+  },
+  "region": {
+    "continent": "Africa",
+    "countryCodes": [
+      "ES"
+    ],
+    "id": "canarias",
+    "name": "Canarias",
+    "status": "prototype",
+    "version": "0.24.4"
+  },
+  "sectors": {
+    "active": 28,
+    "columns": 12,
+    "preloadRadius": 2,
+    "rows": 6,
+    "sizeUnits": 64,
+    "total": 72
+  },
+  "settlementMarkers": {
+    "fictionalWarImpact": true,
+    "manualPopulationExceptions": 0,
+    "minimumPopulation": 20000,
+    "source": {
+      "countries": [
+        "ES"
+      ],
+      "dataset": "cities15000",
+      "fictionalWarImpact": true,
+      "license": "GeoNames CC BY 4.0; WAFT manual metadata",
+      "minimumPopulation": 20000,
+      "provider": "GeoNames + WAFT manual exceptions",
+      "regionId": "canarias",
+      "retrievedOn": "2026-08-09",
+      "url": "https://download.geonames.org/export/dump/cities15000.zip"
+    },
+    "tiers": {
+      "large": [
+        200000,
+        null
+      ],
+      "medium": [
+        50000,
+        199999
+      ],
+      "small": [
+        20000,
+        49999
+      ]
+    }
+  },
+  "terrain": {
+    "cells": 73728,
+    "columns": 384,
+    "elevationSource": {
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "Copernicus DEM GLO-90",
+      "license": "Copernicus data policy",
+      "mode": "copernicus-dem-glo30",
+      "provider": "Copernicus Programme",
+      "retrievedOn": "2026-08-09",
+      "snapshotSha256": "4b40be765f99aa092cde653307e27c4da047cb046695bdced2838aa3d8e744ca",
+      "tiles": [
+        {
+          "bytes": 1297852,
+          "id": "Copernicus_DSM_COG_30_N27_00_W014_00_DEM",
+          "sha256": "daa5754da3eea8d2a2941f7921cb820d701018d1bae1132610de8e57f1d9bddd"
+        },
+        {
+          "bytes": 609594,
+          "id": "Copernicus_DSM_COG_30_N27_00_W016_00_DEM",
+          "sha256": "97553b9d05c4bd48818da512a8d58a5c80e9a59a73c3e1ffd82ff2620b62d8c8"
+        },
+        {
+          "bytes": 50295,
+          "id": "Copernicus_DSM_COG_30_N27_00_W017_00_DEM",
+          "sha256": "c68e372b4496634a2ba00e9f64293616fa1f10b9b583dd9e33322db5bbe97b0e"
+        },
+        {
+          "bytes": 141173,
+          "id": "Copernicus_DSM_COG_30_N27_00_W018_00_DEM",
+          "sha256": "5fdc361c766eb01985188ffd87860ad895d1f773a713a6bdf0576ba11fc4365e"
+        },
+        {
+          "bytes": 125301,
+          "id": "Copernicus_DSM_COG_30_N27_00_W019_00_DEM",
+          "sha256": "a987ba781e1269486697ef4b54f68b6e3cf14f0fb123094380493b254231eade"
+        },
+        {
+          "bytes": 692576,
+          "id": "Copernicus_DSM_COG_30_N28_00_W014_00_DEM",
+          "sha256": "484a28b3f7f28068f75185f039bb631c6330314a1fe1cbc8aac3e68017525622"
+        },
+        {
+          "bytes": 559201,
+          "id": "Copernicus_DSM_COG_30_N28_00_W015_00_DEM",
+          "sha256": "6d6e28d46ae6768075d88c47fe7e162e4561170f03d4440b8fcbac7463575285"
+        },
+        {
+          "bytes": 358776,
+          "id": "Copernicus_DSM_COG_30_N28_00_W016_00_DEM",
+          "sha256": "69a0b98b0e039dae58f243192fd0fdbcc20ebb3eef3cd28e2b6e9a6db3fb3ac0"
+        },
+        {
+          "bytes": 1132511,
+          "id": "Copernicus_DSM_COG_30_N28_00_W017_00_DEM",
+          "sha256": "cbc0c961e0e2e19990d74d3481e7176ae3f6a23101f511d5d9395e430288b1f6"
+        },
+        {
+          "bytes": 667639,
+          "id": "Copernicus_DSM_COG_30_N28_00_W018_00_DEM",
+          "sha256": "1fa04ba558932193eb96be47dff3f1bf347d4b5708b4058c8d50738aea2592b0"
+        },
+        {
+          "bytes": 52513,
+          "id": "Copernicus_DSM_COG_30_N28_00_W019_00_DEM",
+          "sha256": "b5597e9176c785e50c97e475562ef4954f3ffff779bb834b70ecd93bfb96b863"
+        },
+        {
+          "bytes": 355457,
+          "id": "Copernicus_DSM_COG_30_N29_00_W014_00_DEM",
+          "sha256": "2b0f0735f669c5390a693be09461127b24134983a51b95d42f62b00c2effa3fe"
+        }
+      ]
+    },
+    "format": "WAFTHGT1",
+    "landCells": 4778,
+    "landMaskSource": "esa-worldcover-water-class",
+    "landRatio": 0.064806,
+    "maximumElevationMeters": 3697,
+    "meanElevationMeters": 611.435,
+    "minimumElevationMeters": 1,
+    "nodataElevation": -32768,
+    "rows": 192
+  }
+}

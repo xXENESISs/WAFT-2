@@ -1,0 +1,38 @@
+{
+  "connections": [
+    {
+      "distanceClass": "long",
+      "enabled": true,
+      "entryPointId": "atlantic-iberia",
+      "id": "canarias-iberia-continuous",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "iberia"
+    }
+  ],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 35,
+      "id": "atlantic-iberia",
+      "local": {
+        "x": 59.5502,
+        "y": 154,
+        "z": 72.5136
+      },
+      "name": "Corredor Atlántico · Iberia",
+      "position": {
+        "lat": 28.1,
+        "lon": -15.43
+      },
+      "sectorId": "s-06-04",
+      "terrainStatus": "exact-cell",
+      "type": "air"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "canarias",
+  "roads": []
+}

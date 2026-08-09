@@ -1,0 +1,2902 @@
+{
+  "binary": {
+    "bytes": 22208,
+    "file": "france-preview-v1.bin",
+    "headerBytes": 80,
+    "magic": "WAFTRPV1",
+    "sha256": "a31f9a6d8ff89838ef440588797e9d11533aa2c132fe21762c8de4d8141b7d1b"
+  },
+  "buildId": "france-preview-21d543340113",
+  "counts": {
+    "buildings": 461,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 461,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 461
+  },
+  "display": {
+    "buildingHorizontalExaggeration": 2.7,
+    "buildingVerticalScale": 0.075,
+    "landmarkLift": 2.6,
+    "roadLift": 0.16
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 461
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "landmarks": [],
+  "mappings": {
+    "buildingKinds": {
+      "commercial": 5,
+      "historic": 3,
+      "hotel": 1,
+      "ordinary": 0,
+      "public": 4,
+      "religious": 2
+    },
+    "representations": {
+      "archetype": 0,
+      "marker": 0,
+      "unique": 2,
+      "unique-candidate": 1
+    },
+    "roadClasses": {
+      "bridleway": 9,
+      "cycleway": 9,
+      "footway": 8,
+      "living_street": 5,
+      "motorway": 0,
+      "motorway_link": 0,
+      "path": 8,
+      "pedestrian": 8,
+      "primary": 2,
+      "primary_link": 2,
+      "residential": 5,
+      "secondary": 3,
+      "secondary_link": 3,
+      "service": 6,
+      "steps": 10,
+      "tertiary": 4,
+      "tertiary_link": 4,
+      "track": 7,
+      "trunk": 1,
+      "trunk_link": 1,
+      "unclassified": 6
+    }
+  },
+  "presets": [
+    {
+      "altitude": 310,
+      "distance": 0,
+      "id": "overview",
+      "name": "Tot",
+      "terrainMeters": 0,
+      "x": 0,
+      "z": 0
+    },
+    {
+      "altitude": 52,
+      "distance": 44,
+      "id": "subregion-alpes",
+      "name": "Alpes françaises",
+      "terrainMeters": 2068,
+      "x": 489.2266,
+      "z": 120.856
+    },
+    {
+      "altitude": 56,
+      "distance": 48,
+      "id": "subregion-occitanie",
+      "name": "Occitanie",
+      "terrainMeters": 766,
+      "x": 109.0276,
+      "z": 394.7964
+    },
+    {
+      "altitude": 60,
+      "distance": 52,
+      "id": "subregion-pyrenees",
+      "name": "Pyrénées",
+      "terrainMeters": 1595,
+      "x": -192.8951,
+      "z": 515.6525
+    }
+  ],
+  "regionId": "france",
+  "regionName": "France métropolitaine",
+  "settlements": [
+    {
+      "id": "fr-3038789",
+      "name": "Abbeville",
+      "place": "PPLA3",
+      "population": 26461
+    },
+    {
+      "id": "fr-3038712",
+      "name": "Achères",
+      "place": "PPL",
+      "population": 21660
+    },
+    {
+      "id": "fr-3038638",
+      "name": "Agde",
+      "place": "PPL",
+      "population": 23001
+    },
+    {
+      "id": "fr-3038634",
+      "name": "Agen",
+      "place": "PPLA2",
+      "population": 34367
+    },
+    {
+      "id": "fr-3038354",
+      "name": "Aix-en-Provence",
+      "place": "PPLA3",
+      "population": 146821
+    },
+    {
+      "id": "fr-3038350",
+      "name": "Aix-les-Bains",
+      "place": "PPL",
+      "population": 27651
+    },
+    {
+      "id": "fr-3038334",
+      "name": "Ajaccio",
+      "place": "PPLA",
+      "population": 54364
+    },
+    {
+      "id": "fr-3038261",
+      "name": "Albi",
+      "place": "PPLA2",
+      "population": 52409
+    },
+    {
+      "id": "fr-3038230",
+      "name": "Alençon",
+      "place": "PPLA2",
+      "population": 30786
+    },
+    {
+      "id": "fr-3038213",
+      "name": "Alfortville",
+      "place": "PPL",
+      "population": 37290
+    },
+    {
+      "id": "fr-3038159",
+      "name": "Allauch",
+      "place": "PPL",
+      "population": 21406
+    },
+    {
+      "id": "fr-3038224",
+      "name": "Alès",
+      "place": "PPLA3",
+      "population": 42410
+    },
+    {
+      "id": "fr-3037854",
+      "name": "Amiens",
+      "place": "PPLA2",
+      "population": 143086
+    },
+    {
+      "id": "fr-3037656",
+      "name": "Angers",
+      "place": "PPLA2",
+      "population": 168279
+    },
+    {
+      "id": "fr-3037612",
+      "name": "Anglet",
+      "place": "PPL",
+      "population": 40658
+    },
+    {
+      "id": "fr-3037598",
+      "name": "Angoulême",
+      "place": "PPLA2",
+      "population": 49468
+    },
+    {
+      "id": "fr-3037543",
+      "name": "Annecy",
+      "place": "PPLA2",
+      "population": 49232
+    },
+    {
+      "id": "fr-3037540",
+      "name": "Annecy-le-Vieux",
+      "place": "PPL",
+      "population": 21521
+    },
+    {
+      "id": "fr-3037538",
+      "name": "Annemasse",
+      "place": "PPL",
+      "population": 28275
+    },
+    {
+      "id": "fr-3037456",
+      "name": "Antibes",
+      "place": "PPL",
+      "population": 76393
+    },
+    {
+      "id": "fr-3037423",
+      "name": "Antony",
+      "place": "PPLA3",
+      "population": 59845
+    },
+    {
+      "id": "fr-3037044",
+      "name": "Argenteuil",
+      "place": "PPLA3",
+      "population": 101475
+    },
+    {
+      "id": "fr-3036938",
+      "name": "Arles",
+      "place": "PPLA3",
+      "population": 53431
+    },
+    {
+      "id": "fr-3036903",
+      "name": "Armentières",
+      "place": "PPL",
+      "population": 26646
+    },
+    {
+      "id": "fr-3036784",
+      "name": "Arras",
+      "place": "PPLA2",
+      "population": 47052
+    },
+    {
+      "id": "fr-3036572",
+      "name": "Asnières-sur-Seine",
+      "place": "PPL",
+      "population": 86742
+    },
+    {
+      "id": "fr-3036460",
+      "name": "Athis-Mons",
+      "place": "PPL",
+      "population": 31225
+    },
+    {
+      "id": "fr-3036433",
+      "name": "Aubagne",
+      "place": "PPL",
+      "population": 44844
+    },
+    {
+      "id": "fr-3036386",
+      "name": "Aubervilliers",
+      "place": "PPL",
+      "population": 70914
+    },
+    {
+      "id": "fr-3036281",
+      "name": "Auch",
+      "place": "PPLA2",
+      "population": 24494
+    },
+    {
+      "id": "fr-3036145",
+      "name": "Aulnay-sous-Bois",
+      "place": "PPL",
+      "population": 80615
+    },
+    {
+      "id": "fr-3036016",
+      "name": "Aurillac",
+      "place": "PPLA2",
+      "population": 34724
+    },
+    {
+      "id": "fr-3035843",
+      "name": "Auxerre",
+      "place": "PPLA2",
+      "population": 41516
+    },
+    {
+      "id": "fr-3035681",
+      "name": "Avignon",
+      "place": "PPLA2",
+      "population": 89769
+    },
+    {
+      "id": "fr-3035409",
+      "name": "Bagneux",
+      "place": "PPL",
+      "population": 38900
+    },
+    {
+      "id": "fr-3035403",
+      "name": "Bagnolet",
+      "place": "PPL",
+      "population": 33504
+    },
+    {
+      "id": "fr-3034640",
+      "name": "Bastia",
+      "place": "PPLA2",
+      "population": 41001
+    },
+    {
+      "id": "fr-3034475",
+      "name": "Bayonne",
+      "place": "PPLA3",
+      "population": 44396
+    },
+    {
+      "id": "fr-3034126",
+      "name": "Beaune",
+      "place": "PPLA3",
+      "population": 24162
+    },
+    {
+      "id": "fr-3034006",
+      "name": "Beauvais",
+      "place": "PPLA2",
+      "population": 53393
+    },
+    {
+      "id": "fr-3033791",
+      "name": "Belfort",
+      "place": "PPLA2",
+      "population": 54562
+    },
+    {
+      "id": "fr-3033391",
+      "name": "Bergerac",
+      "place": "PPLA3",
+      "population": 28317
+    },
+    {
+      "id": "fr-3033123",
+      "name": "Besançon",
+      "place": "PPLA2",
+      "population": 128426
+    },
+    {
+      "id": "fr-3032824",
+      "name": "Bezons",
+      "place": "PPL",
+      "population": 27570
+    },
+    {
+      "id": "fr-3032797",
+      "name": "Biarritz",
+      "place": "PPL",
+      "population": 33188
+    },
+    {
+      "id": "fr-3032469",
+      "name": "Blagnac",
+      "place": "PPL",
+      "population": 24263
+    },
+    {
+      "id": "fr-3032213",
+      "name": "Blois",
+      "place": "PPLA2",
+      "population": 53660
+    },
+    {
+      "id": "fr-3032179",
+      "name": "Bobigny",
+      "place": "PPLA2",
+      "population": 44962
+    },
+    {
+      "id": "fr-3032070",
+      "name": "Bois-Colombes",
+      "place": "PPL",
+      "population": 24300
+    },
+    {
+      "id": "fr-3031815",
+      "name": "Bondy",
+      "place": "PPL",
+      "population": 48268
+    },
+    {
+      "id": "fr-3031582",
+      "name": "Bordeaux",
+      "place": "PPLA",
+      "population": 265328
+    },
+    {
+      "id": "fr-3031137",
+      "name": "Boulogne-Billancourt",
+      "place": "PPLA3",
+      "population": 108782
+    },
+    {
+      "id": "fr-3031133",
+      "name": "Boulogne-sur-Mer",
+      "place": "PPLA3",
+      "population": 47013
+    },
+    {
+      "id": "fr-3031009",
+      "name": "Bourg-en-Bresse",
+      "place": "PPLA2",
+      "population": 45340
+    },
+    {
+      "id": "fr-3031005",
+      "name": "Bourges",
+      "place": "PPLA2",
+      "population": 67987
+    },
+    {
+      "id": "fr-3030303",
+      "name": "Bressuire",
+      "place": "PPLA3",
+      "population": 20743
+    },
+    {
+      "id": "fr-3030300",
+      "name": "Brest",
+      "place": "PPLA3",
+      "population": 144899
+    },
+    {
+      "id": "fr-3029974",
+      "name": "Brive-la-Gaillarde",
+      "place": "PPLA3",
+      "population": 53466
+    },
+    {
+      "id": "fr-3029931",
+      "name": "Bron",
+      "place": "PPL",
+      "population": 37825
+    },
+    {
+      "id": "fr-3029825",
+      "name": "Bruay-la-Buissière",
+      "place": "PPL",
+      "population": 24474
+    },
+    {
+      "id": "fr-3029748",
+      "name": "Brunoy",
+      "place": "PPL",
+      "population": 24096
+    },
+    {
+      "id": "fr-3030257",
+      "name": "Brétigny-sur-Orge",
+      "place": "PPL",
+      "population": 24317
+    },
+    {
+      "id": "fr-3033881",
+      "name": "Bègles",
+      "place": "PPL",
+      "population": 23504
+    },
+    {
+      "id": "fr-3033002",
+      "name": "Béthune",
+      "place": "PPLA3",
+      "population": 31568
+    },
+    {
+      "id": "fr-3032833",
+      "name": "Béziers",
+      "place": "PPLA3",
+      "population": 74081
+    },
+    {
+      "id": "fr-3029276",
+      "name": "Cachan",
+      "place": "PPL",
+      "population": 26540
+    },
+    {
+      "id": "fr-3029241",
+      "name": "Caen",
+      "place": "PPLA2",
+      "population": 110624
+    },
+    {
+      "id": "fr-3029227",
+      "name": "Cagnes-sur-Mer",
+      "place": "PPL",
+      "population": 46923
+    },
+    {
+      "id": "fr-3029213",
+      "name": "Cahors",
+      "place": "PPLA2",
+      "population": 23331
+    },
+    {
+      "id": "fr-3029162",
+      "name": "Calais",
+      "place": "PPLA3",
+      "population": 74433
+    },
+    {
+      "id": "fr-3029096",
+      "name": "Caluire-et-Cuire",
+      "place": "PPL",
+      "population": 42763
+    },
+    {
+      "id": "fr-3029030",
+      "name": "Cambrai",
+      "place": "PPLA3",
+      "population": 36492
+    },
+    {
+      "id": "fr-3028808",
+      "name": "Cannes",
+      "place": "PPL",
+      "population": 74545
+    },
+    {
+      "id": "fr-3028641",
+      "name": "Carcassonne",
+      "place": "PPLA2",
+      "population": 49600
+    },
+    {
+      "id": "fr-3028542",
+      "name": "Carpentras",
+      "place": "PPLA3",
+      "population": 29709
+    },
+    {
+      "id": "fr-3028263",
+      "name": "Castres",
+      "place": "PPLA3",
+      "population": 47275
+    },
+    {
+      "id": "fr-3028134",
+      "name": "Cavaillon",
+      "place": "PPL",
+      "population": 26689
+    },
+    {
+      "id": "fr-3027950",
+      "name": "Cenon",
+      "place": "PPL",
+      "population": 22393
+    },
+    {
+      "id": "fr-3027883",
+      "name": "Cergy",
+      "place": "PPL",
+      "population": 57576
+    },
+    {
+      "id": "fr-3027484",
+      "name": "Chalon-sur-Saône",
+      "place": "PPLA3",
+      "population": 47251
+    },
+    {
+      "id": "fr-3027453",
+      "name": "Chamalières",
+      "place": "PPL",
+      "population": 20298
+    },
+    {
+      "id": "fr-3027422",
+      "name": "Chambéry",
+      "place": "PPLA2",
+      "population": 61640
+    },
+    {
+      "id": "fr-3027105",
+      "name": "Champigny-sur-Marne",
+      "place": "PPL",
+      "population": 76726
+    },
+    {
+      "id": "fr-3027014",
+      "name": "Champs-sur-Marne",
+      "place": "PPL",
+      "population": 27776
+    },
+    {
+      "id": "fr-3026637",
+      "name": "Charenton-le-Pont",
+      "place": "PPL",
+      "population": 30910
+    },
+    {
+      "id": "fr-3026613",
+      "name": "Charleville-Mézières",
+      "place": "PPLA2",
+      "population": 52415
+    },
+    {
+      "id": "fr-3026467",
+      "name": "Chartres",
+      "place": "PPLA2",
+      "population": 43838
+    },
+    {
+      "id": "fr-3026033",
+      "name": "Chatou",
+      "place": "PPL",
+      "population": 30091
+    },
+    {
+      "id": "fr-3025892",
+      "name": "Chaumont",
+      "place": "PPLA2",
+      "population": 28981
+    },
+    {
+      "id": "fr-3025622",
+      "name": "Chelles",
+      "place": "PPL",
+      "population": 46947
+    },
+    {
+      "id": "fr-3025466",
+      "name": "Cherbourg",
+      "place": "PPLA3",
+      "population": 26655
+    },
+    {
+      "id": "fr-3025314",
+      "name": "Chevilly-Larue",
+      "place": "PPL",
+      "population": 20125
+    },
+    {
+      "id": "fr-3025055",
+      "name": "Choisy-le-Roi",
+      "place": "PPL",
+      "population": 35590
+    },
+    {
+      "id": "fr-3025053",
+      "name": "Cholet",
+      "place": "PPLA3",
+      "population": 53160
+    },
+    {
+      "id": "fr-3027487",
+      "name": "Châlons-en-Champagne",
+      "place": "PPLA2",
+      "population": 51257
+    },
+    {
+      "id": "fr-3026204",
+      "name": "Châteauroux",
+      "place": "PPLA2",
+      "population": 53301
+    },
+    {
+      "id": "fr-3026141",
+      "name": "Châtellerault",
+      "place": "PPLA3",
+      "population": 37210
+    },
+    {
+      "id": "fr-3026108",
+      "name": "Châtenay-Malabry",
+      "place": "PPL",
+      "population": 32715
+    },
+    {
+      "id": "fr-3026083",
+      "name": "Châtillon",
+      "place": "PPL",
+      "population": 32383
+    },
+    {
+      "id": "fr-3024783",
+      "name": "Clamart",
+      "place": "PPL",
+      "population": 51400
+    },
+    {
+      "id": "fr-3024635",
+      "name": "Clermont-Ferrand",
+      "place": "PPLA2",
+      "population": 147865
+    },
+    {
+      "id": "fr-3024597",
+      "name": "Clichy",
+      "place": "PPL",
+      "population": 57467
+    },
+    {
+      "id": "fr-3024596",
+      "name": "Clichy-sous-Bois",
+      "place": "PPL",
+      "population": 29062
+    },
+    {
+      "id": "fr-3024440",
+      "name": "Cognac",
+      "place": "PPLA3",
+      "population": 20868
+    },
+    {
+      "id": "fr-3024297",
+      "name": "Colmar",
+      "place": "PPLA2",
+      "population": 65405
+    },
+    {
+      "id": "fr-3024266",
+      "name": "Colombes",
+      "place": "PPL",
+      "population": 82300
+    },
+    {
+      "id": "fr-3024223",
+      "name": "Colomiers",
+      "place": "PPL",
+      "population": 31363
+    },
+    {
+      "id": "fr-3024107",
+      "name": "Combs-la-Ville",
+      "place": "PPL",
+      "population": 22322
+    },
+    {
+      "id": "fr-3024066",
+      "name": "Compiègne",
+      "place": "PPLA3",
+      "population": 44243
+    },
+    {
+      "id": "fr-3024035",
+      "name": "Concarneau",
+      "place": "PPL",
+      "population": 21397
+    },
+    {
+      "id": "fr-3023924",
+      "name": "Conflans-Sainte-Honorine",
+      "place": "PPL",
+      "population": 36358
+    },
+    {
+      "id": "fr-3023763",
+      "name": "Corbeil-Essonnes",
+      "place": "PPL",
+      "population": 40527
+    },
+    {
+      "id": "fr-3023645",
+      "name": "Cormeilles-en-Parisis",
+      "place": "PPL",
+      "population": 21973
+    },
+    {
+      "id": "fr-3023356",
+      "name": "Coudekerque-Branche",
+      "place": "PPL",
+      "population": 25201
+    },
+    {
+      "id": "fr-3023141",
+      "name": "Courbevoie",
+      "place": "PPL",
+      "population": 85158
+    },
+    {
+      "id": "fr-3022610",
+      "name": "Creil",
+      "place": "PPL",
+      "population": 31863
+    },
+    {
+      "id": "fr-3022376",
+      "name": "Croix",
+      "place": "PPL",
+      "population": 21361
+    },
+    {
+      "id": "fr-12808674",
+      "name": "Croulebarbe",
+      "place": "PPL",
+      "population": 20062
+    },
+    {
+      "id": "fr-3022530",
+      "name": "Créteil",
+      "place": "PPLA2",
+      "population": 84833
+    },
+    {
+      "id": "fr-3021852",
+      "name": "Dammarie-les-Lys",
+      "place": "PPL",
+      "population": 21066
+    },
+    {
+      "id": "fr-3021670",
+      "name": "Dax",
+      "place": "PPLA3",
+      "population": 22305
+    },
+    {
+      "id": "fr-3021605",
+      "name": "Denain",
+      "place": "PPL",
+      "population": 21412
+    },
+    {
+      "id": "fr-3021516",
+      "name": "Deuil-la-Barre",
+      "place": "PPL",
+      "population": 21560
+    },
+    {
+      "id": "fr-3021411",
+      "name": "Dieppe",
+      "place": "PPLA3",
+      "population": 35707
+    },
+    {
+      "id": "fr-3021372",
+      "name": "Dijon",
+      "place": "PPLA",
+      "population": 159941
+    },
+    {
+      "id": "fr-3021263",
+      "name": "Dole",
+      "place": "PPLA3",
+      "population": 25878
+    },
+    {
+      "id": "fr-3021000",
+      "name": "Douai",
+      "place": "PPLA3",
+      "population": 46531
+    },
+    {
+      "id": "fr-3020850",
+      "name": "Draguignan",
+      "place": "PPLA3",
+      "population": 38573
+    },
+    {
+      "id": "fr-3020839",
+      "name": "Drancy",
+      "place": "PPL",
+      "population": 62488
+    },
+    {
+      "id": "fr-3020832",
+      "name": "Draveil",
+      "place": "PPL",
+      "population": 29316
+    },
+    {
+      "id": "fr-3020810",
+      "name": "Dreux",
+      "place": "PPLA3",
+      "population": 31058
+    },
+    {
+      "id": "fr-3020686",
+      "name": "Dunkirk",
+      "place": "PPLA3",
+      "population": 86263
+    },
+    {
+      "id": "fr-3021662",
+      "name": "Décines-Charpieu",
+      "place": "PPL",
+      "population": 24674
+    },
+    {
+      "id": "fr-3020601",
+      "name": "Eaubonne",
+      "place": "PPL",
+      "population": 24096
+    },
+    {
+      "id": "fr-3019897",
+      "name": "Ermont",
+      "place": "PPL",
+      "population": 28117
+    },
+    {
+      "id": "fr-3019193",
+      "name": "Eysines",
+      "place": "PPL",
+      "population": 21394
+    },
+    {
+      "id": "fr-3018280",
+      "name": "Fleury-les-Aubrais",
+      "place": "PPL",
+      "population": 21085
+    },
+    {
+      "id": "fr-3018095",
+      "name": "Fontaine",
+      "place": "PPL",
+      "population": 24588
+    },
+    {
+      "id": "fr-3017924",
+      "name": "Fontenay-aux-Roses",
+      "place": "PPL",
+      "population": 24680
+    },
+    {
+      "id": "fr-3017910",
+      "name": "Fontenay-sous-Bois",
+      "place": "PPL",
+      "population": 52075
+    },
+    {
+      "id": "fr-3017805",
+      "name": "Forbach",
+      "place": "PPLA3",
+      "population": 21358
+    },
+    {
+      "id": "fr-3017609",
+      "name": "Fougères",
+      "place": "PPLA3",
+      "population": 23719
+    },
+    {
+      "id": "fr-3017341",
+      "name": "Franconville",
+      "place": "PPL",
+      "population": 34284
+    },
+    {
+      "id": "fr-3017178",
+      "name": "Fresnes",
+      "place": "PPL",
+      "population": 24803
+    },
+    {
+      "id": "fr-3016956",
+      "name": "Frontignan",
+      "place": "PPL",
+      "population": 22251
+    },
+    {
+      "id": "fr-3017253",
+      "name": "Fréjus",
+      "place": "PPL",
+      "population": 53098
+    },
+    {
+      "id": "fr-3018794",
+      "name": "Fécamp",
+      "place": "PPL",
+      "population": 22003
+    },
+    {
+      "id": "fr-3016830",
+      "name": "Gagny",
+      "place": "PPL",
+      "population": 38134
+    },
+    {
+      "id": "fr-3016702",
+      "name": "Gap",
+      "place": "PPLA2",
+      "population": 42715
+    },
+    {
+      "id": "fr-3016667",
+      "name": "Gardanne",
+      "place": "PPL",
+      "population": 21140
+    },
+    {
+      "id": "fr-12808675",
+      "name": "Gare",
+      "place": "PPL",
+      "population": 75580
+    },
+    {
+      "id": "fr-3016621",
+      "name": "Garges-lès-Gonesse",
+      "place": "PPL",
+      "population": 39847
+    },
+    {
+      "id": "fr-3016321",
+      "name": "Gennevilliers",
+      "place": "PPL",
+      "population": 42294
+    },
+    {
+      "id": "fr-3016078",
+      "name": "Gif-sur-Yvette",
+      "place": "PPL",
+      "population": 23541
+    },
+    {
+      "id": "fr-3015689",
+      "name": "Gonesse",
+      "place": "PPL",
+      "population": 26758
+    },
+    {
+      "id": "fr-3015490",
+      "name": "Goussainville",
+      "place": "PPL",
+      "population": 30047
+    },
+    {
+      "id": "fr-3015419",
+      "name": "Gradignan",
+      "place": "PPL",
+      "population": 24385
+    },
+    {
+      "id": "fr-3015160",
+      "name": "Grande-Synthe",
+      "place": "PPL",
+      "population": 23213
+    },
+    {
+      "id": "fr-3014856",
+      "name": "Grasse",
+      "place": "PPLA3",
+      "population": 47581
+    },
+    {
+      "id": "fr-3014728",
+      "name": "Grenoble",
+      "place": "PPLA2",
+      "population": 158552
+    },
+    {
+      "id": "fr-3014646",
+      "name": "Grigny",
+      "place": "PPL",
+      "population": 24940
+    },
+    {
+      "id": "fr-3014143",
+      "name": "Guyancourt",
+      "place": "PPL",
+      "population": 31989
+    },
+    {
+      "id": "fr-3014078",
+      "name": "Haguenau",
+      "place": "PPLA3",
+      "population": 38721
+    },
+    {
+      "id": "fr-3014034",
+      "name": "Halluin",
+      "place": "PPL",
+      "population": 20171
+    },
+    {
+      "id": "fr-3013619",
+      "name": "Hazebrouck",
+      "place": "PPL",
+      "population": 23307
+    },
+    {
+      "id": "fr-3013477",
+      "name": "Herblay-sur-Seine",
+      "place": "PPL",
+      "population": 25153
+    },
+    {
+      "id": "fr-3013097",
+      "name": "Houilles",
+      "place": "PPL",
+      "population": 31121
+    },
+    {
+      "id": "fr-3012937",
+      "name": "Hyères",
+      "place": "PPL",
+      "population": 50487
+    },
+    {
+      "id": "fr-3013525",
+      "name": "Hénin-Beaumont",
+      "place": "PPL",
+      "population": 25371
+    },
+    {
+      "id": "fr-3013403",
+      "name": "Hérouville-Saint-Clair",
+      "place": "PPL",
+      "population": 24258
+    },
+    {
+      "id": "fr-3012834",
+      "name": "Illkirch-Graffenstaden",
+      "place": "PPL",
+      "population": 27261
+    },
+    {
+      "id": "fr-3012649",
+      "name": "Issy-les-Moulineaux",
+      "place": "PPL",
+      "population": 61447
+    },
+    {
+      "id": "fr-3012647",
+      "name": "Istres",
+      "place": "PPLA3",
+      "population": 44373
+    },
+    {
+      "id": "fr-3012621",
+      "name": "Ivry-sur-Seine",
+      "place": "PPL",
+      "population": 57897
+    },
+    {
+      "id": "fr-3012219",
+      "name": "Joué-lès-Tours",
+      "place": "PPL",
+      "population": 37466
+    },
+    {
+      "id": "fr-3012142",
+      "name": "Juan-les-Pins",
+      "place": "PPL",
+      "population": 60000
+    },
+    {
+      "id": "fr-2998632",
+      "name": "L'Haÿ-les-Roses",
+      "place": "PPLA3",
+      "population": 29703
+    },
+    {
+      "id": "fr-3010529",
+      "name": "La Celle-Saint-Cloud",
+      "place": "PPL",
+      "population": 21539
+    },
+    {
+      "id": "fr-3010025",
+      "name": "La Ciotat",
+      "place": "PPL",
+      "population": 33113
+    },
+    {
+      "id": "fr-3009824",
+      "name": "La Courneuve",
+      "place": "PPL",
+      "population": 37287
+    },
+    {
+      "id": "fr-3009223",
+      "name": "La Garde",
+      "place": "PPL",
+      "population": 28257
+    },
+    {
+      "id": "fr-3009169",
+      "name": "La Garenne-Colombes",
+      "place": "PPL",
+      "population": 26385
+    },
+    {
+      "id": "fr-3008379",
+      "name": "La Madeleine",
+      "place": "PPL",
+      "population": 23572
+    },
+    {
+      "id": "fr-3006767",
+      "name": "La Roche-sur-Yon",
+      "place": "PPLA2",
+      "population": 59410
+    },
+    {
+      "id": "fr-3006787",
+      "name": "La Rochelle",
+      "place": "PPLA2",
+      "population": 76810
+    },
+    {
+      "id": "fr-3006414",
+      "name": "La Seyne-sur-Mer",
+      "place": "PPL",
+      "population": 62330
+    },
+    {
+      "id": "fr-3006283",
+      "name": "La Teste-de-Buch",
+      "place": "PPL",
+      "population": 27253
+    },
+    {
+      "id": "fr-3005825",
+      "name": "La Valette-du-Var",
+      "place": "PPL",
+      "population": 23134
+    },
+    {
+      "id": "fr-3009071",
+      "name": "Lagny-sur-Marne",
+      "place": "PPL",
+      "population": 20649
+    },
+    {
+      "id": "fr-3008218",
+      "name": "Lambersart",
+      "place": "PPL",
+      "population": 28613
+    },
+    {
+      "id": "fr-3007794",
+      "name": "Lanester",
+      "place": "PPL",
+      "population": 24352
+    },
+    {
+      "id": "fr-3007609",
+      "name": "Lannion",
+      "place": "PPLA3",
+      "population": 21473
+    },
+    {
+      "id": "fr-3007477",
+      "name": "Laon",
+      "place": "PPLA2",
+      "population": 28688
+    },
+    {
+      "id": "fr-3005866",
+      "name": "Laval",
+      "place": "PPLA2",
+      "population": 50489
+    },
+    {
+      "id": "fr-3005269",
+      "name": "Le Blanc-Mesnil",
+      "place": "PPL",
+      "population": 48077
+    },
+    {
+      "id": "fr-3005066",
+      "name": "Le Bouscat",
+      "place": "PPL",
+      "population": 24232
+    },
+    {
+      "id": "fr-3004871",
+      "name": "Le Cannet",
+      "place": "PPL",
+      "population": 43353
+    },
+    {
+      "id": "fr-3004630",
+      "name": "Le Chesnay",
+      "place": "PPL",
+      "population": 29154
+    },
+    {
+      "id": "fr-3004427",
+      "name": "Le Creusot",
+      "place": "PPL",
+      "population": 25590
+    },
+    {
+      "id": "fr-3003952",
+      "name": "Le Grand-Quevilly",
+      "place": "PPL",
+      "population": 26522
+    },
+    {
+      "id": "fr-3003796",
+      "name": "Le Havre",
+      "place": "PPLA3",
+      "population": 185972
+    },
+    {
+      "id": "fr-3003737",
+      "name": "Le Kremlin-Bicêtre",
+      "place": "PPL",
+      "population": 27867
+    },
+    {
+      "id": "fr-3003603",
+      "name": "Le Mans",
+      "place": "PPLA2",
+      "population": 144515
+    },
+    {
+      "id": "fr-3003481",
+      "name": "Le Mée-sur-Seine",
+      "place": "PPL",
+      "population": 22058
+    },
+    {
+      "id": "fr-3002965",
+      "name": "Le Perreux-sur-Marne",
+      "place": "PPL",
+      "population": 32015
+    },
+    {
+      "id": "fr-3002880",
+      "name": "Le Petit-Quevilly",
+      "place": "PPL",
+      "population": 22691
+    },
+    {
+      "id": "fr-3002650",
+      "name": "Le Plessis-Robinson",
+      "place": "PPL",
+      "population": 22510
+    },
+    {
+      "id": "fr-3002465",
+      "name": "Le Puy-en-Velay",
+      "place": "PPLA2",
+      "population": 22718
+    },
+    {
+      "id": "fr-3003093",
+      "name": "Lens",
+      "place": "PPLA3",
+      "population": 38265
+    },
+    {
+      "id": "fr-3000491",
+      "name": "Les Lilas",
+      "place": "PPL",
+      "population": 21124
+    },
+    {
+      "id": "fr-3000192",
+      "name": "Les Mureaux",
+      "place": "PPL",
+      "population": 32134
+    },
+    {
+      "id": "fr-6615536",
+      "name": "Les Ulis",
+      "place": "PPL",
+      "population": 25785
+    },
+    {
+      "id": "fr-2998975",
+      "name": "Levallois-Perret",
+      "place": "PPL",
+      "population": 62178
+    },
+    {
+      "id": "fr-2998517",
+      "name": "Libourne",
+      "place": "PPLA3",
+      "population": 24240
+    },
+    {
+      "id": "fr-2998324",
+      "name": "Lille",
+      "place": "PPLA",
+      "population": 238695
+    },
+    {
+      "id": "fr-2998286",
+      "name": "Limoges",
+      "place": "PPLA2",
+      "population": 141176
+    },
+    {
+      "id": "fr-2998150",
+      "name": "Lisieux",
+      "place": "PPLA3",
+      "population": 24473
+    },
+    {
+      "id": "fr-2998056",
+      "name": "Livry-Gargan",
+      "place": "PPL",
+      "population": 39518
+    },
+    {
+      "id": "fr-2998431",
+      "name": "Liévin",
+      "place": "PPL",
+      "population": 34370
+    },
+    {
+      "id": "fr-2997803",
+      "name": "Lomme",
+      "place": "PPL",
+      "population": 29892
+    },
+    {
+      "id": "fr-2997712",
+      "name": "Longjumeau",
+      "place": "PPL",
+      "population": 20771
+    },
+    {
+      "id": "fr-2997626",
+      "name": "Lons-le-Saunier",
+      "place": "PPLA2",
+      "population": 20678
+    },
+    {
+      "id": "fr-2997620",
+      "name": "Loos",
+      "place": "PPL",
+      "population": 22107
+    },
+    {
+      "id": "fr-2997577",
+      "name": "Lorient",
+      "place": "PPLA3",
+      "population": 58112
+    },
+    {
+      "id": "fr-2997556",
+      "name": "Lormont",
+      "place": "PPL",
+      "population": 22636
+    },
+    {
+      "id": "fr-2997116",
+      "name": "Lunel",
+      "place": "PPL",
+      "population": 26588
+    },
+    {
+      "id": "fr-2997110",
+      "name": "Lunéville",
+      "place": "PPLA3",
+      "population": 21582
+    },
+    {
+      "id": "fr-2996944",
+      "name": "Lyon",
+      "place": "PPLA",
+      "population": 520774
+    },
+    {
+      "id": "fr-12808676",
+      "name": "Maison Blanche",
+      "place": "PPL",
+      "population": 64302
+    },
+    {
+      "id": "fr-2996568",
+      "name": "Maisons-Alfort",
+      "place": "PPL",
+      "population": 53964
+    },
+    {
+      "id": "fr-2996564",
+      "name": "Maisons-Laffitte",
+      "place": "PPL",
+      "population": 22772
+    },
+    {
+      "id": "fr-2996514",
+      "name": "Malakoff",
+      "place": "PPL",
+      "population": 29420
+    },
+    {
+      "id": "fr-2996180",
+      "name": "Manosque",
+      "place": "PPL",
+      "population": 21351
+    },
+    {
+      "id": "fr-2996148",
+      "name": "Mantes-la-Jolie",
+      "place": "PPLA3",
+      "population": 44263
+    },
+    {
+      "id": "fr-2995908",
+      "name": "Marcq-en-Barœul",
+      "place": "PPL",
+      "population": 38629
+    },
+    {
+      "id": "fr-2995750",
+      "name": "Marignane",
+      "place": "PPL",
+      "population": 35873
+    },
+    {
+      "id": "fr-12278193",
+      "name": "Marne La Vallée",
+      "place": "PPL",
+      "population": 318325
+    },
+    {
+      "id": "fr-2995469",
+      "name": "Marseille",
+      "place": "PPLA",
+      "population": 877215
+    },
+    {
+      "id": "fr-2995387",
+      "name": "Martigues",
+      "place": "PPL",
+      "population": 45749
+    },
+    {
+      "id": "fr-2995206",
+      "name": "Massy",
+      "place": "PPL",
+      "population": 38768
+    },
+    {
+      "id": "fr-2995150",
+      "name": "Maubeuge",
+      "place": "PPL",
+      "population": 33684
+    },
+    {
+      "id": "fr-2994798",
+      "name": "Meaux",
+      "place": "PPLA3",
+      "population": 53811
+    },
+    {
+      "id": "fr-2994651",
+      "name": "Melun",
+      "place": "PPLA2",
+      "population": 38953
+    },
+    {
+      "id": "fr-2994497",
+      "name": "Menton",
+      "place": "PPL",
+      "population": 29649
+    },
+    {
+      "id": "fr-2994160",
+      "name": "Metz",
+      "place": "PPLA2",
+      "population": 123914
+    },
+    {
+      "id": "fr-2994144",
+      "name": "Meudon",
+      "place": "PPL",
+      "population": 44652
+    },
+    {
+      "id": "fr-2994087",
+      "name": "Meylan",
+      "place": "PPL",
+      "population": 20267
+    },
+    {
+      "id": "fr-2994048",
+      "name": "Meyzieu",
+      "place": "PPL",
+      "population": 28929
+    },
+    {
+      "id": "fr-2993875",
+      "name": "Millau",
+      "place": "PPLA3",
+      "population": 23307
+    },
+    {
+      "id": "fr-2993760",
+      "name": "Miramas",
+      "place": "PPL",
+      "population": 24173
+    },
+    {
+      "id": "fr-2993207",
+      "name": "Mons-en-Barœul",
+      "place": "PPL",
+      "population": 23006
+    },
+    {
+      "id": "fr-2992771",
+      "name": "Mont-de-Marsan",
+      "place": "PPLA2",
+      "population": 36205
+    },
+    {
+      "id": "fr-2992003",
+      "name": "Mont-Saint-Aignan",
+      "place": "PPL",
+      "population": 23078
+    },
+    {
+      "id": "fr-2993002",
+      "name": "Montauban",
+      "place": "PPLA2",
+      "population": 52434
+    },
+    {
+      "id": "fr-2992938",
+      "name": "Montbéliard",
+      "place": "PPLA3",
+      "population": 28865
+    },
+    {
+      "id": "fr-2992863",
+      "name": "Montceau-les-Mines",
+      "place": "PPL",
+      "population": 20221
+    },
+    {
+      "id": "fr-2992616",
+      "name": "Montfermeil",
+      "place": "PPL",
+      "population": 23829
+    },
+    {
+      "id": "fr-2992536",
+      "name": "Montgeron",
+      "place": "PPL",
+      "population": 22843
+    },
+    {
+      "id": "fr-2992415",
+      "name": "Montigny-le-Bretonneux",
+      "place": "PPL",
+      "population": 39063
+    },
+    {
+      "id": "fr-2992402",
+      "name": "Montigny-lès-Metz",
+      "place": "PPL",
+      "population": 26369
+    },
+    {
+      "id": "fr-2992292",
+      "name": "Montluçon",
+      "place": "PPLA3",
+      "population": 44960
+    },
+    {
+      "id": "fr-2992229",
+      "name": "Montmorency",
+      "place": "PPL",
+      "population": 21156
+    },
+    {
+      "id": "fr-2992166",
+      "name": "Montpellier",
+      "place": "PPLA2",
+      "population": 248252
+    },
+    {
+      "id": "fr-2992090",
+      "name": "Montreuil",
+      "place": "PPL",
+      "population": 111240
+    },
+    {
+      "id": "fr-2992017",
+      "name": "Montrouge",
+      "place": "PPL",
+      "population": 38708
+    },
+    {
+      "id": "fr-2992703",
+      "name": "Montélimar",
+      "place": "PPL",
+      "population": 35637
+    },
+    {
+      "id": "fr-2991481",
+      "name": "Moulins",
+      "place": "PPLA2",
+      "population": 23095
+    },
+    {
+      "id": "fr-2991214",
+      "name": "Mulhouse",
+      "place": "PPLA3",
+      "population": 111430
+    },
+    {
+      "id": "fr-2991153",
+      "name": "Muret",
+      "place": "PPLA3",
+      "population": 24313
+    },
+    {
+      "id": "fr-2996882",
+      "name": "Mâcon",
+      "place": "PPLA2",
+      "population": 35484
+    },
+    {
+      "id": "fr-2994393",
+      "name": "Mérignac",
+      "place": "PPL",
+      "population": 69791
+    },
+    {
+      "id": "fr-2990999",
+      "name": "Nancy",
+      "place": "PPLA2",
+      "population": 105058
+    },
+    {
+      "id": "fr-2990970",
+      "name": "Nanterre",
+      "place": "PPLA2",
+      "population": 86719
+    },
+    {
+      "id": "fr-2990969",
+      "name": "Nantes",
+      "place": "PPLA",
+      "population": 325070
+    },
+    {
+      "id": "fr-2990919",
+      "name": "Narbonne",
+      "place": "PPLA3",
+      "population": 50776
+    },
+    {
+      "id": "fr-2990612",
+      "name": "Neuilly-sur-Marne",
+      "place": "PPL",
+      "population": 34465
+    },
+    {
+      "id": "fr-2990611",
+      "name": "Neuilly-sur-Seine",
+      "place": "PPL",
+      "population": 61300
+    },
+    {
+      "id": "fr-2990474",
+      "name": "Nevers",
+      "place": "PPLA2",
+      "population": 43988
+    },
+    {
+      "id": "fr-2990440",
+      "name": "Nice",
+      "place": "PPLA2",
+      "population": 342669
+    },
+    {
+      "id": "fr-2990355",
+      "name": "Niort",
+      "place": "PPLA2",
+      "population": 54660
+    },
+    {
+      "id": "fr-2990265",
+      "name": "Nogent-sur-Marne",
+      "place": "PPLA3",
+      "population": 31236
+    },
+    {
+      "id": "fr-2990189",
+      "name": "Noisy-le-Grand",
+      "place": "PPL",
+      "population": 62420
+    },
+    {
+      "id": "fr-2990187",
+      "name": "Noisy-le-Sec",
+      "place": "PPL",
+      "population": 38955
+    },
+    {
+      "id": "fr-2990363",
+      "name": "Nîmes",
+      "place": "PPLA2",
+      "population": 148236
+    },
+    {
+      "id": "fr-2989611",
+      "name": "Olivet",
+      "place": "PPL",
+      "population": 22604
+    },
+    {
+      "id": "fr-2989460",
+      "name": "Orange",
+      "place": "PPL",
+      "population": 30530
+    },
+    {
+      "id": "fr-2989297",
+      "name": "Orly",
+      "place": "PPL",
+      "population": 20528
+    },
+    {
+      "id": "fr-2989317",
+      "name": "Orléans",
+      "place": "PPLA",
+      "population": 116344
+    },
+    {
+      "id": "fr-2989170",
+      "name": "Orvault",
+      "place": "PPL",
+      "population": 25338
+    },
+    {
+      "id": "fr-2988998",
+      "name": "Oullins",
+      "place": "PPL",
+      "population": 25592
+    },
+    {
+      "id": "fr-2988888",
+      "name": "Oyonnax",
+      "place": "PPL",
+      "population": 25697
+    },
+    {
+      "id": "fr-2988867",
+      "name": "Ozoir-la-Ferrière",
+      "place": "PPL",
+      "population": 22530
+    },
+    {
+      "id": "fr-2988758",
+      "name": "Palaiseau",
+      "place": "PPLA3",
+      "population": 31987
+    },
+    {
+      "id": "fr-2988621",
+      "name": "Pantin",
+      "place": "PPL",
+      "population": 52922
+    },
+    {
+      "id": "fr-2988507",
+      "name": "Paris",
+      "place": "PPLC",
+      "population": 2138551
+    },
+    {
+      "id": "fr-2973189",
+      "name": "Paris 03 Temple",
+      "place": "PPL",
+      "population": 32179
+    },
+    {
+      "id": "fr-3013131",
+      "name": "Paris 04 Hôtel-de-Ville",
+      "place": "PPL",
+      "population": 27332
+    },
+    {
+      "id": "fr-2988623",
+      "name": "Paris 05 Panthéon",
+      "place": "PPL",
+      "population": 55252
+    },
+    {
+      "id": "fr-2997000",
+      "name": "Paris 06 Luxembourg",
+      "place": "PPL",
+      "population": 40389
+    },
+    {
+      "id": "fr-2988760",
+      "name": "Paris 07 Palais-Bourbon",
+      "place": "PPL",
+      "population": 48015
+    },
+    {
+      "id": "fr-3020270",
+      "name": "Paris 08 Élysée",
+      "place": "PPL",
+      "population": 35317
+    },
+    {
+      "id": "fr-2989487",
+      "name": "Paris 09 Opéra",
+      "place": "PPL",
+      "population": 57271
+    },
+    {
+      "id": "fr-3020216",
+      "name": "Paris 10 Entrepôt",
+      "place": "PPL",
+      "population": 83873
+    },
+    {
+      "id": "fr-2986082",
+      "name": "Paris 11 Popincourt",
+      "place": "PPL",
+      "population": 138170
+    },
+    {
+      "id": "fr-2983854",
+      "name": "Paris 12 Reuilly",
+      "place": "PPL",
+      "population": 138024
+    },
+    {
+      "id": "fr-3015772",
+      "name": "Paris 13 Gobelins",
+      "place": "PPL",
+      "population": 181271
+    },
+    {
+      "id": "fr-2989781",
+      "name": "Paris 14 Observatoire",
+      "place": "PPL",
+      "population": 136455
+    },
+    {
+      "id": "fr-2970479",
+      "name": "Paris 15 Vaugirard",
+      "place": "PPL",
+      "population": 229713
+    },
+    {
+      "id": "fr-2988394",
+      "name": "Paris 16 Passy",
+      "place": "PPL",
+      "population": 159386
+    },
+    {
+      "id": "fr-3034610",
+      "name": "Paris 17 Batignolles-Monceau",
+      "place": "PPL",
+      "population": 159212
+    },
+    {
+      "id": "fr-3029374",
+      "name": "Paris 18 Buttes-Montmartre",
+      "place": "PPL",
+      "population": 183127
+    },
+    {
+      "id": "fr-3029372",
+      "name": "Paris 19 Buttes-Chaumont",
+      "place": "PPL",
+      "population": 178691
+    },
+    {
+      "id": "fr-2994540",
+      "name": "Paris 20 Ménilmontant",
+      "place": "PPL",
+      "population": 185140
+    },
+    {
+      "id": "fr-2988358",
+      "name": "Pau",
+      "place": "PPLA2",
+      "population": 82697
+    },
+    {
+      "id": "fr-2987914",
+      "name": "Perpignan",
+      "place": "PPLA2",
+      "population": 110706
+    },
+    {
+      "id": "fr-2987805",
+      "name": "Pessac",
+      "place": "PPL",
+      "population": 57944
+    },
+    {
+      "id": "fr-2987271",
+      "name": "Pierrefitte-sur-Seine",
+      "place": "PPL",
+      "population": 27914
+    },
+    {
+      "id": "fr-2986930",
+      "name": "Plaisir",
+      "place": "PPL",
+      "population": 36121
+    },
+    {
+      "id": "fr-2986732",
+      "name": "Ploemeur",
+      "place": "PPL",
+      "population": 20652
+    },
+    {
+      "id": "fr-2986501",
+      "name": "Poissy",
+      "place": "PPL",
+      "population": 36431
+    },
+    {
+      "id": "fr-2986495",
+      "name": "Poitiers",
+      "place": "PPLA2",
+      "population": 85960
+    },
+    {
+      "id": "fr-2986302",
+      "name": "Pontarlier",
+      "place": "PPLA3",
+      "population": 20313
+    },
+    {
+      "id": "fr-3024195",
+      "name": "Pontault-Combault",
+      "place": "PPL",
+      "population": 34798
+    },
+    {
+      "id": "fr-2986140",
+      "name": "Pontoise",
+      "place": "PPLA2",
+      "population": 30290
+    },
+    {
+      "id": "fr-2985034",
+      "name": "Puteaux",
+      "place": "PPL",
+      "population": 40646
+    },
+    {
+      "id": "fr-2987967",
+      "name": "Périgueux",
+      "place": "PPLA2",
+      "population": 34770
+    },
+    {
+      "id": "fr-2984701",
+      "name": "Quimper",
+      "place": "PPLA2",
+      "population": 63849
+    },
+    {
+      "id": "fr-12306362",
+      "name": "Quinze-Vingts",
+      "place": "PPL",
+      "population": 26265
+    },
+    {
+      "id": "fr-2984513",
+      "name": "Rambouillet",
+      "place": "PPLA3",
+      "population": 26674
+    },
+    {
+      "id": "fr-2984114",
+      "name": "Reims",
+      "place": "PPLA3",
+      "population": 196565
+    },
+    {
+      "id": "fr-2983990",
+      "name": "Rennes",
+      "place": "PPLA",
+      "population": 227830
+    },
+    {
+      "id": "fr-2983770",
+      "name": "Rezé",
+      "place": "PPL",
+      "population": 39248
+    },
+    {
+      "id": "fr-2983536",
+      "name": "Rillieux-la-Pape",
+      "place": "PPL",
+      "population": 28076
+    },
+    {
+      "id": "fr-2983489",
+      "name": "Riom",
+      "place": "PPLA3",
+      "population": 20142
+    },
+    {
+      "id": "fr-2983440",
+      "name": "Ris-Orangis",
+      "place": "PPL",
+      "population": 25082
+    },
+    {
+      "id": "fr-2983362",
+      "name": "Roanne",
+      "place": "PPLA3",
+      "population": 39840
+    },
+    {
+      "id": "fr-2983276",
+      "name": "Rochefort",
+      "place": "PPLA3",
+      "population": 29427
+    },
+    {
+      "id": "fr-2983154",
+      "name": "Rodez",
+      "place": "PPLA2",
+      "population": 28337
+    },
+    {
+      "id": "fr-2983074",
+      "name": "Roissy-en-Brie",
+      "place": "PPL",
+      "population": 20933
+    },
+    {
+      "id": "fr-2983026",
+      "name": "Romainville",
+      "place": "PPL",
+      "population": 24772
+    },
+    {
+      "id": "fr-2983011",
+      "name": "Romans-sur-Isère",
+      "place": "PPL",
+      "population": 35002
+    },
+    {
+      "id": "fr-2982757",
+      "name": "Rosny-sous-Bois",
+      "place": "PPL",
+      "population": 41627
+    },
+    {
+      "id": "fr-2982681",
+      "name": "Roubaix",
+      "place": "PPL",
+      "population": 99507
+    },
+    {
+      "id": "fr-2982652",
+      "name": "Rouen",
+      "place": "PPLA",
+      "population": 116331
+    },
+    {
+      "id": "fr-2982235",
+      "name": "Rueil-Malmaison",
+      "place": "PPL",
+      "population": 76616
+    },
+    {
+      "id": "fr-2981280",
+      "name": "Saint-Brieuc",
+      "place": "PPLA2",
+      "population": 52774
+    },
+    {
+      "id": "fr-2981206",
+      "name": "Saint-Chamond",
+      "place": "PPL",
+      "population": 38014
+    },
+    {
+      "id": "fr-2981041",
+      "name": "Saint-Cloud",
+      "place": "PPL",
+      "population": 28839
+    },
+    {
+      "id": "fr-2980916",
+      "name": "Saint-Denis",
+      "place": "PPLA3",
+      "population": 96128
+    },
+    {
+      "id": "fr-2980816",
+      "name": "Saint-Dizier",
+      "place": "PPLA3",
+      "population": 31918
+    },
+    {
+      "id": "fr-2980827",
+      "name": "Saint-Dié-des-Vosges",
+      "place": "PPLA3",
+      "population": 24628
+    },
+    {
+      "id": "fr-2979985",
+      "name": "Saint-Genis-Laval",
+      "place": "PPL",
+      "population": 20883
+    },
+    {
+      "id": "fr-2979783",
+      "name": "Saint-Germain-en-Laye",
+      "place": "PPLA3",
+      "population": 41142
+    },
+    {
+      "id": "fr-2979590",
+      "name": "Saint-Herblain",
+      "place": "PPL",
+      "population": 46898
+    },
+    {
+      "id": "fr-2978891",
+      "name": "Saint-Laurent-du-Var",
+      "place": "PPL",
+      "population": 29516
+    },
+    {
+      "id": "fr-2978771",
+      "name": "Saint-Leu",
+      "place": "PPL",
+      "population": 29278
+    },
+    {
+      "id": "fr-2978742",
+      "name": "Saint-Louis",
+      "place": "PPL",
+      "population": 20871
+    },
+    {
+      "id": "fr-2978758",
+      "name": "Saint-Lô",
+      "place": "PPLA2",
+      "population": 21722
+    },
+    {
+      "id": "fr-2978640",
+      "name": "Saint-Malo",
+      "place": "PPLA3",
+      "population": 50676
+    },
+    {
+      "id": "fr-2978621",
+      "name": "Saint-Mandé",
+      "place": "PPL",
+      "population": 21261
+    },
+    {
+      "id": "fr-2978317",
+      "name": "Saint-Martin-d'Hères",
+      "place": "PPL",
+      "population": 35528
+    },
+    {
+      "id": "fr-2978179",
+      "name": "Saint-Maur-des-Fossés",
+      "place": "PPL",
+      "population": 75402
+    },
+    {
+      "id": "fr-2977952",
+      "name": "Saint-Michel-sur-Orge",
+      "place": "PPL",
+      "population": 20824
+    },
+    {
+      "id": "fr-2978072",
+      "name": "Saint-Médard-en-Jalles",
+      "place": "PPL",
+      "population": 29742
+    },
+    {
+      "id": "fr-2977921",
+      "name": "Saint-Nazaire",
+      "place": "PPLA3",
+      "population": 67054
+    },
+    {
+      "id": "fr-2977824",
+      "name": "Saint-Ouen",
+      "place": "PPL",
+      "population": 39353
+    },
+    {
+      "id": "fr-2977800",
+      "name": "Saint-Ouen-l'Aumône",
+      "place": "PPL",
+      "population": 22977
+    },
+    {
+      "id": "fr-2977388",
+      "name": "Saint-Pol-sur-Mer",
+      "place": "PPL",
+      "population": 23635
+    },
+    {
+      "id": "fr-2977356",
+      "name": "Saint-Priest",
+      "place": "PPL",
+      "population": 41641
+    },
+    {
+      "id": "fr-2977295",
+      "name": "Saint-Quentin",
+      "place": "PPLA3",
+      "population": 55407
+    },
+    {
+      "id": "fr-8533870",
+      "name": "Saint-Quentin-en-Yvelines",
+      "place": "PPL",
+      "population": 146598
+    },
+    {
+      "id": "fr-2977246",
+      "name": "Saint-Raphaël",
+      "place": "PPL",
+      "population": 34918
+    },
+    {
+      "id": "fr-2976984",
+      "name": "Saint-Sébastien-sur-Loire",
+      "place": "PPL",
+      "population": 29238
+    },
+    {
+      "id": "fr-2980291",
+      "name": "Saint-Étienne",
+      "place": "PPLA2",
+      "population": 176280
+    },
+    {
+      "id": "fr-2980236",
+      "name": "Saint-Étienne-du-Rouvray",
+      "place": "PPL",
+      "population": 28953
+    },
+    {
+      "id": "fr-2980586",
+      "name": "Sainte-Foy-lès-Lyon",
+      "place": "PPL",
+      "population": 21893
+    },
+    {
+      "id": "fr-2980558",
+      "name": "Sainte-Geneviève-des-Bois",
+      "place": "PPL",
+      "population": 33689
+    },
+    {
+      "id": "fr-2980340",
+      "name": "Saintes",
+      "place": "PPLA3",
+      "population": 29512
+    },
+    {
+      "id": "fr-2976341",
+      "name": "Salon-de-Provence",
+      "place": "PPL",
+      "population": 41397
+    },
+    {
+      "id": "fr-2976179",
+      "name": "Sannois",
+      "place": "PPL",
+      "population": 26869
+    },
+    {
+      "id": "fr-2976043",
+      "name": "Sarcelles",
+      "place": "PPLA3",
+      "population": 57979
+    },
+    {
+      "id": "fr-2975964",
+      "name": "Sarreguemines",
+      "place": "PPLA3",
+      "population": 24446
+    },
+    {
+      "id": "fr-2975921",
+      "name": "Sartrouville",
+      "place": "PPL",
+      "population": 53980
+    },
+    {
+      "id": "fr-2975758",
+      "name": "Saumur",
+      "place": "PPLA3",
+      "population": 33229
+    },
+    {
+      "id": "fr-2975536",
+      "name": "Savigny-le-Temple",
+      "place": "PPL",
+      "population": 25925
+    },
+    {
+      "id": "fr-2975525",
+      "name": "Savigny-sur-Orge",
+      "place": "PPL",
+      "population": 39698
+    },
+    {
+      "id": "fr-2975469",
+      "name": "Sceaux",
+      "place": "PPL",
+      "population": 21511
+    },
+    {
+      "id": "fr-2975446",
+      "name": "Schiltigheim",
+      "place": "PPL",
+      "population": 32289
+    },
+    {
+      "id": "fr-2975349",
+      "name": "Sedan",
+      "place": "PPLA3",
+      "population": 20620
+    },
+    {
+      "id": "fr-2975050",
+      "name": "Sens",
+      "place": "PPLA3",
+      "population": 28700
+    },
+    {
+      "id": "fr-2974681",
+      "name": "Sevran",
+      "place": "PPL",
+      "population": 47334
+    },
+    {
+      "id": "fr-2974427",
+      "name": "Six-Fours-les-Plages",
+      "place": "PPL",
+      "population": 34779
+    },
+    {
+      "id": "fr-2974389",
+      "name": "Soissons",
+      "place": "PPLA3",
+      "population": 31100
+    },
+    {
+      "id": "fr-2974153",
+      "name": "Sotteville-lès-Rouen",
+      "place": "PPL",
+      "population": 30619
+    },
+    {
+      "id": "fr-2973841",
+      "name": "Stains",
+      "place": "PPL",
+      "population": 32601
+    },
+    {
+      "id": "fr-2973783",
+      "name": "Strasbourg",
+      "place": "PPLA",
+      "population": 274845
+    },
+    {
+      "id": "fr-2973745",
+      "name": "Sucy-en-Brie",
+      "place": "PPL",
+      "population": 25014
+    },
+    {
+      "id": "fr-2973675",
+      "name": "Suresnes",
+      "place": "PPL",
+      "population": 44697
+    },
+    {
+      "id": "fr-2974733",
+      "name": "Sète",
+      "place": "PPL",
+      "population": 40736
+    },
+    {
+      "id": "fr-2974678",
+      "name": "Sèvres",
+      "place": "PPL",
+      "population": 23724
+    },
+    {
+      "id": "fr-2973495",
+      "name": "Talence",
+      "place": "PPL",
+      "population": 42579
+    },
+    {
+      "id": "fr-2973385",
+      "name": "Tarbes",
+      "place": "PPLA2",
+      "population": 52106
+    },
+    {
+      "id": "fr-2973258",
+      "name": "Taverny",
+      "place": "PPL",
+      "population": 27271
+    },
+    {
+      "id": "fr-2972893",
+      "name": "Thiais",
+      "place": "PPL",
+      "population": 29724
+    },
+    {
+      "id": "fr-2972811",
+      "name": "Thionville",
+      "place": "PPLA3",
+      "population": 44311
+    },
+    {
+      "id": "fr-2972742",
+      "name": "Thonon-les-Bains",
+      "place": "PPLA3",
+      "population": 31684
+    },
+    {
+      "id": "fr-2972444",
+      "name": "Torcy",
+      "place": "PPLA3",
+      "population": 24386
+    },
+    {
+      "id": "fr-2972328",
+      "name": "Toulon",
+      "place": "PPLA2",
+      "population": 168701
+    },
+    {
+      "id": "fr-2972315",
+      "name": "Toulouse",
+      "place": "PPLA",
+      "population": 511684
+    },
+    {
+      "id": "fr-2972284",
+      "name": "Tourcoing",
+      "place": "PPL",
+      "population": 99160
+    },
+    {
+      "id": "fr-2972237",
+      "name": "Tournefeuille",
+      "place": "PPL",
+      "population": 29124
+    },
+    {
+      "id": "fr-2972191",
+      "name": "Tours",
+      "place": "PPLA2",
+      "population": 141621
+    },
+    {
+      "id": "fr-2972049",
+      "name": "Trappes",
+      "place": "PPL",
+      "population": 28367
+    },
+    {
+      "id": "fr-2971874",
+      "name": "Tremblay-en-France",
+      "place": "PPL",
+      "population": 35591
+    },
+    {
+      "id": "fr-2971549",
+      "name": "Troyes",
+      "place": "PPLA2",
+      "population": 60785
+    },
+    {
+      "id": "fr-2971053",
+      "name": "Valence",
+      "place": "PPLA2",
+      "population": 63864
+    },
+    {
+      "id": "fr-2971041",
+      "name": "Valenciennes",
+      "place": "PPLA3",
+      "population": 44821
+    },
+    {
+      "id": "fr-2970962",
+      "name": "Vallauris",
+      "place": "PPL",
+      "population": 27286
+    },
+    {
+      "id": "fr-2970797",
+      "name": "Vandœuvre-lès-Nancy",
+      "place": "PPL",
+      "population": 31785
+    },
+    {
+      "id": "fr-2970777",
+      "name": "Vannes",
+      "place": "PPLA2",
+      "population": 54020
+    },
+    {
+      "id": "fr-2970761",
+      "name": "Vanves",
+      "place": "PPL",
+      "population": 26068
+    },
+    {
+      "id": "fr-2970456",
+      "name": "Vaulx-en-Velin",
+      "place": "PPL",
+      "population": 37489
+    },
+    {
+      "id": "fr-2970432",
+      "name": "Vauréal",
+      "place": "PPL",
+      "population": 20699
+    },
+    {
+      "id": "fr-2969958",
+      "name": "Verdun",
+      "place": "PPLA3",
+      "population": 21798
+    },
+    {
+      "id": "fr-2969766",
+      "name": "Vernon",
+      "place": "PPL",
+      "population": 26037
+    },
+    {
+      "id": "fr-2969679",
+      "name": "Versailles",
+      "place": "PPLA2",
+      "population": 85416
+    },
+    {
+      "id": "fr-2969612",
+      "name": "Vertou",
+      "place": "PPL",
+      "population": 22921
+    },
+    {
+      "id": "fr-2969392",
+      "name": "Vichy",
+      "place": "PPLA3",
+      "population": 27019
+    },
+    {
+      "id": "fr-2969284",
+      "name": "Vienne",
+      "place": "PPLA3",
+      "population": 32293
+    },
+    {
+      "id": "fr-2969257",
+      "name": "Vierzon",
+      "place": "PPLA3",
+      "population": 29876
+    },
+    {
+      "id": "fr-2969109",
+      "name": "Vigneux-sur-Seine",
+      "place": "PPL",
+      "population": 26692
+    },
+    {
+      "id": "fr-2968748",
+      "name": "Villefranche-sur-Saône",
+      "place": "PPLA3",
+      "population": 32994
+    },
+    {
+      "id": "fr-2968705",
+      "name": "Villejuif",
+      "place": "PPL",
+      "population": 48048
+    },
+    {
+      "id": "fr-2968653",
+      "name": "Villemomble",
+      "place": "PPL",
+      "population": 28001
+    },
+    {
+      "id": "fr-2968620",
+      "name": "Villenave-d'Ornon",
+      "place": "PPL",
+      "population": 30347
+    },
+    {
+      "id": "fr-6543862",
+      "name": "Villeneuve-d'Ascq",
+      "place": "PPL",
+      "population": 62400
+    },
+    {
+      "id": "fr-2968555",
+      "name": "Villeneuve-la-Garenne",
+      "place": "PPL",
+      "population": 22036
+    },
+    {
+      "id": "fr-2968529",
+      "name": "Villeneuve-Saint-Georges",
+      "place": "PPL",
+      "population": 30881
+    },
+    {
+      "id": "fr-2968515",
+      "name": "Villeneuve-sur-Lot",
+      "place": "PPLA3",
+      "population": 25869
+    },
+    {
+      "id": "fr-2968496",
+      "name": "Villeparisis",
+      "place": "PPL",
+      "population": 23931
+    },
+    {
+      "id": "fr-2968482",
+      "name": "Villepinte",
+      "place": "PPL",
+      "population": 37114
+    },
+    {
+      "id": "fr-2968254",
+      "name": "Villeurbanne",
+      "place": "PPL",
+      "population": 131445
+    },
+    {
+      "id": "fr-2968176",
+      "name": "Villiers-le-Bel",
+      "place": "PPL",
+      "population": 27028
+    },
+    {
+      "id": "fr-2968142",
+      "name": "Villiers-sur-Marne",
+      "place": "PPL",
+      "population": 30252
+    },
+    {
+      "id": "fr-2968054",
+      "name": "Vincennes",
+      "place": "PPL",
+      "population": 45923
+    },
+    {
+      "id": "fr-2967917",
+      "name": "Viry-Châtillon",
+      "place": "PPL",
+      "population": 31131
+    },
+    {
+      "id": "fr-2967870",
+      "name": "Vitrolles",
+      "place": "PPL",
+      "population": 38591
+    },
+    {
+      "id": "fr-2967849",
+      "name": "Vitry-sur-Seine",
+      "place": "PPL",
+      "population": 81001
+    },
+    {
+      "id": "fr-2967758",
+      "name": "Voiron",
+      "place": "PPL",
+      "population": 22114
+    },
+    {
+      "id": "fr-2970203",
+      "name": "Vélizy-Villacoublay",
+      "place": "PPL",
+      "population": 21741
+    },
+    {
+      "id": "fr-2970072",
+      "name": "Vénissieux",
+      "place": "PPL",
+      "population": 57584
+    },
+    {
+      "id": "fr-2967421",
+      "name": "Wattrelos",
+      "place": "PPL",
+      "population": 42826
+    },
+    {
+      "id": "fr-2967245",
+      "name": "Yerres",
+      "place": "PPL",
+      "population": 28897
+    },
+    {
+      "id": "fr-3020495",
+      "name": "Échirolles",
+      "place": "PPL",
+      "population": 33088
+    },
+    {
+      "id": "fr-3020310",
+      "name": "Élancourt",
+      "place": "PPL",
+      "population": 30831
+    },
+    {
+      "id": "fr-3020062",
+      "name": "Épernay",
+      "place": "PPLA3",
+      "population": 27082
+    },
+    {
+      "id": "fr-3020035",
+      "name": "Épinal",
+      "place": "PPLA2",
+      "population": 39518
+    },
+    {
+      "id": "fr-3020020",
+      "name": "Épinay-sur-Seine",
+      "place": "PPL",
+      "population": 46145
+    },
+    {
+      "id": "fr-3019459",
+      "name": "Étampes",
+      "place": "PPLA3",
+      "population": 23012
+    },
+    {
+      "id": "fr-3019265",
+      "name": "Évreux",
+      "place": "PPLA2",
+      "population": 57795
+    },
+    {
+      "id": "fr-3019256",
+      "name": "Évry",
+      "place": "PPLA2",
+      "population": 51900
+    }
+  ],
+  "sources": {
+    "inputsSha256": "21d5433401137a35d6b32ff07c4d0abfb44ca39916895e0561d606cfb80f3c57",
+    "landcoverSha256": "16a4c3a9d3624b73b5d7f6008dc1b8b99e6bb7092959fdd5c76e811d5b3ff80d",
+    "regionManifestSha256": "319a75227c4dd4f9b838d89ad2aac73e10b8dfc07e6183ef5107c83a20cc0309",
+    "terrainSha256": "b884cfeabe80ad23ca614d051305de0ff884801fc5e26d2b0568c37200cbd4d7"
+  },
+  "terrain": {
+    "columns": 488,
+    "file": "../terrain.bin",
+    "landcoverFile": "../landcover.bin",
+    "localBounds": {
+      "maxX": 852.6520758884627,
+      "maxZ": 813.7640699999996,
+      "minX": -852.6520758884627,
+      "minZ": -813.7640700000007
+    },
+    "rows": 488,
+    "verticalScale": 0.013594
+  }
+}

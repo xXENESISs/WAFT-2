@@ -1,0 +1,6 @@
+{
+  "$schema": "../schema/region-overrides.schema.json",
+  "schemaVersion": 1,
+  "regionId": "france",
+  "operations": []
+}

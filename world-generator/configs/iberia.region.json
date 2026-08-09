@@ -3,16 +3,24 @@
   "schemaVersion": 1,
   "id": "iberia",
   "name": "Península Ibérica",
-  "version": "0.24.3",
+  "version": "0.24.4",
   "status": "prototype",
   "continent": "Europe",
-  "countryCodes": ["ES", "PT", "AD"],
-  "aliases": ["Iberia", "Península Ibérica", "Iberian Peninsula"],
+  "countryCodes": [
+    "ES",
+    "PT",
+    "AD"
+  ],
+  "aliases": [
+    "Iberia",
+    "Península Ibérica",
+    "Iberian Peninsula"
+  ],
   "geography": {
     "bounds": {
       "west": -9.6,
       "east": 4.6,
-      "south": 35.75,
+      "south": 35.15,
       "north": 43.8
     },
     "origin": {
@@ -35,64 +43,121 @@
         "id": "pirineos",
         "name": "Pirineos",
         "type": "mountain",
-        "center": { "lon": 0.55, "lat": 42.66 },
+        "center": {
+          "lon": 0.55,
+          "lat": 42.66
+        },
         "priority": 100
       },
       {
         "id": "sierra-nevada",
         "name": "Sierra Nevada",
         "type": "mountain",
-        "center": { "lon": -3.35, "lat": 37.06 },
+        "center": {
+          "lon": -3.35,
+          "lat": 37.06
+        },
         "priority": 98
       },
       {
         "id": "sistema-central",
         "name": "Sistema Central",
         "type": "mountain",
-        "center": { "lon": -4.35, "lat": 40.42 },
+        "center": {
+          "lon": -4.35,
+          "lat": 40.42
+        },
         "priority": 94
       },
       {
         "id": "cordillera-cantabrica",
         "name": "Cordillera Cantábrica",
         "type": "mountain",
-        "center": { "lon": -4.75, "lat": 43.02 },
+        "center": {
+          "lon": -4.75,
+          "lat": 43.02
+        },
         "priority": 92
       },
       {
         "id": "sistema-iberico",
         "name": "Sistema Ibérico",
         "type": "mountain",
-        "center": { "lon": -1.65, "lat": 40.55 },
+        "center": {
+          "lon": -1.65,
+          "lat": 40.55
+        },
         "priority": 90
       },
       {
         "id": "cordilleras-beticas",
         "name": "Cordilleras Béticas",
         "type": "mountain",
-        "center": { "lon": -2.45, "lat": 37.55 },
+        "center": {
+          "lon": -2.45,
+          "lat": 37.55
+        },
         "priority": 88
       },
       {
         "id": "meseta-central",
         "name": "Meseta Central",
         "type": "plain",
-        "center": { "lon": -4.3, "lat": 40.2 },
+        "center": {
+          "lon": -4.3,
+          "lat": 40.2
+        },
         "priority": 84
       },
       {
         "id": "valle-ebro",
         "name": "Valle del Ebro",
         "type": "plain",
-        "center": { "lon": -0.35, "lat": 41.55 },
+        "center": {
+          "lon": -0.35,
+          "lat": 41.55
+        },
         "priority": 82
       },
       {
         "id": "portugal-atlantico",
         "name": "Portugal atlántico",
         "type": "coast",
-        "center": { "lon": -8.35, "lat": 39.45 },
+        "center": {
+          "lon": -8.35,
+          "lat": 39.45
+        },
         "priority": 80
+      },
+      {
+        "id": "gibraltar",
+        "name": "Gibraltar",
+        "type": "mountain",
+        "center": {
+          "lon": -5.35,
+          "lat": 36.14
+        },
+        "priority": 99
+      },
+      {
+        "id": "ceuta",
+        "name": "Ceuta",
+        "type": "coast",
+        "center": {
+          "lon": -5.32042,
+          "lat": 35.88919
+        },
+        "priority": 98
+      },
+      {
+        "id": "melilla",
+        "name": "Melilla",
+        "type": "coast",
+        "center": {
+          "lon": -2.93833,
+          "lat": 35.29369
+        },
+        "priority": 98
       }
     ]
   },
@@ -152,8 +217,16 @@
   },
   "generation": {
     "terrain": {
-      "grid": { "columns": 560, "rows": 416 },
-      "lods": [0, 1, 2, 3],
+      "grid": {
+        "columns": 560,
+        "rows": 416
+      },
+      "lods": [
+        0,
+        1,
+        2,
+        3
+      ],
       "smoothingPasses": 1,
       "coastalFlattening": true,
       "maxWalkableSlopeDegrees": 52,
@@ -175,7 +248,9 @@
       "maxCount": 0,
       "minimumPopulation": 0,
       "coastalTourismBoost": 0,
-      "profiles": ["terrain-only"],
+      "profiles": [
+        "terrain-only"
+      ],
       "manualInclude": [],
       "manualExcludeIds": []
     },
@@ -186,7 +261,9 @@
       "maximumPerSector": 0,
       "roofWalkable": false,
       "collisionMode": "none",
-      "architectureProfiles": ["terrain-only"],
+      "architectureProfiles": [
+        "terrain-only"
+      ],
       "hotelDetection": false
     },
     "landmarks": {
@@ -195,12 +272,16 @@
       "uniqueModelScore": 100,
       "archetypeScore": 100,
       "protectedRadiusUnits": 0,
-      "allowedTypes": ["natural_landmark"],
+      "allowedTypes": [
+        "natural_landmark"
+      ],
       "manualInclude": [],
       "manualExcludeIds": []
     },
     "vegetation": {
-      "profiles": ["terrain-only"],
+      "profiles": [
+        "terrain-only"
+      ],
       "densityMultiplier": 0,
       "minimumBuildingClearanceUnits": 0,
       "instancing": true
@@ -220,18 +301,65 @@
       {
         "id": "gibraltar-south",
         "name": "Gibraltar",
-        "position": { "lon": -5.35, "lat": 36.14 },
+        "position": {
+          "lon": -5.35,
+          "lat": 36.14
+        },
         "type": "coast",
         "arrivalHeadingDegrees": 0
+      },
+      {
+        "id": "pyrenees-france",
+        "name": "Frontera pirenaica · Francia",
+        "position": {
+          "lon": 0.55,
+          "lat": 43.35
+        },
+        "type": "land_border",
+        "arrivalHeadingDegrees": 0
+      },
+      {
+        "id": "atlantic-canarias",
+        "name": "Corredor Atlántico · Canarias",
+        "position": {
+          "lon": -7.2,
+          "lat": 36.0
+        },
+        "type": "air",
+        "arrivalHeadingDegrees": 210
       }
     ],
-    "connections": []
+    "connections": [
+      {
+        "id": "iberia-france-continuous",
+        "targetRegionId": "france",
+        "entryPointId": "pyrenees-france",
+        "requiredCapabilities": [
+          "land"
+        ],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "iberia-canarias-continuous",
+        "targetRegionId": "canarias",
+        "entryPointId": "atlantic-canarias",
+        "requiredCapabilities": [
+          "long_water"
+        ],
+        "distanceClass": "long",
+        "enabled": true
+      }
+    ]
   },
   "gameplay": {
     "spawnPoints": [
       {
         "id": "madrid-scale-test",
-        "position": { "lon": -3.7038, "lat": 40.4168 },
+        "position": {
+          "lon": -3.7038,
+          "lat": 40.4168
+        },
         "role": "default"
       }
     ],

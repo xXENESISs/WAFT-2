@@ -1,0 +1,42 @@
+{
+  "algorithmVersion": "terrain-only-v1",
+  "attribution": "Contains modified Copernicus DEM data",
+  "binaryBytes": 238208,
+  "binaryFile": "esa-worldcover-2021-v200.bin",
+  "binarySha256": "c3085c956d73ad79e46ec767ed00a0ca74de512a72024617402d3758a7bcf902",
+  "classDistribution": {
+    "30": {
+      "cells": 169209,
+      "name": "Grassland placeholder",
+      "ratio": 0.71053228
+    },
+    "80": {
+      "cells": 68935,
+      "name": "Water",
+      "ratio": 0.28946772
+    }
+  },
+  "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
+  "datasetYear": 2021,
+  "distribution": "Derived build artifact",
+  "doi": null,
+  "formatVersion": 1,
+  "license": "Copernicus data policy",
+  "nominalResolutionMeters": 90,
+  "provider": "WAFT / Copernicus Programme",
+  "regionId": "france",
+  "retrievedOn": "2026-08-09",
+  "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+  "targetGrid": {
+    "bounds": {
+      "east": 9.75,
+      "north": 51.2,
+      "south": 41.1,
+      "west": -5.5
+    },
+    "columns": 488,
+    "method": "DEM elevation > 0",
+    "rows": 488
+  },
+  "tiles": []
+}
