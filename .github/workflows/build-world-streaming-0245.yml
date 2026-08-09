@@ -23,6 +23,8 @@ on:
 permissions:
   contents: write
 
+# A generated GITHUB_TOKEN push intentionally does not recursively start Actions.
+# Any second deterministic pass is triggered by a normal source/CI commit.
 concurrency:
   group: waft-world-0245-${{ github.ref }}
   cancel-in-progress: true
