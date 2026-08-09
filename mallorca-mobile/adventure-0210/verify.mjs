@@ -13,10 +13,9 @@ const playability=read('playability-0230.js');
 const mobilePolish=read('mobile-polish-0231.js');
 const mechanics=read('mechanics-0232.js');
 const parity=read('world1-parity-0233.js');
+const iberiaWorld=read('iberia-world-0244.js');
 
-for(const [name,source] of [['plugin-loader.js',loader],['gameplay-plugin.js',plugin],['playability-0230.js',playability],['mobile-polish-0231.js',mobilePolish],['mechanics-0232.js',mechanics],['world1-parity-0233.js',parity]]){
-  new vm.Script(source,{filename:name});
-}
+for(const [name,source] of [['plugin-loader.js',loader],['gameplay-plugin.js',plugin],['playability-0230.js',playability],['mobile-polish-0231.js',mobilePolish],['mechanics-0232.js',mechanics],['world1-parity-0233.js',parity],['iberia-world-0244.js',iberiaWorld]])new vm.Script(source,{filename:name});
 for(const script of [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean))new vm.Script(script,{filename:'adventure-index-inline.js'});
 
 for(const pattern of [
@@ -50,7 +49,9 @@ for(const pattern of [
   /standOnRoof/,
   /queueAdventureJump\(velocity,options=\{\}\)/,
   /horizontalBoost/,
-  /__WAFT_ADVENTURE_BUILD__='0\.24\.3'/
+  /__WAFT_ADVENTURE_BUILD__='0\.24\.4'/,
+  /WAFT_IBERIA_WORLD_0244/,
+  /Math\.max\(24\.0,state\.adventureFlightFlap\*2\.05\)/
 ]) assert.match(index,pattern,`index missing ${pattern}`);
 assert.doesNotMatch(index,/state\.yaw \+= dx/,'camera drag was re-inverted');
 assert.doesNotMatch(index,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/,'old near-camera terrain blind spot survived');
@@ -75,6 +76,7 @@ for(const pattern of [
   /¡MEGA!/
 ]) assert.match(loader,pattern,`loader missing ${pattern}`);
 
+for(const pattern of [/__WAFT_IBERIA_WORLD_0244_READY__/,/LUGARES · PRE-GUERRA/,/nuclearWarDeaths/,/christmas-tree/,/waftCastleIcon/,/flightFlap:12/])assert.match(iberiaWorld,pattern,`world layer missing ${pattern}`);
 for(const pattern of [
   /animal\.type==='goat'\|\|animal\.type==='shark'\|\|animal\.type==='vulture'/,
   /api\.isAdventureVisible/,
@@ -85,35 +87,16 @@ for(const pattern of [
   /__WAFT_PARITY_0233_READY__/
 ]) assert.match(parity,pattern,`parity layer missing ${pattern}`);
 
-assert.match(mechanics,/#6d3d86/);
-assert.match(mechanics,/waftMegaPulse0232/);
-assert.match(mobilePolish,/installSharkRenderer/);
-assert.match(playability,/WAFTAnimalRenderer0230/);
-assert.match(plugin,/function mountAnimal/);
-assert.match(plugin,/function updateAnimals/);
+assert.match(mechanics,/#6d3d86/);assert.match(mechanics,/waftMegaPulse0232/);assert.match(mobilePolish,/installSharkRenderer/);assert.match(playability,/WAFTAnimalRenderer0230/);assert.match(plugin,/function mountAnimal/);assert.match(plugin,/function updateAnimals/);
 
 for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-catalunya-litoral-003.html']){
   const source=fs.readFileSync(path.join(mobile,runtimeFile),'utf8');
   for(const anchor of [
-    'state.yaw -= dx * .0042;',
-    'state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));',
-    'gravity: 13.5,',
-    'const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);',
-    'const resolveThirdPersonCamera = (target, desired) => {',
-    'const minimumDistance = Math.min(1.05, desiredDistance * .30);',
-    'const center = [target[0], target[1] + .18, target[2]];',
-    'const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;',
-    'const wasSwimming = state.swimming;',
-    'const steps = Math.max(1, Math.ceil(distance / .12));',
-    'jump() { state.jumpQueued = true; },',
-    'drawCharacter(now, eye);'
+    'state.yaw -= dx * .0042;','state.pitch = Math.max(-.12, Math.min(.72, state.pitch - dy * .0035));','gravity: 13.5,','const collidesBuilding = (x, z) => collidesBuildingWithRadius(x, z, state.playerCollisionRadius);','const resolveThirdPersonCamera = (target, desired) => {','const minimumDistance = Math.min(1.05, desiredDistance * .30);','const center = [target[0], target[1] + .18, target[2]];','const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;','const wasSwimming = state.swimming;','const steps = Math.max(1, Math.ceil(distance / .12));','jump() { state.jumpQueued = true; },','drawCharacter(now, eye);'
   ]) assert.ok(source.includes(anchor),`${runtimeFile} lost integration anchor: ${anchor}`);
 }
 
 const reference=path.join(here,'reference','world1-015-source.html');
-if(fs.existsSync(reference)){
-  const world1=fs.readFileSync(reference,'utf8');
-  for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);
-}
+if(fs.existsSync(reference)){const world1=fs.readFileSync(reference,'utf8');for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);}
 
-console.log('WAFT 0.24.3 verification passed: World 1 parity remains intact while Iberia polish uses the current Adventure build marker.');
+console.log('WAFT 0.24.4 verification passed: World 1 parity remains intact while Iberia world foundation uses the current Adventure build marker.');
