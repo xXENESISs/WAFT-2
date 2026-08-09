@@ -16,7 +16,9 @@ on:
       - world-generator/scripts/build-settlement-markers-0244.py
       - world-generator/scripts/prepare-iberia-0244.mjs
       - world-generator/scripts/smoke-world-expansion-0244.mjs
+      - world-generator/scripts/smoke-iberia-terrain-0240.mjs
       - mallorca-mobile/adventure-0210/iberia-world-0244.js
+      - mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
       - mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0244.mjs
   workflow_dispatch:
 
@@ -79,7 +81,7 @@ jobs:
       - name: Build Iberia France and Canarias terrain
         run: |
           for region in iberia france canarias; do
-            python world-generator/scripts/import-copernicus-dem-glo90.py "$region" --retrieved-on 2026-08-09
+            python world-generator/scripts/import-copernicus-dem-glo90.py "$region" --retrieved-on 2026-08-09 --refresh
             python world-generator/scripts/build-terrain-only-landcover.py "$region"
             node world-generator/scripts/build-region-v2.mjs "$region"
             case "$region" in
