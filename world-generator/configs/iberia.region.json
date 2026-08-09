@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "id": "iberia",
   "name": "Península Ibérica",
-  "version": "0.24.0",
+  "version": "0.24.3",
   "status": "prototype",
   "continent": "Europe",
   "countryCodes": ["ES", "PT", "AD"],
@@ -11,7 +11,7 @@
   "geography": {
     "bounds": {
       "west": -9.6,
-      "east": 3.35,
+      "east": 4.6,
       "south": 35.75,
       "north": 43.8
     },
@@ -152,7 +152,7 @@
   },
   "generation": {
     "terrain": {
-      "grid": { "columns": 512, "rows": 416 },
+      "grid": { "columns": 560, "rows": 416 },
       "lods": [0, 1, 2, 3],
       "smoothingPasses": 1,
       "coastalFlattening": true,
