@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.24.0
+name: Verify World 2 Adventure 0.24.3
 
 on:
   push:
@@ -17,6 +17,7 @@ on:
       - agent/barcelona-playability-0238
       - agent/ecozones-fauna-0239
       - agent/iberia-terrain-0240
+      - agent/iberia-polish-0243
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -24,6 +25,7 @@ on:
       - mallorca-mobile/region-runtime-catalunya-litoral-003.html
       - world-generator/configs/spain-region-topology.v1.json
       - world-generator/configs/iberia.region.json
+      - world-generator/scripts/prepare-iberia-0243.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
       - regions/iberia/**
       - .github/workflows/verify-world2-adventure-0210.yml
@@ -54,6 +56,9 @@ jobs:
           node --check mallorca-mobile/adventure-0210/bidirectional-crossing-0237.js
           node --check mallorca-mobile/adventure-0210/barcelona-playability-0238.js
           node --check mallorca-mobile/adventure-0210/ecology-0239.js
+          node --check mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+          node --check mallorca-mobile/adventure-0210/iberia-polish-0243.js
+          node --check world-generator/scripts/prepare-iberia-0243.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0239.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-multimodal-0236.mjs
@@ -87,7 +92,7 @@ jobs:
       - name: Verify ecological zones and fauna placement
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
-      - name: Verify compressed Iberian terrain and Adventure
+      - name: Verify expanded Iberian terrain and Adventure
         working-directory: repo
         run: |
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
