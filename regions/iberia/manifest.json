@@ -11,9 +11,9 @@
     "connections": 0,
     "entryPoints": 1,
     "faunaSpecies": 0,
-    "generatedBuildings": 0,
+    "generatedBuildings": 362,
     "landmarks": 0,
-    "settlements": 0
+    "settlements": 362
   },
   "deterministic": true,
   "files": [
@@ -33,14 +33,14 @@
       "sha256": "014dffdd4445cbeefdbaa90bf8c8967ef460d1e85bd0a1dbea27ef8e5d90f91a"
     },
     {
-      "bytes": 146,
+      "bytes": 180459,
       "path": "settlements.json",
-      "sha256": "3feceb8b0c98c4d56bff1921b9309a94db183ad0b723b9df3c87cc45ce632da1"
+      "sha256": "38bc4f3a3793c22c1674448fb8bc001b62aa40c80e2b5b4ce9104dea0312e147"
     },
     {
-      "bytes": 196,
+      "bytes": 353807,
       "path": "objects.json",
-      "sha256": "2e0f626b00df1771e433c242f8543fd157e4dadad9077bb0c5943256be7aeed8"
+      "sha256": "abd11d3049114fb02868335837aa839a8d8861c95f9b40db2a47e5325ac0d3fb"
     },
     {
       "bytes": 147,
@@ -213,6 +213,33 @@
     "rows": 21,
     "sizeUnits": 64,
     "total": 546
+  },
+  "settlementMarkers": {
+    "minimumPopulation": 20000,
+    "source": {
+      "country": "ES",
+      "dataset": "cities15000",
+      "license": "CC BY 4.0",
+      "minimumPopulation": 20000,
+      "provider": "GeoNames",
+      "retrievedOn": "2026-08-09",
+      "scope": "Iberian mainland",
+      "url": "https://download.geonames.org/export/dump/cities15000.zip"
+    },
+    "tiers": {
+      "large": [
+        200000,
+        null
+      ],
+      "medium": [
+        50000,
+        199999
+      ],
+      "small": [
+        20000,
+        49999
+      ]
+    }
   },
   "terrain": {
     "cells": 212992,
