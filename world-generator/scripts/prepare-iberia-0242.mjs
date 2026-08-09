@@ -7,8 +7,8 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 function patch(relative,changes,marker){
   const file=path.join(ROOT,relative);
   let source=fs.readFileSync(file,'utf8');
-  // A newer Iberia layer already contains and supersedes every 0.24.2 transform.
-  const superseded=source.includes('WAFT_IBERIA_POLISH_0243')||source.includes('EXPLORACIÓN 0.24.3');
+  // Any newer Iberia layer already contains and supersedes every 0.24.2 transform.
+  const superseded=source.includes('WAFT_IBERIA_POLISH_0243')||source.includes('WAFT_IBERIA_WORLD_0244')||source.includes('EXPLORACIÓN 0.24.3')||source.includes('EXPLORACIÓN 0.24.4');
   if((marker&&source.includes(marker))||superseded){console.log(`${relative}: already prepared 0.24.2 or newer`);return;}
   for(const [search,replacement,label] of changes){
     const count=source.split(search).length-1;
