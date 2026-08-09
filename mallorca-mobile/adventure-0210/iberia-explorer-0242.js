@@ -18,7 +18,7 @@
       #waftIberiaPlaces.collapsed .list{display:none}#waftIberiaPlaces.collapsed{width:92px}
       .waftPlace{display:grid;grid-template-columns:7px 1fr auto;gap:5px;align-items:center;min-width:0;padding:3px 2px;border-radius:6px}
       .waftPlace:nth-child(1){background:#ffffff09}.waftPlace i{display:block;border-radius:2px;background:#d9c28a}.waftPlace i.s{width:4px;height:4px}.waftPlace i.m{width:5px;height:7px}.waftPlace i.l{width:6px;height:10px;background:#f0d27e}
-      .waftPlace span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.waftPlace em{font-style:normal;color:#9bb3ad;font-size:8px}
+      .waftPlace span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.waftPlace span.capital{color:#f1d58d}.waftPlace em{font-style:normal;color:#9bb3ad;font-size:8px}
       #waftFlightTelemetry{display:none;position:fixed;z-index:31;left:50%;top:max(9px,env(safe-area-inset-top));transform:translateX(-50%);padding:5px 9px;border-radius:999px;background:rgba(4,16,22,.78);border:1px solid #ffffff26;color:#e8d3a1;font:900 9px system-ui;letter-spacing:.08em;pointer-events:none}
       #waftFlightTelemetry.visible{display:block}#waftFlightTelemetry.dive{color:#fff0b3;border-color:#e6b95c88;box-shadow:0 0 18px #e6b95c33}
       @media(max-width:700px){#waftIberiaPlaces{width:min(166px,38vw);font-size:8px;max-height:38vh}#waftIberiaPlaces header{height:24px;font-size:7px}.waftPlace{padding:2px}.waftPlace em{font-size:7px}}
@@ -118,8 +118,8 @@
     const nearest=settlements.map(item=>({item,d:Math.hypot(item.local.x-state.position.x,item.local.z-state.position.z)})).sort((a,b)=>a.d-b.d).slice(0,6);
     list.innerHTML=nearest.map(({item,d})=>{
       const cls=item.populationTier==='large'?'l':item.populationTier==='medium'?'m':'s';
-      const km=d/(api.metadata?.projection?.unitsPerKm||1.45);
-      return `<div class="waftPlace" title="${item.name} · ${Number(item.population).toLocaleString('es-ES')} hab."><i class="${cls}"></i><span>${item.name}</span><em>${km<10?km.toFixed(1):Math.round(km)} km</em></div>`;
+      const km=d/(api.metadata?.projection?.unitsPerKm||1.45),capital=Boolean(item.capitalLevel),prefix=capital?'★ ':'';
+      return `<div class="waftPlace" title="${item.name} · ${Number(item.population).toLocaleString('es-ES')} hab."><i class="${cls}"></i><span class="${capital?'capital':''}">${prefix}${item.name}</span><em>${km<10?km.toFixed(1):Math.round(km)} km</em></div>`;
     }).join('');
   }
 
