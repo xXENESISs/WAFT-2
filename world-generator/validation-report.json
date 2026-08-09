@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-09T01:16:06.395Z",
+  "generatedAt": "2026-08-09T01:26:38.565Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
@@ -34,6 +34,24 @@
         "manualSpecies": 9,
         "entryPoints": 5,
         "connections": 3
+      }
+    },
+    {
+      "file": "world-generator/configs/iberia.region.json",
+      "id": "iberia",
+      "version": "0.24.0",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "/travel/connections: region is isolated from the world graph"
+      ],
+      "summary": {
+        "subregions": 9,
+        "manualSettlements": 0,
+        "manualLandmarks": 0,
+        "manualSpecies": 0,
+        "entryPoints": 1,
+        "connections": 0
       }
     }
   ]
