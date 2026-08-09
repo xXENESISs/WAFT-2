@@ -141,6 +141,7 @@ try{
     const mounted=api.getState(),mountedId=game.mountedAnimalId;
     api.setAdventureModifiers({flightFlap:10});await wait(650);
     api.setAdventureModifiers({flightFlap:10});await wait(520);
+    api.setAdventureModifiers({flightFlap:10});await wait(520);
     const high=api.getState();
     api.setInput(0,0);await wait(1450);const levelStart=api.getState();await wait(850);const levelEnd=api.getState();
     api.setInput(0,1);await wait(620);const dive=api.getState();api.setInput(0,0);
