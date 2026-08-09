@@ -31,7 +31,8 @@ for(const pattern of [
   /iberia-polish-0243\.js/,
   /state\.joyY>\.55/,
   /targetDiveVy=-\(30\+28\*diveAmount\)/,
-  /levelBlend=1-Math\.exp\(-dt\*5\.2\)/,
+  /state\.iberiaFlapMomentum=Math\.max\(0,\(state\.iberiaFlapMomentum\|\|0\)-dt\)/,
+  /else state\.adventureFlightVy=0/,
   /if\(window\.__WAFT_ADVENTURE_REGION__!=='iberia'\)state\.respawnQueued = true/
 ])assert.match(index,pattern,`Iberia index bootstrap missing ${pattern}`);
 
@@ -82,4 +83,4 @@ assert.equal(manifest.terrain.maximumElevationMeters,3460);
 assert.equal(manifest.projection.unitsPerKm,1.45);
 assert.ok(manifest.projection.localBounds.maxX>900,'Expanded east edge must include Menorca without shrinking Iberia scale');
 
-console.log(`WAFT 0.24.3 Iberia polish: ${preview.counts.settlements} Spanish 20k+ markers, Menorca east edge included, stable bearded-vulture flight/remount UI hooks present.`);
+console.log(`WAFT 0.24.3 Iberia polish: ${preview.counts.settlements} Spanish 20k+ markers, Menorca east edge included, locked neutral bearded-vulture flight/remount UI hooks present.`);
