@@ -84,7 +84,9 @@ try{
     const api=WAFTRegionRuntime,stream=WAFTWorldStreaming0245,game=__WAFT_INTERNAL_GAME__,wait=ms=>new Promise(r=>setTimeout(r,ms));
     const beforeStream=stream.getState(),pageInstanceId=beforeStream.pageInstanceId,mountBefore=game.mountedAnimalId,samples=[];
     api.setHeading(Math.PI);api.setInput(0,-1);
-    for(let i=0;i<95;i++){
+    // Keep real movement running long enough to pass the full-terrain threshold. No teleport
+    // is used here: the test must physically fly from the Pyrenees overlap into France.
+    for(let i=0;i<180;i++){
       await wait(100);const runtime=api.getState(),world=stream.getState();samples.push({x:runtime.position.x,z:runtime.position.z,lat:world.geo?.lat||null,mode:world.renderMode});
       if(world.renderMode==='france-full'&&world.iberiaGpuReleased&&world.geo?.lat>43.66)break;
     }
@@ -108,7 +110,7 @@ try{
   const returnOverlap=await page.evaluate(async()=>{
     const api=WAFTRegionRuntime,stream=WAFTWorldStreaming0245,wait=ms=>new Promise(r=>setTimeout(r,ms));
     api.setHeading(0);api.setInput(0,-1);
-    for(let i=0;i<40;i++){await wait(100);if(!stream.getState().iberiaGpuReleased)break;}
+    for(let i=0;i<100;i++){await wait(100);if(!stream.getState().iberiaGpuReleased)break;}
     api.setInput(0,0);await wait(250);return{runtime:api.getState(),world:stream.getState()};
   });
   need(!returnOverlap.world.iberiaGpuReleased&&!returnOverlap.runtime.adventureRegionalTerrainReleased,'Iberia GPU terrain did not restore when returning to overlap');
