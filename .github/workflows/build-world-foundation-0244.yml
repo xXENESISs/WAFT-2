@@ -142,3 +142,5 @@ jobs:
           path: /tmp/waft-iberia-0244.png
           retention-days: 7
           if-no-files-found: ignore
+
+# Deterministic browser pass marker: generated regional packages already persisted.
