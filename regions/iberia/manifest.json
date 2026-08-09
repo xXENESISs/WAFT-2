@@ -18,29 +18,29 @@
   "deterministic": true,
   "files": [
     {
-      "bytes": 426048,
+      "bytes": 465984,
       "path": "terrain.bin",
-      "sha256": "3c725ec8a19acf04728f03241d1106f087957e1c02d9fea7062975608bf20b1e"
+      "sha256": "e1244aac8e59f412121a26b2c7916e4b1d50645a7fd4d5e224020ac46d135193"
     },
     {
-      "bytes": 213056,
+      "bytes": 233024,
       "path": "landcover.bin",
-      "sha256": "c866dab2eb8c040d8b08aba567eadec3e7f4cfe1b81cddae287e03ac65e9ff08"
+      "sha256": "3ea25dfb4de64c4c5e0a0417aaef46871b44a3912f7945b9a35f1fcb8a919328"
     },
     {
-      "bytes": 592784,
+      "bytes": 637782,
       "path": "sectors.json",
-      "sha256": "014dffdd4445cbeefdbaa90bf8c8967ef460d1e85bd0a1dbea27ef8e5d90f91a"
+      "sha256": "ac70516d390449d9f90f968addf84bc4f813f4afea966865f1fee8d70b77dbb2"
     },
     {
-      "bytes": 190946,
+      "bytes": 190950,
       "path": "settlements.json",
-      "sha256": "2a5934617d0fe5c470b34aa211c935240a58a72d7fc0b67d0f0b438aafc30606"
+      "sha256": "5ae46ce132891a39d8809cdfe5b1a090d8bc41e840e51e4c4ffd5358ba4e4c7f"
     },
     {
-      "bytes": 355850,
+      "bytes": 355854,
       "path": "objects.json",
-      "sha256": "ba4ef7ad886ccd222e1f09eab59f84158b94eb3927fc9746bf2fc88a52da3951"
+      "sha256": "8f859b9a6641412835648bc1af1c9391105caaff98b530f8499e85ebd64db5b3"
     },
     {
       "bytes": 147,
@@ -63,9 +63,9 @@
   "generatorVersion": "0.2.0",
   "landcover": {
     "classDistribution": {
-      "0": 68168,
-      "6": 25484,
-      "9": 119340
+      "0": 84446,
+      "6": 25971,
+      "9": 122543
     },
     "classes": [
       {
@@ -123,7 +123,7 @@
     "fallbackLandCells": 0,
     "format": "WAFTLCV1",
     "quality": "esa-worldcover-2021-v200",
-    "realClassifiedLandCells": 144824,
+    "realClassifiedLandCells": 148514,
     "source": {
       "algorithmVersion": "terrain-only-v1",
       "attribution": "Contains modified Copernicus DEM data",
@@ -135,11 +135,11 @@
       "nominalResolutionMeters": 90,
       "provider": "WAFT / Copernicus Programme",
       "retrievedOn": "2026-08-09",
-      "snapshotSha256": "ad1eb12a10a1bd495e34d8c45205c3b099319ca7e8cd1360ead4d607d057e30d",
+      "snapshotSha256": "130d4b657b60a951204c95b4feebc6f04dd95c5987cd72356935405795518c34",
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 1233054,
+  "packageBytesWithoutManifest": 1337956,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,7 +161,7 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 85.55640544079021,
     "localBounds": {
-      "maxX": 803.267701582219,
+      "maxX": 958.3386864436513,
       "maxZ": 648.5941349999997,
       "minX": -803.267701582219,
       "minZ": -648.5941349999997
@@ -176,12 +176,12 @@
   "provenance": {
     "config": {
       "path": "world-generator/configs/iberia.region.json",
-      "sha256": "921a593410e028571693614a34bb28b465b83d4f742284cff97c4d99687af86b"
+      "sha256": "4b36dec01e31b0d2c5d21ac6f85d605a9955c40a64e52f6d38ae23a91c47b079"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/iberia/copernicus-dem-glo30.json",
       "path": "world-generator/sources/iberia/copernicus-dem-glo30.bin",
-      "sha256": "183e53e1a3f61c1cdbbcb3ed2d5175e285bc8dbdbf03b6cf1ad46feff3c0b201"
+      "sha256": "309c7162e724d9e3748e719e14d22934b2f983d4f5eb91c571a39a9645f710c9"
     },
     "generatorSourcesSha256": "a5de7bdf0e7689082f6ebe9faf75ff872e4f23dfa98bb2456e830abde0b83f1f",
     "overrides": {
@@ -191,7 +191,7 @@
     "worldCoverSnapshot": {
       "metadataPath": "world-generator/sources/iberia/esa-worldcover-2021-v200.json",
       "path": "world-generator/sources/iberia/esa-worldcover-2021-v200.bin",
-      "sha256": "ad1eb12a10a1bd495e34d8c45205c3b099319ca7e8cd1360ead4d607d057e30d"
+      "sha256": "130d4b657b60a951204c95b4feebc6f04dd95c5987cd72356935405795518c34"
     }
   },
   "region": {
@@ -204,15 +204,15 @@
     "id": "iberia",
     "name": "Península Ibérica",
     "status": "prototype",
-    "version": "0.24.0"
+    "version": "0.24.3"
   },
   "sectors": {
-    "active": 418,
-    "columns": 26,
+    "active": 433,
+    "columns": 28,
     "preloadRadius": 2,
     "rows": 21,
     "sizeUnits": 64,
-    "total": 546
+    "total": 588
   },
   "settlementMarkers": {
     "capitalStyle": {
@@ -253,8 +253,8 @@
     }
   },
   "terrain": {
-    "cells": 212992,
-    "columns": 512,
+    "cells": 232960,
+    "columns": 560,
     "elevationSource": {
       "attribution": "Contains modified Copernicus DEM data",
       "dataset": "Copernicus DEM GLO-90",
@@ -262,7 +262,7 @@
       "mode": "copernicus-dem-glo30",
       "provider": "Copernicus Programme",
       "retrievedOn": "2026-08-09",
-      "snapshotSha256": "183e53e1a3f61c1cdbbcb3ed2d5175e285bc8dbdbf03b6cf1ad46feff3c0b201",
+      "snapshotSha256": "309c7162e724d9e3748e719e14d22934b2f983d4f5eb91c571a39a9645f710c9",
       "tiles": [
         {
           "bytes": 5197058,
@@ -283,6 +283,11 @@
           "bytes": 4562518,
           "id": "Copernicus_DSM_COG_30_N35_00_E003_00_DEM",
           "sha256": "8f89ed56624faae609eebc203b16650ee996ca5fb60281d638bb784c7c1680f8"
+        },
+        {
+          "bytes": 4570955,
+          "id": "Copernicus_DSM_COG_30_N35_00_E004_00_DEM",
+          "sha256": "ed04497a6eb76a01e039986c4a7f5348e26bd652f6db6a8035354ca6288f2fe3"
         },
         {
           "bytes": 4049983,
@@ -338,6 +343,11 @@
           "bytes": 4499596,
           "id": "Copernicus_DSM_COG_30_N36_00_E003_00_DEM",
           "sha256": "84194c2da92859dcb84f58b43c4b62e54df42c7f16fb858864633fc3e200f731"
+        },
+        {
+          "bytes": 4848213,
+          "id": "Copernicus_DSM_COG_30_N36_00_E004_00_DEM",
+          "sha256": "f30dd73e61c5b65420a81cde08be16c3616434ba6319871c20c951b401244fb3"
         },
         {
           "bytes": 109009,
@@ -505,6 +515,11 @@
           "sha256": "a904f02f8f264fbf24b6821367ebb2e7dbc59711aa9ac12f2cfaafc565584f46"
         },
         {
+          "bytes": 298593,
+          "id": "Copernicus_DSM_COG_30_N39_00_E004_00_DEM",
+          "sha256": "870fcc6ccf11350d7876e132027d7fb3f5c62645e169a924104b4d7c39513291"
+        },
+        {
           "bytes": 4458091,
           "id": "Copernicus_DSM_COG_30_N39_00_W001_00_DEM",
           "sha256": "a49e8fad8b36615d938070423a8afccbcb0ed108824b3bda0f12d8167711dd16"
@@ -563,6 +578,11 @@
           "bytes": 119167,
           "id": "Copernicus_DSM_COG_30_N40_00_E003_00_DEM",
           "sha256": "a1be8a4684193b42a6eff9cd4c14dabee1dd9181a519b010ac978d8fda99eacb"
+        },
+        {
+          "bytes": 129172,
+          "id": "Copernicus_DSM_COG_30_N40_00_E004_00_DEM",
+          "sha256": "638fd7782d4d4b0626be8955f1ea0b3cb59055939c875fdd7895d286a36fbb45"
         },
         {
           "bytes": 5188667,
@@ -765,6 +785,11 @@
           "sha256": "aef27553113775adf4c5a30cbe2b28778133173bd9f7514618de5c9d41178cff"
         },
         {
+          "bytes": 3274159,
+          "id": "Copernicus_DSM_COG_30_N43_00_E004_00_DEM",
+          "sha256": "cd12a9a5865a7fc5a1657b7504267598b22c72da397c25c1ab235364460373b0"
+        },
+        {
           "bytes": 5542494,
           "id": "Copernicus_DSM_COG_30_N43_00_W001_00_DEM",
           "sha256": "aa144547c8a8769f91f87eabafa144e77c6b93a721c374d40516e35564fd63b1"
@@ -817,11 +842,11 @@
       ]
     },
     "format": "WAFTHGT1",
-    "landCells": 144824,
+    "landCells": 148514,
     "landMaskSource": "esa-worldcover-water-class",
-    "landRatio": 0.67995,
+    "landRatio": 0.637509,
     "maximumElevationMeters": 3460,
-    "meanElevationMeters": 726.029,
+    "meanElevationMeters": 723.105,
     "minimumElevationMeters": 1,
     "nodataElevation": -32768,
     "rows": 416

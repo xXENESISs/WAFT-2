@@ -1,9 +1,9 @@
 {
   "attribution": "Contains modified Copernicus DEM data",
-  "availableCells": 191554,
-  "binaryBytes": 426048,
+  "availableCells": 204331,
+  "binaryBytes": 465984,
   "binaryFile": "copernicus-dem-glo30.bin",
-  "binarySha256": "183e53e1a3f61c1cdbbcb3ed2d5175e285bc8dbdbf03b6cf1ad46feff3c0b201",
+  "binarySha256": "309c7162e724d9e3748e719e14d22934b2f983d4f5eb91c571a39a9645f710c9",
   "bucket": "s3://copernicus-dem-90m",
   "dataset": "Copernicus DEM GLO-90",
   "datasetRelease": "2021",
@@ -11,9 +11,9 @@
   "formatVersion": 1,
   "license": "Copernicus data policy",
   "maximumElevationMeters": 3460,
-  "meanElevationMeters": 548.913,
+  "meanElevationMeters": 525.574,
   "minimumElevationMeters": 0,
-  "nodataCells": 21438,
+  "nodataCells": 28629,
   "nominalResolutionMeters": 90,
   "provider": "Copernicus Programme",
   "regionId": "iberia",
@@ -21,12 +21,12 @@
   "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
   "targetGrid": {
     "bounds": {
-      "east": 3.35,
+      "east": 4.6,
       "north": 43.8,
       "south": 35.75,
       "west": -9.6
     },
-    "columns": 512,
+    "columns": 560,
     "resampling": "maximum (peak-preserving)",
     "rows": 416
   },
@@ -65,6 +65,15 @@
       "id": "Copernicus_DSM_COG_30_N35_00_E003_00_DEM",
       "sha256": "8f89ed56624faae609eebc203b16650ee996ca5fb60281d638bb784c7c1680f8",
       "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_E003_00_DEM/Copernicus_DSM_COG_30_N35_00_E003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4570955,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_E004_00_DEM",
+      "sha256": "ed04497a6eb76a01e039986c4a7f5348e26bd652f6db6a8035354ca6288f2fe3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_E004_00_DEM/Copernicus_DSM_COG_30_N35_00_E004_00_DEM.tif",
       "width": 1200
     },
     {
@@ -164,6 +173,15 @@
       "id": "Copernicus_DSM_COG_30_N36_00_E003_00_DEM",
       "sha256": "84194c2da92859dcb84f58b43c4b62e54df42c7f16fb858864633fc3e200f731",
       "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N36_00_E003_00_DEM/Copernicus_DSM_COG_30_N36_00_E003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4848213,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N36_00_E004_00_DEM",
+      "sha256": "f30dd73e61c5b65420a81cde08be16c3616434ba6319871c20c951b401244fb3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N36_00_E004_00_DEM/Copernicus_DSM_COG_30_N36_00_E004_00_DEM.tif",
       "width": 1200
     },
     {
@@ -464,6 +482,15 @@
       "width": 1200
     },
     {
+      "bytes": 298593,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N39_00_E004_00_DEM",
+      "sha256": "870fcc6ccf11350d7876e132027d7fb3f5c62645e169a924104b4d7c39513291",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N39_00_E004_00_DEM/Copernicus_DSM_COG_30_N39_00_E004_00_DEM.tif",
+      "width": 1200
+    },
+    {
       "bytes": 4458091,
       "crs": "EPSG:4326",
       "height": 1200,
@@ -569,6 +596,15 @@
       "id": "Copernicus_DSM_COG_30_N40_00_E003_00_DEM",
       "sha256": "a1be8a4684193b42a6eff9cd4c14dabee1dd9181a519b010ac978d8fda99eacb",
       "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N40_00_E003_00_DEM/Copernicus_DSM_COG_30_N40_00_E003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 129172,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N40_00_E004_00_DEM",
+      "sha256": "638fd7782d4d4b0626be8955f1ea0b3cb59055939c875fdd7895d286a36fbb45",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N40_00_E004_00_DEM/Copernicus_DSM_COG_30_N40_00_E004_00_DEM.tif",
       "width": 1200
     },
     {
@@ -932,6 +968,15 @@
       "width": 1200
     },
     {
+      "bytes": 3274159,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N43_00_E004_00_DEM",
+      "sha256": "cd12a9a5865a7fc5a1657b7504267598b22c72da397c25c1ab235364460373b0",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N43_00_E004_00_DEM/Copernicus_DSM_COG_30_N43_00_E004_00_DEM.tif",
+      "width": 1200
+    },
+    {
       "bytes": 5542494,
       "crs": "EPSG:4326",
       "height": 1200,
@@ -1032,12 +1077,16 @@
     "Copernicus_DSM_COG_30_N37_00_E001_00_DEM",
     "Copernicus_DSM_COG_30_N37_00_E002_00_DEM",
     "Copernicus_DSM_COG_30_N37_00_E003_00_DEM",
+    "Copernicus_DSM_COG_30_N37_00_E004_00_DEM",
     "Copernicus_DSM_COG_30_N37_00_W010_00_DEM",
     "Copernicus_DSM_COG_30_N38_00_E002_00_DEM",
     "Copernicus_DSM_COG_30_N38_00_E003_00_DEM",
+    "Copernicus_DSM_COG_30_N38_00_E004_00_DEM",
     "Copernicus_DSM_COG_30_N40_00_E001_00_DEM",
     "Copernicus_DSM_COG_30_N40_00_E002_00_DEM",
     "Copernicus_DSM_COG_30_N40_00_W010_00_DEM",
-    "Copernicus_DSM_COG_30_N41_00_W010_00_DEM"
+    "Copernicus_DSM_COG_30_N41_00_E004_00_DEM",
+    "Copernicus_DSM_COG_30_N41_00_W010_00_DEM",
+    "Copernicus_DSM_COG_30_N42_00_E004_00_DEM"
   ]
 }
