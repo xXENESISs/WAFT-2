@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "verifierVersion": 3,
+  "verifierVersion": 4,
   "runtimeVersion": "002",
   "valid": true,
   "public": false,
@@ -28,11 +28,11 @@
     "loadedCells": 15,
     "collisionProbe": true,
     "initialCameraDistance": 1.3510136170029574,
-    "jumpRise": 0.2287499999999998,
+    "jumpRise": 0.3009749399999979,
     "landed": true,
-    "movementDistance": 1.4400000000001414,
-    "facingChange": 1.4726215563702159,
-    "cameraDistanceAfterMovement": 6.73291405949698,
+    "movementDistance": 1.6892820698981863,
+    "facingChange": 1.550351430853957,
+    "cameraDistanceAfterMovement": 6.7329140594969665,
     "respawnGrounded": true,
     "cameraMode": "third-person",
     "characterVisible": true
@@ -40,26 +40,82 @@
   "finalState": {
     "position": {
       "x": 445.1680733656737,
-      "y": 2.01,
+      "y": 2.38125,
       "z": -123.33401159999963
     },
     "cameraEye": {
       "x": 442.7728566254901,
-      "y": 4.7486761508103275,
+      "y": 5.119926150810328,
       "z": -128.99923193473498
     },
-    "playerFacing": 1.8726215563702158,
+    "playerFacing": 1.950351430853957,
     "cameraMode": "third-person",
     "characterVisible": true,
     "cameraBlocked": false,
     "grounded": true,
     "activeBuildings": 782,
     "loadedCells": 10,
-    "collisions": 0,
+    "collisions": 4,
     "preset": "menorca"
   },
   "pageErrors": [],
   "consoleErrors": [
     "Failed to load resource: the server responded with a status of 404 (File not found)"
-  ]
+  ],
+  "publicMirror": {
+    "valid": true,
+    "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-runtime-baleares-002.html?v=4cd5c90e3ce81afa5492ab4fd784dfeac9fe2e30",
+    "buildId": "baleares-preview-3068ab4bdb61",
+    "canvas": {
+      "width": 844,
+      "height": 390
+    },
+    "presets": [
+      "Palma",
+      "Llevant",
+      "Alcúdia",
+      "Menorca",
+      "Eivissa"
+    ],
+    "tests": {
+      "totalBuildings": 5866,
+      "streamedBuildings": 994,
+      "loadedCells": 15,
+      "collisionProbe": true,
+      "initialCameraDistance": 1.3510136170029574,
+      "jumpRise": 0.3013874849999989,
+      "landed": true,
+      "movementDistance": 1.5783433207195465,
+      "facingChange": 1.5025921539359217,
+      "cameraDistanceAfterMovement": 6.73291405949698,
+      "respawnGrounded": true,
+      "cameraMode": "third-person",
+      "characterVisible": true
+    },
+    "finalState": {
+      "position": {
+        "x": 445.1680733656737,
+        "y": 2.01,
+        "z": -123.33401159999963
+      },
+      "cameraEye": {
+        "x": 442.7728566254901,
+        "y": 4.7486761508103275,
+        "z": -128.99923193473498
+      },
+      "playerFacing": 1.9025921539359216,
+      "cameraMode": "third-person",
+      "characterVisible": true,
+      "cameraBlocked": false,
+      "grounded": true,
+      "activeBuildings": 782,
+      "loadedCells": 10,
+      "collisions": 1,
+      "preset": "menorca"
+    },
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  }
 }

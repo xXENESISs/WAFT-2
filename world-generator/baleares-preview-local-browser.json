@@ -38,7 +38,7 @@
   "interaction": {
     "camera": {
       "x": -142.347,
-      "y": 42.24,
+      "y": 42.375,
       "z": 56.699600000000004
     },
     "buildId": "baleares-preview-3068ab4bdb61"
@@ -58,14 +58,14 @@
         "binarySha256": "18556b2f4eacefd8a474a8229d4253dbddf55ee686fb305e8c0ed4445a20c684",
         "position": {
           "x": -116.65347450843758,
-          "y": 1.4100000000000001,
+          "y": 1.44375,
           "z": 33.10127787843871
         }
       },
       "state": {
         "position": {
           "x": -116.65347450843758,
-          "y": 1.4100000000000001,
+          "y": 1.44375,
           "z": 33.10127787843871
         },
         "grounded": true,
@@ -93,15 +93,15 @@
       "streamedBuildings": 994,
       "loadedCells": 15,
       "collisionProbe": true,
-      "jumpRise": 0.3013874850000011,
+      "jumpRise": 0.42375000000000007,
       "landed": true,
-      "movementDistance": 0.3599999999999981,
+      "movementDistance": 0.4802400000000068,
       "respawnGrounded": true
     },
     "finalState": {
       "position": {
         "x": 445.1680733656737,
-        "y": 2.01,
+        "y": 2.38125,
         "z": -123.33401159999963
       },
       "grounded": true,
