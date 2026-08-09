@@ -1,0 +1,136 @@
+name: Build WAFT world foundation 0.24.4
+
+on:
+  push:
+    branches:
+      - agent/world-streaming-foundation-0244
+    paths:
+      - .github/workflows/build-world-foundation-0244.yml
+      - world-generator/configs/iberia.region.json
+      - world-generator/configs/france.region.json
+      - world-generator/configs/canarias.region.json
+      - world-generator/configs/world-streaming-topology.v1.json
+      - world-generator/overrides/france.overrides.json
+      - world-generator/overrides/canarias.overrides.json
+      - world-generator/scripts/prepare-world-0244.py
+      - world-generator/scripts/build-settlement-markers-0244.py
+      - world-generator/scripts/prepare-iberia-0244.mjs
+      - world-generator/scripts/smoke-world-expansion-0244.mjs
+      - mallorca-mobile/adventure-0210/iberia-world-0244.js
+      - mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0244.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waft-world-0244-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache Copernicus GLO-90 tiles
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/copernicus-dem-glo90
+          key: waft-west-europe-glo90-2021-v1
+      - name: Cache GeoNames
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/geonames
+          key: waft-geonames-cities15000-2026-08-09-v2
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy rasterio
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Prepare world contracts and Iberia runtime
+        run: |
+          python world-generator/scripts/prepare-world-0244.py
+          node world-generator/scripts/prepare-iberia-0240.mjs
+          node world-generator/scripts/prepare-iberia-0242.mjs
+          node world-generator/scripts/prepare-iberia-0243.mjs
+          node world-generator/scripts/prepare-iberia-0244.mjs
+      - name: Syntax and contracts
+        run: |
+          python -m py_compile world-generator/scripts/prepare-world-0244.py
+          python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
+          python -m py_compile world-generator/scripts/import-copernicus-dem-glo90.py
+          python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
+          node --check world-generator/scripts/prepare-iberia-0244.mjs
+          node --check world-generator/scripts/smoke-world-expansion-0244.mjs
+          node --check mallorca-mobile/adventure-0210/iberia-world-0244.js
+          node --check mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0244.mjs
+          node world-generator/scripts/validate-region.mjs
+      - name: Build Iberia France and Canarias terrain
+        run: |
+          for region in iberia france canarias; do
+            python world-generator/scripts/import-copernicus-dem-glo90.py "$region" --retrieved-on 2026-08-09
+            python world-generator/scripts/build-terrain-only-landcover.py "$region"
+            node world-generator/scripts/build-region-v2.mjs "$region"
+            case "$region" in
+              iberia) python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,GI --minimum-population 20000 --exclude-balearics ;;
+              france) python world-generator/scripts/build-settlement-markers-0244.py france --countries FR --minimum-population 20000 ;;
+              canarias) python world-generator/scripts/build-settlement-markers-0244.py canarias --countries ES --minimum-population 20000 ;;
+            esac
+            node world-generator/scripts/build-region-preview-v2.mjs "$region"
+          done
+      - name: Verify world expansion
+        run: |
+          node world-generator/scripts/smoke-world-expansion-0244.mjs
+          node world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
+      - name: Persist generated world packages
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            world-generator/configs/iberia.region.json \
+            mallorca-mobile/adventure-0210/index.html \
+            mallorca-mobile/adventure-0210/plugin-loader.js \
+            world-generator/sources/iberia world-generator/sources/france world-generator/sources/canarias \
+            regions/iberia regions/france regions/canarias
+          git add world-generator/*-preview-build.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT world 0.24.4 is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Build WAFT Iberia France Canarias world foundation 0.24.4"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify Iberia 0.24.4 in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-world-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-iberia-browser-0244.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
+            /tmp/waft-iberia-0244.png
+      - name: Upload Iberia 0.24.4 screenshot
+        if: always() && steps.persist.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: iberia-adventure-0244-browser
+          path: /tmp/waft-iberia-0244.png
+          retention-days: 7
+          if-no-files-found: ignore
