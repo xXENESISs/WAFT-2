@@ -30,7 +30,7 @@ patch('mallorca-mobile/adventure-0210/index.html',[
   ],
   [
     "        state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.camera.y+=state.adventureFlightVy*dt;",
-    "        const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45));state.adventureFlightVy-=(25+21*diveAmount)*dt;}else{state.adventureFlightVy-=.28*dt;}state.adventureFlightVy=Math.max(-40,Math.min(26,state.adventureFlightVy));}else{state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.iberiaDive=false;}state.camera.y+=state.adventureFlightVy*dt;",
+    "        const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(18+22*diveAmount),diveBlend=1-Math.exp(-dt*11);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.adventureFlightVy-=.28*dt;}state.adventureFlightVy=Math.max(-40,Math.min(26,state.adventureFlightVy));}else{state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.iberiaDive=false;}state.camera.y+=state.adventureFlightVy*dt;",
     'quebrantahuesos dive physics'
   ],
   [
