@@ -25,12 +25,12 @@ patch('mallorca-mobile/adventure-0210/index.html',[
   ],
   [
     "        if(state.adventureFlightFlap>0){state.adventureFlightVy=Math.max(state.adventureFlightVy,state.adventureFlightFlap);state.adventureFlightFlap=0;}",
-    "        if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(13.4,state.adventureFlightFlap*1.50):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);state.adventureFlightFlap=0;}",
+    "        if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(18.5,state.adventureFlightFlap*1.85):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);state.adventureFlightFlap=0;}",
     'quebrantahuesos stronger flap'
   ],
   [
     "        state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.camera.y+=state.adventureFlightVy*dt;",
-    "        const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45));state.adventureFlightVy-=(22+18*diveAmount)*dt;}else{state.adventureFlightVy-=.55*dt;}state.adventureFlightVy=Math.max(-34,Math.min(19,state.adventureFlightVy));}else{state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.iberiaDive=false;}state.camera.y+=state.adventureFlightVy*dt;",
+    "        const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45));state.adventureFlightVy-=(25+21*diveAmount)*dt;}else{state.adventureFlightVy-=.28*dt;}state.adventureFlightVy=Math.max(-40,Math.min(26,state.adventureFlightVy));}else{state.adventureFlightVy-=2.0*dt;if(inputLength>.93)state.adventureFlightVy-=1.25*dt;state.adventureFlightVy=Math.max(-5.2,Math.min(12,state.adventureFlightVy));state.iberiaDive=false;}state.camera.y+=state.adventureFlightVy*dt;",
     'quebrantahuesos dive physics'
   ],
   [
