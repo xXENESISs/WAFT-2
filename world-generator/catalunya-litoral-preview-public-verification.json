@@ -1,0 +1,66 @@
+{
+  "formatVersion": 1,
+  "verifierVersion": 2,
+  "regionId": "catalunya-litoral",
+  "valid": true,
+  "public": true,
+  "url": "https://xxenesiss.github.io/WAFT-2/mallorca-mobile/region-preview-catalunya-litoral-001.html?v=b3f21c3a3f3e13518b4c9c084ea19bbefea9ba92",
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "touch": true
+  },
+  "canvas": {
+    "width": 844,
+    "height": 390
+  },
+  "buildId": "catalunya-litoral-preview-4ba7b372d799",
+  "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df",
+  "counts": {
+    "buildings": 3534,
+    "hotels": 597,
+    "landmarks": 100,
+    "namedBuildings": 3292,
+    "roadSegments": 17298,
+    "roadVertices": 34596,
+    "selectedRoads": 12500,
+    "settlements": 90
+  },
+  "stats": {
+    "buildings": 3534,
+    "hotels": 597,
+    "landmarks": 100,
+    "namedBuildings": 3292,
+    "roadSegments": 17298,
+    "roadVertices": 34596,
+    "selectedRoads": 12500,
+    "settlements": 90,
+    "webgl2": true,
+    "buildId": "catalunya-litoral-preview-4ba7b372d799",
+    "binarySha256": "9d6df23fc19aff495710af880c389462b35407404c781ebe246fc21939d255df"
+  },
+  "presets": [
+    "Tot",
+    "Barcelona",
+    "Tarragona",
+    "Girona",
+    "Montserrat",
+    "Montseny",
+    "Maresme"
+  ],
+  "interaction": {
+    "targetPresetId": "barcelona",
+    "targetPresetName": "Barcelona",
+    "cameraDistance": 289.2866755502576,
+    "camera": {
+      "x": -18.2394,
+      "y": 42.75,
+      "z": 74.2316
+    },
+    "layerToggle": true
+  },
+  "webgl2": true,
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requestFailures": []
+}
