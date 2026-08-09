@@ -9,6 +9,7 @@ on:
       - .github/workflows/build-world-streaming-0245.yml
       - world-generator/scripts/build-settlement-markers-0244.py
       - world-generator/scripts/prepare-iberia-0245.mjs
+      - world-generator/scripts/tune-vulture-flight-0245.mjs
       - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/configs/iberia.region.json
       - world-generator/configs/france.region.json
@@ -57,11 +58,14 @@ jobs:
         run: |
           python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
           node --check world-generator/scripts/prepare-iberia-0245.mjs
+          node --check world-generator/scripts/tune-vulture-flight-0245.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs
           node world-generator/scripts/validate-region.mjs
       - name: Prepare Adventure 0.24.5
-        run: node world-generator/scripts/prepare-iberia-0245.mjs
+        run: |
+          node world-generator/scripts/prepare-iberia-0245.mjs
+          node world-generator/scripts/tune-vulture-flight-0245.mjs
       - name: Rebuild Iberia places and preview
         run: |
           python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,GI --minimum-population 20000 --exclude-balearics
