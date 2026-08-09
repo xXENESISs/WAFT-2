@@ -102,7 +102,16 @@
     'render conjunto de montura'
   );
 
+  const terrainOnly=window.__WAFT_ADVENTURE_REGION__==='iberia';
+  if(terrainOnly){
+    replaceOne("  const REGION_NAMES = { baleares: 'Baleares', 'catalunya-litoral': 'Catalunya litoral' };","  const REGION_NAMES = { baleares: 'Baleares', 'catalunya-litoral': 'Catalunya litoral', iberia: 'Península Ibérica' };",'nombre Iberia');
+    replaceOne("  const SAVE_KEY = 'waft.adventure.integration.0210.v1';","  const SAVE_KEY = REGION_ID === 'iberia' ? 'waft.adventure.integration.0240.iberia' : 'waft.adventure.integration.0210.v1';",'guardado Iberia');
+    replaceOne("  function missionObjective() {\n    if (REGION_ID !== 'baleares') return 'Explora Catalunya y descubre su fauna antes de regresar al puerto.';","  function missionObjective() {\n    if (REGION_ID === 'iberia') return 'Prueba de escala peninsular · solo terreno y relieve.';\n    if (REGION_ID !== 'baleares') return 'Explora Catalunya y descubre su fauna antes de regresar al puerto.';",'objetivo terreno Iberia');
+    replaceOne("    progress.textContent = REGION_NAMES[REGION_ID] + ' · fauna ' + observedCount + '/' + game.animals.length + ' · guardados ' + game.saveCount;","    progress.textContent = REGION_ID === 'iberia' ? 'Península Ibérica · TERRENO 0.24.0 · guardados ' + game.saveCount : REGION_NAMES[REGION_ID] + ' · fauna ' + observedCount + '/' + game.animals.length + ' · guardados ' + game.saveCount;",'HUD terreno Iberia');
+    replaceOne("  function buildAdventurePopulation(api) {","  function buildAdventurePopulation(api) {\n    if (REGION_ID === 'iberia') { game.npc=null; game.animals=[]; updateObjective(); return; }",'población vacía Iberia');
+  }
   (0,eval)(source+'\n//# sourceURL=waft-adventure-0233-gameplay.js');
+  if(terrainOnly){window.__WAFT_IBERIA_TERRAIN_0240_READY__=true;const destinations=document.getElementById('waftDestinations');if(destinations){destinations.classList.remove('waft-hide-narrow');if(innerWidth<900)destinations.textContent='MAPA';}return;}
   (0,eval)(playabilitySource+'\n//# sourceURL=waft-adventure-0230-playability.js');
   (0,eval)(mobileSource+'\n//# sourceURL=waft-adventure-0231-mobile.js');
   (0,eval)(mechanicsSource+'\n//# sourceURL=waft-adventure-0232-mechanics.js');

@@ -280,7 +280,7 @@ function build() {
   };
   for (const filePath of Object.values(paths)) assert(fs.existsSync(filePath), `Missing source ${filePath}`);
   const manifest = readJson(paths.manifest);
-  assert(manifest.generationStage === 'wikidata-ranked-landmarks', `Preview requires Wikidata stage, got ${manifest.generationStage}`);
+  assert(['wikidata-ranked-landmarks','dem-worldcover-bootstrap'].includes(manifest.generationStage), `Preview requires terrain bootstrap or Wikidata stage, got ${manifest.generationStage}`);
   const terrainBuffer = fs.readFileSync(paths.terrain);
   const terrain = decodeTerrainHeader(terrainBuffer);
   const sampleTerrain = createTerrainSampler(terrainBuffer, terrain, manifest.projection.localBounds);
@@ -361,7 +361,7 @@ function build() {
       columns: terrain.columns,
       rows: terrain.rows,
       localBounds: manifest.projection.localBounds,
-      verticalScale: .03
+      verticalScale: Number((.03 * ((manifest.projection.unitsPerKm ?? 3.2) / 3.2)).toFixed(6))
     },
     counts: {
       buildings: buildings.records.length / BUILDING_FLOATS,

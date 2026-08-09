@@ -1,0 +1,133 @@
+{
+  "binary": {
+    "bytes": 80,
+    "file": "iberia-preview-v1.bin",
+    "headerBytes": 80,
+    "magic": "WAFTRPV1",
+    "sha256": "1115f3221cb0103603496166fb531825bd2e17f1179894211df9c67a8e81ab58"
+  },
+  "buildId": "iberia-preview-fb3560251d7f",
+  "counts": {
+    "buildings": 0,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 0,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 0
+  },
+  "display": {
+    "buildingHorizontalExaggeration": 2.7,
+    "buildingVerticalScale": 0.075,
+    "landmarkLift": 2.6,
+    "roadLift": 0.16
+  },
+  "distributions": {
+    "buildingKinds": {},
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "landmarks": [],
+  "mappings": {
+    "buildingKinds": {
+      "commercial": 5,
+      "historic": 3,
+      "hotel": 1,
+      "ordinary": 0,
+      "public": 4,
+      "religious": 2
+    },
+    "representations": {
+      "archetype": 0,
+      "marker": 0,
+      "unique": 2,
+      "unique-candidate": 1
+    },
+    "roadClasses": {
+      "bridleway": 9,
+      "cycleway": 9,
+      "footway": 8,
+      "living_street": 5,
+      "motorway": 0,
+      "motorway_link": 0,
+      "path": 8,
+      "pedestrian": 8,
+      "primary": 2,
+      "primary_link": 2,
+      "residential": 5,
+      "secondary": 3,
+      "secondary_link": 3,
+      "service": 6,
+      "steps": 10,
+      "tertiary": 4,
+      "tertiary_link": 4,
+      "track": 7,
+      "trunk": 1,
+      "trunk_link": 1,
+      "unclassified": 6
+    }
+  },
+  "presets": [
+    {
+      "altitude": 980,
+      "distance": 0,
+      "id": "overview",
+      "name": "Tot",
+      "terrainMeters": 0,
+      "x": 0,
+      "z": 0
+    },
+    {
+      "altitude": 52,
+      "distance": 44,
+      "id": "subregion-pirineos",
+      "name": "Pirineos",
+      "terrainMeters": 2495,
+      "x": 455.9087,
+      "z": -464.8929
+    },
+    {
+      "altitude": 56,
+      "distance": 48,
+      "id": "subregion-sierra-nevada",
+      "name": "Sierra Nevada",
+      "terrainMeters": 2986,
+      "x": -27.9128,
+      "z": 437.4989
+    },
+    {
+      "altitude": 60,
+      "distance": 52,
+      "id": "subregion-sistema-central",
+      "name": "Sistema Central",
+      "terrainMeters": 1022,
+      "x": -151.9696,
+      "z": -103.9362
+    }
+  ],
+  "regionId": "iberia",
+  "regionName": "Península Ibérica",
+  "settlements": [],
+  "sources": {
+    "inputsSha256": "fb3560251d7ff34c48281c6642abf33389aaff3bc6be7b472341a4d9d9902283",
+    "landcoverSha256": "c866dab2eb8c040d8b08aba567eadec3e7f4cfe1b81cddae287e03ac65e9ff08",
+    "regionManifestSha256": "a60e6d73c573324887a4dc6c89b3f63c6f6c72d87f3cec98e7dfd6ddaeacd6f3",
+    "terrainSha256": "3c725ec8a19acf04728f03241d1106f087957e1c02d9fea7062975608bf20b1e"
+  },
+  "terrain": {
+    "columns": 512,
+    "file": "../terrain.bin",
+    "landcoverFile": "../landcover.bin",
+    "localBounds": {
+      "maxX": 803.267701582219,
+      "maxZ": 648.5941349999997,
+      "minX": -803.267701582219,
+      "minZ": -648.5941349999997
+    },
+    "rows": 416,
+    "verticalScale": 0.013594
+  }
+}

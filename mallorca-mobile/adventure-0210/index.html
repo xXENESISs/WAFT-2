@@ -20,13 +20,20 @@
     const status = document.getElementById('status');
     const errorBox = document.getElementById('error');
     const params = new URLSearchParams(location.search);
-    const regionId = params.get('region') === 'catalunya-litoral' ? 'catalunya-litoral' : 'baleares';
-    const builds = { baleares:'../region-runtime-baleares-013.html', 'catalunya-litoral':'../region-runtime-catalunya-litoral-003.html' };
+    const requestedRegion=params.get('region');
+    const regionId=requestedRegion==='iberia'?'iberia':requestedRegion==='catalunya-litoral'?'catalunya-litoral':'baleares';
+    const builds={baleares:'../region-runtime-baleares-013.html','catalunya-litoral':'../region-runtime-catalunya-litoral-003.html',iberia:'../region-runtime-catalunya-litoral-003.html'};
     const version = params.get('v') || 'waft-adventure-0233';
     try {
       const response = await fetch(builds[regionId] + '?v=' + encodeURIComponent(version), { cache:'no-store' });
       if (!response.ok) throw new Error(response.status + ' al cargar el runtime regional');
       let source = await response.text();
+      if(regionId==='iberia'){
+        // Reuse the proven mainland runtime engine with the new data-driven Iberia package.
+        source=source.replaceAll('catalunya-litoral','iberia').replaceAll('CATALUNYA LITORAL','PENÍNSULA IBÉRICA').replaceAll('Catalunya litoral','Península Ibérica');
+        source=source.replace("fetchJson(`${localBase}zones-v1.json`)","Promise.resolve({registryType:'waft-local-zone-registry',regionId:'iberia',zones:[]})");
+        source=source.replace("if (!Array.isArray(localRegistry.zones) || localRegistry.zones.length < 1) throw new Error('El registro local no contiene destinos.');","if (!Array.isArray(localRegistry.zones)) throw new Error('El registro local no es válido.');");
+      }
       const replaceOne = (pattern, replacement, label) => {
         const before = source;
         source = source.replace(pattern, replacement);
@@ -201,7 +208,7 @@
       replaceOne('movementMode: state.movementMode, swimming: state.swimming,', `movementMode: state.movementMode, swimming: state.swimming, adventureMountType: state.adventureMountType, adventureWaterJump: state.adventureWaterJump, adventureMountEject: state.adventureMountEject, adventureLastWaterX: state.adventureLastWaterX, adventureLastWaterZ: state.adventureLastWaterZ, adventureCurrentSpeed: state.adventureCurrentSpeed,`, 'estado público');
 
       const uiSafety=`<script>(()=>{let tries=0;const timer=setInterval(()=>{const panel=document.getElementById('waftCheckpointPanel'),route=document.getElementById('waftCheckpoints');if(!panel||!route){if(++tries>300)clearInterval(timer);return;}clearInterval(timer);const close=()=>{panel.classList.remove('visible');route.classList.remove('active');route.setAttribute('aria-expanded','false');};panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Ruta de expedición');route.setAttribute('aria-controls','waftCheckpointPanel');route.setAttribute('aria-expanded',panel.classList.contains('visible')?'true':'false');if(!panel.querySelector('.waftPanelClose')){const x=document.createElement('button');x.type='button';x.className='waftPanelClose';x.textContent='×';x.setAttribute('aria-label','Cerrar');Object.assign(x.style,{position:'absolute',right:'8px',top:'7px',width:'32px',height:'32px',padding:'0',borderRadius:'50%',fontSize:'20px',lineHeight:'28px',zIndex:'2'});x.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();close();});panel.style.paddingTop='42px';panel.appendChild(x);}route.addEventListener('click',()=>requestAnimationFrame(()=>{const open=panel.classList.contains('visible');route.classList.toggle('active',open);route.setAttribute('aria-expanded',open?'true':'false');if(open)document.body.classList.remove('waft-mobile-menu-open');}));document.addEventListener('pointerdown',e=>{if(panel.classList.contains('visible')&&!e.target.closest('#waftCheckpointPanel,#waftCheckpoints'))close();if(document.body.classList.contains('waft-destinations-open')&&!e.target.closest('#presets,#waftDestinations'))document.body.classList.remove('waft-destinations-open');},true);addEventListener('keydown',e=>{if(e.key==='Escape')close();});window.__WAFT_UI_SAFETY_READY__=true;},20);})();<\/script>`;
-      replaceOne('</body>', `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.23.3';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n${uiSafety}\n</body>`, 'bootstrap');
+      replaceOne('</body>', `<script>window.__WAFT_ADVENTURE_REGION__=${JSON.stringify(regionId)};window.__WAFT_ADVENTURE_BUILD__='0.24.0';<\/script>\n<script src="adventure-0210/plugin-loader.js?v=${encodeURIComponent(version)}"><\/script>\n${uiSafety}\n</body>`, 'bootstrap');
 
       document.open();document.write(source);document.close();
     } catch(error) {
