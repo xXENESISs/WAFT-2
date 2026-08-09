@@ -143,4 +143,4 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
-# Deterministic browser pass marker: generated regional packages already persisted.
+# Clean persistence pass after stronger-flap static expectations were updated.
