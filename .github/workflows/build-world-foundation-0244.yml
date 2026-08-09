@@ -143,4 +143,4 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
-# Deterministic browser verification trigger; generated 0.24.4 packages are already persisted.
+# Final deterministic browser pass for strong flap + level hold + unchanged dive.
