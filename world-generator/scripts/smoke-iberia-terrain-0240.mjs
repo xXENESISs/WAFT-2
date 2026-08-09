@@ -28,14 +28,23 @@ if(fs.existsSync(path.join(regionDir,'manifest.json'))){
   const manifest=read('regions/iberia/manifest.json');
   const preview=read('regions/iberia/preview/iberia-preview-v1.json');
   assert.equal(manifest.region.id,'iberia');
-  assert.equal(manifest.content.settlements,0);
   assert.equal(manifest.content.landmarks,0);
   assert.equal(manifest.content.faunaSpecies,0);
   assert.ok(manifest.terrain.maximumElevationMeters>2500,`relief peak ${manifest.terrain.maximumElevationMeters}m too low`);
-  assert.equal(preview.counts.buildings,0);
   assert.equal(preview.counts.roadSegments,0);
   assert.equal(preview.counts.landmarks,0);
-  assert.equal(preview.counts.settlements,0);
+  const markerStage=Boolean(manifest.settlementMarkers);
+  if(markerStage){
+    assert.equal(manifest.settlementMarkers.minimumPopulation,20000);
+    assert.ok(manifest.content.settlements>=100,`Too few Spain 20k+ markers: ${manifest.content.settlements}`);
+    assert.equal(manifest.content.generatedBuildings,manifest.content.settlements);
+    assert.equal(preview.counts.settlements,manifest.content.settlements);
+    assert.equal(preview.counts.buildings,manifest.content.settlements);
+  }else{
+    assert.equal(manifest.content.settlements,0);
+    assert.equal(preview.counts.buildings,0);
+    assert.equal(preview.counts.settlements,0);
+  }
   const expected=Number((.03*(1.45/3.2)).toFixed(6));
   assert.equal(preview.terrain.verticalScale,expected);
   assert.ok(preview.presets.some(item=>item.id==='overview'&&item.altitude===980),'Iberia overview preset missing');
