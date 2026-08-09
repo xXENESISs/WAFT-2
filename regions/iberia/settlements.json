@@ -1,7 +1,8343 @@
 {
   "formatVersion": 1,
-  "generationStage": "manual-seed-points",
-  "items": [],
-  "proceduralGenerationPending": true,
-  "regionId": "iberia"
+  "generationStage": "geonames-population-markers",
+  "items": [
+    {
+      "capitalLevel": null,
+      "id": "es-3119841",
+      "local": {
+        "x": -653.9033,
+        "y": 64,
+        "z": -579.5209
+      },
+      "name": "A Coruña",
+      "place": "PPLA3",
+      "population": 250438,
+      "populationTier": "large",
+      "position": {
+        "lat": 43.37135,
+        "lon": -8.396
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-02-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3119841",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3119746",
+      "local": {
+        "x": -665.3687,
+        "y": 299,
+        "z": -469.5838
+      },
+      "name": "A Estrada",
+      "place": "PPL",
+      "population": 20661,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.68911,
+        "lon": -8.48842
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3119746",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522430",
+      "local": {
+        "x": 12.9317,
+        "y": 79,
+        "z": 487.7251
+      },
+      "name": "Adra",
+      "place": "PPLA3",
+      "population": 24373,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.74831,
+        "lon": -3.02076
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2522430",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522297",
+      "local": {
+        "x": 330.4873,
+        "y": 61,
+        "z": 51.4557
+      },
+      "name": "Alaquàs",
+      "place": "PPLA3",
+      "population": 29341,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.45568,
+        "lon": -0.461
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2522297",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2522258",
+      "local": {
+        "x": 157.3747,
+        "y": 702,
+        "z": 125.8128
+      },
+      "name": "Albacete",
+      "place": "PPLA2",
+      "population": 173050,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.99424,
+        "lon": -1.85643
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-15-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2522258",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522203",
+      "local": {
+        "x": 344.2576,
+        "y": 26,
+        "z": 44.3139
+      },
+      "name": "Alboraya",
+      "place": "PPLA3",
+      "population": 24222,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.5,
+        "lon": -0.35
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2522203",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522165",
+      "local": {
+        "x": -336.7534,
+        "y": 99,
+        "z": 392.7161
+      },
+      "name": "Alcalá de Guadaira",
+      "place": "PPL",
+      "population": 70155,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.33791,
+        "lon": -5.83951
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2522165",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3130616",
+      "local": {
+        "x": -29.1484,
+        "y": 609,
+        "z": -113.935
+      },
+      "name": "Alcalá de Henares",
+      "place": "PPLA3",
+      "population": 193751,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.48205,
+        "lon": -3.35996
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3130616",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522160",
+      "local": {
+        "x": -98.9986,
+        "y": 1031,
+        "z": 372.8167
+      },
+      "name": "Alcalá la Real",
+      "place": "PPLA3",
+      "population": 22783,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.4614,
+        "lon": -3.92301
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2522160",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522152",
+      "local": {
+        "x": 236.683,
+        "y": 98,
+        "z": 290.9585
+      },
+      "name": "Alcantarilla",
+      "place": "PPLA3",
+      "population": 41084,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.96939,
+        "lon": -1.21714
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2522152",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3130583",
+      "local": {
+        "x": -64.1336,
+        "y": 713,
+        "z": -124.4753
+      },
+      "name": "Alcobendas",
+      "place": "PPLA3",
+      "population": 116037,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.54746,
+        "lon": -3.64197
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3130583",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3130564",
+      "local": {
+        "x": -86.8236,
+        "y": 725,
+        "z": -91.9827
+      },
+      "name": "Alcorcón",
+      "place": "PPLA3",
+      "population": 172384,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.34582,
+        "lon": -3.82487
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3130564",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522098",
+      "local": {
+        "x": 328.8348,
+        "y": 948,
+        "z": 172.3488
+      },
+      "name": "Alcoy",
+      "place": "PPLA3",
+      "population": 61552,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.70545,
+        "lon": -0.47432
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2522098",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522131",
+      "local": {
+        "x": -10.3302,
+        "y": 666,
+        "z": 62.0217
+      },
+      "name": "Alcázar de San Juan",
+      "place": "PPLA3",
+      "population": 30686,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.39011,
+        "lon": -3.20827
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2522131",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522077",
+      "local": {
+        "x": 330.6051,
+        "y": 61,
+        "z": 49.8426
+      },
+      "name": "Aldaia",
+      "place": "PPLA3",
+      "population": 31492,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.46569,
+        "lon": -0.46005
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2522077",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522057",
+      "local": {
+        "x": 340.1228,
+        "y": 22,
+        "z": 57.7418
+      },
+      "name": "Alfafar",
+      "place": "PPLA3",
+      "population": 20853,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.41667,
+        "lon": -0.38333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2522057",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522013",
+      "local": {
+        "x": -288.4953,
+        "y": 42,
+        "z": 586.8351
+      },
+      "name": "Algeciras",
+      "place": "PPLA3",
+      "population": 121414,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.13326,
+        "lon": -5.45051
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-19",
+      "source": "geonames-cities15000",
+      "sourceId": "2522013",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522012",
+      "local": {
+        "x": 333.6234,
+        "y": 34,
+        "z": 94.2
+      },
+      "name": "Algemesí",
+      "place": "PPLA3",
+      "population": 27285,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.19042,
+        "lon": -0.43572
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2522012",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3130383",
+      "local": {
+        "x": -46.2025,
+        "y": 779,
+        "z": -132.476
+      },
+      "name": "Algete",
+      "place": "PPLA3",
+      "population": 20204,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.59711,
+        "lon": -3.49743
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3130383",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521986",
+      "local": {
+        "x": -178.1939,
+        "y": 137,
+        "z": 501.3093
+      },
+      "name": "Alhaurín de la Torre",
+      "place": "PPLA3",
+      "population": 35114,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.66401,
+        "lon": -4.56139
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2521986",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521985",
+      "local": {
+        "x": -193.8114,
+        "y": 379,
+        "z": 504.6949
+      },
+      "name": "Alhaurín el Grande",
+      "place": "PPLA3",
+      "population": 23319,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.643,
+        "lon": -4.68728
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2521985",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2521978",
+      "local": {
+        "x": 327.9454,
+        "y": 148,
+        "z": 230.4048
+      },
+      "name": "Alicante",
+      "place": "PPLA2",
+      "population": 348901,
+      "populationTier": "large",
+      "position": {
+        "lat": 38.34517,
+        "lon": -0.48149
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2521978",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521923",
+      "local": {
+        "x": 251.571,
+        "y": 709,
+        "z": 145.9667
+      },
+      "name": "Almansa",
+      "place": "PPLA3",
+      "population": 24537,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.86917,
+        "lon": -1.09713
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2521923",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521909",
+      "local": {
+        "x": 379.8458,
+        "y": 51,
+        "z": -27.7631
+      },
+      "name": "Almassora",
+      "place": "PPL",
+      "population": 25831,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.94729,
+        "lon": -0.06313
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2521909",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521893",
+      "local": {
+        "x": -407.2127,
+        "y": 370,
+        "z": 175.9406
+      },
+      "name": "Almendralejo",
+      "place": "PPLA3",
+      "population": 33468,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.68316,
+        "lon": -6.40747
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2521893",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2521886",
+      "local": {
+        "x": 82.53,
+        "y": 97,
+        "z": 473.2497
+      },
+      "name": "Almería",
+      "place": "PPLA2",
+      "population": 196851,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.83814,
+        "lon": -2.45974
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-13-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2521886",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521857",
+      "local": {
+        "x": -420.7597,
+        "y": 96,
+        "z": 404.5133
+      },
+      "name": "Almonte",
+      "place": "PPLA3",
+      "population": 25751,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.2647,
+        "lon": -6.51667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-05-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2521857",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521855",
+      "local": {
+        "x": 289.4282,
+        "y": 19,
+        "z": 268.4954
+      },
+      "name": "Almoradí",
+      "place": "PPL",
+      "population": 20542,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.10879,
+        "lon": -0.79197
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2521855",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521847",
+      "local": {
+        "x": -70.3067,
+        "y": 350,
+        "z": 490.2792
+      },
+      "name": "Almuñécar",
+      "place": "PPLA3",
+      "population": 27696,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.73246,
+        "lon": -3.69173
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2521847",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521804",
+      "local": {
+        "x": 381.2873,
+        "y": 87,
+        "z": 189.5377
+      },
+      "name": "Altea",
+      "place": "PPLA3",
+      "population": 23780,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.59878,
+        "lon": -0.05151
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2521804",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522129",
+      "local": {
+        "x": 333.9199,
+        "y": 88,
+        "z": 100.7134
+      },
+      "name": "Alzira",
+      "place": "PPLA3",
+      "population": 44393,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.15,
+        "lon": -0.43333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2522129",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3130131",
+      "local": {
+        "x": 459.4518,
+        "y": 39,
+        "z": -150.6592
+      },
+      "name": "Amposta",
+      "place": "PPLA3",
+      "population": 21240,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.70995,
+        "lon": 0.57856
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-19-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3130131",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521738",
+      "local": {
+        "x": -114.8481,
+        "y": 234,
+        "z": 279.706
+      },
+      "name": "Andújar",
+      "place": "PPLA3",
+      "population": 37113,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.03922,
+        "lon": -4.05077
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2521738",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521710",
+      "local": {
+        "x": -178.1741,
+        "y": 664,
+        "z": 444.0445
+      },
+      "name": "Antequera",
+      "place": "PPLA3",
+      "population": 45168,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.01938,
+        "lon": -4.56123
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2521710",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129877",
+      "local": {
+        "x": -69.9928,
+        "y": 815,
+        "z": -305.429
+      },
+      "name": "Aranda de Duero",
+      "place": "PPLA3",
+      "population": 33187,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.67041,
+        "lon": -3.6892
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3129877",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129857",
+      "local": {
+        "x": -59.2322,
+        "y": 634,
+        "z": -41.2651
+      },
+      "name": "Aranjuez",
+      "place": "PPLA3",
+      "population": 54055,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.03108,
+        "lon": -3.60246
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3129857",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521665",
+      "local": {
+        "x": -333.1619,
+        "y": 136,
+        "z": 487.3319
+      },
+      "name": "Arcos de la Frontera",
+      "place": "PPLA3",
+      "population": 31210,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.75075,
+        "lon": -5.81056
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2521665",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129636",
+      "local": {
+        "x": -38.733,
+        "y": 684,
+        "z": -84.7217
+      },
+      "name": "Arganda",
+      "place": "PPL",
+      "population": 51489,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.30076,
+        "lon": -3.43722
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3129636",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521590",
+      "local": {
+        "x": -62.0706,
+        "y": 680,
+        "z": 423.9856
+      },
+      "name": "Armilla",
+      "place": "PPLA3",
+      "population": 21380,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.14386,
+        "lon": -3.62534
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2521590",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116503",
+      "local": {
+        "x": 78.8046,
+        "y": 527,
+        "z": -530.0601
+      },
+      "name": "Arrasate / Mondragón",
+      "place": "PPL",
+      "population": 22019,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.06441,
+        "lon": -2.48977
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3116503",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129356",
+      "local": {
+        "x": -98.5582,
+        "y": 643,
+        "z": -79.686
+      },
+      "name": "Arroyomolinos",
+      "place": "PPL",
+      "population": 31396,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.26951,
+        "lon": -3.91946
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3129356",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129329",
+      "local": {
+        "x": -667.7344,
+        "y": 315,
+        "z": -568.8001
+      },
+      "name": "Arteixo",
+      "place": "PPLA3",
+      "population": 29762,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.30482,
+        "lon": -8.50749
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3129329",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521510",
+      "local": {
+        "x": 292.4999,
+        "y": 268,
+        "z": 230.4145
+      },
+      "name": "Aspe",
+      "place": "PPLA3",
+      "population": 20180,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.34511,
+        "lon": -0.76721
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2521510",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521486",
+      "local": {
+        "x": 287.586,
+        "y": 268,
+        "z": 350.5003
+      },
+      "name": "Atamaría",
+      "place": "PPL",
+      "population": 30000,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.59989,
+        "lon": -0.80682
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2521486",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129135",
+      "local": {
+        "x": -347.3379,
+        "y": 120,
+        "z": -609.071
+      },
+      "name": "Avilés",
+      "place": "PPL",
+      "population": 78715,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.55473,
+        "lon": -5.92483
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3129135",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521456",
+      "local": {
+        "x": -531.3439,
+        "y": 40,
+        "z": 412.7975
+      },
+      "name": "Ayamonte",
+      "place": "PPLA3",
+      "population": 20883,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.21329,
+        "lon": -7.40807
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2521456",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129046",
+      "local": {
+        "x": -17.6818,
+        "y": 639,
+        "z": -127.4081
+      },
+      "name": "Azuqueca de Henares",
+      "place": "PPLA3",
+      "population": 34685,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.56566,
+        "lon": -3.26753
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3129046",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521420",
+      "local": {
+        "x": -477.074,
+        "y": 212,
+        "z": 144.5616
+      },
+      "name": "Badajoz",
+      "place": "PPLA3",
+      "population": 150530,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.87789,
+        "lon": -6.97061
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2521420",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3129028",
+      "local": {
+        "x": 666.4839,
+        "y": 123,
+        "z": -269.9183
+      },
+      "name": "Badalona",
+      "place": "PPLA3",
+      "population": 217741,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.45004,
+        "lon": 2.24741
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3129028",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521415",
+      "local": {
+        "x": -148.5518,
+        "y": 506,
+        "z": 347.7915
+      },
+      "name": "Baena",
+      "place": "PPLA3",
+      "population": 20915,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.6167,
+        "lon": -4.32245
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2521415",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109453",
+      "local": {
+        "x": 16.9797,
+        "y": 120,
+        "z": -567.4417
+      },
+      "name": "Barakaldo",
+      "place": "PPLA3",
+      "population": 100435,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.29639,
+        "lon": -2.98813
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3109453",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3128824",
+      "local": {
+        "x": 179.5958,
+        "y": 453,
+        "z": -488.3664
+      },
+      "name": "Barañáin",
+      "place": "PPL",
+      "population": 20039,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.80567,
+        "lon": -1.67731
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3128824",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521335",
+      "local": {
+        "x": -346.9695,
+        "y": 70,
+        "z": 577.31
+      },
+      "name": "Barbate",
+      "place": "PPL",
+      "population": 22551,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.19237,
+        "lon": -5.92186
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-19",
+      "source": "geonames-cities15000",
+      "sourceId": "2521335",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109804",
+      "local": {
+        "x": 651.2448,
+        "y": 146,
+        "z": -280.5311
+      },
+      "name": "Barberà del Vallès",
+      "place": "PPL",
+      "population": 31144,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.5159,
+        "lon": 2.12457
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3109804",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3128760",
+      "local": {
+        "x": 655.5148,
+        "y": 118,
+        "z": -260.0484
+      },
+      "name": "Barcelona",
+      "place": "PPLA",
+      "population": 1686208,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.38879,
+        "lon": 2.15899
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3128760",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-6697039",
+      "local": {
+        "x": 29.6744,
+        "y": 245,
+        "z": -558.3066
+      },
+      "name": "Basauri",
+      "place": "PPLA3",
+      "population": 42657,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.2397,
+        "lon": -2.8858
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "6697039",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521215",
+      "local": {
+        "x": 43.7189,
+        "y": 1015,
+        "z": 368.0905
+      },
+      "name": "Baza",
+      "place": "PPLA3",
+      "population": 23359,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.49073,
+        "lon": -2.77259
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2521215",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521139",
+      "local": {
+        "x": -179.5933,
+        "y": 838,
+        "z": 512.2524
+      },
+      "name": "Benalmádena",
+      "place": "PPLA3",
+      "population": 58854,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.5961,
+        "lon": -4.57267
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2521139",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3128273",
+      "local": {
+        "x": 440.6609,
+        "y": 27,
+        "z": -103.3722
+      },
+      "name": "Benicarló",
+      "place": "PPLA3",
+      "population": 26655,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.4165,
+        "lon": 0.42709
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-19-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3128273",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2521088",
+      "local": {
+        "x": 371.4285,
+        "y": 114,
+        "z": 199.3061
+      },
+      "name": "Benidorm",
+      "place": "PPLA3",
+      "population": 70450,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.53816,
+        "lon": -0.13098
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2521088",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3128026",
+      "local": {
+        "x": 24.7766,
+        "y": 277,
+        "z": -562.0145
+      },
+      "name": "Bilbao",
+      "place": "PPLA2",
+      "population": 347342,
+      "populationTier": "large",
+      "position": {
+        "lat": 43.26271,
+        "lon": -2.92528
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3128026",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3127978",
+      "local": {
+        "x": 733.8406,
+        "y": 50,
+        "z": -306.0381
+      },
+      "name": "Blanes",
+      "place": "PPLA3",
+      "population": 40047,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.67419,
+        "lon": 2.79036
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3127978",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3127958",
+      "local": {
+        "x": -93.4582,
+        "y": 711,
+        "z": -101.5191
+      },
+      "name": "Boadilla del Monte",
+      "place": "PPLA3",
+      "population": 52626,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.405,
+        "lon": -3.87835
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3127958",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3127461",
+      "local": {
+        "x": -71.5609,
+        "y": 949,
+        "z": -413.4985
+      },
+      "name": "Burgos",
+      "place": "PPLA2",
+      "population": 176418,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.34106,
+        "lon": -3.70184
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3127461",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520712",
+      "local": {
+        "x": 336.4085,
+        "y": 62,
+        "z": 42.7283
+      },
+      "name": "Burjassot",
+      "place": "PPLA3",
+      "population": 38433,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.50984,
+        "lon": -0.41327
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2520712",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520709",
+      "local": {
+        "x": 377.1339,
+        "y": 24,
+        "z": -18.3717
+      },
+      "name": "Burriana",
+      "place": "PPLA3",
+      "population": 34544,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.88901,
+        "lon": -0.08499
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2520709",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520968",
+      "local": {
+        "x": 330.424,
+        "y": 117,
+        "z": 29.6323
+      },
+      "name": "Bétera",
+      "place": "PPLA3",
+      "population": 20740,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.59111,
+        "lon": -0.46151
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2520968",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520645",
+      "local": {
+        "x": -163.3902,
+        "y": 683,
+        "z": 371.0297
+      },
+      "name": "Cabra",
+      "place": "PPLA3",
+      "population": 21352,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.47249,
+        "lon": -4.44206
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2520645",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2520600",
+      "local": {
+        "x": -392.5281,
+        "y": 30,
+        "z": 523.4324
+      },
+      "name": "Cadiz",
+      "place": "PPLA2",
+      "population": 116979,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.52672,
+        "lon": -6.2891
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2520600",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3127066",
+      "local": {
+        "x": 582.2357,
+        "y": 128,
+        "z": -229.6217
+      },
+      "name": "Calafell",
+      "place": "PPLA3",
+      "population": 24265,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.19997,
+        "lon": 1.5683
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3127066",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3127065",
+      "local": {
+        "x": 143.8798,
+        "y": 389,
+        "z": -407.6974
+      },
+      "name": "Calahorra",
+      "place": "PPLA3",
+      "population": 24787,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.30506,
+        "lon": -1.96521
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3127065",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3127047",
+      "local": {
+        "x": 183.8298,
+        "y": 634,
+        "z": -254.3665
+      },
+      "name": "Calatayud",
+      "place": "PPLA3",
+      "population": 20035,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.35353,
+        "lon": -1.64318
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3127047",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520496",
+      "local": {
+        "x": 393.198,
+        "y": 78,
+        "z": 182.1381
+      },
+      "name": "Calp",
+      "place": "PPL",
+      "population": 23326,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.6447,
+        "lon": 0.0445
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2520496",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3126917",
+      "local": {
+        "x": -94.2807,
+        "y": 155,
+        "z": -585.3365
+      },
+      "name": "Camargo",
+      "place": "PPL",
+      "population": 30263,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.40744,
+        "lon": -3.88498
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3126917",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520477",
+      "local": {
+        "x": -360.7745,
+        "y": 20,
+        "z": 382.3853
+      },
+      "name": "Camas",
+      "place": "PPLA3",
+      "population": 28620,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.40202,
+        "lon": -6.03314
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2520477",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3126890",
+      "local": {
+        "x": -647.8692,
+        "y": 119,
+        "z": -567.1178
+      },
+      "name": "Cambre",
+      "place": "PPLA3",
+      "population": 23231,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.29438,
+        "lon": -8.34736
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3126890",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3126888",
+      "local": {
+        "x": 519.1144,
+        "y": 25,
+        "z": -208.6733
+      },
+      "name": "Cambrils",
+      "place": "PPLA3",
+      "population": 32422,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.06997,
+        "lon": 1.05949
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-20-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3126888",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520425",
+      "local": {
+        "x": 17.9026,
+        "y": 665,
+        "z": 250.7425
+      },
+      "name": "Campiña",
+      "place": "PPL",
+      "population": 67904,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.21896,
+        "lon": -2.98069
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2520425",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3126577",
+      "local": {
+        "x": -702.1155,
+        "y": 106,
+        "z": -401.1019
+      },
+      "name": "Cangas do Morrazo",
+      "place": "PPLA3",
+      "population": 25748,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.26413,
+        "lon": -8.78463
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3126577",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520171",
+      "local": {
+        "x": 156.5063,
+        "y": 777,
+        "z": 269.0127
+      },
+      "name": "Caravaca",
+      "place": "PPL",
+      "population": 26415,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.10558,
+        "lon": -1.86343
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2520171",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3126369",
+      "local": {
+        "x": -690.505,
+        "y": 193,
+        "z": -554.0041
+      },
+      "name": "Carballo",
+      "place": "PPLA3",
+      "population": 31261,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.213,
+        "lon": -8.69104
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3126369",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520150",
+      "local": {
+        "x": 332.0851,
+        "y": 30,
+        "z": 105.2576
+      },
+      "name": "Carcaixent",
+      "place": "PPLA3",
+      "population": 21735,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.1218,
+        "lon": -0.44812
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2520150",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520118",
+      "local": {
+        "x": -312.7571,
+        "y": 254,
+        "z": 371.2295
+      },
+      "name": "Carmona",
+      "place": "PPLA3",
+      "population": 28620,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.47125,
+        "lon": -5.64608
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2520118",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520058",
+      "local": {
+        "x": 265.6093,
+        "y": 203,
+        "z": 350.1651
+      },
+      "name": "Cartagena",
+      "place": "PPLA3",
+      "population": 213943,
+      "populationTier": "large",
+      "position": {
+        "lat": 37.60197,
+        "lon": -0.98397
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-16-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2520058",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3125915",
+      "local": {
+        "x": 646.1287,
+        "y": 413,
+        "z": -296.7693
+      },
+      "name": "Castellar del Vallès",
+      "place": "PPL",
+      "population": 24036,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.61667,
+        "lon": 2.08333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3125915",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3125897",
+      "local": {
+        "x": 632.1103,
+        "y": 123,
+        "z": -242.1859
+      },
+      "name": "Castelldefels",
+      "place": "PPLA3",
+      "population": 66375,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.27794,
+        "lon": 1.97033
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3125897",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2519752",
+      "local": {
+        "x": 381.5553,
+        "y": 61,
+        "z": -33.9477
+      },
+      "name": "Castelló de la Plana",
+      "place": "PPLA2",
+      "population": 171857,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.98567,
+        "lon": -0.04935
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-18-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2519752",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3125621",
+      "local": {
+        "x": -11.8387,
+        "y": 177,
+        "z": -581.374
+      },
+      "name": "Castro-Urdiales",
+      "place": "PPLA3",
+      "population": 31977,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.38285,
+        "lon": -3.22043
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3125621",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519690",
+      "local": {
+        "x": 338.0547,
+        "y": 24,
+        "z": 60.428
+      },
+      "name": "Catarroja",
+      "place": "PPLA3",
+      "population": 27035,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.4,
+        "lon": -0.4
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2519690",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109402",
+      "local": {
+        "x": 653.257,
+        "y": 183,
+        "z": -276.5331
+      },
+      "name": "Cerdanyola del Vallès",
+      "place": "PPL",
+      "population": 58747,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.49109,
+        "lon": 2.14079
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3109402",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3125239",
+      "local": {
+        "x": -68.4297,
+        "y": 736,
+        "z": -110.7138
+      },
+      "name": "Chamartín",
+      "place": "PPL",
+      "population": 140000,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.46206,
+        "lon": -3.6766
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3125239",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519513",
+      "local": {
+        "x": -374.4865,
+        "y": 28,
+        "z": 540.6681
+      },
+      "name": "Chiclana de la Frontera",
+      "place": "PPLA3",
+      "population": 83831,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.41976,
+        "lon": -6.14367
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2519513",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3125082",
+      "local": {
+        "x": -61.5359,
+        "y": 602,
+        "z": -61.8992
+      },
+      "name": "Ciempozuelos",
+      "place": "PPLA3",
+      "population": 22132,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.15913,
+        "lon": -3.62103
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3125082",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519425",
+      "local": {
+        "x": 211.533,
+        "y": 397,
+        "z": 247.3553
+      },
+      "name": "Cieza",
+      "place": "PPLA3",
+      "population": 34889,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.23998,
+        "lon": -1.41987
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2519425",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124964",
+      "local": {
+        "x": -65.2936,
+        "y": 720,
+        "z": -107.9728
+      },
+      "name": "Ciudad Lineal",
+      "place": "PPL",
+      "population": 228171,
+      "populationTier": "large",
+      "position": {
+        "lat": 40.44505,
+        "lon": -3.65132
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3124964",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2519402",
+      "local": {
+        "x": -99.7503,
+        "y": 641,
+        "z": 127.0987
+      },
+      "name": "Ciudad Real",
+      "place": "PPLA2",
+      "population": 74743,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.98626,
+        "lon": -3.92907
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-10-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2519402",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124794",
+      "local": {
+        "x": -109.1526,
+        "y": 1000,
+        "z": -138.5913
+      },
+      "name": "Collado-Villalba",
+      "place": "PPL",
+      "population": 63074,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.63506,
+        "lon": -4.00486
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3124794",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124765",
+      "local": {
+        "x": -79.7214,
+        "y": 914,
+        "z": -142.4635
+      },
+      "name": "Colmenar Viejo",
+      "place": "PPLA3",
+      "population": 43700,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.65909,
+        "lon": -3.76762
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3124765",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519289",
+      "local": {
+        "x": -367.6423,
+        "y": 65,
+        "z": 563.642
+      },
+      "name": "Conil de la Frontera",
+      "place": "PPLA3",
+      "population": 22427,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.27719,
+        "lon": -6.0885
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2519289",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519233",
+      "local": {
+        "x": -363.3747,
+        "y": 38,
+        "z": 400.8134
+      },
+      "name": "Coria del Río",
+      "place": "PPLA3",
+      "population": 30657,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.28766,
+        "lon": -6.0541
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2519233",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124569",
+      "local": {
+        "x": 646.1287,
+        "y": 61,
+        "z": -253.7977
+      },
+      "name": "Cornellà de Llobregat",
+      "place": "PPL",
+      "population": 87173,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.35,
+        "lon": 2.08333
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3124569",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124408",
+      "local": {
+        "x": -54.1247,
+        "y": 656,
+        "z": -104.5453
+      },
+      "name": "Coslada",
+      "place": "PPLA3",
+      "population": 81860,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.42378,
+        "lon": -3.56129
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3124408",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519367",
+      "local": {
+        "x": -202.385,
+        "y": 240,
+        "z": 502.0409
+      },
+      "name": "Coín",
+      "place": "PPLA3",
+      "population": 21866,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.65947,
+        "lon": -4.75639
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2519367",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519110",
+      "local": {
+        "x": 287.2225,
+        "y": 297,
+        "z": 245.7503
+      },
+      "name": "Crevillente",
+      "place": "PPL",
+      "population": 28957,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.24994,
+        "lon": -0.80975
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2519110",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3124132",
+      "local": {
+        "x": 123.0234,
+        "y": 1185,
+        "z": -47.0001
+      },
+      "name": "Cuenca",
+      "place": "PPLA2",
+      "population": 54898,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.06667,
+        "lon": -2.13333
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-14-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3124132",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518949",
+      "local": {
+        "x": 356.6633,
+        "y": 208,
+        "z": 98.0271
+      },
+      "name": "Cullera",
+      "place": "PPLA3",
+      "population": 24121,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.16667,
+        "lon": -0.25
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2518949",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3124041",
+      "local": {
+        "x": -652.9828,
+        "y": 119,
+        "z": -566.0704
+      },
+      "name": "Culleredo",
+      "place": "PPLA3",
+      "population": 30221,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.28788,
+        "lon": -8.38858
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3124041",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2520611",
+      "local": {
+        "x": -402.8422,
+        "y": 489,
+        "z": 48.1023
+      },
+      "name": "Cáceres",
+      "place": "PPLA2",
+      "population": 96068,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.47649,
+        "lon": -6.37224
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-06-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2520611",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520055",
+      "local": {
+        "x": -187.0739,
+        "y": 91,
+        "z": 493.7888
+      },
+      "name": "Cártama",
+      "place": "PPLA3",
+      "population": 21313,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.71068,
+        "lon": -4.63297
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2520055",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2519240",
+      "local": {
+        "x": -204.4146,
+        "y": 140,
+        "z": 303.5018
+      },
+      "name": "Córdoba",
+      "place": "PPLA2",
+      "population": 325708,
+      "populationTier": "large",
+      "position": {
+        "lat": 37.89155,
+        "lon": -4.77275
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-09-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2519240",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518878",
+      "local": {
+        "x": 400.7952,
+        "y": 52,
+        "z": 150.5415
+      },
+      "name": "Denia",
+      "place": "PPLA3",
+      "population": 41733,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.84078,
+        "lon": 0.10574
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2518878",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518820",
+      "local": {
+        "x": -339.4963,
+        "y": 312,
+        "z": 131.9313
+      },
+      "name": "Don Benito",
+      "place": "PPLA3",
+      "population": 37010,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.95627,
+        "lon": -5.86162
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2518820",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3110044",
+      "local": {
+        "x": 142.6665,
+        "y": 113,
+        "z": -570.0909
+      },
+      "name": "Donostia / San Sebastián",
+      "place": "PPLA2",
+      "population": 185357,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.31283,
+        "lon": -1.97499
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3110044",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518794",
+      "local": {
+        "x": -346.8479,
+        "y": 67,
+        "z": 401.5853
+      },
+      "name": "Dos Hermanas",
+      "place": "PPLA3",
+      "population": 122943,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.28287,
+        "lon": -5.92088
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2518794",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3123773",
+      "local": {
+        "x": 60.9367,
+        "y": 248,
+        "z": -547.2749
+      },
+      "name": "Durango",
+      "place": "PPLA3",
+      "population": 28229,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.17124,
+        "lon": -2.6338
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3123773",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3123709",
+      "local": {
+        "x": 81.0612,
+        "y": 660,
+        "z": -549.4809
+      },
+      "name": "Eibar",
+      "place": "PPLA3",
+      "population": 27406,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.18493,
+        "lon": -2.47158
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3123709",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2520447",
+      "local": {
+        "x": 338.3351,
+        "y": 76,
+        "z": 216.9205
+      },
+      "name": "El Campello",
+      "place": "PPL",
+      "population": 27893,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.42885,
+        "lon": -0.39774
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2520447",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518494",
+      "local": {
+        "x": 38.5122,
+        "y": 149,
+        "z": 483.2163
+      },
+      "name": "El Ejido",
+      "place": "PPL",
+      "population": 84710,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.77629,
+        "lon": -2.81456
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-13-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2518494",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117232",
+      "local": {
+        "x": 675.3403,
+        "y": 61,
+        "z": -274.7106
+      },
+      "name": "El Masnou",
+      "place": "PPL",
+      "population": 23340,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.47978,
+        "lon": 2.3188
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3117232",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3123329",
+      "local": {
+        "x": 647.5417,
+        "y": 17,
+        "z": -250.2268
+      },
+      "name": "El Prat de Llobregat",
+      "place": "PPL",
+      "population": 63418,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.32784,
+        "lon": 2.09472
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3123329",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518207",
+      "local": {
+        "x": -385.566,
+        "y": 51,
+        "z": 512.6085
+      },
+      "name": "El Puerto de Santa María",
+      "place": "PPL",
+      "population": 88364,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.59389,
+        "lon": -6.23298
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2518207",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3106180",
+      "local": {
+        "x": 577.8975,
+        "y": 204,
+        "z": -232.3127
+      },
+      "name": "El Vendrell",
+      "place": "PPL",
+      "population": 35821,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.21667,
+        "lon": 1.53333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3106180",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518559",
+      "local": {
+        "x": 300.705,
+        "y": 162,
+        "z": 243.7779
+      },
+      "name": "Elche",
+      "place": "PPLA3",
+      "population": 234765,
+      "populationTier": "large",
+      "position": {
+        "lat": 38.26218,
+        "lon": -0.70107
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2518559",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518505",
+      "local": {
+        "x": 289.4778,
+        "y": 512,
+        "z": 209.0278
+      },
+      "name": "Elda",
+      "place": "PPLA3",
+      "population": 55168,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.47783,
+        "lon": -0.79157
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2518505",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3123104",
+      "local": {
+        "x": 18.7921,
+        "y": 120,
+        "z": -568.7292
+      },
+      "name": "Erandio",
+      "place": "PPLA3",
+      "population": 24262,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.30438,
+        "lon": -2.97352
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3123104",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3112011",
+      "local": {
+        "x": 151.6793,
+        "y": 200,
+        "z": -569.9491
+      },
+      "name": "Errenteria",
+      "place": "PPLA3",
+      "population": 38767,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.31195,
+        "lon": -1.90234
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3112011",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3122912",
+      "local": {
+        "x": 619.6947,
+        "y": 210,
+        "z": -284.1068
+      },
+      "name": "Esparreguera",
+      "place": "PPLA3",
+      "population": 21855,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.53809,
+        "lon": 1.87025
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3122912",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3122826",
+      "local": {
+        "x": 646.7192,
+        "y": 120,
+        "z": -258.2001
+      },
+      "name": "Esplugues de Llobregat",
+      "place": "PPL",
+      "population": 46355,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.37732,
+        "lon": 2.08809
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3122826",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2517816",
+      "local": {
+        "x": -250.7051,
+        "y": 146,
+        "z": 539.3983
+      },
+      "name": "Estepona",
+      "place": "PPLA3",
+      "population": 67012,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.42764,
+        "lon": -5.14589
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2517816",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3123493",
+      "local": {
+        "x": -633.6734,
+        "y": 51,
+        "z": -597.7556
+      },
+      "name": "Ferrol",
+      "place": "PPLA3",
+      "population": 66799,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.48451,
+        "lon": -8.23293
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-02-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3123493",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3122453",
+      "local": {
+        "x": 755.0878,
+        "y": 100,
+        "z": -401.4757
+      },
+      "name": "Figueres",
+      "place": "PPLA3",
+      "population": 46381,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.26645,
+        "lon": 2.96163
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3122453",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2517595",
+      "local": {
+        "x": -186.0517,
+        "y": 108,
+        "z": 521.2957
+      },
+      "name": "Fuengirola",
+      "place": "PPLA3",
+      "population": 71482,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.53998,
+        "lon": -4.62473
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2517595",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121960",
+      "local": {
+        "x": -83.0126,
+        "y": 692,
+        "z": -82.0516
+      },
+      "name": "Fuenlabrada",
+      "place": "PPLA3",
+      "population": 190496,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.28419,
+        "lon": -3.79415
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3121960",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121766",
+      "local": {
+        "x": -109.0782,
+        "y": 922,
+        "z": -129.4449
+      },
+      "name": "Galapagar",
+      "place": "PPLA3",
+      "population": 31820,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.5783,
+        "lon": -4.00426
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3121766",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121751",
+      "local": {
+        "x": 34.9964,
+        "y": 223,
+        "z": -556.8612
+      },
+      "name": "Galdakao",
+      "place": "PPLA3",
+      "population": 29226,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.23073,
+        "lon": -2.8429
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3121751",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2517367",
+      "local": {
+        "x": 364.9341,
+        "y": 99,
+        "z": 130.2554
+      },
+      "name": "Gandia",
+      "place": "PPLA3",
+      "population": 73829,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.96667,
+        "lon": -0.18333
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2517367",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3104499",
+      "local": {
+        "x": 56.1134,
+        "y": 553,
+        "z": -495.5066
+      },
+      "name": "Gasteiz / Vitoria",
+      "place": "PPLA",
+      "population": 257407,
+      "populationTier": "large",
+      "position": {
+        "lat": 42.84998,
+        "lon": -2.67268
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-13-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3104499",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121519",
+      "local": {
+        "x": 635.9436,
+        "y": 22,
+        "z": -246.7155
+      },
+      "name": "Gavà",
+      "place": "PPLA3",
+      "population": 45994,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.30605,
+        "lon": 2.00123
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3121519",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121437",
+      "local": {
+        "x": -75.4203,
+        "y": 640,
+        "z": -85.5194
+      },
+      "name": "Getafe",
+      "place": "PPLA3",
+      "population": 187525,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.30571,
+        "lon": -3.73295
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3121437",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121007",
+      "local": {
+        "x": 14.0854,
+        "y": 71,
+        "z": -577.1908
+      },
+      "name": "Getxo",
+      "place": "PPL",
+      "population": 80770,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.35689,
+        "lon": -3.01146
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3121007",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121424",
+      "local": {
+        "x": -314.6725,
+        "y": 65,
+        "z": -606.0093
+      },
+      "name": "Gijón",
+      "place": "PPLA3",
+      "population": 271780,
+      "populationTier": "large",
+      "position": {
+        "lat": 43.53573,
+        "lon": -5.66152
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-07-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3121424",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3121456",
+      "local": {
+        "x": 738.1292,
+        "y": 124,
+        "z": -355.8179
+      },
+      "name": "Girona",
+      "place": "PPLA2",
+      "population": 100266,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.98311,
+        "lon": 2.82493
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-24-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3121456",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2517117",
+      "local": {
+        "x": -59.7544,
+        "y": 714,
+        "z": 416.8454
+      },
+      "name": "Granada",
+      "place": "PPLA2",
+      "population": 233532,
+      "populationTier": "large",
+      "position": {
+        "lat": 37.18817,
+        "lon": -3.60667
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-11-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2517117",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3121145",
+      "local": {
+        "x": 671.4859,
+        "y": 234,
+        "z": -295.3674
+      },
+      "name": "Granollers",
+      "place": "PPL",
+      "population": 60981,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.60797,
+        "lon": 2.28773
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3121145",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2567529",
+      "local": {
+        "x": 358.0415,
+        "y": 26,
+        "z": 21.485
+      },
+      "name": "Grao de Murviedro",
+      "place": "PPL",
+      "population": 62368,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.64167,
+        "lon": -0.23889
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2567529",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3121070",
+      "local": {
+        "x": -4.5715,
+        "y": 732,
+        "z": -137.5535
+      },
+      "name": "Guadalajara",
+      "place": "PPLA2",
+      "population": 93470,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.62862,
+        "lon": -3.16185
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-12-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3121070",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516797",
+      "local": {
+        "x": 176.6618,
+        "y": 682,
+        "z": 203.7472
+      },
+      "name": "Hellín",
+      "place": "PPLA3",
+      "population": 30976,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.5106,
+        "lon": -1.70096
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2516797",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3120811",
+      "local": {
+        "x": 142.5226,
+        "y": 158,
+        "z": -562.5688
+      },
+      "name": "Hernani",
+      "place": "PPL",
+      "population": 20222,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.26615,
+        "lon": -1.97615
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3120811",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2516548",
+      "local": {
+        "x": -473.2816,
+        "y": 69,
+        "z": 404.2425
+      },
+      "name": "Huelva",
+      "place": "PPLA2",
+      "population": 144258,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.26638,
+        "lon": -6.94004
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-05-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2516548",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3120514",
+      "local": {
+        "x": 336.9755,
+        "y": 474,
+        "z": -380.479
+      },
+      "name": "Huesca",
+      "place": "PPLA2",
+      "population": 53956,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.13615,
+        "lon": -0.4087
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-17-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3120514",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516480",
+      "local": {
+        "x": 316.686,
+        "y": 874,
+        "z": 185.2594
+      },
+      "name": "Ibi",
+      "place": "PPLA3",
+      "population": 24113,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.62533,
+        "lon": -0.57225
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2516480",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3120431",
+      "local": {
+        "x": 588.3021,
+        "y": 420,
+        "z": -291.0181
+      },
+      "name": "Igualada",
+      "place": "PPLA3",
+      "population": 38918,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.58098,
+        "lon": 1.6172
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-21-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3120431",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3120410",
+      "local": {
+        "x": -89.574,
+        "y": 592,
+        "z": -55.937
+      },
+      "name": "Illescas",
+      "place": "PPLA3",
+      "population": 21264,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.12213,
+        "lon": -3.84704
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3120410",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3120304",
+      "local": {
+        "x": 165.6927,
+        "y": 214,
+        "z": -574.3144
+      },
+      "name": "Irun",
+      "place": "PPLA3",
+      "population": 61983,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.33904,
+        "lon": -1.78938
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-15-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3120304",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516431",
+      "local": {
+        "x": -520.0051,
+        "y": 18,
+        "z": 414.9391
+      },
+      "name": "Isla Cristina",
+      "place": "PPLA3",
+      "population": 21324,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.2,
+        "lon": -7.31667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2516431",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516336",
+      "local": {
+        "x": 408.354,
+        "y": 82,
+        "z": 159.7991
+      },
+      "name": "Javea",
+      "place": "PPL",
+      "population": 28016,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.78333,
+        "lon": 0.16667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2516336",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2516395",
+      "local": {
+        "x": -82.5325,
+        "y": 797,
+        "z": 323.2142
+      },
+      "name": "Jaén",
+      "place": "PPLA2",
+      "population": 113457,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.76922,
+        "lon": -3.79028
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2516395",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516326",
+      "local": {
+        "x": -373.5424,
+        "y": 63,
+        "z": 497.6933
+      },
+      "name": "Jerez de la Frontera",
+      "place": "PPLA3",
+      "population": 212879,
+      "populationTier": "large",
+      "position": {
+        "lat": 36.68645,
+        "lon": -6.13606
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-06-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2516326",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516255",
+      "local": {
+        "x": 223.3022,
+        "y": 704,
+        "z": 208.8119
+      },
+      "name": "Jumilla",
+      "place": "PPLA3",
+      "population": 25685,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.47917,
+        "lon": -1.325
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2516255",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-6559503",
+      "local": {
+        "x": 374.8736,
+        "y": 180,
+        "z": 192.4753
+      },
+      "name": "l'Alfàs del Pi",
+      "place": "PPLA3",
+      "population": 21011,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.58055,
+        "lon": -0.10321
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-13",
+      "source": "geonames-cities15000",
+      "sourceId": "6559503",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3120619",
+      "local": {
+        "x": 648.2315,
+        "y": 61,
+        "z": -255.3559
+      },
+      "name": "L'Hospitalet de Llobregat",
+      "place": "PPL",
+      "population": 257038,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.35967,
+        "lon": 2.10028
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3120619",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3119739",
+      "local": {
+        "x": -318.3198,
+        "y": 364,
+        "z": -569.232
+      },
+      "name": "La Felguera",
+      "place": "PPL",
+      "population": 21000,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.3075,
+        "lon": -5.69092
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3119739",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515812",
+      "local": {
+        "x": -275.7497,
+        "y": 59,
+        "z": 581.2225
+      },
+      "name": "La Línea de la Concepción",
+      "place": "PPL",
+      "population": 64595,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.16809,
+        "lon": -5.34777
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-19",
+      "source": "geonames-cities15000",
+      "sourceId": "2515812",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512251",
+      "local": {
+        "x": 318.8656,
+        "y": 132,
+        "z": 28.6074
+      },
+      "name": "La Pobla de Vallbona",
+      "place": "PPLA3",
+      "population": 20431,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.59747,
+        "lon": -0.55468
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2512251",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515562",
+      "local": {
+        "x": -354.295,
+        "y": 14,
+        "z": 368.8317
+      },
+      "name": "La Rinconada",
+      "place": "PPLA3",
+      "population": 35928,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.48613,
+        "lon": -5.98091
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2515562",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3119631",
+      "local": {
+        "x": -198.2824,
+        "y": 728,
+        "z": -291.1036
+      },
+      "name": "Laguna de Duero",
+      "place": "PPLA3",
+      "population": 21762,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.58151,
+        "lon": -4.72332
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3119631",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3119536",
+      "local": {
+        "x": -618.7766,
+        "y": 687,
+        "z": -465.0299
+      },
+      "name": "Lalín",
+      "place": "PPL",
+      "population": 20158,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.66085,
+        "lon": -8.11285
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3119536",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3118848",
+      "local": {
+        "x": -92.8826,
+        "y": 743,
+        "z": -115.6866
+      },
+      "name": "Las Rozas de Madrid",
+      "place": "PPL",
+      "population": 95550,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.49292,
+        "lon": -3.87371
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3118848",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515219",
+      "local": {
+        "x": 233.6138,
+        "y": 111,
+        "z": 281.4786
+      },
+      "name": "Las Torres de Cotillas",
+      "place": "PPLA3",
+      "population": 21062,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.02822,
+        "lon": -1.24188
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2515219",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515096",
+      "local": {
+        "x": -366.0035,
+        "y": 62,
+        "z": 459.9346
+      },
+      "name": "Lebrija",
+      "place": "PPLA3",
+      "population": 26434,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.92077,
+        "lon": -6.07529
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2515096",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3118594",
+      "local": {
+        "x": -79.2103,
+        "y": 688,
+        "z": -88.9791
+      },
+      "name": "Leganés",
+      "place": "PPLA3",
+      "population": 188425,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.32718,
+        "lon": -3.7635
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3118594",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3118554",
+      "local": {
+        "x": 16.8916,
+        "y": 93,
+        "z": -572.3517
+      },
+      "name": "Leioa",
+      "place": "PPL",
+      "population": 31197,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.32686,
+        "lon": -2.98884
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3118554",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515072",
+      "local": {
+        "x": -506.0686,
+        "y": 39,
+        "z": 406.1053
+      },
+      "name": "Lepe",
+      "place": "PPLA3",
+      "population": 25886,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.25482,
+        "lon": -7.20433
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2515072",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3118532",
+      "local": {
+        "x": -303.3585,
+        "y": 847,
+        "z": -455.2293
+      },
+      "name": "León",
+      "place": "PPLA2",
+      "population": 124772,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.60003,
+        "lon": -5.57032
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-07-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3118532",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515045",
+      "local": {
+        "x": -63.3955,
+        "y": 444,
+        "z": 270.6869
+      },
+      "name": "Linares",
+      "place": "PPLA3",
+      "population": 57414,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.09519,
+        "lon": -3.63602
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2515045",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-6943537",
+      "local": {
+        "x": 663.0215,
+        "y": 43,
+        "z": -267.9878
+      },
+      "name": "Llefià",
+      "place": "PPL",
+      "population": 43827,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.43806,
+        "lon": 2.2195
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "6943537",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3118514",
+      "local": {
+        "x": 464.8631,
+        "y": 204,
+        "z": -296.7806
+      },
+      "name": "Lleida",
+      "place": "PPLA2",
+      "population": 140797,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.61674,
+        "lon": 0.62218
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-19-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3118514",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3118212",
+      "local": {
+        "x": 740.6997,
+        "y": 82,
+        "z": -310.1859
+      },
+      "name": "Lloret de Mar",
+      "place": "PPLA3",
+      "population": 37350,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.69993,
+        "lon": 2.84565
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3118212",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2515036",
+      "local": {
+        "x": 313.5126,
+        "y": 268,
+        "z": 23.5363
+      },
+      "name": "Llíria",
+      "place": "PPL",
+      "population": 22972,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.62894,
+        "lon": -0.59783
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2515036",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3118150",
+      "local": {
+        "x": 83.5957,
+        "y": 413,
+        "z": -433.6557
+      },
+      "name": "Logroño",
+      "place": "PPLA",
+      "population": 151164,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.46615,
+        "lon": -2.45115
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-13-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3118150",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514946",
+      "local": {
+        "x": -127.3182,
+        "y": 712,
+        "z": 419.9554
+      },
+      "name": "Loja",
+      "place": "PPLA3",
+      "population": 21574,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.16887,
+        "lon": -4.15129
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514946",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514891",
+      "local": {
+        "x": 176.57,
+        "y": 472,
+        "z": 339.0109
+      },
+      "name": "Lorca",
+      "place": "PPLA3",
+      "population": 93079,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.67119,
+        "lon": -1.7017
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-15-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2514891",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514824",
+      "local": {
+        "x": -293.6585,
+        "y": 139,
+        "z": 578.5266
+      },
+      "name": "Los Barrios",
+      "place": "PPL",
+      "population": 23513,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.18482,
+        "lon": -5.49213
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-19",
+      "source": "geonames-cities15000",
+      "sourceId": "2514824",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514553",
+      "local": {
+        "x": -347.2759,
+        "y": 22,
+        "z": 421.0931
+      },
+      "name": "Los Palacios y Villafranca",
+      "place": "PPLA3",
+      "population": 36824,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.16181,
+        "lon": -5.92433
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514553",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514392",
+      "local": {
+        "x": -168.7445,
+        "y": 594,
+        "z": 381.2912
+      },
+      "name": "Lucena",
+      "place": "PPLA3",
+      "population": 42248,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.40881,
+        "lon": -4.48522
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514392",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3117814",
+      "local": {
+        "x": -549.6981,
+        "y": 474,
+        "z": -521.2795
+      },
+      "name": "Lugo",
+      "place": "PPLA2",
+      "population": 98025,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.00992,
+        "lon": -7.55602
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-03-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3117814",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "national",
+      "id": "es-3117735",
+      "local": {
+        "x": -71.6502,
+        "y": 700,
+        "z": -103.3722
+      },
+      "name": "Madrid",
+      "place": "PPLC",
+      "population": 3255944,
+      "populationTier": "large",
+      "position": {
+        "lat": 40.4165,
+        "lon": -3.70256
+      },
+      "priority": 120,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3117735",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514288",
+      "local": {
+        "x": -325.5883,
+        "y": 167,
+        "z": 387.06
+      },
+      "name": "Mairena del Alcor",
+      "place": "PPLA3",
+      "population": 20510,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.37301,
+        "lon": -5.74951
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514288",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514287",
+      "local": {
+        "x": -364.5917,
+        "y": 90,
+        "z": 391.6364
+      },
+      "name": "Mairena del Aljarafe",
+      "place": "PPLA3",
+      "population": 45890,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.34461,
+        "lon": -6.06391
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514287",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117667",
+      "local": {
+        "x": -92.6481,
+        "y": 752,
+        "z": -112.5621
+      },
+      "name": "Majadahonda",
+      "place": "PPLA3",
+      "population": 68110,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.47353,
+        "lon": -3.87182
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3117667",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514197",
+      "local": {
+        "x": 330.1784,
+        "y": 65,
+        "z": 45.7013
+      },
+      "name": "Manises",
+      "place": "PPLA3",
+      "population": 30508,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.49139,
+        "lon": -0.46349
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2514197",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117539",
+      "local": {
+        "x": 671.1174,
+        "y": 526,
+        "z": -358.907
+      },
+      "name": "Manlleu",
+      "place": "PPLA3",
+      "population": 20647,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.00228,
+        "lon": 2.28476
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3117539",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117533",
+      "local": {
+        "x": 613.9558,
+        "y": 281,
+        "z": -314.7333
+      },
+      "name": "Manresa",
+      "place": "PPL",
+      "population": 76250,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.72815,
+        "lon": 1.82399
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3117533",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514176",
+      "local": {
+        "x": -63.2603,
+        "y": 675,
+        "z": 413.708
+      },
+      "name": "Maracena",
+      "place": "PPLA3",
+      "population": 20815,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.20764,
+        "lon": -3.63493
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2514176",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514169",
+      "local": {
+        "x": -218.4429,
+        "y": 131,
+        "z": 525.2517
+      },
+      "name": "Marbella",
+      "place": "PPLA3",
+      "population": 156295,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.51543,
+        "lon": -4.88583
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2514169",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117331",
+      "local": {
+        "x": 627.184,
+        "y": 308,
+        "z": -273.7825
+      },
+      "name": "Martorell",
+      "place": "PPLA3",
+      "population": 27850,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.47402,
+        "lon": 1.93062
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3117331",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2514073",
+      "local": {
+        "x": -105.1555,
+        "y": 774,
+        "z": 330.9732
+      },
+      "name": "Martos",
+      "place": "PPLA3",
+      "population": 24655,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.72107,
+        "lon": -3.97264
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2514073",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117409",
+      "local": {
+        "x": -691.7853,
+        "y": 321,
+        "z": -421.6184
+      },
+      "name": "Marín",
+      "place": "PPL",
+      "population": 25969,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.39145,
+        "lon": -8.70136
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3117409",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117164",
+      "local": {
+        "x": 690.9343,
+        "y": 169,
+        "z": -284.7546
+      },
+      "name": "Mataró",
+      "place": "PPLA3",
+      "population": 126988,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.54211,
+        "lon": 2.4445
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3117164",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513983",
+      "local": {
+        "x": 224.5515,
+        "y": 195,
+        "z": 350.6115
+      },
+      "name": "Mazarrón",
+      "place": "PPLA3",
+      "population": 35221,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.5992,
+        "lon": -1.31493
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2513983",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3117010",
+      "local": {
+        "x": -221.9537,
+        "y": 741,
+        "z": -247.7372
+      },
+      "name": "Medina del Campo",
+      "place": "PPLA3",
+      "population": 21540,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.31239,
+        "lon": -4.91413
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3117010",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116963",
+      "local": {
+        "x": -44.2808,
+        "y": 586,
+        "z": -99.558
+      },
+      "name": "Mejorada del Campo",
+      "place": "PPLA3",
+      "population": 22488,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.39283,
+        "lon": -3.48194
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3116963",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116789",
+      "local": {
+        "x": -327.7171,
+        "y": 602,
+        "z": -559.9664
+      },
+      "name": "Mieres",
+      "place": "PPLA3",
+      "population": 44070,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.25,
+        "lon": -5.76667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3116789",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513882",
+      "local": {
+        "x": -187.6086,
+        "y": 1011,
+        "z": 512.3088
+      },
+      "name": "Mijas",
+      "place": "PPLA3",
+      "population": 80630,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.59575,
+        "lon": -4.63728
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2513882",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116689",
+      "local": {
+        "x": 22.0883,
+        "y": 500,
+        "z": -469.1632
+      },
+      "name": "Miranda de Ebro",
+      "place": "PPLA3",
+      "population": 39264,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.6865,
+        "lon": -2.94695
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3116689",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513811",
+      "local": {
+        "x": 335.7907,
+        "y": 50,
+        "z": 48.3054
+      },
+      "name": "Mislata",
+      "place": "PPLA3",
+      "population": 46131,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.47523,
+        "lon": -0.41825
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2513811",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513759",
+      "local": {
+        "x": 237.8628,
+        "y": 136,
+        "z": 277.2341
+      },
+      "name": "Molina de Segura",
+      "place": "PPLA3",
+      "population": 64065,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.05456,
+        "lon": -1.20763
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-16-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2513759",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116562",
+      "local": {
+        "x": 637.8591,
+        "y": 64,
+        "z": -264.541
+      },
+      "name": "Molins de Rei",
+      "place": "PPL",
+      "population": 24067,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.41667,
+        "lon": 2.01667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3116562",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116553",
+      "local": {
+        "x": 662.2226,
+        "y": 132,
+        "z": -284.4565
+      },
+      "name": "Mollet del Vallès",
+      "place": "PPL",
+      "population": 52484,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.54026,
+        "lon": 2.21306
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3116553",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513703",
+      "local": {
+        "x": 338.6118,
+        "y": 91,
+        "z": 36.9739
+      },
+      "name": "Moncada",
+      "place": "PPLA3",
+      "population": 21900,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.54555,
+        "lon": -0.39551
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2513703",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116527",
+      "local": {
+        "x": 658.5344,
+        "y": 234,
+        "z": -275.2827
+      },
+      "name": "Montcada i Reixac",
+      "place": "PPL",
+      "population": 33453,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.48333,
+        "lon": 2.18333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3116527",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513601",
+      "local": {
+        "x": -187.7041,
+        "y": 397,
+        "z": 352.695
+      },
+      "name": "Montilla",
+      "place": "PPLA3",
+      "population": 23031,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.58627,
+        "lon": -4.63805
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2513601",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513509",
+      "local": {
+        "x": -288.932,
+        "y": 307,
+        "z": 427.6951
+      },
+      "name": "Morón de la Frontera",
+      "place": "PPLA3",
+      "population": 27844,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.12084,
+        "lon": -5.45403
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2513509",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513477",
+      "local": {
+        "x": -48.7419,
+        "y": 446,
+        "z": 487.3464
+      },
+      "name": "Motril",
+      "place": "PPLA3",
+      "population": 60592,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.75066,
+        "lon": -3.5179
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2513477",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-2513416",
+      "local": {
+        "x": 247.4883,
+        "y": 63,
+        "z": 288.1144
+      },
+      "name": "Murcia",
+      "place": "PPLA",
+      "population": 471982,
+      "populationTier": "large",
+      "position": {
+        "lat": 37.98704,
+        "lon": -1.13004
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-16-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2513416",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513465",
+      "local": {
+        "x": 332.4362,
+        "y": 94,
+        "z": 219.0234
+      },
+      "name": "Mutxamel",
+      "place": "PPL",
+      "population": 22510,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.4158,
+        "lon": -0.44529
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2513465",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-2514256",
+      "local": {
+        "x": -160.6957,
+        "y": 122,
+        "z": 492.2612
+      },
+      "name": "Málaga",
+      "place": "PPLA2",
+      "population": 592346,
+      "populationTier": "large",
+      "position": {
+        "lat": 36.72016,
+        "lon": -4.42034
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2514256",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-2513917",
+      "local": {
+        "x": -399.2048,
+        "y": 270,
+        "z": 138.095
+      },
+      "name": "Mérida",
+      "place": "PPLA",
+      "population": 59857,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.91802,
+        "lon": -6.34292
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-06-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2513917",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3116025",
+      "local": {
+        "x": -91.7971,
+        "y": 685,
+        "z": -88.1991
+      },
+      "name": "Móstoles",
+      "place": "PPLA3",
+      "population": 207095,
+      "populationTier": "large",
+      "position": {
+        "lat": 40.32234,
+        "lon": -3.86496
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3116025",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3115739",
+      "local": {
+        "x": -628.4494,
+        "y": 80,
+        "z": -600.5337
+      },
+      "name": "Narón",
+      "place": "PPLA3",
+      "population": 37712,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.50175,
+        "lon": -8.19082
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3115739",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-8629192",
+      "local": {
+        "x": -317.2541,
+        "y": 47,
+        "z": -606.7538
+      },
+      "name": "Natahoyo",
+      "place": "PPL",
+      "population": 20000,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.54035,
+        "lon": -5.68233
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-00",
+      "source": "geonames-cities15000",
+      "sourceId": "8629192",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3115659",
+      "local": {
+        "x": -110.0346,
+        "y": 669,
+        "z": -82.8396
+      },
+      "name": "Navalcarnero",
+      "place": "PPLA3",
+      "population": 21584,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.28908,
+        "lon": -4.01197
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3115659",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513240",
+      "local": {
+        "x": -92.9682,
+        "y": 498,
+        "z": 487.0048
+      },
+      "name": "Nerja",
+      "place": "PPLA3",
+      "population": 21811,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.75278,
+        "lon": -3.8744
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2513240",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513195",
+      "local": {
+        "x": 292.4353,
+        "y": 268,
+        "z": 224.0204
+      },
+      "name": "Novelda",
+      "place": "PPLA3",
+      "population": 27135,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.38479,
+        "lon": -0.76773
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2513195",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513222",
+      "local": {
+        "x": 114.0144,
+        "y": 739,
+        "z": 452.5576
+      },
+      "name": "Níjar",
+      "place": "PPLA3",
+      "population": 26516,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.96655,
+        "lon": -2.20595
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2513222",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3115177",
+      "local": {
+        "x": -644.0619,
+        "y": 182,
+        "z": -573.3943
+      },
+      "name": "Oleiros",
+      "place": "PPLA3",
+      "population": 35559,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.33333,
+        "lon": -8.31667
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3115177",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3115171",
+      "local": {
+        "x": 622.6497,
+        "y": 253,
+        "z": -285.014
+      },
+      "name": "Olesa de Montserrat",
+      "place": "PPL",
+      "population": 23301,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.54372,
+        "lon": 1.89407
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3115171",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513145",
+      "local": {
+        "x": 372.8713,
+        "y": 252,
+        "z": 137.8226
+      },
+      "name": "Oliva",
+      "place": "PPLA3",
+      "population": 28419,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.91971,
+        "lon": -0.11935
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2513145",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3115093",
+      "local": {
+        "x": 696.5938,
+        "y": 541,
+        "z": -387.6998
+      },
+      "name": "Olot",
+      "place": "PPLA3",
+      "population": 33524,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.18096,
+        "lon": 2.49012
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3115093",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513115",
+      "local": {
+        "x": 355.3718,
+        "y": 236,
+        "z": -30.6088
+      },
+      "name": "Onda",
+      "place": "PPLA3",
+      "population": 24850,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.96495,
+        "lon": -0.26041
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2513115",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513106",
+      "local": {
+        "x": 312.4953,
+        "y": 455,
+        "z": 153.5823
+      },
+      "name": "Ontinyent",
+      "place": "PPLA3",
+      "population": 37735,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.82191,
+        "lon": -0.60603
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2513106",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513076",
+      "local": {
+        "x": 270.5666,
+        "y": 214,
+        "z": 272.3564
+      },
+      "name": "Orihuela",
+      "place": "PPLA3",
+      "population": 101321,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.08483,
+        "lon": -0.94401
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-16-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2513076",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3114965",
+      "local": {
+        "x": -587.9138,
+        "y": 242,
+        "z": -412.7943
+      },
+      "name": "Ourense",
+      "place": "PPLA2",
+      "population": 105233,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.33669,
+        "lon": -7.86407
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-03-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3114965",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3114711",
+      "local": {
+        "x": -337.4047,
+        "y": 351,
+        "z": -577.7387
+      },
+      "name": "Oviedo",
+      "place": "PPLA",
+      "population": 220027,
+      "populationTier": "large",
+      "position": {
+        "lat": 43.36029,
+        "lon": -5.84476
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-07-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3114711",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2513029",
+      "local": {
+        "x": 335.8651,
+        "y": 43,
+        "z": 55.8935
+      },
+      "name": "Paiporta",
+      "place": "PPLA3",
+      "population": 23519,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.42814,
+        "lon": -0.41765
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2513029",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3114567",
+      "local": {
+        "x": 780.0815,
+        "y": 97,
+        "z": -345.2261
+      },
+      "name": "Palafrugell",
+      "place": "PPLA3",
+      "population": 22365,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.91738,
+        "lon": 3.1631
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3114567",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3114531",
+      "local": {
+        "x": -173.5629,
+        "y": 760,
+        "z": -360.0785
+      },
+      "name": "Palencia",
+      "place": "PPLA2",
+      "population": 78629,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.00955,
+        "lon": -4.52406
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-09-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3114531",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512990",
+      "local": {
+        "x": -267.4925,
+        "y": 120,
+        "z": 334.3297
+      },
+      "name": "Palma del Río",
+      "place": "PPL",
+      "population": 21159,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.70024,
+        "lon": -5.28121
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2512990",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3114472",
+      "local": {
+        "x": 183.8236,
+        "y": 478,
+        "z": -490.1712
+      },
+      "name": "Pamplona",
+      "place": "PPLA",
+      "population": 208243,
+      "populationTier": "large",
+      "position": {
+        "lat": 42.81687,
+        "lon": -1.64323
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-15-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3114472",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3114256",
+      "local": {
+        "x": -79.709,
+        "y": 655,
+        "z": -74.2926
+      },
+      "name": "Parla",
+      "place": "PPLA3",
+      "population": 115611,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.23604,
+        "lon": -3.76752
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3114256",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512862",
+      "local": {
+        "x": 332.9945,
+        "y": 65,
+        "z": 43.8901
+      },
+      "name": "Paterna",
+      "place": "PPLA3",
+      "population": 64023,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.50263,
+        "lon": -0.44079
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2512862",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512581",
+      "local": {
+        "x": 289.355,
+        "y": 56,
+        "z": 307.6334
+      },
+      "name": "Pilar de la Horadada",
+      "place": "PPLA3",
+      "population": 21418,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.86591,
+        "lon": -0.79256
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2512581",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3113526",
+      "local": {
+        "x": 721.2538,
+        "y": 77,
+        "z": -298.5354
+      },
+      "name": "Pineda de Mar",
+      "place": "PPLA3",
+      "population": 26659,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.62763,
+        "lon": 2.6889
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3113526",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3113415",
+      "local": {
+        "x": -71.3314,
+        "y": 639,
+        "z": -75.1676
+      },
+      "name": "Pinto",
+      "place": "PPLA3",
+      "population": 43501,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.24147,
+        "lon": -3.69999
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3113415",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3113331",
+      "local": {
+        "x": -367.6361,
+        "y": 447,
+        "z": -41.278
+      },
+      "name": "Plasencia",
+      "place": "PPLA3",
+      "population": 40141,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.03116,
+        "lon": -6.08845
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3113331",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3113236",
+      "local": {
+        "x": -430.6247,
+        "y": 594,
+        "z": -446.6259
+      },
+      "name": "Ponferrada",
+      "place": "PPLA3",
+      "population": 68736,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.54664,
+        "lon": -6.59619
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3113236",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3112761",
+      "local": {
+        "x": -667.299,
+        "y": 90,
+        "z": -386.7007
+      },
+      "name": "Ponteareas",
+      "place": "PPL",
+      "population": 23172,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.17476,
+        "lon": -8.50398
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3112761",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3113209",
+      "local": {
+        "x": -684.7128,
+        "y": 148,
+        "z": -427.9916
+      },
+      "name": "Pontevedra",
+      "place": "PPLA2",
+      "population": 82802,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.431,
+        "lon": -8.64435
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3113209",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3113082",
+      "local": {
+        "x": 12.9466,
+        "y": 85,
+        "z": -571.4058
+      },
+      "name": "Portugalete",
+      "place": "PPLA3",
+      "population": 45826,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.32099,
+        "lon": -3.02064
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3113082",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3112989",
+      "local": {
+        "x": -85.3982,
+        "y": 734,
+        "z": -106.0198
+      },
+      "name": "Pozuelo de Alarcón",
+      "place": "PPLA3",
+      "population": 82428,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.43293,
+        "lon": -3.81338
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3112989",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3112866",
+      "local": {
+        "x": 681.1015,
+        "y": 127,
+        "z": -276.6895
+      },
+      "name": "Premià de Mar",
+      "place": "PPLA3",
+      "population": 27399,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.49206,
+        "lon": 2.36524
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3112866",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512282",
+      "local": {
+        "x": -132.7693,
+        "y": 783,
+        "z": 376.5762
+      },
+      "name": "Priego de Córdoba",
+      "place": "PPLA3",
+      "population": 22585,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.43807,
+        "lon": -4.19523
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2512282",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512232",
+      "local": {
+        "x": -203.6839,
+        "y": 276,
+        "z": 384.4141
+      },
+      "name": "Puente-Genil",
+      "place": "PPL",
+      "population": 30241,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.38943,
+        "lon": -4.76686
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2512232",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512169",
+      "local": {
+        "x": -380.2477,
+        "y": 49,
+        "z": 523.1955
+      },
+      "name": "Puerto Real",
+      "place": "PPLA3",
+      "population": 40183,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.52819,
+        "lon": -6.19011
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2512169",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2512177",
+      "local": {
+        "x": -121.8659,
+        "y": 834,
+        "z": 175.3025
+      },
+      "name": "Puertollano",
+      "place": "PPLA3",
+      "population": 51842,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.68712,
+        "lon": -4.10734
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2512177",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519068",
+      "local": {
+        "x": 333.1706,
+        "y": 61,
+        "z": 47.3127
+      },
+      "name": "Quart de Poblet",
+      "place": "PPLA3",
+      "population": 25499,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.48139,
+        "lon": -0.43937
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2519068",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3112154",
+      "local": {
+        "x": -680.4019,
+        "y": 221,
+        "z": -404.2023
+      },
+      "name": "Redondela",
+      "place": "PPL",
+      "population": 29194,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.28337,
+        "lon": -8.6096
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3112154",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511930",
+      "local": {
+        "x": 251.1604,
+        "y": 735,
+        "z": 46.1928
+      },
+      "name": "Requena",
+      "place": "PPLA3",
+      "population": 20227,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.48834,
+        "lon": -1.10044
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2511930",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3111933",
+      "local": {
+        "x": 524.9922,
+        "y": 180,
+        "z": -222.5556
+      },
+      "name": "Reus",
+      "place": "PPLA3",
+      "population": 103477,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.15612,
+        "lon": 1.10687
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-20-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3111933",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511880",
+      "local": {
+        "x": 316.8795,
+        "y": 163,
+        "z": 36.9094
+      },
+      "name": "Ribarroja del Turia",
+      "place": "PPL",
+      "population": 21992,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.54595,
+        "lon": -0.57069
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2511880",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3111807",
+      "local": {
+        "x": -659.4933,
+        "y": 315,
+        "z": -477.4765
+      },
+      "name": "Ribeira",
+      "place": "PPL",
+      "population": 27518,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.73809,
+        "lon": -8.44106
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-02-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3111807",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511852",
+      "local": {
+        "x": -142.7683,
+        "y": 286,
+        "z": 492.7462
+      },
+      "name": "Rincón de la Victoria",
+      "place": "PPLA3",
+      "population": 38666,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.71715,
+        "lon": -4.27583
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2511852",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3111605",
+      "local": {
+        "x": 655.3163,
+        "y": 169,
+        "z": -277.4629
+      },
+      "name": "Ripollet",
+      "place": "PPLA3",
+      "population": 38347,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.49686,
+        "lon": 2.15739
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3111605",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107112",
+      "local": {
+        "x": -47.8723,
+        "y": 637,
+        "z": -88.797
+      },
+      "name": "Rivas-Vaciamadrid",
+      "place": "PPL",
+      "population": 68405,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.32605,
+        "lon": -3.51089
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3107112",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511752",
+      "local": {
+        "x": 297.6817,
+        "y": 10,
+        "z": 271.8472
+      },
+      "name": "Rojales",
+      "place": "PPLA3",
+      "population": 20510,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.08799,
+        "lon": -0.72544
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2511752",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511730",
+      "local": {
+        "x": -253.3351,
+        "y": 770,
+        "z": 488.6919
+      },
+      "name": "Ronda",
+      "place": "PPLA3",
+      "population": 36827,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.74231,
+        "lon": -5.16709
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2511730",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511716",
+      "local": {
+        "x": 63.3,
+        "y": 25,
+        "z": 485.1661
+      },
+      "name": "Roquetas de Mar",
+      "place": "PPLA3",
+      "population": 94925,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.76419,
+        "lon": -2.61475
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-13-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2511716",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511700",
+      "local": {
+        "x": -401.32,
+        "y": 34,
+        "z": 507.8146
+      },
+      "name": "Rota",
+      "place": "PPLA3",
+      "population": 28848,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.62364,
+        "lon": -6.35997
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2511700",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3111294",
+      "local": {
+        "x": 639.8911,
+        "y": 193,
+        "z": -276.7217
+      },
+      "name": "Rubí",
+      "place": "PPLA3",
+      "population": 72987,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.49226,
+        "lon": 2.03305
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3111294",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3111199",
+      "local": {
+        "x": 649.3653,
+        "y": 226,
+        "z": -284.9447
+      },
+      "name": "Sabadell",
+      "place": "PPLA3",
+      "population": 211734,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.54329,
+        "lon": 2.10942
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3111199",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511619",
+      "local": {
+        "x": 354.5952,
+        "y": 171,
+        "z": 14.7718
+      },
+      "name": "Sagunto",
+      "place": "PPL",
+      "population": 66070,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.68333,
+        "lon": -0.26667
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2511619",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3111108",
+      "local": {
+        "x": -314.9653,
+        "y": 844,
+        "z": -192.3738
+      },
+      "name": "Salamanca",
+      "place": "PPLA2",
+      "population": 144825,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.96882,
+        "lon": -5.66388
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-07-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3111108",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110986",
+      "local": {
+        "x": 529.3044,
+        "y": 23,
+        "z": -209.7465
+      },
+      "name": "Salou",
+      "place": "PPL",
+      "population": 26775,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.07663,
+        "lon": 1.14163
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-20-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3110986",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110983",
+      "local": {
+        "x": 734.1445,
+        "y": 109,
+        "z": -354.4934
+      },
+      "name": "Salt",
+      "place": "PPLA3",
+      "population": 30622,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.97489,
+        "lon": 2.79281
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3110983",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110962",
+      "local": {
+        "x": -317.4812,
+        "y": 550,
+        "z": -567.3273
+      },
+      "name": "Sama",
+      "place": "PPL",
+      "population": 39984,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.29568,
+        "lon": -5.68416
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3110962",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110880",
+      "local": {
+        "x": -309.1135,
+        "y": 892,
+        "z": -457.1163
+      },
+      "name": "San Andrés del Rabanedo",
+      "place": "PPLA3",
+      "population": 30820,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.61174,
+        "lon": -5.61671
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3110880",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511388",
+      "local": {
+        "x": -381.2476,
+        "y": 35,
+        "z": 531.6216
+      },
+      "name": "San Fernando",
+      "place": "PPLA3",
+      "population": 95174,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.4759,
+        "lon": -6.19817
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2511388",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110627",
+      "local": {
+        "x": -50.5668,
+        "y": 656,
+        "z": -104.5582
+      },
+      "name": "San Fernando de Henares",
+      "place": "PPLA3",
+      "population": 39466,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.42386,
+        "lon": -3.53261
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3110627",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511366",
+      "local": {
+        "x": 283.7973,
+        "y": 44,
+        "z": 317.2455
+      },
+      "name": "San Javier",
+      "place": "PPLA3",
+      "population": 31432,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.80626,
+        "lon": -0.83736
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2511366",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511329",
+      "local": {
+        "x": -361.2918,
+        "y": 59,
+        "z": 389.4578
+      },
+      "name": "San Juan de Aznalfarache",
+      "place": "PPLA3",
+      "population": 20779,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.35813,
+        "lon": -6.03731
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2511329",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511250",
+      "local": {
+        "x": -231.5185,
+        "y": 102,
+        "z": 529.6089
+      },
+      "name": "San Pedro Alcántara",
+      "place": "PPL",
+      "population": 34922,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.48839,
+        "lon": -4.99123
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2511250",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511247",
+      "local": {
+        "x": 289.5461,
+        "y": 33,
+        "z": 312.5047
+      },
+      "name": "San Pedro del Pinatar",
+      "place": "PPLA3",
+      "population": 23738,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.83568,
+        "lon": -0.79102
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2511247",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511239",
+      "local": {
+        "x": -280.3088,
+        "y": 110,
+        "z": 574.4965
+      },
+      "name": "San Roque",
+      "place": "PPLA3",
+      "population": 29249,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.20983,
+        "lon": -5.38452
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-19",
+      "source": "geonames-cities15000",
+      "sourceId": "2511239",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110040",
+      "local": {
+        "x": -62.3174,
+        "y": 697,
+        "z": -125.7789
+      },
+      "name": "San Sebastián de los Reyes",
+      "place": "PPLA3",
+      "population": 75912,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.55555,
+        "lon": -3.62733
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3110040",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511032",
+      "local": {
+        "x": 322.4856,
+        "y": 133,
+        "z": 222.1495
+      },
+      "name": "San Vicent del Raspeig",
+      "place": "PPL",
+      "population": 56715,
+      "populationTier": "medium",
+      "position": {
+        "lat": 38.3964,
+        "lon": -0.5255
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2511032",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511306",
+      "local": {
+        "x": -400.2692,
+        "y": 48,
+        "z": 482.9279
+      },
+      "name": "Sanlúcar de Barrameda",
+      "place": "PPL",
+      "population": 68037,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.77808,
+        "lon": -6.3515
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2511306",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110921",
+      "local": {
+        "x": 662.9036,
+        "y": 43,
+        "z": -266.8067
+      },
+      "name": "Sant Adrià de Besòs",
+      "place": "PPL",
+      "population": 36669,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.43073,
+        "lon": 2.21855
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3110921",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110885",
+      "local": {
+        "x": 632.3013,
+        "y": 197,
+        "z": -269.3624
+      },
+      "name": "Sant Andreu de la Barca",
+      "place": "PPL",
+      "population": 26401,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.44659,
+        "lon": 1.97187
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3110885",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110834",
+      "local": {
+        "x": 640.3303,
+        "y": 277,
+        "z": -252.7616
+      },
+      "name": "Sant Boi de Llobregat",
+      "place": "PPL",
+      "population": 82428,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.34357,
+        "lon": 2.03659
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3110834",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110718",
+      "local": {
+        "x": 646.4736,
+        "y": 182,
+        "z": -273.2362
+      },
+      "name": "Sant Cugat del Vallès",
+      "place": "PPLA3",
+      "population": 79253,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.47063,
+        "lon": 2.08611
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3110718",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110643",
+      "local": {
+        "x": 763.9826,
+        "y": 104,
+        "z": -323.6251
+      },
+      "name": "Sant Feliu de Guíxols",
+      "place": "PPLA3",
+      "population": 21977,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.78333,
+        "lon": 3.03333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-24-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3110643",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110642",
+      "local": {
+        "x": 641.9939,
+        "y": 71,
+        "z": -259.1685
+      },
+      "name": "Sant Feliu de Llobregat",
+      "place": "PPLA3",
+      "population": 42919,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.38333,
+        "lon": 2.05
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3110642",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511330",
+      "local": {
+        "x": 333.5602,
+        "y": 75,
+        "z": 221.3309
+      },
+      "name": "Sant Joan d'Alacant",
+      "place": "PPL",
+      "population": 21939,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.40148,
+        "lon": -0.43623
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2511330",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110519",
+      "local": {
+        "x": 642.9119,
+        "y": 71,
+        "z": -256.5661
+      },
+      "name": "Sant Joan Despí",
+      "place": "PPL",
+      "population": 32030,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.36718,
+        "lon": 2.0574
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3110519",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110143",
+      "local": {
+        "x": 607.743,
+        "y": 107,
+        "z": -239.3675
+      },
+      "name": "Sant Pere de Ribes",
+      "place": "PPL",
+      "population": 28353,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.26045,
+        "lon": 1.77391
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3110143",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109442",
+      "local": {
+        "x": 636.6458,
+        "y": 123,
+        "z": -260.7542
+      },
+      "name": "Sant Vicenç dels Horts",
+      "place": "PPLA3",
+      "population": 27901,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.39317,
+        "lon": 2.00689
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3109442",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109981",
+      "local": {
+        "x": 661.6073,
+        "y": 84,
+        "z": -270.1568
+      },
+      "name": "Santa Coloma de Gramenet",
+      "place": "PPL",
+      "population": 118821,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.45152,
+        "lon": 2.2081
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3109981",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109689",
+      "local": {
+        "x": 658.5344,
+        "y": 129,
+        "z": -283.3398
+      },
+      "name": "Santa Perpètua de Mogoda",
+      "place": "PPLA3",
+      "population": 25048,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.53333,
+        "lon": 2.18333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3109689",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2511102",
+      "local": {
+        "x": 317.4861,
+        "y": 26,
+        "z": 255.1432
+      },
+      "name": "Santa Pola",
+      "place": "PPLA3",
+      "population": 31760,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.19165,
+        "lon": -0.5658
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2511102",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109897",
+      "local": {
+        "x": -727.7097,
+        "y": 97,
+        "z": -447.7346
+      },
+      "name": "Santa Uxía de Ribeira",
+      "place": "PPL",
+      "population": 27067,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.55352,
+        "lon": -8.99094
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3109897",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3109718",
+      "local": {
+        "x": -84.3499,
+        "y": 82,
+        "z": -594.7552
+      },
+      "name": "Santander",
+      "place": "PPLA",
+      "population": 173635,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.46589,
+        "lon": -3.80493
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "3109718",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3109642",
+      "local": {
+        "x": -672.4734,
+        "y": 389,
+        "z": -500.4278
+      },
+      "name": "Santiago de Compostela",
+      "place": "PPLA",
+      "population": 99536,
+      "populationTier": "medium",
+      "position": {
+        "lat": 42.88052,
+        "lon": -8.54569
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-02-02",
+      "source": "geonames-cities15000",
+      "sourceId": "3109642",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109481",
+      "local": {
+        "x": 11.4777,
+        "y": 241,
+        "z": -572.6031
+      },
+      "name": "Santurtzi",
+      "place": "PPLA3",
+      "population": 46978,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.32842,
+        "lon": -3.03248
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3109481",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-6618856",
+      "local": {
+        "x": 25.9155,
+        "y": 213,
+        "z": -560.5255
+      },
+      "name": "Santutxu",
+      "place": "PPL",
+      "population": 60000,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.25347,
+        "lon": -2.9161
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "6618856",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3109256",
+      "local": {
+        "x": -123.2368,
+        "y": 1041,
+        "z": -189.0318
+      },
+      "name": "Segovia",
+      "place": "PPLA2",
+      "population": 51683,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.94808,
+        "lon": -4.11839
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-10-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3109256",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3109041",
+      "local": {
+        "x": 14.6189,
+        "y": 85,
+        "z": -569.5946
+      },
+      "name": "Sestao",
+      "place": "PPLA3",
+      "population": 27445,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.30975,
+        "lon": -3.00716
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3109041",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-2510911",
+      "local": {
+        "x": -353.3348,
+        "y": 24,
+        "z": 385.4776
+      },
+      "name": "Sevilla",
+      "place": "PPLA",
+      "population": 686741,
+      "populationTier": "large",
+      "position": {
+        "lat": 37.38283,
+        "lon": -5.97317
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2510911",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3108877",
+      "local": {
+        "x": 612.4597,
+        "y": 83,
+        "z": -235.2761
+      },
+      "name": "Sitges",
+      "place": "PPLA3",
+      "population": 27668,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.23506,
+        "lon": 1.81193
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3108877",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3108681",
+      "local": {
+        "x": 81.4023,
+        "y": 1096,
+        "z": -320.5119
+      },
+      "name": "Soria",
+      "place": "PPLA2",
+      "population": 39112,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.76401,
+        "lon": -2.46883
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-13-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3108681",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510764",
+      "local": {
+        "x": 349.0784,
+        "y": 18,
+        "z": 92.2373
+      },
+      "name": "Sueca",
+      "place": "PPLA3",
+      "population": 28908,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.2026,
+        "lon": -0.31114
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2510764",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510693",
+      "local": {
+        "x": -211.6111,
+        "y": 389,
+        "z": -30.3719
+      },
+      "name": "Talavera de la Reina",
+      "place": "PPLA3",
+      "population": 88856,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.96348,
+        "lon": -4.83076
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2510693",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3108288",
+      "local": {
+        "x": 542.1827,
+        "y": 89,
+        "z": -216.5821
+      },
+      "name": "Tarragona",
+      "place": "PPLA2",
+      "population": 141542,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.11905,
+        "lon": 1.24544
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3108288",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3108286",
+      "local": {
+        "x": 637.8591,
+        "y": 335,
+        "z": -288.7122
+      },
+      "name": "Terrassa",
+      "place": "PPL",
+      "population": 218535,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.56667,
+        "lon": 2.01667
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-22-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3108286",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3108126",
+      "local": {
+        "x": 250.4136,
+        "y": 982,
+        "z": -91.9473
+      },
+      "name": "Teruel",
+      "place": "PPLA2",
+      "population": 36240,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.3456,
+        "lon": -1.10646
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-16-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3108126",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-2510409",
+      "local": {
+        "x": -111.3571,
+        "y": 552,
+        "z": -13.3909
+      },
+      "name": "Toledo",
+      "place": "PPLA",
+      "population": 86526,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.8581,
+        "lon": -4.02263
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-10-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2510409",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510394",
+      "local": {
+        "x": -362.3562,
+        "y": 126,
+        "z": 387.0923
+      },
+      "name": "Tomares",
+      "place": "PPLA3",
+      "population": 22772,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.37281,
+        "lon": -6.04589
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2510394",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510392",
+      "local": {
+        "x": 12.8324,
+        "y": 671,
+        "z": 99.4903
+      },
+      "name": "Tomelloso",
+      "place": "PPL",
+      "population": 36091,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.15759,
+        "lon": -3.02156
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2510392",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510309",
+      "local": {
+        "x": -120.0758,
+        "y": 65,
+        "z": 488.7419
+      },
+      "name": "Torre del Mar",
+      "place": "PPL",
+      "population": 21980,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.742,
+        "lon": -4.09291
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2510309",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510271",
+      "local": {
+        "x": 269.3322,
+        "y": 58,
+        "z": 327.4506
+      },
+      "name": "Torre-Pacheco",
+      "place": "PPL",
+      "population": 35614,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.74293,
+        "lon": -0.95396
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2510271",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107784",
+      "local": {
+        "x": -42.7661,
+        "y": 599,
+        "z": -109.6326
+      },
+      "name": "Torrejón de Ardoz",
+      "place": "PPLA3",
+      "population": 118162,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.45535,
+        "lon": -3.46973
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3107784",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107775",
+      "local": {
+        "x": -114.4858,
+        "y": 79,
+        "z": -575.9887
+      },
+      "name": "Torrelavega",
+      "place": "PPL",
+      "population": 55297,
+      "populationTier": "medium",
+      "position": {
+        "lat": 43.34943,
+        "lon": -4.04785
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3107775",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107765",
+      "local": {
+        "x": -99.4414,
+        "y": 964,
+        "z": -129.1613
+      },
+      "name": "Torrelodones",
+      "place": "PPLA3",
+      "population": 21781,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.57654,
+        "lon": -3.92658
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3107765",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510281",
+      "local": {
+        "x": -170.5483,
+        "y": 136,
+        "z": 508.3447
+      },
+      "name": "Torremolinos",
+      "place": "PPLA3",
+      "population": 65448,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.62035,
+        "lon": -4.49976
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-18",
+      "source": "geonames-cities15000",
+      "sourceId": "2510281",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510279",
+      "local": {
+        "x": 329.934,
+        "y": 113,
+        "z": 54.4577
+      },
+      "name": "Torrent",
+      "place": "PPLA3",
+      "population": 78543,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.43705,
+        "lon": -0.46546
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2510279",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510253",
+      "local": {
+        "x": 303.0434,
+        "y": 39,
+        "z": 289.4551
+      },
+      "name": "Torrevieja",
+      "place": "PPLA3",
+      "population": 82599,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.97872,
+        "lon": -0.68222
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2510253",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107677",
+      "local": {
+        "x": 452.3855,
+        "y": 47,
+        "z": -167.1826
+      },
+      "name": "Tortosa",
+      "place": "PPLA3",
+      "population": 35143,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.81249,
+        "lon": 0.5216
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-19-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3107677",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510224",
+      "local": {
+        "x": 201.3082,
+        "y": 291,
+        "z": 323.2819
+      },
+      "name": "Totana",
+      "place": "PPLA3",
+      "population": 29211,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.7688,
+        "lon": -1.50229
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2510224",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-7577022",
+      "local": {
+        "x": -72.3326,
+        "y": 764,
+        "z": -133.0899
+      },
+      "name": "Tres Cantos",
+      "place": "PPLA3",
+      "population": 41896,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.60092,
+        "lon": -3.70806
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "7577022",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3107418",
+      "local": {
+        "x": 188.6259,
+        "y": 330,
+        "z": -368.4756
+      },
+      "name": "Tudela",
+      "place": "PPLA3",
+      "population": 34717,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.06166,
+        "lon": -1.60452
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3107418",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510073",
+      "local": {
+        "x": -329.4861,
+        "y": 68,
+        "z": 417.3304
+      },
+      "name": "Utrera",
+      "place": "PPLA3",
+      "population": 52617,
+      "populationTier": "medium",
+      "position": {
+        "lat": 37.18516,
+        "lon": -5.78093
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2510073",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3106868",
+      "local": {
+        "x": -68.7113,
+        "y": 623,
+        "z": -67.0042
+      },
+      "name": "Valdemoro",
+      "place": "PPLA3",
+      "population": 74745,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.19081,
+        "lon": -3.67887
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-09",
+      "source": "geonames-cities15000",
+      "sourceId": "3106868",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509982",
+      "local": {
+        "x": -32.2337,
+        "y": 769,
+        "z": 163.2185
+      },
+      "name": "Valdepeñas",
+      "place": "PPLA3",
+      "population": 31147,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.76211,
+        "lon": -3.38483
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2509982",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-2509954",
+      "local": {
+        "x": 340.5781,
+        "y": 35,
+        "z": 48.5181
+      },
+      "name": "Valencia",
+      "place": "PPLA",
+      "population": 824340,
+      "populationTier": "large",
+      "position": {
+        "lat": 39.47391,
+        "lon": -0.37966
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2509954",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3106672",
+      "local": {
+        "x": -198.3085,
+        "y": 712,
+        "z": -303.0119
+      },
+      "name": "Valladolid",
+      "place": "PPLA",
+      "population": 300618,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.65541,
+        "lon": -4.72353
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3106672",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3106492",
+      "local": {
+        "x": 542.7398,
+        "y": 227,
+        "z": -243.504
+      },
+      "name": "Valls",
+      "place": "PPLA3",
+      "population": 25092,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.28612,
+        "lon": 1.24993
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3106492",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3106050",
+      "local": {
+        "x": 667.4082,
+        "y": 534,
+        "z": -347.2791
+      },
+      "name": "Vic",
+      "place": "PPLA3",
+      "population": 39844,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.93012,
+        "lon": 2.25486
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-22-04",
+      "source": "geonames-cities15000",
+      "sourceId": "3106050",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105976",
+      "local": {
+        "x": -694.4252,
+        "y": 187,
+        "z": -396.0566
+      },
+      "name": "Vigo",
+      "place": "PPLA3",
+      "population": 293642,
+      "populationTier": "large",
+      "position": {
+        "lat": 42.23282,
+        "lon": -8.72264
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3105976",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509509",
+      "local": {
+        "x": 375.1639,
+        "y": 61,
+        "z": -26.3144
+      },
+      "name": "Vila-real",
+      "place": "PPL",
+      "population": 50577,
+      "populationTier": "medium",
+      "position": {
+        "lat": 39.9383,
+        "lon": -0.10087
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2509509",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105803",
+      "local": {
+        "x": 530.05,
+        "y": 55,
+        "z": -215.3139
+      },
+      "name": "Vila-seca",
+      "place": "PPL",
+      "population": 20866,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.11118,
+        "lon": 1.14764
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-20-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3105803",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105935",
+      "local": {
+        "x": 637.5613,
+        "y": 154,
+        "z": -248.0047
+      },
+      "name": "Viladecans",
+      "place": "PPL",
+      "population": 66168,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.31405,
+        "lon": 2.01427
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-22-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3105935",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105600",
+      "local": {
+        "x": 598.218,
+        "y": 234,
+        "z": -253.1821
+      },
+      "name": "Vilafranca del Penedès",
+      "place": "PPLA3",
+      "population": 38425,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.34618,
+        "lon": 1.69713
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3105600",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105575",
+      "local": {
+        "x": -699.5885,
+        "y": 86,
+        "z": -454.6298
+      },
+      "name": "Vilagarcía de Arousa",
+      "place": "PPLA3",
+      "population": 37576,
+      "populationTier": "small",
+      "position": {
+        "lat": 42.59631,
+        "lon": -8.76426
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3105575",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3105184",
+      "local": {
+        "x": 601.6891,
+        "y": 51,
+        "z": -233.481
+      },
+      "name": "Vilanova i la Geltrú",
+      "place": "PPL",
+      "population": 65890,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.22392,
+        "lon": 1.72511
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-21-06",
+      "source": "geonames-cities15000",
+      "sourceId": "3105184",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3110516",
+      "local": {
+        "x": 684.4548,
+        "y": 125,
+        "z": -278.7859
+      },
+      "name": "Vilassar de Mar",
+      "place": "PPL",
+      "population": 20764,
+      "populationTier": "small",
+      "position": {
+        "lat": 41.50507,
+        "lon": 2.39227
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-23-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3110516",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509588",
+      "local": {
+        "x": 358.7152,
+        "y": 61,
+        "z": 204.2403
+      },
+      "name": "Villajoyosa",
+      "place": "PPLA3",
+      "population": 33797,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.50754,
+        "lon": -0.23346
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2509588",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509553",
+      "local": {
+        "x": -331.5294,
+        "y": 311,
+        "z": 128.6634
+      },
+      "name": "Villanueva de la Serena",
+      "place": "PPLA3",
+      "population": 25759,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.97655,
+        "lon": -5.7974
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2509553",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509491",
+      "local": {
+        "x": 64.9822,
+        "y": 738,
+        "z": 81.3893
+      },
+      "name": "Villarrobledo",
+      "place": "PPLA3",
+      "population": 26642,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.26992,
+        "lon": -2.60119
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2509491",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3104703",
+      "local": {
+        "x": -96.6775,
+        "y": 695,
+        "z": -93.9616
+      },
+      "name": "Villaviciosa de Odón",
+      "place": "PPLA3",
+      "population": 27596,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.3581,
+        "lon": -3.9043
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3104703",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509463",
+      "local": {
+        "x": 280.284,
+        "y": 776,
+        "z": 183.3306
+      },
+      "name": "Villena",
+      "place": "PPLA3",
+      "population": 35222,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.6373,
+        "lon": -0.86568
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2509463",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3104584",
+      "local": {
+        "x": 446.6776,
+        "y": 21,
+        "z": -112.0464
+      },
+      "name": "Vinaròs",
+      "place": "PPLA3",
+      "population": 28273,
+      "populationTier": "small",
+      "position": {
+        "lat": 40.47033,
+        "lon": 0.47559
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-19-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3104584",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509769",
+      "local": {
+        "x": -121.2854,
+        "y": 215,
+        "z": 482.4461
+      },
+      "name": "Vélez-Málaga",
+      "place": "PPLA3",
+      "population": 74190,
+      "populationTier": "medium",
+      "position": {
+        "lat": 36.78107,
+        "lon": -4.10266
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2509769",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509650",
+      "local": {
+        "x": 59.8289,
+        "y": 710,
+        "z": 474.3117
+      },
+      "name": "Vícar",
+      "place": "PPLA3",
+      "population": 22853,
+      "populationTier": "small",
+      "position": {
+        "lat": 36.83155,
+        "lon": -2.64273
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2509650",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2519466",
+      "local": {
+        "x": 334.8429,
+        "y": 50,
+        "z": 49.812
+      },
+      "name": "Xirivella",
+      "place": "PPL",
+      "population": 30002,
+      "populationTier": "small",
+      "position": {
+        "lat": 39.46588,
+        "lon": -0.42589
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2519466",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2516345",
+      "local": {
+        "x": 323.3515,
+        "y": 306,
+        "z": 126.4283
+      },
+      "name": "Xàtiva",
+      "place": "PPLA3",
+      "population": 29386,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.99042,
+        "lon": -0.51852
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2516345",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2509402",
+      "local": {
+        "x": 249.3938,
+        "y": 615,
+        "z": 187.1416
+      },
+      "name": "Yecla",
+      "place": "PPLA3",
+      "population": 35025,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.61365,
+        "lon": -1.11468
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2509402",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3104342",
+      "local": {
+        "x": -324.9742,
+        "y": 675,
+        "z": -278.9889
+      },
+      "name": "Zamora",
+      "place": "PPLA2",
+      "population": 61827,
+      "populationTier": "medium",
+      "position": {
+        "lat": 41.50633,
+        "lon": -5.74456
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-07-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3104342",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "regional",
+      "id": "es-3104324",
+      "local": {
+        "x": 278.8375,
+        "y": 250,
+        "z": -303.1166
+      },
+      "name": "Zaragoza",
+      "place": "PPLA",
+      "population": 686986,
+      "populationTier": "large",
+      "position": {
+        "lat": 41.65606,
+        "lon": -0.87734
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-16-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3104324",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-3104316",
+      "local": {
+        "x": 118.4842,
+        "y": 295,
+        "z": -565.5161
+      },
+      "name": "Zarautz",
+      "place": "PPLA3",
+      "population": 22627,
+      "populationTier": "small",
+      "position": {
+        "lat": 43.28444,
+        "lon": -2.16992
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "3104316",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2522333",
+      "local": {
+        "x": 191.3092,
+        "y": 44,
+        "z": 381.6956
+      },
+      "name": "Águilas",
+      "place": "PPLA3",
+      "population": 34533,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.4063,
+        "lon": -1.58289
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2522333",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": "provincial",
+      "id": "es-3129136",
+      "local": {
+        "x": -195.3287,
+        "y": 1140,
+        "z": -142.1654
+      },
+      "name": "Ávila",
+      "place": "PPLA2",
+      "population": 57657,
+      "populationTier": "medium",
+      "position": {
+        "lat": 40.65724,
+        "lon": -4.69951
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-09-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3129136",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2518770",
+      "local": {
+        "x": -242.8536,
+        "y": 177,
+        "z": 359.7965
+      },
+      "name": "Écija",
+      "place": "PPLA3",
+      "population": 39882,
+      "populationTier": "small",
+      "position": {
+        "lat": 37.5422,
+        "lon": -5.0826
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2518770",
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "capitalLevel": null,
+      "id": "es-2510116",
+      "local": {
+        "x": -30.4559,
+        "y": 800,
+        "z": 283.886
+      },
+      "name": "Úbeda",
+      "place": "PPLA3",
+      "population": 34602,
+      "populationTier": "small",
+      "position": {
+        "lat": 38.01328,
+        "lon": -3.3705
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2510116",
+      "terrainStatus": "dem-cell"
+    }
+  ],
+  "regionId": "iberia",
+  "source": {
+    "country": "ES",
+    "dataset": "cities15000",
+    "license": "CC BY 4.0",
+    "minimumPopulation": 20000,
+    "provider": "GeoNames",
+    "retrievedOn": "2026-08-09",
+    "scope": "Iberian mainland",
+    "url": "https://download.geonames.org/export/dump/cities15000.zip"
+  }
 }

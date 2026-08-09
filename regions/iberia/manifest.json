@@ -11,9 +11,9 @@
     "connections": 0,
     "entryPoints": 1,
     "faunaSpecies": 0,
-    "generatedBuildings": 0,
+    "generatedBuildings": 362,
     "landmarks": 0,
-    "settlements": 0
+    "settlements": 362
   },
   "deterministic": true,
   "files": [
@@ -33,14 +33,14 @@
       "sha256": "014dffdd4445cbeefdbaa90bf8c8967ef460d1e85bd0a1dbea27ef8e5d90f91a"
     },
     {
-      "bytes": 146,
+      "bytes": 190946,
       "path": "settlements.json",
-      "sha256": "3feceb8b0c98c4d56bff1921b9309a94db183ad0b723b9df3c87cc45ce632da1"
+      "sha256": "2a5934617d0fe5c470b34aa211c935240a58a72d7fc0b67d0f0b438aafc30606"
     },
     {
-      "bytes": 196,
+      "bytes": 355850,
       "path": "objects.json",
-      "sha256": "2e0f626b00df1771e433c242f8543fd157e4dadad9077bb0c5943256be7aeed8"
+      "sha256": "ba4ef7ad886ccd222e1f09eab59f84158b94eb3927fc9746bf2fc88a52da3951"
     },
     {
       "bytes": 147,
@@ -213,6 +213,44 @@
     "rows": 21,
     "sizeUnits": 64,
     "total": 546
+  },
+  "settlementMarkers": {
+    "capitalStyle": {
+      "national": {
+        "minimumHeightMeters": 90
+      },
+      "provincial": {
+        "minimumHeightMeters": 54
+      },
+      "regional": {
+        "minimumHeightMeters": 72
+      }
+    },
+    "minimumPopulation": 20000,
+    "source": {
+      "country": "ES",
+      "dataset": "cities15000",
+      "license": "CC BY 4.0",
+      "minimumPopulation": 20000,
+      "provider": "GeoNames",
+      "retrievedOn": "2026-08-09",
+      "scope": "Iberian mainland",
+      "url": "https://download.geonames.org/export/dump/cities15000.zip"
+    },
+    "tiers": {
+      "large": [
+        200000,
+        null
+      ],
+      "medium": [
+        50000,
+        199999
+      ],
+      "small": [
+        20000,
+        49999
+      ]
+    }
   },
   "terrain": {
     "cells": 212992,

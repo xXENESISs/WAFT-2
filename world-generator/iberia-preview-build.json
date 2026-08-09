@@ -1,24 +1,26 @@
 {
-  "binaryBytes": 80,
-  "binarySha256": "1115f3221cb0103603496166fb531825bd2e17f1179894211df9c67a8e81ab58",
-  "buildId": "iberia-preview-fb3560251d7f",
+  "binaryBytes": 17456,
+  "binarySha256": "65904fee4660601c35b144ed4eb826640a813a888c1a8eaa9cf380dcd50fd0a1",
+  "buildId": "iberia-preview-eead2a469411",
   "counts": {
-    "buildings": 0,
+    "buildings": 362,
     "hotels": 0,
     "landmarks": 0,
-    "namedBuildings": 0,
+    "namedBuildings": 362,
     "roadSegments": 0,
     "roadVertices": 0,
     "selectedRoads": 0,
-    "settlements": 0
+    "settlements": 362
   },
   "distributions": {
-    "buildingKinds": {},
+    "buildingKinds": {
+      "public": 362
+    },
     "landmarkRepresentations": {},
     "roadClasses": {}
   },
   "formatVersion": 1,
-  "inputsSha256": "fb3560251d7ff34c48281c6642abf33389aaff3bc6be7b472341a4d9d9902283",
+  "inputsSha256": "eead2a469411b0ce0657e4012338479538cee144e16b31e771ebc9d4ed072c3c",
   "regionId": "iberia",
   "valid": true
 }
