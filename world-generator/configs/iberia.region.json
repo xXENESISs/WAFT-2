@@ -119,7 +119,7 @@
       "license": "Copernicus data policy",
       "attribution": "Derived from modified Copernicus DEM data",
       "resolutionMeters": 90,
-      "cachePolicy": "generated"
+      "cachePolicy": "build-cache"
     },
     "climate": {
       "provider": "WorldClim",
@@ -136,7 +136,7 @@
         "license": "ODbL 1.0",
         "attribution": "© OpenStreetMap contributors",
         "resolutionMeters": null,
-        "cachePolicy": "future"
+        "cachePolicy": "build-cache"
       }
     ],
     "fauna": [
@@ -146,7 +146,7 @@
         "license": "Record-dependent open licence",
         "attribution": "GBIF.org and contributing datasets",
         "resolutionMeters": null,
-        "cachePolicy": "future"
+        "cachePolicy": "build-cache"
       }
     ]
   },
