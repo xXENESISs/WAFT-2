@@ -18,6 +18,9 @@ for(const pattern of [
   /iberia:'\.\.\/region-runtime-catalunya-litoral-003\.html'/,
   /replaceAll\('catalunya-litoral','iberia'\)/,
   /registryType:'waft-local-zone-registry',regionId:'iberia',zones:\[\]/,
+  /travelNodeIds = \['barcelona','tarragona','girona','subregion-montserrat','subregion-montseny','subregion-maresme'\]/,
+  /travelNodeIds = \[\]/,
+  /WAFT_IBERIA_RUNTIME_0241/,
   /__WAFT_ADVENTURE_BUILD__='0\.24\.0'/
 ])assert.match(index,pattern,`Iberia index bootstrap missing ${pattern}`);
 
@@ -59,4 +62,4 @@ assert.equal(manifest.terrain.rows,416);
 assert.equal(manifest.terrain.maximumElevationMeters,3460);
 assert.equal(manifest.projection.unitsPerKm,1.45);
 
-console.log('WAFT 0.24.0 Iberia loads the real compressed terrain package with one gameplay layer and zero fauna/cities/events.');
+console.log('WAFT 0.24.1 Iberia keeps the real compressed terrain package, disables Catalunya-only travel nodes and loads zero fauna/cities/events.');
