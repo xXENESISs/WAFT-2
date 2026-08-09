@@ -3,6 +3,7 @@
   if (window.__WAFT_ADVENTURE_REGION__ !== 'iberia') return;
   const VERSION='0.24.3';
   const BIRD_ID='iberia-bearded-vulture';
+  // Regional coordinates stay tied to the unchanged 1.45 units/km Iberia projection.
   const PROJECTION={origin:{lat:39.775,lon:-3.125},kmPerDegreeLat:111.132,kmPerDegreeLon:85.55640544079021,unitsPerKm:1.45,verticalScale:0.013594};
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   let lastFollowAt=performance.now();
