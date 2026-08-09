@@ -12,9 +12,11 @@ function patch(relative,changes,marker){
 }
 
 const flap0243="if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(18.5,state.adventureFlightFlap*1.85):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);if(beardedFlap)state.iberiaFlapMomentum=.42;state.adventureFlightFlap=0;}";
-const flap0244="if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(24.0,state.adventureFlightFlap*2.05):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);if(beardedFlap)state.iberiaFlapMomentum=.58;state.adventureFlightFlap=0;}";
+const flap0244Old="if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(24.0,state.adventureFlightFlap*2.05):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);if(beardedFlap)state.iberiaFlapMomentum=.58;state.adventureFlightFlap=0;}";
+const flap0244="if(state.adventureFlightFlap>0){const beardedFlap=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',flapPower=beardedFlap?Math.max(42.0,state.adventureFlightFlap*2.4):state.adventureFlightFlap;state.adventureFlightVy=Math.max(state.adventureFlightVy,flapPower);if(beardedFlap)state.iberiaFlapMomentum=.64;state.adventureFlightFlap=0;}";
 const flight0243="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*1.15);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(26,state.adventureFlightVy));}";
-const flight0244="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*.86);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(30,state.adventureFlightVy));}";
+const flight0244Old="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*.86);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(30,state.adventureFlightVy));}";
+const flight0244="const beardedFlight=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';state.iberiaDive=Boolean(beardedFlight&&state.joyY>.55);if(beardedFlight){if(state.iberiaDive){state.iberiaFlapMomentum=0;const diveAmount=Math.min(1,Math.max(0,(state.joyY-.55)/.45)),targetDiveVy=-(30+28*diveAmount),diveBlend=1-Math.exp(-dt*15);state.adventureFlightVy+=(targetDiveVy-state.adventureFlightVy)*diveBlend;}else{state.iberiaFlapMomentum=Math.max(0,(state.iberiaFlapMomentum||0)-dt);if(state.iberiaFlapMomentum>0)state.adventureFlightVy*=Math.exp(-dt*.80);else state.adventureFlightVy=0;}state.adventureFlightVy=Math.max(-58,Math.min(44,state.adventureFlightVy));}";
 
 patch('mallorca-mobile/adventure-0210/index.html',[
   [flap0243,flap0244,'stronger bearded-vulture flap'],
@@ -29,6 +31,13 @@ patch('mallorca-mobile/adventure-0210/plugin-loader.js',[
   ["Península Ibérica · EXPLORACIÓN 0.24.3 · guardados ","Península Ibérica · EXPLORACIÓN 0.24.4 · guardados ",'Iberia HUD version']
 ], 'EXPLORACIÓN 0.24.4');
 
+// Allow flight tuning to be strengthened inside the same 0.24.4 release after the generated runtime exists.
+{
+  const file=path.join(ROOT,'mallorca-mobile/adventure-0210/index.html');
+  let source=fs.readFileSync(file,'utf8'),changed=false;
+  if(source.includes(flap0244Old)){source=source.replace(flap0244Old,flap0244);changed=true;}
+  if(source.includes(flight0244Old)){source=source.replace(flight0244Old,flight0244);changed=true;}
+  if(changed){fs.writeFileSync(file,source);console.log('mallorca-mobile/adventure-0210/index.html: upgraded 0.24.4 climb tuning');}
+}
+
 console.log('WAFT 0.24.4 Iberia world preparation complete.');
-// Deterministic pass: legacy preparers may safely no-op after this layer is present.
-// Re-run marker after making 0.24.2 and 0.24.3 preparers explicitly aware of 0.24.4.
