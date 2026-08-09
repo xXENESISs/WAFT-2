@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-09T15:29:06.001Z",
+  "generatedAt": "2026-08-09T15:33:13.315Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
