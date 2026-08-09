@@ -53,7 +53,7 @@ for(const test of [
     /isAdventureVisible/,
     /queueAdventureJump\(velocity,options=\{\}\)/,
     /plugin-loader\.js/,
-    /__WAFT_ADVENTURE_BUILD__='0\.24\.0'/
+    /__WAFT_ADVENTURE_BUILD__='0\.24\.2'/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
   assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
   assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
@@ -63,6 +63,6 @@ for(const test of [
   const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match=>match[1]).filter(Boolean);
   assert.ok(scripts.length>=3,`${test.id}: expected runtime, Adventure bootstrap and UI safety scripts`);
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
-  console.log(`${test.id}: optimized patched 0.24.0 runtime compiled (${written.length} chars)`);
+  console.log(`${test.id}: optimized patched 0.24.2 runtime compiled (${written.length} chars)`);
 }
-console.log('Both existing World 2 regional runtimes survive the 0.24.0 bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths and World 1 parity.');
+console.log('Both existing World 2 regional runtimes survive the 0.24.2 bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths and World 1 parity.');
