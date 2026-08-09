@@ -1,19 +1,19 @@
 {
   "algorithmVersion": "terrain-only-v1",
   "attribution": "Contains modified Copernicus DEM data",
-  "binaryBytes": 213056,
+  "binaryBytes": 233024,
   "binaryFile": "esa-worldcover-2021-v200.bin",
-  "binarySha256": "ad1eb12a10a1bd495e34d8c45205c3b099319ca7e8cd1360ead4d607d057e30d",
+  "binarySha256": "130d4b657b60a951204c95b4feebc6f04dd95c5987cd72356935405795518c34",
   "classDistribution": {
     "30": {
-      "cells": 144824,
+      "cells": 148514,
       "name": "Grassland placeholder",
-      "ratio": 0.67995042
+      "ratio": 0.63750859
     },
     "80": {
-      "cells": 68168,
+      "cells": 84446,
       "name": "Water",
-      "ratio": 0.32004958
+      "ratio": 0.36249141
     }
   },
   "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
@@ -29,12 +29,12 @@
   "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
   "targetGrid": {
     "bounds": {
-      "east": 3.35,
+      "east": 4.6,
       "north": 43.8,
       "south": 35.75,
       "west": -9.6
     },
-    "columns": 512,
+    "columns": 560,
     "method": "DEM elevation > 0",
     "rows": 416
   },

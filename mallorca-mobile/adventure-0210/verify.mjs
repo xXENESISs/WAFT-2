@@ -50,7 +50,7 @@ for(const pattern of [
   /standOnRoof/,
   /queueAdventureJump\(velocity,options=\{\}\)/,
   /horizontalBoost/,
-  /__WAFT_ADVENTURE_BUILD__='0\.24\.2'/
+  /__WAFT_ADVENTURE_BUILD__='0\.24\.3'/
 ]) assert.match(index,pattern,`index missing ${pattern}`);
 assert.doesNotMatch(index,/state\.yaw \+= dx/,'camera drag was re-inverted');
 assert.doesNotMatch(index,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/,'old near-camera terrain blind spot survived');
@@ -116,4 +116,4 @@ if(fs.existsSync(reference)){
   for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);
 }
 
-console.log('WAFT 0.24.2 verification passed: World 1 parity remains intact while Iberia explorer uses the current Adventure build marker.');
+console.log('WAFT 0.24.3 verification passed: World 1 parity remains intact while Iberia polish uses the current Adventure build marker.');

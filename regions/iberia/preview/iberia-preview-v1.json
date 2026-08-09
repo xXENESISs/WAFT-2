@@ -4,9 +4,9 @@
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "65904fee4660601c35b144ed4eb826640a813a888c1a8eaa9cf380dcd50fd0a1"
+    "sha256": "3c30b1f15b761b07b0ddca3f60786db3d4c8f8775d202685d82738cdb823ac10"
   },
-  "buildId": "iberia-preview-eead2a469411",
+  "buildId": "iberia-preview-43f14aaa5345",
   "counts": {
     "buildings": 362,
     "hotels": 0,
@@ -105,7 +105,7 @@
       "distance": 52,
       "id": "subregion-sistema-central",
       "name": "Sistema Central",
-      "terrainMeters": 1022,
+      "terrainMeters": 965,
       "x": -151.9696,
       "z": -103.9362
     }
@@ -2287,17 +2287,17 @@
     }
   ],
   "sources": {
-    "inputsSha256": "eead2a469411b0ce0657e4012338479538cee144e16b31e771ebc9d4ed072c3c",
-    "landcoverSha256": "c866dab2eb8c040d8b08aba567eadec3e7f4cfe1b81cddae287e03ac65e9ff08",
-    "regionManifestSha256": "d2edf7dca9456310065652554a736209d0e0a351a4a681da8ec5d4da7e71e4b1",
-    "terrainSha256": "3c725ec8a19acf04728f03241d1106f087957e1c02d9fea7062975608bf20b1e"
+    "inputsSha256": "43f14aaa5345055e1785509615d79eb529178727e9a7941ac09900e040359935",
+    "landcoverSha256": "3ea25dfb4de64c4c5e0a0417aaef46871b44a3912f7945b9a35f1fcb8a919328",
+    "regionManifestSha256": "da62824387be17b2768f98c3f2d4d0637172b45662db82a293b515939a02796b",
+    "terrainSha256": "e1244aac8e59f412121a26b2c7916e4b1d50645a7fd4d5e224020ac46d135193"
   },
   "terrain": {
-    "columns": 512,
+    "columns": 560,
     "file": "../terrain.bin",
     "landcoverFile": "../landcover.bin",
     "localBounds": {
-      "maxX": 803.267701582219,
+      "maxX": 958.3386864436513,
       "maxZ": 648.5941349999997,
       "minX": -803.267701582219,
       "minZ": -648.5941349999997
