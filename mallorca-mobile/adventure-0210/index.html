@@ -184,7 +184,7 @@
       state.jumpQueued=false;`, 'física vertical');
 
       replaceOne('    const updateTerrainAlignment = dt => {\n      if (state.swimming) {', `    const updateTerrainAlignment = dt => {
-      if(state.adventureFlight){const blend=Math.min(1,dt*5.5),targetPitch=Math.max(-.42,Math.min(.30,-state.adventureFlightVy*.07));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(state.adventureFlightBank-state.terrainRoll)*blend;state.slopeAngle=0;return;}
+      if(state.adventureFlight){const bearded=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',blend=Math.min(1,dt*(bearded&&state.iberiaDive?10:5.5)),targetPitch=bearded&&state.iberiaDive?.80:Math.max(-.50,Math.min(.42,-state.adventureFlightVy*.07));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(state.adventureFlightBank-state.terrainRoll)*blend;state.slopeAngle=0;return;}
       if(state.adventureWaterJump&&state.adventureMountType==='shark'){const blend=Math.min(1,dt*8),targetPitch=Math.max(-.48,Math.min(.48,-state.velocityY*.025));state.terrainPitch+=(targetPitch-state.terrainPitch)*blend;state.terrainRoll+=(0-state.terrainRoll)*blend;state.slopeAngle=0;return;}
       if (state.swimming) {`, 'orientación monturas');
 
