@@ -26,8 +26,7 @@ permissions:
 
 # GITHUB_TOKEN-generated pushes intentionally do not recursively start Actions.
 # Deterministic browser validation is therefore triggered by a normal CI/source commit after generation.
-# This pass must stay clean before the branch is eligible for merge.
-# Final flight generation completed; the next clean pass must exercise Chromium through the France seam.
+# Final generated state is detected explicitly so repeated runs do not try to reapply an intermediate flight patch.
 concurrency:
   group: waft-world-0245-${{ github.ref }}
   cancel-in-progress: true
@@ -64,8 +63,14 @@ jobs:
           node --check mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs
           node world-generator/scripts/validate-region.mjs
       - name: Prepare Adventure 0.24.5
+        shell: bash
         run: |
-          node world-generator/scripts/prepare-iberia-0245.mjs
+          if grep -Fq "Math.max(68.0,state.adventureFlightFlap*3.5)" mallorca-mobile/adventure-0210/index.html \
+            && grep -Fq "Math.max(-58,Math.min(68,state.adventureFlightVy))" mallorca-mobile/adventure-0210/index.html; then
+            echo "Adventure 0.24.5 final flight state already generated; skipping intermediate preparer."
+          else
+            node world-generator/scripts/prepare-iberia-0245.mjs
+          fi
           node world-generator/scripts/tune-vulture-flight-0245.mjs
       - name: Rebuild Iberia places and preview
         run: |
