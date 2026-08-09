@@ -31,3 +31,4 @@ patch('mallorca-mobile/adventure-0210/plugin-loader.js',[
 
 console.log('WAFT 0.24.4 Iberia world preparation complete.');
 // Deterministic pass: legacy preparers may safely no-op after this layer is present.
+// Re-run marker after making 0.24.2 and 0.24.3 preparers explicitly aware of 0.24.4.
