@@ -35,8 +35,9 @@ for(const pattern of [
   /iberia-world-0244\.js/,
   /state\.joyY>\.55/,
   /targetDiveVy=-\(30\+28\*diveAmount\)/,
-  /Math\.max\(24\.0,state\.adventureFlightFlap\*2\.05\)/,
-  /state\.iberiaFlapMomentum=\.58/,
+  /Math\.max\(42\.0,state\.adventureFlightFlap\*2\.4\)/,
+  /state\.iberiaFlapMomentum=\.64/,
+  /Math\.min\(44,state\.adventureFlightVy\)/,
   /else state\.adventureFlightVy=0/,
   /if\(window\.__WAFT_ADVENTURE_REGION__!=='iberia'\)state\.respawnQueued = true/
 ])assert.match(index,pattern,`Iberia index bootstrap missing ${pattern}`);
