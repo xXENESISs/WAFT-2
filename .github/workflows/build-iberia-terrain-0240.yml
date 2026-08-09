@@ -28,6 +28,7 @@ on:
 permissions:
   contents: write
 
+# One generator owns the branch at a time so generated terrain never races an older SHA.
 concurrency:
   group: iberia-terrain-0240-${{ github.ref }}
   cancel-in-progress: true
