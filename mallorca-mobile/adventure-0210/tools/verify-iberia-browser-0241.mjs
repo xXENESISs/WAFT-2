@@ -109,35 +109,34 @@ try{
   const jumps=await page.evaluate(async()=>{
     const api=window.WAFTRegionRuntime;
     const run=async impulse=>{
-      api.setAdventureModifiers({flight:false,mountType:null});
-      api.setRegionalPosition(0,0);
-      api.setInput(0,0);
-      await new Promise(r=>setTimeout(r,420));
-      const y0=api.getState().position.y;
-      api.queueAdventureJump(impulse,{horizontalBoost:1});
-      let peak=0;
-      for(let i=0;i<28;i++){
-        await new Promise(r=>setTimeout(r,50));
-        peak=Math.max(peak,api.getState().position.y-y0);
-      }
+      api.setAdventureModifiers({flight:false,mountType:null});api.setRegionalPosition(0,0);api.setInput(0,0);
+      await new Promise(r=>setTimeout(r,420));const y0=api.getState().position.y;api.queueAdventureJump(impulse,{horizontalBoost:1});let peak=0;
+      for(let i=0;i<28;i++){await new Promise(r=>setTimeout(r,50));peak=Math.max(peak,api.getState().position.y-y0);}
       return peak;
     };
-    const normal=await run(8.8);
-    const mega=await run(23.55);
-    return{normal,mega};
+    return{normal:await run(8.8),mega:await run(23.55)};
   });
   requireValue(jumps.mega>jumps.normal*1.65&&jumps.mega>4,`Super jump peak is not strong enough: normal=${jumps.normal} mega=${jumps.mega}`);
 
   const flight=await page.evaluate(async()=>{
-    const api=window.WAFTRegionRuntime;window.WAFTIberiaExplorer.mountBird();await new Promise(r=>setTimeout(r,220));
-    const mounted=api.getState();
+    const api=window.WAFTRegionRuntime,game=window.__WAFT_INTERNAL_GAME__;
+    const bird=game.animals.find(item=>item.id==='iberia-bearded-vulture');
+    api.setAdventureModifiers({flight:false,mountType:null});api.setInput(0,0);api.setRegionalPosition(bird.x,bird.z);
+    await new Promise(r=>setTimeout(r,450));
+    const action=document.getElementById('waftAdventureAction');
+    const prompt={visible:action?.classList.contains('visible')||false,text:action?.textContent||'',birdReady:bird.flightMountReady};
+    action?.click();
+    await new Promise(r=>setTimeout(r,420));
+    const mounted=api.getState(),mountedId=game.mountedAnimalId;
     api.setAdventureModifiers({flightFlap:10});await new Promise(r=>setTimeout(r,650));
     api.setAdventureModifiers({flightFlap:10});await new Promise(r=>setTimeout(r,520));
     const high=api.getState();
     api.setInput(0,1);await new Promise(r=>setTimeout(r,620));const dive=api.getState();api.setInput(0,0);
-    return{mounted,high,dive,drop:high.position.y-dive.position.y};
+    return{prompt,mounted,mountedId,high,dive,drop:high.position.y-dive.position.y};
   });
-  requireValue(flight.mounted.adventureMountType==='vulture'&&flight.mounted.movementMode==='flight','Bearded vulture did not mount into flight mode');
+  requireValue(flight.prompt.visible&&/MONTAR QUEBRANTAHUESOS/i.test(flight.prompt.text),`Bearded vulture mount prompt failed: ${JSON.stringify(flight.prompt)}`);
+  requireValue(flight.mountedId==='iberia-bearded-vulture',`Bearded vulture interaction mounted ${flight.mountedId}`);
+  requireValue(flight.mounted.adventureMountType==='vulture'&&flight.mounted.movementMode==='flight',`Bearded vulture did not mount into flight mode: mount=${flight.mounted.adventureMountType} mode=${flight.mounted.movementMode}`);
   requireValue(flight.high.position.y>flight.mounted.position.y+4,`Bearded vulture did not climb strongly: ${flight.high.position.y-flight.mounted.position.y}`);
   requireValue(flight.dive.iberiaDive===true,`Joystick-down dive flag was not set`);
   requireValue(flight.dive.adventureCurrentSpeed>=48,`Dive is too slow: ${flight.dive.adventureCurrentSpeed}`);
