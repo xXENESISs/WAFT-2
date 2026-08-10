@@ -1,0 +1,127 @@
+name: Build WAFT world streaming 0.24.5
+
+on:
+  push:
+    branches:
+      - feat/world-0245-seam-france
+      - main
+    paths:
+      - .github/workflows/build-world-streaming-0245.yml
+      - world-generator/scripts/build-settlement-markers-0244.py
+      - world-generator/scripts/prepare-iberia-0245.mjs
+      - world-generator/scripts/tune-vulture-flight-0245.mjs
+      - world-generator/scripts/build-region-preview-v2.mjs
+      - world-generator/configs/iberia.region.json
+      - world-generator/configs/france.region.json
+      - regions/iberia/**
+      - regions/france/**
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/plugin-loader.js
+      - mallorca-mobile/adventure-0210/iberia-world-0245.js
+      - mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# GITHUB_TOKEN-generated pushes intentionally do not recursively start Actions.
+# Once the 0.24.5 runtime marker exists, version-specific final tuning is handled by its own idempotent script.
+concurrency:
+  group: waft-world-0245-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  seam:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache GeoNames
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/geonames
+          key: waft-geonames-cities15000-2026-08-09-v2
+      - name: Install browser test dependency
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Syntax and contracts
+        run: |
+          python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
+          node --check world-generator/scripts/prepare-iberia-0245.mjs
+          node --check world-generator/scripts/tune-vulture-flight-0245.mjs
+          node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
+          node --check mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs
+          node world-generator/scripts/validate-region.mjs
+      - name: Prepare Adventure 0.24.5
+        shell: bash
+        run: |
+          if grep -Fq "WAFT_IBERIA_WORLD_0245" mallorca-mobile/adventure-0210/index.html; then
+            echo "Adventure 0.24.5 runtime already prepared; skipping base preparer."
+          else
+            node world-generator/scripts/prepare-iberia-0245.mjs
+          fi
+          node world-generator/scripts/tune-vulture-flight-0245.mjs
+      - name: Rebuild Iberia places and preview
+        run: |
+          python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,GI --minimum-population 20000 --exclude-balearics
+          node world-generator/scripts/build-region-preview-v2.mjs iberia
+      - name: Verify world contracts and special marker fix
+        run: |
+          node world-generator/scripts/smoke-world-expansion-0244.mjs
+          node - <<'NODE'
+          const fs=require('fs');
+          const settlements=JSON.parse(fs.readFileSync('regions/iberia/settlements.json','utf8')).items;
+          const objects=JSON.parse(fs.readFileSync('regions/iberia/objects.json','utf8')).items;
+          for(const name of ['Ayódar','Peñíscola','Gibraltar']){
+            const place=settlements.find(item=>item.name===name);
+            if(!place?.specialMarker)throw new Error(`${name} lost its special marker`);
+            if(objects.some(item=>String(item.id||'').includes(String(place.sourceId))))throw new Error(`${name} still exists as a generic building needle`);
+          }
+          console.log(JSON.stringify({settlements:settlements.length,objects:objects.length,specialGenericObjects:0},null,2));
+          NODE
+      - name: Persist deterministic generated files
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            mallorca-mobile/adventure-0210/index.html \
+            mallorca-mobile/adventure-0210/plugin-loader.js \
+            regions/iberia
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT world 0.24.5 generated state is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Build WAFT Iberia France streaming package 0.24.5"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify Iberia to France seam in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-world-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
+            /tmp/waft-iberia-france-0245.png
+      - name: Upload seam screenshot
+        if: always() && steps.persist.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: iberia-france-0245-browser
+          path: /tmp/waft-iberia-france-0245.png
+          retention-days: 7
+          if-no-files-found: ignore

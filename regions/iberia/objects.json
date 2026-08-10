@@ -2404,59 +2404,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          340.7445,
-          -36.5069
-        ],
-        [
-          341.3845,
-          -36.5069
-        ],
-        [
-          341.3845,
-          -35.8669
-        ],
-        [
-          340.7445,
-          -35.8669
-        ],
-        [
-          340.7445,
-          -36.5069
-        ]
-      ],
-      "heightMeters": 30,
-      "id": "marker-es-waft-ayodar",
-      "kind": "public",
-      "local": {
-        "x": 341.0645,
-        "y": 809,
-        "z": -36.1869
-      },
-      "name": "Ayódar",
-      "position": {
-        "lat": 39.99956587,
-        "lon": -0.37573917
-      },
-      "priority": 92,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-17-09",
-      "source": "waft-special",
-      "sourceId": "waft-ayodar",
-      "tags": {
-        "population": "153",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "81",
-        "waft:population_tier": "small",
-        "waft:special_marker": "christmas-tree"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           -17.9418,
           -127.6681
         ],
@@ -7401,60 +7348,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "69601",
         "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -277.1652,
-          584.1652
-        ],
-        [
-          -275.5252,
-          584.1652
-        ],
-        [
-          -275.5252,
-          585.8052
-        ],
-        [
-          -277.1652,
-          585.8052
-        ],
-        [
-          -277.1652,
-          584.1652
-        ]
-      ],
-      "heightMeters": 90,
-      "id": "marker-gi-2411585",
-      "kind": "public",
-      "local": {
-        "x": -276.3452,
-        "y": 11,
-        "z": 584.9852
-      },
-      "name": "Gibraltar",
-      "position": {
-        "lat": 36.14474,
-        "lon": -5.35257
-      },
-      "priority": 120,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-08-19",
-      "source": "waft-special",
-      "sourceId": "2411585",
-      "tags": {
-        "population": "26544",
-        "waft:capital_level": "national",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "25851",
-        "waft:population_tier": "small",
-        "waft:special_marker": "rock"
       },
       "terrainStatus": "dem-cell"
     },
@@ -12778,59 +12671,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "54333",
         "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          437.5991,
-          -94.4091
-        ],
-        [
-          438.7191,
-          -94.4091
-        ],
-        [
-          438.7191,
-          -93.2891
-        ],
-        [
-          437.5991,
-          -93.2891
-        ],
-        [
-          437.5991,
-          -94.4091
-        ]
-      ],
-      "heightMeters": 46,
-      "id": "marker-es-waft-peniscola",
-      "kind": "public",
-      "local": {
-        "x": 438.1591,
-        "y": 84,
-        "z": -93.8491
-      },
-      "name": "Peñíscola",
-      "position": {
-        "lat": 40.3574021751,
-        "lon": 0.4069232941
-      },
-      "priority": 96,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-19-08",
-      "source": "waft-special",
-      "sourceId": "waft-peniscola",
-      "tags": {
-        "population": "7447",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "2884",
-        "waft:population_tier": "small",
-        "waft:special_marker": "castle"
       },
       "terrainStatus": "dem-cell"
     },

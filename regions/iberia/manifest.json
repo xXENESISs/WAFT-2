@@ -11,7 +11,7 @@
     "connections": 2,
     "entryPoints": 3,
     "faunaSpecies": 0,
-    "generatedBuildings": 367,
+    "generatedBuildings": 364,
     "landmarks": 0,
     "settlements": 367
   },
@@ -38,9 +38,9 @@
       "sha256": "258369f780542e9bddd996e708436aa38515ce33625c030cc5f1d81761f37895"
     },
     {
-      "bytes": 389013,
+      "bytes": 385687,
       "path": "objects.json",
-      "sha256": "eebf9104d0b84896ee070df1cf8f0cfce5a0f5e491bd940ea47cc62bb5d52133"
+      "sha256": "4aa0947dedb0a80adc5647252c5a2f2544cb6e37278d424d169ded3a2a711fd5"
     },
     {
       "bytes": 147,

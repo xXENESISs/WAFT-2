@@ -233,20 +233,23 @@ def main():
         if item.get('specialMarker'): settlement['specialMarker'] = item['specialMarker']
         if item.get('note'): settlement['note'] = item['note']
         settlements.append(settlement)
-        footprint = [[round(x-half,4),round(z-half,4)],[round(x+half,4),round(z-half,4)],[round(x+half,4),round(z+half,4)],[round(x-half,4),round(z+half,4)],[round(x-half,4),round(z-half,4)]]
-        tags = {
-            'population': str(item['population']), 'waft:population_tier': level,
-            'waft:nuclear_war_deaths': str(war['nuclearWarDeaths']), 'waft:lore': 'fictional'
-        }
-        if capital: tags['waft:capital_level'] = capital
-        if item.get('specialMarker'): tags['waft:special_marker'] = item['specialMarker']
-        objects.append({
-            'areaM2': None, 'collisionMode': 'none', 'footprint': footprint, 'heightMeters': height,
-            'id': f'marker-{ident}', 'kind': 'public', 'local': {'x':round(x,4),'y':y,'z':round(z,4)},
-            'name': item['name'], 'position': {'lat':item['lat'],'lon':item['lon']}, 'priority': priority,
-            'roofWalkable': False, 'scaleY': 1, 'sectorId': sid,
-            'source': settlement['source'], 'sourceId': item['geonameId'], 'tags': tags, 'terrainStatus':'dem-cell'
-        })
+
+        # Special WAFT places use their dedicated local icon/landmark layer. Turning a tiny
+        # footprint into a generic building created the long needle/tower artefacts seen in 0.24.4.
+        if not item.get('specialMarker'):
+            footprint = [[round(x-half,4),round(z-half,4)],[round(x+half,4),round(z-half,4)],[round(x+half,4),round(z+half,4)],[round(x-half,4),round(z+half,4)],[round(x-half,4),round(z-half,4)]]
+            tags = {
+                'population': str(item['population']), 'waft:population_tier': level,
+                'waft:nuclear_war_deaths': str(war['nuclearWarDeaths']), 'waft:lore': 'fictional'
+            }
+            if capital: tags['waft:capital_level'] = capital
+            objects.append({
+                'areaM2': None, 'collisionMode': 'none', 'footprint': footprint, 'heightMeters': height,
+                'id': f'marker-{ident}', 'kind': 'public', 'local': {'x':round(x,4),'y':y,'z':round(z,4)},
+                'name': item['name'], 'position': {'lat':item['lat'],'lon':item['lon']}, 'priority': priority,
+                'roofWalkable': False, 'scaleY': 1, 'sectorId': sid,
+                'source': settlement['source'], 'sourceId': item['geonameId'], 'tags': tags, 'terrainStatus':'dem-cell'
+            })
 
     source = {
         'provider': 'GeoNames + WAFT manual exceptions', 'dataset': 'cities15000', 'url': URL,
