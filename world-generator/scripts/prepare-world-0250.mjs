@@ -52,7 +52,12 @@ for(const id of ['iberia','france','canarias','northwest-africa']){
 {
   const p='mallorca-mobile/adventure-0210/iberia-world-0250.js';let s=read(p);
   s=s.replace('const LABEL_RANGE_KM=1.5,NEAREST_RANGE_KM=5.0,LABEL_MAX_AGL_M=320;','const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;');
+  s=s.replace('const corners=[[26.35,-19.7],[36.25,-19.7],[26.35,.25],[36.25,.25]].map(([lat,lon])=>worldFromGeo(lat,lon));','const corners=[[18,-32],[48,-32],[18,12],[48,12]].map(([lat,lon])=>worldFromGeo(lat,lon));');
+  const oldNearby="    const first=items[0];state.nearest=first?.x||null;nearest.textContent=first&&first.d<=NEAREST_RANGE_KM?`Cerca: ${first.x.name} · ${first.d.toFixed(1)} km · ${fmt(first.x.population)} hab ☠️`:'';\n    const under=stream.sampleSurface?.(s.position.x,s.position.z),agl=under?.inside?Math.max(0,(s.position.y-under.height)/VERTICAL):Infinity,allowAltitude=agl<=LABEL_MAX_AGL_M,boxes=reserved();let shown=0;";
+  const newNearby="    const first=items[0];state.nearest=first?.x||null;\n    const under=stream.sampleSurface?.(s.position.x,s.position.z),agl=under?.inside?Math.max(0,(s.position.y-under.height)/VERTICAL):Infinity,allowAltitude=agl<=LABEL_MAX_AGL_M,boxes=reserved();let shown=0;\n    nearest.textContent=allowAltitude&&first&&first.d<=NEAREST_RANGE_KM?`Cerca: ${first.x.name} · ${first.d.toFixed(1)} km · ${fmt(first.x.population)} hab ☠️`:'';";
+  if(s.includes(oldNearby))s=s.replace(oldNearby,newNearby);else if(!s.includes('nearest.textContent=allowAltitude&&first&&first.d<=NEAREST_RANGE_KM'))throw new Error('Nearby UI altitude gate not applied');
   if(!s.includes('const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;'))throw new Error('Arrival-only label range was not applied');
+  if(!s.includes('const corners=[[18,-32],[48,-32],[18,12],[48,12]]'))throw new Error('Atlantic ocean plane was not expanded beyond the visible world');
   write(p,s);
 }
 
@@ -60,4 +65,4 @@ for(const id of ['iberia','france','canarias','northwest-africa']){
   const p='mallorca-mobile/adventure-0210/index.html';let s=read(p);s=s.replace("window.__WAFT_ADVENTURE_BUILD__='0.24.6'","window.__WAFT_ADVENTURE_BUILD__='0.25.0'");
   if(!s.includes('iberia-world-0250.js')){const n='<script src="adventure-0210/iberia-world-0249.js?v=${encodeURIComponent(version)}"><\\/script>';if(!s.includes(n))throw new Error('0.24.9 bootstrap missing');s=s.replace(n,n+'<script src="adventure-0210/iberia-world-0250.js?v=${encodeURIComponent(version)}"><\\/script>');}write(p,s);
 }
-console.log('WAFT 0.25.0 preparation is deterministic: 1.00 u/km, authoritative HUD, 150 m arrival labels, real NW Africa, no artificial Atlantic corridor.');
+console.log('WAFT 0.25.0 preparation is deterministic: 1.00 u/km, authoritative coordinates/HUD, 150 m arrival labels, altitude-gated nearby UI, expanded Atlantic, real NW Africa.');
