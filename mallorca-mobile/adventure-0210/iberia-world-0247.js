@@ -92,6 +92,7 @@
     const state=api.getState?.();if(!state?.position)return;const g=geoFromWorld(state.position.x,state.position.z),french=inFrance(g),can=inCanarias(g),african=Boolean(window.WAFTWorld0250?.inAfrica?.(g)),hud=document.getElementById('hudTitle'),status=document.getElementById('waftWorldStream0245');
     if(oldFrance)oldFrance.hidden=true;
     if(african){regionBadge.hidden=true;if(hud)hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.0';}
+    else if(african){regionBadge.hidden=true;if(hud)hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.0';}
     else if(can){regionBadge.hidden=false;regionBadge.textContent=`CANARIAS · ${canariasCities.length} NÚCLEOS`;if(hud)hud.textContent='CANARIAS · MUNDO CONTINUO';}
     else if(french){regionBadge.hidden=false;regionBadge.textContent=`FRANCE · ${franceCities.length} VILLES`;if(hud)hud.textContent='FRANCE · MONDE CONTINU';}
     else{regionBadge.hidden=true;if(hud&&(hud.textContent==='FRANCE · MONDE CONTINU'||hud.textContent==='FRANCE 001 · MONDE CONTINU'||hud.textContent==='CANARIAS · MUNDO CONTINUO'))hud.textContent='PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.8';}
