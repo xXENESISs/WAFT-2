@@ -39,9 +39,19 @@ if(fs.existsSync(path.join(regionDir,'manifest.json'))){
   if(markerStage){
     assert.equal(manifest.settlementMarkers.minimumPopulation,20000);
     assert.ok(manifest.content.settlements>=100,`Too few Spain 20k+ markers: ${manifest.content.settlements}`);
-    assert.equal(manifest.content.generatedBuildings,manifest.content.settlements);
+    const manualExceptions=Number(manifest.settlementMarkers.manualPopulationExceptions||0);
+    assert.ok(manualExceptions>=0&&manualExceptions<manifest.content.settlements,'Invalid manual special-place count');
+    assert.equal(manifest.content.generatedBuildings,manifest.content.settlements-manualExceptions,'Special places must stay out of generic building geometry');
     assert.equal(preview.counts.settlements,manifest.content.settlements);
-    assert.equal(preview.counts.buildings,manifest.content.settlements);
+    assert.equal(preview.counts.buildings,manifest.content.generatedBuildings);
+
+    const settlements=read('regions/iberia/settlements.json').items||[];
+    const objects=read('regions/iberia/objects.json').items||[];
+    const specials=settlements.filter(item=>item.specialMarker);
+    assert.equal(specials.length,manualExceptions,'Manifest manual exception count must match special settlements');
+    for(const place of specials){
+      assert.ok(!objects.some(item=>String(item.sourceId)===String(place.sourceId)),`${place.name} leaked back into generic building geometry`);
+    }
   }else{
     assert.equal(manifest.content.settlements,0);
     assert.equal(preview.counts.buildings,0);
