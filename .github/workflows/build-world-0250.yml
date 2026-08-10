@@ -1,0 +1,148 @@
+name: Build WAFT world 0.25.0 real scale + Africa
+
+on:
+  push:
+    branches:
+      - feat/world-0250-real-scale-africa-ground-labels
+      - main
+    paths:
+      - .github/workflows/build-world-0250.yml
+      - world-generator/configs/iberia.region.json
+      - world-generator/configs/france.region.json
+      - world-generator/configs/canarias.region.json
+      - world-generator/configs/northwest-africa.region.json
+      - world-generator/overrides/northwest-africa.overrides.json
+      - world-generator/scripts/prepare-world-0250.mjs
+      - world-generator/scripts/import-copernicus-dem-glo90.py
+      - world-generator/scripts/build-terrain-only-landcover.py
+      - world-generator/scripts/build-region-v2.mjs
+      - world-generator/scripts/build-archipelago-region-0244.mjs
+      - world-generator/scripts/build-settlement-markers-0244.py
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/iberia-world-0245.js
+      - mallorca-mobile/adventure-0210/iberia-world-0247.js
+      - mallorca-mobile/adventure-0210/iberia-world-0250.js
+      - mallorca-mobile/adventure-0210/verify-0250.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+      - regions/northwest-africa/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waft-world-0250-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache Copernicus GLO-90 tiles
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/copernicus-dem-glo90
+          key: waft-europe-nwafrica-glo90-2021-v1
+      - name: Cache GeoNames
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/geonames
+          key: waft-geonames-cities15000-2026-08-09-v2
+      - name: Install build and browser dependencies
+        run: |
+          python -m pip install --disable-pip-version-check numpy rasterio
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Prepare 0.25.0 contracts
+        run: node world-generator/scripts/prepare-world-0250.mjs
+      - name: Syntax and region contracts
+        run: |
+          node --check world-generator/scripts/prepare-world-0250.mjs
+          node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
+          node --check mallorca-mobile/adventure-0210/verify-0250.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+          python -m py_compile world-generator/scripts/import-copernicus-dem-glo90.py
+          python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
+          python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
+          node world-generator/scripts/validate-region.mjs
+      - name: Build scaled Europe and real Northwest Africa
+        shell: bash
+        run: |
+          for region in iberia france canarias northwest-africa; do
+            if [ ! -f "world-generator/sources/${region}/copernicus-dem-glo30.bin" ]; then
+              python world-generator/scripts/import-copernicus-dem-glo90.py "$region" --retrieved-on 2026-08-10
+            fi
+            python world-generator/scripts/build-terrain-only-landcover.py "$region"
+            if [ "$region" = "canarias" ]; then
+              node world-generator/scripts/build-archipelago-region-0244.mjs canarias
+            else
+              node world-generator/scripts/build-region-v2.mjs "$region"
+            fi
+            case "$region" in
+              iberia) python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,PT,GI --minimum-population 20000 --exclude-balearics ;;
+              france) python world-generator/scripts/build-settlement-markers-0244.py france --countries FR --minimum-population 20000 ;;
+              canarias) python world-generator/scripts/build-settlement-markers-0244.py canarias --countries ES --minimum-population 20000 ;;
+              northwest-africa) python world-generator/scripts/build-settlement-markers-0244.py northwest-africa --countries MA,DZ,EH,ES --minimum-population 20000 ;;
+            esac
+            node world-generator/scripts/build-region-preview-v2.mjs "$region"
+          done
+      - name: Verify 0.25.0 static world
+        run: node mallorca-mobile/adventure-0210/verify-0250.mjs
+      - name: Persist deterministic 0.25.0 world
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            world-generator/configs/iberia.region.json \
+            world-generator/configs/france.region.json \
+            world-generator/configs/canarias.region.json \
+            world-generator/configs/northwest-africa.region.json \
+            world-generator/sources/northwest-africa \
+            mallorca-mobile/adventure-0210/index.html \
+            mallorca-mobile/adventure-0210/iberia-world-0245.js \
+            mallorca-mobile/adventure-0210/iberia-world-0247.js \
+            regions/iberia regions/france regions/canarias regions/northwest-africa
+          git add world-generator/*-preview-build.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT 0.25.0 generated state is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Build WAFT 0.25.0 real-scale Europe and Northwest Africa"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify real world in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0250-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          mkdir -p /tmp/waft-0250
+          node mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
+            /tmp/waft-0250
+      - name: Upload 0.25.0 visual evidence
+        if: always() && steps.persist.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: waft-0250-real-world-browser
+          path: /tmp/waft-0250/*.png
+          retention-days: 7
+          if-no-files-found: ignore
