@@ -33,15 +33,17 @@ try{
     const bird=game.animals.find(a=>a.id==='iberia-bearded-vulture');if(!bird)throw new Error('Bearded vulture missing');
     api.setAdventureModifiers({flight:false,mountType:null});api.setRegionalPosition(bird.x,bird.z);await wait(250);document.getElementById('waftAdventureAction')?.click();await wait(350);
     const ocean=stream.worldFromGeo(36.2,-7.0);api.setAdventureModifiers({flight:false,mountType:'vulture'});api.setRegionalPosition(ocean.x,ocean.z);api.setAdventureModifiers({flight:true,mountType:'vulture'});api.setInput(0,0);await wait(250);
-    for(let i=0;i<3;i++){api.setAdventureModifiers({flightFlap:10});await wait(260);}await wait(620);
-    return{mounted:game.mountedAnimalId,buttonHidden:document.getElementById('waftDive0246').hidden,state:api.getState(),surface:api.sampleSurface(api.getState().position.x,api.getState().position.z)};
+    for(let i=0;i<8;i++){api.setAdventureModifiers({flightFlap:10});await wait(150);}await wait(500);
+    const state=api.getState(),surface=api.sampleSurface(state.position.x,state.position.z),floor=(surface?.land?surface.height:surface?.waterHeight)+1.45;
+    return{mounted:game.mountedAnimalId,buttonHidden:document.getElementById('waftDive0246').hidden,state,surface,clearance:state.position.y-floor};
   });
   need(setup.mounted==='iberia-bearded-vulture','Bearded vulture not mounted');need(!setup.buttonHidden,'PICADO button hidden while flying');
+  need(setup.clearance>24,`Dive probe did not reach safe altitude: ${setup.clearance}`);
   const button=page.locator('#waftDive0246');const box=await button.boundingBox();need(box,'PICADO button has no hitbox');
   await page.mouse.move(box.x+box.width/2,box.y+box.height/2);const before=await page.evaluate(()=>WAFTRegionRuntime.getState());await page.mouse.down();await page.waitForTimeout(720);const during=await page.evaluate(()=>WAFTRegionRuntime.getState());await page.mouse.up();await page.waitForTimeout(120);
   const drop=before.position.y-during.position.y;
   need(during.iberiaDive,`PICADO button did not enter dive: ${JSON.stringify(during)}`);
-  need(drop>18,`PICADO button descent too weak: ${drop}`);
+  need(drop>20,`PICADO button descent too weak: ${drop} from clearance ${setup.clearance}`);
   need(during.adventureCurrentSpeed>=50,`PICADO forward speed too low ${during.adventureCurrentSpeed}`);
 
   await page.evaluate(async()=>{const api=WAFTRegionRuntime,stream=WAFTWorldStreaming0245,wait=ms=>new Promise(r=>setTimeout(r,ms));const p=stream.worldFromGeo(42.55,.55);api.setRegionalPosition(p.x,p.z);api.setHeading(Math.PI);api.setInput(0,0);for(let i=0;i<3;i++){api.setAdventureModifiers({flightFlap:10});await wait(220);}await stream.prefetchFrance();});
@@ -54,5 +56,5 @@ try{
   need(seam.mount==='iberia-bearded-vulture','Mount lost at France seam');
   need(errors.length===0,`Page errors: ${errors.join(' | ')}`);
   if(shot){fs.mkdirSync(path.dirname(shot),{recursive:true});await page.screenshot({path:shot,type:'png',fullPage:false});}
-  console.log(JSON.stringify({valid:true,initial,dive:{drop,speed:during.adventureCurrentSpeed,active:during.iberiaDive,startY:before.position.y,endY:during.position.y},overlap:{triangles:overlap.franceGpuTriangles,mode:overlap.renderMode},france:{mode:seam.w.renderMode,triangles:seam.w.franceGpuTriangles,lat:seam.w.geo?.lat,samples:seam.samples},errors},null,2));
+  console.log(JSON.stringify({valid:true,initial,dive:{drop,clearance:setup.clearance,speed:during.adventureCurrentSpeed,active:during.iberiaDive,startY:before.position.y,endY:during.position.y},overlap:{triangles:overlap.franceGpuTriangles,mode:overlap.renderMode},france:{mode:seam.w.renderMode,triangles:seam.w.franceGpuTriangles,lat:seam.w.geo?.lat,samples:seam.samples},errors},null,2));
 }finally{await context.close();await browser.close();}
