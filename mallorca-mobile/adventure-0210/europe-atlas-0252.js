@@ -20,7 +20,7 @@
   const compat={
     worldFromGeo,geoFromWorld,sampleSurface:(x,z)=>sampleSurface(Number(x),Number(z)),
     getState:()=>({phase:state.phase,activeRegion:'europe-atlas',prefetched:state.ready,prefetchStarted:true,renderMode:'europe-atlas-single-surface',atlasReady:state.ready,atlasTriangles:state.triangles,atlasDrawFrames:state.drawFrames,atlasBytes:state.bytes,atlasVerticalScale:VERTICAL,iberiaGpuReleased:state.baseTerrainReleased,geo:state.lastGeo,error:state.error,pageInstanceId:window.__WAFT_PAGE_INSTANCE_0245__||null}),
-    prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:g=>Boolean(g&&g.lat>=42.3&&g.lat<=51.5&&g.lon>=-5.5&&g.lon<=9.8),franceSouthLat:()=>42.3
+    prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.__WAFT_IBERIA_WORLD_0245_READY__=true;
   window.WAFTWorldContinuity0247={inCanarias,getState:()=>({atlasReady:state.ready,canariasReady:state.ready,canariasTriangles:state.triangles}),prefetchCanarias:async()=>true};window.__WAFT_IBERIA_WORLD_0247_READY__=true;
