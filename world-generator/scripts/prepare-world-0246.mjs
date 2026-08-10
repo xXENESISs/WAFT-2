@@ -22,8 +22,7 @@ index=replace(index,
 if(!index.includes('adventure-0210/iberia-world-0246.js')){
   const bootNeedle='<script src="adventure-0210/iberia-world-0245.js?v=${encodeURIComponent(version)}"><\\/script>';
   if(!index.includes(bootNeedle))throw new Error('0.24.6 missing 0245 bootstrap tag');
-  const bootAdd=`${bootNeedle}\\
-<script src="adventure-0210/iberia-world-0246.js?v=${encodeURIComponent(version)}"><\\/script>`;
+  const bootAdd=bootNeedle+'<script src="adventure-0210/iberia-world-0246.js?v=${encodeURIComponent(version)}"><\\/script>';
   index=index.replace(bootNeedle,bootAdd);
 }
 
