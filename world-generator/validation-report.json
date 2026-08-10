@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-10T18:30:10.879Z",
+  "generatedAt": "2026-08-10T18:41:35.347Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
@@ -23,7 +23,7 @@
     {
       "file": "world-generator/configs/canarias.region.json",
       "id": "canarias",
-      "version": "0.24.4",
+      "version": "0.25.0",
       "valid": true,
       "errors": [],
       "warnings": [],
@@ -33,7 +33,7 @@
         "manualLandmarks": 0,
         "manualSpecies": 0,
         "entryPoints": 1,
-        "connections": 1
+        "connections": 2
       }
     },
     {
@@ -55,7 +55,7 @@
     {
       "file": "world-generator/configs/france.region.json",
       "id": "france",
-      "version": "0.24.4",
+      "version": "0.25.0",
       "valid": true,
       "errors": [],
       "warnings": [],
@@ -71,12 +71,28 @@
     {
       "file": "world-generator/configs/iberia.region.json",
       "id": "iberia",
-      "version": "0.24.4",
+      "version": "0.25.0",
       "valid": true,
       "errors": [],
       "warnings": [],
       "summary": {
         "subregions": 12,
+        "manualSettlements": 0,
+        "manualLandmarks": 0,
+        "manualSpecies": 0,
+        "entryPoints": 3,
+        "connections": 3
+      }
+    },
+    {
+      "file": "world-generator/configs/northwest-africa.region.json",
+      "id": "northwest-africa",
+      "version": "0.25.0",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "summary": {
+        "subregions": 9,
         "manualSettlements": 0,
         "manualLandmarks": 0,
         "manualSpecies": 0,
