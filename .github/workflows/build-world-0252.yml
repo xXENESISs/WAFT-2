@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - feat/world-0252-unified-europe-atlas
-      - main
     paths:
       - .github/workflows/build-world-0252.yml
       - .github/workflows/build-world-0250.yml
