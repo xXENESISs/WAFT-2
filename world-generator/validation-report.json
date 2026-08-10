@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-10T20:37:32.765Z",
+  "generatedAt": "2026-08-10T20:42:13.667Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
@@ -50,6 +50,24 @@
         "manualSpecies": 9,
         "entryPoints": 5,
         "connections": 3
+      }
+    },
+    {
+      "file": "world-generator/configs/europe-atlas.region.json",
+      "id": "europe-atlas",
+      "version": "0.25.2",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "/travel/connections: region is isolated from the world graph"
+      ],
+      "summary": {
+        "subregions": 6,
+        "manualSettlements": 0,
+        "manualLandmarks": 0,
+        "manualSpecies": 0,
+        "entryPoints": 1,
+        "connections": 0
       }
     },
     {
