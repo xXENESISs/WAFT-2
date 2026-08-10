@@ -1,9 +1,9 @@
-name: Verify World 2 Adventure 0.25.2
+name: Verify World 2 Adventure 0.25.3
 
 on:
   push:
     branches:
-      - feat/world-0252-unified-europe-atlas
+      - feat/world-0253-scale-relief
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -18,6 +18,7 @@ on:
       - world-generator/configs/world-streaming-topology.v1.json
       - world-generator/overrides/europe-atlas.overrides.json
       - world-generator/scripts/prepare-world-0252.mjs
+      - world-generator/scripts/prepare-world-0253.mjs
       - world-generator/scripts/import-mapzen-terrarium-atlas.py
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/build-region-v2.mjs
@@ -31,6 +32,7 @@ on:
       - regions/northwest-africa/**
       - regions/europe-atlas/**
       - .github/workflows/verify-world2-adventure-0210.yml
+      - .github/workflows/build-world-0253.yml
   workflow_dispatch:
 
 permissions:
@@ -68,8 +70,11 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
           node --check mallorca-mobile/adventure-0210/europe-atlas-0252.js
           node --check mallorca-mobile/adventure-0210/verify-0252.mjs
+          node --check mallorca-mobile/adventure-0210/verify-0253.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0253.mjs
           node --check world-generator/scripts/prepare-world-0252.mjs
+          node --check world-generator/scripts/prepare-world-0253.mjs
           node --check world-generator/scripts/build-region-v2.mjs
           node --check world-generator/scripts/build-region-preview-v2.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
@@ -87,9 +92,9 @@ jobs:
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/spain-region-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/europe-atlas.region.json','utf8'))"
-      - name: Verify 0.25.2 unified world contracts
+      - name: Verify 0.25.3 unified world contracts
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/verify-0252.mjs
+        run: node mallorca-mobile/adventure-0210/verify-0253.mjs
       - name: Compile patched regional runtimes
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
@@ -118,4 +123,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.25.2 keeps the proven Adventure mechanics while replacing regional terrain swaps with one rectangular Europe + North Africa + Canarias base atlas at 0.30 u/km and proportional mountain height.
+# 0.25.3 keeps the single rectangular Europe + North Africa + Canarias atlas, increases horizontal scale to 0.33 u/km and adds moderate terrain relief without restoring regional swaps.
