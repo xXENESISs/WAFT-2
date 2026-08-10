@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "id": "europe-atlas",
   "name": "Europa · Atlas continuo",
-  "version": "0.25.2",
+  "version": "0.25.3",
   "status": "prototype",
   "continent": "Europe",
   "countryCodes": [
@@ -84,8 +84,8 @@
     },
     "projection": "local-equirectangular",
     "scale": {
-      "horizontalUnitsPerKm": 0.3,
-      "verticalExaggeration": 0.65,
+      "horizontalUnitsPerKm": 0.33,
+      "verticalExaggeration": 0.72,
       "emptySpaceCompression": {
         "mode": "none",
         "factor": 1,
@@ -222,7 +222,7 @@
         2,
         3
       ],
-      "smoothingPasses": 2,
+      "smoothingPasses": 1,
       "coastalFlattening": true,
       "maxWalkableSlopeDegrees": 52,
       "seaLevelMeters": 0
