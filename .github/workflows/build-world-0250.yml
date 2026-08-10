@@ -23,6 +23,7 @@ on:
       - mallorca-mobile/adventure-0210/index.html
       - mallorca-mobile/adventure-0210/iberia-world-0245.js
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
+      - mallorca-mobile/adventure-0210/iberia-world-0249.js
       - mallorca-mobile/adventure-0210/iberia-world-0250.js
       - mallorca-mobile/adventure-0210/verify-0250.mjs
       - mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
@@ -75,6 +76,7 @@ jobs:
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
           node --check mallorca-mobile/adventure-0210/verify-0250.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
@@ -123,6 +125,8 @@ jobs:
             mallorca-mobile/adventure-0210/index.html \
             mallorca-mobile/adventure-0210/iberia-world-0245.js \
             mallorca-mobile/adventure-0210/iberia-world-0247.js \
+            mallorca-mobile/adventure-0210/iberia-world-0249.js \
+            mallorca-mobile/adventure-0210/iberia-world-0250.js \
             regions/iberia regions/france regions/canarias regions/northwest-africa
           git add world-generator/*-preview-build.json 2>/dev/null || true
           if git diff --cached --quiet; then
