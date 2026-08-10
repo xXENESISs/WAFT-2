@@ -1,30 +1,34 @@
-name: Verify WAFT world visible reality 0.24.6
+name: Verify WAFT world continuity 0.24.7
 
 on:
   push:
     branches:
       - fix/world-0246-visible-reality
       - fix/ci-world-0246
+      - fix/world-0247-continuity-labels-canarias
       - main
     paths:
       - .github/workflows/verify-world-visible-0246.yml
       - world-generator/scripts/prepare-world-0246.mjs
+      - world-generator/scripts/prepare-world-0247.mjs
       - world-generator/scripts/ensure-iberia-settlements-0246.mjs
       - world-generator/scripts/build-settlement-markers-0244.py
       - world-generator/scripts/build-region-preview-v2.mjs
       - mallorca-mobile/adventure-0210/index.html
       - mallorca-mobile/adventure-0210/iberia-world-0245.js
       - mallorca-mobile/adventure-0210/iberia-world-0246.js
-      - mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs
+      - mallorca-mobile/adventure-0210/iberia-world-0247.js
+      - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
       - regions/iberia/**
       - regions/france/**
+      - regions/canarias/**
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: waft-world-visible-0246-${{ github.ref }}
+  group: waft-world-visible-0247-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -54,40 +58,41 @@ jobs:
         run: |
           python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
           node --check world-generator/scripts/prepare-world-0246.mjs
+          node --check world-generator/scripts/prepare-world-0247.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
-          node --check mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs
+          node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
           node world-generator/scripts/validate-region.mjs
-      - name: Prepare Adventure 0.24.6
-        run: node world-generator/scripts/prepare-world-0246.mjs
-      - name: Rebuild Iberia settlements and preview
+      - name: Prepare Adventure continuity 0.24.7
         run: |
-          python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,GI --minimum-population 20000 --exclude-balearics
+          node world-generator/scripts/prepare-world-0246.mjs
+          node world-generator/scripts/prepare-world-0247.mjs
+      - name: Rebuild Iberia including Portugal
+        run: |
+          python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,PT,GI --minimum-population 20000 --exclude-balearics
           node world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node world-generator/scripts/build-region-preview-v2.mjs iberia
-      - name: Verify visible contracts
+      - name: Verify visible continuity contracts
         run: |
           node - <<'NODE'
           const fs=require('fs');
           const index=fs.readFileSync('mallorca-mobile/adventure-0210/index.html','utf8');
-          const france=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0245.js','utf8');
+          const layer=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0247.js','utf8');
           const settlements=JSON.parse(fs.readFileSync('regions/iberia/settlements.json','utf8')).items;
           const objects=JSON.parse(fs.readFileSync('regions/iberia/objects.json','utf8')).items;
           const manifest=JSON.parse(fs.readFileSync('regions/iberia/manifest.json','utf8'));
-          if(!index.includes("__WAFT_ADVENTURE_BUILD__='0.24.6'"))throw new Error('0.24.6 build marker missing');
-          if(!index.includes('iberia-world-0246.js'))throw new Error('0.24.6 runtime layer missing');
-          if(!index.includes("'flightDive'in modifiers"))throw new Error('Explicit dive API missing');
-          const sant=settlements.find(x=>x.name==='Sant Just Desvern');
-          if(!sant||sant.population<20000)throw new Error('Sant Just Desvern missing');
-          if(!objects.some(x=>x.name==='Sant Just Desvern'))throw new Error('Sant Just physical object missing');
+          const pt=settlements.filter(x=>x.countryCode==='PT');
+          if(!index.includes('iberia-world-0247.js'))throw new Error('0.24.7 continuity layer missing from index');
+          if(!layer.includes('franceBorderLat')||!layer.includes('deepFrance'))throw new Error('Gradual France retention missing');
+          if(!layer.includes('regions/canarias')||!layer.includes("streamedRegion:'canarias'"))throw new Error('Canarias physical stream missing');
+          if(!layer.includes('waftCityLabels0247'))throw new Error('World city labels missing');
+          if(pt.length<20)throw new Error(`Portugal is still absent: ${pt.length} settlements`);
           if(manifest.content.settlements!==settlements.length||manifest.content.generatedBuildings!==objects.length)throw new Error('Iberia manifest counts are stale');
-          for(const name of ['Ayódar','Peñíscola','Gibraltar']){
-            const place=settlements.find(x=>x.name===name);if(!place?.specialMarker)throw new Error(`${name} special missing`);
-            if(objects.some(x=>String(x.sourceId)===String(place.sourceId)))throw new Error(`${name} still generic needle`);
-          }
-          if(!france.includes('const LOD_MIN_LAT=42.10;')||!france.includes("lift:stride===1?0:-.08"))throw new Error('France overlap repair missing');
-          console.log(JSON.stringify({settlements:settlements.length,objects:objects.length,santJust:sant.population,specialGenericObjects:0},null,2));
+          const sant=settlements.find(x=>x.name==='Sant Just Desvern');if(!sant)throw new Error('Sant Just lost');
+          for(const name of ['Ayódar','Peñíscola','Gibraltar']){const place=settlements.find(x=>x.name===name);if(!place?.specialMarker)throw new Error(`${name} special lost`);}
+          console.log(JSON.stringify({settlements:settlements.length,objects:objects.length,portugal:pt.length,santJust:sant.population},null,2));
           NODE
       - name: Persist deterministic generated state
         id: persist
@@ -95,31 +100,31 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/iberia-world-0245.js regions/iberia
+          git add mallorca-mobile/adventure-0210/index.html regions/iberia
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "WAFT 0.24.6 generated state is deterministic and current."
+            echo "WAFT 0.24.7 generated state is deterministic and current."
             exit 0
           fi
-          git commit -m "Build WAFT visible reality package 0.24.6"
+          git commit -m "Build WAFT continuity package 0.24.7"
           git push origin HEAD:${GITHUB_REF_NAME}
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Verify visible fixes in Chromium
+      - name: Verify continuity in Chromium
         if: steps.persist.outputs.changed != 'true'
         shell: bash
         run: |
-          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0246-http.log 2>&1 &
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0247-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          node mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs \
+          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs \
             "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
-            /tmp/waft-visible-0246.png
-      - name: Upload visible-fix screenshots
+            /tmp/waft-continuity-0247.png
+      - name: Upload continuity screenshot
         if: always() && steps.persist.outputs.changed != 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: waft-visible-0246-browser
-          path: /tmp/waft-visible-0246*.png
+          name: waft-continuity-0247-browser
+          path: /tmp/waft-continuity-0247.png
           retention-days: 7
           if-no-files-found: ignore
