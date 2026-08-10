@@ -106,6 +106,6 @@
   }
   setInterval(updateCityLabels,120);updateCityLabels();
 
-  window.WAFTWorldContinuity0247={version:'0.24.7',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null;return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased,iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canariasDrawFrames};}};
+  window.WAFTWorldContinuity0247={version:'0.24.7',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null;return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased,iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames};}};
   window.__WAFT_IBERIA_WORLD_0247_READY__=true;
 })().catch(e=>{console.error('WAFT 0.24.7 failed',e);window.__WAFT_IBERIA_WORLD_0247_ERROR__=String(e?.message||e);});
