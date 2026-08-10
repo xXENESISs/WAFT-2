@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.24.8 hotfix
+name: Verify World 2 Adventure 0.24.9
 
 on:
   push:
@@ -23,6 +23,7 @@ on:
       - fix/ci-world-0246
       - fix/world-0247-continuity-labels-canarias
       - fix/world-0248-hotfix-render-cities
+      - feat/world-0249-ui-labels-scale-foundation
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -79,8 +80,11 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
+          node --check mallorca-mobile/adventure-0210/verify-0249.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-core-continuity-0249.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
           node --check world-generator/scripts/prepare-world-0246.mjs
           node --check world-generator/scripts/prepare-world-0247.mjs
@@ -98,7 +102,7 @@ jobs:
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
       - name: Static parity and visible-world verification
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/verify.mjs
+        run: node mallorca-mobile/adventure-0210/verify-0249.mjs
       - name: Compile patched regional runtimes
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
@@ -127,4 +131,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.24.8 keeps the full legacy parity suite while explicitly rejecting the Cantabria France-render regression, latitude projection morph and separate floating-city UI.
+# 0.24.9 retains the full parity suite and adds one authoritative world HUD plus shared nearby settlement labels with population/☠️.
