@@ -35,7 +35,9 @@
   const buildLandmark=kind=>{
     reset();
     if(kind==='gibraltar'){
-      rock(0,0,0,7.4,1.15,3.0,[.31,.31,.29],.04);rock(-1.7,.35,-.15,4.5,3.25,2.15,[.39,.38,.34],.08);rock(1.45,.25,.18,3.8,2.35,2.45,[.46,.44,.38],-.06);rock(-.15,.55,.05,3.0,3.75,1.65,[.52,.49,.42],.02);
+      rock(0,0,0,7.2,.48,2.9,[.30,.30,.28],.02);
+      rock(-.15,.18,0,6.45,4.15,2.35,[.43,.41,.36],.08);
+      rock(1.7,.24,.12,2.35,2.1,2.15,[.35,.35,.32],-.03);
     }else if(kind==='peniscola'){
       rock(0,0,0,3.5,.72,3.0,[.43,.39,.32],.02);box(0,1.2,0,2.0,1.35,1.65,[.64,.57,.45]);box(0,1.95,0,2.35,.22,1.95,[.72,.65,.51]);
       for(const [x,z]of[[-.9,-.72],[.9,-.72],[-.9,.72],[.9,.72]]){box(x,1.72,z,.48,1.55,.48,[.70,.63,.49]);box(x,2.52,z,.62,.12,.62,[.77,.70,.55]);}
@@ -54,7 +56,7 @@
   try{
     const [iberiaData,franceObjects]=await Promise.all([fetch(new URL('../../regions/iberia/settlements.json',location.href),{cache:'no-store'}).then(r=>r.json()),fetch(new URL('../../regions/france/objects.json',location.href),{cache:'no-store'}).then(r=>r.json())]);
     const want=new Map([['Gibraltar','gibraltar'],['Peñíscola','peniscola'],['Ayódar','ayodar']]);
-    landmarks=(iberiaData.items||[]).filter(x=>want.has(x.name)).map(x=>({kind:want.get(x.name),x:x.local.x,z:x.local.z,y:(Number(x.local.y)||0)*.013594+.04,name:x.name}));
+    landmarks=(iberiaData.items||[]).filter(x=>want.has(x.name)).map(x=>{const px=Number(x.local.x),pz=Number(x.local.z),surface=api.sampleSurface?.(px,pz),fallback=(Number(x.local.y)||0)*.013594;return{kind:want.get(x.name),x:px,z:pz,y:Number.isFinite(surface?.height)?surface.height+.03:fallback+.03,name:x.name};});
     reset();const vertical=Number(api.metadata?.terrain?.verticalScale)||.013594;
     for(const city of franceObjects.items||[]){const lat=Number(city.position?.lat),lon=Number(city.position?.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;const p=stream.worldFromGeo(lat,lon),pop=Number(city.tags?.population)||0,tier=pop>=250000?3:pop>=100000?2:pop>=50000?1:0,w=[.28,.38,.50,.68][tier],h=Math.max(.25,Math.min(1.15,(Number(city.heightMeters)||18)*vertical)),base=(Number(city.local?.y)||0)*vertical,col=tier>=2?[.92,.69,.25]:tier===1?[.82,.62,.25]:[.70,.55,.25];box(p.x,base+h*.5+.025,p.z,w,h,w,col);franceCityCount++;}if(franceCityCount)franceCitiesMesh=finish();
   }catch(e){console.error(e);}
