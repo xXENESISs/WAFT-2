@@ -19,9 +19,13 @@ index=replace(index,
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);",
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);if('flightDive'in modifiers)state.iberiaDiveButton=Boolean(modifiers.flightDive);",
   'dive modifier api');
-const bootNeedle='<script src="adventure-0210/iberia-world-0245.js?v=${encodeURIComponent(version)}"><\\/script>\\\n';
-const bootAdd=bootNeedle+'<script src="adventure-0210/iberia-world-0246.js?v=${encodeURIComponent(version)}"><\\/script>\\\n';
-index=replace(index,bootNeedle,bootAdd,'0246 bootstrap');
+if(!index.includes('adventure-0210/iberia-world-0246.js')){
+  const bootNeedle='<script src="adventure-0210/iberia-world-0245.js?v=${encodeURIComponent(version)}"><\\/script>';
+  if(!index.includes(bootNeedle))throw new Error('0.24.6 missing 0245 bootstrap tag');
+  const bootAdd=`${bootNeedle}\\
+<script src="adventure-0210/iberia-world-0246.js?v=${encodeURIComponent(version)}"><\\/script>`;
+  index=index.replace(bootNeedle,bootAdd);
+}
 
 france=replace(france,'const LOD_MIN_LAT=43.54;','const LOD_MIN_LAT=42.10;','France overlap start');
 france=replace(france,'const FRANCE_SAMPLE_LAT=43.50;','const FRANCE_SAMPLE_LAT=42.65;','France surface start');
