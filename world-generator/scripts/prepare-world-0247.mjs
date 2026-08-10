@@ -15,8 +15,7 @@ if(!source.includes('iberia-world-0247.js')){
 }
 
 // The legacy regional runtime clamps camera x/z to the static Iberia terrain bounds every frame.
-// That makes any streamed region outside Iberia impossible even when its surface is already loaded.
-// Keep the old clamp only when there is no streamed-world surface at the current coordinate.
+// Keep that safety only when no streamed-world surface exists at the current coordinate.
 if(!source.includes('WAFT_WORLD_BOUNDS_0247')){
   const oldClamp=`      const activeTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;\n      const bounds = activeTerrain.bounds;\n      state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));\n      state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));\n      if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();`;
   const newClamp=`      const activeTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;\n      const bounds = activeTerrain.bounds;\n      const streamedWorldSurface=state.worldMode==='regional'?window.WAFTWorldStreaming0245?.sampleSurface?.(state.camera.x,state.camera.z):null;\n      if(!streamedWorldSurface?.inside){\n        state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));\n        state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));\n      }\n      if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();`;
@@ -30,10 +29,47 @@ if(indexChanged)fs.writeFileSync(indexPath,source);
 
 let layer=fs.readFileSync(layerPath,'utf8');
 let layerChanged=false;
-if(layer.includes('canariasDrawFrames')){
-  layer=layer.replaceAll('canariasDrawFrames','canDrawFrames');
-  layerChanged=true;
-}
-if(layerChanged)fs.writeFileSync(layerPath,layer);
+const replaceLayer=(oldText,newText,label)=>{
+  if(layer.includes(newText))return;
+  if(!layer.includes(oldText))throw new Error(`iberia-world-0247.js: ${label} anchor not found`);
+  layer=layer.replace(oldText,newText);layerChanged=true;
+};
+if(layer.includes('canariasDrawFrames')){layer=layer.replaceAll('canariasDrawFrames','canDrawFrames');layerChanged=true;}
 
-console.log('WAFT 0.24.7 prepared: dynamic streamed-world bounds, smooth France retention, world city labels, Portugal and Canarias streaming.');
+if(!layer.includes('WAFT_ATLANTIC_MESH_0247')){
+  replaceLayer(
+    '  let canTerrain=null,canCover=null,canManifest=null,canMesh=null,canPrefetch=null,canDrawFrames=0;',
+    '  let canTerrain=null,canCover=null,canManifest=null,canMesh=null,canPrefetch=null,canDrawFrames=0,atlanticMesh=null,atlanticDrawFrames=0; // WAFT_ATLANTIC_MESH_0247',
+    'Atlantic state'
+  );
+  replaceLayer(
+    "  const canPV=gl.getUniformLocation(canProgram,'uPV'),canV=gl.getUniformLocation(canProgram,'uV');",
+    `  const canPV=gl.getUniformLocation(canProgram,'uPV'),canV=gl.getUniformLocation(canProgram,'uV');
+  // A narrow Atlantic water corridor follows the ocean west of Morocco instead of painting a giant rectangle over Africa.
+  const atlanticEastLon=lat=>lat>=35?-5.05-(35.45-lat)*2.0:lat>=33?-5.95-(35-lat)*1.25:lat>=31?-8.45-(33-lat)*1.3:-11.05-(31-lat)*1.15;
+  const buildAtlanticMesh=()=>{
+    const lats=[35.45,35,33,31,29.35,27.25],pos=[],col=[],ind=[],water=[.026,.17,.30];
+    for(const lat of lats)for(const lon of [-19.6,atlanticEastLon(lat)]){const w=worldFromGeo(lat,lon);pos.push(w.x,-7.75,w.z);col.push(...water);}
+    for(let r=0;r<lats.length-1;r++){const a=r*2,b=a+1,c=a+2,d=a+3;ind.push(a,c,b,b,c,d);}
+    const vao=gl.createVertexArray();gl.bindVertexArray(vao);const pb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pos),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);const cb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,cb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(col),gl.STATIC_DRAW);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(ind),gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:ind.length,triangles:ind.length/3,buffers:[pb,cb,ib]};
+  };
+  atlanticMesh=buildAtlanticMesh();`,
+    'Atlantic mesh builder'
+  );
+  replaceLayer(
+    "  const sampleAtlantic=(x,z)=>{const g=geoFromWorld(x,z);if(g.lat>35.45||g.lat<29.35||g.lon>-5.05||g.lon<-19.6)return null;return{inside:true,land:false,water:true,height:-8*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'atlantic-corridor',lat:g.lat,lon:g.lon};};",
+    "  const sampleAtlantic=(x,z)=>{const g=geoFromWorld(x,z);if(g.lat>35.45||g.lat<27.25||g.lon<-19.6||g.lon>atlanticEastLon(g.lat))return null;return{inside:true,land:false,water:true,height:-8*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'atlantic-corridor',lat:g.lat,lon:g.lon};};",
+    'Atlantic sampler'
+  );
+  replaceLayer(
+    "  plugin.afterWorldDraw=(now,eye,pv)=>{previousDraw?.(now,eye,pv);const state=api.getState?.(),g=state?.position?geoFromWorld(state.position.x,state.position.z):null;if(!canMesh||!g||g.lat>31.6)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(canProgram);gl.uniformMatrix4fv(canPV,false,pv);gl.uniform1f(canV,VERTICAL);gl.bindVertexArray(canMesh.vao);gl.drawElements(gl.TRIANGLES,canMesh.count,gl.UNSIGNED_INT,0);gl.bindVertexArray(null);canDrawFrames++;};",
+    "  plugin.afterWorldDraw=(now,eye,pv)=>{previousDraw?.(now,eye,pv);const state=api.getState?.(),g=state?.position?geoFromWorld(state.position.x,state.position.z):null;if(!g)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(canProgram);gl.uniformMatrix4fv(canPV,false,pv);gl.uniform1f(canV,VERTICAL);if(atlanticMesh&&g.lat<36.6&&g.lon<-4.5){gl.bindVertexArray(atlanticMesh.vao);gl.drawElements(gl.TRIANGLES,atlanticMesh.count,gl.UNSIGNED_INT,0);atlanticDrawFrames++;}if(canMesh&&g.lat<31.6){gl.bindVertexArray(canMesh.vao);gl.drawElements(gl.TRIANGLES,canMesh.count,gl.UNSIGNED_INT,0);canDrawFrames++;}gl.bindVertexArray(null);};",
+    'Atlantic/Canarias draw'
+  );
+  const stateNeedle='canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames};';
+  const stateReplacement='canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames,atlanticReady:Boolean(atlanticMesh),atlanticTriangles:atlanticMesh?.triangles||0,atlanticDrawFrames};';
+  replaceLayer(stateNeedle,stateReplacement,'Atlantic public state');
+}
+
+if(layerChanged)fs.writeFileSync(layerPath,layer);
+console.log('WAFT 0.24.7 prepared: dynamic world bounds, smooth France retention, visible labels, Portugal, Atlantic corridor and Canarias streaming.');
