@@ -22,8 +22,7 @@ on:
       - mallorca-mobile/adventure-0210/iberia-world-0246.js
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
       - mallorca-mobile/adventure-0210/iberia-world-0249.js
-      - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
-      - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-core-continuity-0249.mjs
       - mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
       - mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
       - regions/iberia/**
@@ -72,7 +71,7 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-core-continuity-0249.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
           node world-generator/scripts/validate-region.mjs
@@ -131,7 +130,7 @@ jobs:
           git commit -m "Build WAFT world UI package 0.24.9"
           git push origin HEAD:${GITHUB_REF_NAME}
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Verify Cantabria, France, Portugal, labels and Canarias in Chromium
+      - name: Verify geography and world UI in Chromium
         if: steps.persist.outputs.changed != 'true'
         shell: bash
         run: |
@@ -139,15 +138,16 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
+          mkdir -p /tmp/waft-ui-0249
           world_url="http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
-          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs "$world_url" /tmp/waft-cantabria-0249.png
-          node mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs "$world_url"
+          node mallorca-mobile/adventure-0210/tools/verify-core-continuity-0249.mjs "$world_url" /tmp/waft-ui-0249/cantabria.png
+          node mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs "$world_url" /tmp/waft-ui-0249
           node mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs "$world_url"
-      - name: Upload Cantabria regression screenshot
+      - name: Upload 0.24.9 visual evidence
         if: always() && steps.persist.outputs.changed != 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: waft-0249-cantabria-browser
-          path: /tmp/waft-cantabria-0249.png
+          name: waft-0249-world-ui-browser
+          path: /tmp/waft-ui-0249/*.png
           retention-days: 7
           if-no-files-found: ignore
