@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.24.7
+name: Verify World 2 Adventure 0.24.8 hotfix
 
 on:
   push:
@@ -22,6 +22,7 @@ on:
       - fix/verify-world2-0245
       - fix/ci-world-0246
       - fix/world-0247-continuity-labels-canarias
+      - fix/world-0248-hotfix-render-cities
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -126,4 +127,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.24.7 keeps the full legacy parity suite and adds gradual France retention, Portuguese coverage, visible city labels, Atlantic continuity and physical Canarias streaming.
+# 0.24.8 keeps the full legacy parity suite while explicitly rejecting the Cantabria France-render regression, latitude projection morph and separate floating-city UI.
