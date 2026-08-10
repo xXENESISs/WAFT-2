@@ -3,7 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 
-// WAFT 0.24.6 global static verification: preserve World 1/2 parity and require the visible-world corrective layer.
+// WAFT 0.24.7 global static verification: preserve World 1/2 parity and require continuous France/Portugal/Atlantic/Canarias world layers.
 const here=path.dirname(new URL(import.meta.url).pathname);
 const mobile=path.resolve(here,'..');
 const root=path.resolve(here,'../..');
@@ -18,11 +18,12 @@ const parity=read('world1-parity-0233.js');
 const world244=read('iberia-world-0244.js');
 const stream245=read('iberia-world-0245.js');
 const visible246=read('iberia-world-0246.js');
+const continuity247=read('iberia-world-0247.js');
 
 for(const [name,source] of [
   ['plugin-loader.js',loader],['gameplay-plugin.js',plugin],['playability-0230.js',playability],
   ['mobile-polish-0231.js',mobilePolish],['mechanics-0232.js',mechanics],['world1-parity-0233.js',parity],
-  ['iberia-world-0244.js',world244],['iberia-world-0245.js',stream245],['iberia-world-0246.js',visible246]
+  ['iberia-world-0244.js',world244],['iberia-world-0245.js',stream245],['iberia-world-0246.js',visible246],['iberia-world-0247.js',continuity247]
 ])new vm.Script(source,{filename:name});
 for(const script of [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean))new vm.Script(script,{filename:'adventure-index-inline.js'});
 
@@ -45,6 +46,8 @@ for(const pattern of [
   /WAFT_IBERIA_WORLD_0244/,
   /WAFT_IBERIA_WORLD_0245/,
   /iberia-world-0246\.js/,
+  /iberia-world-0247\.js/,
+  /WAFT_WORLD_BOUNDS_0247/,
   /state\.iberiaDiveButton\|\|state\.joyY>\.55/,
   /state\.iberiaDiveButton\)state\.adventureFlightVy=-58/,
   /iberiaVerticalDt/,
@@ -79,6 +82,15 @@ for(const pattern of [
   /FRANCE 001 · MONDE CONTINU/,
   /FRANCE · \$\{franceCityCount\|\|461\} VILLES · TERRAIN CONTINU/
 ])assert.match(visible246,pattern,`0.24.6 visible layer missing ${pattern}`);
+for(const pattern of [
+  /__WAFT_IBERIA_WORLD_0247_READY__/,
+  /franceBorderLat/,/deepFrance/,
+  /waftCityLabels0247/,/waftCity0247/,
+  /regions\/canarias\/manifest\.json/,/streamedRegion:'canarias'/,
+  /WAFT_ATLANTIC_MESH_0247/,/streamedRegion:'atlantic-corridor'/,
+  /atlanticDrawFrames/,/canDrawFrames/,
+  /CANARIAS · \$\{canariasCities\.length\} NÚCLEOS · MUNDO CONTINUO/
+])assert.match(continuity247,pattern,`0.24.7 continuity layer missing ${pattern}`);
 
 for(const pattern of [
   /animal\.type==='goat'\|\|animal\.type==='shark'\|\|animal\.type==='vulture'/,
@@ -99,12 +111,14 @@ for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-cat
 const settlements=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/settlements.json'),'utf8')).items||[];
 const objects=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/objects.json'),'utf8')).items||[];
 const preview=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/preview/iberia-preview-v1.json'),'utf8'));
+const portugal=settlements.filter(x=>x.countryCode==='PT');
 assert.ok(settlements.some(x=>x.name==='Sant Just Desvern'&&Number(x.population)>=20000),'Sant Just Desvern 20k+ missing');
 assert.ok(objects.some(x=>x.name==='Sant Just Desvern'),'Sant Just Desvern physical object missing');
-assert.ok(preview.counts.settlements>=368&&preview.counts.buildings>=365,`Iberia counts regressed: ${JSON.stringify(preview.counts)}`);
+assert.ok(portugal.length>=100,`Portugal coverage regressed: ${portugal.length}`);
+assert.ok(preview.counts.settlements>=483&&preview.counts.buildings>=480,`Iberia/Portugal counts regressed: ${JSON.stringify(preview.counts)}`);
 for(const name of ['Ayódar','Peñíscola','Gibraltar']){
   const place=settlements.find(x=>x.name===name);assert.ok(place?.specialMarker,`${name} special landmark missing`);
   assert.ok(!objects.some(x=>String(x.sourceId)===String(place.sourceId)),`${name} leaked into generic needle geometry`);
 }
 
-console.log('WAFT 0.24.6 verification passed: legacy parity, explicit low-FPS PICADO, physical Iberia landmarks, Sant Just coverage and continuous populated France are present.');
+console.log(`WAFT 0.24.7 verification passed: legacy parity, PICADO, gradual France retention, ${portugal.length} Portuguese settlements, city labels, visible Atlantic corridor and physical Canarias streaming are present.`);
