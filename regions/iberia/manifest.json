@@ -11,9 +11,9 @@
     "connections": 2,
     "entryPoints": 3,
     "faunaSpecies": 0,
-    "generatedBuildings": 364,
+    "generatedBuildings": 365,
     "landmarks": 0,
-    "settlements": 367
+    "settlements": 368
   },
   "deterministic": true,
   "files": [
@@ -204,7 +204,7 @@
     "id": "iberia",
     "name": "Península Ibérica",
     "status": "prototype",
-    "version": "0.24.4"
+    "version": "0.24.6"
   },
   "sectors": {
     "active": 456,

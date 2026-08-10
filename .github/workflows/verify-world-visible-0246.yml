@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - fix/world-0246-visible-reality
+      - fix/ci-world-0246
+      - main
     paths:
       - .github/workflows/verify-world-visible-0246.yml
       - world-generator/scripts/prepare-world-0246.mjs
@@ -72,14 +74,17 @@ jobs:
           const france=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0245.js','utf8');
           const settlements=JSON.parse(fs.readFileSync('regions/iberia/settlements.json','utf8')).items;
           const objects=JSON.parse(fs.readFileSync('regions/iberia/objects.json','utf8')).items;
+          const manifest=JSON.parse(fs.readFileSync('regions/iberia/manifest.json','utf8'));
           if(!index.includes("__WAFT_ADVENTURE_BUILD__='0.24.6'"))throw new Error('0.24.6 build marker missing');
           if(!index.includes('iberia-world-0246.js'))throw new Error('0.24.6 runtime layer missing');
           if(!index.includes("'flightDive'in modifiers"))throw new Error('Explicit dive API missing');
           const sant=settlements.find(x=>x.name==='Sant Just Desvern');
           if(!sant||sant.population<20000)throw new Error('Sant Just Desvern missing');
+          if(!objects.some(x=>x.name==='Sant Just Desvern'))throw new Error('Sant Just physical object missing');
+          if(manifest.content.settlements!==settlements.length||manifest.content.generatedBuildings!==objects.length)throw new Error('Iberia manifest counts are stale');
           for(const name of ['Ayódar','Peñíscola','Gibraltar']){
             const place=settlements.find(x=>x.name===name);if(!place?.specialMarker)throw new Error(`${name} special missing`);
-            if(objects.some(x=>String(x.id||'').includes(String(place.sourceId))))throw new Error(`${name} still generic needle`);
+            if(objects.some(x=>String(x.sourceId)===String(place.sourceId)))throw new Error(`${name} still generic needle`);
           }
           if(!france.includes('const LOD_MIN_LAT=42.10;')||!france.includes("lift:stride===1?0:-.08"))throw new Error('France overlap repair missing');
           console.log(JSON.stringify({settlements:settlements.length,objects:objects.length,santJust:sant.population,specialGenericObjects:0},null,2));
