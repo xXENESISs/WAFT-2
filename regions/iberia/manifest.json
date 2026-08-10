@@ -28,19 +28,19 @@
       "sha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668"
     },
     {
-      "bytes": 330875,
+      "bytes": 32884,
       "path": "sectors.json",
-      "sha256": "8b4071296e12e530c1357d97d8ff29b79e52bc6e84c20bc4703ea01b21e540cf"
+      "sha256": "f028ab9fd98f19d673713551d62b30d0a45c33244a1edccf4711c54ef42f6fbb"
     },
     {
-      "bytes": 363364,
+      "bytes": 362827,
       "path": "settlements.json",
-      "sha256": "e31c02923791b78a6e1d256607cf4b4cc22eca32a10c91a2a026481154a1bdde"
+      "sha256": "cec8c3547a889d1d1af804b942bac50ab11da68b374ca8cf49324b165f876ffd"
     },
     {
-      "bytes": 508372,
+      "bytes": 505191,
       "path": "objects.json",
-      "sha256": "585dfbf2a57d6dcabc605ef8c79dd8b9c2eb5550beb778216ec6a3b4f49a7118"
+      "sha256": "1dc085a6a4629f5f7641c820afcc14f039367d986aee18cc0be3c8c35de3fc38"
     },
     {
       "bytes": 147,
@@ -53,9 +53,9 @@
       "sha256": "4a6a67a9cd3a033e85e80518a828d1b6f13f98a6fe294f8a9bc649ed31184969"
     },
     {
-      "bytes": 2037,
+      "bytes": 2035,
       "path": "routes.json",
-      "sha256": "8e8e0f17afd4ad2c63a04968345435400bc7e5dd446f7b8024e31a003fc93e56"
+      "sha256": "8d9fa7b5761e085eeb2df9d888cb2a154364d8ed9dea38cbe4af93e26c290c47"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 1032558,
+  "packageBytesWithoutManifest": 734565,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 85.55640544079021,
     "localBounds": {
-      "maxX": 660.9232320301044,
-      "maxZ": 513.9855,
-      "minX": -553.9777252291166,
-      "minZ": -447.30629999999985
+      "maxX": 198.2769696090313,
+      "maxZ": 154.19565,
+      "minX": -166.19331756873495,
+      "minZ": -134.19188999999994
     },
     "origin": {
       "lat": 39.775,
       "lon": -3.125
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 1
+    "unitsPerKm": 0.3
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/iberia.region.json",
-      "sha256": "e29f06c68615a05005beed38faaf82f5461f08345bf1b28080300e4bc3e11008"
+      "sha256": "ee8c0a46bd7377ef47cb192a75924cb2321294fbc7579f68d734b4bebdcc4efe"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/iberia/copernicus-dem-glo30.json",
@@ -207,12 +207,12 @@
     "version": "0.24.6"
   },
   "sectors": {
-    "active": 245,
-    "columns": 19,
+    "active": 29,
+    "columns": 6,
     "preloadRadius": 2,
-    "rows": 16,
+    "rows": 5,
     "sizeUnits": 64,
-    "total": 304
+    "total": 30
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,

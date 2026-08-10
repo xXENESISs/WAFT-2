@@ -79,12 +79,12 @@
 
   const desiredHud=state=>{
     const world250=window.WAFTWorld0250,version250=Boolean(window.__WAFT_IBERIA_WORLD_0250_READY__||world250);
-    if(!state?.position)return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.0':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
+    if(!state?.position)return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.1':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
     const g=geoFromWorld(state.position.x,state.position.z);
-    if(world250?.inAfrica?.(g))return'NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.0';
+    if(world250?.inAfrica?.(g))return'NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.1';
     if(continuity.inCanarias?.(g))return'CANARIAS · MUNDO CONTINUO';
     if(continuity.inFrance?.(g))return'FRANCE · MONDE CONTINU';
-    return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.0':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
+    return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.1':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
   };
   const normalizeVersionText=()=>{
     if(window.__WAFT_IBERIA_WORLD_0250_READY__)return;

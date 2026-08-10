@@ -4,9 +4,9 @@
     "file": "canarias-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "f2e7f4de4a16468511cb4cf82bd448d84545ee3782236258245ea18c6b92be76"
+    "sha256": "5027458e722aebb14343925b388034b74ab33a9057760ccb1c1e7b07b46aa8ea"
   },
-  "buildId": "canarias-preview-f8bd69591f18",
+  "buildId": "canarias-preview-2948a1daa189",
   "counts": {
     "buildings": 30,
     "hotels": 0,
@@ -88,8 +88,8 @@
       "id": "subregion-gran-canaria",
       "name": "Gran Canaria",
       "terrainMeters": 1862,
-      "x": 26.4016,
-      "z": 65.5679
+      "x": 7.9205,
+      "z": 19.6704
     },
     {
       "altitude": 56,
@@ -97,8 +97,8 @@
       "id": "subregion-tenerife",
       "name": "Tenerife",
       "terrainMeters": 2294,
-      "x": -71.382,
-      "z": 31.117
+      "x": -21.4146,
+      "z": 9.3351
     },
     {
       "altitude": 60,
@@ -106,8 +106,8 @@
       "id": "subregion-fuerteventura",
       "name": "Fuerteventura",
       "terrainMeters": 433,
-      "x": 179.9217,
-      "z": 21.1151
+      "x": 53.9765,
+      "z": 6.3345
     }
   ],
   "regionId": "canarias",
@@ -295,9 +295,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "f8bd69591f18e4d61df4fd6d6fc454871a088e296e2ed4a9a6bef08ded9a5f90",
+    "inputsSha256": "2948a1daa189d498478f009d50903c80b672c441595964cba3d2c2cda4a3acd7",
     "landcoverSha256": "6b409c00928be91abbcb6711f0084c7556b1a30629cbbd17be595c31b70df56e",
-    "regionManifestSha256": "2176232b3771b89d50b003f80ee0494ad526d791b40f1c2cf1ebdbc8e456e66d",
+    "regionManifestSha256": "448fd7e9465df5ffe4d2b92c5de8703b88ef6d66a64739e6e1870af5d6fad8db",
     "terrainSha256": "c814bd03fb38e777518d43924f2a37e86c9de5040d3e380a65cf1c8ab1972dd5"
   },
   "terrain": {
@@ -305,10 +305,10 @@
     "file": "../terrain.bin",
     "landcoverFile": "../landcover.bin",
     "localBounds": {
-      "maxX": 259.1263548611747,
-      "maxZ": 127.80180000000024,
-      "minX": -259.1263548611747,
-      "minZ": -127.80179999999984
+      "maxX": 77.73790645835241,
+      "maxZ": 38.34054000000007,
+      "minX": -77.73790645835241,
+      "minZ": -38.340539999999955
     },
     "rows": 192,
     "verticalScale": 0.013594

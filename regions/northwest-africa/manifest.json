@@ -28,19 +28,19 @@
       "sha256": "292528eade7edbabda39968f757e0a07c691f97601978b19835aa43dd8098407"
     },
     {
-      "bytes": 346066,
+      "bytes": 32277,
       "path": "sectors.json",
-      "sha256": "ebf0379f2591562f6cc83c21bb9c099eadd4c8cb97927d55ec4d2f5168932bb8"
+      "sha256": "40efb4d0a7e582f5ae3e7f5b6a77fedc427fe724f590c93e6fe72efe1fef80a0"
     },
     {
-      "bytes": 140284,
+      "bytes": 140116,
       "path": "settlements.json",
-      "sha256": "8c56b82bb2ba9bf2d89577d87b980a245c6e987bfea442a8b227c838d7c04cfa"
+      "sha256": "393c84c2e67f493146b758c32de68ef577c486324eb2d81f6e90482b3e3d06ca"
     },
     {
-      "bytes": 197590,
+      "bytes": 196591,
       "path": "objects.json",
-      "sha256": "40a98b456604e982348ea8b4f2b44eb3980118411229911206d7841b5cd413d0"
+      "sha256": "afc0ad350bf2ca06676a92984cf7f07129e645eaece38ac14a2b8b3ebd46e7fa"
     },
     {
       "bytes": 157,
@@ -53,9 +53,9 @@
       "sha256": "efd0623277eb7932b46fa8e1b6638011fe98dc27744958a42bc5e1eaf6ca842a"
     },
     {
-      "bytes": 1803,
+      "bytes": 1801,
       "path": "routes.json",
-      "sha256": "7328ae2e5b610a7df930652d76e9b4eab3de26c625769f6eea841727cd59263f"
+      "sha256": "217b3febc412bfa96866830c414df75475ed07e6205486d8c1af451b7bc2ddbf"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 987656,
+  "packageBytesWithoutManifest": 673865,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 94.92605327754234,
     "localBounds": {
-      "maxX": 617.0193463040252,
-      "maxZ": 498.98267999999985,
-      "minX": -617.0193463040252,
-      "minZ": -498.98267999999985
+      "maxX": 185.10580389120756,
+      "maxZ": 149.69480399999995,
+      "minX": -185.10580389120756,
+      "minZ": -149.69480399999995
     },
     "origin": {
       "lat": 31.49,
       "lon": -6.5
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 1
+    "unitsPerKm": 0.3
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/northwest-africa.region.json",
-      "sha256": "259c7a350933c5862bf4537911eeed9403057faa26d0ce02827a289c36e1aaac"
+      "sha256": "972d8b32d3c29dd50e4ca7cca156f1fcff939570415895b5289e0f553c5f6f90"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/northwest-africa/copernicus-dem-glo30.json",
@@ -205,15 +205,15 @@
     "id": "northwest-africa",
     "name": "Noroeste de África",
     "status": "prototype",
-    "version": "0.25.0"
+    "version": "0.25.1"
   },
   "sectors": {
-    "active": 243,
-    "columns": 20,
+    "active": 26,
+    "columns": 6,
     "preloadRadius": 2,
-    "rows": 16,
+    "rows": 5,
     "sizeUnits": 64,
-    "total": 320
+    "total": 30
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,

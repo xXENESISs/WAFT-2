@@ -9,33 +9,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -85.9184,
-          47.2256
+          -25.9575,
+          13.9857
         ],
         [
-          -85.3984,
-          47.2256
+          -25.4375,
+          13.9857
         ],
         [
-          -85.3984,
-          47.7456
+          -25.4375,
+          14.5057
         ],
         [
-          -85.9184,
-          47.7456
+          -25.9575,
+          14.5057
         ],
         [
-          -85.9184,
-          47.2256
+          -25.9575,
+          13.9857
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2522437",
       "kind": "public",
       "local": {
-        "x": -85.6584,
+        "x": -25.6975,
         "y": 505,
-        "z": 47.4856
+        "z": 14.2457
       },
       "name": "Adeje",
       "position": {
@@ -45,7 +45,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2522437",
       "tags": {
@@ -61,33 +61,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          39.2357,
-          71.3768
+          11.5887,
+          21.231
         ],
         [
-          39.7557,
-          71.3768
+          12.1087,
+          21.231
         ],
         [
-          39.7557,
-          71.8968
+          12.1087,
+          21.751
         ],
         [
-          39.2357,
-          71.8968
+          11.5887,
+          21.751
         ],
         [
-          39.2357,
-          71.3768
+          11.5887,
+          21.231
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2522325",
       "kind": "public",
       "local": {
-        "x": 39.4957,
+        "x": 11.8487,
         "y": 345,
-        "z": 71.6368
+        "z": 21.491
       },
       "name": "Agüimes",
       "position": {
@@ -97,7 +97,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2522325",
       "tags": {
@@ -113,33 +113,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -81.6801,
-          49.6316
+          -24.798,
+          14.5955
         ],
         [
-          -80.8401,
-          49.6316
+          -23.958,
+          14.5955
         ],
         [
-          -80.8401,
-          50.4716
+          -23.958,
+          15.4355
         ],
         [
-          -81.6801,
-          50.4716
+          -24.798,
+          15.4355
         ],
         [
-          -81.6801,
-          49.6316
+          -24.798,
+          14.5955
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2521582",
       "kind": "public",
       "local": {
-        "x": -81.2601,
+        "x": -24.378,
         "y": 761,
-        "z": 50.0516
+        "z": 15.0155
       },
       "name": "Arona",
       "position": {
@@ -149,7 +149,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2521582",
       "tags": {
@@ -165,33 +165,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          224.708,
-          -46.3197
+          67.1184,
+          -14.1899
         ],
         [
-          225.548,
-          -46.3197
+          67.9584,
+          -14.1899
         ],
         [
-          225.548,
-          -45.4797
+          67.9584,
+          -13.3499
         ],
         [
-          224.708,
-          -45.4797
+          67.1184,
+          -13.3499
         ],
         [
-          224.708,
-          -46.3197
+          67.1184,
+          -14.1899
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2521570",
       "kind": "public",
       "local": {
-        "x": 225.128,
+        "x": 67.5384,
         "y": 36,
-        "z": -45.8997
+        "z": -13.7699
       },
       "name": "Arrecife",
       "position": {
@@ -201,7 +201,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-07-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2521570",
       "tags": {
@@ -217,33 +217,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          31.6908,
-          47.5457
+          9.3252,
+          14.0817
         ],
         [
-          32.2108,
-          47.5457
+          9.8452,
+          14.0817
         ],
         [
-          32.2108,
-          48.0657
+          9.8452,
+          14.6017
         ],
         [
-          31.6908,
-          48.0657
+          9.3252,
+          14.6017
         ],
         [
-          31.6908,
-          47.5457
+          9.3252,
+          14.0817
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2521519",
       "kind": "public",
       "local": {
-        "x": 31.9508,
+        "x": 9.5852,
         "y": 400,
-        "z": 47.8057
+        "z": 14.3417
       },
       "name": "Arucas",
       "position": {
@@ -253,7 +253,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2521519",
       "tags": {
@@ -269,33 +269,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -51.3695,
-          21.433
+          -15.5928,
+          6.2479
         ],
         [
-          -50.8495,
-          21.433
+          -15.0728,
+          6.2479
         ],
         [
-          -50.8495,
-          21.953
+          -15.0728,
+          6.7679
         ],
         [
-          -51.3695,
-          21.953
+          -15.5928,
+          6.7679
         ],
         [
-          -51.3695,
-          21.433
+          -15.5928,
+          6.2479
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2520283",
       "kind": "public",
       "local": {
-        "x": -51.1095,
+        "x": -15.3328,
         "y": 77,
-        "z": 21.693
+        "z": 6.5079
       },
       "name": "Candelaria",
       "position": {
@@ -305,7 +305,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2520283",
       "tags": {
@@ -321,33 +321,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          43.197,
-          70.6856
+          12.7771,
+          21.0237
         ],
         [
-          43.717,
-          70.6856
+          13.2971,
+          21.0237
         ],
         [
-          43.717,
-          71.2056
+          13.2971,
+          21.5437
         ],
         [
-          43.197,
-          71.2056
+          12.7771,
+          21.5437
         ],
         [
-          43.197,
-          70.6856
+          12.7771,
+          21.0237
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2520069",
       "kind": "public",
       "local": {
-        "x": 43.457,
+        "x": 13.0371,
         "y": 100,
-        "z": 70.9456
+        "z": 21.2837
       },
       "name": "Carrizal",
       "position": {
@@ -357,7 +357,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2520069",
       "tags": {
@@ -373,33 +373,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -71.2499,
-          47.6579
+          -21.557,
+          14.1154
         ],
         [
-          -70.7299,
-          47.6579
+          -21.037,
+          14.1154
         ],
         [
-          -70.7299,
-          48.1779
+          -21.037,
+          14.6354
         ],
         [
-          -71.2499,
-          48.1779
+          -21.557,
+          14.6354
         ],
         [
-          -71.2499,
-          47.6579
+          -21.557,
+          14.1154
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2517111",
       "kind": "public",
       "local": {
-        "x": -70.9899,
+        "x": -21.297,
         "y": 787,
-        "z": 47.9179
+        "z": 14.3754
       },
       "name": "Granadilla de Abona",
       "position": {
@@ -409,7 +409,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2517111",
       "tags": {
@@ -425,33 +425,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -91.1469,
-          37.3537
+          -27.5261,
+          11.0241
         ],
         [
-          -90.6269,
-          37.3537
+          -27.0061,
+          11.0241
         ],
         [
-          -90.6269,
-          37.8737
+          -27.0061,
+          11.5441
         ],
         [
-          -91.1469,
-          37.8737
+          -27.5261,
+          11.5441
         ],
         [
-          -91.1469,
-          37.3537
+          -27.5261,
+          11.0241
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2516860",
       "kind": "public",
       "local": {
-        "x": -90.8869,
+        "x": -27.2661,
         "y": 641,
-        "z": 37.6137
+        "z": 11.2841
       },
       "name": "Guía de Isora",
       "position": {
@@ -461,7 +461,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2516860",
       "tags": {
@@ -477,33 +477,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          19.2771,
-          44.5251
+          5.6011,
+          13.1755
         ],
         [
-          19.7971,
-          44.5251
+          6.1211,
+          13.1755
         ],
         [
-          19.7971,
-          45.0451
+          6.1211,
+          13.6955
         ],
         [
-          19.2771,
-          45.0451
+          5.6011,
+          13.6955
         ],
         [
-          19.2771,
-          44.5251
+          5.6011,
+          13.1755
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2517436",
       "kind": "public",
       "local": {
-        "x": 19.5371,
+        "x": 5.8611,
         "y": 326,
-        "z": 44.7851
+        "z": 13.4355
       },
       "name": "Gáldar",
       "position": {
@@ -513,7 +513,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2517436",
       "tags": {
@@ -529,33 +529,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -84.5377,
-          19.4759
+          -25.5433,
+          5.6608
         ],
         [
-          -84.0177,
-          19.4759
+          -25.0233,
+          5.6608
         ],
         [
-          -84.0177,
-          19.9959
+          -25.0233,
+          6.1808
         ],
         [
-          -84.5377,
-          19.9959
+          -25.5433,
+          6.1808
         ],
         [
-          -84.5377,
-          19.4759
+          -25.5433,
+          5.6608
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2516474",
       "kind": "public",
       "local": {
-        "x": -84.2777,
+        "x": -25.2833,
         "y": 316,
-        "z": 19.7359
+        "z": 5.9208
       },
       "name": "Icod de los Vinos",
       "position": {
@@ -565,7 +565,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2516474",
       "tags": {
@@ -581,33 +581,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          40.3857,
-          69.9143
+          11.9337,
+          20.7923
         ],
         [
-          40.9057,
-          69.9143
+          12.4537,
+          20.7923
         ],
         [
-          40.9057,
-          70.4343
+          12.4537,
+          21.3123
         ],
         [
-          40.3857,
-          70.4343
+          11.9337,
+          21.3123
         ],
         [
-          40.3857,
-          69.9143
+          11.9337,
+          20.7923
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2516443",
       "kind": "public",
       "local": {
-        "x": 40.6457,
+        "x": 12.1937,
         "y": 285,
-        "z": 70.1743
+        "z": 21.0523
       },
       "name": "Ingenio",
       "position": {
@@ -617,7 +617,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2516443",
       "tags": {
@@ -633,33 +633,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -46.3919,
-          6.7702
+          -14.2116,
+          1.7371
         ],
         [
-          -45.5519,
-          6.7702
+          -13.3716,
+          1.7371
         ],
         [
-          -45.5519,
-          7.6102
+          -13.3716,
+          2.5771
         ],
         [
-          -46.3919,
-          7.6102
+          -14.2116,
+          2.5771
         ],
         [
-          -46.3919,
-          6.7702
+          -14.2116,
+          1.7371
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2511401",
       "kind": "public",
       "local": {
-        "x": -45.9719,
+        "x": -13.7916,
         "y": 639,
-        "z": 7.1902
+        "z": 2.1571
       },
       "name": "La Laguna",
       "position": {
@@ -669,7 +669,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2511401",
       "tags": {
@@ -685,33 +685,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          187.5704,
-          -6.9857
+          56.0891,
+          -2.2777
         ],
         [
-          188.0904,
-          -6.9857
+          56.6091,
+          -2.2777
         ],
         [
-          188.0904,
-          -6.4657
+          56.6091,
+          -1.7577
         ],
         [
-          187.5704,
-          -6.4657
+          56.0891,
+          -1.7577
         ],
         [
-          187.5704,
-          -6.9857
+          56.0891,
+          -2.2777
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2515698",
       "kind": "public",
       "local": {
-        "x": 187.8304,
+        "x": 56.3491,
         "y": 241,
-        "z": -6.7257
+        "z": -2.0177
       },
       "name": "La Oliva",
       "position": {
@@ -721,7 +721,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-06-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2515698",
       "tags": {
@@ -737,33 +737,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -66.0771,
-          17.4367
+          -20.0051,
+          5.049
         ],
         [
-          -65.5571,
-          17.4367
+          -19.4851,
+          5.049
         ],
         [
-          -65.5571,
-          17.9567
+          -19.4851,
+          5.569
         ],
         [
-          -66.0771,
-          17.9567
+          -20.0051,
+          5.569
         ],
         [
-          -66.0771,
-          17.4367
+          -20.0051,
+          5.049
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2515692",
       "kind": "public",
       "local": {
-        "x": -65.8171,
+        "x": -19.7451,
         "y": 580,
-        "z": 17.6967
+        "z": 5.309
       },
       "name": "La Orotava",
       "position": {
@@ -773,7 +773,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2515692",
       "tags": {
@@ -789,33 +789,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          41.7845,
-          49.1316
+          12.0593,
+          14.2635
         ],
         [
-          43.1445,
-          49.1316
+          13.4193,
+          14.2635
         ],
         [
-          43.1445,
-          50.4916
+          13.4193,
+          15.6235
         ],
         [
-          41.7845,
-          50.4916
+          12.0593,
+          15.6235
         ],
         [
-          41.7845,
-          49.1316
+          12.0593,
+          14.2635
         ]
       ],
       "heightMeters": 72,
       "id": "marker-es-2515270",
       "kind": "public",
       "local": {
-        "x": 42.4645,
+        "x": 12.7393,
         "y": 123,
-        "z": 49.8116
+        "z": 14.9435
       },
       "name": "Las Palmas de Gran Canaria",
       "position": {
@@ -825,7 +825,7 @@
       "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2515270",
       "tags": {
@@ -842,33 +842,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -202.4969,
-          -12.3189
+          -60.9311,
+          -3.8777
         ],
         [
-          -201.9769,
-          -12.3189
+          -60.4111,
+          -3.8777
         ],
         [
-          -201.9769,
-          -11.7989
+          -60.4111,
+          -3.3577
         ],
         [
-          -202.4969,
-          -11.7989
+          -60.9311,
+          -3.3577
         ],
         [
-          -202.4969,
-          -12.3189
+          -60.9311,
+          -3.8777
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2514651",
       "kind": "public",
       "local": {
-        "x": -202.2369,
+        "x": -60.6711,
         "y": 500,
-        "z": -12.0589
+        "z": -3.6177
       },
       "name": "Los Llanos de Aridane",
       "position": {
@@ -878,7 +878,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-00-01",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2514651",
       "tags": {
@@ -894,33 +894,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -71.9109,
-          18.0912
+          -21.7553,
+          5.2454
         ],
         [
-          -71.3909,
-          18.0912
+          -21.2353,
+          5.2454
         ],
         [
-          -71.3909,
-          18.6112
+          -21.2353,
+          5.7654
         ],
         [
-          -71.9109,
-          18.6112
+          -21.7553,
+          5.7654
         ],
         [
-          -71.9109,
-          18.0912
+          -21.7553,
+          5.2454
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-6692471",
       "kind": "public",
       "local": {
-        "x": -71.6509,
+        "x": -21.4953,
         "y": 381,
-        "z": 18.3512
+        "z": 5.5054
       },
       "name": "Los Realejos",
       "position": {
@@ -930,7 +930,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "6692471",
       "tags": {
@@ -946,33 +946,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          25.5529,
-          87.472
+          7.4839,
+          26.0596
         ],
         [
-          26.0729,
-          87.472
+          8.0039,
+          26.0596
         ],
         [
-          26.0729,
-          87.992
+          8.0039,
+          26.5796
         ],
         [
-          25.5529,
-          87.992
+          7.4839,
+          26.5796
         ],
         [
-          25.5529,
-          87.472
+          7.4839,
+          26.0596
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2514042",
       "kind": "public",
       "local": {
-        "x": 25.8129,
+        "x": 7.7439,
         "y": 104,
-        "z": 87.732
+        "z": 26.3196
       },
       "name": "Maspalomas",
       "position": {
@@ -982,7 +982,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-01",
       "source": "geonames-cities15000",
       "sourceId": "2514042",
       "tags": {
@@ -998,33 +998,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          11.9258,
-          73.7706
+          3.3957,
+          21.9492
         ],
         [
-          12.4458,
-          73.7706
+          3.9157,
+          21.9492
         ],
         [
-          12.4458,
-          74.2906
+          3.9157,
+          22.4692
         ],
         [
-          11.9258,
-          74.2906
+          3.3957,
+          22.4692
         ],
         [
-          11.9258,
-          73.7706
+          3.3957,
+          21.9492
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2513798",
       "kind": "public",
       "local": {
-        "x": 12.1858,
+        "x": 3.6557,
         "y": 805,
-        "z": 74.0306
+        "z": 22.2092
       },
       "name": "Mogán",
       "position": {
@@ -1034,7 +1034,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2513798",
       "tags": {
@@ -1050,33 +1050,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -68.7916,
-          14.5361
+          -20.8195,
+          4.1788
         ],
         [
-          -68.2716,
-          14.5361
+          -20.2995,
+          4.1788
         ],
         [
-          -68.2716,
-          15.0561
+          -20.2995,
+          4.6988
         ],
         [
-          -68.7916,
-          15.0561
+          -20.8195,
+          4.6988
         ],
         [
-          -68.7916,
-          14.5361
+          -20.8195,
+          4.1788
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2512196",
       "kind": "public",
       "local": {
-        "x": -68.5316,
+        "x": -20.5595,
         "y": 132,
-        "z": 14.7961
+        "z": 4.4388
       },
       "name": "Puerto de la Cruz",
       "position": {
@@ -1086,7 +1086,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2512196",
       "tags": {
@@ -1102,33 +1102,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          213.3198,
-          -41.7267
+          63.8139,
+          -12.7
         ],
         [
-          213.8398,
-          -41.7267
+          64.3339,
+          -12.7
         ],
         [
-          213.8398,
-          -41.2067
+          64.3339,
+          -12.18
         ],
         [
-          213.3198,
-          -41.2067
+          63.8139,
+          -12.18
         ],
         [
-          213.3198,
-          -41.7267
+          63.8139,
+          -12.7
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-6355013",
       "kind": "public",
       "local": {
-        "x": 213.5798,
+        "x": 64.0739,
         "y": 40,
-        "z": -41.4667
+        "z": -12.44
       },
       "name": "Puerto del Carmen",
       "position": {
@@ -1138,7 +1138,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-07-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "6355013",
       "tags": {
@@ -1154,33 +1154,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          194.0633,
-          5.2544
+          58.037,
+          1.3943
         ],
         [
-          194.5833,
-          5.2544
+          58.557,
+          1.3943
         ],
         [
-          194.5833,
-          5.7744
+          58.557,
+          1.9143
         ],
         [
-          194.0633,
-          5.7744
+          58.037,
+          1.9143
         ],
         [
-          194.0633,
-          5.2544
+          58.037,
+          1.3943
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2512186",
       "kind": "public",
       "local": {
-        "x": 194.3233,
+        "x": 58.297,
         "y": 72,
-        "z": 5.5144
+        "z": 1.6543
       },
       "name": "Puerto del Rosario",
       "position": {
@@ -1190,7 +1190,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-07-02",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2512186",
       "tags": {
@@ -1206,33 +1206,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          170.118,
-          21.9231
+          50.8534,
+          6.3949
         ],
         [
-          170.638,
-          21.9231
+          51.3734,
+          6.3949
         ],
         [
-          170.638,
-          22.4431
+          51.3734,
+          6.9149
         ],
         [
-          170.118,
-          22.4431
+          50.8534,
+          6.9149
         ],
         [
-          170.118,
-          21.9231
+          50.8534,
+          6.3949
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2513026",
       "kind": "public",
       "local": {
-        "x": 170.378,
+        "x": 51.1134,
         "y": 343,
-        "z": 22.1831
+        "z": 6.6549
       },
       "name": "Pájara",
       "position": {
@@ -1242,7 +1242,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-06-02",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2513026",
       "tags": {
@@ -1258,33 +1258,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -72.2042,
-          19.027
+          -21.8433,
+          5.5261
         ],
         [
-          -71.6842,
-          19.027
+          -21.3233,
+          5.5261
         ],
         [
-          -71.6842,
-          19.547
+          -21.3233,
+          6.0461
         ],
         [
-          -72.2042,
-          19.547
+          -21.8433,
+          6.0461
         ],
         [
-          -72.2042,
-          19.027
+          -21.8433,
+          5.5261
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2511994",
       "kind": "public",
       "local": {
-        "x": -71.9442,
+        "x": -21.5833,
         "y": 781,
-        "z": 19.287
+        "z": 5.7861
       },
       "name": "Realejo Alto",
       "position": {
@@ -1294,7 +1294,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2511994",
       "tags": {
@@ -1310,33 +1310,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          26.6377,
-          69.0586
+          7.6973,
+          20.4236
         ],
         [
-          27.4777,
-          69.0586
+          8.5373,
+          20.4236
         ],
         [
-          27.4777,
-          69.8986
+          8.5373,
+          21.2636
         ],
         [
-          26.6377,
-          69.8986
+          7.6973,
+          21.2636
         ],
         [
-          26.6377,
-          69.0586
+          7.6973,
+          20.4236
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2511440",
       "kind": "public",
       "local": {
-        "x": 27.0577,
+        "x": 8.1173,
         "y": 1198,
-        "z": 69.4786
+        "z": 20.8436
       },
       "name": "San Bartolomé de Tirajana",
       "position": {
@@ -1346,7 +1346,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511440",
       "tags": {
@@ -1362,33 +1362,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -40.2452,
-          8.4062
+          -12.5496,
+          2.0458
         ],
         [
-          -38.8852,
-          8.4062
+          -11.1896,
+          2.0458
         ],
         [
-          -38.8852,
-          9.7662
+          -11.1896,
+          3.4058
         ],
         [
-          -40.2452,
-          9.7662
+          -12.5496,
+          3.4058
         ],
         [
-          -40.2452,
-          8.4062
+          -12.5496,
+          2.0458
         ]
       ],
       "heightMeters": 72,
       "id": "marker-es-2511174",
       "kind": "public",
       "local": {
-        "x": -39.5652,
+        "x": -11.8696,
         "y": 330,
-        "z": 9.0862
+        "z": 2.7258
       },
       "name": "Santa Cruz de Tenerife",
       "position": {
@@ -1398,7 +1398,7 @@
       "priority": 106,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-03-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511174",
       "tags": {
@@ -1415,33 +1415,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          29.8235,
-          70.5111
+          8.653,
+          20.8593
         ],
         [
-          30.6635,
-          70.5111
+          9.493,
+          20.8593
         ],
         [
-          30.6635,
-          71.3511
+          9.493,
+          21.6993
         ],
         [
-          29.8235,
-          71.3511
+          8.653,
+          21.6993
         ],
         [
-          29.8235,
-          70.5111
+          8.653,
+          20.8593
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2511150",
       "kind": "public",
       "local": {
-        "x": 30.2435,
+        "x": 9.073,
         "y": 808,
-        "z": 70.9311
+        "z": 21.2793
       },
       "name": "Santa Lucía",
       "position": {
@@ -1451,7 +1451,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511150",
       "tags": {
@@ -1467,33 +1467,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -55.0344,
-          7.866
+          -16.6923,
+          2.1778
         ],
         [
-          -54.5144,
-          7.866
+          -16.1723,
+          2.1778
         ],
         [
-          -54.5144,
-          8.386
+          -16.1723,
+          2.6978
         ],
         [
-          -55.0344,
-          8.386
+          -16.6923,
+          2.6978
         ],
         [
-          -55.0344,
-          7.866
+          -16.6923,
+          2.1778
         ]
       ],
       "heightMeters": 18,
       "id": "marker-es-2510725",
       "kind": "public",
       "local": {
-        "x": -54.7744,
+        "x": -16.4323,
         "y": 771,
-        "z": 8.126
+        "z": 2.4378
       },
       "name": "Tacoronte",
       "position": {
@@ -1503,7 +1503,7 @@
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2510725",
       "tags": {
@@ -1519,33 +1519,33 @@
       "collisionMode": "none",
       "footprint": [
         [
-          41.71,
-          61.5439
+          12.219,
+          18.1692
         ],
         [
-          42.55,
-          61.5439
+          13.059,
+          18.1692
         ],
         [
-          42.55,
-          62.3839
+          13.059,
+          19.0092
         ],
         [
-          41.71,
-          62.3839
+          12.219,
+          19.0092
         ],
         [
-          41.71,
-          61.5439
+          12.219,
+          18.1692
         ]
       ],
       "heightMeters": 34,
       "id": "marker-es-2510542",
       "kind": "public",
       "local": {
-        "x": 42.13,
+        "x": 12.639,
         "y": 171,
-        "z": 61.9639
+        "z": 18.5892
       },
       "name": "Telde",
       "position": {
@@ -1555,7 +1555,7 @@
       "priority": 72,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2510542",
       "tags": {
