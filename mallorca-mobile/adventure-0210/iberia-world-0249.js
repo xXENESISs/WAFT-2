@@ -63,6 +63,7 @@
   const itemPopulation=item=>Number(item?.population||item?.tags?.population)||0;
   const itemTier=item=>item?.populationTier||(itemPopulation(item)>=250000?'large':itemPopulation(item)>=80000?'medium':'small');
   const radiusFor=item=>{const p=itemPopulation(item);return p>=500000?260:p>=200000?220:p>=80000?175:130;};
+  const overlaps=(a,b)=>!(a.r<b.l||a.l>b.r||a.b<b.t||a.t>b.b);
 
   function worldToScreen(regionalX,worldY,regionalZ,state){
     const d=api.regionalToDisplay?.(regionalX,regionalZ);if(!d||!state?.cameraEye||!state?.displayPosition)return null;
@@ -83,6 +84,14 @@
     if(continuity.inFrance?.(g))return'FRANCE · MONDE CONTINU';
     return'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
   };
+  const normalizeVersionText=()=>{
+    for(const el of document.querySelectorAll('div,span,p,b,small')){
+      if(el.children.length)continue;
+      const text=el.textContent||'';
+      if(/^EXPEDICIÓN\s*·\s*0\.24\.[0-8]$/i.test(text.trim()))el.textContent='EXPEDICIÓN · 0.24.9';
+      else if(/Península Ibérica\s*·\s*EXPLORACIÓN\s+0\.24\.[0-8]/i.test(text))el.textContent=text.replace(/0\.24\.[0-8]/g,'0.24.9');
+    }
+  };
   let guarding=false;
   const enforceHud=()=>{
     if(guarding)return;
@@ -91,10 +100,24 @@
     guarding=true;
     if(hudTitle&&hudTitle.textContent!==wanted)hudTitle.textContent=wanted;
     if(oldFrance)oldFrance.hidden=true;if(oldRegion)oldRegion.hidden=true;
+    normalizeVersionText();
     guarding=false;
   };
   const observer=hudTitle?new MutationObserver(()=>queueMicrotask(enforceHud)):null;
   observer?.observe(hudTitle,{childList:true,subtree:true,characterData:true});
+
+  const reservedUiRects=()=>{
+    const out=[];
+    for(const el of document.body.children){
+      if(el===labelRoot||el.tagName==='CANVAS')continue;
+      const cs=getComputedStyle(el);if(cs.position!=='fixed'||cs.display==='none'||cs.visibility==='hidden'||Number(cs.opacity||1)<.08||cs.pointerEvents==='none')continue;
+      const r=el.getBoundingClientRect();if(r.width<4||r.height<4)continue;
+      // Do not let a transparent full-screen helper reserve the whole viewport.
+      if(r.width>innerWidth*.92&&r.height>innerHeight*.92)continue;
+      const pad=8;out.push({l:r.left-pad,r:r.right+pad,t:r.top-pad,b:r.bottom+pad,id:el.id||el.className||el.tagName});
+    }
+    return out;
+  };
 
   let lastCandidates=[],lastCandidateAt=0,lastSourceTitle='';
   const refreshCandidates=(state,now)=>{
@@ -119,7 +142,7 @@
     enforceHud();
     const candidates=refreshCandidates(state,now);updateNearest(state,candidates);
     const eligible=candidates.filter(c=>c.d<=radiusFor(c.item)).slice(0,24);
-    const occupied=[];let shown=0;
+    const occupied=reservedUiRects();let shown=0;
     for(const c of eligible){
       const surface=api.sampleSurface?.(c.w.x,c.w.z);const fallback=(Number(c.item?.local?.y)||0)*VERTICAL;
       const y=(Number.isFinite(surface?.height)?surface.height:fallback)+1.35;
@@ -127,7 +150,7 @@
       if(api.isAdventureVisible?.(c.w.x,y,c.w.z)===false&&c.d>18)continue;
       const tier=itemTier(c.item),wide=tier==='large'?122:tier==='medium'?106:94,high=30;
       const rect={l:p.x-wide*.5,r:p.x+wide*.5,t:p.y-high,b:p.y};
-      if(occupied.some(o=>!(rect.r<o.l||rect.l>o.r||rect.b<o.t||rect.t>o.b)))continue;
+      if(occupied.some(o=>overlaps(rect,o)))continue;
       occupied.push(rect);
       const el=ensureLabel(shown++);el.className=`waftPlace0249 ${tier} visible`;
       el.querySelector('b').textContent=c.item.name||'Núcleo';
@@ -135,7 +158,7 @@
       el.style.left=`${p.x}px`;el.style.top=`${p.y}px`;const scale=Math.max(.72,Math.min(1.08,9/Math.sqrt(Math.max(1,p.depth))));el.style.transform=`translate(-50%,-100%) scale(${scale})`;
     }
     for(let i=shown;i<labelPool.length;i++)labelPool[i].classList.remove('visible');
-    window.__WAFT_WORLD_LABELS_0249_LAST__={shown,eligible:eligible.length,source:lastSourceTitle,nearest:candidates[0]?.item?.name||null};
+    window.__WAFT_WORLD_LABELS_0249_LAST__={shown,eligible:eligible.length,source:lastSourceTitle,nearest:candidates[0]?.item?.name||null,reservedUi:occupied.length-shown};
     requestAnimationFrame(updateLabels);
   }
 
