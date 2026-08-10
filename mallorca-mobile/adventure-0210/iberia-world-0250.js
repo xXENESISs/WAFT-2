@@ -11,7 +11,7 @@
   const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.0';
   const VERTICAL=Number(api.metadata?.terrain?.verticalScale)||.013594;
   const U=Number(api.metadata?.projection?.unitsPerKm)||1.0;
-  const LABEL_RANGE_KM=1.5,NEAREST_RANGE_KM=5.0,LABEL_MAX_AGL_M=320;
+  const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   const geoFromWorld=(x,z)=>stream.geoFromWorld(Number(x),Number(z));
   const worldFromGeo=(lat,lon)=>stream.worldFromGeo(Number(lat),Number(lon));
