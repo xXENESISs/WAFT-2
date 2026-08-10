@@ -52,13 +52,23 @@
   };
   const meshes={gibraltar:buildLandmark('gibraltar'),peniscola:buildLandmark('peniscola'),ayodar:buildLandmark('ayodar')};
 
+  const footprintSize=city=>{
+    const pts=(city.footprint||[]).filter(p=>Array.isArray(p)&&Number.isFinite(Number(p[0]))&&Number.isFinite(Number(p[1])));if(!pts.length)return{w:.28,d:.28};
+    let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;for(const p of pts){minX=Math.min(minX,Number(p[0]));maxX=Math.max(maxX,Number(p[0]));minZ=Math.min(minZ,Number(p[1]));maxZ=Math.max(maxZ,Number(p[1]));}
+    return{w:Math.max(.08,Math.min(2.8,maxX-minX)),d:Math.max(.08,Math.min(2.8,maxZ-minZ))};
+  };
   let landmarks=[],franceCitiesMesh=null,franceCityCount=0;
   try{
     const [iberiaData,franceObjects]=await Promise.all([fetch(new URL('../../regions/iberia/settlements.json',location.href),{cache:'no-store'}).then(r=>r.json()),fetch(new URL('../../regions/france/objects.json',location.href),{cache:'no-store'}).then(r=>r.json())]);
     const want=new Map([['Gibraltar','gibraltar'],['Peñíscola','peniscola'],['Ayódar','ayodar']]);
     landmarks=(iberiaData.items||[]).filter(x=>want.has(x.name)).map(x=>{const px=Number(x.local.x),pz=Number(x.local.z),surface=api.sampleSurface?.(px,pz),fallback=(Number(x.local.y)||0)*.013594;return{kind:want.get(x.name),x:px,z:pz,y:Number.isFinite(surface?.height)?surface.height+.03:fallback+.03,name:x.name};});
     reset();const vertical=Number(api.metadata?.terrain?.verticalScale)||.013594;
-    for(const city of franceObjects.items||[]){const lat=Number(city.position?.lat),lon=Number(city.position?.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;const p=stream.worldFromGeo(lat,lon),pop=Number(city.tags?.population)||0,tier=pop>=250000?3:pop>=100000?2:pop>=50000?1:0,w=[.28,.38,.50,.68][tier],h=Math.max(.25,Math.min(1.15,(Number(city.heightMeters)||18)*vertical)),base=(Number(city.local?.y)||0)*vertical,col=tier>=2?[.92,.69,.25]:tier===1?[.82,.62,.25]:[.70,.55,.25];box(p.x,base+h*.5+.025,p.z,w,h,w,col);franceCityCount++;}if(franceCityCount)franceCitiesMesh=finish();
+    for(const city of franceObjects.items||[]){
+      const lat=Number(city.position?.lat),lon=Number(city.position?.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
+      const p=stream.worldFromGeo(lat,lon),pop=Number(city.tags?.population)||0,tier=pop>=250000?3:pop>=100000?2:pop>=50000?1:0,size=footprintSize(city),h=Math.max(.25,Math.min(1.25,(Number(city.heightMeters)||18)*vertical)),base=(Number(city.local?.y)||0)*vertical,col=tier>=2?[.92,.69,.25]:tier===1?[.82,.62,.25]:[.70,.55,.25];
+      box(p.x,base+h*.5+.025,p.z,size.w,h,size.d,col);franceCityCount++;
+    }
+    if(franceCityCount)franceCitiesMesh=finish();
   }catch(e){console.error(e);}
 
   const drawMesh=(m,ox=0,oy=0,oz=0)=>{if(!m?.vao)return;gl.uniform3f(uO,ox,oy,oz);gl.bindVertexArray(m.vao);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_INT,0);};
@@ -67,14 +77,14 @@
     prev?.(now,eye,pv);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);
     const pos=api.getState?.()?.position;
     for(const l of landmarks){const near=pos&&Math.hypot(pos.x-l.x,pos.z-l.z)<35;if(near)gl.disable(gl.DEPTH_TEST);drawMesh(meshes[l.kind],l.x,l.y,l.z);if(near)gl.enable(gl.DEPTH_TEST);}
-    const ss=stream.getState?.();if(franceCitiesMesh&&ss?.prefetched&&Number(ss.geo?.lat)>42.62)drawMesh(franceCitiesMesh);gl.bindVertexArray(null);
+    const ss=stream.getState?.(),nearFrance=stream.nearFrance?.(ss?.geo,.55)??false;if(franceCitiesMesh&&ss?.prefetched&&nearFrance)drawMesh(franceCitiesMesh);gl.bindVertexArray(null);
   };
 
   const hudTitle=document.getElementById('hudTitle'),originalHudTitle=hudTitle?.textContent||'';
   const refreshHint=()=>{for(const el of document.querySelectorAll('div,span,p')){if(el.children.length===0&&/mantén el joystick abajo en vuelo para entrar en picado/i.test(el.textContent||''))el.textContent='Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';}};
   refreshHint();
-  setInterval(()=>{const mounted=isBird();dive.hidden=!mounted;if(!mounted)setDive(false);const s=stream.getState?.(),inFrance=s?.activeRegion==='france'||Number(s?.geo?.lat)>42.78;franceBadge.hidden=!inFrance;if(inFrance)franceBadge.textContent=`FRANCE · ${franceCityCount||461} VILLES · TERRAIN CONTINU`;if(hudTitle){if(inFrance)hudTitle.textContent='FRANCE 001 · MONDE CONTINU';else if(hudTitle.textContent==='FRANCE 001 · MONDE CONTINU')hudTitle.textContent=originalHudTitle;}refreshHint();},220);
+  setInterval(()=>{const mounted=isBird();dive.hidden=!mounted;if(!mounted)setDive(false);const s=stream.getState?.(),inFrance=stream.inFranceGeo?.(s?.geo)??s?.activeRegion==='france';franceBadge.hidden=!inFrance;if(inFrance)franceBadge.textContent=`FRANCE · ${franceCityCount||461} VILLES · TERRAIN CONTINU`;if(hudTitle){if(inFrance)hudTitle.textContent='FRANCE 001 · MONDE CONTINU';else if(hudTitle.textContent==='FRANCE 001 · MONDE CONTINU')hudTitle.textContent=originalHudTitle;}refreshHint();},220);
 
-  window.WAFTIberiaWorld0246={version:'0.24.6',landmarks:()=>landmarks.map(x=>x.name),landmarkData:()=>landmarks.map(x=>({...x})),franceCityCount:()=>franceCityCount,diveButton:dive,setDive};
+  window.WAFTIberiaWorld0246={version:'0.24.8-hotfix',landmarks:()=>landmarks.map(x=>x.name),landmarkData:()=>landmarks.map(x=>({...x})),franceCityCount:()=>franceCityCount,diveButton:dive,setDive};
   window.__WAFT_IBERIA_WORLD_0246_READY__=true;
 })().catch(e=>{console.error('WAFT 0.24.6 failed',e);window.__WAFT_IBERIA_WORLD_0246_ERROR__=String(e?.message||e);});

@@ -11,46 +11,33 @@
   const gl=canvas.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 no disponible para streaming 0.24.5');
 
-  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.24.5';
+  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.24.8';
   const U=1.45;
   const I={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
-  const F={lat0:46.15,lon0:2.125,kmLat:111.132,kmLon:77.11946418437198};
-  const ANCHOR={lat:42.66,lon:0.55};
-  const PREFETCH_LAT=42.15;
-  const REGION_SWITCH_LAT=42.78;
   const LOD_MIN_LAT=42.10;
-  const FRANCE_SAMPLE_LAT=42.65;
-  const FULL_SWITCH_LAT=43.20;
-  const RESTORE_IBERIA_LAT=42.98;
-  const MORPH_START_LAT=42.45;
-  const MORPH_END_LAT=43.30;
+  const BORDER_OVERLAP=.055;
   const PAGE_INSTANCE_ID=window.__WAFT_PAGE_INSTANCE_0245__||(window.__WAFT_PAGE_INSTANCE_0245__=`waft-${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a),0,1);return t*t*(3-2*t);};
-  const iberiaX=lon=>(lon-I.lon0)*I.kmLon*U;
-  const franceLocalX=lon=>(lon-F.lon0)*F.kmLon*U;
-  const anchorWorldX=iberiaX(ANCHOR.lon);
-  const anchorFranceX=franceLocalX(ANCHOR.lon);
-  const worldFromGeo=(lat,lon)=>{
-    const t=smooth(MORPH_START_LAT,MORPH_END_LAT,lat);
-    const xi=iberiaX(lon);
-    const xf=anchorWorldX+(franceLocalX(lon)-anchorFranceX);
-    return{x:xi+(xf-xi)*t,z:-(lat-I.lat0)*I.kmLat*U};
+  const franceSouthLat=lon=>{
+    if(lon<-5.2)return 49.0;
+    if(lon<-2.05)return 43.72+(-2.05-lon)*1.55;
+    if(lon<-1.55)return 43.58;
+    if(lon<-.65)return 43.58-(lon+1.55)*.62;
+    if(lon<1.55)return 42.90-(lon+.65)*.12;
+    if(lon<3.35)return 42.64-(lon-1.55)*.10;
+    return 42.90;
   };
-  const geoFromWorld=(x,z)=>{
-    const lat=I.lat0-z/(I.kmLat*U);
-    const t=smooth(MORPH_START_LAT,MORPH_END_LAT,lat);
-    const ai=I.kmLon*U,bi=-I.lon0*ai;
-    const af=F.kmLon*U,bf=anchorWorldX-af*ANCHOR.lon;
-    const a=ai+(af-ai)*t,b=bi+(bf-bi)*t;
-    return{lat,lon:(x-b)/a};
-  };
+  const inFranceGeo=geo=>Boolean(geo&&geo.lon>-5.7&&geo.lon<9.8&&geo.lat>=franceSouthLat(geo.lon));
+  const nearFrance=(geo,margin=.65)=>Boolean(geo&&geo.lon>-5.7&&geo.lon<9.8&&geo.lat>=franceSouthLat(geo.lon)-margin);
+  const deepFrance=geo=>inFranceGeo(geo)&&geo.lat>=franceSouthLat(geo.lon)+1.10;
+  const worldFromGeo=(lat,lon)=>({x:(lon-I.lon0)*I.kmLon*U,z:-(lat-I.lat0)*I.kmLat*U});
+  const geoFromWorld=(x,z)=>({lat:I.lat0-z/(I.kmLat*U),lon:I.lon0+x/(I.kmLon*U)});
 
   const state={
     phase:'idle',activeRegion:'iberia',prefetched:false,prefetchStarted:false,error:null,
     terrain:null,landcover:null,manifest:null,mesh:null,renderMode:'none',drawFrames:0,lastDrawTriangles:0,
-    iberiaGpuReleased:false,franceBytes:0,transition:null,lastGeo:null,pageInstanceId:PAGE_INSTANCE_ID
+    iberiaGpuReleased:false,franceBytes:0,transition:null,lastGeo:null,pageInstanceId:PAGE_INSTANCE_ID,lastVisible:false
   };
 
   function parseTerrain(buffer){
@@ -92,23 +79,30 @@
     const t=state.terrain,lc=state.landcover;if(!t||!lc)throw new Error('France no está prefetched');
     const endRow=minLat==null?t.rows-1:clamp(Math.floor((t.north-minLat)/(t.north-t.south)*(t.rows-1)),1,t.rows-1);
     const rows=sampledIndices(t.rows,stride,endRow),cols=sampledIndices(t.columns,stride,t.columns-1);
-    const vertexCount=rows.length*cols.length,positions=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3);
-    let cursor=0;
+    const vertexCount=rows.length*cols.length,positions=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3),geoGrid=new Array(vertexCount);
+    let cursor=0,vertex=0;
     for(const row of rows){
       const lat=t.north-(row/(t.rows-1))*(t.north-t.south);
       for(const col of cols){
         const lon=t.west+(col/(t.columns-1))*(t.east-t.west),idx=row*t.columns+col,raw=t.elevations[idx],water=raw===t.nodata,world=worldFromGeo(lat,lon),color=palette[lc.classes[idx]]||palette[0];
         positions[cursor]=world.x;positions[cursor+1]=water?-8:raw;positions[cursor+2]=world.z;
-        colors[cursor]=color[0];colors[cursor+1]=color[1];colors[cursor+2]=color[2];cursor+=3;
+        colors[cursor]=color[0];colors[cursor+1]=color[1];colors[cursor+2]=color[2];geoGrid[vertex++]={lat,lon};cursor+=3;
       }
     }
-    const indexCount=(rows.length-1)*(cols.length-1)*6,indices=new Uint32Array(indexCount);let ic=0;
-    for(let r=0;r<rows.length-1;r++)for(let c=0;c<cols.length-1;c++){const a=r*cols.length+c,b=a+1,d=a+cols.length,e=d+1;indices[ic++]=a;indices[ic++]=d;indices[ic++]=b;indices[ic++]=b;indices[ic++]=d;indices[ic++]=e;}
+    const indices=[];
+    for(let r=0;r<rows.length-1;r++)for(let c=0;c<cols.length-1;c++){
+      const a=r*cols.length+c,b=a+1,d=a+cols.length,e=d+1;
+      const centerLat=(geoGrid[a].lat+geoGrid[b].lat+geoGrid[d].lat+geoGrid[e].lat)*.25;
+      const centerLon=(geoGrid[a].lon+geoGrid[b].lon+geoGrid[d].lon+geoGrid[e].lon)*.25;
+      if(centerLat<franceSouthLat(centerLon)-BORDER_OVERLAP)continue;
+      indices.push(a,d,b,b,d,e);
+    }
+    const indexData=new Uint32Array(indices);
     const vao=gl.createVertexArray();gl.bindVertexArray(vao);
     const positionBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer);gl.bufferData(gl.ARRAY_BUFFER,positions,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
     const colorBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,colorBuffer);gl.bufferData(gl.ARRAY_BUFFER,colors,gl.STATIC_DRAW);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);
-    const indexBuffer=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);
-    return{vao,buffers:[positionBuffer,colorBuffer,indexBuffer],count:indexCount,triangles:indexCount/3,stride,minLat,mode:stride===1?'france-full':'france-lod',lift:stride===1?0:-.08};
+    const indexBuffer=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indexData,gl.STATIC_DRAW);gl.bindVertexArray(null);
+    return{vao,buffers:[positionBuffer,colorBuffer,indexBuffer],count:indexData.length,triangles:indexData.length/3,stride,minLat,mode:stride===1?'france-full':'france-lod',lift:stride===1?0:-.08};
   }
   function disposeMesh(mesh){if(!mesh)return;try{if(mesh.vao)gl.deleteVertexArray(mesh.vao);for(const buffer of mesh.buffers||[])if(buffer)gl.deleteBuffer(buffer);}catch{} }
   function setMesh(mesh){disposeMesh(state.mesh);state.mesh=mesh;state.renderMode=mesh?.mode||'none';}
@@ -136,7 +130,7 @@
   function sampleFrance(x,z){
     if(!state.prefetched)return null;
     const geo=geoFromWorld(x,z),t=state.terrain;
-    if(geo.lat<FRANCE_SAMPLE_LAT||geo.lat>t.north||geo.lon<t.west||geo.lon>t.east)return null;
+    if(!inFranceGeo(geo)||geo.lat>t.north||geo.lon<t.west||geo.lon>t.east)return null;
     const fx=(geo.lon-t.west)/(t.east-t.west)*(t.columns-1),fz=(t.north-geo.lat)/(t.north-t.south)*(t.rows-1);
     if(fx<0||fz<0||fx>t.columns-1||fz>t.rows-1)return null;
     const col=Math.round(fx),row=Math.round(fz),raw=rawAt(col,row),vertical=Number(api.metadata?.terrain?.verticalScale)||.0138,waterHeight=-8*vertical,land=raw!==t.nodata;
@@ -168,7 +162,8 @@
   const previousDraw=typeof plugin.afterWorldDraw==='function'?plugin.afterWorldDraw.bind(plugin):null;
   plugin.afterWorldDraw=(now,eye,pv)=>{
     previousDraw?.(now,eye,pv);
-    const mesh=state.mesh;if(!mesh?.vao)return;
+    const player=api.getState?.(),geo=player?.position?geoFromWorld(player.position.x,player.position.z):null;
+    const mesh=state.mesh;state.lastVisible=Boolean(mesh?.vao&&nearFrance(geo,.55));if(!state.lastVisible)return;
     gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(program);gl.uniformMatrix4fv(uniforms.pv,false,pv);gl.uniform1f(uniforms.vertical,Number(api.metadata?.terrain?.verticalScale)||.0138);gl.uniform1f(uniforms.lift,mesh.lift||0);gl.uniform3f(uniforms.camera,...eye);gl.bindVertexArray(mesh.vao);gl.drawElements(gl.TRIANGLES,mesh.count,gl.UNSIGNED_INT,0);gl.bindVertexArray(null);state.drawFrames++;state.lastDrawTriangles=mesh.triangles;
   };
 
@@ -177,7 +172,10 @@
     prefetchFrance,
     worldFromGeo(lat,lon){return worldFromGeo(Number(lat),Number(lon));},
     geoFromWorld(x,z){return geoFromWorld(Number(x),Number(z));},
-    getState(){const player=api.getState?.(),geo=player?.position?geoFromWorld(player.position.x,player.position.z):null;return{phase:state.phase,activeRegion:state.activeRegion,prefetched:state.prefetched,prefetchStarted:state.prefetchStarted,renderMode:state.renderMode,franceGpuTriangles:state.mesh?.triangles||0,franceStride:state.mesh?.stride||null,franceDrawFrames:state.drawFrames,lastDrawTriangles:state.lastDrawTriangles,iberiaGpuReleased:state.iberiaGpuReleased,franceBytes:state.franceBytes,transition:state.transition,error:state.error,geo,pageInstanceId:PAGE_INSTANCE_ID};}
+    franceSouthLat,
+    inFranceGeo,
+    nearFrance,
+    getState(){const player=api.getState?.(),geo=player?.position?geoFromWorld(player.position.x,player.position.z):null;return{phase:state.phase,activeRegion:state.activeRegion,prefetched:state.prefetched,prefetchStarted:state.prefetchStarted,renderMode:state.renderMode,franceGpuTriangles:state.mesh?.triangles||0,franceStride:state.mesh?.stride||null,franceDrawFrames:state.drawFrames,lastDrawTriangles:state.lastDrawTriangles,franceVisible:state.lastVisible,iberiaGpuReleased:state.iberiaGpuReleased,franceBytes:state.franceBytes,transition:state.transition,error:state.error,geo,pageInstanceId:PAGE_INSTANCE_ID};}
   };
 
   const status=document.createElement('div');status.id='waftWorldStream0245';status.style.cssText='position:fixed;left:max(8px,env(safe-area-inset-left));bottom:max(7px,env(safe-area-inset-bottom));z-index:18;padding:5px 8px;border-radius:9px;background:rgba(4,17,23,.76);border:1px solid rgba(155,218,196,.32);font:700 9px/1.25 system-ui;color:#dff5ed;pointer-events:none;max-width:55vw';document.body.appendChild(status);
@@ -187,11 +185,12 @@
     try{
       const player=api.getState?.();if(!player?.position)return;
       const geo=geoFromWorld(player.position.x,player.position.z);state.lastGeo=geo;
-      if(geo.lat>=PREFETCH_LAT&&!state.prefetchStarted)prefetchFrance().catch(()=>{});
+      if(nearFrance(geo,.75)&&!state.prefetchStarted)prefetchFrance().catch(()=>{});
       if(state.prefetched){
-        state.activeRegion=geo.lat>=REGION_SWITCH_LAT?'france':'iberia';
-        if(geo.lat>=FULL_SWITCH_LAT&&!state.iberiaGpuReleased)activateFranceFull();
-        else if(geo.lat<=RESTORE_IBERIA_LAT&&state.iberiaGpuReleased)restoreIberiaOverlap();
+        const inside=inFranceGeo(geo),deep=deepFrance(geo),south=franceSouthLat(geo.lon);
+        state.activeRegion=inside?'france':'iberia';
+        if(deep&&!state.iberiaGpuReleased)activateFranceFull();
+        else if((!inside||geo.lat<=south+.72)&&state.iberiaGpuReleased)restoreIberiaOverlap();
       }
       const label=state.phase==='prefetching'?'FRANCE · precargando':state.renderMode==='france-full'?'FRANCE · terreno completo':state.renderMode==='france-lod'?'FRANCE · LOD preparado':'IBERIA';
       status.textContent=`MUNDO · ${state.activeRegion.toUpperCase()} · ${label}${state.error?' · ERROR':''}`;

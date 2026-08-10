@@ -15,6 +15,7 @@ const polish=fs.readFileSync(path.join(adventure,'iberia-polish-0243.js'),'utf8'
 const world244=fs.readFileSync(path.join(adventure,'iberia-world-0244.js'),'utf8');
 const stream245=fs.readFileSync(path.join(adventure,'iberia-world-0245.js'),'utf8');
 const visible246=fs.readFileSync(path.join(adventure,'iberia-world-0246.js'),'utf8');
+const continuity247=fs.readFileSync(path.join(adventure,'iberia-world-0247.js'),'utf8');
 const preview=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/preview/iberia-preview-v1.json'),'utf8'));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/manifest.json'),'utf8'));
 const settlements=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/settlements.json'),'utf8'));
@@ -23,10 +24,10 @@ const objects=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/objects.
 for(const pattern of [
   /requestedRegion==='iberia'/,/iberia:'\.\.\/region-runtime-catalunya-litoral-003\.html'/,/replaceAll\('catalunya-litoral','iberia'\)/,
   /WAFT_IBERIA_RUNTIME_0241/,/WAFT_IBERIA_EXPLORER_0242/,/WAFT_IBERIA_POLISH_0243/,/WAFT_IBERIA_WORLD_0244/,/WAFT_IBERIA_WORLD_0245/,
-  /__WAFT_ADVENTURE_BUILD__='0\.24\.6'/,/iberia-world-0246\.js/,
+  /__WAFT_ADVENTURE_BUILD__='0\.24\.6'/,/iberia-world-0246\.js/,/iberia-world-0247\.js/,/WAFT_WORLD_BOUNDS_0247/,
   /state\.iberiaDiveButton\|\|state\.joyY>\.55/,/state\.iberiaDiveButton\)state\.adventureFlightVy=-58/,/iberiaVerticalDt/,
   /'flightDive'in modifiers/,/releaseRegionalTerrainGpu/,/restoreRegionalTerrainGpu/
-])assert.match(index,pattern,`Iberia 0.24.6 bootstrap missing ${pattern}`);
+])assert.match(index,pattern,`Iberia bootstrap missing ${pattern}`);
 
 const captured=[],errors=[];
 const context={console:{...console,error:(...args)=>errors.push(args.map(String).join(' '))},URL,Promise,setTimeout,clearTimeout,innerWidth:700,__WAFT_ADVENTURE_REGION__:'iberia',document:{currentScript:{src:'https://example.test/plugin-loader.js?v=ci'},getElementById(){return null;}},fetch:async url=>{const name=new URL(String(url)).pathname.split('/').pop(),body=files.get(name);return{ok:body!==undefined,status:body!==undefined?200:404,text:async()=>body??''};},eval:source=>captured.push(String(source))};
@@ -42,13 +43,28 @@ for(const pattern of [/iberia: 'Península Ibérica'/,/waft\.adventure\.integrat
 assert.match(loader,/__WAFT_IBERIA_TERRAIN_0240_READY__/);
 for(const pattern of [/iberia-bearded-vulture/,/Quebrantahuesos/,/Gypaetus barbatus/,/LUGARES · 20K\+/,/__WAFT_IBERIA_EXPLORER_0242_READY__/])assert.match(explorer,pattern,`Iberia explorer missing ${pattern}`);
 for(const pattern of [/__WAFT_IBERIA_POLISH_0243_READY__/,/ALT — · LAT — · LON —/,/flightMountReady=true/])assert.match(polish,pattern,`Iberia polish missing ${pattern}`);
-for(const pattern of [/__WAFT_IBERIA_WORLD_0244_READY__/,/LUGARES · PRE-GUERRA/,/nuclearWarDeaths/,/christmas-tree/,/waftCastleIcon/])assert.match(world244,pattern,`0.24.4 world layer missing ${pattern}`);
-for(const pattern of [/__WAFT_IBERIA_WORLD_0245_READY__/,/const LOD_MIN_LAT=42\.10;/,/const FULL_SWITCH_LAT=43\.20;/,/lift:stride===1\?0:-\.08/,/france-full/,/france-lod/,/streamedRegion:'france'/,/iberiaGpuReleased/])assert.match(stream245,pattern,`0.24.5 streaming layer missing ${pattern}`);
-for(const pattern of [/__WAFT_IBERIA_WORLD_0246_READY__/,/PICADO ↓/,/#waftSpecialMarkers\{display:none!important\}/,/FRANCE 001 · MONDE CONTINU/,/regions\/france\/objects\.json/,/franceCityCount/])assert.match(visible246,pattern,`0.24.6 visible layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0244_READY__/,/LUGARES · PRE-GUERRA/,/nuclearWarDeaths/,/christmas-tree/,/waftCastleIcon/,/WAFT_WORLD_ATLAS_PROVIDER/])assert.match(world244,pattern,`shared Iberia atlas missing ${pattern}`);
+for(const pattern of [
+  /__WAFT_IBERIA_WORLD_0245_READY__/,
+  /const LOD_MIN_LAT=42\.10;/,
+  /const BORDER_OVERLAP=\.055;/,
+  /franceSouthLat/,
+  /inFranceGeo/,
+  /nearFrance/,
+  /franceVisible/,
+  /france-full/,
+  /france-lod/,
+  /streamedRegion:'france'/,
+  /iberiaGpuReleased/
+])assert.match(stream245,pattern,`0.24.8 geographic streaming layer missing ${pattern}`);
+assert.doesNotMatch(stream245,/FULL_SWITCH_LAT|REGION_SWITCH_LAT|MORPH_START_LAT|franceLocalX/,'obsolete latitude-only France transition survived');
+for(const pattern of [/__WAFT_IBERIA_WORLD_0246_READY__/,/PICADO ↓/,/#waftSpecialMarkers\{display:none!important\}/,/regions\/france\/objects\.json/,/franceCityCount/,/footprintSize/,/stream\.nearFrance/,/stream\.inFranceGeo/])assert.match(visible246,pattern,`0.24.8 visible layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0247_READY__/,/atlasSystem:'shared-iberia'/,/floatingCityLabels:false/,/WAFT_WORLD_ATLAS_PROVIDER/,/streamedRegion:'canarias'/,/streamedRegion:'atlantic-corridor'/])assert.match(continuity247,pattern,`0.24.8 continuity layer missing ${pattern}`);
+assert.doesNotMatch(continuity247,/const getMarker=city=>|function updateCityLabels/,'floating city renderer survived hotfix');
 
 assert.equal(preview.regionId,'iberia');
-assert.ok(preview.counts.settlements>=368,`Expected >=368 settlements, got ${preview.counts.settlements}`);
-assert.ok(preview.counts.buildings>=365,`Expected >=365 physical generic markers, got ${preview.counts.buildings}`);
+assert.ok(preview.counts.settlements>=483,`Expected >=483 settlements, got ${preview.counts.settlements}`);
+assert.ok(preview.counts.buildings>=480,`Expected >=480 physical generic markers, got ${preview.counts.buildings}`);
 assert.equal(preview.counts.namedBuildings,preview.counts.buildings);
 assert.equal(preview.counts.hotels,0);assert.equal(preview.counts.landmarks,0);assert.equal(preview.counts.roadSegments,0);
 assert.equal(preview.terrain.verticalScale,0.013594);
@@ -57,9 +73,10 @@ assert.equal(manifest.content.faunaSpecies,0);assert.equal(manifest.content.land
 assert.equal(manifest.settlementMarkers.minimumPopulation,20000);
 assert.equal(manifest.terrain.columns,560);assert.equal(manifest.terrain.rows,416);assert.ok(manifest.terrain.maximumElevationMeters>=3400);assert.equal(manifest.projection.unitsPerKm,1.45);
 const byName=new Map(settlements.items.map(item=>[item.name,item]));
-for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla','Sant Just Desvern'])assert.ok(byName.has(name),`${name} missing from Iberia 0.24.6 atlas`);
+for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla','Sant Just Desvern'])assert.ok(byName.has(name),`${name} missing from Iberia atlas`);
 assert.ok(Number(byName.get('Sant Just Desvern').population)>=20000,'Sant Just population regressed');
 assert.ok(objects.items.some(x=>x.name==='Sant Just Desvern'),'Sant Just physical object missing');
+assert.ok(settlements.items.filter(x=>x.countryCode==='PT').length>=100,'Portugal coverage regressed');
 for(const name of ['Ayódar','Peñíscola','Gibraltar']){const place=byName.get(name);assert.ok(place?.specialMarker,`${name} must remain special`);assert.ok(!objects.items.some(item=>String(item.sourceId)===String(place.sourceId)),`${name} must not become a generic needle again`);}
 
-console.log(`WAFT 0.24.6 Iberia world: ${preview.counts.settlements} settlements, ${preview.counts.buildings} generic physical markers, dedicated special landmarks, explicit PICADO and populated France streaming present.`);
+console.log(`WAFT 0.24.8 Iberia world: ${preview.counts.settlements} settlements, ${preview.counts.buildings} generic physical markers, shared atlas, geographic France streaming, explicit PICADO and no floating city overlay.`);

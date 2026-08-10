@@ -65,15 +65,19 @@
   }
 
   function updateAtlas(){
-    const api=window.WAFTRegionRuntime,state=api?.getState?.(),list=document.querySelector('#waftIberiaAtlas .list');
+    const api=window.WAFTRegionRuntime,state=api?.getState?.(),list=document.querySelector('#waftIberiaAtlas .list'),panel=document.getElementById('waftIberiaAtlas');
     if(!api||!state||!list||!settlements.length)return;
+    const supplied=typeof window.WAFT_WORLD_ATLAS_PROVIDER==='function'?window.WAFT_WORLD_ATLAS_PROVIDER({api,state,defaultItems:settlements}):null;
+    const source=Array.isArray(supplied?.items)&&supplied.items.length?supplied.items:settlements;
+    const header=panel?.querySelector('header span');if(header)header.textContent=supplied?.title||'LUGARES · PRE-GUERRA';
     const upk=api.metadata?.projection?.unitsPerKm||1.45;
-    const nearest=settlements.map(item=>({item,d:Math.hypot(item.local.x-state.position.x,item.local.z-state.position.z)})).sort((a,b)=>a.d-b.d).slice(0,6);
+    const positioned=source.map(item=>({item,local:item._world||item.local})).filter(x=>Number.isFinite(Number(x.local?.x))&&Number.isFinite(Number(x.local?.z)));
+    const nearest=positioned.map(({item,local})=>({item,d:Math.hypot(Number(local.x)-state.position.x,Number(local.z)-state.position.z)})).sort((a,b)=>a.d-b.d).slice(0,6);
     list.innerHTML=nearest.map(({item,d})=>{
       const special=Boolean(item.specialMarker),cls=special?'special':item.populationTier==='large'?'l':item.populationTier==='medium'?'m':'s';
       const km=d/upk,capital=Boolean(item.capitalLevel),prefix=item.specialMarker==='christmas-tree'?'🎄 ':item.specialMarker==='castle'?'🏰 ':item.specialMarker==='rock'?'⛰ ':capital?'★ ':'';
-      const deaths=item.warImpact?.nuclearWarDeaths??0;
-      return `<div class="waftAtlasRow"><i class="${cls}"></i><b class="${capital?'capital':''}">${prefix}${item.name}</b><em>${km<10?km.toFixed(1):Math.round(km)} km</em><small>${fmt(item.population)} hab · ☢ ${fmt(deaths)} muertos (lore)</small></div>`;
+      const deaths=item.warImpact?.nuclearWarDeaths??item.tags?.['waft:nuclear_war_deaths']??0,cc=item.countryCode?` · ${item.countryCode}`:'';
+      return `<div class="waftAtlasRow"><i class="${cls}"></i><b class="${capital?'capital':''}">${prefix}${item.name}</b><em>${km<10?km.toFixed(1):Math.round(km)} km</em><small>${fmt(item.population||item.tags?.population)} hab${cc} · ☢ ${fmt(deaths)} muertos (lore)</small></div>`;
     }).join('');
   }
 
@@ -107,7 +111,8 @@
     const state=window.WAFTRegionRuntime?.getState?.();if(!state)return;
     const lat=PROJECTION.origin.lat-state.position.z/(PROJECTION.kmPerDegreeLat*PROJECTION.unitsPerKm);
     const jobs=[];
-    if(lat>42.2)jobs.push(['france','../../regions/france/manifest.json']);
+    const stream=window.WAFTWorldStreaming0245,geo=stream?.geoFromWorld?.(state.position.x,state.position.z);
+    if(stream?.nearFrance?stream.nearFrance(geo,.8):lat>42.2)jobs.push(['france','../../regions/france/manifest.json']);
     if(state.position.z>560)jobs.push(['canarias','../../regions/canarias/manifest.json']);
     const key=jobs.map(x=>x[0]).join(',');if(key===lastPrefetch||!jobs.length)return;lastPrefetch=key;
     const hint=document.getElementById('waftStreamHint');hint?.classList.add('show');
