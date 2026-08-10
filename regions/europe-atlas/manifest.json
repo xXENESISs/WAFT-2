@@ -28,19 +28,19 @@
       "sha256": "0075fe19100b5aea18a23ea93664afedc4100a187c3747e57d6f8794b73e8713"
     },
     {
-      "bytes": 948087,
+      "bytes": 1112554,
       "path": "sectors.json",
-      "sha256": "29f5db82bc96e4fa3a6219c1febb22e3fe78db6cb0c4078afa207a3d28c1d490"
+      "sha256": "55b8851b4f2cb58c59e99b4f8107ba0c9b32249fa5a91865b01beff3f4dab04a"
     },
     {
-      "bytes": 4708108,
+      "bytes": 4708454,
       "path": "settlements.json",
-      "sha256": "fb668fcbd60ad660c4bb86bc76e1d424f2ca5c257dd35ff5aee45895a40762b9"
+      "sha256": "6f2fa3248c0beef21b86ff4f77284e16dee68793e0878ef611b41239c057e360"
     },
     {
-      "bytes": 6674093,
+      "bytes": 6676137,
       "path": "objects.json",
-      "sha256": "8a5add32b0f7f010971449182acf7ac52508b99463fdc6660d9d49974300da08"
+      "sha256": "df85c8770e37dfe7bd3d9cf106e4dcc322cb315e32fd460dd3fdc8cc0386b2ce"
     },
     {
       "bytes": 153,
@@ -53,9 +53,9 @@
       "sha256": "2b2564195efff6b31652656da3553e277c2658635f0335c460057da93e8db36d"
     },
     {
-      "bytes": 547,
+      "bytes": 548,
       "path": "routes.json",
-      "sha256": "baff7e21fd368c3043a44cb9ddff619abb1cccbb6d7050ecce194cf33b65a17a"
+      "sha256": "be18c433d232f159f28334f381083d1713f021e44a680d5637f92661bd843fb6"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 1668050,
+  "packageBytesWithoutManifest": 1832518,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 85.55640544079021,
     "localBounds": {
-      "maxX": 1620.2244280349648,
-      "maxZ": 459.25299,
-      "minX": -587.1308323374228,
-      "minZ": -1091.03841
+      "maxX": 1782.2468708384613,
+      "maxZ": 505.178289,
+      "minX": -645.8439155711651,
+      "minZ": -1200.1422510000002
     },
     "origin": {
       "lat": 39.775,
       "lon": -3.125
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 0.3
+    "unitsPerKm": 0.33
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/europe-atlas.region.json",
-      "sha256": "91716df1cc8516547f9306f25a633477ecd4e87c6868e4f12840e2eeddaf6196"
+      "sha256": "8ef0c922ee802dc91a4a11ae2b02ab6bc1f87a09492a3aaae29ab2a50e979bc9"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/europe-atlas/copernicus-dem-glo30.json",
@@ -259,15 +259,15 @@
     "id": "europe-atlas",
     "name": "Europa · Atlas continuo",
     "status": "prototype",
-    "version": "0.25.2"
+    "version": "0.25.3"
   },
   "sectors": {
-    "active": 649,
-    "columns": 35,
+    "active": 751,
+    "columns": 38,
     "preloadRadius": 1,
-    "rows": 25,
+    "rows": 27,
     "sizeUnits": 64,
-    "total": 875
+    "total": 1026
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,
