@@ -32,8 +32,10 @@ for(const region of ['iberia','france','canarias','northwest-africa']){
   let s=read(p);
   s=s.replace("const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.24.8';","const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.0';");
   s=s.replace('const U=1.45;','const U=Number(api.metadata?.projection?.unitsPerKm)||1.0;');
+  s=s.replace('const LOD_MIN_LAT=42.10;','const LOD_MIN_LAT=43.62;');
   s=s.replace("if(manifest?.region?.id!=='france'||Number(manifest?.projection?.unitsPerKm)!==1.45)throw new Error('Manifest France incompatible con 0.24.5');","if(manifest?.region?.id!=='france'||Math.abs(Number(manifest?.projection?.unitsPerKm)-U)>.0001)throw new Error('Manifest France incompatible con la escala mundial');");
-  if(s.includes('const U=1.45;')||s.includes("unitsPerKm)!==1.45"))throw new Error('Hardcode 1.45 survived in France streamer');
+  s=s.replace("const mesh=state.mesh;state.lastVisible=Boolean(mesh?.vao&&nearFrance(geo,.55));if(!state.lastVisible)return;","const mesh=state.mesh;state.lastVisible=Boolean(mesh?.vao&&nearFrance(geo,.55)&&geo?.lat>=43.56);if(!state.lastVisible)return;");
+  if(s.includes('const U=1.45;')||s.includes("unitsPerKm)!==1.45")||s.includes('const LOD_MIN_LAT=42.10;'))throw new Error('Old France scale/overlap survived');
   write(p,s);
 }
 
@@ -44,6 +46,9 @@ for(const region of ['iberia','france','canarias','northwest-africa']){
   s=s.replace('atlanticMesh=buildAtlanticMesh();','atlanticMesh=null; // WAFT 0.25.0: no artificial Atlantic corridor geometry');
   s=s.replace('sampleCanarias(x,z)||sampleAtlantic(x,z)||previousStreamSample(x,z)','sampleCanarias(x,z)||previousStreamSample(x,z)');
   s=s.replace('const atlanticHere=Boolean(sampleAtlantic(state.position.x,state.position.z)),canariasHere=inCanarias(g);','const atlanticHere=false,canariasHere=inCanarias(g);');
+  s=s.replace("const state=api.getState?.();if(!state?.position)return;const g=geoFromWorld(state.position.x,state.position.z),french=inFrance(g),can=inCanarias(g),hud=document.getElementById('hudTitle'),status=document.getElementById('waftWorldStream0245');","const state=api.getState?.();if(!state?.position)return;const g=geoFromWorld(state.position.x,state.position.z),french=inFrance(g),can=inCanarias(g),african=Boolean(window.WAFTWorld0250?.inAfrica?.(g)),hud=document.getElementById('hudTitle'),status=document.getElementById('waftWorldStream0245');");
+  s=s.replace("if(can){regionBadge.hidden=false;regionBadge.textContent=`CANARIAS · ${canariasCities.length} NÚCLEOS`;if(hud)hud.textContent='CANARIAS · MUNDO CONTINUO';}","if(african){regionBadge.hidden=true;if(hud)hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.0';}\n    else if(can){regionBadge.hidden=false;regionBadge.textContent=`CANARIAS · ${canariasCities.length} NÚCLEOS`;if(hud)hud.textContent='CANARIAS · MUNDO CONTINUO';}");
+  s=s.replace("const region=can?'CANARIAS':french?'FRANCE':'IBERIA';","const region=african?'AFRICA':can?'CANARIAS':french?'FRANCE':'IBERIA';");
   s=s.replace("window.WAFTWorldContinuity0247={version:'0.24.8-hotfix'","window.WAFTWorldContinuity0247={version:'0.25.0-compat'");
   if(s.includes("streamedRegion:'atlantic-corridor'"))throw new Error('Artificial Atlantic surface survived 0.25.0 preparation');
   write(p,s);
@@ -62,4 +67,4 @@ for(const region of ['iberia','france','canarias','northwest-africa']){
   write(p,s);
 }
 
-console.log('WAFT 0.25.0 prepared: 1.00 u/km world scale, real Africa bootstrap, artificial Atlantic corridor disabled.');
+console.log('WAFT 0.25.0 prepared: 1.00 u/km world scale, France overlap delayed to physical Iberia edge, real Africa bootstrap, artificial Atlantic corridor disabled.');
