@@ -1,10 +1,9 @@
-name: Build WAFT world streaming 0.24.5
+name: Build WAFT world streaming 0.24.5 (legacy)
 
 on:
   push:
     branches:
       - feat/world-0245-seam-france
-      - main
     paths:
       - .github/workflows/build-world-streaming-0245.yml
       - world-generator/scripts/build-settlement-markers-0244.py
@@ -24,8 +23,7 @@ on:
 permissions:
   contents: write
 
-# GITHUB_TOKEN-generated pushes intentionally do not recursively start Actions.
-# Once the 0.24.5 runtime marker exists, version-specific final tuning is handled by its own idempotent script.
+# Frozen legacy builder. Main is validated by verify-world-visible-0246.yml.
 concurrency:
   group: waft-world-0245-${{ github.ref }}
   cancel-in-progress: true
@@ -94,13 +92,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            mallorca-mobile/adventure-0210/index.html \
-            mallorca-mobile/adventure-0210/plugin-loader.js \
-            regions/iberia
+          git add mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/plugin-loader.js regions/iberia
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "WAFT world 0.24.5 generated state is deterministic and current."
             exit 0
           fi
           git commit -m "Build WAFT Iberia France streaming package 0.24.5"
@@ -114,9 +108,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          node mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs \
-            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
-            /tmp/waft-iberia-france-0245.png
+          node mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" /tmp/waft-iberia-france-0245.png
       - name: Upload seam screenshot
         if: always() && steps.persist.outputs.changed != 'true'
         uses: actions/upload-artifact@v4
