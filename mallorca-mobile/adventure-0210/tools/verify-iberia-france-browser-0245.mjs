@@ -46,25 +46,27 @@ try{
     const bird=game.animals.find(animal=>animal.id==='iberia-bearded-vulture');
     api.setAdventureModifiers({flight:false,mountType:null});api.setRegionalPosition(bird.x,bird.z);await wait(350);document.getElementById('waftAdventureAction')?.click();await wait(350);
 
-    // Isolate vertical flight from mountain-floor clamping. The old 0.24.4 test let the
-    // coasting bird cross changing terrain during the four setup flaps, making the measured
-    // dive distance depend on the ridge underneath rather than only on flight physics.
+    // Keep the whole neutral/dive probe far offshore. The bearded vulture intentionally
+    // coasts horizontally with no joystick, so a near-coast probe can eventually hit rising
+    // terrain and make the floor clamp look like vertical flight drift.
     let ocean=null;
-    const candidates=[[39.0,.9],[38.5,.8],[37.5,-.2],[40.5,1.4],[41.0,1.8],[36.5,-5.2],[43.0,-9.0]];
+    const candidates=[[39.0,-9.8],[40.0,-9.8],[41.0,-9.7],[36.2,-7.0],[38.0,-1.2],[37.0,-8.8]];
     for(const [lat,lon] of candidates){
       const p=stream.worldFromGeo(lat,lon),surface=api.sampleSurface(p.x,p.z);
       if(surface?.inside&&!surface.land){ocean={lat,lon,...p};break;}
     }
-    if(!ocean)throw new Error('No flat-water flight probe available inside Iberia');
+    if(!ocean)throw new Error('No open-water flight probe available inside Iberia');
     api.setAdventureModifiers({flight:false,mountType:'vulture'});api.setRegionalPosition(ocean.x,ocean.z);api.setAdventureModifiers({flight:true,mountType:'vulture'});api.setInput(0,0);await wait(250);
 
     const start=api.getState();api.setAdventureModifiers({flightFlap:3.8});await wait(600);const one=api.getState();await wait(750);const levelA=api.getState();await wait(750);const levelB=api.getState();
+    const levelASurface=api.sampleSurface(levelA.position.x,levelA.position.z),levelBSurface=api.sampleSurface(levelB.position.x,levelB.position.z);
     api.setHeading(0);api.setInput(0,-1);await wait(320);const cruise=api.getState();api.setInput(0,0);await wait(120);
     for(let i=0;i<4;i++){api.setAdventureModifiers({flightFlap:3.8});await wait(360);}const diveStart=api.getState();api.setInput(0,1);await wait(520);const dive=api.getState();api.setInput(0,0);
     const diveSurface=api.sampleSurface(dive.position.x,dive.position.z);
-    return{probe:ocean,climb:one.position.y-start.position.y,drift:Math.abs(levelB.position.y-levelA.position.y),cruiseSpeed:cruise.adventureCurrentSpeed,drop:diveStart.position.y-dive.position.y,diveSpeed:dive.adventureCurrentSpeed,dive:dive.iberiaDive,diveSurfaceLand:Boolean(diveSurface?.land),mounted:game.mountedAnimalId};
+    return{probe:ocean,climb:one.position.y-start.position.y,drift:Math.abs(levelB.position.y-levelA.position.y),cruiseSpeed:cruise.adventureCurrentSpeed,drop:diveStart.position.y-dive.position.y,diveSpeed:dive.adventureCurrentSpeed,dive:dive.iberiaDive,neutralSurfaceLand:Boolean(levelASurface?.land||levelBSurface?.land),diveSurfaceLand:Boolean(diveSurface?.land),mounted:game.mountedAnimalId};
   });
   need(flight.climb>10.5,`Single flap still weak: ${flight.climb}`);
+  need(!flight.neutralSurfaceLand,`Neutral probe reached land and is no longer isolated: ${JSON.stringify(flight)}`);
   need(flight.drift<.35,`Level flight drift ${flight.drift}`);
   need(flight.cruiseSpeed>=44,`Cruise still slow ${flight.cruiseSpeed}`);
   need(!flight.diveSurfaceLand,`Dive probe reached land and is no longer isolated: ${JSON.stringify(flight)}`);
