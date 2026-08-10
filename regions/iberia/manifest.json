@@ -8,12 +8,12 @@
     "visibleTriangles": 480000
   },
   "content": {
-    "connections": 2,
+    "connections": 3,
     "entryPoints": 3,
     "faunaSpecies": 0,
-    "generatedBuildings": 480,
+    "generatedBuildings": 479,
     "landmarks": 0,
-    "settlements": 483
+    "settlements": 482
   },
   "deterministic": true,
   "files": [
@@ -28,19 +28,19 @@
       "sha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668"
     },
     {
-      "bytes": 668517,
+      "bytes": 330875,
       "path": "sectors.json",
-      "sha256": "6f76aa21f93385c2aefe5a7531afadb596a0584e01c3b3f645c3c85e099a8e78"
+      "sha256": "8b4071296e12e530c1357d97d8ff29b79e52bc6e84c20bc4703ea01b21e540cf"
     },
     {
-      "bytes": 363438,
+      "bytes": 363364,
       "path": "settlements.json",
-      "sha256": "e154af83c9b8b4d68851948b79e15b88ad4200358c0e4f825e65b1b0a278d165"
+      "sha256": "e31c02923791b78a6e1d256607cf4b4cc22eca32a10c91a2a026481154a1bdde"
     },
     {
-      "bytes": 508836,
+      "bytes": 508372,
       "path": "objects.json",
-      "sha256": "b9d2e6bc0a72f9d54c81c5a04f5b49e583ed706dc4176ff833f0f6d7ff3cb35e"
+      "sha256": "585dfbf2a57d6dcabc605ef8c79dd8b9c2eb5550beb778216ec6a3b4f49a7118"
     },
     {
       "bytes": 147,
@@ -53,9 +53,9 @@
       "sha256": "4a6a67a9cd3a033e85e80518a828d1b6f13f98a6fe294f8a9bc649ed31184969"
     },
     {
-      "bytes": 1780,
+      "bytes": 2037,
       "path": "routes.json",
-      "sha256": "dc0cdbc4fd1293e36284bfaee398fbc42357898af7df637578ad8d611aac4681"
+      "sha256": "8e8e0f17afd4ad2c63a04968345435400bc7e5dd446f7b8024e31a003fc93e56"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 1369943,
+  "packageBytesWithoutManifest": 1032558,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 85.55640544079021,
     "localBounds": {
-      "maxX": 958.3386864436513,
-      "maxZ": 745.278975,
-      "minX": -803.267701582219,
-      "minZ": -648.5941349999997
+      "maxX": 660.9232320301044,
+      "maxZ": 513.9855,
+      "minX": -553.9777252291166,
+      "minZ": -447.30629999999985
     },
     "origin": {
       "lat": 39.775,
       "lon": -3.125
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 1.45
+    "unitsPerKm": 1
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/iberia.region.json",
-      "sha256": "66a5f95deacc32c4e6c91c7d2d581255d6ae26c4801abdfc4b7df428acc4ff6f"
+      "sha256": "e29f06c68615a05005beed38faaf82f5461f08345bf1b28080300e4bc3e11008"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/iberia/copernicus-dem-glo30.json",
@@ -204,15 +204,15 @@
     "id": "iberia",
     "name": "Península Ibérica",
     "status": "prototype",
-    "version": "0.24.6"
+    "version": "0.25.0"
   },
   "sectors": {
-    "active": 456,
-    "columns": 28,
+    "active": 245,
+    "columns": 19,
     "preloadRadius": 2,
-    "rows": 22,
+    "rows": 16,
     "sizeUnits": 64,
-    "total": 616
+    "total": 304
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,

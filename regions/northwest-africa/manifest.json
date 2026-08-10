@@ -1,0 +1,727 @@
+{
+  "budgets": {
+    "activeColliders": 20,
+    "downloadMb": 12,
+    "runtimeMemoryMb": 280,
+    "textureMemoryMb": 32,
+    "visibleObjects": 120,
+    "visibleTriangles": 480000
+  },
+  "content": {
+    "connections": 2,
+    "entryPoints": 3,
+    "faunaSpecies": 0,
+    "generatedBuildings": 186,
+    "landmarks": 0,
+    "settlements": 186
+  },
+  "deterministic": true,
+  "files": [
+    {
+      "bytes": 426048,
+      "path": "terrain.bin",
+      "sha256": "98e5b7c95728cea724fcbc029f441b58d314bcca775e44030d135d8eae952b67"
+    },
+    {
+      "bytes": 213056,
+      "path": "landcover.bin",
+      "sha256": "292528eade7edbabda39968f757e0a07c691f97601978b19835aa43dd8098407"
+    },
+    {
+      "bytes": 346066,
+      "path": "sectors.json",
+      "sha256": "ebf0379f2591562f6cc83c21bb9c099eadd4c8cb97927d55ec4d2f5168932bb8"
+    },
+    {
+      "bytes": 140284,
+      "path": "settlements.json",
+      "sha256": "8c56b82bb2ba9bf2d89577d87b980a245c6e987bfea442a8b227c838d7c04cfa"
+    },
+    {
+      "bytes": 197590,
+      "path": "objects.json",
+      "sha256": "40a98b456604e982348ea8b4f2b44eb3980118411229911206d7841b5cd413d0"
+    },
+    {
+      "bytes": 157,
+      "path": "landmarks.json",
+      "sha256": "d410ac2309b2dfe4e4238b0d6789f4e5da6ac2db5e05efab94df83d45489e08a"
+    },
+    {
+      "bytes": 164,
+      "path": "fauna.json",
+      "sha256": "efd0623277eb7932b46fa8e1b6638011fe98dc27744958a42bc5e1eaf6ca842a"
+    },
+    {
+      "bytes": 1803,
+      "path": "routes.json",
+      "sha256": "7328ae2e5b610a7df930652d76e9b4eab3de26c625769f6eea841727cd59263f"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "generatorVersion": "0.2.0",
+  "landcover": {
+    "classDistribution": {
+      "0": 66678,
+      "6": 33779,
+      "9": 112535
+    },
+    "classes": [
+      {
+        "id": 0,
+        "key": "water",
+        "walkable": false
+      },
+      {
+        "id": 1,
+        "key": "beach",
+        "walkable": true
+      },
+      {
+        "id": 2,
+        "key": "coastal-rock",
+        "walkable": true
+      },
+      {
+        "id": 3,
+        "key": "mediterranean-scrub",
+        "walkable": true
+      },
+      {
+        "id": 4,
+        "key": "mediterranean-forest",
+        "walkable": true
+      },
+      {
+        "id": 5,
+        "key": "agricultural",
+        "walkable": true
+      },
+      {
+        "id": 6,
+        "key": "mountain-rock",
+        "walkable": true
+      },
+      {
+        "id": 7,
+        "key": "wetland",
+        "walkable": true
+      },
+      {
+        "id": 8,
+        "key": "urban",
+        "walkable": true
+      },
+      {
+        "id": 9,
+        "key": "pasture",
+        "walkable": true
+      }
+    ],
+    "externalWorldCoverImportPending": false,
+    "fallbackLandCells": 0,
+    "format": "WAFTLCV1",
+    "quality": "esa-worldcover-2021-v200",
+    "realClassifiedLandCells": 146314,
+    "source": {
+      "algorithmVersion": "terrain-only-v1",
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
+      "datasetYear": 2021,
+      "distribution": "Derived build artifact",
+      "doi": null,
+      "license": "Copernicus data policy",
+      "nominalResolutionMeters": 90,
+      "provider": "WAFT / Copernicus Programme",
+      "retrievedOn": "2026-08-10",
+      "snapshotSha256": "4fc0c04910c00f1c3c423a3bb8e43474b85d9a4fd0fa02862cf3a2774353f391",
+      "tiles": []
+    }
+  },
+  "packageBytesWithoutManifest": 987656,
+  "pendingStages": [
+    "openstreetmap-settlements-buildings-and-routes",
+    "wikidata-landmark-ranking",
+    "gbif-fauna-candidates",
+    "procedural-vegetation-and-buildings"
+  ],
+  "projection": {
+    "axis": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "compression": {
+      "anchorIds": [],
+      "factor": 1,
+      "mode": "none",
+      "preserveCoastline": true
+    },
+    "kmPerDegreeLat": 111.132,
+    "kmPerDegreeLon": 94.92605327754234,
+    "localBounds": {
+      "maxX": 617.0193463040252,
+      "maxZ": 498.98267999999985,
+      "minX": -617.0193463040252,
+      "minZ": -498.98267999999985
+    },
+    "origin": {
+      "lat": 31.49,
+      "lon": -6.5
+    },
+    "type": "local-equirectangular",
+    "unitsPerKm": 1
+  },
+  "provenance": {
+    "config": {
+      "path": "world-generator/configs/northwest-africa.region.json",
+      "sha256": "259c7a350933c5862bf4537911eeed9403057faa26d0ce02827a289c36e1aaac"
+    },
+    "demSnapshot": {
+      "metadataPath": "world-generator/sources/northwest-africa/copernicus-dem-glo30.json",
+      "path": "world-generator/sources/northwest-africa/copernicus-dem-glo30.bin",
+      "sha256": "160030cd8dee2e8fcc2c3e0b25f6d2e9e6319e731f212baf6446efea2c956dc8"
+    },
+    "generatorSourcesSha256": "a5de7bdf0e7689082f6ebe9faf75ff872e4f23dfa98bb2456e830abde0b83f1f",
+    "overrides": {
+      "path": "world-generator/overrides/northwest-africa.overrides.json",
+      "sha256": "6067985133dfeb81394b8ece12bc47730ac140de78827645215c8764fe038fe0"
+    },
+    "worldCoverSnapshot": {
+      "metadataPath": "world-generator/sources/northwest-africa/esa-worldcover-2021-v200.json",
+      "path": "world-generator/sources/northwest-africa/esa-worldcover-2021-v200.bin",
+      "sha256": "4fc0c04910c00f1c3c423a3bb8e43474b85d9a4fd0fa02862cf3a2774353f391"
+    }
+  },
+  "region": {
+    "continent": "Africa",
+    "countryCodes": [
+      "MA",
+      "DZ",
+      "EH",
+      "ES"
+    ],
+    "id": "northwest-africa",
+    "name": "Noroeste de África",
+    "status": "prototype",
+    "version": "0.25.0"
+  },
+  "sectors": {
+    "active": 243,
+    "columns": 20,
+    "preloadRadius": 2,
+    "rows": 16,
+    "sizeUnits": 64,
+    "total": 320
+  },
+  "settlementMarkers": {
+    "fictionalWarImpact": true,
+    "manualPopulationExceptions": 0,
+    "minimumPopulation": 20000,
+    "source": {
+      "countries": [
+        "DZ",
+        "EH",
+        "ES",
+        "MA"
+      ],
+      "dataset": "cities15000",
+      "fictionalWarImpact": true,
+      "license": "GeoNames CC BY 4.0; WAFT manual metadata",
+      "minimumPopulation": 20000,
+      "provider": "GeoNames + WAFT manual exceptions",
+      "regionId": "northwest-africa",
+      "retrievedOn": "2026-08-09",
+      "url": "https://download.geonames.org/export/dump/cities15000.zip"
+    },
+    "tiers": {
+      "large": [
+        200000,
+        null
+      ],
+      "medium": [
+        50000,
+        199999
+      ],
+      "small": [
+        20000,
+        49999
+      ]
+    }
+  },
+  "terrain": {
+    "cells": 212992,
+    "columns": 512,
+    "elevationSource": {
+      "attribution": "Contains modified Copernicus DEM data",
+      "dataset": "Copernicus DEM GLO-90",
+      "license": "Copernicus data policy",
+      "mode": "copernicus-dem-glo30",
+      "provider": "Copernicus Programme",
+      "retrievedOn": "2026-08-10",
+      "snapshotSha256": "160030cd8dee2e8fcc2c3e0b25f6d2e9e6319e731f212baf6446efea2c956dc8",
+      "tiles": [
+        {
+          "bytes": 4873939,
+          "id": "Copernicus_DSM_COG_30_N27_00_W001_00_DEM",
+          "sha256": "a8c17bfb44769fbca0e835277723937fe848603fe5f951d3a67b89e7408232b1"
+        },
+        {
+          "bytes": 5151902,
+          "id": "Copernicus_DSM_COG_30_N27_00_W002_00_DEM",
+          "sha256": "1a09afdbfdda9073d56c7f6b9cb5c15cd7eb02e9a1b4421af21f06a4e1e910f9"
+        },
+        {
+          "bytes": 5106449,
+          "id": "Copernicus_DSM_COG_30_N27_00_W003_00_DEM",
+          "sha256": "196adf0e454ba370bf37591cc4975f7d5427c4d589fa9e5a0944531fbab9535d"
+        },
+        {
+          "bytes": 4900251,
+          "id": "Copernicus_DSM_COG_30_N27_00_W004_00_DEM",
+          "sha256": "b3031b3231afbe03223a7b5f0d54775e6f004a52d59cc70b456821d1726d3108"
+        },
+        {
+          "bytes": 4913568,
+          "id": "Copernicus_DSM_COG_30_N27_00_W005_00_DEM",
+          "sha256": "8357e0758e21a4e29438103c4f7f9ac1580ec8a52f66549309ae9fe6f7746902"
+        },
+        {
+          "bytes": 4952417,
+          "id": "Copernicus_DSM_COG_30_N27_00_W006_00_DEM",
+          "sha256": "24265bbe0c4e14dc59733311f3dc99563b1c7dce3bfa0d5963ea263c0ad98a39"
+        },
+        {
+          "bytes": 4609568,
+          "id": "Copernicus_DSM_COG_30_N27_00_W007_00_DEM",
+          "sha256": "dd1135ecf76f48a8d4fb732d1781b6232bbec694f4d6a0b7d63cfc29b50f2323"
+        },
+        {
+          "bytes": 4563169,
+          "id": "Copernicus_DSM_COG_30_N27_00_W008_00_DEM",
+          "sha256": "80a52a9763956858e63fc3a4cf55402e5256a084531904106de025214021ab66"
+        },
+        {
+          "bytes": 4286929,
+          "id": "Copernicus_DSM_COG_30_N27_00_W009_00_DEM",
+          "sha256": "de1398e8fb886fc632fe95d38781942f7ded6eaa163c2c73daf7b45bf36ae66b"
+        },
+        {
+          "bytes": 4568622,
+          "id": "Copernicus_DSM_COG_30_N27_00_W010_00_DEM",
+          "sha256": "d23391ffe7f88e8ff5bcd80aae5eccbfa001fb2c5f0aeb7e22ffe1573974c435"
+        },
+        {
+          "bytes": 4960483,
+          "id": "Copernicus_DSM_COG_30_N27_00_W011_00_DEM",
+          "sha256": "4fd172916fef3d6ce4a7af6cb9be75b9951d863361c102a52a2af608bc488335"
+        },
+        {
+          "bytes": 4905889,
+          "id": "Copernicus_DSM_COG_30_N27_00_W012_00_DEM",
+          "sha256": "73ee402d7be667dbb5962a56ad96568a788e84e71901b28a79d084917c72a9fb"
+        },
+        {
+          "bytes": 4892649,
+          "id": "Copernicus_DSM_COG_30_N27_00_W013_00_DEM",
+          "sha256": "703a2edb70d879d4fb2ca87922c760e291e4712ab0b26b67a9975e8bb513f0fd"
+        },
+        {
+          "bytes": 4730215,
+          "id": "Copernicus_DSM_COG_30_N28_00_W001_00_DEM",
+          "sha256": "3d06e7a9feb22e817c578b09be598c9883022f571c45d1357708ff58a865fef0"
+        },
+        {
+          "bytes": 5017800,
+          "id": "Copernicus_DSM_COG_30_N28_00_W002_00_DEM",
+          "sha256": "723af75152732c0a5332b2542dde7d417abe97e2f7a9f4a0a968c9f2922a86ff"
+        },
+        {
+          "bytes": 4979224,
+          "id": "Copernicus_DSM_COG_30_N28_00_W003_00_DEM",
+          "sha256": "85d8b5e77c43620a5a53047695562c3b771f9ab004ebb404442cfdfe4b3d0147"
+        },
+        {
+          "bytes": 5071828,
+          "id": "Copernicus_DSM_COG_30_N28_00_W004_00_DEM",
+          "sha256": "062e9df970a8220869b0924a73a89eb77b64ff8e4949b43baa94db3d3aff7f23"
+        },
+        {
+          "bytes": 4918187,
+          "id": "Copernicus_DSM_COG_30_N28_00_W005_00_DEM",
+          "sha256": "b8be0dc615d050d9f2b4ea55019d49414825b198be6f0c0cbf98f7ba97323ed1"
+        },
+        {
+          "bytes": 4516925,
+          "id": "Copernicus_DSM_COG_30_N28_00_W006_00_DEM",
+          "sha256": "935fc6ead118f4fba5b80b91487c07f086ae780b8bfcd9aa4e7633555cf44d15"
+        },
+        {
+          "bytes": 4611956,
+          "id": "Copernicus_DSM_COG_30_N28_00_W007_00_DEM",
+          "sha256": "9c9cc66259891f43e11e0442ea2f5112f059c4de786e78507bf788e269a16eb3"
+        },
+        {
+          "bytes": 4411222,
+          "id": "Copernicus_DSM_COG_30_N28_00_W008_00_DEM",
+          "sha256": "6ffba9fd19feea38dba9d427c14b3b23010fd0128179a450b96dcdb5ccdf5f0a"
+        },
+        {
+          "bytes": 4632704,
+          "id": "Copernicus_DSM_COG_30_N28_00_W009_00_DEM",
+          "sha256": "f18a892969f0f03d973c39aa9cb0dccc4bdeee97eaa9464dabdb6c982cd60bd6"
+        },
+        {
+          "bytes": 5073027,
+          "id": "Copernicus_DSM_COG_30_N28_00_W010_00_DEM",
+          "sha256": "ee6a8cb469759c193c30fdeb9697e4d27c8514fb255b8e0a0efaf195f08ae95a"
+        },
+        {
+          "bytes": 5062907,
+          "id": "Copernicus_DSM_COG_30_N28_00_W011_00_DEM",
+          "sha256": "8478cc7a00cd3b48c7383d93fb4768acee7115203f6741183021eb7e17afacf9"
+        },
+        {
+          "bytes": 2172388,
+          "id": "Copernicus_DSM_COG_30_N28_00_W012_00_DEM",
+          "sha256": "9527ea727cf80e47af589252f8a921c21bbb79d050d06eb680f085a8f7fac1e6"
+        },
+        {
+          "bytes": 220299,
+          "id": "Copernicus_DSM_COG_30_N28_00_W013_00_DEM",
+          "sha256": "48cd3606afcd65ef46bea58f56ebed2b1c74f7776b4b75f77d7100327c8c2923"
+        },
+        {
+          "bytes": 4914495,
+          "id": "Copernicus_DSM_COG_30_N29_00_W001_00_DEM",
+          "sha256": "8537a4203f9daad62dbed44a7e6d18d9c92bd4ffe78e851cc5569af692c5245f"
+        },
+        {
+          "bytes": 5120677,
+          "id": "Copernicus_DSM_COG_30_N29_00_W002_00_DEM",
+          "sha256": "460b80cfc969f0e85c4626a03006825d0471c4ad2871bb06b7a156396af47339"
+        },
+        {
+          "bytes": 4976650,
+          "id": "Copernicus_DSM_COG_30_N29_00_W003_00_DEM",
+          "sha256": "25e926361249870ed794f3865beb4a6f9884ae1884a549764b03805e45df9e56"
+        },
+        {
+          "bytes": 4698878,
+          "id": "Copernicus_DSM_COG_30_N29_00_W004_00_DEM",
+          "sha256": "2e2e58ad104a17887149712506f36fc0343d095c03a709812508256a036ccf9c"
+        },
+        {
+          "bytes": 4525350,
+          "id": "Copernicus_DSM_COG_30_N29_00_W005_00_DEM",
+          "sha256": "816f350cec4b42ffc3a5dd3085dfdafdf6a967f27b85b2b0da99905dd33c6d7f"
+        },
+        {
+          "bytes": 4334881,
+          "id": "Copernicus_DSM_COG_30_N29_00_W006_00_DEM",
+          "sha256": "4852b8fe1ce6eca8bcd7b4946b5a4e7ba43466941c125ac5923ae554916d1b79"
+        },
+        {
+          "bytes": 4617745,
+          "id": "Copernicus_DSM_COG_30_N29_00_W007_00_DEM",
+          "sha256": "1b57b6a574dfb3a6bc92f58bfd5c192493e09fcfea4f719f1c098319fc00fbdb"
+        },
+        {
+          "bytes": 4975847,
+          "id": "Copernicus_DSM_COG_30_N29_00_W008_00_DEM",
+          "sha256": "879e4a5d8ffc715560d862f09e0b4aa6e9b3a6b62913c32c15a5e1f1d05acfe3"
+        },
+        {
+          "bytes": 5162837,
+          "id": "Copernicus_DSM_COG_30_N29_00_W009_00_DEM",
+          "sha256": "0e39fd3fa231aad627ca597caa706338a65d0ca382c4277748940b8fcaa903f8"
+        },
+        {
+          "bytes": 4993582,
+          "id": "Copernicus_DSM_COG_30_N29_00_W010_00_DEM",
+          "sha256": "12be7667a39a4012dc1a6b7698b302ab7cd3edf005f87d92841db264f0be5d0b"
+        },
+        {
+          "bytes": 975473,
+          "id": "Copernicus_DSM_COG_30_N29_00_W011_00_DEM",
+          "sha256": "28418870b6129f79e25e20c2622b6117991ea7f4da9b6fcddb638eab5eee7862"
+        },
+        {
+          "bytes": 4723837,
+          "id": "Copernicus_DSM_COG_30_N30_00_W001_00_DEM",
+          "sha256": "67b242284569a24925d5a5b42295d44d493b5a81685aa4ec06655a32a317ff98"
+        },
+        {
+          "bytes": 4699939,
+          "id": "Copernicus_DSM_COG_30_N30_00_W002_00_DEM",
+          "sha256": "d905435c6f8bd6bfa3fe9cec7e563c3f3e7fa20e05531f90b1f098f8b67bf4b4"
+        },
+        {
+          "bytes": 4546272,
+          "id": "Copernicus_DSM_COG_30_N30_00_W003_00_DEM",
+          "sha256": "305ab53f4b54c021ea276ab943b53ea4893d329606e702ff0a70626e1ef3ecf0"
+        },
+        {
+          "bytes": 4457646,
+          "id": "Copernicus_DSM_COG_30_N30_00_W004_00_DEM",
+          "sha256": "78dfec88c649366d6b417df46492753c8ab86eacdbb214a1834fc86845ee030a"
+        },
+        {
+          "bytes": 4745182,
+          "id": "Copernicus_DSM_COG_30_N30_00_W005_00_DEM",
+          "sha256": "ee5cd0dad0df2e69a161a31c70824ac4622363705a362cb79d247bc3c01805ea"
+        },
+        {
+          "bytes": 4824465,
+          "id": "Copernicus_DSM_COG_30_N30_00_W006_00_DEM",
+          "sha256": "b40dc68a68a41a78bcf4da62198daa4225a913a8e47047c94097e01d3a33841c"
+        },
+        {
+          "bytes": 5007137,
+          "id": "Copernicus_DSM_COG_30_N30_00_W007_00_DEM",
+          "sha256": "0f7c03b9a020b2bd8798ccf7e97d919739a224311131d7979304b6ba15d60f53"
+        },
+        {
+          "bytes": 5075932,
+          "id": "Copernicus_DSM_COG_30_N30_00_W008_00_DEM",
+          "sha256": "f51ea331ea7ed730536c06203e599397bc895f8a93457fedffb663226fb7707f"
+        },
+        {
+          "bytes": 5191629,
+          "id": "Copernicus_DSM_COG_30_N30_00_W009_00_DEM",
+          "sha256": "ddafdc83f6834b8f699ee3356d5980e7591559353298a67f9a8b48cc70d43230"
+        },
+        {
+          "bytes": 3954500,
+          "id": "Copernicus_DSM_COG_30_N30_00_W010_00_DEM",
+          "sha256": "2bdc545779fc5e632c5400992bbca7e6a6cff2105875ccc4254afcfacc979b66"
+        },
+        {
+          "bytes": 4468638,
+          "id": "Copernicus_DSM_COG_30_N31_00_W001_00_DEM",
+          "sha256": "e43b818b2014ef23eb54eae8d59510cc53a2f7efb3ce77d41278e87426c8a422"
+        },
+        {
+          "bytes": 4627766,
+          "id": "Copernicus_DSM_COG_30_N31_00_W002_00_DEM",
+          "sha256": "21849bc69f71d570aa7c24f2aa98ef4ea9fb08f7e881fd6e24dd74bbc886d830"
+        },
+        {
+          "bytes": 4630611,
+          "id": "Copernicus_DSM_COG_30_N31_00_W003_00_DEM",
+          "sha256": "c154aea83404e624e388d10e485189eec523db4fc37347f1c443ff6f45b1ee68"
+        },
+        {
+          "bytes": 4528972,
+          "id": "Copernicus_DSM_COG_30_N31_00_W004_00_DEM",
+          "sha256": "a453befc46d091ee375353481699c1d960d54022e715647f40cbecc6c92b9475"
+        },
+        {
+          "bytes": 4688179,
+          "id": "Copernicus_DSM_COG_30_N31_00_W005_00_DEM",
+          "sha256": "e72b29a82fd26f5225d501fa67d82d7fa09a0c5e6548452790a7c814fdaaa0a9"
+        },
+        {
+          "bytes": 4993027,
+          "id": "Copernicus_DSM_COG_30_N31_00_W006_00_DEM",
+          "sha256": "59680e50e71da1f08a60a3ba423d98cf2da2f9747985f36206cb40eb1bf52670"
+        },
+        {
+          "bytes": 5058400,
+          "id": "Copernicus_DSM_COG_30_N31_00_W007_00_DEM",
+          "sha256": "d431b0475fe0d3b4f4b94edbf3fd5ed816d8b0e3d49c8068f0b39fb5dfb050b7"
+        },
+        {
+          "bytes": 4964289,
+          "id": "Copernicus_DSM_COG_30_N31_00_W008_00_DEM",
+          "sha256": "6f38ab9a1bd0ed09f88e6bae5be5e1c942ac3658061799da64d45b364c1ec7b3"
+        },
+        {
+          "bytes": 5015105,
+          "id": "Copernicus_DSM_COG_30_N31_00_W009_00_DEM",
+          "sha256": "4ccf503fd75e85896268ea2fc3454198f796d91a56bbbc2ace9bd83466a29d9a"
+        },
+        {
+          "bytes": 3864842,
+          "id": "Copernicus_DSM_COG_30_N31_00_W010_00_DEM",
+          "sha256": "85a643153c266c9776e31609ca00a325cdef82ba2986a4535ccd5c68feb27a44"
+        },
+        {
+          "bytes": 4721973,
+          "id": "Copernicus_DSM_COG_30_N32_00_W001_00_DEM",
+          "sha256": "b0611ecd98fb84e02950abda2498d15b9c4cd685507a659abb934d8b80e86e02"
+        },
+        {
+          "bytes": 4685709,
+          "id": "Copernicus_DSM_COG_30_N32_00_W002_00_DEM",
+          "sha256": "874752cc01868e8baab45b15239c659dfaca081b986c3cd70d671a74ef8284aa"
+        },
+        {
+          "bytes": 4500710,
+          "id": "Copernicus_DSM_COG_30_N32_00_W003_00_DEM",
+          "sha256": "fc77a68f7d4b01d39a9765275801a539a7a7e2587d271f52fefdf1fcaf5647c3"
+        },
+        {
+          "bytes": 4741614,
+          "id": "Copernicus_DSM_COG_30_N32_00_W004_00_DEM",
+          "sha256": "ae0247b18ce04e8b92ae4b8865e4430471686c5fb4a6f986b48dc27a03ff5202"
+        },
+        {
+          "bytes": 4897697,
+          "id": "Copernicus_DSM_COG_30_N32_00_W005_00_DEM",
+          "sha256": "a385db2e4050ccb37d0755c55d6a05afd6a3a87e43336863121fde6cfc38bb00"
+        },
+        {
+          "bytes": 5059966,
+          "id": "Copernicus_DSM_COG_30_N32_00_W006_00_DEM",
+          "sha256": "56fab0b7e6ade875f5fa433ccd2efce0c5891573c8b9d371f01d16bcbb76738f"
+        },
+        {
+          "bytes": 4878572,
+          "id": "Copernicus_DSM_COG_30_N32_00_W007_00_DEM",
+          "sha256": "2e3fe1be5fed12bbcaa1e90140806ffd5dbfb2367ac28f357cacbd9adb23d122"
+        },
+        {
+          "bytes": 4837960,
+          "id": "Copernicus_DSM_COG_30_N32_00_W008_00_DEM",
+          "sha256": "02d64fc5cf2b58e01cbd2f4d9a38a63b714d7c88db582af93b15ca997640f4e9"
+        },
+        {
+          "bytes": 4911977,
+          "id": "Copernicus_DSM_COG_30_N32_00_W009_00_DEM",
+          "sha256": "7cd241f25bf643261126838ab1519711c1af5383c586eed381fade10c7120410"
+        },
+        {
+          "bytes": 1101288,
+          "id": "Copernicus_DSM_COG_30_N32_00_W010_00_DEM",
+          "sha256": "a46c488a09c685ef1eef4754ebc6e63cb805d51d0777eff2db42ed8969ec7366"
+        },
+        {
+          "bytes": 4099034,
+          "id": "Copernicus_DSM_COG_30_N33_00_W001_00_DEM",
+          "sha256": "1e8686b1394b3421050a833405df94c55fa36ae30ac9d9f448c3b331f9460b62"
+        },
+        {
+          "bytes": 4064680,
+          "id": "Copernicus_DSM_COG_30_N33_00_W002_00_DEM",
+          "sha256": "3c81534fda9d13cc4befc554939c751c82867329a75d21973f88d61f79661d6f"
+        },
+        {
+          "bytes": 4294280,
+          "id": "Copernicus_DSM_COG_30_N33_00_W003_00_DEM",
+          "sha256": "563d82899c420a2721b2e8202200a9ff48b33ca6f4c579c0b5f093dab228778a"
+        },
+        {
+          "bytes": 4876359,
+          "id": "Copernicus_DSM_COG_30_N33_00_W004_00_DEM",
+          "sha256": "58fb03b76c94172c849ca631031da9cb7f2da336724e59d4f4c081bb6526db3e"
+        },
+        {
+          "bytes": 5019607,
+          "id": "Copernicus_DSM_COG_30_N33_00_W005_00_DEM",
+          "sha256": "5d7aaa98345e7951d0169b126cbe3e537f80fe9126160be136e7b528651e167b"
+        },
+        {
+          "bytes": 5086646,
+          "id": "Copernicus_DSM_COG_30_N33_00_W006_00_DEM",
+          "sha256": "64ea0dc704ddf810b487c0d8beaeb0e60649e13ab0f041990ff7c540ac67bcaf"
+        },
+        {
+          "bytes": 5375078,
+          "id": "Copernicus_DSM_COG_30_N33_00_W007_00_DEM",
+          "sha256": "e3b3bb36f32cc851ab19bf98e2d8d048faf32dcbeb237cb3b6e3446b04561074"
+        },
+        {
+          "bytes": 3453151,
+          "id": "Copernicus_DSM_COG_30_N33_00_W008_00_DEM",
+          "sha256": "f5bcad858a87f4363eb9cdea1cd8370c788aa849e4c5d05234c854716b793021"
+        },
+        {
+          "bytes": 1262778,
+          "id": "Copernicus_DSM_COG_30_N33_00_W009_00_DEM",
+          "sha256": "2f723330153efcd8589d8decb3f7546e42a079545a5dcbd226fd151e84cb2315"
+        },
+        {
+          "bytes": 4387704,
+          "id": "Copernicus_DSM_COG_30_N34_00_W001_00_DEM",
+          "sha256": "ad557c2630068769968606208c7a025efcaa5009d9543c9508217fb87008ae86"
+        },
+        {
+          "bytes": 4754475,
+          "id": "Copernicus_DSM_COG_30_N34_00_W002_00_DEM",
+          "sha256": "538f484280737aa07a62de3dbafff5f2b308ea1d0ad97cb25b2091d909b7a9ef"
+        },
+        {
+          "bytes": 5074695,
+          "id": "Copernicus_DSM_COG_30_N34_00_W003_00_DEM",
+          "sha256": "db36ae2ce05b171e9bfcfa35ad41f7ae4d9a73e851e35228f427a5bcf6f86ccd"
+        },
+        {
+          "bytes": 5092418,
+          "id": "Copernicus_DSM_COG_30_N34_00_W004_00_DEM",
+          "sha256": "ddf169cc865fd59ed6bc9b2deb91aa3c1bcd1fe25f572612436d33bfabc7692f"
+        },
+        {
+          "bytes": 5449202,
+          "id": "Copernicus_DSM_COG_30_N34_00_W005_00_DEM",
+          "sha256": "1035e53f96f50485fa0885a5687d6a0e9d7c1a0a126c8746d1afa5c3eb5e4c24"
+        },
+        {
+          "bytes": 5578614,
+          "id": "Copernicus_DSM_COG_30_N34_00_W006_00_DEM",
+          "sha256": "49c6d491b9aaf24e15e77cd2c1e7cabc310868ef03c1334fa8e659873bba144d"
+        },
+        {
+          "bytes": 3028989,
+          "id": "Copernicus_DSM_COG_30_N34_00_W007_00_DEM",
+          "sha256": "ce25d8df252128d46d534ff1b54cf91a3733a02b7b37b10efcdedd9b588db8e9"
+        },
+        {
+          "bytes": 4049983,
+          "id": "Copernicus_DSM_COG_30_N35_00_W001_00_DEM",
+          "sha256": "f09919c37e796ebd942efd9804e8e18dccba642670a6eab186724009644a66a7"
+        },
+        {
+          "bytes": 1810550,
+          "id": "Copernicus_DSM_COG_30_N35_00_W002_00_DEM",
+          "sha256": "665c1cefa44b25d044589b7fa2d4794ae54c0d8e9f0fcbff07216b5dacf416da"
+        },
+        {
+          "bytes": 805441,
+          "id": "Copernicus_DSM_COG_30_N35_00_W003_00_DEM",
+          "sha256": "5fe284f7cbbf1bcb119ffb71761af9489aa7e6b32d65e81f92af9e3cb9ed5032"
+        },
+        {
+          "bytes": 1398507,
+          "id": "Copernicus_DSM_COG_30_N35_00_W004_00_DEM",
+          "sha256": "d71c650f98bb1ce7c6ca17af4e7305f6a9612d8b966a07d4d0592e6dd6cc7cca"
+        },
+        {
+          "bytes": 1296110,
+          "id": "Copernicus_DSM_COG_30_N35_00_W005_00_DEM",
+          "sha256": "cb3e16863f55e047f895d784dc494b8263d03c15e83320e5bff8d1086c28e355"
+        },
+        {
+          "bytes": 4216097,
+          "id": "Copernicus_DSM_COG_30_N35_00_W006_00_DEM",
+          "sha256": "2c1c7055adc5124098237506f00198ef8a74a874339f3f8b766a5ad6d7896750"
+        },
+        {
+          "bytes": 490085,
+          "id": "Copernicus_DSM_COG_30_N35_00_W007_00_DEM",
+          "sha256": "b8035b876209b9077f13a4e468f1cc84ddc0c3676669aebb4c425eec0ec059b7"
+        }
+      ]
+    },
+    "format": "WAFTHGT1",
+    "landCells": 146314,
+    "landMaskSource": "esa-worldcover-water-class",
+    "landRatio": 0.686946,
+    "maximumElevationMeters": 4149,
+    "meanElevationMeters": 780.236,
+    "minimumElevationMeters": 1,
+    "nodataElevation": -32768,
+    "rows": 416
+  }
+}

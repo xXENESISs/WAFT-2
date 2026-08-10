@@ -11,10 +11,10 @@
   const gl=canvas.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 no disponible para streaming 0.24.5');
 
-  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.24.8';
-  const U=1.45;
+  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.0';
+  const U=Number(api.metadata?.projection?.unitsPerKm)||1.0;
   const I={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
-  const LOD_MIN_LAT=42.10;
+  const LOD_MIN_LAT=43.62;
   const BORDER_OVERLAP=.055;
   const PAGE_INSTANCE_ID=window.__WAFT_PAGE_INSTANCE_0245__||(window.__WAFT_PAGE_INSTANCE_0245__=`waft-${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
@@ -119,7 +119,7 @@
       ]);
       const terrain=parseTerrain(terrainBuffer),landcover=parseLandcover(landcoverBuffer);
       if(terrain.columns!==landcover.columns||terrain.rows!==landcover.rows)throw new Error('France terrain/landcover incompatibles');
-      if(manifest?.region?.id!=='france'||Number(manifest?.projection?.unitsPerKm)!==1.45)throw new Error('Manifest France incompatible con 0.24.5');
+      if(manifest?.region?.id!=='france'||Math.abs(Number(manifest?.projection?.unitsPerKm)-U)>.0001)throw new Error('Manifest France incompatible con la escala mundial');
       state.manifest=manifest;state.terrain=terrain;state.landcover=landcover;state.franceBytes=terrainBuffer.byteLength+landcoverBuffer.byteLength;state.prefetched=true;
       setMesh(buildMesh(4,LOD_MIN_LAT));state.phase='lod-ready';return true;
     })().catch(error=>{state.phase='error';state.error=String(error?.message||error);throw error;});
@@ -163,7 +163,7 @@
   plugin.afterWorldDraw=(now,eye,pv)=>{
     previousDraw?.(now,eye,pv);
     const player=api.getState?.(),geo=player?.position?geoFromWorld(player.position.x,player.position.z):null;
-    const mesh=state.mesh;state.lastVisible=Boolean(mesh?.vao&&nearFrance(geo,.55));if(!state.lastVisible)return;
+    const mesh=state.mesh;state.lastVisible=Boolean(mesh?.vao&&nearFrance(geo,.55)&&geo?.lat>=43.56);if(!state.lastVisible)return;
     gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(program);gl.uniformMatrix4fv(uniforms.pv,false,pv);gl.uniform1f(uniforms.vertical,Number(api.metadata?.terrain?.verticalScale)||.0138);gl.uniform1f(uniforms.lift,mesh.lift||0);gl.uniform3f(uniforms.camera,...eye);gl.bindVertexArray(mesh.vao);gl.drawElements(gl.TRIANGLES,mesh.count,gl.UNSIGNED_INT,0);gl.bindVertexArray(null);state.drawFrames++;state.lastDrawTriangles=mesh.triangles;
   };
 

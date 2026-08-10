@@ -1,0 +1,42 @@
+{
+  "algorithmVersion": "terrain-only-v1",
+  "attribution": "Contains modified Copernicus DEM data",
+  "binaryBytes": 213056,
+  "binaryFile": "esa-worldcover-2021-v200.bin",
+  "binarySha256": "4fc0c04910c00f1c3c423a3bb8e43474b85d9a4fd0fa02862cf3a2774353f391",
+  "classDistribution": {
+    "30": {
+      "cells": 146314,
+      "name": "Grassland placeholder",
+      "ratio": 0.68694599
+    },
+    "80": {
+      "cells": 66678,
+      "name": "Water",
+      "ratio": 0.31305401
+    }
+  },
+  "dataset": "WAFT terrain-only land/water mask derived from Copernicus DEM",
+  "datasetYear": 2021,
+  "distribution": "Derived build artifact",
+  "doi": null,
+  "formatVersion": 1,
+  "license": "Copernicus data policy",
+  "nominalResolutionMeters": 90,
+  "provider": "WAFT / Copernicus Programme",
+  "regionId": "northwest-africa",
+  "retrievedOn": "2026-08-10",
+  "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+  "targetGrid": {
+    "bounds": {
+      "east": 0.0,
+      "north": 35.98,
+      "south": 27.0,
+      "west": -13.0
+    },
+    "columns": 512,
+    "method": "DEM elevation > 0",
+    "rows": 416
+  },
+  "tiles": []
+}

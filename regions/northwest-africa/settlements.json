@@ -1,0 +1,5789 @@
+{
+  "formatVersion": 1,
+  "generationStage": "population-war-lore-markers-0244",
+  "items": [
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2552292",
+      "local": {
+        "x": -98.3054,
+        "y": 205,
+        "z": -209.4694
+      },
+      "name": "Ad Darwa",
+      "place": "PPL",
+      "population": 52108,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.37487,
+        "lon": -7.5356
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2552292",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 32569,
+        "rate": 0.625,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 19539
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2508813",
+      "local": {
+        "x": 589.1225,
+        "y": 257,
+        "z": 401.8211
+      },
+      "name": "Adrar",
+      "place": "PPLA",
+      "population": 68276,
+      "populationTier": "medium",
+      "position": {
+        "lat": 27.87429,
+        "lon": -0.29388
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-18-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2508813",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 40239,
+        "rate": 0.5894,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 28037
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2561668",
+      "local": {
+        "x": -294.0952,
+        "y": 107,
+        "z": 118.8912
+      },
+      "name": "Agadir",
+      "place": "PPLA",
+      "population": 698310,
+      "populationTier": "large",
+      "position": {
+        "lat": 30.42018,
+        "lon": -9.59815
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2561668",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 628262,
+        "rate": 0.8997,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 70048
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2561124",
+      "local": {
+        "x": 417.649,
+        "y": 256,
+        "z": -384.9257
+      },
+      "name": "Ahfir",
+      "place": "PPLA3",
+      "population": 21435,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.95368,
+        "lon": -2.10027
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2561124",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15301,
+        "rate": 0.7138,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 6134
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2560939",
+      "local": {
+        "x": -27.9662,
+        "y": 253,
+        "z": -257.085
+      },
+      "name": "Ain El Aouda",
+      "place": "PPL",
+      "population": 54397,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.80333,
+        "lon": -6.79461
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2560939",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 39194,
+        "rate": 0.7205,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15203
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10374934",
+      "local": {
+        "x": -285.1161,
+        "y": 32,
+        "z": 127.6195
+      },
+      "name": "Ait Melloul",
+      "place": "PPL",
+      "population": 187652,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.34164,
+        "lon": -9.50356
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "10374934",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 157128,
+        "rate": 0.8373,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 30524
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2559217",
+      "local": {
+        "x": -110.269,
+        "y": 749,
+        "z": -8.3538
+      },
+      "name": "Ait Ourir",
+      "place": "PPL",
+      "population": 42705,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.56517,
+        "lon": -7.66163
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2559217",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21025,
+        "rate": 0.4923,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21680
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542013",
+      "local": {
+        "x": 331.3508,
+        "y": 203,
+        "z": -391.2847
+      },
+      "name": "Al Aaroui",
+      "place": "PPL",
+      "population": 51976,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.0109,
+        "lon": -3.00938
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2542013",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 30707,
+        "rate": 0.5908,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21269
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550547",
+      "local": {
+        "x": -65.7249,
+        "y": 412,
+        "z": -112.7623
+      },
+      "name": "Al Brouj",
+      "place": "PPL",
+      "population": 21004,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.50467,
+        "lon": -7.19238
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2550547",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 11828,
+        "rate": 0.5631,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9176
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2548830",
+      "local": {
+        "x": -17.8186,
+        "y": 447,
+        "z": -112.48
+      },
+      "name": "Al Fqih Ben Çalah",
+      "place": "PPL",
+      "population": 111402,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.50213,
+        "lon": -6.68771
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2548830",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 59504,
+        "rate": 0.5341,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 51898
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2558545",
+      "local": {
+        "x": 243.2736,
+        "y": 387,
+        "z": -418.0397
+      },
+      "name": "Al Hoceïma",
+      "place": "PPLA2",
+      "population": 395644,
+      "populationTier": "large",
+      "position": {
+        "lat": 35.25165,
+        "lon": -3.93723
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2558545",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 374617,
+        "rate": 0.9469,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21027
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2557500",
+      "local": {
+        "x": -297.6406,
+        "y": 301,
+        "z": 110.8675
+      },
+      "name": "Aourir",
+      "place": "PPLA3",
+      "population": 38617,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.49238,
+        "lon": -9.6355
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2557500",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16624,
+        "rate": 0.4305,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21993
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2549356",
+      "local": {
+        "x": 215.2372,
+        "y": 926,
+        "z": 6.0789
+      },
+      "name": "Arfoud",
+      "place": "PPL",
+      "population": 31971,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.4353,
+        "lon": -4.23258
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2549356",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19328,
+        "rate": 0.6045,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12643
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2506385",
+      "local": {
+        "x": 586.8329,
+        "y": 79,
+        "z": -484.5889
+      },
+      "name": "Arzew",
+      "place": "PPL",
+      "population": 58162,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.85048,
+        "lon": -0.318
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2506385",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 38130,
+        "rate": 0.6556,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20032
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2557055",
+      "local": {
+        "x": 44.2213,
+        "y": 82,
+        "z": -441.7741
+      },
+      "name": "Asilah",
+      "place": "PPL",
+      "population": 34011,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.46522,
+        "lon": -6.03415
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2557055",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18853,
+        "rate": 0.5543,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15158
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2494065",
+      "local": {
+        "x": 569.6095,
+        "y": 116,
+        "z": -467.0011
+      },
+      "name": "Assi Bou Nif",
+      "place": "PPL",
+      "population": 53700,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.69222,
+        "lon": -0.49944
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2494065",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 28749,
+        "rate": 0.5354,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24951
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556657",
+      "local": {
+        "x": -174.9013,
+        "y": 46,
+        "z": -199.9843
+      },
+      "name": "Azemmour",
+      "place": "PPLA3",
+      "population": 44683,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.28952,
+        "lon": -8.3425
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2556657",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 17503,
+        "rate": 0.3917,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 27180
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556570",
+      "local": {
+        "x": -6.7483,
+        "y": 1530,
+        "z": -52.4054
+      },
+      "name": "Azilal",
+      "place": "PPLA3",
+      "population": 42062,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.96156,
+        "lon": -6.57109
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2556570",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21305,
+        "rate": 0.5065,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20757
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2571932",
+      "local": {
+        "x": 119.1588,
+        "y": 365,
+        "z": -451.5326
+      },
+      "name": "Azla",
+      "place": "PPLA3",
+      "population": 22985,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.55303,
+        "lon": -5.24472
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2571932",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14528,
+        "rate": 0.6321,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8457
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556464",
+      "local": {
+        "x": 121.3857,
+        "y": 1779,
+        "z": -216.0884
+      },
+      "name": "Azrou",
+      "place": "PPLA3",
+      "population": 59348,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.43443,
+        "lon": -5.22126
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2556464",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 47146,
+        "rate": 0.7944,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12202
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718687",
+      "local": {
+        "x": -44.432,
+        "y": 103,
+        "z": -266.4479
+      },
+      "name": "Aïn Attig",
+      "place": "PPL",
+      "population": 27384,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.88758,
+        "lon": -6.96807
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-03",
+      "source": "geonames-cities15000",
+      "sourceId": "12718687",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20380,
+        "rate": 0.7442,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7004
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2508174",
+      "local": {
+        "x": 588.3726,
+        "y": 96,
+        "z": -479.4112
+      },
+      "name": "Aïn el Bya",
+      "place": "PPL",
+      "population": 37241,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.80389,
+        "lon": -0.30178
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2508174",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16006,
+        "rate": 0.4298,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21235
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2560841",
+      "local": {
+        "x": -90.1522,
+        "y": 59,
+        "z": -238.6415
+      },
+      "name": "Aïn Harrouda",
+      "place": "PPL",
+      "population": 68161,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.63737,
+        "lon": -7.44971
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2560841",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 47035,
+        "rate": 0.6901,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21126
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2507943",
+      "local": {
+        "x": 561.6461,
+        "y": 1109,
+        "z": -140.0263
+      },
+      "name": "Aïn Sefra",
+      "place": "PPL",
+      "population": 47415,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.75,
+        "lon": -0.58333
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2507943",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 33927,
+        "rate": 0.7155,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13488
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2560774",
+      "local": {
+        "x": 122.1433,
+        "y": 483,
+        "z": -271.8011
+      },
+      "name": "Aïn Taoujdat",
+      "place": "PPL",
+      "population": 30889,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.93575,
+        "lon": -5.21328
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2560774",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19862,
+        "rate": 0.643,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11027
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2507901",
+      "local": {
+        "x": 508.7685,
+        "y": 370,
+        "z": -423.134
+      },
+      "name": "Aïn Temouchent",
+      "place": "PPLA",
+      "population": 70810,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.29749,
+        "lon": -1.14037
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2507901",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 39099,
+        "rate": 0.5522,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 31711
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718663",
+      "local": {
+        "x": 10.2226,
+        "y": 709,
+        "z": -142.3968
+      },
+      "name": "Bejaâd",
+      "place": "PPL",
+      "population": 51206,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.77133,
+        "lon": -6.39231
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "12718663",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 34116,
+        "rate": 0.6663,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17090
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556076",
+      "local": {
+        "x": -70.3981,
+        "y": 646,
+        "z": -175.1829
+      },
+      "name": "Ben Ahmed",
+      "place": "PPL",
+      "population": 36149,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.06635,
+        "lon": -7.24161
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2556076",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 24443,
+        "rate": 0.6762,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11706
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556018",
+      "local": {
+        "x": -138.0196,
+        "y": 484,
+        "z": -83.4468
+      },
+      "name": "Ben Guerir",
+      "place": "PPL",
+      "population": 96777,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.24088,
+        "lon": -7.95397
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2556018",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 72870,
+        "rate": 0.753,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 23907
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555567",
+      "local": {
+        "x": -285.136,
+        "y": 74,
+        "z": 136.4434
+      },
+      "name": "Ben Jerrar",
+      "place": "PPL",
+      "population": 53026,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.26224,
+        "lon": -9.50377
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2555567",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 32038,
+        "rate": 0.6042,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20988
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555882",
+      "local": {
+        "x": 338.886,
+        "y": 111,
+        "z": -418.9676
+      },
+      "name": "Beni Enzar",
+      "place": "PPL",
+      "population": 61786,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.26,
+        "lon": -2.93
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2555882",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 48475,
+        "rate": 0.7846,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13311
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2555745",
+      "local": {
+        "x": 14.255,
+        "y": 547,
+        "z": -94.1566
+      },
+      "name": "Beni Mellal",
+      "place": "PPLA",
+      "population": 210397,
+      "populationTier": "large",
+      "position": {
+        "lat": 32.33725,
+        "lon": -6.34983
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2555745",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 157368,
+        "rate": 0.748,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 53029
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2504581",
+      "local": {
+        "x": 485.8069,
+        "y": 161,
+        "z": -423.5229
+      },
+      "name": "Beni Saf",
+      "place": "PPL",
+      "population": 39749,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.30099,
+        "lon": -1.38226
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2504581",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 24078,
+        "rate": 0.6057,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15671
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2504385",
+      "local": {
+        "x": 500.8004,
+        "y": 396,
+        "z": -398.3693
+      },
+      "name": "Bensekrane",
+      "place": "PPL",
+      "population": 21283,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.07465,
+        "lon": -1.22431
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2504385",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15624,
+        "rate": 0.7341,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 5659
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555519",
+      "local": {
+        "x": -58.9994,
+        "y": 298,
+        "z": -236.2677
+      },
+      "name": "Benslimane",
+      "place": "PPL",
+      "population": 62352,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.61601,
+        "lon": -7.12153
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2555519",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 48622,
+        "rate": 0.7798,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13730
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555467",
+      "local": {
+        "x": 396.7909,
+        "y": 239,
+        "z": -381.1828
+      },
+      "name": "Berkane",
+      "place": "PPLA3",
+      "population": 119284,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.92,
+        "lon": -2.32
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-15-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2555467",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 87570,
+        "rate": 0.7341,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 31714
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2556272",
+      "local": {
+        "x": -103.2359,
+        "y": 232,
+        "z": -197.3182
+      },
+      "name": "Berrechid",
+      "place": "PPLA3",
+      "population": 149201,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.26553,
+        "lon": -7.58754
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2556272",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 94973,
+        "rate": 0.6365,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 54228
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2503874",
+      "local": {
+        "x": 565.2846,
+        "y": 175,
+        "z": -470.0884
+      },
+      "name": "Bir el Djir",
+      "place": "PPL",
+      "population": 68032,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.72,
+        "lon": -0.545
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2503874",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 36835,
+        "rate": 0.5414,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 31197
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555342",
+      "local": {
+        "x": -141.8784,
+        "y": 139,
+        "z": -209.3305
+      },
+      "name": "Bir Jdid",
+      "place": "PPL",
+      "population": 26355,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.37362,
+        "lon": -7.99462
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2555342",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15520,
+        "rate": 0.5889,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10835
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2503033",
+      "local": {
+        "x": 612.2379,
+        "y": 376,
+        "z": -425.0499
+      },
+      "name": "Bou Hanifia el Hamamat",
+      "place": "PPL",
+      "population": 27576,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.31473,
+        "lon": -0.05037
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-19-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2503033",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18583,
+        "rate": 0.6739,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8993
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2502239",
+      "local": {
+        "x": 531.6239,
+        "y": 95,
+        "z": -453.7208
+      },
+      "name": "Bou Tlelis",
+      "place": "PPL",
+      "population": 26144,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.57272,
+        "lon": -0.8996
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2502239",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16980,
+        "rate": 0.6495,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9164
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2555157",
+      "local": {
+        "x": 430.7659,
+        "y": 1345,
+        "z": -115.9985
+      },
+      "name": "Bouarfa",
+      "place": "PPLA3",
+      "population": 31499,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.53379,
+        "lon": -1.96209
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2555157",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14838,
+        "rate": 0.4711,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16661
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2535530",
+      "local": {
+        "x": -22.6778,
+        "y": 60,
+        "z": -292.1094
+      },
+      "name": "Bouknadel",
+      "place": "PPL",
+      "population": 27577,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.11849,
+        "lon": -6.7389
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2535530",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 10784,
+        "rate": 0.391,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16793
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2554006",
+      "local": {
+        "x": -109.3918,
+        "y": 181,
+        "z": -217.792
+      },
+      "name": "Bouskoura",
+      "place": "PPLA3",
+      "population": 112501,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.44976,
+        "lon": -7.65239
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2554006",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 69598,
+        "rate": 0.6186,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 42903
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2553751",
+      "local": {
+        "x": -62.6208,
+        "y": 72,
+        "z": -255.5391
+      },
+      "name": "Bouznika",
+      "place": "PPLA3",
+      "population": 40663,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.78942,
+        "lon": -7.15968
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2553751",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 28258,
+        "rate": 0.6949,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12405
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2505530",
+      "local": {
+        "x": 406.5996,
+        "y": 806,
+        "z": -14.0771
+      },
+      "name": "Béchar",
+      "place": "PPLA",
+      "population": 165241,
+      "populationTier": "medium",
+      "position": {
+        "lat": 31.61667,
+        "lon": -2.21667
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-15-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2505530",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 103434,
+        "rate": 0.626,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 61807
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2553604",
+      "local": {
+        "x": -105.4989,
+        "y": 66,
+        "z": -233.1894
+      },
+      "name": "Casablanca",
+      "place": "PPLA",
+      "population": 3665954,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.58831,
+        "lon": -7.61138
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2553604",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 2789718,
+        "rate": 0.761,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 876236
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "ES",
+      "id": "es-6362987",
+      "local": {
+        "x": 111.9729,
+        "y": 79,
+        "z": -488.8908
+      },
+      "name": "Ceuta",
+      "place": "PPLA",
+      "population": 83179,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.88919,
+        "lon": -5.32042
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "6362987",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 47716,
+        "rate": 0.5737,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 35463
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2553455",
+      "local": {
+        "x": 117.3666,
+        "y": 1317,
+        "z": -408.8302
+      },
+      "name": "Chefchaouen",
+      "place": "PPLA2",
+      "population": 46721,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.16878,
+        "lon": -5.2636
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2553455",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 24938,
+        "rate": 0.5338,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21783
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2501362",
+      "local": {
+        "x": 494.0787,
+        "y": 683,
+        "z": -381.3261
+      },
+      "name": "Chetouane",
+      "place": "PPL",
+      "population": 36776,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.92129,
+        "lon": -1.29512
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2501362",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 17311,
+        "rate": 0.4707,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 19465
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2553303",
+      "local": {
+        "x": -214.7939,
+        "y": 393,
+        "z": -5.9467
+      },
+      "name": "Chichaoua",
+      "place": "PPLA3",
+      "population": 30432,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.54351,
+        "lon": -8.76275
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2553303",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20448,
+        "rate": 0.6719,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9984
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2552615",
+      "local": {
+        "x": -124.9958,
+        "y": 64,
+        "z": -225.0812
+      },
+      "name": "Dar Bouazza",
+      "place": "PPLA3",
+      "population": 165295,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.51535,
+        "lon": -7.81677
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2552615",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 102504,
+        "rate": 0.6201,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 62791
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2552317",
+      "local": {
+        "x": -47.9424,
+        "y": 1115,
+        "z": -27.164
+      },
+      "name": "Demnate",
+      "place": "PPLA3",
+      "population": 32217,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.73443,
+        "lon": -7.00505
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2552317",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16742,
+        "rate": 0.5197,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15475
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2551147",
+      "local": {
+        "x": 85.7524,
+        "y": 538,
+        "z": -266.1422
+      },
+      "name": "Douar Toulal",
+      "place": "PPL",
+      "population": 20831,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.88483,
+        "lon": -5.59664
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2551147",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 9940,
+        "rate": 0.4772,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10891
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2553382",
+      "local": {
+        "x": -201.678,
+        "y": 389,
+        "z": -65.6812
+      },
+      "name": "Echemmaia Est",
+      "place": "PPL",
+      "population": 26538,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.08102,
+        "lon": -8.62458
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2553382",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 12615,
+        "rate": 0.4754,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13923
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2498704",
+      "local": {
+        "x": 520.5963,
+        "y": 127,
+        "z": -448.3498
+      },
+      "name": "El Amria",
+      "place": "PPL",
+      "population": 26407,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.52439,
+        "lon": -1.01577
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2498704",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13003,
+        "rate": 0.4924,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13404
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550806",
+      "local": {
+        "x": 379.1233,
+        "y": 784,
+        "z": -343.7524
+      },
+      "name": "El Aïoun",
+      "place": "PPL",
+      "population": 45679,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.58319,
+        "lon": -2.50612
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2550806",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 22287,
+        "rate": 0.4879,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 23392
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550419",
+      "local": {
+        "x": -69.52,
+        "y": 413,
+        "z": -198.6284
+      },
+      "name": "El Gara",
+      "place": "PPL",
+      "population": 22773,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.27732,
+        "lon": -7.23236
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2550419",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 10708,
+        "rate": 0.4702,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12065
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550252",
+      "local": {
+        "x": 107.1715,
+        "y": 1125,
+        "z": -244.2526
+      },
+      "name": "El Hajeb",
+      "place": "PPLA3",
+      "population": 38527,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.68786,
+        "lon": -5.371
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2550252",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 25271,
+        "rate": 0.6559,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13256
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550078",
+      "local": {
+        "x": -190.6894,
+        "y": 37,
+        "z": -196.3502
+      },
+      "name": "El Jadida",
+      "place": "PPL",
+      "population": 212863,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.25682,
+        "lon": -8.50882
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-06-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2550078",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 180138,
+        "rate": 0.8463,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 32725
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2549979",
+      "local": {
+        "x": -86.4577,
+        "y": 486,
+        "z": -62.3684
+      },
+      "name": "El Kelaa des Srarhna",
+      "place": "PPL",
+      "population": 103982,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.05121,
+        "lon": -7.41079
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2549979",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 55384,
+        "rate": 0.5326,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 48598
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2549750",
+      "local": {
+        "x": 45.6148,
+        "y": 1102,
+        "z": -120.3404
+      },
+      "name": "El Ksiba",
+      "place": "PPLA3",
+      "population": 21840,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.57286,
+        "lon": -6.01947
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2549750",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14578,
+        "rate": 0.6675,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7262
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2558428",
+      "local": {
+        "x": -76.125,
+        "y": 40,
+        "z": -250.7616
+      },
+      "name": "El Mansouria",
+      "place": "PPL",
+      "population": 21679,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.74643,
+        "lon": -7.30194
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2558428",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 8607,
+        "rate": 0.397,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13072
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2497269",
+      "local": {
+        "x": 562.959,
+        "y": 104,
+        "z": -462.0702
+      },
+      "name": "En Nedjma",
+      "place": "PPL",
+      "population": 51665,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.64785,
+        "lon": -0.5695
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2497269",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 31600,
+        "rate": 0.6116,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20065
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-7280528",
+      "local": {
+        "x": 196.8168,
+        "y": 1047,
+        "z": -49.0537
+      },
+      "name": "Errachidia",
+      "place": "PPLA3",
+      "population": 100870,
+      "populationTier": "medium",
+      "position": {
+        "lat": 31.9314,
+        "lon": -4.42663
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-07",
+      "source": "geonames-cities15000",
+      "sourceId": "7280528",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 70489,
+        "rate": 0.6988,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 30381
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2497060",
+      "local": {
+        "x": 557.7883,
+        "y": 167,
+        "z": -462.0635
+      },
+      "name": "Es Senia",
+      "place": "PPL",
+      "population": 39064,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.64779,
+        "lon": -0.62397
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2497060",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18661,
+        "rate": 0.4777,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20403
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2549263",
+      "local": {
+        "x": -310.4082,
+        "y": 17,
+        "z": -2.5005
+      },
+      "name": "Essaouira",
+      "place": "PPLA3",
+      "population": 85137,
+      "populationTier": "medium",
+      "position": {
+        "lat": 31.5125,
+        "lon": -9.77
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-04-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2549263",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 58793,
+        "rate": 0.6906,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 26344
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2548885",
+      "local": {
+        "x": 142.3625,
+        "y": 432,
+        "z": -282.6231
+      },
+      "name": "Fes",
+      "place": "PPLA",
+      "population": 1191905,
+      "populationTier": "large",
+      "position": {
+        "lat": 34.03313,
+        "lon": -5.00028
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2548885",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 1006416,
+        "rate": 0.8444,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 185489
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2548818",
+      "local": {
+        "x": 108.4559,
+        "y": 225,
+        "z": -484.4311
+      },
+      "name": "Fnidek",
+      "place": "PPL",
+      "population": 84558,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.84906,
+        "lon": -5.35747
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2548818",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 47186,
+        "rate": 0.558,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 37372
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2496059",
+      "local": {
+        "x": 576.5989,
+        "y": 253,
+        "z": -476.8796
+      },
+      "name": "Gdyel",
+      "place": "PPL",
+      "population": 32774,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.78111,
+        "lon": -0.42581
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2496059",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 22669,
+        "rate": 0.6917,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10105
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2496042",
+      "local": {
+        "x": 440.6733,
+        "y": 138,
+        "z": -400.7187
+      },
+      "name": "Ghazaouet",
+      "place": "PPL",
+      "population": 28433,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.09579,
+        "lon": -1.85772
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2496042",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19906,
+        "rate": 0.7001,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8527
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2548526",
+      "local": {
+        "x": -337.688,
+        "y": 576,
+        "z": 278.1678
+      },
+      "name": "Guelmim",
+      "place": "PPLA",
+      "population": 129200,
+      "populationTier": "medium",
+      "position": {
+        "lat": 28.98696,
+        "lon": -10.05738
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-04-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2548526",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 73162,
+        "rate": 0.5663,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 56038
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2548489",
+      "local": {
+        "x": 298.6744,
+        "y": 389,
+        "z": -304.0216
+      },
+      "name": "Guercif",
+      "place": "PPLA3",
+      "population": 99238,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.22568,
+        "lon": -3.35361
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-14-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2548489",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 78943,
+        "rate": 0.7955,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20295
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537368",
+      "local": {
+        "x": 57.8631,
+        "y": 147,
+        "z": -468.1002
+      },
+      "name": "Gueznaia",
+      "place": "PPL",
+      "population": 25771,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.70211,
+        "lon": -5.89044
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2537368",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 11106,
+        "rate": 0.431,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14665
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718675",
+      "local": {
+        "x": -128.3751,
+        "y": 145,
+        "z": -214.4536
+      },
+      "name": "Had Soualem",
+      "place": "PPL",
+      "population": 40146,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.41972,
+        "lon": -7.85237
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "12718675",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16635,
+        "rate": 0.4144,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 23511
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2494554",
+      "local": {
+        "x": 525.1518,
+        "y": 168,
+        "z": -432.1801
+      },
+      "name": "Hammam Bou Hadjar",
+      "place": "PPL",
+      "population": 25912,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.37889,
+        "lon": -0.96778
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2494554",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 10874,
+        "rate": 0.4196,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15038
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2493918",
+      "local": {
+        "x": 487.1548,
+        "y": 546,
+        "z": -384.6712
+      },
+      "name": "Hennaya",
+      "place": "PPL",
+      "population": 26515,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.95139,
+        "lon": -1.36806
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2493918",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16738,
+        "rate": 0.6313,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9777
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2546917",
+      "local": {
+        "x": 131.9292,
+        "y": 1714,
+        "z": -226.3381
+      },
+      "name": "Ifrane",
+      "place": "PPLA3",
+      "population": 73782,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.52666,
+        "lon": -5.11019
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2546917",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 47197,
+        "rate": 0.6397,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 26585
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2546128",
+      "local": {
+        "x": -222.818,
+        "y": 1195,
+        "z": 35.3255
+      },
+      "name": "Imi-n-Tanout",
+      "place": "PPL",
+      "population": 22753,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.17213,
+        "lon": -8.84728
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-08",
+      "source": "geonames-cities15000",
+      "sourceId": "2546128",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 9379,
+        "rate": 0.4122,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13374
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2546028",
+      "local": {
+        "x": 141.3525,
+        "y": 1503,
+        "z": -248.7923
+      },
+      "name": "Imouzzer Kandar",
+      "place": "PPL",
+      "population": 20884,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.72871,
+        "lon": -5.01092
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2546028",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 10768,
+        "rate": 0.5156,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10116
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2550898",
+      "local": {
+        "x": 251.4942,
+        "y": 248,
+        "z": -406.3397
+      },
+      "name": "Imzouren",
+      "place": "PPLA3",
+      "population": 40000,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.14637,
+        "lon": -3.85063
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2550898",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 26383,
+        "rate": 0.6596,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13617
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2545957",
+      "local": {
+        "x": -288.2325,
+        "y": 36,
+        "z": 126.0959
+      },
+      "name": "Inezgane",
+      "place": "PPLA3",
+      "population": 142320,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.35535,
+        "lon": -9.53639
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2545957",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 101239,
+        "rate": 0.7114,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 41081
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2545017",
+      "local": {
+        "x": 411.9791,
+        "y": 1130,
+        "z": -313.3922
+      },
+      "name": "Jerada",
+      "place": "PPLA3",
+      "population": 47507,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.31,
+        "lon": -2.16
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2545017",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 30495,
+        "rate": 0.6419,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17012
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2544821",
+      "local": {
+        "x": 122.0939,
+        "y": 213,
+        "z": -320.1646
+      },
+      "name": "Karia Ba Mohamed",
+      "place": "PPLA3",
+      "population": 20487,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.37094,
+        "lon": -5.2138
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2544821",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15073,
+        "rate": 0.7357,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 5414
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2544720",
+      "local": {
+        "x": 21.9811,
+        "y": 535,
+        "z": -123.1009
+      },
+      "name": "Kasba Tadla",
+      "place": "PPLA3",
+      "population": 51697,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.5977,
+        "lon": -6.26844
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2544720",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 43235,
+        "rate": 0.8363,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8462
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2544571",
+      "local": {
+        "x": -7.6131,
+        "y": 33,
+        "z": -307.9479
+      },
+      "name": "Kenitra",
+      "place": "PPLA",
+      "population": 470949,
+      "populationTier": "large",
+      "position": {
+        "lat": 34.26101,
+        "lon": -6.5802
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-09-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2544571",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 378762,
+        "rate": 0.8043,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 92187
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2558470",
+      "local": {
+        "x": 41.1723,
+        "y": 469,
+        "z": -259.3865
+      },
+      "name": "Khemisset",
+      "place": "PPLA3",
+      "population": 143640,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.82404,
+        "lon": -6.06627
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2558470",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 105582,
+        "rate": 0.735,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 38058
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2544333",
+      "local": {
+        "x": 79.5794,
+        "y": 990,
+        "z": -160.5768
+      },
+      "name": "Khenifra",
+      "place": "PPLA3",
+      "population": 128318,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.93492,
+        "lon": -5.66167
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2544333",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 71739,
+        "rate": 0.5591,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 56579
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2544248",
+      "local": {
+        "x": -38.5685,
+        "y": 863,
+        "z": -154.5935
+      },
+      "name": "Khouribga",
+      "place": "PPLA3",
+      "population": 214241,
+      "populationTier": "large",
+      "position": {
+        "lat": 32.88108,
+        "lon": -6.9063
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2544248",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 158864,
+        "rate": 0.7415,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 55377
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2544001",
+      "local": {
+        "x": 56.5968,
+        "y": 50,
+        "z": -390.1222
+      },
+      "name": "Ksar El Kebir",
+      "place": "PPL",
+      "population": 138262,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.00044,
+        "lon": -5.90378
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2544001",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 99341,
+        "rate": 0.7185,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 38921
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718676",
+      "local": {
+        "x": -97.6295,
+        "y": 154,
+        "z": -227.974
+      },
+      "name": "Lahraouyine",
+      "place": "PPL",
+      "population": 70783,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.54138,
+        "lon": -7.52848
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "12718676",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 43114,
+        "rate": 0.6091,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 27669
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2543549",
+      "local": {
+        "x": 32.6811,
+        "y": 58,
+        "z": -411.5451
+      },
+      "name": "Larache",
+      "place": "PPLA3",
+      "population": 136505,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.19321,
+        "lon": -6.15572
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2543549",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 109453,
+        "rate": 0.8018,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 27052
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718681",
+      "local": {
+        "x": -77.2992,
+        "y": 648,
+        "z": -38.3761
+      },
+      "name": "Laâttaouia",
+      "place": "PPL",
+      "population": 33103,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.83532,
+        "lon": -7.31431
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-07",
+      "source": "geonames-cities15000",
+      "sourceId": "12718681",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 12969,
+        "rate": 0.3918,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20134
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10375044",
+      "local": {
+        "x": -281.5478,
+        "y": 81,
+        "z": 132.5149
+      },
+      "name": "Lqoliaa",
+      "place": "PPL",
+      "population": 90890,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.29759,
+        "lon": -9.46597
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "10375044",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 73195,
+        "rate": 0.8053,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17695
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2490584",
+      "local": {
+        "x": 453.0317,
+        "y": 498,
+        "z": -373.3691
+      },
+      "name": "Maghnia",
+      "place": "PPL",
+      "population": 87373,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.84969,
+        "lon": -1.72753
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-16-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2490584",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 68885,
+        "rate": 0.7884,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 18488
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2490183",
+      "local": {
+        "x": 489.8801,
+        "y": 1244,
+        "z": -374.6904
+      },
+      "name": "Mansoûra",
+      "place": "PPL",
+      "population": 52285,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.86158,
+        "lon": -1.33935
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2490183",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 32236,
+        "rate": 0.6165,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20049
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2542997",
+      "local": {
+        "x": -142.3834,
+        "y": 475,
+        "z": -16.0208
+      },
+      "name": "Marrakesh",
+      "place": "PPLA",
+      "population": 995871,
+      "populationTier": "large",
+      "position": {
+        "lat": 31.63416,
+        "lon": -7.99994
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-07-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2542997",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 791401,
+        "rate": 0.7947,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 204470
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542987",
+      "local": {
+        "x": 116.2635,
+        "y": 7,
+        "z": -458.5995
+      },
+      "name": "Martil",
+      "place": "PPLA3",
+      "population": 70274,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.61662,
+        "lon": -5.27522
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2542987",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 54126,
+        "rate": 0.7702,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16148
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2542898",
+      "local": {
+        "x": 111.1859,
+        "y": 166,
+        "z": -465.9909
+      },
+      "name": "Mdiq",
+      "place": "PPLA2",
+      "population": 61398,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.68313,
+        "lon": -5.32871
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2542898",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 50943,
+        "rate": 0.8297,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10455
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2489865",
+      "local": {
+        "x": 590.329,
+        "y": 1223,
+        "z": -228.324
+      },
+      "name": "Mecheria",
+      "place": "PPL",
+      "population": 65043,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.54453,
+        "lon": -0.28117
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2489865",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 52073,
+        "rate": 0.8006,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12970
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542866",
+      "local": {
+        "x": 51.654,
+        "y": 22,
+        "z": -342.7011
+      },
+      "name": "Mechraa Bel Ksiri",
+      "place": "PPLA3",
+      "population": 34393,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.57373,
+        "lon": -5.95585
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2542866",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19297,
+        "rate": 0.5611,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15096
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542826",
+      "local": {
+        "x": -96.8198,
+        "y": 188,
+        "z": -217.9976
+      },
+      "name": "Mediouna",
+      "place": "PPLA3",
+      "population": 24506,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.45161,
+        "lon": -7.51995
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2542826",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 10263,
+        "rate": 0.4188,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14243
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542768",
+      "local": {
+        "x": -16.4649,
+        "y": 67,
+        "z": -307.3867
+      },
+      "name": "Mehdya",
+      "place": "PPL",
+      "population": 31269,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.25596,
+        "lon": -6.67345
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2542768",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15216,
+        "rate": 0.4866,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16053
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2542715",
+      "local": {
+        "x": 90.4389,
+        "y": 548,
+        "z": -267.108
+      },
+      "name": "Meknes",
+      "place": "PPLA2",
+      "population": 568295,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.89352,
+        "lon": -5.54727
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2542715",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 509356,
+        "rate": 0.8963,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 58939
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "ES",
+      "id": "es-2513947",
+      "local": {
+        "x": 338.0953,
+        "y": 38,
+        "z": -422.7117
+      },
+      "name": "Melilla",
+      "place": "PPLA",
+      "population": 85985,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.29369,
+        "lon": -2.93833
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2513947",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 46503,
+        "rate": 0.5408,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 39482
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2487852",
+      "local": {
+        "x": 549.8022,
+        "y": 508,
+        "z": -470.9663
+      },
+      "name": "Mers el Kebir",
+      "place": "PPL",
+      "population": 20178,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.7279,
+        "lon": -0.7081
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2487852",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 11968,
+        "rate": 0.5931,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8210
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542227",
+      "local": {
+        "x": 166.5838,
+        "y": 1521,
+        "z": -132.825
+      },
+      "name": "Midelt",
+      "place": "PPLA3",
+      "population": 60390,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.6852,
+        "lon": -4.74512
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2542227",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 50214,
+        "rate": 0.8315,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10176
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542147",
+      "local": {
+        "x": 238.3147,
+        "y": 924,
+        "z": -173.247
+      },
+      "name": "Missour",
+      "place": "PPLA3",
+      "population": 27937,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.04893,
+        "lon": -3.98947
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-13-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2542147",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20202,
+        "rate": 0.7231,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7735
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2542051",
+      "local": {
+        "x": -83.8178,
+        "y": 62,
+        "z": -244.0537
+      },
+      "name": "Mohammedia",
+      "place": "PPLA3",
+      "population": 227799,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.68607,
+        "lon": -7.38298
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-08-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2542051",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 201254,
+        "rate": 0.8835,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 26545
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718664",
+      "local": {
+        "x": 212.1208,
+        "y": 768,
+        "z": 23.0666
+      },
+      "name": "Moulay Ali Cherif",
+      "place": "PPL",
+      "population": 24251,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.28244,
+        "lon": -4.26541
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-08",
+      "source": "geonames-cities15000",
+      "sourceId": "12718664",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14012,
+        "rate": 0.5778,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10239
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2545069",
+      "local": {
+        "x": 88.5451,
+        "y": 1239,
+        "z": -186.065
+      },
+      "name": "Mrirt",
+      "place": "PPL",
+      "population": 46660,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.16427,
+        "lon": -5.56722
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2545069",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 22561,
+        "rate": 0.4835,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24099
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10375207",
+      "local": {
+        "x": -282.255,
+        "y": 57,
+        "z": 123.6532
+      },
+      "name": "My Drarga",
+      "place": "PPL",
+      "population": 55631,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.37733,
+        "lon": -9.47342
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "10375207",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 35987,
+        "rate": 0.6469,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 19644
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2541479",
+      "local": {
+        "x": 338.5519,
+        "y": 22,
+        "z": -408.7579
+      },
+      "name": "Nador",
+      "place": "PPLA3",
+      "population": 176600,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.16813,
+        "lon": -2.93352
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2541479",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 120542,
+        "rate": 0.6826,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 56058
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2486284",
+      "local": {
+        "x": 451.0896,
+        "y": 706,
+        "z": -391.5858
+      },
+      "name": "Nedroma",
+      "place": "PPL",
+      "population": 27742,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.01361,
+        "lon": -1.74799
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-16-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2486284",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18760,
+        "rate": 0.6762,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8982
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10375138",
+      "local": {
+        "x": -276.2766,
+        "y": 52,
+        "z": 124.989
+      },
+      "name": "Oadar Temsia",
+      "place": "PPL",
+      "population": 30526,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.36531,
+        "lon": -9.41044
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "10375138",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21580,
+        "rate": 0.7069,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8946
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2485926",
+      "local": {
+        "x": 556.6578,
+        "y": 137,
+        "z": -467.7613
+      },
+      "name": "Oran",
+      "place": "PPLA",
+      "population": 803329,
+      "populationTier": "large",
+      "position": {
+        "lat": 35.69906,
+        "lon": -0.63588
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2485926",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 596358,
+        "rate": 0.7424,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 206971
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2540850",
+      "local": {
+        "x": -37.3449,
+        "y": 1142,
+        "z": 63.463
+      },
+      "name": "Ouarzazate",
+      "place": "PPLA2",
+      "population": 77603,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.91894,
+        "lon": -6.89341
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-09-08",
+      "source": "geonames-cities15000",
+      "sourceId": "2540850",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 43612,
+        "rate": 0.562,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 33991
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2540689",
+      "local": {
+        "x": -6.9856,
+        "y": 810,
+        "z": -152.5509
+      },
+      "name": "Oued Zem",
+      "place": "PPLA3",
+      "population": 104029,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.8627,
+        "lon": -6.57359
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2540689",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 64317,
+        "rate": 0.6183,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 39712
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2540810",
+      "local": {
+        "x": 87.4753,
+        "y": 594,
+        "z": -367.3846
+      },
+      "name": "Ouezzane",
+      "place": "PPLA2",
+      "population": 65088,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.79584,
+        "lon": -5.57849
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2540810",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 44163,
+        "rate": 0.6785,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20925
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718669",
+      "local": {
+        "x": 95.9047,
+        "y": 536,
+        "z": -269.3906
+      },
+      "name": "Ouislane",
+      "place": "PPL",
+      "population": 95995,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.91406,
+        "lon": -5.48969
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "12718669",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 71505,
+        "rate": 0.7449,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24490
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2540483",
+      "local": {
+        "x": 435.8454,
+        "y": 590,
+        "z": -354.6656
+      },
+      "name": "Oujda",
+      "place": "PPLA",
+      "population": 539711,
+      "populationTier": "large",
+      "position": {
+        "lat": 34.68139,
+        "lon": -1.90858
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-16-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2540483",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 405929,
+        "rate": 0.7521,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 133782
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2540207",
+      "local": {
+        "x": -28.4778,
+        "y": 846,
+        "z": -78.9037
+      },
+      "name": "Oulad Ayad",
+      "place": "PPLA3",
+      "population": 26008,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.2,
+        "lon": -6.8
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2540207",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16874,
+        "rate": 0.6488,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9134
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2540180",
+      "local": {
+        "x": -186.8857,
+        "y": 519,
+        "z": 94.4155
+      },
+      "name": "Oulad Barhil",
+      "place": "PPL",
+      "population": 26521,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.64042,
+        "lon": -8.46875
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-06-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2540180",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15193,
+        "rate": 0.5729,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11328
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2539134",
+      "local": {
+        "x": -257.1518,
+        "y": 139,
+        "z": 121.7262
+      },
+      "name": "Oulad Teïma",
+      "place": "PPL",
+      "population": 97608,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.39467,
+        "lon": -9.20897
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-05-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2539134",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 77450,
+        "rate": 0.7935,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20158
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2484846",
+      "local": {
+        "x": 518.8715,
+        "y": 1090,
+        "z": -379.4847
+      },
+      "name": "Ouled Mimoun",
+      "place": "PPL",
+      "population": 25377,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.90472,
+        "lon": -1.03394
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2484846",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13808,
+        "rate": 0.5441,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11569
+      }
+    },
+    {
+      "capitalLevel": "national",
+      "countryCode": "MA",
+      "id": "ma-2538475",
+      "local": {
+        "x": -31.5677,
+        "y": 72,
+        "z": -280.4138
+      },
+      "name": "Rabat",
+      "place": "PPLC",
+      "population": 1655753,
+      "populationTier": "large",
+      "position": {
+        "lat": 34.01325,
+        "lon": -6.83255
+      },
+      "priority": 120,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2538475",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 1620844,
+        "rate": 0.9789,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 34909
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2538401",
+      "local": {
+        "x": 133.2638,
+        "y": 510,
+        "z": -276.0508
+      },
+      "name": "Ras el Ma",
+      "place": "PPL",
+      "population": 22345,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.97399,
+        "lon": -5.09613
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2538401",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14997,
+        "rate": 0.6712,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7348
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2483649",
+      "local": {
+        "x": 480.9315,
+        "y": 241,
+        "z": -396.9591
+      },
+      "name": "Remchi",
+      "place": "PPL",
+      "population": 31837,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.06196,
+        "lon": -1.43362
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2483649",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 23473,
+        "rate": 0.7373,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8364
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2538027",
+      "local": {
+        "x": 212.098,
+        "y": 768,
+        "z": 22.9843
+      },
+      "name": "Reçani",
+      "place": "PPL",
+      "population": 20469,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.28318,
+        "lon": -4.26565
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-08",
+      "source": "geonames-cities15000",
+      "sourceId": "2538027",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13360,
+        "rate": 0.6527,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7109
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2538059",
+      "local": {
+        "x": 189.7078,
+        "y": 1350,
+        "z": -85.176
+      },
+      "name": "Rich",
+      "place": "PPL",
+      "population": 28382,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.25644,
+        "lon": -4.50152
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2538059",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15524,
+        "rate": 0.5469,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 12858
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-11025266",
+      "local": {
+        "x": 107.3917,
+        "y": 613,
+        "z": -268.196
+      },
+      "name": "Sabaa Aiyoun",
+      "place": "PPL",
+      "population": 28693,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.90331,
+        "lon": -5.36868
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-03",
+      "source": "geonames-cities15000",
+      "sourceId": "11025266",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 12374,
+        "rate": 0.4313,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16319
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2537881",
+      "local": {
+        "x": -259.8297,
+        "y": 87,
+        "z": -89.9491
+      },
+      "name": "Safi",
+      "place": "PPLA2",
+      "population": 336883,
+      "populationTier": "large",
+      "position": {
+        "lat": 32.29939,
+        "lon": -9.23718
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-05-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2537881",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 252672,
+        "rate": 0.75,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 84211
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537763",
+      "local": {
+        "x": -28.3316,
+        "y": 73,
+        "z": -284.8424
+      },
+      "name": "Salé",
+      "place": "PPL",
+      "population": 972299,
+      "populationTier": "large",
+      "position": {
+        "lat": 34.0531,
+        "lon": -6.79846
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2537763",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 760505,
+        "rate": 0.7822,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 211794
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10920963",
+      "local": {
+        "x": -22.8269,
+        "y": 163,
+        "z": -278.6324
+      },
+      "name": "Salé Al Jadida",
+      "place": "PPL",
+      "population": 200000,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.99722,
+        "lon": -6.74047
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "10920963",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 147440,
+        "rate": 0.7372,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 52560
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2482211",
+      "local": {
+        "x": 490.632,
+        "y": 998,
+        "z": -349.7357
+      },
+      "name": "Sebdou",
+      "place": "PPL",
+      "population": 32570,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.63703,
+        "lon": -1.33143
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2482211",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19541,
+        "rate": 0.6,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 13029
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537610",
+      "local": {
+        "x": -245.2566,
+        "y": 213,
+        "z": -68.6562
+      },
+      "name": "Sebt Gzoula",
+      "place": "PPL",
+      "population": 20248,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.10779,
+        "lon": -9.08366
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-05-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2537610",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 11552,
+        "rate": 0.5705,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8696
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537545",
+      "local": {
+        "x": 158.7164,
+        "y": 982,
+        "z": -260.2556
+      },
+      "name": "Sefrou",
+      "place": "PPLA3",
+      "population": 87234,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.83186,
+        "lon": -4.828
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-12-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2537545",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 68801,
+        "rate": 0.7887,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 18433
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537469",
+      "local": {
+        "x": 337.7184,
+        "y": 130,
+        "z": -398.2004
+      },
+      "name": "Selouane",
+      "place": "PPLA3",
+      "population": 23553,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.07313,
+        "lon": -2.9423
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2537469",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14272,
+        "rate": 0.606,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9281
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2537406",
+      "local": {
+        "x": -105.9963,
+        "y": 428,
+        "z": -167.9238
+      },
+      "name": "Settat",
+      "place": "PPLA2",
+      "population": 155333,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.00103,
+        "lon": -7.61662
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-07-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2537406",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 94859,
+        "rate": 0.6107,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 60474
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2526239",
+      "local": {
+        "x": -111.7764,
+        "y": 2579,
+        "z": 29.4411
+      },
+      "name": "Setti Fatma",
+      "place": "PPL",
+      "population": 22283,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.22508,
+        "lon": -7.67751
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-08",
+      "source": "geonames-cities15000",
+      "sourceId": "2526239",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15751,
+        "rate": 0.7068,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 6532
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2481639",
+      "local": {
+        "x": 593.8242,
+        "y": 744,
+        "z": -416.1493
+      },
+      "name": "Sfizef",
+      "place": "PPL",
+      "population": 27914,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.23464,
+        "lon": -0.24435
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2481639",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16665,
+        "rate": 0.597,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11249
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2481389",
+      "local": {
+        "x": 509.0827,
+        "y": 509,
+        "z": -397.7825
+      },
+      "name": "Sidi Abdelli",
+      "place": "PPL",
+      "population": 23543,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.06937,
+        "lon": -1.13706
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2481389",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15597,
+        "rate": 0.6625,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7946
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2481007",
+      "local": {
+        "x": 557.1352,
+        "y": 506,
+        "z": -411.1817
+      },
+      "name": "Sidi Bel Abbes",
+      "place": "PPLA",
+      "population": 210146,
+      "populationTier": "large",
+      "position": {
+        "lat": 35.18994,
+        "lon": -0.63085
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-18-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2481007",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 174039,
+        "rate": 0.8282,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 36107
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2536074",
+      "local": {
+        "x": -182.988,
+        "y": 188,
+        "z": -129.1754
+      },
+      "name": "Sidi Bennour",
+      "place": "PPLA3",
+      "population": 60948,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.65236,
+        "lon": -8.42769
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2536074",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 36032,
+        "rate": 0.5912,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24916
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2480618",
+      "local": {
+        "x": 567.4983,
+        "y": 112,
+        "z": -463.3126
+      },
+      "name": "Sidi ech Chahmi",
+      "place": "PPL",
+      "population": 35512,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.65903,
+        "lon": -0.52168
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2480618",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 13772,
+        "rate": 0.3878,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21740
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2534515",
+      "local": {
+        "x": -348.6624,
+        "y": 200,
+        "z": 234.5163
+      },
+      "name": "Sidi Ifni",
+      "place": "PPLA3",
+      "population": 23606,
+      "populationTier": "small",
+      "position": {
+        "lat": 29.37975,
+        "lon": -10.17299
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-04-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2534515",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 14882,
+        "rate": 0.6304,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8724
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2533191",
+      "local": {
+        "x": 75.2052,
+        "y": 300,
+        "z": -303.5559
+      },
+      "name": "Sidi Kacem",
+      "place": "PPL",
+      "population": 82632,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.22149,
+        "lon": -5.70775
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2533191",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 65561,
+        "rate": 0.7934,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17071
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2533182",
+      "local": {
+        "x": -136.3527,
+        "y": 53,
+        "z": -220.8626
+      },
+      "name": "Sidi Rahal",
+      "place": "PPL",
+      "population": 22525,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.47739,
+        "lon": -7.93641
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2533182",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16482,
+        "rate": 0.7317,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 6043
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532945",
+      "local": {
+        "x": 54.4895,
+        "y": 41,
+        "z": -308.368
+      },
+      "name": "Sidi Slimane",
+      "place": "PPLA3",
+      "population": 101541,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.26479,
+        "lon": -5.92598
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2532945",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 65026,
+        "rate": 0.6404,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 36515
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718684",
+      "local": {
+        "x": 393.8909,
+        "y": 420,
+        "z": -379.8692
+      },
+      "name": "Sidi Slimane Echcharaa",
+      "place": "PPL",
+      "population": 32979,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.90818,
+        "lon": -2.35055
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-01",
+      "source": "geonames-cities15000",
+      "sourceId": "12718684",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21224,
+        "rate": 0.6436,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11755
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10797349",
+      "local": {
+        "x": -17.2538,
+        "y": 67,
+        "z": -299.7208
+      },
+      "name": "Sidi Taibi",
+      "place": "PPL",
+      "population": 51050,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.18698,
+        "lon": -6.68176
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "10797349",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 30171,
+        "rate": 0.591,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20879
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532822",
+      "local": {
+        "x": 18.6017,
+        "y": 31,
+        "z": -312.8299
+      },
+      "name": "Sidi Yahia El Gharb",
+      "place": "PPLA3",
+      "population": 41472,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.30494,
+        "lon": -6.30404
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2532822",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20603,
+        "rate": 0.4968,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 20869
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2479609",
+      "local": {
+        "x": 598.6331,
+        "y": 143,
+        "z": -448.7866
+      },
+      "name": "Sig",
+      "place": "PPL",
+      "population": 61373,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.52832,
+        "lon": -0.19369
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2479609",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 49707,
+        "rate": 0.8099,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11666
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2562055",
+      "local": {
+        "x": -50.4731,
+        "y": 95,
+        "z": -262.5716
+      },
+      "name": "Skhirate",
+      "place": "PPLA3",
+      "population": 65272,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.8527,
+        "lon": -7.03171
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-08-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2562055",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 40896,
+        "rate": 0.6265,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24376
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-12718688",
+      "local": {
+        "x": 47.1365,
+        "y": 46,
+        "z": -355.0367
+      },
+      "name": "Souk El Arbaa",
+      "place": "PPL",
+      "population": 75635,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.68473,
+        "lon": -6.00344
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-10-02",
+      "source": "geonames-cities15000",
+      "sourceId": "12718688",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 64496,
+        "rate": 0.8527,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 11139
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532421",
+      "local": {
+        "x": 94.123,
+        "y": 81,
+        "z": -333.576
+      },
+      "name": "Souk et Tnine Jorf el Mellah",
+      "place": "PPL",
+      "population": 31318,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.49162,
+        "lon": -5.50846
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-11-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2532421",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20698,
+        "rate": 0.6609,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10620
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532394",
+      "local": {
+        "x": 47.2048,
+        "y": 46,
+        "z": -355.249
+      },
+      "name": "Souq Larb’a al Gharb",
+      "place": "PPLA3",
+      "population": 44059,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.68664,
+        "lon": -6.00272
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2532394",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20027,
+        "rate": 0.4545,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24032
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532412",
+      "local": {
+        "x": -19.2709,
+        "y": 417,
+        "z": -89.7169
+      },
+      "name": "Souq Sebt Oulad Nemma",
+      "place": "PPL",
+      "population": 65601,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.2973,
+        "lon": -6.70301
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2532412",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 38256,
+        "rate": 0.5832,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 27345
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2532171",
+      "local": {
+        "x": -39.4693,
+        "y": 1206,
+        "z": 65.2111
+      },
+      "name": "Tabount",
+      "place": "PPL",
+      "population": 33929,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.90321,
+        "lon": -6.91579
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-08",
+      "source": "geonames-cities15000",
+      "sourceId": "2532171",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 23345,
+        "rate": 0.688,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10584
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2531480",
+      "local": {
+        "x": 197.2924,
+        "y": 628,
+        "z": -284.459
+      },
+      "name": "Tahla",
+      "place": "PPLA3",
+      "population": 30279,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.04965,
+        "lon": -4.42162
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2531480",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21430,
+        "rate": 0.7078,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8849
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-8504943",
+      "local": {
+        "x": -152.8309,
+        "y": 402,
+        "z": -29.45
+      },
+      "name": "Tamansourt",
+      "place": "PPL",
+      "population": 27383,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.755,
+        "lon": -8.11
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-07",
+      "source": "geonames-cities15000",
+      "sourceId": "8504943",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 16393,
+        "rate": 0.5987,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 10990
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-8299790",
+      "local": {
+        "x": -39.5443,
+        "y": 181,
+        "z": -258.7253
+      },
+      "name": "Tamesna",
+      "place": "PPL",
+      "population": 30705,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.81809,
+        "lon": -6.91658
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "8299790",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 15537,
+        "rate": 0.506,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15168
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2530241",
+      "local": {
+        "x": -436.9646,
+        "y": 64,
+        "z": 339.176
+      },
+      "name": "Tan-Tan",
+      "place": "PPLA2",
+      "population": 79942,
+      "populationTier": "medium",
+      "position": {
+        "lat": 28.43799,
+        "lon": -11.10321
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-02-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2530241",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 55148,
+        "rate": 0.6899,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 24794
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "MA",
+      "id": "ma-2530335",
+      "local": {
+        "x": 66.472,
+        "y": 109,
+        "z": -475.3416
+      },
+      "name": "Tangier",
+      "place": "PPLA",
+      "population": 1035141,
+      "populationTier": "large",
+      "position": {
+        "lat": 35.76727,
+        "lon": -5.79975
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-10-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2530335",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 830168,
+        "rate": 0.802,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 204973
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2530155",
+      "local": {
+        "x": 176.5539,
+        "y": 588,
+        "z": -338.5759
+      },
+      "name": "Taounate",
+      "place": "PPLA3",
+      "population": 41075,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.53661,
+        "lon": -4.64009
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-12-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2530155",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 23187,
+        "rate": 0.5645,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17888
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2530048",
+      "local": {
+        "x": 341.9882,
+        "y": 452,
+        "z": -324.2065
+      },
+      "name": "Taourirt",
+      "place": "PPLA3",
+      "population": 112908,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.40731,
+        "lon": -2.89732
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-14-02",
+      "source": "geonames-cities15000",
+      "sourceId": "2530048",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 67679,
+        "rate": 0.5994,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 45229
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2529649",
+      "local": {
+        "x": -225.6345,
+        "y": 248,
+        "z": 113.3235
+      },
+      "name": "Taroudant",
+      "place": "PPLA3",
+      "population": 87520,
+      "populationTier": "medium",
+      "position": {
+        "lat": 30.47028,
+        "lon": -8.87695
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2529649",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 58037,
+        "rate": 0.6631,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 29483
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2529362",
+      "local": {
+        "x": -139.8261,
+        "y": 726,
+        "z": 194.0265
+      },
+      "name": "Tata",
+      "place": "PPLA3",
+      "population": 20322,
+      "populationTier": "small",
+      "position": {
+        "lat": 29.74409,
+        "lon": -7.973
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2529362",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 12809,
+        "rate": 0.6303,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 7513
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2529317",
+      "local": {
+        "x": 236.3659,
+        "y": 938,
+        "z": -302.279
+      },
+      "name": "Taza",
+      "place": "PPLA2",
+      "population": 162110,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.21,
+        "lon": -4.01
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-13-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2529317",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 91181,
+        "rate": 0.5625,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 70929
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2529013",
+      "local": {
+        "x": -38.5931,
+        "y": 103,
+        "z": -271.0132
+      },
+      "name": "Temara",
+      "place": "PPLA3",
+      "population": 342345,
+      "populationTier": "large",
+      "position": {
+        "lat": 33.92866,
+        "lon": -6.90656
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2529013",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 271235,
+        "rate": 0.7923,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 71110
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2528659",
+      "local": {
+        "x": 18.3691,
+        "y": 356,
+        "z": -267.238
+      },
+      "name": "Tiflet",
+      "place": "PPLA3",
+      "population": 94684,
+      "populationTier": "medium",
+      "position": {
+        "lat": 33.89469,
+        "lon": -6.30649
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-09-03",
+      "source": "geonames-cities15000",
+      "sourceId": "2528659",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 79888,
+        "rate": 0.8437,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14796
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2476301",
+      "local": {
+        "x": -156.384,
+        "y": 436,
+        "z": 424.4009
+      },
+      "name": "Tindouf",
+      "place": "PPLA",
+      "population": 45610,
+      "populationTier": "small",
+      "position": {
+        "lat": 27.67111,
+        "lon": -8.14743
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-07-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2476301",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 29083,
+        "rate": 0.6376,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16527
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-10374981",
+      "local": {
+        "x": -273.313,
+        "y": 142,
+        "z": 142.3134
+      },
+      "name": "Tine Biougra",
+      "place": "PPL",
+      "population": 41421,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.20942,
+        "lon": -9.37922
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-05-10",
+      "source": "geonames-cities15000",
+      "sourceId": "10374981",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 25198,
+        "rate": 0.6083,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16223
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2527915",
+      "local": {
+        "x": 91.8144,
+        "y": 1336,
+        "z": -2.7472
+      },
+      "name": "Tinghir",
+      "place": "PPLA2",
+      "population": 45911,
+      "populationTier": "small",
+      "position": {
+        "lat": 31.51472,
+        "lon": -5.53278
+      },
+      "priority": 86,
+      "protected": true,
+      "sectorId": "s-11-07",
+      "source": "geonames-cities15000",
+      "sourceId": "2527915",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 17775,
+        "rate": 0.3872,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 28136
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2527645",
+      "local": {
+        "x": 241.6314,
+        "y": 387,
+        "z": -416.3216
+      },
+      "name": "Tirhanimîne",
+      "place": "PPL",
+      "population": 55827,
+      "populationTier": "medium",
+      "position": {
+        "lat": 35.23619,
+        "lon": -3.95453
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-13-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2527645",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 38932,
+        "rate": 0.6974,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 16895
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2527271",
+      "local": {
+        "x": -93.6417,
+        "y": 155,
+        "z": -229.8299
+      },
+      "name": "Tit Mellil",
+      "place": "PPLA3",
+      "population": 35797,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.55808,
+        "lon": -7.48647
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-08-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2527271",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 20440,
+        "rate": 0.571,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15357
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2527089",
+      "local": {
+        "x": -306.7649,
+        "y": 244,
+        "z": 199.213
+      },
+      "name": "Tiznit",
+      "place": "PPLA3",
+      "population": 81569,
+      "populationTier": "medium",
+      "position": {
+        "lat": 29.69742,
+        "lon": -9.73162
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-04-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2527089",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 66833,
+        "rate": 0.8193,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14736
+      }
+    },
+    {
+      "capitalLevel": "regional",
+      "countryCode": "DZ",
+      "id": "dz-2475687",
+      "local": {
+        "x": 492.1916,
+        "y": 1076,
+        "z": -376.5519
+      },
+      "name": "Tlemcen",
+      "place": "PPLA",
+      "population": 173531,
+      "populationTier": "medium",
+      "position": {
+        "lat": 34.87833,
+        "lon": -1.315
+      },
+      "priority": 106,
+      "protected": true,
+      "sectorId": "s-17-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2475687",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 132053,
+        "rate": 0.761,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 41478
+      }
+    },
+    {
+      "capitalLevel": "provincial",
+      "countryCode": "MA",
+      "id": "ma-2528910",
+      "local": {
+        "x": 107.4212,
+        "y": 212,
+        "z": -454.3576
+      },
+      "name": "Tétouan",
+      "place": "PPLA2",
+      "population": 415810,
+      "populationTier": "large",
+      "position": {
+        "lat": 35.57845,
+        "lon": -5.36837
+      },
+      "priority": 100,
+      "protected": true,
+      "sectorId": "s-11-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2528910",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 394286,
+        "rate": 0.9482,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21524
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2526488",
+      "local": {
+        "x": -192.6439,
+        "y": 367,
+        "z": -84.0536
+      },
+      "name": "Youssoufia",
+      "place": "PPLA3",
+      "population": 73848,
+      "populationTier": "medium",
+      "position": {
+        "lat": 32.24634,
+        "lon": -8.52941
+      },
+      "priority": 72,
+      "protected": true,
+      "sectorId": "s-06-06",
+      "source": "geonames-cities15000",
+      "sourceId": "2526488",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 64074,
+        "rate": 0.8677,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 9774
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2526452",
+      "local": {
+        "x": 62.8031,
+        "y": 797,
+        "z": 128.6453
+      },
+      "name": "Zagora",
+      "place": "PPLA3",
+      "population": 43752,
+      "populationTier": "small",
+      "position": {
+        "lat": 30.33241,
+        "lon": -5.8384
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-09",
+      "source": "geonames-cities15000",
+      "sourceId": "2526452",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 17186,
+        "rate": 0.3928,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 26566
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2541210",
+      "local": {
+        "x": -106.2526,
+        "y": 203,
+        "z": -210.0184
+      },
+      "name": "Zawyat an Nwaçer",
+      "place": "PPL",
+      "population": 25991,
+      "populationTier": "small",
+      "position": {
+        "lat": 33.37981,
+        "lon": -7.61932
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-07-04",
+      "source": "geonames-cities15000",
+      "sourceId": "2541210",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 11091,
+        "rate": 0.4267,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 14900
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2526359",
+      "local": {
+        "x": 55.2223,
+        "y": 754,
+        "z": -128.2963
+      },
+      "name": "Zawyat ech Cheïkh",
+      "place": "PPL",
+      "population": 27723,
+      "populationTier": "small",
+      "position": {
+        "lat": 32.64445,
+        "lon": -5.91826
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-10-05",
+      "source": "geonames-cities15000",
+      "sourceId": "2526359",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 19617,
+        "rate": 0.7076,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 8106
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2526435",
+      "local": {
+        "x": 357.5959,
+        "y": 226,
+        "z": -383.7188
+      },
+      "name": "Zaïo",
+      "place": "PPLA3",
+      "population": 39099,
+      "populationTier": "small",
+      "position": {
+        "lat": 34.94282,
+        "lon": -2.7329
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-15-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2526435",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18009,
+        "rate": 0.4606,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 21090
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "MA",
+      "id": "ma-2537538",
+      "local": {
+        "x": 332.0172,
+        "y": 342,
+        "z": -407.3666
+      },
+      "name": "Zeghanghane",
+      "place": "PPL",
+      "population": 37154,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.15561,
+        "lon": -3.00236
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-14-01",
+      "source": "geonames-cities15000",
+      "sourceId": "2537538",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 21218,
+        "rate": 0.5711,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 15936
+      }
+    },
+    {
+      "capitalLevel": null,
+      "countryCode": "DZ",
+      "id": "dz-2508119",
+      "local": {
+        "x": 543.9927,
+        "y": 238,
+        "z": -472.7344
+      },
+      "name": "’Aïn el Turk",
+      "place": "PPL",
+      "population": 36326,
+      "populationTier": "small",
+      "position": {
+        "lat": 35.74381,
+        "lon": -0.7693
+      },
+      "priority": 48,
+      "protected": true,
+      "sectorId": "s-18-00",
+      "source": "geonames-cities15000",
+      "sourceId": "2508119",
+      "terrainStatus": "dem-cell",
+      "warImpact": {
+        "fictional": true,
+        "nuclearWarDeaths": 18933,
+        "rate": 0.5212,
+        "scenario": "WAFT-nuclear-war",
+        "survivorsImmediatelyAfter": 17393
+      }
+    }
+  ],
+  "regionId": "northwest-africa",
+  "source": {
+    "countries": [
+      "DZ",
+      "EH",
+      "ES",
+      "MA"
+    ],
+    "dataset": "cities15000",
+    "fictionalWarImpact": true,
+    "license": "GeoNames CC BY 4.0; WAFT manual metadata",
+    "minimumPopulation": 20000,
+    "provider": "GeoNames + WAFT manual exceptions",
+    "regionId": "northwest-africa",
+    "retrievedOn": "2026-08-09",
+    "url": "https://download.geonames.org/export/dump/cities15000.zip"
+  }
+}

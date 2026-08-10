@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "id": "iberia",
   "name": "Península Ibérica",
-  "version": "0.24.4",
+  "version": "0.25.0",
   "status": "prototype",
   "continent": "Europe",
   "countryCodes": [
@@ -29,7 +29,7 @@
     },
     "projection": "local-equirectangular",
     "scale": {
-      "horizontalUnitsPerKm": 1.45,
+      "horizontalUnitsPerKm": 1,
       "verticalExaggeration": 1.9,
       "emptySpaceCompression": {
         "mode": "none",
@@ -320,10 +320,10 @@
       },
       {
         "id": "atlantic-canarias",
-        "name": "Corredor Atlántico · Canarias",
+        "name": "Atlántico oriental · Canarias",
         "position": {
           "lon": -7.2,
-          "lat": 36.0
+          "lat": 36
         },
         "type": "air",
         "arrivalHeadingDegrees": 210
@@ -348,6 +348,16 @@
           "long_water"
         ],
         "distanceClass": "long",
+        "enabled": true
+      },
+      {
+        "id": "iberia-africa-continuous",
+        "targetRegionId": "northwest-africa",
+        "entryPointId": "gibraltar-south",
+        "requiredCapabilities": [
+          "long_water"
+        ],
+        "distanceClass": "regional",
         "enabled": true
       }
     ]
