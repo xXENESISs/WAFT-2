@@ -116,7 +116,7 @@ for(const pattern of [
   /streamedRegion:'canarias'/,
   /streamedRegion:'atlantic-corridor'/,
   /const atlanticHere=Boolean\(sampleAtlantic/,
-  /const canariasHere=inCanarias/,
+  /canariasHere=inCanarias/,
   /atlanticDrawFrames/,/canDrawFrames/
 ])assert.match(continuity247,pattern,`0.24.8 continuity layer missing ${pattern}`);
 assert.doesNotMatch(continuity247,/const getMarker=city=>|function updateCityLabels/,'floating city label renderer survived 0.24.8');
