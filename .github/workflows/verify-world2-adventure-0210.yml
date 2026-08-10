@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.24.4
+name: Verify World 2 Adventure 0.24.5
 
 on:
   push:
@@ -19,6 +19,7 @@ on:
       - agent/iberia-terrain-0240
       - agent/iberia-polish-0243
       - agent/world-streaming-foundation-0244
+      - fix/verify-world2-0245
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -31,6 +32,8 @@ on:
       - world-generator/configs/world-streaming-topology.v1.json
       - world-generator/scripts/prepare-iberia-0243.mjs
       - world-generator/scripts/prepare-iberia-0244.mjs
+      - world-generator/scripts/prepare-iberia-0245.mjs
+      - world-generator/scripts/tune-vulture-flight-0245.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
       - world-generator/scripts/smoke-world-expansion-0244.mjs
       - regions/iberia/**
@@ -67,8 +70,12 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-explorer-0242.js
           node --check mallorca-mobile/adventure-0210/iberia-polish-0243.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0244.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
+          node --check mallorca-mobile/adventure-0210/tools/verify-iberia-france-browser-0245.mjs
           node --check world-generator/scripts/prepare-iberia-0243.mjs
           node --check world-generator/scripts/prepare-iberia-0244.mjs
+          node --check world-generator/scripts/prepare-iberia-0245.mjs
+          node --check world-generator/scripts/tune-vulture-flight-0245.mjs
           node --check world-generator/scripts/smoke-world-expansion-0244.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-plugin-loader-0239.mjs
@@ -80,7 +87,7 @@ jobs:
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/spain-region-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
-      - name: Static parity verification
+      - name: Static parity and streaming verification
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/verify.mjs
       - name: Compile patched regional runtimes
@@ -111,4 +118,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# Final branch verification trigger: runtime/geography are identical to the browser-validated 0.24.4 state.
+# 0.24.5 keeps the established World 1/World 2 parity checks and adds the real Iberia -> France streaming layer.

@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 
+// WAFT 0.24.5 global static verification: parity + real Iberia/France streaming contracts.
 const here=path.dirname(new URL(import.meta.url).pathname);
 const mobile=path.resolve(here,'..');
 const read=name=>fs.readFileSync(path.join(here,name),'utf8');
@@ -14,8 +15,9 @@ const mobilePolish=read('mobile-polish-0231.js');
 const mechanics=read('mechanics-0232.js');
 const parity=read('world1-parity-0233.js');
 const iberiaWorld=read('iberia-world-0244.js');
+const streamingWorld=read('iberia-world-0245.js');
 
-for(const [name,source] of [['plugin-loader.js',loader],['gameplay-plugin.js',plugin],['playability-0230.js',playability],['mobile-polish-0231.js',mobilePolish],['mechanics-0232.js',mechanics],['world1-parity-0233.js',parity],['iberia-world-0244.js',iberiaWorld]])new vm.Script(source,{filename:name});
+for(const [name,source] of [['plugin-loader.js',loader],['gameplay-plugin.js',plugin],['playability-0230.js',playability],['mobile-polish-0231.js',mobilePolish],['mechanics-0232.js',mechanics],['world1-parity-0233.js',parity],['iberia-world-0244.js',iberiaWorld],['iberia-world-0245.js',streamingWorld]])new vm.Script(source,{filename:name});
 for(const script of [...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean))new vm.Script(script,{filename:'adventure-index-inline.js'});
 
 for(const pattern of [
@@ -49,11 +51,17 @@ for(const pattern of [
   /standOnRoof/,
   /queueAdventureJump\(velocity,options=\{\}\)/,
   /horizontalBoost/,
-  /__WAFT_ADVENTURE_BUILD__='0\.24\.4'/,
+  /__WAFT_ADVENTURE_BUILD__='0\.24\.5'/,
   /WAFT_IBERIA_WORLD_0244/,
-  /Math\.max\(42\.0,state\.adventureFlightFlap\*2\.4\)/,
-  /state\.iberiaFlapMomentum=\.42/,
-  /Math\.min\(44,state\.adventureFlightVy\)/
+  /WAFT_IBERIA_WORLD_0245/,
+  /Math\.max\(72\.0,state\.adventureFlightFlap\*3\.6\)/,
+  /state\.camera\.y\+=4\.0/,
+  /state\.iberiaFlapUntil=performance\.now\(\)\+380/,
+  /state\.adventureFlightVy=0;\}\}state\.adventureFlightVy=Math\.max\(-58,Math\.min\(72,state\.adventureFlightVy\)\)/,
+  /inputLength<\.06\?24:\(boosted\|\|inputLength>\.93\?46:inputLength>\.70\?38:30\)/,
+  /releaseRegionalTerrainGpu/,
+  /restoreRegionalTerrainGpu/,
+  /WAFTWorldStreaming0245\?\.sampleSurface/
 ]) assert.match(index,pattern,`index missing ${pattern}`);
 assert.doesNotMatch(index,/state\.yaw \+= dx/,'camera drag was re-inverted');
 assert.doesNotMatch(index,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/,'old near-camera terrain blind spot survived');
@@ -79,6 +87,7 @@ for(const pattern of [
 ]) assert.match(loader,pattern,`loader missing ${pattern}`);
 
 for(const pattern of [/__WAFT_IBERIA_WORLD_0244_READY__/,/LUGARES · PRE-GUERRA/,/nuclearWarDeaths/,/christmas-tree/,/waftCastleIcon/,/flightFlap:12/])assert.match(iberiaWorld,pattern,`world layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0245_READY__/,/regions\/france\/manifest\.json/,/regions\/france\/terrain\.bin/,/regions\/france\/landcover\.bin/,/france-full/,/france-lod/,/releaseRegionalTerrainGpu/,/restoreRegionalTerrainGpu/,/streamedRegion:'france'/])assert.match(streamingWorld,pattern,`streaming layer missing ${pattern}`);
 for(const pattern of [
   /animal\.type==='goat'\|\|animal\.type==='shark'\|\|animal\.type==='vulture'/,
   /api\.isAdventureVisible/,
@@ -101,4 +110,4 @@ for(const runtimeFile of ['region-runtime-baleares-013.html','region-runtime-cat
 const reference=path.join(here,'reference','world1-015-source.html');
 if(fs.existsSync(reference)){const world1=fs.readFileSync(reference,'utf8');for(const feature of ['desiredYaw-=dx*.0053','Math.max(-1.05,Math.min(1.46,desiredPitch+dy*.0043))','Math.max(0,-pitch)*radius*.92','megaMax=(fromWater?21.30:23.55)','player.coyote=.12'])assert.ok(world1.includes(feature),`World 1 reference lost ${feature}`);}
 
-console.log('WAFT 0.24.4 verification passed: World 1 parity remains intact while Iberia world foundation keeps a strong flap, fast return to level flight and unchanged dive.');
+console.log('WAFT 0.24.5 verification passed: World 1 parity remains intact while Iberia keeps deterministic flight and the real France terrain streaming layer is present.');
