@@ -1,0 +1,376 @@
+{
+  "$schema": "../schema/region.schema.json",
+  "schemaVersion": 1,
+  "id": "northwest-africa",
+  "name": "Noroeste de África",
+  "version": "0.25.0",
+  "status": "prototype",
+  "continent": "Africa",
+  "countryCodes": [
+    "MA",
+    "DZ",
+    "EH",
+    "ES"
+  ],
+  "aliases": [
+    "Northwest Africa",
+    "Noroeste de África",
+    "Magreb occidental",
+    "Marruecos"
+  ],
+  "geography": {
+    "bounds": {
+      "west": -13,
+      "east": 0,
+      "south": 27,
+      "north": 35.98
+    },
+    "origin": {
+      "lon": -6.5,
+      "lat": 31.49
+    },
+    "projection": "local-equirectangular",
+    "scale": {
+      "horizontalUnitsPerKm": 1,
+      "verticalExaggeration": 1.9,
+      "emptySpaceCompression": {
+        "mode": "none",
+        "factor": 1,
+        "preserveCoastline": true,
+        "anchorIds": []
+      }
+    },
+    "subregions": [
+      {
+        "id": "tanger",
+        "name": "Tánger",
+        "type": "coast",
+        "center": {
+          "lon": -5.8128,
+          "lat": 35.7595
+        },
+        "priority": 100
+      },
+      {
+        "id": "ceuta",
+        "name": "Ceuta",
+        "type": "coast",
+        "center": {
+          "lon": -5.3204,
+          "lat": 35.8892
+        },
+        "priority": 100
+      },
+      {
+        "id": "rif",
+        "name": "Rif",
+        "type": "mountain",
+        "center": {
+          "lon": -4.7,
+          "lat": 35.1
+        },
+        "priority": 98
+      },
+      {
+        "id": "melilla",
+        "name": "Melilla",
+        "type": "coast",
+        "center": {
+          "lon": -2.9383,
+          "lat": 35.2937
+        },
+        "priority": 98
+      },
+      {
+        "id": "rabat-casablanca",
+        "name": "Rabat-Casablanca",
+        "type": "coast",
+        "center": {
+          "lon": -7.1,
+          "lat": 33.7
+        },
+        "priority": 96
+      },
+      {
+        "id": "atlas",
+        "name": "Atlas",
+        "type": "mountain",
+        "center": {
+          "lon": -6,
+          "lat": 31.4
+        },
+        "priority": 100
+      },
+      {
+        "id": "marrakech",
+        "name": "Marrakech",
+        "type": "city",
+        "center": {
+          "lon": -8,
+          "lat": 31.63
+        },
+        "priority": 94
+      },
+      {
+        "id": "agadir",
+        "name": "Agadir",
+        "type": "coast",
+        "center": {
+          "lon": -9.6,
+          "lat": 30.42
+        },
+        "priority": 94
+      },
+      {
+        "id": "sahara-occidental",
+        "name": "Sáhara occidental",
+        "type": "desert",
+        "center": {
+          "lon": -10.2,
+          "lat": 28.2
+        },
+        "priority": 90
+      }
+    ]
+  },
+  "sources": {
+    "terrain": {
+      "provider": "Copernicus",
+      "dataset": "Copernicus DEM GLO-90",
+      "license": "Copernicus data policy",
+      "attribution": "Contains modified Copernicus DEM data",
+      "resolutionMeters": 90,
+      "cachePolicy": "build-cache"
+    },
+    "cartography": {
+      "provider": "GeoNames / OpenStreetMap contributors",
+      "dataset": "GeoNames settlements and OpenStreetMap",
+      "license": "CC BY 4.0 / ODbL 1.0",
+      "attribution": "GeoNames and © OpenStreetMap contributors",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "landcover": {
+      "provider": "WAFT terrain bootstrap",
+      "dataset": "Land/water mask derived from Copernicus DEM",
+      "license": "Copernicus data policy",
+      "attribution": "Derived from modified Copernicus DEM data",
+      "resolutionMeters": 90,
+      "cachePolicy": "build-cache"
+    },
+    "climate": {
+      "provider": "WorldClim",
+      "dataset": "WorldClim 2.1",
+      "license": "CC BY 4.0",
+      "attribution": "WorldClim global climate data",
+      "resolutionMeters": 1000,
+      "cachePolicy": "build-cache"
+    },
+    "landmarks": [
+      {
+        "provider": "OpenStreetMap contributors",
+        "dataset": "OpenStreetMap places and features",
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ],
+    "fauna": [
+      {
+        "provider": "GBIF",
+        "dataset": "GBIF occurrence records",
+        "license": "Record-dependent open licence",
+        "attribution": "GBIF.org and contributing datasets",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ]
+  },
+  "generation": {
+    "terrain": {
+      "grid": {
+        "columns": 512,
+        "rows": 416
+      },
+      "lods": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "smoothingPasses": 1,
+      "coastalFlattening": true,
+      "maxWalkableSlopeDegrees": 52,
+      "seaLevelMeters": 0
+    },
+    "landcover": {
+      "ruleset": "northwest-africa-terrain-v1",
+      "fallbackBiome": "desert",
+      "season": "dynamic",
+      "snowlineMeters": null
+    },
+    "transport": {
+      "includeRoadClasses": [],
+      "includeRailways": false,
+      "includeTrails": false,
+      "simplificationMeters": 120
+    },
+    "settlements": {
+      "maxCount": 0,
+      "minimumPopulation": 0,
+      "coastalTourismBoost": 0,
+      "profiles": [
+        "terrain-only"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "buildings": {
+      "useRealFootprints": false,
+      "proceduralFallback": false,
+      "minimumSpacingUnits": 0,
+      "maximumPerSector": 0,
+      "roofWalkable": false,
+      "collisionMode": "none",
+      "architectureProfiles": [
+        "terrain-only"
+      ],
+      "hotelDetection": false
+    },
+    "landmarks": {
+      "maximumCount": 0,
+      "minimumScore": 100,
+      "uniqueModelScore": 100,
+      "archetypeScore": 100,
+      "protectedRadiusUnits": 0,
+      "allowedTypes": [
+        "natural_landmark"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "vegetation": {
+      "profiles": [
+        "terrain-only"
+      ],
+      "densityMultiplier": 0,
+      "minimumBuildingClearanceUnits": 0,
+      "instancing": true
+    },
+    "fauna": {
+      "ruleset": "northwest-africa-terrain-v1",
+      "maximumSpecies": 0,
+      "maximumActiveAnimals": 0,
+      "recordsSinceYear": 1990,
+      "minimumCoordinatePrecisionMeters": 10000,
+      "manualInclude": [],
+      "manualExcludeScientificNames": []
+    }
+  },
+  "travel": {
+    "entryPoints": [
+      {
+        "id": "strait-north",
+        "name": "Estrecho · Ceuta/Tánger",
+        "position": {
+          "lon": -5.45,
+          "lat": 35.9
+        },
+        "type": "coast",
+        "arrivalHeadingDegrees": 180
+      },
+      {
+        "id": "melilla-north",
+        "name": "Melilla/Rif",
+        "position": {
+          "lon": -2.94,
+          "lat": 35.29
+        },
+        "type": "coast",
+        "arrivalHeadingDegrees": 180
+      },
+      {
+        "id": "atlantic-canarias",
+        "name": "Atlántico oriental · Canarias",
+        "position": {
+          "lon": -12.6,
+          "lat": 28.6
+        },
+        "type": "air",
+        "arrivalHeadingDegrees": 250
+      }
+    ],
+    "connections": [
+      {
+        "id": "africa-iberia-continuous",
+        "targetRegionId": "iberia",
+        "entryPointId": "strait-north",
+        "requiredCapabilities": [
+          "land",
+          "long_water"
+        ],
+        "distanceClass": "regional",
+        "enabled": true
+      },
+      {
+        "id": "africa-canarias-continuous",
+        "targetRegionId": "canarias",
+        "entryPointId": "atlantic-canarias",
+        "requiredCapabilities": [
+          "long_water"
+        ],
+        "distanceClass": "long",
+        "enabled": true
+      }
+    ]
+  },
+  "gameplay": {
+    "spawnPoints": [
+      {
+        "id": "tanger-world-test",
+        "position": {
+          "lon": -5.8128,
+          "lat": 35.7595
+        },
+        "role": "default"
+      }
+    ],
+    "reservedZones": [],
+    "contentTargets": {
+      "minimumLandmarks": 0,
+      "minimumFaunaZones": 0,
+      "maximumEmptyTravelSeconds": 9999
+    }
+  },
+  "performance": {
+    "targetProfile": "mobile-mid",
+    "sectorSizeUnits": 64,
+    "preloadRadiusSectors": 2,
+    "budgets": {
+      "downloadMb": 12,
+      "runtimeMemoryMb": 280,
+      "visibleTriangles": 480000,
+      "visibleObjects": 120,
+      "activeColliders": 20,
+      "textureMemoryMb": 32
+    }
+  },
+  "outputs": {
+    "directory": "regions/northwest-africa",
+    "manifest": "manifest.json",
+    "terrain": "terrain.bin",
+    "landcover": "landcover.bin",
+    "sectors": "sectors.json",
+    "settlements": "settlements.json",
+    "objects": "objects.json",
+    "landmarks": "landmarks.json",
+    "fauna": "fauna.json",
+    "routes": "routes.json"
+  },
+  "overrides": {
+    "file": "world-generator/overrides/northwest-africa.overrides.json",
+    "preserveOnRegenerate": true,
+    "failOnUnknownTarget": true
+  }
+}

@@ -3,62 +3,339 @@
   "schemaVersion": 1,
   "id": "canarias",
   "name": "Canarias",
-  "version": "0.24.4",
+  "version": "0.25.0",
   "status": "prototype",
   "continent": "Africa",
-  "countryCodes": ["ES"],
-  "aliases": ["Canarias", "Islas Canarias", "Canary Islands"],
+  "countryCodes": [
+    "ES"
+  ],
+  "aliases": [
+    "Canarias",
+    "Islas Canarias",
+    "Canary Islands"
+  ],
   "geography": {
-    "bounds": {"west": -18.5, "east": -13.2, "south": 27.4, "north": 29.7},
-    "origin": {"lon": -15.85, "lat": 28.55},
+    "bounds": {
+      "west": -18.5,
+      "east": -13.2,
+      "south": 27.4,
+      "north": 29.7
+    },
+    "origin": {
+      "lon": -15.85,
+      "lat": 28.55
+    },
     "projection": "local-equirectangular",
     "scale": {
-      "horizontalUnitsPerKm": 1.45,
+      "horizontalUnitsPerKm": 1,
       "verticalExaggeration": 1.9,
-      "emptySpaceCompression": {"mode":"none","factor":1,"preserveCoastline":true,"anchorIds":[]}
+      "emptySpaceCompression": {
+        "mode": "none",
+        "factor": 1,
+        "preserveCoastline": true,
+        "anchorIds": []
+      }
     },
     "subregions": [
-      {"id":"tenerife","name":"Tenerife","type":"island","center":{"lon":-16.58,"lat":28.27},"priority":100},
-      {"id":"gran-canaria","name":"Gran Canaria","type":"island","center":{"lon":-15.58,"lat":27.96},"priority":100},
-      {"id":"lanzarote","name":"Lanzarote","type":"island","center":{"lon":-13.63,"lat":29.03},"priority":96},
-      {"id":"fuerteventura","name":"Fuerteventura","type":"island","center":{"lon":-14.01,"lat":28.36},"priority":96},
-      {"id":"la-palma","name":"La Palma","type":"island","center":{"lon":-17.86,"lat":28.68},"priority":94},
-      {"id":"la-gomera","name":"La Gomera","type":"island","center":{"lon":-17.24,"lat":28.12},"priority":92},
-      {"id":"el-hierro","name":"El Hierro","type":"island","center":{"lon":-17.98,"lat":27.74},"priority":92},
-      {"id":"la-graciosa","name":"La Graciosa","type":"island","center":{"lon":-13.50,"lat":29.25},"priority":88}
+      {
+        "id": "tenerife",
+        "name": "Tenerife",
+        "type": "island",
+        "center": {
+          "lon": -16.58,
+          "lat": 28.27
+        },
+        "priority": 100
+      },
+      {
+        "id": "gran-canaria",
+        "name": "Gran Canaria",
+        "type": "island",
+        "center": {
+          "lon": -15.58,
+          "lat": 27.96
+        },
+        "priority": 100
+      },
+      {
+        "id": "lanzarote",
+        "name": "Lanzarote",
+        "type": "island",
+        "center": {
+          "lon": -13.63,
+          "lat": 29.03
+        },
+        "priority": 96
+      },
+      {
+        "id": "fuerteventura",
+        "name": "Fuerteventura",
+        "type": "island",
+        "center": {
+          "lon": -14.01,
+          "lat": 28.36
+        },
+        "priority": 96
+      },
+      {
+        "id": "la-palma",
+        "name": "La Palma",
+        "type": "island",
+        "center": {
+          "lon": -17.86,
+          "lat": 28.68
+        },
+        "priority": 94
+      },
+      {
+        "id": "la-gomera",
+        "name": "La Gomera",
+        "type": "island",
+        "center": {
+          "lon": -17.24,
+          "lat": 28.12
+        },
+        "priority": 92
+      },
+      {
+        "id": "el-hierro",
+        "name": "El Hierro",
+        "type": "island",
+        "center": {
+          "lon": -17.98,
+          "lat": 27.74
+        },
+        "priority": 92
+      },
+      {
+        "id": "la-graciosa",
+        "name": "La Graciosa",
+        "type": "island",
+        "center": {
+          "lon": -13.5,
+          "lat": 29.25
+        },
+        "priority": 88
+      }
     ]
   },
   "sources": {
-    "terrain": {"provider":"Copernicus","dataset":"Copernicus DEM GLO-90","license":"Copernicus data policy","attribution":"Contains modified Copernicus DEM data","resolutionMeters":90,"cachePolicy":"build-cache"},
-    "cartography": {"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"},
-    "landcover": {"provider":"WAFT terrain bootstrap","dataset":"Land/water mask derived from Copernicus DEM","license":"Copernicus data policy","attribution":"Derived from modified Copernicus DEM data","resolutionMeters":90,"cachePolicy":"build-cache"},
-    "climate": {"provider":"WorldClim","dataset":"WorldClim 2.1","license":"CC BY 4.0","attribution":"WorldClim global climate data","resolutionMeters":1000,"cachePolicy":"build-cache"},
-    "landmarks": [{"provider":"OpenStreetMap contributors","dataset":"OpenStreetMap places and features","license":"ODbL 1.0","attribution":"© OpenStreetMap contributors","resolutionMeters":null,"cachePolicy":"build-cache"}],
-    "fauna": [{"provider":"GBIF","dataset":"GBIF occurrence records","license":"Record-dependent open licence","attribution":"GBIF.org and contributing datasets","resolutionMeters":null,"cachePolicy":"build-cache"}]
+    "terrain": {
+      "provider": "Copernicus",
+      "dataset": "Copernicus DEM GLO-90",
+      "license": "Copernicus data policy",
+      "attribution": "Contains modified Copernicus DEM data",
+      "resolutionMeters": 90,
+      "cachePolicy": "build-cache"
+    },
+    "cartography": {
+      "provider": "OpenStreetMap contributors",
+      "dataset": "OpenStreetMap",
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "landcover": {
+      "provider": "WAFT terrain bootstrap",
+      "dataset": "Land/water mask derived from Copernicus DEM",
+      "license": "Copernicus data policy",
+      "attribution": "Derived from modified Copernicus DEM data",
+      "resolutionMeters": 90,
+      "cachePolicy": "build-cache"
+    },
+    "climate": {
+      "provider": "WorldClim",
+      "dataset": "WorldClim 2.1",
+      "license": "CC BY 4.0",
+      "attribution": "WorldClim global climate data",
+      "resolutionMeters": 1000,
+      "cachePolicy": "build-cache"
+    },
+    "landmarks": [
+      {
+        "provider": "OpenStreetMap contributors",
+        "dataset": "OpenStreetMap places and features",
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ],
+    "fauna": [
+      {
+        "provider": "GBIF",
+        "dataset": "GBIF occurrence records",
+        "license": "Record-dependent open licence",
+        "attribution": "GBIF.org and contributing datasets",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ]
   },
   "generation": {
-    "terrain": {"grid":{"columns":384,"rows":192},"lods":[0,1,2,3],"smoothingPasses":1,"coastalFlattening":true,"maxWalkableSlopeDegrees":52,"seaLevelMeters":0},
-    "landcover": {"ruleset":"canarias-terrain-only-v1","fallbackBiome":"pasture","season":"dynamic","snowlineMeters":null},
-    "transport": {"includeRoadClasses":[],"includeRailways":false,"includeTrails":false,"simplificationMeters":100},
-    "settlements": {"maxCount":0,"minimumPopulation":0,"coastalTourismBoost":0,"profiles":["terrain-only"],"manualInclude":[],"manualExcludeIds":[]},
-    "buildings": {"useRealFootprints":false,"proceduralFallback":false,"minimumSpacingUnits":0,"maximumPerSector":0,"roofWalkable":false,"collisionMode":"none","architectureProfiles":["terrain-only"],"hotelDetection":false},
-    "landmarks": {"maximumCount":0,"minimumScore":100,"uniqueModelScore":100,"archetypeScore":100,"protectedRadiusUnits":0,"allowedTypes":["natural_landmark"],"manualInclude":[],"manualExcludeIds":[]},
-    "vegetation": {"profiles":["terrain-only"],"densityMultiplier":0,"minimumBuildingClearanceUnits":0,"instancing":true},
-    "fauna": {"ruleset":"canarias-terrain-only-v1","maximumSpecies":0,"maximumActiveAnimals":0,"recordsSinceYear":1990,"minimumCoordinatePrecisionMeters":10000,"manualInclude":[],"manualExcludeScientificNames":[]}
+    "terrain": {
+      "grid": {
+        "columns": 384,
+        "rows": 192
+      },
+      "lods": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "smoothingPasses": 1,
+      "coastalFlattening": true,
+      "maxWalkableSlopeDegrees": 52,
+      "seaLevelMeters": 0
+    },
+    "landcover": {
+      "ruleset": "canarias-terrain-only-v1",
+      "fallbackBiome": "pasture",
+      "season": "dynamic",
+      "snowlineMeters": null
+    },
+    "transport": {
+      "includeRoadClasses": [],
+      "includeRailways": false,
+      "includeTrails": false,
+      "simplificationMeters": 100
+    },
+    "settlements": {
+      "maxCount": 0,
+      "minimumPopulation": 0,
+      "coastalTourismBoost": 0,
+      "profiles": [
+        "terrain-only"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "buildings": {
+      "useRealFootprints": false,
+      "proceduralFallback": false,
+      "minimumSpacingUnits": 0,
+      "maximumPerSector": 0,
+      "roofWalkable": false,
+      "collisionMode": "none",
+      "architectureProfiles": [
+        "terrain-only"
+      ],
+      "hotelDetection": false
+    },
+    "landmarks": {
+      "maximumCount": 0,
+      "minimumScore": 100,
+      "uniqueModelScore": 100,
+      "archetypeScore": 100,
+      "protectedRadiusUnits": 0,
+      "allowedTypes": [
+        "natural_landmark"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "vegetation": {
+      "profiles": [
+        "terrain-only"
+      ],
+      "densityMultiplier": 0,
+      "minimumBuildingClearanceUnits": 0,
+      "instancing": true
+    },
+    "fauna": {
+      "ruleset": "canarias-terrain-only-v1",
+      "maximumSpecies": 0,
+      "maximumActiveAnimals": 0,
+      "recordsSinceYear": 1990,
+      "minimumCoordinatePrecisionMeters": 10000,
+      "manualInclude": [],
+      "manualExcludeScientificNames": []
+    }
   },
   "travel": {
-    "entryPoints": [{"id":"atlantic-iberia","name":"Corredor Atlántico · Iberia","position":{"lon":-15.43,"lat":28.10},"type":"air","arrivalHeadingDegrees":35}],
-    "connections": [{"id":"canarias-iberia-continuous","targetRegionId":"iberia","entryPointId":"atlantic-iberia","requiredCapabilities":["long_water"],"distanceClass":"long","enabled":true}]
+    "entryPoints": [
+      {
+        "id": "atlantic-iberia",
+        "name": "Atlántico oriental · África/Iberia",
+        "position": {
+          "lon": -15.43,
+          "lat": 28.1
+        },
+        "type": "air",
+        "arrivalHeadingDegrees": 35
+      }
+    ],
+    "connections": [
+      {
+        "id": "canarias-iberia-continuous",
+        "targetRegionId": "iberia",
+        "entryPointId": "atlantic-iberia",
+        "requiredCapabilities": [
+          "long_water"
+        ],
+        "distanceClass": "long",
+        "enabled": true
+      },
+      {
+        "id": "canarias-africa-continuous",
+        "targetRegionId": "northwest-africa",
+        "entryPointId": "atlantic-iberia",
+        "requiredCapabilities": [
+          "long_water"
+        ],
+        "distanceClass": "long",
+        "enabled": true
+      }
+    ]
   },
   "gameplay": {
-    "spawnPoints": [{"id":"tenerife-world-test","position":{"lon":-16.58,"lat":28.27},"role":"default"}],
+    "spawnPoints": [
+      {
+        "id": "tenerife-world-test",
+        "position": {
+          "lon": -16.58,
+          "lat": 28.27
+        },
+        "role": "default"
+      }
+    ],
     "reservedZones": [],
-    "contentTargets": {"minimumLandmarks":0,"minimumFaunaZones":0,"maximumEmptyTravelSeconds":9999}
+    "contentTargets": {
+      "minimumLandmarks": 0,
+      "minimumFaunaZones": 0,
+      "maximumEmptyTravelSeconds": 9999
+    }
   },
   "performance": {
-    "targetProfile":"mobile-mid","sectorSizeUnits":64,"preloadRadiusSectors":2,
-    "budgets":{"downloadMb":8,"runtimeMemoryMb":180,"visibleTriangles":200000,"visibleObjects":80,"activeColliders":12,"textureMemoryMb":24}
+    "targetProfile": "mobile-mid",
+    "sectorSizeUnits": 64,
+    "preloadRadiusSectors": 2,
+    "budgets": {
+      "downloadMb": 8,
+      "runtimeMemoryMb": 180,
+      "visibleTriangles": 200000,
+      "visibleObjects": 80,
+      "activeColliders": 12,
+      "textureMemoryMb": 24
+    }
   },
-  "outputs": {"directory":"regions/canarias","manifest":"manifest.json","terrain":"terrain.bin","landcover":"landcover.bin","sectors":"sectors.json","settlements":"settlements.json","objects":"objects.json","landmarks":"landmarks.json","fauna":"fauna.json","routes":"routes.json"},
-  "overrides": {"file":"world-generator/overrides/canarias.overrides.json","preserveOnRegenerate":true,"failOnUnknownTarget":true}
+  "outputs": {
+    "directory": "regions/canarias",
+    "manifest": "manifest.json",
+    "terrain": "terrain.bin",
+    "landcover": "landcover.bin",
+    "sectors": "sectors.json",
+    "settlements": "settlements.json",
+    "objects": "objects.json",
+    "landmarks": "landmarks.json",
+    "fauna": "fauna.json",
+    "routes": "routes.json"
+  },
+  "overrides": {
+    "file": "world-generator/overrides/canarias.overrides.json",
+    "preserveOnRegenerate": true,
+    "failOnUnknownTarget": true
+  }
 }

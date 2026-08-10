@@ -1,4 +1,4 @@
-name: Verify World 2 Adventure 0.24.9
+name: Verify World 2 Adventure 0.25.0
 
 on:
   push:
@@ -24,6 +24,7 @@ on:
       - fix/world-0247-continuity-labels-canarias
       - fix/world-0248-hotfix-render-cities
       - feat/world-0249-ui-labels-scale-foundation
+      - feat/world-0250-real-scale-africa-ground-labels
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -33,6 +34,7 @@ on:
       - world-generator/configs/iberia.region.json
       - world-generator/configs/france.region.json
       - world-generator/configs/canarias.region.json
+      - world-generator/configs/northwest-africa.region.json
       - world-generator/configs/world-streaming-topology.v1.json
       - world-generator/scripts/prepare-iberia-0243.mjs
       - world-generator/scripts/prepare-iberia-0244.mjs
@@ -40,12 +42,15 @@ on:
       - world-generator/scripts/tune-vulture-flight-0245.mjs
       - world-generator/scripts/prepare-world-0246.mjs
       - world-generator/scripts/prepare-world-0247.mjs
+      - world-generator/scripts/prepare-world-0250.mjs
+      - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/scripts/ensure-iberia-settlements-0246.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
       - world-generator/scripts/smoke-world-expansion-0244.mjs
       - regions/iberia/**
       - regions/france/**
       - regions/canarias/**
+      - regions/northwest-africa/**
       - .github/workflows/verify-world2-adventure-0210.yml
   workflow_dispatch:
 
@@ -81,13 +86,11 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
-          node --check mallorca-mobile/adventure-0210/verify-0249.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-core-continuity-0249.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
-          node --check world-generator/scripts/prepare-world-0246.mjs
-          node --check world-generator/scripts/prepare-world-0247.mjs
+          node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
+          node --check mallorca-mobile/adventure-0210/verify-0250.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+          node --check world-generator/scripts/prepare-world-0250.mjs
+          node --check world-generator/scripts/build-region-preview-v2.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check world-generator/scripts/smoke-world-expansion-0244.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-navigation-0235.mjs
@@ -100,9 +103,9 @@ jobs:
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/spain-region-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
-      - name: Static parity and visible-world verification
+      - name: Verify 0.25.0 world contracts
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/verify-0249.mjs
+        run: node mallorca-mobile/adventure-0210/verify-0250.mjs
       - name: Compile patched regional runtimes
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
@@ -131,4 +134,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.24.9 retains the full parity suite and adds one authoritative world HUD plus shared nearby settlement labels with population/☠️.
+# 0.25.0 preserves the complete gameplay parity suite while enforcing a 1.00 u/km world, preserved mountain height, local grounded settlement labels, real Northwest Africa terrain and removal of the artificial Atlantic corridor.

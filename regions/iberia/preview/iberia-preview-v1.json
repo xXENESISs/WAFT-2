@@ -4,9 +4,9 @@
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "71fd9cb17d25c44cdb8e4ef573c3f22f3d0ab32f2fcbb0c3b5c275ae198e5a22"
+    "sha256": "9adb5ebc15f6d006bcb63bff6379163e4fddffd79232e47da55ff191c345030d"
   },
-  "buildId": "iberia-preview-addd3b0140fa",
+  "buildId": "iberia-preview-aab6fec9b9b9",
   "counts": {
     "buildings": 480,
     "hotels": 0,
@@ -88,8 +88,8 @@
       "id": "subregion-pirineos",
       "name": "Pirineos",
       "terrainMeters": 2495,
-      "x": 455.9087,
-      "z": -464.8929
+      "x": 314.4198,
+      "z": -320.6158
     },
     {
       "altitude": 56,
@@ -97,8 +97,8 @@
       "id": "subregion-gibraltar",
       "name": "Gibraltar",
       "terrainMeters": 340,
-      "x": -276.0264,
-      "z": 585.749
+      "x": -190.363,
+      "z": 403.9648
     },
     {
       "altitude": 60,
@@ -106,8 +106,8 @@
       "id": "subregion-ceuta",
       "name": "Ceuta",
       "terrainMeters": 82,
-      "x": -272.3568,
-      "z": 626.1649
+      "x": -187.8322,
+      "z": 431.8378
     }
   ],
   "regionId": "iberia",
@@ -3013,9 +3013,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "addd3b0140fae88daf6ed810fdf2b85c3760c5bcf957beaf259ecde3c5db21e6",
+    "inputsSha256": "aab6fec9b9b9afa102125b89b556bdaf860e221ac3251807080c54dcdc37329d",
     "landcoverSha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668",
-    "regionManifestSha256": "3792f1245308c71fd021e8e7a7b4316f8d7b2d49b167a1204cd4f1636758d02b",
+    "regionManifestSha256": "80abc50b71263a71b498e228d4f48181d240805b2b1edf26ec8b91e7ee69ef9c",
     "terrainSha256": "3330513a236f9a959454e004305113831ef36cb02d8c9ee386dffa2d911966ef"
   },
   "terrain": {
@@ -3023,10 +3023,10 @@
     "file": "../terrain.bin",
     "landcoverFile": "../landcover.bin",
     "localBounds": {
-      "maxX": 958.3386864436513,
-      "maxZ": 745.278975,
-      "minX": -803.267701582219,
-      "minZ": -648.5941349999997
+      "maxX": 660.9232320301044,
+      "maxZ": 513.9855,
+      "minX": -553.9777252291166,
+      "minZ": -447.30629999999985
     },
     "rows": 416,
     "verticalScale": 0.013594

@@ -4,9 +4,9 @@
     "file": "france-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "a31f9a6d8ff89838ef440588797e9d11533aa2c132fe21762c8de4d8141b7d1b"
+    "sha256": "b5fef9c9cffae9de3bff2d60dddec919e3a8822b3de6c08fcc3dc7a86fde409c"
   },
-  "buildId": "france-preview-21d543340113",
+  "buildId": "france-preview-c7e406c3f22b",
   "counts": {
     "buildings": 461,
     "hotels": 0,
@@ -88,8 +88,8 @@
       "id": "subregion-alpes",
       "name": "Alpes françaises",
       "terrainMeters": 2068,
-      "x": 489.2266,
-      "z": 120.856
+      "x": 337.3977,
+      "z": 83.349
     },
     {
       "altitude": 56,
@@ -97,8 +97,8 @@
       "id": "subregion-occitanie",
       "name": "Occitanie",
       "terrainMeters": 766,
-      "x": 109.0276,
-      "z": 394.7964
+      "x": 75.1915,
+      "z": 272.2734
     },
     {
       "altitude": 60,
@@ -106,8 +106,8 @@
       "id": "subregion-pyrenees",
       "name": "Pyrénées",
       "terrainMeters": 1595,
-      "x": -192.8951,
-      "z": 515.6525
+      "x": -133.0311,
+      "z": 355.6224
     }
   ],
   "regionId": "france",
@@ -2881,9 +2881,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "21d5433401137a35d6b32ff07c4d0abfb44ca39916895e0561d606cfb80f3c57",
+    "inputsSha256": "c7e406c3f22ba7ac897203ead390de8b6629a25c803adb5ac039f1b87615ab69",
     "landcoverSha256": "16a4c3a9d3624b73b5d7f6008dc1b8b99e6bb7092959fdd5c76e811d5b3ff80d",
-    "regionManifestSha256": "319a75227c4dd4f9b838d89ad2aac73e10b8dfc07e6183ef5107c83a20cc0309",
+    "regionManifestSha256": "4ee255802b8b9bc6ae4bd8c81670e5ce70376420830607b66f9ea71ca2ed3909",
     "terrainSha256": "b884cfeabe80ad23ca614d051305de0ff884801fc5e26d2b0568c37200cbd4d7"
   },
   "terrain": {
@@ -2891,10 +2891,10 @@
     "file": "../terrain.bin",
     "landcoverFile": "../landcover.bin",
     "localBounds": {
-      "maxX": 852.6520758884627,
-      "maxZ": 813.7640699999996,
-      "minX": -852.6520758884627,
-      "minZ": -813.7640700000007
+      "maxX": 588.0359144058364,
+      "maxZ": 561.2165999999997,
+      "minX": -588.0359144058364,
+      "minZ": -561.2166000000005
     },
     "rows": 488,
     "verticalScale": 0.013594

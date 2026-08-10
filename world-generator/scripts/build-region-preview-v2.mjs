@@ -114,6 +114,14 @@ builder = replaceOnce(
 );
 builder = replaceOnce(
   builder,
+  `      verticalScale: Number((.03 * ((manifest.projection.unitsPerKm ?? 3.2) / 3.2)).toFixed(6))`,
+  `      verticalScale: ['iberia','france','canarias','northwest-africa'].includes(regionId)
+        ? .013594
+        : Number((.03 * ((manifest.projection.unitsPerKm ?? 3.2) / 3.2)).toFixed(6))`,
+  '0.25 world vertical-scale preservation'
+);
+builder = replaceOnce(
+  builder,
   `  const metadataPath = path.join(outputDirectory, 'baleares-preview-v1.json');`,
   `  const metadataPath = path.join(outputDirectory, \`${'${regionId}'}-preview-v1.json\`);`,
   'preview metadata filename'

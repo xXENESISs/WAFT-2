@@ -1,0 +1,83 @@
+{
+  "connections": [
+    {
+      "distanceClass": "regional",
+      "enabled": true,
+      "entryPointId": "strait-north",
+      "id": "africa-iberia-continuous",
+      "requiredCapabilities": [
+        "land",
+        "long_water"
+      ],
+      "targetRegionId": "iberia"
+    },
+    {
+      "distanceClass": "long",
+      "enabled": true,
+      "entryPointId": "atlantic-canarias",
+      "id": "africa-canarias-continuous",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "canarias"
+    }
+  ],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 180,
+      "id": "strait-north",
+      "local": {
+        "x": 99.6724,
+        "y": 355,
+        "z": -490.0921
+      },
+      "name": "Estrecho · Ceuta/Tánger",
+      "position": {
+        "lat": 35.9,
+        "lon": -5.45
+      },
+      "sectorId": "s-11-00",
+      "terrainStatus": "exact-cell",
+      "type": "coast"
+    },
+    {
+      "arrivalHeadingDegrees": 180,
+      "id": "melilla-north",
+      "local": {
+        "x": 337.9367,
+        "y": 135,
+        "z": -422.3016
+      },
+      "name": "Melilla/Rif",
+      "position": {
+        "lat": 35.29,
+        "lon": -2.94
+      },
+      "sectorId": "s-14-01",
+      "terrainStatus": "exact-cell",
+      "type": "coast"
+    },
+    {
+      "arrivalHeadingDegrees": 250,
+      "id": "atlantic-canarias",
+      "local": {
+        "x": -579.0489,
+        "y": 0,
+        "z": 321.1715
+      },
+      "name": "Atlántico oriental · Canarias",
+      "position": {
+        "lat": 28.6,
+        "lon": -12.6
+      },
+      "sectorId": "s-00-12",
+      "terrainStatus": "nearest-land-cell",
+      "type": "air"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "northwest-africa",
+  "roads": []
+}

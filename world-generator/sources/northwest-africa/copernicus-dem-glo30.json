@@ -1,0 +1,874 @@
+{
+  "attribution": "Contains modified Copernicus DEM data",
+  "availableCells": 164147,
+  "binaryBytes": 426048,
+  "binaryFile": "copernicus-dem-glo30.bin",
+  "binarySha256": "160030cd8dee2e8fcc2c3e0b25f6d2e9e6319e731f212baf6446efea2c956dc8",
+  "bucket": "s3://copernicus-dem-90m",
+  "dataset": "Copernicus DEM GLO-90",
+  "datasetRelease": "2021",
+  "distribution": "Registry of Open Data on AWS",
+  "formatVersion": 1,
+  "license": "Copernicus data policy",
+  "maximumElevationMeters": 4149,
+  "meanElevationMeters": 695.461,
+  "minimumElevationMeters": -58,
+  "nodataCells": 48845,
+  "nominalResolutionMeters": 90,
+  "provider": "Copernicus Programme",
+  "regionId": "northwest-africa",
+  "retrievedOn": "2026-08-10",
+  "sourceDocumentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+  "targetGrid": {
+    "bounds": {
+      "east": 0,
+      "north": 35.98,
+      "south": 27,
+      "west": -13
+    },
+    "columns": 512,
+    "resampling": "maximum (peak-preserving)",
+    "rows": 416
+  },
+  "tiles": [
+    {
+      "bytes": 4873939,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W001_00_DEM",
+      "sha256": "a8c17bfb44769fbca0e835277723937fe848603fe5f951d3a67b89e7408232b1",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W001_00_DEM/Copernicus_DSM_COG_30_N27_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5151902,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W002_00_DEM",
+      "sha256": "1a09afdbfdda9073d56c7f6b9cb5c15cd7eb02e9a1b4421af21f06a4e1e910f9",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W002_00_DEM/Copernicus_DSM_COG_30_N27_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5106449,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W003_00_DEM",
+      "sha256": "196adf0e454ba370bf37591cc4975f7d5427c4d589fa9e5a0944531fbab9535d",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W003_00_DEM/Copernicus_DSM_COG_30_N27_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4900251,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W004_00_DEM",
+      "sha256": "b3031b3231afbe03223a7b5f0d54775e6f004a52d59cc70b456821d1726d3108",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W004_00_DEM/Copernicus_DSM_COG_30_N27_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4913568,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W005_00_DEM",
+      "sha256": "8357e0758e21a4e29438103c4f7f9ac1580ec8a52f66549309ae9fe6f7746902",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W005_00_DEM/Copernicus_DSM_COG_30_N27_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4952417,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W006_00_DEM",
+      "sha256": "24265bbe0c4e14dc59733311f3dc99563b1c7dce3bfa0d5963ea263c0ad98a39",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W006_00_DEM/Copernicus_DSM_COG_30_N27_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4609568,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W007_00_DEM",
+      "sha256": "dd1135ecf76f48a8d4fb732d1781b6232bbec694f4d6a0b7d63cfc29b50f2323",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W007_00_DEM/Copernicus_DSM_COG_30_N27_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4563169,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W008_00_DEM",
+      "sha256": "80a52a9763956858e63fc3a4cf55402e5256a084531904106de025214021ab66",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W008_00_DEM/Copernicus_DSM_COG_30_N27_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4286929,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W009_00_DEM",
+      "sha256": "de1398e8fb886fc632fe95d38781942f7ded6eaa163c2c73daf7b45bf36ae66b",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W009_00_DEM/Copernicus_DSM_COG_30_N27_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4568622,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W010_00_DEM",
+      "sha256": "d23391ffe7f88e8ff5bcd80aae5eccbfa001fb2c5f0aeb7e22ffe1573974c435",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W010_00_DEM/Copernicus_DSM_COG_30_N27_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4960483,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W011_00_DEM",
+      "sha256": "4fd172916fef3d6ce4a7af6cb9be75b9951d863361c102a52a2af608bc488335",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W011_00_DEM/Copernicus_DSM_COG_30_N27_00_W011_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4905889,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W012_00_DEM",
+      "sha256": "73ee402d7be667dbb5962a56ad96568a788e84e71901b28a79d084917c72a9fb",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W012_00_DEM/Copernicus_DSM_COG_30_N27_00_W012_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4892649,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N27_00_W013_00_DEM",
+      "sha256": "703a2edb70d879d4fb2ca87922c760e291e4712ab0b26b67a9975e8bb513f0fd",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N27_00_W013_00_DEM/Copernicus_DSM_COG_30_N27_00_W013_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4730215,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W001_00_DEM",
+      "sha256": "3d06e7a9feb22e817c578b09be598c9883022f571c45d1357708ff58a865fef0",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W001_00_DEM/Copernicus_DSM_COG_30_N28_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5017800,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W002_00_DEM",
+      "sha256": "723af75152732c0a5332b2542dde7d417abe97e2f7a9f4a0a968c9f2922a86ff",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W002_00_DEM/Copernicus_DSM_COG_30_N28_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4979224,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W003_00_DEM",
+      "sha256": "85d8b5e77c43620a5a53047695562c3b771f9ab004ebb404442cfdfe4b3d0147",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W003_00_DEM/Copernicus_DSM_COG_30_N28_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5071828,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W004_00_DEM",
+      "sha256": "062e9df970a8220869b0924a73a89eb77b64ff8e4949b43baa94db3d3aff7f23",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W004_00_DEM/Copernicus_DSM_COG_30_N28_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4918187,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W005_00_DEM",
+      "sha256": "b8be0dc615d050d9f2b4ea55019d49414825b198be6f0c0cbf98f7ba97323ed1",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W005_00_DEM/Copernicus_DSM_COG_30_N28_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4516925,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W006_00_DEM",
+      "sha256": "935fc6ead118f4fba5b80b91487c07f086ae780b8bfcd9aa4e7633555cf44d15",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W006_00_DEM/Copernicus_DSM_COG_30_N28_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4611956,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W007_00_DEM",
+      "sha256": "9c9cc66259891f43e11e0442ea2f5112f059c4de786e78507bf788e269a16eb3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W007_00_DEM/Copernicus_DSM_COG_30_N28_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4411222,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W008_00_DEM",
+      "sha256": "6ffba9fd19feea38dba9d427c14b3b23010fd0128179a450b96dcdb5ccdf5f0a",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W008_00_DEM/Copernicus_DSM_COG_30_N28_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4632704,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W009_00_DEM",
+      "sha256": "f18a892969f0f03d973c39aa9cb0dccc4bdeee97eaa9464dabdb6c982cd60bd6",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W009_00_DEM/Copernicus_DSM_COG_30_N28_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5073027,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W010_00_DEM",
+      "sha256": "ee6a8cb469759c193c30fdeb9697e4d27c8514fb255b8e0a0efaf195f08ae95a",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W010_00_DEM/Copernicus_DSM_COG_30_N28_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5062907,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W011_00_DEM",
+      "sha256": "8478cc7a00cd3b48c7383d93fb4768acee7115203f6741183021eb7e17afacf9",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W011_00_DEM/Copernicus_DSM_COG_30_N28_00_W011_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 2172388,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W012_00_DEM",
+      "sha256": "9527ea727cf80e47af589252f8a921c21bbb79d050d06eb680f085a8f7fac1e6",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W012_00_DEM/Copernicus_DSM_COG_30_N28_00_W012_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 220299,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N28_00_W013_00_DEM",
+      "sha256": "48cd3606afcd65ef46bea58f56ebed2b1c74f7776b4b75f77d7100327c8c2923",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N28_00_W013_00_DEM/Copernicus_DSM_COG_30_N28_00_W013_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4914495,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W001_00_DEM",
+      "sha256": "8537a4203f9daad62dbed44a7e6d18d9c92bd4ffe78e851cc5569af692c5245f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W001_00_DEM/Copernicus_DSM_COG_30_N29_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5120677,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W002_00_DEM",
+      "sha256": "460b80cfc969f0e85c4626a03006825d0471c4ad2871bb06b7a156396af47339",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W002_00_DEM/Copernicus_DSM_COG_30_N29_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4976650,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W003_00_DEM",
+      "sha256": "25e926361249870ed794f3865beb4a6f9884ae1884a549764b03805e45df9e56",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W003_00_DEM/Copernicus_DSM_COG_30_N29_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4698878,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W004_00_DEM",
+      "sha256": "2e2e58ad104a17887149712506f36fc0343d095c03a709812508256a036ccf9c",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W004_00_DEM/Copernicus_DSM_COG_30_N29_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4525350,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W005_00_DEM",
+      "sha256": "816f350cec4b42ffc3a5dd3085dfdafdf6a967f27b85b2b0da99905dd33c6d7f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W005_00_DEM/Copernicus_DSM_COG_30_N29_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4334881,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W006_00_DEM",
+      "sha256": "4852b8fe1ce6eca8bcd7b4946b5a4e7ba43466941c125ac5923ae554916d1b79",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W006_00_DEM/Copernicus_DSM_COG_30_N29_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4617745,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W007_00_DEM",
+      "sha256": "1b57b6a574dfb3a6bc92f58bfd5c192493e09fcfea4f719f1c098319fc00fbdb",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W007_00_DEM/Copernicus_DSM_COG_30_N29_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4975847,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W008_00_DEM",
+      "sha256": "879e4a5d8ffc715560d862f09e0b4aa6e9b3a6b62913c32c15a5e1f1d05acfe3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W008_00_DEM/Copernicus_DSM_COG_30_N29_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5162837,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W009_00_DEM",
+      "sha256": "0e39fd3fa231aad627ca597caa706338a65d0ca382c4277748940b8fcaa903f8",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W009_00_DEM/Copernicus_DSM_COG_30_N29_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4993582,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W010_00_DEM",
+      "sha256": "12be7667a39a4012dc1a6b7698b302ab7cd3edf005f87d92841db264f0be5d0b",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W010_00_DEM/Copernicus_DSM_COG_30_N29_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 975473,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N29_00_W011_00_DEM",
+      "sha256": "28418870b6129f79e25e20c2622b6117991ea7f4da9b6fcddb638eab5eee7862",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N29_00_W011_00_DEM/Copernicus_DSM_COG_30_N29_00_W011_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4723837,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W001_00_DEM",
+      "sha256": "67b242284569a24925d5a5b42295d44d493b5a81685aa4ec06655a32a317ff98",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W001_00_DEM/Copernicus_DSM_COG_30_N30_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4699939,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W002_00_DEM",
+      "sha256": "d905435c6f8bd6bfa3fe9cec7e563c3f3e7fa20e05531f90b1f098f8b67bf4b4",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W002_00_DEM/Copernicus_DSM_COG_30_N30_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4546272,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W003_00_DEM",
+      "sha256": "305ab53f4b54c021ea276ab943b53ea4893d329606e702ff0a70626e1ef3ecf0",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W003_00_DEM/Copernicus_DSM_COG_30_N30_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4457646,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W004_00_DEM",
+      "sha256": "78dfec88c649366d6b417df46492753c8ab86eacdbb214a1834fc86845ee030a",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W004_00_DEM/Copernicus_DSM_COG_30_N30_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4745182,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W005_00_DEM",
+      "sha256": "ee5cd0dad0df2e69a161a31c70824ac4622363705a362cb79d247bc3c01805ea",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W005_00_DEM/Copernicus_DSM_COG_30_N30_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4824465,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W006_00_DEM",
+      "sha256": "b40dc68a68a41a78bcf4da62198daa4225a913a8e47047c94097e01d3a33841c",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W006_00_DEM/Copernicus_DSM_COG_30_N30_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5007137,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W007_00_DEM",
+      "sha256": "0f7c03b9a020b2bd8798ccf7e97d919739a224311131d7979304b6ba15d60f53",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W007_00_DEM/Copernicus_DSM_COG_30_N30_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5075932,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W008_00_DEM",
+      "sha256": "f51ea331ea7ed730536c06203e599397bc895f8a93457fedffb663226fb7707f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W008_00_DEM/Copernicus_DSM_COG_30_N30_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5191629,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W009_00_DEM",
+      "sha256": "ddafdc83f6834b8f699ee3356d5980e7591559353298a67f9a8b48cc70d43230",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W009_00_DEM/Copernicus_DSM_COG_30_N30_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 3954500,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N30_00_W010_00_DEM",
+      "sha256": "2bdc545779fc5e632c5400992bbca7e6a6cff2105875ccc4254afcfacc979b66",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N30_00_W010_00_DEM/Copernicus_DSM_COG_30_N30_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4468638,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W001_00_DEM",
+      "sha256": "e43b818b2014ef23eb54eae8d59510cc53a2f7efb3ce77d41278e87426c8a422",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W001_00_DEM/Copernicus_DSM_COG_30_N31_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4627766,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W002_00_DEM",
+      "sha256": "21849bc69f71d570aa7c24f2aa98ef4ea9fb08f7e881fd6e24dd74bbc886d830",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W002_00_DEM/Copernicus_DSM_COG_30_N31_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4630611,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W003_00_DEM",
+      "sha256": "c154aea83404e624e388d10e485189eec523db4fc37347f1c443ff6f45b1ee68",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W003_00_DEM/Copernicus_DSM_COG_30_N31_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4528972,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W004_00_DEM",
+      "sha256": "a453befc46d091ee375353481699c1d960d54022e715647f40cbecc6c92b9475",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W004_00_DEM/Copernicus_DSM_COG_30_N31_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4688179,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W005_00_DEM",
+      "sha256": "e72b29a82fd26f5225d501fa67d82d7fa09a0c5e6548452790a7c814fdaaa0a9",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W005_00_DEM/Copernicus_DSM_COG_30_N31_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4993027,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W006_00_DEM",
+      "sha256": "59680e50e71da1f08a60a3ba423d98cf2da2f9747985f36206cb40eb1bf52670",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W006_00_DEM/Copernicus_DSM_COG_30_N31_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5058400,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W007_00_DEM",
+      "sha256": "d431b0475fe0d3b4f4b94edbf3fd5ed816d8b0e3d49c8068f0b39fb5dfb050b7",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W007_00_DEM/Copernicus_DSM_COG_30_N31_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4964289,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W008_00_DEM",
+      "sha256": "6f38ab9a1bd0ed09f88e6bae5be5e1c942ac3658061799da64d45b364c1ec7b3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W008_00_DEM/Copernicus_DSM_COG_30_N31_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5015105,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W009_00_DEM",
+      "sha256": "4ccf503fd75e85896268ea2fc3454198f796d91a56bbbc2ace9bd83466a29d9a",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W009_00_DEM/Copernicus_DSM_COG_30_N31_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 3864842,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N31_00_W010_00_DEM",
+      "sha256": "85a643153c266c9776e31609ca00a325cdef82ba2986a4535ccd5c68feb27a44",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N31_00_W010_00_DEM/Copernicus_DSM_COG_30_N31_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4721973,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W001_00_DEM",
+      "sha256": "b0611ecd98fb84e02950abda2498d15b9c4cd685507a659abb934d8b80e86e02",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W001_00_DEM/Copernicus_DSM_COG_30_N32_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4685709,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W002_00_DEM",
+      "sha256": "874752cc01868e8baab45b15239c659dfaca081b986c3cd70d671a74ef8284aa",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W002_00_DEM/Copernicus_DSM_COG_30_N32_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4500710,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W003_00_DEM",
+      "sha256": "fc77a68f7d4b01d39a9765275801a539a7a7e2587d271f52fefdf1fcaf5647c3",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W003_00_DEM/Copernicus_DSM_COG_30_N32_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4741614,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W004_00_DEM",
+      "sha256": "ae0247b18ce04e8b92ae4b8865e4430471686c5fb4a6f986b48dc27a03ff5202",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W004_00_DEM/Copernicus_DSM_COG_30_N32_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4897697,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W005_00_DEM",
+      "sha256": "a385db2e4050ccb37d0755c55d6a05afd6a3a87e43336863121fde6cfc38bb00",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W005_00_DEM/Copernicus_DSM_COG_30_N32_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5059966,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W006_00_DEM",
+      "sha256": "56fab0b7e6ade875f5fa433ccd2efce0c5891573c8b9d371f01d16bcbb76738f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W006_00_DEM/Copernicus_DSM_COG_30_N32_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4878572,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W007_00_DEM",
+      "sha256": "2e3fe1be5fed12bbcaa1e90140806ffd5dbfb2367ac28f357cacbd9adb23d122",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W007_00_DEM/Copernicus_DSM_COG_30_N32_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4837960,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W008_00_DEM",
+      "sha256": "02d64fc5cf2b58e01cbd2f4d9a38a63b714d7c88db582af93b15ca997640f4e9",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W008_00_DEM/Copernicus_DSM_COG_30_N32_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4911977,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W009_00_DEM",
+      "sha256": "7cd241f25bf643261126838ab1519711c1af5383c586eed381fade10c7120410",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W009_00_DEM/Copernicus_DSM_COG_30_N32_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 1101288,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N32_00_W010_00_DEM",
+      "sha256": "a46c488a09c685ef1eef4754ebc6e63cb805d51d0777eff2db42ed8969ec7366",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N32_00_W010_00_DEM/Copernicus_DSM_COG_30_N32_00_W010_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4099034,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W001_00_DEM",
+      "sha256": "1e8686b1394b3421050a833405df94c55fa36ae30ac9d9f448c3b331f9460b62",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W001_00_DEM/Copernicus_DSM_COG_30_N33_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4064680,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W002_00_DEM",
+      "sha256": "3c81534fda9d13cc4befc554939c751c82867329a75d21973f88d61f79661d6f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W002_00_DEM/Copernicus_DSM_COG_30_N33_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4294280,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W003_00_DEM",
+      "sha256": "563d82899c420a2721b2e8202200a9ff48b33ca6f4c579c0b5f093dab228778a",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W003_00_DEM/Copernicus_DSM_COG_30_N33_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4876359,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W004_00_DEM",
+      "sha256": "58fb03b76c94172c849ca631031da9cb7f2da336724e59d4f4c081bb6526db3e",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W004_00_DEM/Copernicus_DSM_COG_30_N33_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5019607,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W005_00_DEM",
+      "sha256": "5d7aaa98345e7951d0169b126cbe3e537f80fe9126160be136e7b528651e167b",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W005_00_DEM/Copernicus_DSM_COG_30_N33_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5086646,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W006_00_DEM",
+      "sha256": "64ea0dc704ddf810b487c0d8beaeb0e60649e13ab0f041990ff7c540ac67bcaf",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W006_00_DEM/Copernicus_DSM_COG_30_N33_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5375078,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W007_00_DEM",
+      "sha256": "e3b3bb36f32cc851ab19bf98e2d8d048faf32dcbeb237cb3b6e3446b04561074",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W007_00_DEM/Copernicus_DSM_COG_30_N33_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 3453151,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W008_00_DEM",
+      "sha256": "f5bcad858a87f4363eb9cdea1cd8370c788aa849e4c5d05234c854716b793021",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W008_00_DEM/Copernicus_DSM_COG_30_N33_00_W008_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 1262778,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N33_00_W009_00_DEM",
+      "sha256": "2f723330153efcd8589d8decb3f7546e42a079545a5dcbd226fd151e84cb2315",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N33_00_W009_00_DEM/Copernicus_DSM_COG_30_N33_00_W009_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4387704,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W001_00_DEM",
+      "sha256": "ad557c2630068769968606208c7a025efcaa5009d9543c9508217fb87008ae86",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W001_00_DEM/Copernicus_DSM_COG_30_N34_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4754475,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W002_00_DEM",
+      "sha256": "538f484280737aa07a62de3dbafff5f2b308ea1d0ad97cb25b2091d909b7a9ef",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W002_00_DEM/Copernicus_DSM_COG_30_N34_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5074695,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W003_00_DEM",
+      "sha256": "db36ae2ce05b171e9bfcfa35ad41f7ae4d9a73e851e35228f427a5bcf6f86ccd",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W003_00_DEM/Copernicus_DSM_COG_30_N34_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5092418,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W004_00_DEM",
+      "sha256": "ddf169cc865fd59ed6bc9b2deb91aa3c1bcd1fe25f572612436d33bfabc7692f",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W004_00_DEM/Copernicus_DSM_COG_30_N34_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5449202,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W005_00_DEM",
+      "sha256": "1035e53f96f50485fa0885a5687d6a0e9d7c1a0a126c8746d1afa5c3eb5e4c24",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W005_00_DEM/Copernicus_DSM_COG_30_N34_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 5578614,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W006_00_DEM",
+      "sha256": "49c6d491b9aaf24e15e77cd2c1e7cabc310868ef03c1334fa8e659873bba144d",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W006_00_DEM/Copernicus_DSM_COG_30_N34_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 3028989,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N34_00_W007_00_DEM",
+      "sha256": "ce25d8df252128d46d534ff1b54cf91a3733a02b7b37b10efcdedd9b588db8e9",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N34_00_W007_00_DEM/Copernicus_DSM_COG_30_N34_00_W007_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4049983,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W001_00_DEM",
+      "sha256": "f09919c37e796ebd942efd9804e8e18dccba642670a6eab186724009644a66a7",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W001_00_DEM/Copernicus_DSM_COG_30_N35_00_W001_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 1810550,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W002_00_DEM",
+      "sha256": "665c1cefa44b25d044589b7fa2d4794ae54c0d8e9f0fcbff07216b5dacf416da",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W002_00_DEM/Copernicus_DSM_COG_30_N35_00_W002_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 805441,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W003_00_DEM",
+      "sha256": "5fe284f7cbbf1bcb119ffb71761af9489aa7e6b32d65e81f92af9e3cb9ed5032",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W003_00_DEM/Copernicus_DSM_COG_30_N35_00_W003_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 1398507,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W004_00_DEM",
+      "sha256": "d71c650f98bb1ce7c6ca17af4e7305f6a9612d8b966a07d4d0592e6dd6cc7cca",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W004_00_DEM/Copernicus_DSM_COG_30_N35_00_W004_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 1296110,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W005_00_DEM",
+      "sha256": "cb3e16863f55e047f895d784dc494b8263d03c15e83320e5bff8d1086c28e355",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W005_00_DEM/Copernicus_DSM_COG_30_N35_00_W005_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 4216097,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W006_00_DEM",
+      "sha256": "2c1c7055adc5124098237506f00198ef8a74a874339f3f8b766a5ad6d7896750",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W006_00_DEM/Copernicus_DSM_COG_30_N35_00_W006_00_DEM.tif",
+      "width": 1200
+    },
+    {
+      "bytes": 490085,
+      "crs": "EPSG:4326",
+      "height": 1200,
+      "id": "Copernicus_DSM_COG_30_N35_00_W007_00_DEM",
+      "sha256": "b8035b876209b9077f13a4e468f1cc84ddc0c3676669aebb4c425eec0ec059b7",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N35_00_W007_00_DEM/Copernicus_DSM_COG_30_N35_00_W007_00_DEM.tif",
+      "width": 1200
+    }
+  ],
+  "unavailableIntersectingTiles": [
+    "Copernicus_DSM_COG_30_N29_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N29_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N30_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N30_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N30_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N31_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N31_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N31_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N32_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N32_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N32_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N33_00_W010_00_DEM",
+    "Copernicus_DSM_COG_30_N33_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N33_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N33_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W008_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W009_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W010_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N34_00_W013_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W008_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W009_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W010_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W011_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W012_00_DEM",
+    "Copernicus_DSM_COG_30_N35_00_W013_00_DEM"
+  ]
+}

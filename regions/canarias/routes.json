@@ -9,6 +9,16 @@
         "long_water"
       ],
       "targetRegionId": "iberia"
+    },
+    {
+      "distanceClass": "long",
+      "enabled": true,
+      "entryPointId": "atlantic-iberia",
+      "id": "canarias-africa-continuous",
+      "requiredCapabilities": [
+        "long_water"
+      ],
+      "targetRegionId": "northwest-africa"
     }
   ],
   "entryPoints": [
@@ -16,16 +26,16 @@
       "arrivalHeadingDegrees": 35,
       "id": "atlantic-iberia",
       "local": {
-        "x": 59.5502,
+        "x": 41.0691,
         "y": 154,
-        "z": 72.5136
+        "z": 50.0094
       },
-      "name": "Corredor Atlántico · Iberia",
+      "name": "Atlántico oriental · África/Iberia",
       "position": {
         "lat": 28.1,
         "lon": -15.43
       },
-      "sectorId": "s-06-04",
+      "sectorId": "s-04-02",
       "terrainStatus": "exact-cell",
       "type": "air"
     }

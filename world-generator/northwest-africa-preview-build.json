@@ -1,0 +1,26 @@
+{
+  "binaryBytes": 9008,
+  "binarySha256": "a664ce0b17d1d32335ccd3f4e405a842fa0bdb195da5c5c123823427576f0991",
+  "buildId": "northwest-africa-preview-16e8f85ee3b6",
+  "counts": {
+    "buildings": 186,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 186,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 186
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 186
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "inputsSha256": "16e8f85ee3b6afe7a1526fb1fbea83279cb9352518af1dbdc554ff9866f2c234",
+  "regionId": "northwest-africa",
+  "valid": true
+}

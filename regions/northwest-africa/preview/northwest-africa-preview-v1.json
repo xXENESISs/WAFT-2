@@ -1,0 +1,1252 @@
+{
+  "binary": {
+    "bytes": 9008,
+    "file": "northwest-africa-preview-v1.bin",
+    "headerBytes": 80,
+    "magic": "WAFTRPV1",
+    "sha256": "a664ce0b17d1d32335ccd3f4e405a842fa0bdb195da5c5c123823427576f0991"
+  },
+  "buildId": "northwest-africa-preview-16e8f85ee3b6",
+  "counts": {
+    "buildings": 186,
+    "hotels": 0,
+    "landmarks": 0,
+    "namedBuildings": 186,
+    "roadSegments": 0,
+    "roadVertices": 0,
+    "selectedRoads": 0,
+    "settlements": 186
+  },
+  "display": {
+    "buildingHorizontalExaggeration": 2.7,
+    "buildingVerticalScale": 0.075,
+    "landmarkLift": 2.6,
+    "roadLift": 0.16
+  },
+  "distributions": {
+    "buildingKinds": {
+      "public": 186
+    },
+    "landmarkRepresentations": {},
+    "roadClasses": {}
+  },
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "landmarks": [],
+  "mappings": {
+    "buildingKinds": {
+      "commercial": 5,
+      "historic": 3,
+      "hotel": 1,
+      "ordinary": 0,
+      "public": 4,
+      "religious": 2
+    },
+    "representations": {
+      "archetype": 0,
+      "marker": 0,
+      "unique": 2,
+      "unique-candidate": 1
+    },
+    "roadClasses": {
+      "bridleway": 9,
+      "cycleway": 9,
+      "footway": 8,
+      "living_street": 5,
+      "motorway": 0,
+      "motorway_link": 0,
+      "path": 8,
+      "pedestrian": 8,
+      "primary": 2,
+      "primary_link": 2,
+      "residential": 5,
+      "secondary": 3,
+      "secondary_link": 3,
+      "service": 6,
+      "steps": 10,
+      "tertiary": 4,
+      "tertiary_link": 4,
+      "track": 7,
+      "trunk": 1,
+      "trunk_link": 1,
+      "unclassified": 6
+    }
+  },
+  "presets": [
+    {
+      "altitude": 310,
+      "distance": 0,
+      "id": "overview",
+      "name": "Tot",
+      "terrainMeters": 0,
+      "x": 0,
+      "z": 0
+    },
+    {
+      "altitude": 52,
+      "distance": 44,
+      "id": "subregion-atlas",
+      "name": "Atlas",
+      "terrainMeters": 1875,
+      "x": 47.463,
+      "z": 10.0019
+    },
+    {
+      "altitude": 56,
+      "distance": 48,
+      "id": "subregion-ceuta",
+      "name": "Ceuta",
+      "terrainMeters": 79,
+      "x": 111.9748,
+      "z": -488.8919
+    },
+    {
+      "altitude": 60,
+      "distance": 52,
+      "id": "subregion-tanger",
+      "name": "Tánger",
+      "terrainMeters": 109,
+      "x": 65.2332,
+      "z": -474.4781
+    }
+  ],
+  "regionId": "northwest-africa",
+  "regionName": "Noroeste de África",
+  "settlements": [
+    {
+      "id": "ma-2552292",
+      "name": "Ad Darwa",
+      "place": "PPL",
+      "population": 52108
+    },
+    {
+      "id": "dz-2508813",
+      "name": "Adrar",
+      "place": "PPLA",
+      "population": 68276
+    },
+    {
+      "id": "ma-2561668",
+      "name": "Agadir",
+      "place": "PPLA",
+      "population": 698310
+    },
+    {
+      "id": "ma-2561124",
+      "name": "Ahfir",
+      "place": "PPLA3",
+      "population": 21435
+    },
+    {
+      "id": "ma-2560939",
+      "name": "Ain El Aouda",
+      "place": "PPL",
+      "population": 54397
+    },
+    {
+      "id": "ma-10374934",
+      "name": "Ait Melloul",
+      "place": "PPL",
+      "population": 187652
+    },
+    {
+      "id": "ma-2559217",
+      "name": "Ait Ourir",
+      "place": "PPL",
+      "population": 42705
+    },
+    {
+      "id": "ma-2542013",
+      "name": "Al Aaroui",
+      "place": "PPL",
+      "population": 51976
+    },
+    {
+      "id": "ma-2550547",
+      "name": "Al Brouj",
+      "place": "PPL",
+      "population": 21004
+    },
+    {
+      "id": "ma-2548830",
+      "name": "Al Fqih Ben Çalah",
+      "place": "PPL",
+      "population": 111402
+    },
+    {
+      "id": "ma-2558545",
+      "name": "Al Hoceïma",
+      "place": "PPLA2",
+      "population": 395644
+    },
+    {
+      "id": "ma-2557500",
+      "name": "Aourir",
+      "place": "PPLA3",
+      "population": 38617
+    },
+    {
+      "id": "ma-2549356",
+      "name": "Arfoud",
+      "place": "PPL",
+      "population": 31971
+    },
+    {
+      "id": "dz-2506385",
+      "name": "Arzew",
+      "place": "PPL",
+      "population": 58162
+    },
+    {
+      "id": "ma-2557055",
+      "name": "Asilah",
+      "place": "PPL",
+      "population": 34011
+    },
+    {
+      "id": "dz-2494065",
+      "name": "Assi Bou Nif",
+      "place": "PPL",
+      "population": 53700
+    },
+    {
+      "id": "ma-2556657",
+      "name": "Azemmour",
+      "place": "PPLA3",
+      "population": 44683
+    },
+    {
+      "id": "ma-2556570",
+      "name": "Azilal",
+      "place": "PPLA3",
+      "population": 42062
+    },
+    {
+      "id": "ma-2571932",
+      "name": "Azla",
+      "place": "PPLA3",
+      "population": 22985
+    },
+    {
+      "id": "ma-2556464",
+      "name": "Azrou",
+      "place": "PPLA3",
+      "population": 59348
+    },
+    {
+      "id": "ma-12718687",
+      "name": "Aïn Attig",
+      "place": "PPL",
+      "population": 27384
+    },
+    {
+      "id": "dz-2508174",
+      "name": "Aïn el Bya",
+      "place": "PPL",
+      "population": 37241
+    },
+    {
+      "id": "ma-2560841",
+      "name": "Aïn Harrouda",
+      "place": "PPL",
+      "population": 68161
+    },
+    {
+      "id": "dz-2507943",
+      "name": "Aïn Sefra",
+      "place": "PPL",
+      "population": 47415
+    },
+    {
+      "id": "ma-2560774",
+      "name": "Aïn Taoujdat",
+      "place": "PPL",
+      "population": 30889
+    },
+    {
+      "id": "dz-2507901",
+      "name": "Aïn Temouchent",
+      "place": "PPLA",
+      "population": 70810
+    },
+    {
+      "id": "ma-12718663",
+      "name": "Bejaâd",
+      "place": "PPL",
+      "population": 51206
+    },
+    {
+      "id": "ma-2556076",
+      "name": "Ben Ahmed",
+      "place": "PPL",
+      "population": 36149
+    },
+    {
+      "id": "ma-2556018",
+      "name": "Ben Guerir",
+      "place": "PPL",
+      "population": 96777
+    },
+    {
+      "id": "ma-2555567",
+      "name": "Ben Jerrar",
+      "place": "PPL",
+      "population": 53026
+    },
+    {
+      "id": "ma-2555882",
+      "name": "Beni Enzar",
+      "place": "PPL",
+      "population": 61786
+    },
+    {
+      "id": "ma-2555745",
+      "name": "Beni Mellal",
+      "place": "PPLA",
+      "population": 210397
+    },
+    {
+      "id": "dz-2504581",
+      "name": "Beni Saf",
+      "place": "PPL",
+      "population": 39749
+    },
+    {
+      "id": "dz-2504385",
+      "name": "Bensekrane",
+      "place": "PPL",
+      "population": 21283
+    },
+    {
+      "id": "ma-2555519",
+      "name": "Benslimane",
+      "place": "PPL",
+      "population": 62352
+    },
+    {
+      "id": "ma-2555467",
+      "name": "Berkane",
+      "place": "PPLA3",
+      "population": 119284
+    },
+    {
+      "id": "ma-2556272",
+      "name": "Berrechid",
+      "place": "PPLA3",
+      "population": 149201
+    },
+    {
+      "id": "dz-2503874",
+      "name": "Bir el Djir",
+      "place": "PPL",
+      "population": 68032
+    },
+    {
+      "id": "ma-2555342",
+      "name": "Bir Jdid",
+      "place": "PPL",
+      "population": 26355
+    },
+    {
+      "id": "dz-2503033",
+      "name": "Bou Hanifia el Hamamat",
+      "place": "PPL",
+      "population": 27576
+    },
+    {
+      "id": "dz-2502239",
+      "name": "Bou Tlelis",
+      "place": "PPL",
+      "population": 26144
+    },
+    {
+      "id": "ma-2555157",
+      "name": "Bouarfa",
+      "place": "PPLA3",
+      "population": 31499
+    },
+    {
+      "id": "ma-2535530",
+      "name": "Bouknadel",
+      "place": "PPL",
+      "population": 27577
+    },
+    {
+      "id": "ma-2554006",
+      "name": "Bouskoura",
+      "place": "PPLA3",
+      "population": 112501
+    },
+    {
+      "id": "ma-2553751",
+      "name": "Bouznika",
+      "place": "PPLA3",
+      "population": 40663
+    },
+    {
+      "id": "dz-2505530",
+      "name": "Béchar",
+      "place": "PPLA",
+      "population": 165241
+    },
+    {
+      "id": "ma-2553604",
+      "name": "Casablanca",
+      "place": "PPLA",
+      "population": 3665954
+    },
+    {
+      "id": "es-6362987",
+      "name": "Ceuta",
+      "place": "PPLA",
+      "population": 83179
+    },
+    {
+      "id": "ma-2553455",
+      "name": "Chefchaouen",
+      "place": "PPLA2",
+      "population": 46721
+    },
+    {
+      "id": "dz-2501362",
+      "name": "Chetouane",
+      "place": "PPL",
+      "population": 36776
+    },
+    {
+      "id": "ma-2553303",
+      "name": "Chichaoua",
+      "place": "PPLA3",
+      "population": 30432
+    },
+    {
+      "id": "ma-2552615",
+      "name": "Dar Bouazza",
+      "place": "PPLA3",
+      "population": 165295
+    },
+    {
+      "id": "ma-2552317",
+      "name": "Demnate",
+      "place": "PPLA3",
+      "population": 32217
+    },
+    {
+      "id": "ma-2551147",
+      "name": "Douar Toulal",
+      "place": "PPL",
+      "population": 20831
+    },
+    {
+      "id": "ma-2553382",
+      "name": "Echemmaia Est",
+      "place": "PPL",
+      "population": 26538
+    },
+    {
+      "id": "dz-2498704",
+      "name": "El Amria",
+      "place": "PPL",
+      "population": 26407
+    },
+    {
+      "id": "ma-2550806",
+      "name": "El Aïoun",
+      "place": "PPL",
+      "population": 45679
+    },
+    {
+      "id": "ma-2550419",
+      "name": "El Gara",
+      "place": "PPL",
+      "population": 22773
+    },
+    {
+      "id": "ma-2550252",
+      "name": "El Hajeb",
+      "place": "PPLA3",
+      "population": 38527
+    },
+    {
+      "id": "ma-2550078",
+      "name": "El Jadida",
+      "place": "PPL",
+      "population": 212863
+    },
+    {
+      "id": "ma-2549979",
+      "name": "El Kelaa des Srarhna",
+      "place": "PPL",
+      "population": 103982
+    },
+    {
+      "id": "ma-2549750",
+      "name": "El Ksiba",
+      "place": "PPLA3",
+      "population": 21840
+    },
+    {
+      "id": "ma-2558428",
+      "name": "El Mansouria",
+      "place": "PPL",
+      "population": 21679
+    },
+    {
+      "id": "dz-2497269",
+      "name": "En Nedjma",
+      "place": "PPL",
+      "population": 51665
+    },
+    {
+      "id": "ma-7280528",
+      "name": "Errachidia",
+      "place": "PPLA3",
+      "population": 100870
+    },
+    {
+      "id": "dz-2497060",
+      "name": "Es Senia",
+      "place": "PPL",
+      "population": 39064
+    },
+    {
+      "id": "ma-2549263",
+      "name": "Essaouira",
+      "place": "PPLA3",
+      "population": 85137
+    },
+    {
+      "id": "ma-2548885",
+      "name": "Fes",
+      "place": "PPLA",
+      "population": 1191905
+    },
+    {
+      "id": "ma-2548818",
+      "name": "Fnidek",
+      "place": "PPL",
+      "population": 84558
+    },
+    {
+      "id": "dz-2496059",
+      "name": "Gdyel",
+      "place": "PPL",
+      "population": 32774
+    },
+    {
+      "id": "dz-2496042",
+      "name": "Ghazaouet",
+      "place": "PPL",
+      "population": 28433
+    },
+    {
+      "id": "ma-2548526",
+      "name": "Guelmim",
+      "place": "PPLA",
+      "population": 129200
+    },
+    {
+      "id": "ma-2548489",
+      "name": "Guercif",
+      "place": "PPLA3",
+      "population": 99238
+    },
+    {
+      "id": "ma-2537368",
+      "name": "Gueznaia",
+      "place": "PPL",
+      "population": 25771
+    },
+    {
+      "id": "ma-12718675",
+      "name": "Had Soualem",
+      "place": "PPL",
+      "population": 40146
+    },
+    {
+      "id": "dz-2494554",
+      "name": "Hammam Bou Hadjar",
+      "place": "PPL",
+      "population": 25912
+    },
+    {
+      "id": "dz-2493918",
+      "name": "Hennaya",
+      "place": "PPL",
+      "population": 26515
+    },
+    {
+      "id": "ma-2546917",
+      "name": "Ifrane",
+      "place": "PPLA3",
+      "population": 73782
+    },
+    {
+      "id": "ma-2546128",
+      "name": "Imi-n-Tanout",
+      "place": "PPL",
+      "population": 22753
+    },
+    {
+      "id": "ma-2546028",
+      "name": "Imouzzer Kandar",
+      "place": "PPL",
+      "population": 20884
+    },
+    {
+      "id": "ma-2550898",
+      "name": "Imzouren",
+      "place": "PPLA3",
+      "population": 40000
+    },
+    {
+      "id": "ma-2545957",
+      "name": "Inezgane",
+      "place": "PPLA3",
+      "population": 142320
+    },
+    {
+      "id": "ma-2545017",
+      "name": "Jerada",
+      "place": "PPLA3",
+      "population": 47507
+    },
+    {
+      "id": "ma-2544821",
+      "name": "Karia Ba Mohamed",
+      "place": "PPLA3",
+      "population": 20487
+    },
+    {
+      "id": "ma-2544720",
+      "name": "Kasba Tadla",
+      "place": "PPLA3",
+      "population": 51697
+    },
+    {
+      "id": "ma-2544571",
+      "name": "Kenitra",
+      "place": "PPLA",
+      "population": 470949
+    },
+    {
+      "id": "ma-2558470",
+      "name": "Khemisset",
+      "place": "PPLA3",
+      "population": 143640
+    },
+    {
+      "id": "ma-2544333",
+      "name": "Khenifra",
+      "place": "PPLA3",
+      "population": 128318
+    },
+    {
+      "id": "ma-2544248",
+      "name": "Khouribga",
+      "place": "PPLA3",
+      "population": 214241
+    },
+    {
+      "id": "ma-2544001",
+      "name": "Ksar El Kebir",
+      "place": "PPL",
+      "population": 138262
+    },
+    {
+      "id": "ma-12718676",
+      "name": "Lahraouyine",
+      "place": "PPL",
+      "population": 70783
+    },
+    {
+      "id": "ma-2543549",
+      "name": "Larache",
+      "place": "PPLA3",
+      "population": 136505
+    },
+    {
+      "id": "ma-12718681",
+      "name": "Laâttaouia",
+      "place": "PPL",
+      "population": 33103
+    },
+    {
+      "id": "ma-10375044",
+      "name": "Lqoliaa",
+      "place": "PPL",
+      "population": 90890
+    },
+    {
+      "id": "dz-2490584",
+      "name": "Maghnia",
+      "place": "PPL",
+      "population": 87373
+    },
+    {
+      "id": "dz-2490183",
+      "name": "Mansoûra",
+      "place": "PPL",
+      "population": 52285
+    },
+    {
+      "id": "ma-2542997",
+      "name": "Marrakesh",
+      "place": "PPLA",
+      "population": 995871
+    },
+    {
+      "id": "ma-2542987",
+      "name": "Martil",
+      "place": "PPLA3",
+      "population": 70274
+    },
+    {
+      "id": "ma-2542898",
+      "name": "Mdiq",
+      "place": "PPLA2",
+      "population": 61398
+    },
+    {
+      "id": "dz-2489865",
+      "name": "Mecheria",
+      "place": "PPL",
+      "population": 65043
+    },
+    {
+      "id": "ma-2542866",
+      "name": "Mechraa Bel Ksiri",
+      "place": "PPLA3",
+      "population": 34393
+    },
+    {
+      "id": "ma-2542826",
+      "name": "Mediouna",
+      "place": "PPLA3",
+      "population": 24506
+    },
+    {
+      "id": "ma-2542768",
+      "name": "Mehdya",
+      "place": "PPL",
+      "population": 31269
+    },
+    {
+      "id": "ma-2542715",
+      "name": "Meknes",
+      "place": "PPLA2",
+      "population": 568295
+    },
+    {
+      "id": "es-2513947",
+      "name": "Melilla",
+      "place": "PPLA",
+      "population": 85985
+    },
+    {
+      "id": "dz-2487852",
+      "name": "Mers el Kebir",
+      "place": "PPL",
+      "population": 20178
+    },
+    {
+      "id": "ma-2542227",
+      "name": "Midelt",
+      "place": "PPLA3",
+      "population": 60390
+    },
+    {
+      "id": "ma-2542147",
+      "name": "Missour",
+      "place": "PPLA3",
+      "population": 27937
+    },
+    {
+      "id": "ma-2542051",
+      "name": "Mohammedia",
+      "place": "PPLA3",
+      "population": 227799
+    },
+    {
+      "id": "ma-12718664",
+      "name": "Moulay Ali Cherif",
+      "place": "PPL",
+      "population": 24251
+    },
+    {
+      "id": "ma-2545069",
+      "name": "Mrirt",
+      "place": "PPL",
+      "population": 46660
+    },
+    {
+      "id": "ma-10375207",
+      "name": "My Drarga",
+      "place": "PPL",
+      "population": 55631
+    },
+    {
+      "id": "ma-2541479",
+      "name": "Nador",
+      "place": "PPLA3",
+      "population": 176600
+    },
+    {
+      "id": "dz-2486284",
+      "name": "Nedroma",
+      "place": "PPL",
+      "population": 27742
+    },
+    {
+      "id": "ma-10375138",
+      "name": "Oadar Temsia",
+      "place": "PPL",
+      "population": 30526
+    },
+    {
+      "id": "dz-2485926",
+      "name": "Oran",
+      "place": "PPLA",
+      "population": 803329
+    },
+    {
+      "id": "ma-2540850",
+      "name": "Ouarzazate",
+      "place": "PPLA2",
+      "population": 77603
+    },
+    {
+      "id": "ma-2540689",
+      "name": "Oued Zem",
+      "place": "PPLA3",
+      "population": 104029
+    },
+    {
+      "id": "ma-2540810",
+      "name": "Ouezzane",
+      "place": "PPLA2",
+      "population": 65088
+    },
+    {
+      "id": "ma-12718669",
+      "name": "Ouislane",
+      "place": "PPL",
+      "population": 95995
+    },
+    {
+      "id": "ma-2540483",
+      "name": "Oujda",
+      "place": "PPLA",
+      "population": 539711
+    },
+    {
+      "id": "ma-2540207",
+      "name": "Oulad Ayad",
+      "place": "PPLA3",
+      "population": 26008
+    },
+    {
+      "id": "ma-2540180",
+      "name": "Oulad Barhil",
+      "place": "PPL",
+      "population": 26521
+    },
+    {
+      "id": "ma-2539134",
+      "name": "Oulad Teïma",
+      "place": "PPL",
+      "population": 97608
+    },
+    {
+      "id": "dz-2484846",
+      "name": "Ouled Mimoun",
+      "place": "PPL",
+      "population": 25377
+    },
+    {
+      "id": "ma-2538475",
+      "name": "Rabat",
+      "place": "PPLC",
+      "population": 1655753
+    },
+    {
+      "id": "ma-2538401",
+      "name": "Ras el Ma",
+      "place": "PPL",
+      "population": 22345
+    },
+    {
+      "id": "dz-2483649",
+      "name": "Remchi",
+      "place": "PPL",
+      "population": 31837
+    },
+    {
+      "id": "ma-2538027",
+      "name": "Reçani",
+      "place": "PPL",
+      "population": 20469
+    },
+    {
+      "id": "ma-2538059",
+      "name": "Rich",
+      "place": "PPL",
+      "population": 28382
+    },
+    {
+      "id": "ma-11025266",
+      "name": "Sabaa Aiyoun",
+      "place": "PPL",
+      "population": 28693
+    },
+    {
+      "id": "ma-2537881",
+      "name": "Safi",
+      "place": "PPLA2",
+      "population": 336883
+    },
+    {
+      "id": "ma-2537763",
+      "name": "Salé",
+      "place": "PPL",
+      "population": 972299
+    },
+    {
+      "id": "ma-10920963",
+      "name": "Salé Al Jadida",
+      "place": "PPL",
+      "population": 200000
+    },
+    {
+      "id": "dz-2482211",
+      "name": "Sebdou",
+      "place": "PPL",
+      "population": 32570
+    },
+    {
+      "id": "ma-2537610",
+      "name": "Sebt Gzoula",
+      "place": "PPL",
+      "population": 20248
+    },
+    {
+      "id": "ma-2537545",
+      "name": "Sefrou",
+      "place": "PPLA3",
+      "population": 87234
+    },
+    {
+      "id": "ma-2537469",
+      "name": "Selouane",
+      "place": "PPLA3",
+      "population": 23553
+    },
+    {
+      "id": "ma-2537406",
+      "name": "Settat",
+      "place": "PPLA2",
+      "population": 155333
+    },
+    {
+      "id": "ma-2526239",
+      "name": "Setti Fatma",
+      "place": "PPL",
+      "population": 22283
+    },
+    {
+      "id": "dz-2481639",
+      "name": "Sfizef",
+      "place": "PPL",
+      "population": 27914
+    },
+    {
+      "id": "dz-2481389",
+      "name": "Sidi Abdelli",
+      "place": "PPL",
+      "population": 23543
+    },
+    {
+      "id": "dz-2481007",
+      "name": "Sidi Bel Abbes",
+      "place": "PPLA",
+      "population": 210146
+    },
+    {
+      "id": "ma-2536074",
+      "name": "Sidi Bennour",
+      "place": "PPLA3",
+      "population": 60948
+    },
+    {
+      "id": "dz-2480618",
+      "name": "Sidi ech Chahmi",
+      "place": "PPL",
+      "population": 35512
+    },
+    {
+      "id": "ma-2534515",
+      "name": "Sidi Ifni",
+      "place": "PPLA3",
+      "population": 23606
+    },
+    {
+      "id": "ma-2533191",
+      "name": "Sidi Kacem",
+      "place": "PPL",
+      "population": 82632
+    },
+    {
+      "id": "ma-2533182",
+      "name": "Sidi Rahal",
+      "place": "PPL",
+      "population": 22525
+    },
+    {
+      "id": "ma-2532945",
+      "name": "Sidi Slimane",
+      "place": "PPLA3",
+      "population": 101541
+    },
+    {
+      "id": "ma-12718684",
+      "name": "Sidi Slimane Echcharaa",
+      "place": "PPL",
+      "population": 32979
+    },
+    {
+      "id": "ma-10797349",
+      "name": "Sidi Taibi",
+      "place": "PPL",
+      "population": 51050
+    },
+    {
+      "id": "ma-2532822",
+      "name": "Sidi Yahia El Gharb",
+      "place": "PPLA3",
+      "population": 41472
+    },
+    {
+      "id": "dz-2479609",
+      "name": "Sig",
+      "place": "PPL",
+      "population": 61373
+    },
+    {
+      "id": "ma-2562055",
+      "name": "Skhirate",
+      "place": "PPLA3",
+      "population": 65272
+    },
+    {
+      "id": "ma-12718688",
+      "name": "Souk El Arbaa",
+      "place": "PPL",
+      "population": 75635
+    },
+    {
+      "id": "ma-2532421",
+      "name": "Souk et Tnine Jorf el Mellah",
+      "place": "PPL",
+      "population": 31318
+    },
+    {
+      "id": "ma-2532394",
+      "name": "Souq Larb’a al Gharb",
+      "place": "PPLA3",
+      "population": 44059
+    },
+    {
+      "id": "ma-2532412",
+      "name": "Souq Sebt Oulad Nemma",
+      "place": "PPL",
+      "population": 65601
+    },
+    {
+      "id": "ma-2532171",
+      "name": "Tabount",
+      "place": "PPL",
+      "population": 33929
+    },
+    {
+      "id": "ma-2531480",
+      "name": "Tahla",
+      "place": "PPLA3",
+      "population": 30279
+    },
+    {
+      "id": "ma-8504943",
+      "name": "Tamansourt",
+      "place": "PPL",
+      "population": 27383
+    },
+    {
+      "id": "ma-8299790",
+      "name": "Tamesna",
+      "place": "PPL",
+      "population": 30705
+    },
+    {
+      "id": "ma-2530241",
+      "name": "Tan-Tan",
+      "place": "PPLA2",
+      "population": 79942
+    },
+    {
+      "id": "ma-2530335",
+      "name": "Tangier",
+      "place": "PPLA",
+      "population": 1035141
+    },
+    {
+      "id": "ma-2530155",
+      "name": "Taounate",
+      "place": "PPLA3",
+      "population": 41075
+    },
+    {
+      "id": "ma-2530048",
+      "name": "Taourirt",
+      "place": "PPLA3",
+      "population": 112908
+    },
+    {
+      "id": "ma-2529649",
+      "name": "Taroudant",
+      "place": "PPLA3",
+      "population": 87520
+    },
+    {
+      "id": "ma-2529362",
+      "name": "Tata",
+      "place": "PPLA3",
+      "population": 20322
+    },
+    {
+      "id": "ma-2529317",
+      "name": "Taza",
+      "place": "PPLA2",
+      "population": 162110
+    },
+    {
+      "id": "ma-2529013",
+      "name": "Temara",
+      "place": "PPLA3",
+      "population": 342345
+    },
+    {
+      "id": "ma-2528659",
+      "name": "Tiflet",
+      "place": "PPLA3",
+      "population": 94684
+    },
+    {
+      "id": "dz-2476301",
+      "name": "Tindouf",
+      "place": "PPLA",
+      "population": 45610
+    },
+    {
+      "id": "ma-10374981",
+      "name": "Tine Biougra",
+      "place": "PPL",
+      "population": 41421
+    },
+    {
+      "id": "ma-2527915",
+      "name": "Tinghir",
+      "place": "PPLA2",
+      "population": 45911
+    },
+    {
+      "id": "ma-2527645",
+      "name": "Tirhanimîne",
+      "place": "PPL",
+      "population": 55827
+    },
+    {
+      "id": "ma-2527271",
+      "name": "Tit Mellil",
+      "place": "PPLA3",
+      "population": 35797
+    },
+    {
+      "id": "ma-2527089",
+      "name": "Tiznit",
+      "place": "PPLA3",
+      "population": 81569
+    },
+    {
+      "id": "dz-2475687",
+      "name": "Tlemcen",
+      "place": "PPLA",
+      "population": 173531
+    },
+    {
+      "id": "ma-2528910",
+      "name": "Tétouan",
+      "place": "PPLA2",
+      "population": 415810
+    },
+    {
+      "id": "ma-2526488",
+      "name": "Youssoufia",
+      "place": "PPLA3",
+      "population": 73848
+    },
+    {
+      "id": "ma-2526452",
+      "name": "Zagora",
+      "place": "PPLA3",
+      "population": 43752
+    },
+    {
+      "id": "ma-2541210",
+      "name": "Zawyat an Nwaçer",
+      "place": "PPL",
+      "population": 25991
+    },
+    {
+      "id": "ma-2526359",
+      "name": "Zawyat ech Cheïkh",
+      "place": "PPL",
+      "population": 27723
+    },
+    {
+      "id": "ma-2526435",
+      "name": "Zaïo",
+      "place": "PPLA3",
+      "population": 39099
+    },
+    {
+      "id": "ma-2537538",
+      "name": "Zeghanghane",
+      "place": "PPL",
+      "population": 37154
+    },
+    {
+      "id": "dz-2508119",
+      "name": "’Aïn el Turk",
+      "place": "PPL",
+      "population": 36326
+    }
+  ],
+  "sources": {
+    "inputsSha256": "16e8f85ee3b6afe7a1526fb1fbea83279cb9352518af1dbdc554ff9866f2c234",
+    "landcoverSha256": "292528eade7edbabda39968f757e0a07c691f97601978b19835aa43dd8098407",
+    "regionManifestSha256": "a2f1d68bd5e77c0efde28812e5296a25074d84aa7f0ad84d87243108d8b77386",
+    "terrainSha256": "98e5b7c95728cea724fcbc029f441b58d314bcca775e44030d135d8eae952b67"
+  },
+  "terrain": {
+    "columns": 512,
+    "file": "../terrain.bin",
+    "landcoverFile": "../landcover.bin",
+    "localBounds": {
+      "maxX": 617.0193463040252,
+      "maxZ": 498.98267999999985,
+      "minX": -617.0193463040252,
+      "minZ": -498.98267999999985
+    },
+    "rows": 416,
+    "verticalScale": 0.013594
+  }
+}
