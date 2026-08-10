@@ -100,7 +100,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mallorca-mobile/adventure-0210/index.html regions/iberia
+          git add mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/iberia-world-0247.js regions/iberia
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "WAFT 0.24.7 generated state is deterministic and current."
