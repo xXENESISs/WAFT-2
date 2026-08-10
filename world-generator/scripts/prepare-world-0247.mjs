@@ -14,6 +14,13 @@ if(!source.includes('iberia-world-0247.js')){
   indexChanged=true;
 }
 
+if(!source.includes('iberia-world-0249.js')){
+  const anchor='<script src="adventure-0210/iberia-world-0247.js?v=${encodeURIComponent(version)}"><\\/script>';
+  if(!source.includes(anchor))throw new Error('index.html: 0.24.7 layer anchor not found for 0.24.9 UI');
+  source=source.replace(anchor,anchor+'<script src="adventure-0210/iberia-world-0249.js?v=${encodeURIComponent(version)}"><\\/script>');
+  indexChanged=true;
+}
+
 // The regional runtime may only clamp to Iberia when no streamed-world surface exists.
 if(!source.includes('WAFT_WORLD_BOUNDS_0247')){
   const oldClamp=`      const activeTerrain = state.worldMode === 'local' ? localAssets.terrainMesh : terrainMesh;\n      const bounds = activeTerrain.bounds;\n      state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));\n      state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));\n      if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();`;
@@ -30,7 +37,7 @@ let layer=fs.readFileSync(layerPath,'utf8');
 // 0.24.8 already contains the safer Atlantic sampler/draw gating and intentionally removed
 // the floating DOM city overlay. Do not resurrect any 0.24.7 renderer here.
 if(layer.includes("atlasSystem:'shared-iberia'")&&layer.includes('floatingCityLabels:false')){
-  console.log('WAFT 0.24.8 prepare: shared atlas, geographic France and gated Atlantic/Canarias preserved.');
+  console.log('WAFT 0.24.9 prepare: shared atlas, unified UI injection and gated Atlantic/Canarias preserved.');
   process.exit(0);
 }
 
