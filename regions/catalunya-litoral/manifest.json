@@ -12,8 +12,11 @@
     "entryPoints": 5,
     "faunaSpecies": 9,
     "generatedBuildings": 0,
-    "landmarks": 9,
-    "settlements": 10
+    "landmarkArchetypes": 0,
+    "landmarks": 6,
+    "settlements": 10,
+    "uniqueModelCandidates": 6,
+    "wikidataLinkedLandmarks": 6
   },
   "deterministic": true,
   "files": [
@@ -28,9 +31,9 @@
       "sha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b"
     },
     {
-      "bytes": 74277,
+      "bytes": 74211,
       "path": "sectors.json",
-      "sha256": "ae4c3d1b66d1a33b2f4dc71a4752c6693344a284001bb6054ef43fa707d5415a"
+      "sha256": "90a3047df6b27d3744507d72ec178131041cd21c8e3377e7b34569a543d0dcfd"
     },
     {
       "bytes": 3075,
@@ -43,9 +46,9 @@
       "sha256": "2318467ddb3f9c0306642d1cf39fc481434c55b08675b87876107320dd1b37a0"
     },
     {
-      "bytes": 3931,
+      "bytes": 22894,
       "path": "landmarks.json",
-      "sha256": "fb7aaa74a3c2c8c1a7fa64e3439b2f6582d10bb4814361835d588785c0efd8ff"
+      "sha256": "0e21d84b069fd8c8a6bb0e5b8e25e37fb058dda95a47acbe4a066e4e9b1cda9f"
     },
     {
       "bytes": 10664,
@@ -59,8 +62,18 @@
     }
   ],
   "formatVersion": 1,
-  "generationStage": "dem-worldcover-bootstrap",
+  "generationStage": "wikidata-ranked-landmarks",
   "generatorVersion": "0.2.0",
+  "knowledgeGraph": {
+    "dataset": "Wikidata landmark enrichment",
+    "endpoint": "https://www.wikidata.org/w/api.php",
+    "entityCount": 6,
+    "license": "CC0 1.0",
+    "provider": "Wikimedia Foundation and Wikidata contributors",
+    "requestedQids": 6,
+    "retrievedOn": "2026-08-03",
+    "snapshotSha256": "abb08b1c874220da5f9dfc0fe32215068f3c2067607cb8cf8b3f1c8bb358cd42"
+  },
   "landcover": {
     "classDistribution": {
       "0": 77764,
@@ -167,10 +180,9 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 686363,
+  "packageBytesWithoutManifest": 705260,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
-    "wikidata-landmark-ranking",
     "gbif-fauna-candidates",
     "procedural-vegetation-and-buildings"
   ],
@@ -215,6 +227,11 @@
     "overrides": {
       "path": "world-generator/overrides/catalunya-litoral.overrides.json",
       "sha256": "a36bc08b928705e9752fdd7543954b21d42a565f7e9df9bce63d006e04bcc7a6"
+    },
+    "wikidataSnapshot": {
+      "metadataPath": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json",
+      "path": "world-generator/sources/catalunya-litoral/wikidata-landmarks.json.gz",
+      "sha256": "abb08b1c874220da5f9dfc0fe32215068f3c2067607cb8cf8b3f1c8bb358cd42"
     },
     "worldCoverSnapshot": {
       "metadataPath": "world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.json",

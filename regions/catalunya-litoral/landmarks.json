@@ -1,170 +1,1035 @@
 {
-  "automaticDiscoveryPending": true,
+  "automaticDiscoveryPending": false,
   "formatVersion": 1,
-  "generationStage": "manual-landmark-seeds",
+  "generationStage": "wikidata-ranked-landmarks",
   "items": [
     {
-      "assetId": "sagrada-familia",
-      "id": "sagrada-familia",
+      "areaM2": 25633.36,
+      "footprint": [
+        [
+          3.8297,
+          57.4566
+        ],
+        [
+          3.9431,
+          57.5572
+        ],
+        [
+          4.0031,
+          57.5357
+        ],
+        [
+          4.089,
+          57.6881
+        ],
+        [
+          4.0463,
+          57.7264
+        ],
+        [
+          4.0749,
+          57.8751
+        ],
+        [
+          4.4811,
+          57.5885
+        ],
+        [
+          4.5125,
+          57.6184
+        ],
+        [
+          4.6967,
+          57.5466
+        ],
+        [
+          4.595,
+          57.4401
+        ],
+        [
+          4.5377,
+          57.4658
+        ],
+        [
+          4.4858,
+          57.3767
+        ],
+        [
+          4.492,
+          57.3718
+        ],
+        [
+          4.4789,
+          57.3502
+        ],
+        [
+          4.472,
+          57.3535
+        ],
+        [
+          4.4214,
+          57.2658
+        ],
+        [
+          4.4745,
+          57.2306
+        ],
+        [
+          4.4336,
+          57.088
+        ],
+        [
+          4.1868,
+          57.2288
+        ],
+        [
+          4.1845,
+          57.243
+        ],
+        [
+          4.1924,
+          57.2491
+        ],
+        [
+          4.2406,
+          57.2434
+        ],
+        [
+          4.2442,
+          57.2797
+        ],
+        [
+          4.23,
+          57.3238
+        ],
+        [
+          3.8297,
+          57.4566
+        ]
+      ],
+      "id": "osm-landmark-r19658818",
       "local": {
-        "x": 6.5073,
-        "y": 38,
-        "z": 43.1726
+        "x": 4.2684,
+        "y": 135,
+        "z": 57.4863
       },
-      "name": "Basílica de la Sagrada Família",
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
+      },
+      "name": "castell de Montjuïc",
+      "originalName": "Castell de Montjuïc",
       "position": {
-        "lat": 41.4036,
-        "lon": 2.1744
+        "lat": 41.36335015116938,
+        "lon": 2.166004906699069
       },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-04-03",
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 100,
+        "finalScore": 143.68,
+        "reasons": [
+          "sitelinks:17",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "official-website",
+          "coordinate"
+        ],
+        "wikidataBoost": 43.68
+      },
+      "score": 143.68,
+      "sectorId": "s-04-04",
+      "source": "openstreetmap",
+      "sourceId": "r19658818",
+      "tags": {
+        "historic": "castle",
+        "name": "Castell de Montjuïc",
+        "name:ca": "Castell de Montjuïc",
+        "name:es": "Castillo de Montjuïc",
+        "tourism": "attraction",
+        "wikidata": "Q2500125",
+        "wikipedia": "ca:Castell de Montjuïc"
+      },
       "terrainStatus": "exact-cell",
-      "type": "cathedral"
+      "type": "castle",
+      "wikidata": {
+        "commonsCategory": "Castell de Montjuïc",
+        "coordinate": {
+          "lat": 41.36342,
+          "lon": 2.16617
+        },
+        "description": "fortalesa militar",
+        "heightMeters": null,
+        "heritageDesignations": [
+          "Q1019352",
+          "Q23712"
+        ],
+        "image": "Κάστρο Μονζουίκ 3231 - 3233.jpg",
+        "inception": "+1641-00-00T00:00:00Z",
+        "instanceOf": [
+          "Q23413",
+          "Q2772772",
+          "Q40357",
+          "Q5003624",
+          "Q907116"
+        ],
+        "labels": {
+          "ca": "castell de Montjuïc",
+          "de": "Castell de Montjuïc",
+          "en": "Montjuïc Castle",
+          "es": "Castillo de Montjuic",
+          "fr": "château de Montjuïc",
+          "it": "Castell de Montjuïc"
+        },
+        "officialWebsite": "http://www.bcn.cat/castelldemontjuic/",
+        "qid": "Q2500125",
+        "sitelinkCount": 17,
+        "sitelinks": {
+          "ca": "Castell de Montjuïc",
+          "en": "Montjuïc Castle",
+          "es": "Castillo de Montjuic",
+          "fr": "Château de Montjuïc",
+          "it": "Castell de Montjuïc"
+        }
+      }
     },
     {
-      "assetId": "park-guell",
-      "id": "park-guell",
+      "areaM2": 6382.21,
+      "footprint": [
+        [
+          6.8402,
+          50.1933
+        ],
+        [
+          6.9844,
+          50.3331
+        ],
+        [
+          7.0699,
+          50.2417
+        ],
+        [
+          7.1002,
+          50.2701
+        ],
+        [
+          7.1339,
+          50.2629
+        ],
+        [
+          7.1433,
+          50.2698
+        ],
+        [
+          7.1616,
+          50.2694
+        ],
+        [
+          7.2002,
+          50.2453
+        ],
+        [
+          7.2126,
+          50.2019
+        ],
+        [
+          7.1932,
+          50.1573
+        ],
+        [
+          7.1652,
+          50.1275
+        ],
+        [
+          7.0223,
+          50.0042
+        ],
+        [
+          6.9902,
+          50.0302
+        ],
+        [
+          6.8402,
+          50.1933
+        ]
+      ],
+      "id": "osm-landmark-r3298476",
       "local": {
-        "x": 0.7201,
-        "y": 181,
-        "z": 39.2963
-      },
-      "name": "Park Güell",
-      "position": {
-        "lat": 41.4145,
-        "lon": 2.1527
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-04-03",
-      "terrainStatus": "exact-cell",
-      "type": "monument"
-    },
-    {
-      "assetId": "catedral-barcelona",
-      "id": "catedral-barcelona",
-      "local": {
-        "x": 6.9607,
+        "x": 7.0293,
         "y": 25,
-        "z": 50.1783
+        "z": 50.1741
+      },
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
       },
       "name": "Catedral de Barcelona",
+      "originalName": "Catedral de la Santa Creu i Santa Eulàlia",
       "position": {
-        "lat": 41.3839,
-        "lon": 2.1761
+        "lat": 41.38391197882308,
+        "lon": 2.1763573084588286
       },
-      "preferredRepresentation": "unique",
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 100,
+        "finalScore": 148.84,
+        "reasons": [
+          "sitelinks:43",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "official-website",
+          "coordinate"
+        ],
+        "wikidataBoost": 48.84
+      },
+      "score": 148.84,
       "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "r3298476",
+      "tags": {
+        "amenity": "place_of_worship",
+        "building": "cathedral",
+        "heritage": "2",
+        "name": "Catedral de la Santa Creu i Santa Eulàlia",
+        "name:ca": "Catedral de la Santa Creu i Santa Eulàlia",
+        "tourism": "attraction",
+        "wikidata": "Q17155",
+        "wikipedia": "ca:Catedral de Barcelona"
+      },
       "terrainStatus": "exact-cell",
-      "type": "cathedral"
+      "type": "cathedral",
+      "wikidata": {
+        "commonsCategory": "Cathedral of Barcelona",
+        "coordinate": {
+          "lat": 41.383888888889,
+          "lon": 2.1763888888889
+        },
+        "description": "catedral gòtica de Barcelona, seu de l'arquebisbat de Barcelona.",
+        "heightMeters": 26,
+        "heritageDesignations": [
+          "Q1019352",
+          "Q23712"
+        ],
+        "image": "Barcelona Cathedral Saint Eulalia.jpg",
+        "inception": "+1298-00-00T00:00:00Z",
+        "instanceOf": [
+          "Q120560",
+          "Q56242215"
+        ],
+        "labels": {
+          "ca": "Catedral de Barcelona",
+          "de": "Kathedrale von Barcelona",
+          "en": "Cathedral of the Holy Cross and Saint Eulalia",
+          "es": "Catedral de Santa Eulalia de Barcelona",
+          "fr": "cathédrale Sainte-Eulalie de Barcelone",
+          "it": "cattedrale di Barcellona"
+        },
+        "officialWebsite": "https://catedralbcn.org/",
+        "qid": "Q17155",
+        "sitelinkCount": 43,
+        "sitelinks": {
+          "ca": "Catedral de Barcelona",
+          "de": "Kathedrale von Barcelona",
+          "en": "Barcelona Cathedral",
+          "es": "Catedral de la Santa Cruz y Santa Eulalia (Barcelona)",
+          "fr": "Cathédrale Sainte-Croix de Barcelone",
+          "it": "Cattedrale di Barcellona"
+        }
+      }
     },
     {
-      "assetId": "catalan-fortress",
-      "id": "castell-montjuic",
+      "areaM2": 5928.46,
+      "footprint": [
+        [
+          6.2853,
+          43.1496
+        ],
+        [
+          6.3784,
+          43.259
+        ],
+        [
+          6.4312,
+          43.3074
+        ],
+        [
+          6.4602,
+          43.29
+        ],
+        [
+          6.5222,
+          43.3158
+        ],
+        [
+          6.6178,
+          43.3014
+        ],
+        [
+          6.6342,
+          43.2041
+        ],
+        [
+          6.6287,
+          43.1318
+        ],
+        [
+          6.5837,
+          43.1046
+        ],
+        [
+          6.5512,
+          43.0558
+        ],
+        [
+          6.5104,
+          43.0915
+        ],
+        [
+          6.4803,
+          43.0674
+        ],
+        [
+          6.4442,
+          43.0592
+        ],
+        [
+          6.4119,
+          43.0606
+        ],
+        [
+          6.39,
+          43.0903
+        ],
+        [
+          6.3709,
+          43.1246
+        ],
+        [
+          6.3841,
+          43.1656
+        ],
+        [
+          6.4078,
+          43.1897
+        ],
+        [
+          6.3635,
+          43.1587
+        ],
+        [
+          6.3476,
+          43.1226
+        ],
+        [
+          6.2853,
+          43.1496
+        ]
+      ],
+      "id": "osm-landmark-r9194723",
       "local": {
-        "x": 5.3072,
-        "y": 22,
-        "z": 57.5041
+        "x": 6.4867,
+        "y": 38,
+        "z": 43.1885
       },
-      "name": "Castell de Montjuïc",
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
+      },
+      "name": "Temple Expiatori de la Sagrada Família",
+      "originalName": "Basílica de la Sagrada Família",
       "position": {
-        "lat": 41.3633,
-        "lon": 2.1699
+        "lat": 41.403555163549214,
+        "lon": 2.174322789436624
       },
-      "preferredRepresentation": "archetype",
-      "sectorId": "s-04-04",
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 100,
+        "finalScore": 153.75,
+        "reasons": [
+          "sitelinks:102",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "official-website",
+          "coordinate"
+        ],
+        "wikidataBoost": 53.75
+      },
+      "score": 153.75,
+      "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "r9194723",
+      "tags": {
+        "amenity": "place_of_worship",
+        "building": "cathedral",
+        "heritage": "1",
+        "historic": "heritage",
+        "name": "Basílica de la Sagrada Família",
+        "name:ca": "Basílica de la Sagrada Família",
+        "name:es": "Basílica de la Sagrada Familia",
+        "tourism": "attraction",
+        "wikidata": "Q48435",
+        "wikipedia": "ca:Temple Expiatori de la Sagrada Família"
+      },
       "terrainStatus": "exact-cell",
-      "type": "castle"
+      "type": "cathedral",
+      "wikidata": {
+        "commonsCategory": "Sagrada Família",
+        "coordinate": {
+          "lat": 41.40369,
+          "lon": 2.17433
+        },
+        "description": "basílica catòlica en construcció a Barcelona",
+        "heightMeters": 172.5,
+        "heritageDesignations": [
+          "Q1019352",
+          "Q23712",
+          "Q9259"
+        ],
+        "image": "SF maig 2026.jpg",
+        "inception": "+1882-03-19T00:00:00Z",
+        "instanceOf": [
+          "Q120560",
+          "Q133747929"
+        ],
+        "labels": {
+          "ca": "Temple Expiatori de la Sagrada Família",
+          "de": "Sagrada Família",
+          "en": "Basilica and Expiatory Church of the Holy Family",
+          "es": "Templo Expiatorio de la Sagrada Familia",
+          "fr": "Sagrada Família",
+          "it": "Sagrada Família"
+        },
+        "officialWebsite": "https://sagradafamilia.org/",
+        "qid": "Q48435",
+        "sitelinkCount": 102,
+        "sitelinks": {
+          "ca": "Temple Expiatori de la Sagrada Família",
+          "de": "Sagrada Família",
+          "en": "Sagrada Família",
+          "es": "Templo Expiatorio de la Sagrada Familia",
+          "fr": "Sagrada Família",
+          "it": "Sagrada Família"
+        }
+      }
     },
     {
-      "assetId": "monestir-montserrat",
-      "id": "monestir-montserrat",
+      "areaM2": 64596.94,
+      "footprint": [
+        [
+          -82.8481,
+          -24.8714
+        ],
+        [
+          -82.6847,
+          -24.8241
+        ],
+        [
+          -82.5188,
+          -24.7863
+        ],
+        [
+          -82.3751,
+          -24.6846
+        ],
+        [
+          -82.2843,
+          -24.5549
+        ],
+        [
+          -82.317,
+          -24.4655
+        ],
+        [
+          -82.3059,
+          -24.3914
+        ],
+        [
+          -82.3623,
+          -24.4154
+        ],
+        [
+          -82.3253,
+          -24.5212
+        ],
+        [
+          -82.4762,
+          -24.5477
+        ],
+        [
+          -82.6229,
+          -24.3979
+        ],
+        [
+          -82.6761,
+          -24.4985
+        ],
+        [
+          -83.4428,
+          -24.0953
+        ],
+        [
+          -83.4798,
+          -23.9246
+        ],
+        [
+          -83.6669,
+          -23.7423
+        ],
+        [
+          -83.8115,
+          -23.7584
+        ],
+        [
+          -84.0697,
+          -23.7571
+        ],
+        [
+          -84.0802,
+          -23.9105
+        ],
+        [
+          -83.9298,
+          -24.1184
+        ],
+        [
+          -83.7578,
+          -24.2602
+        ],
+        [
+          -83.6313,
+          -24.4322
+        ],
+        [
+          -83.5795,
+          -24.4583
+        ],
+        [
+          -83.3519,
+          -24.428
+        ],
+        [
+          -83.1801,
+          -24.4927
+        ],
+        [
+          -82.9406,
+          -24.797
+        ],
+        [
+          -82.9245,
+          -24.866
+        ],
+        [
+          -82.8481,
+          -24.8714
+        ]
+      ],
+      "id": "osm-landmark-w182384937",
       "local": {
-        "x": -83.955,
-        "y": 785,
-        "z": -24.2179
+        "x": -83.2587,
+        "y": 659,
+        "z": -24.3167
       },
-      "name": "Monestir de Montserrat",
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
+      },
+      "name": "monestir de Montserrat",
+      "originalName": "Monestir de Montserrat",
       "position": {
-        "lat": 41.5931,
-        "lon": 1.8352
+        "lat": 41.5933779045662,
+        "lon": 1.8378106647545498
       },
-      "preferredRepresentation": "unique",
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 100,
+        "finalScore": 148.14,
+        "reasons": [
+          "sitelinks:38",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "official-website",
+          "coordinate"
+        ],
+        "wikidataBoost": 48.14
+      },
+      "score": 148.14,
       "sectorId": "s-02-02",
+      "source": "openstreetmap",
+      "sourceId": "w182384937",
+      "tags": {
+        "amenity": "monastery",
+        "heritage": "4",
+        "historic": "yes",
+        "name": "Monestir de Montserrat",
+        "name:ca": "Monestir de Montserrat",
+        "tourism": "attraction",
+        "wikidata": "Q771935",
+        "wikipedia": "ca:Monestir de Montserrat"
+      },
       "terrainStatus": "exact-cell",
-      "type": "monastery"
+      "type": "monastery",
+      "wikidata": {
+        "commonsCategory": "Monestir de Montserrat",
+        "coordinate": {
+          "lat": 41.593194,
+          "lon": 1.837139
+        },
+        "description": "monestir benedictí situat a la muntanya de Montserrat",
+        "heightMeters": null,
+        "heritageDesignations": [
+          "Q11910250"
+        ],
+        "image": "Montserrat Natural Park 4.jpg",
+        "inception": "+1100-00-00T00:00:00Z",
+        "instanceOf": [
+          "Q817056"
+        ],
+        "labels": {
+          "ca": "monestir de Montserrat",
+          "de": "Kloster Montserrat",
+          "en": "Santa Maria de Montserrat",
+          "es": "Monasterio de Montserrat",
+          "fr": "abbaye de Montserrat",
+          "it": "Monastero di Montserrat"
+        },
+        "officialWebsite": "http://www.abadiamontserrat.cat/",
+        "qid": "Q771935",
+        "sitelinkCount": 38,
+        "sitelinks": {
+          "ca": "Monestir de Montserrat",
+          "de": "Kloster Montserrat",
+          "en": "Santa Maria de Montserrat Abbey",
+          "es": "Monasterio de Montserrat",
+          "fr": "Abbaye de Montserrat",
+          "it": "Monastero di Montserrat"
+        }
+      }
     },
     {
-      "assetId": "amfiteatre-tarragona",
-      "id": "amfiteatre-tarragona",
+      "areaM2": 183368.56,
+      "footprint": [
+        [
+          -0.5081,
+          39.2179
+        ],
+        [
+          -0.3768,
+          39.012
+        ],
+        [
+          -0.3947,
+          38.7952
+        ],
+        [
+          0.0051,
+          38.461
+        ],
+        [
+          1.2983,
+          39.1298
+        ],
+        [
+          1.1938,
+          39.7509
+        ],
+        [
+          0.8892,
+          39.6087
+        ],
+        [
+          0.8186,
+          39.6731
+        ],
+        [
+          0.6979,
+          40.1321
+        ],
+        [
+          0.6627,
+          40.289
+        ],
+        [
+          0.4099,
+          40.3426
+        ],
+        [
+          0.1795,
+          40.2925
+        ],
+        [
+          0.0489,
+          39.8571
+        ],
+        [
+          -0.0307,
+          39.3385
+        ],
+        [
+          -0.1667,
+          39.3313
+        ],
+        [
+          -0.3968,
+          39.5914
+        ],
+        [
+          -0.5,
+          39.3751
+        ],
+        [
+          -0.5081,
+          39.2179
+        ]
+      ],
+      "id": "osm-landmark-w66713401",
       "local": {
-        "x": -237.5168,
-        "y": 34,
-        "z": 145.8407
+        "x": 0.3797,
+        "y": 181,
+        "z": 39.3453
       },
-      "name": "Amfiteatre de Tarragona",
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
+      },
+      "name": "Parc Güell",
+      "originalName": "Parc Güell",
       "position": {
-        "lat": 41.1149,
-        "lon": 1.2594
+        "lat": 41.41436227796485,
+        "lon": 2.151423701504308
       },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-00-05",
-      "terrainStatus": "exact-cell",
-      "type": "archaeological_site"
-    },
-    {
-      "assetId": "modern-observation-tower",
-      "id": "torre-glories",
-      "local": {
-        "x": 10.5877,
-        "y": 11,
-        "z": 43.2081
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 85,
+        "finalScore": 135.02,
+        "reasons": [
+          "sitelinks:53",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "official-website",
+          "coordinate"
+        ],
+        "wikidataBoost": 50.02
       },
-      "name": "Torre Glòries",
-      "position": {
-        "lat": 41.4035,
-        "lon": 2.1897
-      },
-      "preferredRepresentation": "archetype",
+      "score": 135.02,
       "sectorId": "s-04-03",
+      "source": "openstreetmap",
+      "sourceId": "w66713401",
+      "tags": {
+        "heritage": "1",
+        "historic": "heritage",
+        "name": "Parc Güell",
+        "name:ca": "Parc Güell",
+        "name:es": "Parque Güell",
+        "tourism": "attraction",
+        "wikidata": "Q212867",
+        "wikipedia": "ca:Parc Güell"
+      },
       "terrainStatus": "exact-cell",
-      "type": "tower"
+      "type": "monument",
+      "wikidata": {
+        "commonsCategory": "Parc Güell",
+        "coordinate": {
+          "lat": 41.41361111111111,
+          "lon": 2.1527777777777777
+        },
+        "description": "jardí amb elements arquitectònics situat a Barcelona",
+        "heightMeters": null,
+        "heritageDesignations": [
+          "Q1019352",
+          "Q15945449",
+          "Q23712",
+          "Q43113623"
+        ],
+        "image": "Güell BCN edited.jpg",
+        "inception": null,
+        "instanceOf": [
+          "Q1759852",
+          "Q22698"
+        ],
+        "labels": {
+          "ca": "Parc Güell",
+          "de": "Park Güell",
+          "en": "Park Güell",
+          "es": "Park Güell",
+          "fr": "parc Güell",
+          "it": "parco Güell"
+        },
+        "officialWebsite": "https://parkguell.barcelona/ca",
+        "qid": "Q212867",
+        "sitelinkCount": 53,
+        "sitelinks": {
+          "ca": "Parc Güell",
+          "de": "Park Güell",
+          "en": "Park Güell",
+          "es": "Parque Güell",
+          "fr": "Parc Güell",
+          "it": "Parco Güell"
+        }
+      }
     },
     {
-      "assetId": "catalan-city-walls",
-      "id": "muralles-girona",
+      "areaM2": 8082.37,
+      "footprint": [
+        [
+          -237.7495,
+          145.8629
+        ],
+        [
+          -237.692,
+          145.833
+        ],
+        [
+          -237.694,
+          145.8256
+        ],
+        [
+          -237.6539,
+          145.8165
+        ],
+        [
+          -237.6169,
+          145.8213
+        ],
+        [
+          -237.4805,
+          146.0345
+        ],
+        [
+          -237.7956,
+          146.182
+        ],
+        [
+          -237.8535,
+          146.0876
+        ],
+        [
+          -237.8641,
+          146.0392
+        ],
+        [
+          -237.8164,
+          145.9364
+        ],
+        [
+          -237.7807,
+          145.8893
+        ],
+        [
+          -237.7495,
+          145.8629
+        ]
+      ],
+      "id": "osm-landmark-w77502859",
       "local": {
-        "x": 180.4711,
-        "y": 77,
-        "z": -164.4398
+        "x": -237.6899,
+        "y": 34,
+        "z": 145.9975
       },
-      "name": "Muralles de Girona",
+      "modelPolicy": {
+        "assetId": null,
+        "customAssetRequired": true,
+        "reason": "wikidata-ranking",
+        "tier": "unique-candidate"
+      },
+      "name": "amfiteatre de Tarragona",
+      "originalName": "Amfiteatre Romà",
       "position": {
-        "lat": 41.9874,
-        "lon": 2.8267
+        "lat": 41.11445917108963,
+        "lon": 1.258750738509765
       },
-      "preferredRepresentation": "archetype",
-      "sectorId": "s-06-00",
+      "preferredRepresentation": "unique-candidate",
+      "ranking": {
+        "baseScore": 85,
+        "finalScore": 126.23,
+        "reasons": [
+          "sitelinks:13",
+          "heritage",
+          "image",
+          "commons",
+          "articles:ca,es,en",
+          "coordinate"
+        ],
+        "wikidataBoost": 41.23
+      },
+      "score": 126.23,
+      "sectorId": "s-00-05",
+      "source": "openstreetmap",
+      "sourceId": "w77502859",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Amfiteatre Romà",
+        "name:ca": "Amfiteatre Romà",
+        "name:es": "Anfiteatro Romano",
+        "wikidata": "Q2746482",
+        "wikipedia": "ca:Amfiteatre Romà de Tarragona"
+      },
       "terrainStatus": "exact-cell",
-      "type": "fortress"
-    },
-    {
-      "assetId": "vila-vella-tossa",
-      "id": "castell-tossa",
-      "local": {
-        "x": 209.194,
-        "y": 14,
-        "z": -68.2439
-      },
-      "name": "Vila Vella de Tossa de Mar",
-      "position": {
-        "lat": 41.7169,
-        "lon": 2.9344
-      },
-      "preferredRepresentation": "unique",
-      "sectorId": "s-07-02",
-      "terrainStatus": "exact-cell",
-      "type": "castle"
+      "type": "archaeological_site",
+      "wikidata": {
+        "commonsCategory": "Amphitheatre (Tarragona)",
+        "coordinate": {
+          "lat": 41.11457,
+          "lon": 1.2588
+        },
+        "description": "Roman amphitheatre in Tarragona, Spain",
+        "heightMeters": null,
+        "heritageDesignations": [
+          "Q1019352",
+          "Q23712"
+        ],
+        "image": "Amphitheatre of Tarragona 02.jpg",
+        "inception": null,
+        "instanceOf": [
+          "Q133444874",
+          "Q14752696",
+          "Q7362268"
+        ],
+        "labels": {
+          "ca": "amfiteatre de Tarragona",
+          "de": "Tarragona Amphitheatre",
+          "en": "Tarragona Amphitheatre",
+          "es": "Anfiteatro de Tarraco",
+          "fr": "amphithéâtre de Tarragone",
+          "it": "Anfiteatro di Tarragona"
+        },
+        "officialWebsite": null,
+        "qid": "Q2746482",
+        "sitelinkCount": 13,
+        "sitelinks": {
+          "ca": "Amfiteatre de Tarragona",
+          "en": "Tarragona Amphitheatre",
+          "es": "Anfiteatro de Tarraco",
+          "fr": "Amphithéâtre de Tarragone",
+          "it": "Anfiteatro di Tarragona"
+        }
+      }
     }
   ],
-  "regionId": "catalunya-litoral"
+  "regionId": "catalunya-litoral",
+  "representationCounts": {
+    "unique-candidate": 6
+  },
+  "sourceCount": 20140,
+  "wikidataEntityCount": 6,
+  "wikidataRankingPending": false
 }
