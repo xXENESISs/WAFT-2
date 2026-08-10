@@ -40,9 +40,9 @@ try{
   const portugal=await page.evaluate(async()=>{const ib=await fetch('../regions/iberia/settlements.json',{cache:'no-store'}).then(r=>r.json()),city=(ib.items||[]).filter(x=>x.countryCode==='PT').sort((a,b)=>(b.population||0)-(a.population||0))[0];if(!city)throw new Error('No Portuguese city');WAFTRegionRuntime.setRegionalPosition(city.local.x,city.local.z);await new Promise(r=>setTimeout(r,500));return{name:city.name,labels:[...document.querySelectorAll('.waftCity0247 .name')].map(x=>x.textContent)};});
   need(portugal.labels.some(x=>x.includes(portugal.name)),`Portuguese city label missing for ${portugal.name}`);
 
-  // France: same rule, real settlement -> DOM point/name marker.
-  const france=await page.evaluate(async()=>{const fr=await fetch('../regions/france/settlements.json',{cache:'no-store'}).then(r=>r.json()),city=(fr.items||[]).sort((a,b)=>(b.population||0)-(a.population||0))[0],p=WAFTWorldStreaming0245.worldFromGeo(city.position.lat,city.position.lon);WAFTRegionRuntime.setRegionalPosition(p.x,p.z);await new Promise(r=>setTimeout(r,500));return{name:city.name,labels:[...document.querySelectorAll('.waftCity0247 .name')].map(x=>x.textContent)};});
-  need(france.labels.some(x=>x.includes(france.name)),`French city label missing for ${france.name}`);
+  // France: validate a real near-Pyrenees settlement in the area the player actually reaches first.
+  const france=await page.evaluate(async()=>{const fr=await fetch('../regions/france/settlements.json',{cache:'no-store'}).then(r=>r.json()),pool=(fr.items||[]).filter(x=>x.position?.lat>=42.7&&x.position?.lat<=44.0&&x.position?.lon>=-1&&x.position?.lon<=4),city=pool.sort((a,b)=>Math.hypot(a.position.lat-43.25,a.position.lon-2.0)-Math.hypot(b.position.lat-43.25,b.position.lon-2.0))[0];if(!city)throw new Error('No southern French settlement');const p=WAFTWorldStreaming0245.worldFromGeo(city.position.lat,city.position.lon);WAFTRegionRuntime.setRegionalPosition(p.x,p.z+18);WAFTRegionRuntime.setInput(0,0);await new Promise(r=>setTimeout(r,700));return{name:city.name,labels:[...document.querySelectorAll('.waftCity0247 .name')].map(x=>x.textContent),state:WAFTWorldContinuity0247.getState()};});
+  need(france.labels.some(x=>x.includes(france.name)),`French city label missing near Pyrenees for ${france.name}: ${JSON.stringify(france.state)}`);
 
   // Canarias: prefetch actual package, place player on a real island city and require physical terrain + labels.
   await page.evaluate(()=>WAFTWorldContinuity0247.prefetchCanarias());
