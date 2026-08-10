@@ -1,14 +1,9 @@
-name: Verify WAFT world continuity 0.25.0
+name: Verify WAFT world continuity 0.25.1
 
 on:
   push:
     branches:
-      - fix/world-0246-visible-reality
-      - fix/ci-world-0246
-      - fix/world-0247-continuity-labels-canarias
-      - fix/world-0248-hotfix-render-cities
-      - feat/world-0249-ui-labels-scale-foundation
-      - feat/world-0250-real-scale-africa-ground-labels
+      - feat/world-0251-global-compression
       - main
     paths:
       - .github/workflows/verify-world-visible-0246.yml
@@ -16,15 +11,14 @@ on:
       - world-generator/configs/france.region.json
       - world-generator/configs/canarias.region.json
       - world-generator/configs/northwest-africa.region.json
-      - world-generator/scripts/prepare-world-0250.mjs
-      - world-generator/scripts/build-region-preview-v2.mjs
+      - world-generator/scripts/prepare-world-0251.mjs
       - mallorca-mobile/adventure-0210/index.html
       - mallorca-mobile/adventure-0210/iberia-world-0245.js
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
       - mallorca-mobile/adventure-0210/iberia-world-0249.js
       - mallorca-mobile/adventure-0210/iberia-world-0250.js
-      - mallorca-mobile/adventure-0210/verify-0250.mjs
-      - mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+      - mallorca-mobile/adventure-0210/verify-0251.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs
       - regions/iberia/**
       - regions/france/**
       - regions/canarias/**
@@ -35,7 +29,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: waft-world-visible-0250-${{ github.ref }}
+  group: waft-world-visible-0251-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -53,33 +47,22 @@ jobs:
           node-version: '20'
       - name: Install browser test dependency
         run: npm install --no-save --no-package-lock playwright-core@1.55.0
-      - name: Syntax and 0.25.0 contracts
+      - name: Syntax and 0.25.1 contracts
         run: |
-          node --check world-generator/scripts/prepare-world-0250.mjs
-          node --check world-generator/scripts/build-region-preview-v2.mjs
+          node --check world-generator/scripts/prepare-world-0251.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
-          node --check mallorca-mobile/adventure-0210/verify-0250.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
-          node mallorca-mobile/adventure-0210/verify-0250.mjs
-      - name: Verify scale, France, labels, Africa, Atlantic and Canarias in Chromium
+          node --check mallorca-mobile/adventure-0210/verify-0251.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs
+          node mallorca-mobile/adventure-0210/verify-0251.mjs
+      - name: Verify compressed scale, France, Africa, Atlantic and Canarias in Chromium
         shell: bash
         run: |
-          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0250-visible-http.log 2>&1 &
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0251-visible-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          mkdir -p /tmp/waft-0250-visible
-          node mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs \
-            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
-            /tmp/waft-0250-visible
-      - name: Upload 0.25.0 visual evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: waft-0250-world-visible-browser
-          path: /tmp/waft-0250-visible/*.png
-          retention-days: 7
-          if-no-files-found: ignore
+          node mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
