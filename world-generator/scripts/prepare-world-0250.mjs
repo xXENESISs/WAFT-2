@@ -10,11 +10,14 @@ for(const region of ['iberia','france','canarias','northwest-africa']){
   const cfg=JSON.parse(read(p));
   cfg.version='0.25.0';
   cfg.geography.scale.horizontalUnitsPerKm=1.0;
+  for(const connection of cfg.travel?.connections||[]){
+    connection.requiredCapabilities=(connection.requiredCapabilities||[]).map(x=>x==='water'?'long_water':x);
+  }
   if(region==='iberia'){
     const atl=cfg.travel?.entryPoints?.find(x=>x.id==='atlantic-canarias');
     if(atl)atl.name='Atlántico oriental · Canarias';
     if(!cfg.travel.connections.some(x=>x.targetRegionId==='northwest-africa'))cfg.travel.connections.push({
-      id:'iberia-africa-continuous',targetRegionId:'northwest-africa',entryPointId:'gibraltar-south',requiredCapabilities:['water'],distanceClass:'regional',enabled:true
+      id:'iberia-africa-continuous',targetRegionId:'northwest-africa',entryPointId:'gibraltar-south',requiredCapabilities:['long_water'],distanceClass:'regional',enabled:true
     });
   }
   if(region==='canarias'){
