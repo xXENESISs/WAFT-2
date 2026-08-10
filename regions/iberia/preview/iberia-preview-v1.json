@@ -1,21 +1,21 @@
 {
   "binary": {
-    "bytes": 17648,
+    "bytes": 23168,
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "c3459094e5a13b3306aae6d224e56276b63730b07f3ee2025726c8ca8339317b"
+    "sha256": "71fd9cb17d25c44cdb8e4ef573c3f22f3d0ab32f2fcbb0c3b5c275ae198e5a22"
   },
-  "buildId": "iberia-preview-e0a40dc92de4",
+  "buildId": "iberia-preview-addd3b0140fa",
   "counts": {
-    "buildings": 365,
+    "buildings": 480,
     "hotels": 0,
     "landmarks": 0,
-    "namedBuildings": 365,
+    "namedBuildings": 480,
     "roadSegments": 0,
     "roadVertices": 0,
     "selectedRoads": 0,
-    "settlements": 368
+    "settlements": 483
   },
   "display": {
     "buildingHorizontalExaggeration": 2.7,
@@ -25,7 +25,7 @@
   },
   "distributions": {
     "buildingKinds": {
-      "public": 365
+      "public": 480
     },
     "landmarkRepresentations": {},
     "roadClasses": {}
@@ -132,6 +132,18 @@
       "population": 24373
     },
     {
+      "id": "pt-2743373",
+      "name": "Afurada de Baixo",
+      "place": "PPL",
+      "population": 34332
+    },
+    {
+      "id": "pt-2743304",
+      "name": "Águas Santas",
+      "place": "PPL",
+      "population": 27686
+    },
+    {
       "id": "es-2522333",
       "name": "Águilas",
       "place": "PPLA3",
@@ -154,6 +166,12 @@
       "name": "Alboraya",
       "place": "PPLA3",
       "population": 24222
+    },
+    {
+      "id": "pt-2272215",
+      "name": "Alcabideche",
+      "place": "PPL",
+      "population": 33315
     },
     {
       "id": "es-2522165",
@@ -210,10 +228,22 @@
       "population": 31492
     },
     {
+      "id": "pt-2743131",
+      "name": "Aldoar",
+      "place": "PPL",
+      "population": 29085
+    },
+    {
       "id": "es-2522057",
       "name": "Alfafar",
       "place": "PPLA3",
       "population": 20853
+    },
+    {
+      "id": "pt-2272005",
+      "name": "Alfornelos",
+      "place": "PPL",
+      "population": 27093
     },
     {
       "id": "es-2522013",
@@ -234,6 +264,12 @@
       "population": 20204
     },
     {
+      "id": "pt-2271977",
+      "name": "Algueirão",
+      "place": "PPL",
+      "population": 66250
+    },
+    {
       "id": "es-2521986",
       "name": "Alhaurín de la Torre",
       "place": "PPLA3",
@@ -250,6 +286,12 @@
       "name": "Alicante",
       "place": "PPLA2",
       "population": 348901
+    },
+    {
+      "id": "pt-2271961",
+      "name": "Almada",
+      "place": "PPLA2",
+      "population": 34008
     },
     {
       "id": "es-2521923",
@@ -300,10 +342,28 @@
       "population": 23780
     },
     {
+      "id": "pt-6930162",
+      "name": "Alvalade",
+      "place": "PPL",
+      "population": 31813
+    },
+    {
       "id": "es-2522129",
       "name": "Alzira",
       "place": "PPLA3",
       "population": 44393
+    },
+    {
+      "id": "pt-2271772",
+      "name": "Amadora",
+      "place": "PPL",
+      "population": 178858
+    },
+    {
+      "id": "pt-2271680",
+      "name": "Amora",
+      "place": "PPL",
+      "population": 52577
     },
     {
       "id": "es-3130131",
@@ -342,6 +402,18 @@
       "population": 31210
     },
     {
+      "id": "pt-2742804",
+      "name": "Arcos de Valdevez",
+      "place": "PPL",
+      "population": 22847
+    },
+    {
+      "id": "pt-2271547",
+      "name": "Areeiro",
+      "place": "PPL",
+      "population": 21160
+    },
+    {
       "id": "es-3129636",
       "name": "Arganda",
       "place": "PPL",
@@ -354,10 +426,22 @@
       "population": 21380
     },
     {
+      "id": "pt-2742700",
+      "name": "Arouca",
+      "place": "PPLA2",
+      "population": 21146
+    },
+    {
       "id": "es-3116503",
       "name": "Arrasate / Mondragón",
       "place": "PPL",
       "population": 22019
+    },
+    {
+      "id": "pt-2271473",
+      "name": "Arrentela",
+      "place": "PPL",
+      "population": 30156
     },
     {
       "id": "es-3129356",
@@ -384,6 +468,12 @@
       "population": 30000
     },
     {
+      "id": "pt-2742611",
+      "name": "Aveiro",
+      "place": "PPLA",
+      "population": 80880
+    },
+    {
       "id": "es-3129136",
       "name": "Ávila",
       "place": "PPLA2",
@@ -408,6 +498,12 @@
       "population": 153
     },
     {
+      "id": "pt-2271337",
+      "name": "Azambuja",
+      "place": "PPLA2",
+      "population": 21422
+    },
+    {
       "id": "es-3129046",
       "name": "Azuqueca de Henares",
       "place": "PPLA3",
@@ -430,6 +526,18 @@
       "name": "Baena",
       "place": "PPLA3",
       "population": 20915
+    },
+    {
+      "id": "pt-2742504",
+      "name": "Baião",
+      "place": "PPLA2",
+      "population": 20522
+    },
+    {
+      "id": "pt-2742493",
+      "name": "Bairro Novo",
+      "place": "PPL",
+      "population": 32876
     },
     {
       "id": "es-3109453",
@@ -462,6 +570,12 @@
       "population": 1686208
     },
     {
+      "id": "pt-2271071",
+      "name": "Barreiro",
+      "place": "PPLA2",
+      "population": 51280
+    },
+    {
       "id": "es-6697039",
       "name": "Basauri",
       "place": "PPLA3",
@@ -474,10 +588,28 @@
       "population": 23359
     },
     {
+      "id": "pt-2270985",
+      "name": "Beja",
+      "place": "PPLA",
+      "population": 34760
+    },
+    {
+      "id": "pt-2270981",
+      "name": "Belas",
+      "place": "PPL",
+      "population": 21019
+    },
+    {
       "id": "es-2521139",
       "name": "Benalmádena",
       "place": "PPLA3",
       "population": 58854
+    },
+    {
+      "id": "pt-2270962",
+      "name": "Benfica",
+      "place": "PPL",
+      "population": 36985
     },
     {
       "id": "es-3128273",
@@ -516,6 +648,24 @@
       "population": 52626
     },
     {
+      "id": "pt-2742051",
+      "name": "Bougado",
+      "place": "PPL",
+      "population": 21680
+    },
+    {
+      "id": "pt-2742032",
+      "name": "Braga",
+      "place": "PPLA",
+      "population": 193324
+    },
+    {
+      "id": "pt-2742027",
+      "name": "Bragança",
+      "place": "PPLA",
+      "population": 35341
+    },
+    {
       "id": "es-3127461",
       "name": "Burgos",
       "place": "PPLA2",
@@ -538,6 +688,12 @@
       "name": "Cabra",
       "place": "PPLA3",
       "population": 21352
+    },
+    {
+      "id": "pt-2270503",
+      "name": "Cacém",
+      "place": "PPL",
+      "population": 93982
     },
     {
       "id": "es-2520611",
@@ -570,10 +726,22 @@
       "population": 20035
     },
     {
+      "id": "pt-2270437",
+      "name": "Caldas da Rainha",
+      "place": "PPLA2",
+      "population": 27378
+    },
+    {
       "id": "es-2520496",
       "name": "Calp",
       "place": "PPL",
       "population": 23326
+    },
+    {
+      "id": "pt-2270377",
+      "name": "Camarate",
+      "place": "PPL",
+      "population": 20177
     },
     {
       "id": "es-3126917",
@@ -600,6 +768,12 @@
       "population": 32422
     },
     {
+      "id": "pt-2741667",
+      "name": "Campanhã",
+      "place": "PPL",
+      "population": 29666
+    },
+    {
       "id": "es-2520425",
       "name": "Campiña",
       "place": "PPL",
@@ -610,6 +784,18 @@
       "name": "Cangas do Morrazo",
       "place": "PPLA3",
       "population": 25748
+    },
+    {
+      "id": "pt-2741551",
+      "name": "Canidelo",
+      "place": "PPL",
+      "population": 26431
+    },
+    {
+      "id": "pt-2270229",
+      "name": "Caparica",
+      "place": "PPL",
+      "population": 21167
     },
     {
       "id": "es-2520171",
@@ -630,10 +816,22 @@
       "population": 21735
     },
     {
+      "id": "pt-2270184",
+      "name": "Carcavelos",
+      "place": "PPL",
+      "population": 20366
+    },
+    {
       "id": "es-2520118",
       "name": "Carmona",
       "place": "PPLA3",
       "population": 28620
+    },
+    {
+      "id": "pt-2270157",
+      "name": "Carnaxide",
+      "place": "PPL",
+      "population": 23698
     },
     {
       "id": "es-2520058",
@@ -646,6 +844,12 @@
       "name": "Cártama",
       "place": "PPLA3",
       "population": 21313
+    },
+    {
+      "id": "pt-2269594",
+      "name": "Cascais",
+      "place": "PPL",
+      "population": 36436
     },
     {
       "id": "es-3125915",
@@ -664,6 +868,12 @@
       "name": "Castelló de la Plana",
       "place": "PPLA2",
       "population": 171857
+    },
+    {
+      "id": "pt-2269514",
+      "name": "Castelo Branco",
+      "place": "PPLA",
+      "population": 33479
     },
     {
       "id": "es-3125621",
@@ -696,6 +906,12 @@
       "population": 140000
     },
     {
+      "id": "pt-2269282",
+      "name": "Charneca de Caparica",
+      "place": "PPL",
+      "population": 29763
+    },
+    {
       "id": "es-2519513",
       "name": "Chiclana de la Frontera",
       "place": "PPLA3",
@@ -724,6 +940,12 @@
       "name": "Ciudad Real",
       "place": "PPLA2",
       "population": 74743
+    },
+    {
+      "id": "pt-2740637",
+      "name": "Coimbra",
+      "place": "PPLA",
+      "population": 140796
     },
     {
       "id": "es-2519367",
@@ -768,6 +990,12 @@
       "population": 87173
     },
     {
+      "id": "pt-2269041",
+      "name": "Corroios",
+      "place": "PPL",
+      "population": 52520
+    },
+    {
       "id": "es-3124408",
       "name": "Coslada",
       "place": "PPLA3",
@@ -796,6 +1024,12 @@
       "name": "Culleredo",
       "place": "PPLA3",
       "population": 30221
+    },
+    {
+      "id": "pt-2268728",
+      "name": "Damaia",
+      "place": "PPL",
+      "population": 37607
     },
     {
       "id": "es-2518878",
@@ -894,6 +1128,12 @@
       "population": 24262
     },
     {
+      "id": "pt-2739997",
+      "name": "Ermesinde",
+      "place": "PPL",
+      "population": 39420
+    },
+    {
       "id": "es-3112011",
       "name": "Errenteria",
       "place": "PPLA3",
@@ -906,10 +1146,22 @@
       "population": 21855
     },
     {
+      "id": "pt-2739868",
+      "name": "Espinho",
+      "place": "PPLA2",
+      "population": 32786
+    },
+    {
       "id": "es-3122826",
       "name": "Esplugues de Llobregat",
       "place": "PPL",
       "population": 46355
+    },
+    {
+      "id": "pt-2739848",
+      "name": "Esposende",
+      "place": "PPLA2",
+      "population": 34625
     },
     {
       "id": "es-2517816",
@@ -918,10 +1170,52 @@
       "population": 67012
     },
     {
+      "id": "pt-2268436",
+      "name": "Estoril",
+      "place": "PPL",
+      "population": 23700
+    },
+    {
+      "id": "pt-2268406",
+      "name": "Évora",
+      "place": "PPLA",
+      "population": 53591
+    },
+    {
+      "id": "pt-2268373",
+      "name": "Falagueira",
+      "place": "PPL",
+      "population": 20788
+    },
+    {
+      "id": "pt-2739756",
+      "name": "Fânzeres",
+      "place": "PPL",
+      "population": 23916
+    },
+    {
+      "id": "pt-2268339",
+      "name": "Faro",
+      "place": "PPLA",
+      "population": 70347
+    },
+    {
+      "id": "pt-2739693",
+      "name": "Felgueiras",
+      "place": "PPLA2",
+      "population": 58065
+    },
+    {
       "id": "es-3123493",
       "name": "Ferrol",
       "place": "PPLA3",
       "population": 66799
+    },
+    {
+      "id": "pt-2739590",
+      "name": "Figueira da Foz",
+      "place": "PPLA2",
+      "population": 46600
     },
     {
       "id": "es-3122453",
@@ -1002,6 +1296,12 @@
       "population": 100266
     },
     {
+      "id": "pt-2738925",
+      "name": "Gondomar",
+      "place": "PPLA2",
+      "population": 27691
+    },
+    {
       "id": "es-2517117",
       "name": "Granada",
       "place": "PPLA2",
@@ -1024,6 +1324,18 @@
       "name": "Guadalajara",
       "place": "PPLA2",
       "population": 93470
+    },
+    {
+      "id": "pt-2738785",
+      "name": "Guarda",
+      "place": "PPLA",
+      "population": 40126
+    },
+    {
+      "id": "pt-2738752",
+      "name": "Guimarães",
+      "place": "PPLA2",
+      "population": 40604
     },
     {
       "id": "es-2516797",
@@ -1140,6 +1452,12 @@
       "population": 35928
     },
     {
+      "id": "pt-2267226",
+      "name": "Lagos",
+      "place": "PPL",
+      "population": 33494
+    },
+    {
       "id": "es-3119631",
       "name": "Laguna de Duero",
       "place": "PPLA3",
@@ -1152,6 +1470,18 @@
       "population": 20158
     },
     {
+      "id": "pt-2267131",
+      "name": "Laranjeiro",
+      "place": "PPL",
+      "population": 20473
+    },
+    {
+      "id": "pt-2267141",
+      "name": "Laranjeiro",
+      "place": "PPL",
+      "population": 20988
+    },
+    {
       "id": "es-3118848",
       "name": "Las Rozas de Madrid",
       "place": "PPL",
@@ -1162,6 +1492,12 @@
       "name": "Las Torres de Cotillas",
       "place": "PPLA3",
       "population": 21062
+    },
+    {
+      "id": "pt-2267112",
+      "name": "Lavradio",
+      "place": "PPL",
+      "population": 21877
     },
     {
       "id": "es-2515096",
@@ -1182,6 +1518,12 @@
       "population": 31197
     },
     {
+      "id": "pt-2267095",
+      "name": "Leiria",
+      "place": "PPLA",
+      "population": 128640
+    },
+    {
       "id": "es-3118532",
       "name": "León",
       "place": "PPLA2",
@@ -1198,6 +1540,18 @@
       "name": "Linares",
       "place": "PPLA3",
       "population": 57414
+    },
+    {
+      "id": "pt-2267067",
+      "name": "Linda-a-Velha",
+      "place": "PPL",
+      "population": 20895
+    },
+    {
+      "id": "pt-2267057",
+      "name": "Lisbon",
+      "place": "PPLC",
+      "population": 517802
     },
     {
       "id": "es-6943537",
@@ -1242,6 +1596,12 @@
       "population": 93079
     },
     {
+      "id": "pt-2738214",
+      "name": "Lordelo do Ouro",
+      "place": "PPL",
+      "population": 22270
+    },
+    {
       "id": "es-2514824",
       "name": "Los Barrios",
       "place": "PPL",
@@ -1252,6 +1612,12 @@
       "name": "Los Palacios y Villafranca",
       "place": "PPLA3",
       "population": 36824
+    },
+    {
+      "id": "pt-2266977",
+      "name": "Loures",
+      "place": "PPL",
+      "population": 66231
     },
     {
       "id": "es-2514392",
@@ -1266,10 +1632,22 @@
       "population": 98025
     },
     {
+      "id": "pt-2266940",
+      "name": "Lumiar",
+      "place": "PPL",
+      "population": 46334
+    },
+    {
       "id": "es-3117735",
       "name": "Madrid",
       "place": "PPLC",
       "population": 3255944
+    },
+    {
+      "id": "pt-2738014",
+      "name": "Maia",
+      "place": "PPLA2",
+      "population": 36426
     },
     {
       "id": "es-2514288",
@@ -1332,6 +1710,12 @@
       "population": 25969
     },
     {
+      "id": "pt-2266703",
+      "name": "Marinha Grande",
+      "place": "PPLA2",
+      "population": 28916
+    },
+    {
       "id": "es-3117331",
       "name": "Martorell",
       "place": "PPLA3",
@@ -1344,10 +1728,28 @@
       "population": 24655
     },
     {
+      "id": "pt-2266629",
+      "name": "Marvila",
+      "place": "PPL",
+      "population": 35463
+    },
+    {
+      "id": "pt-2266621",
+      "name": "Massamá",
+      "place": "PPL",
+      "population": 28112
+    },
+    {
       "id": "es-3117164",
       "name": "Mataró",
       "place": "PPLA3",
       "population": 126988
+    },
+    {
+      "id": "pt-2737824",
+      "name": "Matosinhos",
+      "place": "PPLA2",
+      "population": 28070
     },
     {
       "id": "es-2513983",
@@ -1428,10 +1830,28 @@
       "population": 21900
     },
     {
+      "id": "pt-2266249",
+      "name": "Monsanto",
+      "place": "PPL",
+      "population": 50000
+    },
+    {
       "id": "es-3116527",
       "name": "Montcada i Reixac",
       "place": "PPL",
       "population": 33453
+    },
+    {
+      "id": "pt-2265927",
+      "name": "Monte Estoril",
+      "place": "PPL",
+      "population": 23375
+    },
+    {
+      "id": "pt-2265788",
+      "name": "Montijo",
+      "place": "PPLA2",
+      "population": 30011
     },
     {
       "id": "es-2513601",
@@ -1444,6 +1864,12 @@
       "name": "Morón de la Frontera",
       "place": "PPLA3",
       "population": 27844
+    },
+    {
+      "id": "pt-2265726",
+      "name": "Moscavide e Portela",
+      "place": "PPL",
+      "population": 22488
     },
     {
       "id": "es-3116025",
@@ -1506,6 +1932,18 @@
       "population": 27135
     },
     {
+      "id": "pt-2265467",
+      "name": "Odivelas",
+      "place": "PPL",
+      "population": 54624
+    },
+    {
+      "id": "pt-2265464",
+      "name": "Oeiras",
+      "place": "PPLA2",
+      "population": 35000
+    },
+    {
       "id": "es-3115177",
       "name": "Oleiros",
       "place": "PPLA3",
@@ -1518,10 +1956,34 @@
       "population": 23301
     },
     {
+      "id": "pt-2265447",
+      "name": "Olhão",
+      "place": "PPLA2",
+      "population": 29239
+    },
+    {
       "id": "es-2513145",
       "name": "Oliva",
       "place": "PPLA3",
       "population": 28419
+    },
+    {
+      "id": "pt-2265432",
+      "name": "Olivais",
+      "place": "PPL",
+      "population": 33788
+    },
+    {
+      "id": "pt-2265428",
+      "name": "Olival",
+      "place": "PPL",
+      "population": 42961
+    },
+    {
+      "id": "pt-2737039",
+      "name": "Oliveira do Douro",
+      "place": "PPL",
+      "population": 24407
     },
     {
       "id": "es-3115093",
@@ -1560,6 +2022,12 @@
       "population": 220027
     },
     {
+      "id": "pt-2265326",
+      "name": "Paço de Arcos",
+      "place": "PPL",
+      "population": 25974
+    },
+    {
       "id": "es-2513029",
       "name": "Paiporta",
       "place": "PPLA3",
@@ -1590,10 +2058,22 @@
       "population": 208243
     },
     {
+      "id": "pt-2736680",
+      "name": "Paranhos",
+      "place": "PPL",
+      "population": 45883
+    },
+    {
       "id": "es-3114256",
       "name": "Parla",
       "place": "PPLA3",
       "population": 115611
+    },
+    {
+      "id": "pt-11886964",
+      "name": "Parque das Nações",
+      "place": "PPL",
+      "population": 22382
     },
     {
       "id": "es-2512862",
@@ -1620,6 +2100,12 @@
       "population": 26659
     },
     {
+      "id": "pt-2264718",
+      "name": "Pinhal Novo",
+      "place": "PPL",
+      "population": 23510
+    },
+    {
       "id": "es-3113415",
       "name": "Pinto",
       "place": "PPLA3",
@@ -1638,6 +2124,12 @@
       "population": 68736
     },
     {
+      "id": "pt-2736041",
+      "name": "Ponte de Lima",
+      "place": "PPLA2",
+      "population": 44667
+    },
+    {
       "id": "es-3112761",
       "name": "Ponteareas",
       "place": "PPL",
@@ -1650,10 +2142,52 @@
       "population": 82802
     },
     {
+      "id": "pt-2264526",
+      "name": "Pontinha",
+      "place": "PPL",
+      "population": 23249
+    },
+    {
+      "id": "pt-2264508",
+      "name": "Portalegre",
+      "place": "PPLA",
+      "population": 22368
+    },
+    {
+      "id": "pt-2264456",
+      "name": "Portimão",
+      "place": "PPL",
+      "population": 38487
+    },
+    {
+      "id": "pt-2735943",
+      "name": "Porto",
+      "place": "PPLA",
+      "population": 252687
+    },
+    {
+      "id": "pt-2264428",
+      "name": "Porto de Mós",
+      "place": "PPL",
+      "population": 23648
+    },
+    {
       "id": "es-3113082",
       "name": "Portugalete",
       "place": "PPLA3",
       "population": 45826
+    },
+    {
+      "id": "pt-2264359",
+      "name": "Póvoa de Santa Iria",
+      "place": "PPL",
+      "population": 28901
+    },
+    {
+      "id": "pt-2735787",
+      "name": "Póvoa de Varzim",
+      "place": "PPLA2",
+      "population": 29044
     },
     {
       "id": "es-3112989",
@@ -1698,6 +2232,24 @@
       "population": 25499
     },
     {
+      "id": "pt-2264299",
+      "name": "Quarteira",
+      "place": "PPL",
+      "population": 24420
+    },
+    {
+      "id": "pt-2264268",
+      "name": "Queluz",
+      "place": "PPL",
+      "population": 103399
+    },
+    {
+      "id": "pt-6559488",
+      "name": "Quinta Do Conde",
+      "place": "PPL",
+      "population": 25606
+    },
+    {
       "id": "es-3112154",
       "name": "Redondela",
       "place": "PPL",
@@ -1732,6 +2284,18 @@
       "name": "Rincón de la Victoria",
       "place": "PPLA3",
       "population": 38666
+    },
+    {
+      "id": "pt-2263827",
+      "name": "Rio de Mouro",
+      "place": "PPL",
+      "population": 54695
+    },
+    {
+      "id": "pt-2735083",
+      "name": "Rio Tinto",
+      "place": "PPL",
+      "population": 49966
     },
     {
       "id": "es-3111605",
@@ -1974,10 +2538,28 @@
       "population": 173635
     },
     {
+      "id": "pt-2263480",
+      "name": "Santarém",
+      "place": "PPLA",
+      "population": 29385
+    },
+    {
       "id": "es-3109642",
       "name": "Santiago de Compostela",
       "place": "PPLA",
       "population": 99536
+    },
+    {
+      "id": "pt-2734585",
+      "name": "Santo António dos Olivais",
+      "place": "PPL",
+      "population": 41150
+    },
+    {
+      "id": "pt-2734576",
+      "name": "Santo Ovídio",
+      "place": "PPL",
+      "population": 38544
     },
     {
       "id": "es-3109481",
@@ -1992,10 +2574,46 @@
       "population": 60000
     },
     {
+      "id": "pt-2263352",
+      "name": "São Domingos de Rana",
+      "place": "PPL",
+      "population": 46718
+    },
+    {
+      "id": "pt-2734484",
+      "name": "São João da Madeira",
+      "place": "PPL",
+      "population": 22079
+    },
+    {
+      "id": "pt-2734434",
+      "name": "São Mamede de Infesta",
+      "place": "PPL",
+      "population": 25940
+    },
+    {
       "id": "es-3109256",
       "name": "Segovia",
       "place": "PPLA2",
       "population": 51683
+    },
+    {
+      "id": "pt-2734140",
+      "name": "Senhora da Hora",
+      "place": "PPL",
+      "population": 28930
+    },
+    {
+      "id": "pt-2734106",
+      "name": "Sequeira",
+      "place": "PPL",
+      "population": 28502
+    },
+    {
+      "id": "pt-2262957",
+      "name": "Sesimbra",
+      "place": "PPL",
+      "population": 41134
     },
     {
       "id": "es-3109041",
@@ -2004,10 +2622,28 @@
       "population": 27445
     },
     {
+      "id": "pt-2262968",
+      "name": "Sete Rios",
+      "place": "PPL",
+      "population": 23261
+    },
+    {
+      "id": "pt-2262963",
+      "name": "Setúbal",
+      "place": "PPLA",
+      "population": 118166
+    },
+    {
       "id": "es-2510911",
       "name": "Sevilla",
       "place": "PPLA",
       "population": 686741
+    },
+    {
+      "id": "pt-2262912",
+      "name": "Sintra",
+      "place": "PPLA2",
+      "population": 26193
     },
     {
       "id": "es-3108877",
@@ -2112,6 +2748,12 @@
       "population": 78543
     },
     {
+      "id": "pt-2262581",
+      "name": "Torres Vedras",
+      "place": "PPLA2",
+      "population": 24443
+    },
+    {
       "id": "es-2510253",
       "name": "Torrevieja",
       "place": "PPLA3",
@@ -2136,6 +2778,12 @@
       "population": 41896
     },
     {
+      "id": "pt-2733352",
+      "name": "Trofa",
+      "place": "PPL",
+      "population": 20692
+    },
+    {
       "id": "es-3107418",
       "name": "Tudela",
       "place": "PPLA3",
@@ -2152,6 +2800,12 @@
       "name": "Utrera",
       "place": "PPLA3",
       "population": 52617
+    },
+    {
+      "id": "pt-2733263",
+      "name": "Valadares",
+      "place": "PPL",
+      "population": 22322
     },
     {
       "id": "es-3106868",
@@ -2184,10 +2838,22 @@
       "population": 25092
     },
     {
+      "id": "pt-2732978",
+      "name": "Valongo",
+      "place": "PPLA2",
+      "population": 21328
+    },
+    {
       "id": "es-2509769",
       "name": "Vélez-Málaga",
       "place": "PPLA3",
       "population": 74190
+    },
+    {
+      "id": "pt-2732773",
+      "name": "Viana do Castelo",
+      "place": "PPLA",
+      "population": 36148
     },
     {
       "id": "es-3106050",
@@ -2206,6 +2872,18 @@
       "name": "Vigo",
       "place": "PPLA3",
       "population": 293642
+    },
+    {
+      "id": "pt-2732649",
+      "name": "Vila do Conde",
+      "place": "PPLA2",
+      "population": 27642
+    },
+    {
+      "id": "pt-2732544",
+      "name": "Vila Nova de Gaia",
+      "place": "PPLA2",
+      "population": 70811
     },
     {
       "id": "es-2509509",
@@ -2242,6 +2920,12 @@
       "name": "Vilanova i la Geltrú",
       "place": "PPL",
       "population": 65890
+    },
+    {
+      "id": "pt-2732513",
+      "name": "Vilar",
+      "place": "PPL",
+      "population": 21227
     },
     {
       "id": "es-3110516",
@@ -2286,6 +2970,12 @@
       "population": 28273
     },
     {
+      "id": "pt-2732265",
+      "name": "Viseu",
+      "place": "PPLA",
+      "population": 103502
+    },
+    {
       "id": "es-2516345",
       "name": "Xàtiva",
       "place": "PPLA3",
@@ -2323,9 +3013,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "e0a40dc92de4a8f3904ff379e381de11d3d53286ddf46b5062a3d3e75ccf784c",
+    "inputsSha256": "addd3b0140fae88daf6ed810fdf2b85c3760c5bcf957beaf259ecde3c5db21e6",
     "landcoverSha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668",
-    "regionManifestSha256": "205a6a4db904c4c8c2cc899dc5410ded1c7c425ef223bf922a31b66335b83b07",
+    "regionManifestSha256": "3792f1245308c71fd021e8e7a7b4316f8d7b2d49b167a1204cd4f1636758d02b",
     "terrainSha256": "3330513a236f9a959454e004305113831ef36cb02d8c9ee386dffa2d911966ef"
   },
   "terrain": {

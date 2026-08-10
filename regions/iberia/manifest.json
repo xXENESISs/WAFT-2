@@ -11,9 +11,9 @@
     "connections": 2,
     "entryPoints": 3,
     "faunaSpecies": 0,
-    "generatedBuildings": 365,
+    "generatedBuildings": 480,
     "landmarks": 0,
-    "settlements": 368
+    "settlements": 483
   },
   "deterministic": true,
   "files": [
@@ -33,14 +33,14 @@
       "sha256": "6f76aa21f93385c2aefe5a7531afadb596a0584e01c3b3f645c3c85e099a8e78"
     },
     {
-      "bytes": 276890,
+      "bytes": 363438,
       "path": "settlements.json",
-      "sha256": "258369f780542e9bddd996e708436aa38515ce33625c030cc5f1d81761f37895"
+      "sha256": "e154af83c9b8b4d68851948b79e15b88ad4200358c0e4f825e65b1b0a278d165"
     },
     {
-      "bytes": 385687,
+      "bytes": 508836,
       "path": "objects.json",
-      "sha256": "4aa0947dedb0a80adc5647252c5a2f2544cb6e37278d424d169ded3a2a711fd5"
+      "sha256": "b9d2e6bc0a72f9d54c81c5a04f5b49e583ed706dc4176ff833f0f6d7ff3cb35e"
     },
     {
       "bytes": 147,
@@ -221,7 +221,8 @@
     "source": {
       "countries": [
         "ES",
-        "GI"
+        "GI",
+        "PT"
       ],
       "dataset": "cities15000",
       "fictionalWarImpact": true,
