@@ -16,6 +16,10 @@ index=replace(index,
   "diveAmount=state.iberiaDiveButton?1:Math.min(1,Math.max(0,(state.joyY-.55)/.45))",
   'full dive amount');
 index=replace(index,
+  "if(!wasIberiaDive&&state.adventureFlightVy>0)state.adventureFlightVy=0;const diveAmount=state.iberiaDiveButton?1:",
+  "if(state.iberiaDiveButton)state.adventureFlightVy=-58;else if(!wasIberiaDive&&state.adventureFlightVy>0)state.adventureFlightVy=0;const diveAmount=state.iberiaDiveButton?1:",
+  'instant explicit dive');
+index=replace(index,
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);",
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);if('flightDive'in modifiers)state.iberiaDiveButton=Boolean(modifiers.flightDive);",
   'dive modifier api');
@@ -37,4 +41,4 @@ france=replace(france,"mode:stride===1?'france-full':'france-lod',lift:stride===
 
 fs.writeFileSync(indexPath,index);
 fs.writeFileSync(francePath,france);
-console.log('WAFT 0.24.6 prepared: explicit dive, physical landmark layer and hidden-under-Iberia France overlap.');
+console.log('WAFT 0.24.6 prepared: explicit hard dive, physical landmark layer and hidden-under-Iberia France overlap.');
