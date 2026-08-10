@@ -14,16 +14,11 @@
   const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.24.8';
   const U=1.45;
   const I={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
-  const F={lat0:46.15,lon0:2.125,kmLat:111.132,kmLon:77.11946418437198};
-  const ANCHOR={lat:42.66,lon:0.55};
   const LOD_MIN_LAT=42.10;
-  const MORPH_START_LAT=42.45;
-  const MORPH_END_LAT=43.30;
   const BORDER_OVERLAP=.055;
   const PAGE_INSTANCE_ID=window.__WAFT_PAGE_INSTANCE_0245__||(window.__WAFT_PAGE_INSTANCE_0245__=`waft-${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a),0,1);return t*t*(3-2*t);};
   const franceSouthLat=lon=>{
     if(lon<-5.2)return 49.0;
     if(lon<-2.05)return 43.72+(-2.05-lon)*1.55;
@@ -36,24 +31,8 @@
   const inFranceGeo=geo=>Boolean(geo&&geo.lon>-5.7&&geo.lon<9.8&&geo.lat>=franceSouthLat(geo.lon));
   const nearFrance=(geo,margin=.65)=>Boolean(geo&&geo.lon>-5.7&&geo.lon<9.8&&geo.lat>=franceSouthLat(geo.lon)-margin);
   const deepFrance=geo=>inFranceGeo(geo)&&geo.lat>=franceSouthLat(geo.lon)+1.10;
-  const iberiaX=lon=>(lon-I.lon0)*I.kmLon*U;
-  const franceLocalX=lon=>(lon-F.lon0)*F.kmLon*U;
-  const anchorWorldX=iberiaX(ANCHOR.lon);
-  const anchorFranceX=franceLocalX(ANCHOR.lon);
-  const worldFromGeo=(lat,lon)=>{
-    const t=smooth(MORPH_START_LAT,MORPH_END_LAT,lat);
-    const xi=iberiaX(lon);
-    const xf=anchorWorldX+(franceLocalX(lon)-anchorFranceX);
-    return{x:xi+(xf-xi)*t,z:-(lat-I.lat0)*I.kmLat*U};
-  };
-  const geoFromWorld=(x,z)=>{
-    const lat=I.lat0-z/(I.kmLat*U);
-    const t=smooth(MORPH_START_LAT,MORPH_END_LAT,lat);
-    const ai=I.kmLon*U,bi=-I.lon0*ai;
-    const af=F.kmLon*U,bf=anchorWorldX-af*ANCHOR.lon;
-    const a=ai+(af-ai)*t,b=bi+(bf-bi)*t;
-    return{lat,lon:(x-b)/a};
-  };
+  const worldFromGeo=(lat,lon)=>({x:(lon-I.lon0)*I.kmLon*U,z:-(lat-I.lat0)*I.kmLat*U});
+  const geoFromWorld=(x,z)=>({lat:I.lat0-z/(I.kmLat*U),lon:I.lon0+x/(I.kmLon*U)});
 
   const state={
     phase:'idle',activeRegion:'iberia',prefetched:false,prefetchStarted:false,error:null,
