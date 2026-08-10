@@ -1,6 +1,6 @@
 'use strict';
 (async()=>{
-  if(window.__WAFT_IBERIA_WORLD_0247_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
+  if(window.__WAFT_IBERIA_WORLD_0247_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia'||window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__)return;
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let i=0;i<600&&(!window.WAFTRegionRuntime||!window.WAFTWorldStreaming0245||!window.__WAFT_IBERIA_WORLD_0246_READY__);i++)await wait(40);
   const api=window.WAFTRegionRuntime,stream=window.WAFTWorldStreaming0245,plugin=window.WAFTAdventurePlugin;
@@ -44,7 +44,7 @@
     for(let r=0;r<lats.length-1;r++){const a=r*2,b=a+1,c=a+2,d=a+3;ind.push(a,c,b,b,c,d);}
     const vao=gl.createVertexArray();gl.bindVertexArray(vao);const pb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pos),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);const cb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,cb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(col),gl.STATIC_DRAW);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(ind),gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:ind.length,triangles:ind.length/3,buffers:[pb,cb,ib]};
   };
-  atlanticMesh=null; // WAFT 0.25.1: no artificial Atlantic corridor geometry
+  atlanticMesh=null; // WAFT 0.25.2: no artificial Atlantic corridor geometry
 
   const parseTerrain=buffer=>{const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTHGT1')throw new Error(`Canarias terrain magic ${magic}`);const headerBytes=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{headerBytes,columns,rows,west:v.getFloat64(16,true),east:v.getFloat64(24,true),south:v.getFloat64(32,true),north:v.getFloat64(40,true),nodata:v.getInt32(56,true),elevations:new Int16Array(buffer,headerBytes,columns*rows)};};
   const parseCover=buffer=>{const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTLCV1')throw new Error(`Canarias cover magic ${magic}`);const headerBytes=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{columns,rows,classes:new Uint8Array(buffer,headerBytes,columns*rows)};};
@@ -56,7 +56,7 @@
   };
   const prefetchCanarias=()=>canPrefetch||(canPrefetch=(async()=>{const base='../../regions/canarias/';const [m,tb,cb]=await Promise.all([fetch(new URL(base+'manifest.json',location.href),{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error('Canarias manifest '+r.status);return r.json();}),fetch(new URL(base+'terrain.bin',location.href),{cache:'force-cache'}).then(r=>r.arrayBuffer()),fetch(new URL(base+'landcover.bin',location.href),{cache:'force-cache'}).then(r=>r.arrayBuffer())]);canManifest=m;canTerrain=parseTerrain(tb);canCover=parseCover(cb);canMesh=buildCanMesh();return true;})());
   const sampleCanarias=(x,z)=>{if(!canTerrain)return null;const g=geoFromWorld(x,z),t=canTerrain;if(g.lat<t.south||g.lat>t.north||g.lon<t.west||g.lon>t.east)return null;const fx=(g.lon-t.west)/(t.east-t.west)*(t.columns-1),fz=(t.north-g.lat)/(t.north-t.south)*(t.rows-1),col=clamp(Math.round(fx),0,t.columns-1),row=clamp(Math.round(fz),0,t.rows-1),raw=t.elevations[row*t.columns+col],land=raw!==t.nodata;return{inside:true,land,water:!land,height:(land?raw:-8)*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'canarias',lat:g.lat,lon:g.lon};};
-  const sampleAtlantic=()=>null; // WAFT 0.25.1: no artificial Atlantic corridor surface
+  const sampleAtlantic=()=>null; // WAFT 0.25.2: no artificial Atlantic corridor surface
   const previousStreamSample=stream.sampleSurface?.bind(stream);
   if(previousStreamSample)stream.sampleSurface=(x,z)=>sampleCanarias(x,z)||previousStreamSample(x,z);
 
@@ -91,10 +91,10 @@
   const updateWorldState=()=>{
     const state=api.getState?.();if(!state?.position)return;const g=geoFromWorld(state.position.x,state.position.z),french=inFrance(g),can=inCanarias(g),african=Boolean(window.WAFTWorld0250?.inAfrica?.(g)),hud=document.getElementById('hudTitle'),status=document.getElementById('waftWorldStream0245');
     if(oldFrance)oldFrance.hidden=true;
-    if(african){regionBadge.hidden=true;if(hud)hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.1';}
+    if(african){regionBadge.hidden=true;if(hud)hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.2';}
     else if(can){regionBadge.hidden=false;regionBadge.textContent=`CANARIAS · ${canariasCities.length} NÚCLEOS`;if(hud)hud.textContent='CANARIAS · MUNDO CONTINUO';}
     else if(french){regionBadge.hidden=false;regionBadge.textContent=`FRANCE · ${franceCities.length} VILLES`;if(hud)hud.textContent='FRANCE · MONDE CONTINU';}
-    else{regionBadge.hidden=true;if(hud&&(hud.textContent==='FRANCE · MONDE CONTINU'||hud.textContent==='FRANCE 001 · MONDE CONTINU'||hud.textContent==='CANARIAS · MUNDO CONTINUO'))hud.textContent='PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.1';}
+    else{regionBadge.hidden=true;if(hud&&(hud.textContent==='FRANCE · MONDE CONTINU'||hud.textContent==='FRANCE 001 · MONDE CONTINU'||hud.textContent==='CANARIAS · MUNDO CONTINUO'))hud.textContent='PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.2';}
     const streamState=stream.getState?.(),released=Boolean(streamState?.iberiaGpuReleased||state.adventureRegionalTerrainReleased);
     if(status){const region=african?'AFRICA':can?'CANARIAS':french?'FRANCE':'IBERIA';status.textContent=`MUNDO · ${region} · continuidad geográfica${released?' · región anterior liberada':''}`;}
     if(g.lat<36&&!canTerrain)prefetchCanarias().catch(e=>console.error(e));
@@ -103,6 +103,6 @@
   };
   setInterval(updateWorldState,180);updateWorldState();
 
-  window.WAFTWorldContinuity0247={version:'0.25.1-compat',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,atlasSystem:'shared-iberia',floatingCityLabels:false,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null,streamState=stream.getState?.();return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased:Boolean(streamState?.iberiaGpuReleased||s?.adventureRegionalTerrainReleased),iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames,atlanticReady:Boolean(atlanticMesh),atlanticTriangles:atlanticMesh?.triangles||0,atlanticDrawFrames,atlasSystem:'shared-iberia',floatingCityLabels:false};}};
+  window.WAFTWorldContinuity0247={version:'0.25.2-compat',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,atlasSystem:'shared-iberia',floatingCityLabels:false,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null,streamState=stream.getState?.();return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased:Boolean(streamState?.iberiaGpuReleased||s?.adventureRegionalTerrainReleased),iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames,atlanticReady:Boolean(atlanticMesh),atlanticTriangles:atlanticMesh?.triangles||0,atlanticDrawFrames,atlasSystem:'shared-iberia',floatingCityLabels:false};}};
   window.__WAFT_IBERIA_WORLD_0247_READY__=true;
 })().catch(e=>{console.error('WAFT 0.24.8 hotfix failed',e);window.__WAFT_IBERIA_WORLD_0247_ERROR__=String(e?.message||e);});

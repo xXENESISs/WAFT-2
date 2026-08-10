@@ -1,6 +1,6 @@
 'use strict';
 (async()=>{
-  if(window.__WAFT_IBERIA_WORLD_0249_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
+  if(window.__WAFT_IBERIA_WORLD_0249_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia'||window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__)return;
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let i=0;i<600&&(!window.WAFTRegionRuntime||!window.WAFTWorldContinuity0247||!window.WAFTWorldStreaming0245);i++)await wait(40);
   const api=window.WAFTRegionRuntime,continuity=window.WAFTWorldContinuity0247,stream=window.WAFTWorldStreaming0245;
@@ -79,12 +79,12 @@
 
   const desiredHud=state=>{
     const world250=window.WAFTWorld0250,version250=Boolean(window.__WAFT_IBERIA_WORLD_0250_READY__||world250);
-    if(!state?.position)return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.1':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
+    if(!state?.position)return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.2':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
     const g=geoFromWorld(state.position.x,state.position.z);
-    if(world250?.inAfrica?.(g))return'NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.1';
+    if(world250?.inAfrica?.(g))return'NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.2';
     if(continuity.inCanarias?.(g))return'CANARIAS · MUNDO CONTINUO';
     if(continuity.inFrance?.(g))return'FRANCE · MONDE CONTINU';
-    return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.1':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
+    return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.2':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';
   };
   const normalizeVersionText=()=>{
     if(window.__WAFT_IBERIA_WORLD_0250_READY__)return;

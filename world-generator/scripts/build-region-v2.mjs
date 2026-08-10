@@ -524,7 +524,7 @@ function build() {
       maximumElevationMeters: maximumElevation,
       meanElevationMeters: Number((elevationSum / landCells).toFixed(3)),
       elevationSource: {
-        mode: 'copernicus-dem-glo30',
+        mode: demMetadata.mode ?? 'copernicus-dem-glo30',
         dataset: demMetadata.dataset,
         provider: demMetadata.provider,
         retrievedOn: demMetadata.retrievedOn,
