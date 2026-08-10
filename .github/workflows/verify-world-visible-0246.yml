@@ -23,6 +23,7 @@ on:
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
       - mallorca-mobile/adventure-0210/iberia-world-0249.js
       - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs
       - mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
       - mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
       - regions/iberia/**
@@ -71,7 +72,7 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
           node world-generator/scripts/validate-region.mjs
@@ -139,7 +140,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
           world_url="http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
-          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs "$world_url" /tmp/waft-cantabria-0249.png
+          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0249.mjs "$world_url" /tmp/waft-cantabria-0249.png
           node mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs "$world_url"
           node mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs "$world_url"
       - name: Upload Cantabria regression screenshot
