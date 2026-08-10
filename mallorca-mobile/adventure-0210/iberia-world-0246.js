@@ -10,12 +10,13 @@
   style.textContent=`#waftSpecialMarkers{display:none!important}#waftDive0246{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(118px,calc(env(safe-area-inset-bottom) + 118px));z-index:45;width:86px;height:52px;border-radius:16px;border:2px solid #ffcf67;background:rgba(70,25,18,.88);color:#fff4d5;font:950 12px system-ui;box-shadow:0 8px 22px #0009;touch-action:none;user-select:none}#waftDive0246.active{transform:scale(.96);background:#8d2e20}#waftDive0246[hidden]{display:none!important}`;
   document.head.appendChild(style);
   const dive=document.createElement('button');dive.id='waftDive0246';dive.type='button';dive.textContent='PICADO ↓';dive.hidden=true;document.body.appendChild(dive);
-  const setDive=value=>{dive.classList.toggle('active',value);api.setAdventureModifiers?.({flightDive:value});};
-  dive.addEventListener('pointerdown',e=>{e.preventDefault();dive.setPointerCapture?.(e.pointerId);setDive(true);});
+  const isBird=()=>window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';
+  const setDive=value=>{dive.classList.toggle('active',value);if(value&&isBird())api.setAdventureModifiers?.({flight:true,mountType:'vulture',flightDive:true});else api.setAdventureModifiers?.({flightDive:false});};
+  dive.addEventListener('pointerdown',e=>{e.preventDefault();try{dive.setPointerCapture?.(e.pointerId);}catch{}setDive(true);});
   for(const ev of ['pointerup','pointercancel','lostpointercapture'])dive.addEventListener(ev,()=>setDive(false));
   addEventListener('keydown',e=>{if((e.code==='ControlLeft'||e.code==='KeyC')&&!e.repeat)setDive(true);});
   addEventListener('keyup',e=>{if(e.code==='ControlLeft'||e.code==='KeyC')setDive(false);});
-  setInterval(()=>{const s=api.getState?.(),mounted=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture';dive.hidden=!(mounted&&s?.adventureFlight);if(dive.hidden)setDive(false);},180);
+  setInterval(()=>{const mounted=isBird();dive.hidden=!mounted;if(!mounted)setDive(false);},120);
 
   const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 unavailable for 0.24.6 landmarks');
@@ -34,6 +35,6 @@
   try{const r=await fetch(new URL('../../regions/iberia/settlements.json',location.href),{cache:'no-store'}),d=await r.json();const want=new Map([['Gibraltar','gibraltar'],['Peñíscola','peniscola'],['Ayódar','ayodar']]);landmarks=(d.items||[]).filter(x=>want.has(x.name)).map(x=>({kind:want.get(x.name),x:x.local.x,z:x.local.z,y:(Number(x.local.y)||0)*.013594+.08,name:x.name}));}catch(e){console.error(e);}
   const prev=plugin.afterWorldDraw?.bind(plugin);
   plugin.afterWorldDraw=(now,eye,pv)=>{prev?.(now,eye,pv);if(!landmarks.length)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);for(const l of landmarks){const m=meshes[l.kind];gl.uniform3f(uO,l.x,l.y,l.z);gl.bindVertexArray(m.vao);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_INT,0);}gl.bindVertexArray(null);};
-  window.WAFTIberiaWorld0246={version:'0.24.6',landmarks:()=>landmarks.map(x=>x.name),diveButton:dive};
+  window.WAFTIberiaWorld0246={version:'0.24.6',landmarks:()=>landmarks.map(x=>x.name),diveButton:dive,setDive};
   window.__WAFT_IBERIA_WORLD_0246_READY__=true;
 })().catch(e=>{console.error('WAFT 0.24.6 failed',e);window.__WAFT_IBERIA_WORLD_0246_ERROR__=String(e?.message||e);});
