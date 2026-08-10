@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-10T22:58:01.521Z",
+  "generatedAt": "2026-08-10T23:09:15.147Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
@@ -55,7 +55,7 @@
     {
       "file": "world-generator/configs/europe-atlas.region.json",
       "id": "europe-atlas",
-      "version": "0.25.2",
+      "version": "0.25.3",
       "valid": true,
       "errors": [],
       "warnings": [
