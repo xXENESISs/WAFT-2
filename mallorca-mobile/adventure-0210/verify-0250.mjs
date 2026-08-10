@@ -16,6 +16,7 @@ for(const id of ['iberia','france','canarias','northwest-africa']){
 }
 const f=read('mallorca-mobile/adventure-0210/iberia-world-0245.js');
 const c=read('mallorca-mobile/adventure-0210/iberia-world-0247.js');
+const ui249=read('mallorca-mobile/adventure-0210/iberia-world-0249.js');
 const w=read('mallorca-mobile/adventure-0210/iberia-world-0250.js');
 const index=read('mallorca-mobile/adventure-0210/index.html');
 need(!f.includes('const U=1.45;'),'France streamer still hardcodes 1.45');
@@ -23,7 +24,9 @@ need(!f.includes('const LOD_MIN_LAT=42.10;'),'France LOD still overlays southern
 need(!c.includes("streamedRegion:'atlantic-corridor'"),'Artificial Atlantic corridor surface survived');
 need(c.includes('atlanticMesh=null'),'Artificial Atlantic mesh not disabled');
 need(index.includes('iberia-world-0250.js'),'0.25.0 runtime not bootstrapped');
-for(const token of ['LABEL_RANGE_KM=1.5','NEAREST_RANGE_KM=5.0','LABEL_MAX_AGL_M=320','northwest-africa','atlantic-ocean','#waftWorldLabels0249,#waftNearest0249{display:none!important}'])need(w.includes(token),`0.25 runtime missing ${token}`);
+for(const token of ['LABEL_RANGE_KM=.15','NEAREST_RANGE_KM=1.0','LABEL_MAX_AGL_M=320','northwest-africa','atlantic-ocean','#waftWorldLabels0249,#waftNearest0249{display:none!important}'])need(w.includes(token),`0.25 runtime missing ${token}`);
+need(ui249.includes('world250?.inAfrica?.(g)'),'Legacy HUD controller does not delegate Africa to 0.25.0');
+need(ui249.includes('if(window.__WAFT_IBERIA_WORLD_0250_READY__)return;'),'Legacy 0.24.9 version normalizer still fights 0.25.0');
 const iberiaSettlements=json('regions/iberia/settlements.json').items||[];
 const iberiaObjects=json('regions/iberia/objects.json').items||[];
 const sant=iberiaSettlements.find(x=>x.name==='Sant Just Desvern');
@@ -39,4 +42,4 @@ need(africa.countryCodes.includes('MA')&&africa.countryCodes.includes('ES'),'Afr
 const africaSettlements=json('regions/northwest-africa/settlements.json').items||[];
 need(africaSettlements.length>=150,`Northwest Africa settlement layer too sparse: ${africaSettlements.length}`);
 need(africaSettlements.some(x=>x.countryCode==='MA'),'Morocco settlements missing from Africa package');
-console.log(JSON.stringify({valid:true,version:'0.25.0',scale:1.0,verticalScale:.013594,iberiaSettlements:iberiaSettlements.length,africaSettlements:africaSettlements.length,labelRangeKm:1.5,nearestRangeKm:5,africaBounds:africa.geography.bounds,artificialAtlanticCorridor:false},null,2));
+console.log(JSON.stringify({valid:true,version:'0.25.0',scale:1.0,verticalScale:.013594,iberiaSettlements:iberiaSettlements.length,africaSettlements:africaSettlements.length,labelRangeKm:.15,nearestRangeKm:1,africaBounds:africa.geography.bounds,artificialAtlanticCorridor:false},null,2));
