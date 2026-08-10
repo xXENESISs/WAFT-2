@@ -28,7 +28,7 @@ try{
 
   const setup=await page.evaluate(async()=>{
     const api=WAFTRegionRuntime,game=__WAFT_INTERNAL_GAME__,stream=WAFTWorldStreaming0245,wait=ms=>new Promise(r=>setTimeout(r,ms));
-    const bird=game.animals.find(a=>a.id==='iberia-bearded-vulture');need;
+    const bird=game.animals.find(a=>a.id==='iberia-bearded-vulture');if(!bird)throw new Error('Bearded vulture missing');
     api.setAdventureModifiers({flight:false,mountType:null});api.setRegionalPosition(bird.x,bird.z);await wait(250);document.getElementById('waftAdventureAction')?.click();await wait(350);
     const ocean=stream.worldFromGeo(36.2,-7.0);api.setAdventureModifiers({flight:false,mountType:'vulture'});api.setRegionalPosition(ocean.x,ocean.z);api.setAdventureModifiers({flight:true,mountType:'vulture'});api.setInput(0,0);await wait(250);
     api.setAdventureModifiers({flightFlap:10});await wait(620);await wait(500);
