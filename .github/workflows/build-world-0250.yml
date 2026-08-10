@@ -16,8 +16,10 @@ on:
       - world-generator/scripts/import-copernicus-dem-glo90.py
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/build-region-v2.mjs
+      - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/scripts/build-archipelago-region-0244.mjs
       - world-generator/scripts/build-settlement-markers-0244.py
+      - world-generator/scripts/ensure-iberia-settlements-0246.mjs
       - mallorca-mobile/adventure-0210/index.html
       - mallorca-mobile/adventure-0210/iberia-world-0245.js
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
@@ -69,6 +71,8 @@ jobs:
       - name: Syntax and region contracts
         run: |
           node --check world-generator/scripts/prepare-world-0250.mjs
+          node --check world-generator/scripts/build-region-preview-v2.mjs
+          node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
@@ -92,7 +96,10 @@ jobs:
               node world-generator/scripts/build-region-v2.mjs "$region"
             fi
             case "$region" in
-              iberia) python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,PT,GI --minimum-population 20000 --exclude-balearics ;;
+              iberia)
+                python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,PT,GI --minimum-population 20000 --exclude-balearics
+                node world-generator/scripts/ensure-iberia-settlements-0246.mjs
+                ;;
               france) python world-generator/scripts/build-settlement-markers-0244.py france --countries FR --minimum-population 20000 ;;
               canarias) python world-generator/scripts/build-settlement-markers-0244.py canarias --countries ES --minimum-population 20000 ;;
               northwest-africa) python world-generator/scripts/build-settlement-markers-0244.py northwest-africa --countries MA,DZ,EH,ES --minimum-population 20000 ;;
