@@ -53,7 +53,7 @@
   };
 
   const makeOcean=()=>{
-    const corners=[[26.35,-19.7],[36.25,-19.7],[26.35,.25],[36.25,.25]].map(([lat,lon])=>worldFromGeo(lat,lon));
+    const corners=[[18,-32],[48,-32],[18,12],[48,12]].map(([lat,lon])=>worldFromGeo(lat,lon));
     const pos=new Float32Array([corners[0].x,-8,corners[0].z,corners[1].x,-8,corners[1].z,corners[2].x,-8,corners[2].z,corners[3].x,-8,corners[3].z]);
     const norm=new Float32Array([0,1,0,0,1,0,0,1,0,0,1,0]),water=palette[0],col=new Float32Array([...water,...water,...water,...water]),ind=new Uint32Array([0,1,2,2,1,3]);
     const vao=gl.createVertexArray();gl.bindVertexArray(vao);const buffers=[];for(const [slot,data] of [[0,pos],[1,norm],[2,col]]){const b=gl.createBuffer();buffers.push(b);gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);gl.enableVertexAttribArray(slot);gl.vertexAttribPointer(slot,3,gl.FLOAT,false,0,0);}const ib=gl.createBuffer();buffers.push(ib);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,ind,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,buffers,count:6,triangles:2};
@@ -106,8 +106,9 @@
   const updateLabels=()=>{
     const s=api.getState?.();if(!s?.position)return;const g=geoFromWorld(s.position.x,s.position.z);state.lastGeo=g;if(nearAfrica(g)&&!state.mesh)prefetchAfrica().catch(console.error);
     const source=provider({state:s}),items=(source.items||[]).filter(x=>Number.isFinite(Number(x?._world?.x))&&Number.isFinite(Number(x?._world?.z))).map(x=>({x,d:distance(x,s.position)})).sort((a,b)=>a.d-b.d);
-    const first=items[0];state.nearest=first?.x||null;nearest.textContent=first&&first.d<=NEAREST_RANGE_KM?`Cerca: ${first.x.name} · ${first.d.toFixed(1)} km · ${fmt(first.x.population)} hab ☠️`:'';
+    const first=items[0];state.nearest=first?.x||null;
     const under=stream.sampleSurface?.(s.position.x,s.position.z),agl=under?.inside?Math.max(0,(s.position.y-under.height)/VERTICAL):Infinity,allowAltitude=agl<=LABEL_MAX_AGL_M,boxes=reserved();let shown=0;
+    nearest.textContent=allowAltitude&&first&&first.d<=NEAREST_RANGE_KM?`Cerca: ${first.x.name} · ${first.d.toFixed(1)} km · ${fmt(first.x.population)} hab ☠️`:'';
     for(const entry of items){if(shown>=nodes.length||entry.d>LABEL_RANGE_KM||!allowAltitude)break;const place=entry.x,surf=stream.sampleSurface?.(place._world.x,place._world.z);if(!surf?.inside||!surf.land)continue;const p=project(place._world.x,surf.height+.42,place._world.z);if(!p||overlaps(p,boxes))continue;const node=nodes[shown++];node.style.left=`${p.x}px`;node.style.top=`${p.y}px`;node.querySelector('b').textContent=place.name;node.querySelector('small').textContent=`${fmt(place.population)} hab ☠️`;node.classList.add('visible');
     }
     for(let i=shown;i<nodes.length;i++)nodes[i].classList.remove('visible');state.shownLabels=shown;state.lastSurface=under;
