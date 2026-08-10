@@ -142,7 +142,7 @@
       replaceOne('const swimmingBeforeMove = terrainBeforeMove.inside && !terrainBeforeMove.land;', 'const swimmingBeforeMove = !state.adventureFlight && !state.adventureWaterJump && terrainBeforeMove.inside && !terrainBeforeMove.land;', 'modo locomoción');
       replaceOne(/      const boosted = state\.boost \|\| keys\.has\('ShiftLeft'\) \|\| keys\.has\('ShiftRight'\);[\s\S]*?      const moveZ = inputZ \* speed \* dt;/, `      const boosted = state.boost || keys.has('ShiftLeft') || keys.has('ShiftRight');
       let speed=0;
-      if(state.adventureFlight){const bearded=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',dive=bearded&&state.joyY>.55;speed=bearded?(dive?(boosted?58:52):(inputLength<.06?24:(boosted||inputLength>.93?46:inputLength>.70?38:30))):(inputLength<.06?8.2:(boosted||inputLength>.93?26.5:inputLength>.70?19.0:12.4));}
+      if(state.adventureFlight){const bearded=window.__WAFT_INTERNAL_GAME__?.mountedAnimalId==='iberia-bearded-vulture',dive=bearded&&(state.iberiaDiveButton||state.joyY>.55);speed=bearded?(dive?(boosted?58:52):(inputLength<.06?24:(boosted||inputLength>.93?46:inputLength>.70?38:30))):(inputLength<.06?8.2:(boosted||inputLength>.93?26.5:inputLength>.70?19.0:12.4));}
       else if(state.adventureMountType==='shark'){const waterDrive=boosted||inputLength>.93?42:inputLength>.70?30:18;speed=state.adventureWaterJump?Math.max(waterDrive,state.adventureSharkBreachSpeed):waterDrive;}
       else if(state.adventureMountType==='goat'&&!swimmingBeforeMove) speed=boosted||inputLength>.93?15.8:inputLength>.70?9.2:4.0;
       else speed=swimmingBeforeMove?state.swimSpeed*(boosted?1.75:1):state.runSpeed*(boosted?2.4:1)*state.slopeSpeedFactor;
