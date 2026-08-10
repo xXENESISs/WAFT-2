@@ -62,7 +62,7 @@ assert.doesNotMatch(stream245,/const U=1\.45;|FULL_SWITCH_LAT|REGION_SWITCH_LAT|
 for(const pattern of [/__WAFT_IBERIA_WORLD_0246_READY__/,/PICADO ↓/,/#waftSpecialMarkers\{display:none!important\}/,/regions\/france\/objects\.json/,/franceCityCount/,/footprintSize/,/stream\.nearFrance/,/stream\.inFranceGeo/])assert.match(visible246,pattern,`visible layer missing ${pattern}`);
 for(const pattern of [/__WAFT_IBERIA_WORLD_0247_READY__/,/atlasSystem:'shared-iberia'/,/floatingCityLabels:false/,/WAFT_WORLD_ATLAS_PROVIDER/,/streamedRegion:'canarias'/,/atlanticMesh=null/])assert.match(continuity247,pattern,`0.25.0 continuity compatibility layer missing ${pattern}`);
 assert.doesNotMatch(continuity247,/streamedRegion:'atlantic-corridor'|const getMarker=city=>|function updateCityLabels/,'obsolete corridor/floating city renderer survived');
-for(const pattern of [/__WAFT_IBERIA_WORLD_0250_READY__/,/LABEL_RANGE_KM=1\.5/,/NEAREST_RANGE_KM=5\.0/,/LABEL_MAX_AGL_M=320/,/northwest-africa/,/streamedRegion:'atlantic-ocean'/,/waftWorldLabels0250/,/#waftWorldLabels0249,#waftNearest0249\{display:none!important\}/])assert.match(world250,pattern,`0.25.0 real-world layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0250_READY__/,/LABEL_RANGE_KM=\.15/,/NEAREST_RANGE_KM=1\.0/,/LABEL_MAX_AGL_M=320/,/northwest-africa/,/streamedRegion:'atlantic-ocean'/,/waftWorldLabels0250/,/#waftWorldLabels0249,#waftNearest0249\{display:none!important\}/])assert.match(world250,pattern,`0.25.0 real-world layer missing ${pattern}`);
 
 assert.equal(preview.regionId,'iberia');
 assert.ok(preview.counts.settlements>=483,`Expected >=483 settlements, got ${preview.counts.settlements}`);
@@ -81,4 +81,4 @@ assert.ok(objects.items.some(x=>x.name==='Sant Just Desvern'),'Sant Just physica
 assert.ok(settlements.items.filter(x=>x.countryCode==='PT').length>=100,'Portugal coverage regressed');
 for(const name of ['Ayódar','Peñíscola','Gibraltar']){const place=byName.get(name);assert.ok(place?.specialMarker,`${name} must remain special`);assert.ok(!objects.items.some(item=>String(item.sourceId)===String(place.sourceId)),`${name} must not become a generic needle again`);}
 
-console.log(`WAFT 0.25.0 Iberia world: ${preview.counts.settlements} settlements, ${preview.counts.buildings} generic physical markers, 1.00 u/km, preserved mountain height, local arrival labels, real Northwest Africa and no artificial Atlantic corridor.`);
+console.log(`WAFT 0.25.0 Iberia world: ${preview.counts.settlements} settlements, ${preview.counts.buildings} generic physical markers, 1.00 u/km, preserved mountain height, 150 m arrival labels, real Northwest Africa and no artificial Atlantic corridor.`);
