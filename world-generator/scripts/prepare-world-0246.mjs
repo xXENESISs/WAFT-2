@@ -38,15 +38,21 @@ if(!index.includes('adventure-0210/iberia-world-0246.js')){
   index=index.replace(bootNeedle,bootAdd);
 }
 
-france=replace(france,'const LOD_MIN_LAT=43.54;','const LOD_MIN_LAT=42.10;','France overlap start');
-france=replace(france,'const FRANCE_SAMPLE_LAT=43.50;','const FRANCE_SAMPLE_LAT=42.65;','France surface start');
-france=replace(france,'const FULL_SWITCH_LAT=43.64;','const FULL_SWITCH_LAT=43.20;','France full switch');
-france=replace(france,'const RESTORE_IBERIA_LAT=43.42;','const RESTORE_IBERIA_LAT=42.98;','Iberia restore switch');
-france=replace(france,'const MORPH_START_LAT=43.30;','const MORPH_START_LAT=42.45;','projection morph start');
-france=replace(france,'const MORPH_END_LAT=44.60;','const MORPH_END_LAT=43.30;','projection morph end');
-if(france.includes('buildMesh(5,LOD_MIN_LAT)'))france=france.replaceAll('buildMesh(5,LOD_MIN_LAT)','buildMesh(4,LOD_MIN_LAT)');
-france=replace(france,"mode:stride===1?'france-full':'france-lod',lift:stride===1?0:.025","mode:stride===1?'france-full':'france-lod',lift:stride===1?0:-.08",'LOD underlay');
+// 0.24.8 replaces the old latitude-only France transition completely. Never re-inject
+// the legacy projection morph or latitude switch if the geographic streamer is present.
+if(!france.includes('const franceSouthLat=')){
+  france=replace(france,'const LOD_MIN_LAT=43.54;','const LOD_MIN_LAT=42.10;','France overlap start');
+  france=replace(france,'const FRANCE_SAMPLE_LAT=43.50;','const FRANCE_SAMPLE_LAT=42.65;','France surface start');
+  france=replace(france,'const FULL_SWITCH_LAT=43.64;','const FULL_SWITCH_LAT=43.20;','France full switch');
+  france=replace(france,'const RESTORE_IBERIA_LAT=43.42;','const RESTORE_IBERIA_LAT=42.98;','Iberia restore switch');
+  france=replace(france,'const MORPH_START_LAT=43.30;','const MORPH_START_LAT=42.45;','projection morph start');
+  france=replace(france,'const MORPH_END_LAT=44.60;','const MORPH_END_LAT=43.30;','projection morph end');
+  if(france.includes('buildMesh(5,LOD_MIN_LAT)'))france=france.replaceAll('buildMesh(5,LOD_MIN_LAT)','buildMesh(4,LOD_MIN_LAT)');
+  france=replace(france,"mode:stride===1?'france-full':'france-lod',lift:stride===1?0:.025","mode:stride===1?'france-full':'france-lod',lift:stride===1?0:-.08",'LOD underlay');
+}
 
 fs.writeFileSync(indexPath,index);
 fs.writeFileSync(francePath,france);
-console.log('WAFT 0.24.6 prepared: low-FPS-stable accelerated PICADO, physical landmark layer and hidden-under-Iberia France overlap.');
+console.log(france.includes('const franceSouthLat=')
+  ?'WAFT 0.24.8 prepare: PICADO preserved; geographic France streamer left intact.'
+  :'WAFT 0.24.6 prepared: low-FPS-stable accelerated PICADO and legacy France overlap.');
