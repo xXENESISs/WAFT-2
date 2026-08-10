@@ -11,10 +11,10 @@ const cat=read('world-generator/configs/catalunya-litoral.region.json');
 const ip=createLocalProjection(iberia.geography),cp=createLocalProjection(cat.geography);
 const width=p=>p.localBounds.maxX-p.localBounds.minX,height=p=>p.localBounds.maxZ-p.localBounds.minZ;
 const wr=width(ip)/width(cp),hr=height(ip)/height(cp);
-assert.ok(wr>=2.15&&wr<=2.45,`Scaled Iberia width ratio ${wr.toFixed(3)} is outside 1.00 u/km target`);
-assert.ok(hr>=2.05&&hr<=2.55,`Scaled Iberia height ratio ${hr.toFixed(3)} is outside 1.00 u/km target`);
+assert.ok(wr>=.64&&wr<=.75,`Compressed Iberia width ratio ${wr.toFixed(3)} is outside 0.30 u/km target`);
+assert.ok(hr>=.61&&hr<=.78,`Compressed Iberia height ratio ${hr.toFixed(3)} is outside 0.30 u/km target`);
 assert.deepEqual(iberia.countryCodes,['ES','PT','AD']);
-assert.equal(iberia.geography.scale.horizontalUnitsPerKm,1);
+assert.equal(iberia.geography.scale.horizontalUnitsPerKm,.3);
 assert.ok(iberia.geography.bounds.east>=4.5,'Iberia east edge still clips Menorca');
 assert.ok(iberia.geography.bounds.south<=35.3,'Iberia south edge still clips Melilla');
 assert.deepEqual(iberia.generation.terrain.grid,{columns:560,rows:416});
@@ -30,7 +30,7 @@ if(fs.existsSync(path.join(regionDir,'manifest.json'))){
   const manifest=read('regions/iberia/manifest.json');
   const preview=read('regions/iberia/preview/iberia-preview-v1.json');
   assert.equal(manifest.region.id,'iberia');
-  assert.equal(manifest.projection.unitsPerKm,1);
+  assert.equal(manifest.projection.unitsPerKm,.3);
   assert.equal(manifest.content.landmarks,0);
   assert.equal(manifest.content.faunaSpecies,0);
   assert.ok(manifest.terrain.maximumElevationMeters>2500,`relief peak ${manifest.terrain.maximumElevationMeters}m too low`);
@@ -45,23 +45,20 @@ if(fs.existsSync(path.join(regionDir,'manifest.json'))){
     assert.equal(manifest.content.generatedBuildings,manifest.content.settlements-manualExceptions,'Special places must stay out of generic building geometry');
     assert.equal(preview.counts.settlements,manifest.content.settlements);
     assert.equal(preview.counts.buildings,manifest.content.generatedBuildings);
-
     const settlements=read('regions/iberia/settlements.json').items||[];
     const objects=read('regions/iberia/objects.json').items||[];
     assert.ok(settlements.some(item=>item.name==='Sant Just Desvern'),'Sant Just Desvern settlement parity lost');
     assert.ok(objects.some(item=>item.name==='Sant Just Desvern'),'Sant Just Desvern physical marker parity lost');
     const specials=settlements.filter(item=>item.specialMarker);
     assert.equal(specials.length,manualExceptions,'Manifest manual exception count must match special settlements');
-    for(const place of specials){
-      assert.ok(!objects.some(item=>String(item.sourceId)===String(place.sourceId)),`${place.name} leaked back into generic building geometry`);
-    }
+    for(const place of specials)assert.ok(!objects.some(item=>String(item.sourceId)===String(place.sourceId)),`${place.name} leaked back into generic building geometry`);
   }else{
     assert.equal(manifest.content.settlements,0);
     assert.equal(preview.counts.buildings,0);
     assert.equal(preview.counts.settlements,0);
   }
-  assert.equal(preview.terrain.verticalScale,.013594,'0.25 horizontal compression must not flatten mountain height');
+  assert.equal(preview.terrain.verticalScale,.013594,'0.30 horizontal compression must not flatten mountain height');
   assert.ok(preview.presets.some(item=>item.id==='overview'&&item.altitude===980),'Iberia overview preset missing');
 }
 
-console.log(JSON.stringify({ok:true,widthUnits:+width(ip).toFixed(1),heightUnits:+height(ip).toFixed(1),catalunyaWidthRatio:+wr.toFixed(3),catalunyaHeightRatio:+hr.toFixed(3),triangles,unitsPerKm:1,verticalScale:.013594},null,2));
+console.log(JSON.stringify({ok:true,widthUnits:+width(ip).toFixed(1),heightUnits:+height(ip).toFixed(1),catalunyaWidthRatio:+wr.toFixed(3),catalunyaHeightRatio:+hr.toFixed(3),triangles,unitsPerKm:.3,verticalScale:.013594},null,2));
