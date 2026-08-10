@@ -1,4 +1,4 @@
-name: Verify WAFT world continuity 0.24.8 hotfix
+name: Verify WAFT world continuity 0.24.9
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       - fix/ci-world-0246
       - fix/world-0247-continuity-labels-canarias
       - fix/world-0248-hotfix-render-cities
+      - feat/world-0249-ui-labels-scale-foundation
       - main
     paths:
       - .github/workflows/verify-world-visible-0246.yml
@@ -20,8 +21,10 @@ on:
       - mallorca-mobile/adventure-0210/iberia-world-0245.js
       - mallorca-mobile/adventure-0210/iberia-world-0246.js
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
+      - mallorca-mobile/adventure-0210/iberia-world-0249.js
       - mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
       - mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
       - regions/iberia/**
       - regions/france/**
       - regions/canarias/**
@@ -31,7 +34,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: waft-world-visible-0248-${{ github.ref }}
+  group: waft-world-visible-0249-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -67,8 +70,10 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
           node --check mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs
           node world-generator/scripts/validate-region.mjs
       - name: Prepare Adventure continuity
         run: |
@@ -79,7 +84,7 @@ jobs:
           python world-generator/scripts/build-settlement-markers-0244.py iberia --countries ES,PT,GI --minimum-population 20000 --exclude-balearics
           node world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node world-generator/scripts/build-region-preview-v2.mjs iberia
-      - name: Verify 0.24.8 hotfix contracts
+      - name: Verify 0.24.9 contracts
         run: |
           node - <<'NODE'
           const fs=require('fs');
@@ -88,24 +93,27 @@ jobs:
           const stream=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0245.js','utf8');
           const cities=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0246.js','utf8');
           const layer=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0247.js','utf8');
+          const ui=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0249.js','utf8');
           const settlements=JSON.parse(fs.readFileSync('regions/iberia/settlements.json','utf8')).items;
           const objects=JSON.parse(fs.readFileSync('regions/iberia/objects.json','utf8')).items;
           const manifest=JSON.parse(fs.readFileSync('regions/iberia/manifest.json','utf8'));
           const pt=settlements.filter(x=>x.countryCode==='PT');
-          if(!index.includes('iberia-world-0247.js'))throw new Error('continuity layer missing from index');
+          if(!index.includes('iberia-world-0247.js')||!index.includes('iberia-world-0249.js'))throw new Error('0.24.9 world/UI layers missing from index');
           if(!index.includes('WAFT_WORLD_BOUNDS_0247'))throw new Error('dynamic streamed-world bounds patch missing');
           for(const token of ['franceSouthLat','inFranceGeo','BORDER_OVERLAP','franceVisible'])if(!stream.includes(token))throw new Error(`geographic France streamer missing ${token}`);
           if(stream.includes('MORPH_START_LAT')||stream.includes('franceLocalX')||stream.includes('anchorFranceX'))throw new Error('latitude-only projection morph survived hotfix');
           if(!atlas.includes('WAFT_WORLD_ATLAS_PROVIDER'))throw new Error('established Iberia atlas is not extensible');
           if(!cities.includes('footprintSize')||!cities.includes('stream.nearFrance'))throw new Error('French physical markers do not follow shared geometry/geography');
           if(!layer.includes("atlasSystem:'shared-iberia'")||!layer.includes('floatingCityLabels:false'))throw new Error('shared city system missing');
-          if(layer.includes("const getMarker=city=>")||layer.includes('function updateCityLabels'))throw new Error('floating city overlay implementation survived');
+          if(layer.includes("const getMarker=city=>")||layer.includes('function updateCityLabels'))throw new Error('old floating city overlay implementation survived');
+          for(const token of ['waftWorldLabels0249','waftNearest0249','☠️','WAFT_WORLD_ATLAS_PROVIDER','MutationObserver'])if(!ui.includes(token))throw new Error(`0.24.9 unified UI missing ${token}`);
+          if(!ui.includes('#waftFranceBadge0246,#waftRegionBadge0247,#presets,#placesGuide{display:none!important}'))throw new Error('legacy duplicate UI is not forcibly hidden');
           if(!layer.includes("streamedRegion:'canarias'")||!layer.includes("streamedRegion:'atlantic-corridor'"))throw new Error('Canarias/Atlantic stream missing');
           if(pt.length<100)throw new Error(`Portugal is still absent: ${pt.length} settlements`);
           if(manifest.content.settlements!==settlements.length||manifest.content.generatedBuildings!==objects.length)throw new Error('Iberia manifest counts are stale');
           const sant=settlements.find(x=>x.name==='Sant Just Desvern');if(!sant)throw new Error('Sant Just lost');
           for(const name of ['Ayódar','Peñíscola','Gibraltar']){const place=settlements.find(x=>x.name===name);if(!place?.specialMarker)throw new Error(`${name} special lost`);}
-          console.log(JSON.stringify({hotfix:'0.24.8',settlements:settlements.length,objects:objects.length,portugal:pt.length,santJust:sant.population,sharedAtlas:true,floatingCityLabels:false},null,2));
+          console.log(JSON.stringify({version:'0.24.9',settlements:settlements.length,objects:objects.length,portugal:pt.length,santJust:sant.population,sharedAtlas:true,unifiedLabels:true},null,2));
           NODE
       - name: Persist deterministic generated state
         id: persist
@@ -116,28 +124,29 @@ jobs:
           git add mallorca-mobile/adventure-0210/index.html regions/iberia
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "WAFT 0.24.8 generated state is deterministic and current."
+            echo "WAFT 0.24.9 generated state is deterministic and current."
             exit 0
           fi
-          git commit -m "Build WAFT hotfix package 0.24.8"
+          git commit -m "Build WAFT world UI package 0.24.9"
           git push origin HEAD:${GITHUB_REF_NAME}
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Verify Cantabria, France, Portugal and Canarias in Chromium
+      - name: Verify Cantabria, France, Portugal, labels and Canarias in Chromium
         if: steps.persist.outputs.changed != 'true'
         shell: bash
         run: |
-          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0248-http.log 2>&1 &
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0249-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
           world_url="http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
-          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs "$world_url" /tmp/waft-cantabria-0248.png
+          node mallorca-mobile/adventure-0210/tools/verify-world-continuity-0247.mjs "$world_url" /tmp/waft-cantabria-0249.png
+          node mallorca-mobile/adventure-0210/tools/verify-world-ui-0249.mjs "$world_url"
           node mallorca-mobile/adventure-0210/tools/verify-atlantic-0247.mjs "$world_url"
       - name: Upload Cantabria regression screenshot
         if: always() && steps.persist.outputs.changed != 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: waft-0248-cantabria-browser
-          path: /tmp/waft-cantabria-0248.png
+          name: waft-0249-cantabria-browser
+          path: /tmp/waft-cantabria-0249.png
           retention-days: 7
           if-no-files-found: ignore
