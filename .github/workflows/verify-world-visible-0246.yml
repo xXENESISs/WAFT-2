@@ -110,11 +110,11 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/verify-visible-reality-0246.mjs \
             "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
             /tmp/waft-visible-0246.png
-      - name: Upload visible-fix screenshot
+      - name: Upload visible-fix screenshots
         if: always() && steps.persist.outputs.changed != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: waft-visible-0246-browser
-          path: /tmp/waft-visible-0246.png
+          path: /tmp/waft-visible-0246*.png
           retention-days: 7
           if-no-files-found: ignore
