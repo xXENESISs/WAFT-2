@@ -55,7 +55,16 @@ atlas.generation.buildings={useRealFootprints:false,proceduralFallback:false,min
 atlas.generation.landmarks={maximumCount:0,minimumScore:100,uniqueModelScore:100,archetypeScore:100,protectedRadiusUnits:0,allowedTypes:['natural_landmark'],manualInclude:[],manualExcludeIds:[]};
 atlas.generation.vegetation={profiles:['terrain-only'],densityMultiplier:0,minimumBuildingClearanceUnits:0,instancing:true};
 atlas.generation.fauna={ruleset:'europe-atlas-terrain-only-v1',maximumSpecies:0,maximumActiveAnimals:0,recordsSinceYear:1990,minimumCoordinatePrecisionMeters:10000,manualInclude:[],manualExcludeScientificNames:[]};
-atlas.travel={entryPoints:[],connections:[]};
+atlas.travel={
+  entryPoints:[{
+    id:'atlas-origin',
+    name:'Madrid · atlas continuo',
+    position:{lon:-3.7038,lat:40.4168},
+    type:'air',
+    arrivalHeadingDegrees:0
+  }],
+  connections:[]
+};
 atlas.gameplay={spawnPoints:[{id:'madrid-atlas-test',position:{lon:-3.7038,lat:40.4168},role:'default'}],reservedZones:[],contentTargets:{minimumLandmarks:0,minimumFaunaZones:0,maximumEmptyTravelSeconds:9999}};
 atlas.performance={targetProfile:'mobile-mid',sectorSizeUnits:64,preloadRadiusSectors:1,budgets:{downloadMb:25,runtimeMemoryMb:320,visibleTriangles:480000,visibleObjects:120,activeColliders:20,textureMemoryMb:36}};
 atlas.outputs={directory:'regions/europe-atlas',manifest:'manifest.json',terrain:'terrain.bin',landcover:'landcover.bin',sectors:'sectors.json',settlements:'settlements.json',objects:'objects.json',landmarks:'landmarks.json',fauna:'fauna.json',routes:'routes.json'};
