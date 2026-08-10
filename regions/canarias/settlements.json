@@ -7,9 +7,9 @@
       "countryCode": "ES",
       "id": "es-2522437",
       "local": {
-        "x": -85.6584,
+        "x": -25.6975,
         "y": 505,
-        "z": 47.4856
+        "z": 14.2457
       },
       "name": "Adeje",
       "place": "PPLA3",
@@ -21,7 +21,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2522437",
       "terrainStatus": "dem-cell",
@@ -38,9 +38,9 @@
       "countryCode": "ES",
       "id": "es-2522325",
       "local": {
-        "x": 39.4957,
+        "x": 11.8487,
         "y": 345,
-        "z": 71.6368
+        "z": 21.491
       },
       "name": "Agüimes",
       "place": "PPLA3",
@@ -52,7 +52,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2522325",
       "terrainStatus": "dem-cell",
@@ -69,9 +69,9 @@
       "countryCode": "ES",
       "id": "es-2521582",
       "local": {
-        "x": -81.2601,
+        "x": -24.378,
         "y": 761,
-        "z": 50.0516
+        "z": 15.0155
       },
       "name": "Arona",
       "place": "PPLA3",
@@ -83,7 +83,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2521582",
       "terrainStatus": "dem-cell",
@@ -100,9 +100,9 @@
       "countryCode": "ES",
       "id": "es-2521570",
       "local": {
-        "x": 225.128,
+        "x": 67.5384,
         "y": 36,
-        "z": -45.8997
+        "z": -13.7699
       },
       "name": "Arrecife",
       "place": "PPLA3",
@@ -114,7 +114,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-07-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2521570",
       "terrainStatus": "dem-cell",
@@ -131,9 +131,9 @@
       "countryCode": "ES",
       "id": "es-2521519",
       "local": {
-        "x": 31.9508,
+        "x": 9.5852,
         "y": 400,
-        "z": 47.8057
+        "z": 14.3417
       },
       "name": "Arucas",
       "place": "PPLA3",
@@ -145,7 +145,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2521519",
       "terrainStatus": "dem-cell",
@@ -162,9 +162,9 @@
       "countryCode": "ES",
       "id": "es-2520283",
       "local": {
-        "x": -51.1095,
+        "x": -15.3328,
         "y": 77,
-        "z": 21.693
+        "z": 6.5079
       },
       "name": "Candelaria",
       "place": "PPLA3",
@@ -176,7 +176,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2520283",
       "terrainStatus": "dem-cell",
@@ -193,9 +193,9 @@
       "countryCode": "ES",
       "id": "es-2520069",
       "local": {
-        "x": 43.457,
+        "x": 13.0371,
         "y": 100,
-        "z": 70.9456
+        "z": 21.2837
       },
       "name": "Carrizal",
       "place": "PPL",
@@ -207,7 +207,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2520069",
       "terrainStatus": "dem-cell",
@@ -224,9 +224,9 @@
       "countryCode": "ES",
       "id": "es-2517111",
       "local": {
-        "x": -70.9899,
+        "x": -21.297,
         "y": 787,
-        "z": 47.9179
+        "z": 14.3754
       },
       "name": "Granadilla de Abona",
       "place": "PPLA3",
@@ -238,7 +238,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2517111",
       "terrainStatus": "dem-cell",
@@ -255,9 +255,9 @@
       "countryCode": "ES",
       "id": "es-2516860",
       "local": {
-        "x": -90.8869,
+        "x": -27.2661,
         "y": 641,
-        "z": 37.6137
+        "z": 11.2841
       },
       "name": "Guía de Isora",
       "place": "PPLA3",
@@ -269,7 +269,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2516860",
       "terrainStatus": "dem-cell",
@@ -286,9 +286,9 @@
       "countryCode": "ES",
       "id": "es-2517436",
       "local": {
-        "x": 19.5371,
+        "x": 5.8611,
         "y": 326,
-        "z": 44.7851
+        "z": 13.4355
       },
       "name": "Gáldar",
       "place": "PPLA3",
@@ -300,7 +300,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2517436",
       "terrainStatus": "dem-cell",
@@ -317,9 +317,9 @@
       "countryCode": "ES",
       "id": "es-2516474",
       "local": {
-        "x": -84.2777,
+        "x": -25.2833,
         "y": 316,
-        "z": 19.7359
+        "z": 5.9208
       },
       "name": "Icod de los Vinos",
       "place": "PPLA3",
@@ -331,7 +331,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2516474",
       "terrainStatus": "dem-cell",
@@ -348,9 +348,9 @@
       "countryCode": "ES",
       "id": "es-2516443",
       "local": {
-        "x": 40.6457,
+        "x": 12.1937,
         "y": 285,
-        "z": 70.1743
+        "z": 21.0523
       },
       "name": "Ingenio",
       "place": "PPLA3",
@@ -362,7 +362,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2516443",
       "terrainStatus": "dem-cell",
@@ -379,9 +379,9 @@
       "countryCode": "ES",
       "id": "es-2511401",
       "local": {
-        "x": -45.9719,
+        "x": -13.7916,
         "y": 639,
-        "z": 7.1902
+        "z": 2.1571
       },
       "name": "La Laguna",
       "place": "PPL",
@@ -393,7 +393,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2511401",
       "terrainStatus": "dem-cell",
@@ -410,9 +410,9 @@
       "countryCode": "ES",
       "id": "es-2515698",
       "local": {
-        "x": 187.8304,
+        "x": 56.3491,
         "y": 241,
-        "z": -6.7257
+        "z": -2.0177
       },
       "name": "La Oliva",
       "place": "PPL",
@@ -424,7 +424,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-06-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2515698",
       "terrainStatus": "dem-cell",
@@ -441,9 +441,9 @@
       "countryCode": "ES",
       "id": "es-2515692",
       "local": {
-        "x": -65.8171,
+        "x": -19.7451,
         "y": 580,
-        "z": 17.6967
+        "z": 5.309
       },
       "name": "La Orotava",
       "place": "PPL",
@@ -455,7 +455,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2515692",
       "terrainStatus": "dem-cell",
@@ -472,9 +472,9 @@
       "countryCode": "ES",
       "id": "es-2515270",
       "local": {
-        "x": 42.4645,
+        "x": 12.7393,
         "y": 123,
-        "z": 49.8116
+        "z": 14.9435
       },
       "name": "Las Palmas de Gran Canaria",
       "place": "PPLA",
@@ -486,7 +486,7 @@
       },
       "priority": 106,
       "protected": true,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2515270",
       "terrainStatus": "dem-cell",
@@ -503,9 +503,9 @@
       "countryCode": "ES",
       "id": "es-2514651",
       "local": {
-        "x": -202.2369,
+        "x": -60.6711,
         "y": 500,
-        "z": -12.0589
+        "z": -3.6177
       },
       "name": "Los Llanos de Aridane",
       "place": "PPL",
@@ -517,7 +517,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-00-01",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2514651",
       "terrainStatus": "dem-cell",
@@ -534,9 +534,9 @@
       "countryCode": "ES",
       "id": "es-6692471",
       "local": {
-        "x": -71.6509,
+        "x": -21.4953,
         "y": 381,
-        "z": 18.3512
+        "z": 5.5054
       },
       "name": "Los Realejos",
       "place": "PPLA3",
@@ -548,7 +548,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "6692471",
       "terrainStatus": "dem-cell",
@@ -565,9 +565,9 @@
       "countryCode": "ES",
       "id": "es-2514042",
       "local": {
-        "x": 25.8129,
+        "x": 7.7439,
         "y": 104,
-        "z": 87.732
+        "z": 26.3196
       },
       "name": "Maspalomas",
       "place": "PPL",
@@ -579,7 +579,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-01",
       "source": "geonames-cities15000",
       "sourceId": "2514042",
       "terrainStatus": "dem-cell",
@@ -596,9 +596,9 @@
       "countryCode": "ES",
       "id": "es-2513798",
       "local": {
-        "x": 12.1858,
+        "x": 3.6557,
         "y": 805,
-        "z": 74.0306
+        "z": 22.2092
       },
       "name": "Mogán",
       "place": "PPLA3",
@@ -610,7 +610,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2513798",
       "terrainStatus": "dem-cell",
@@ -627,9 +627,9 @@
       "countryCode": "ES",
       "id": "es-2512196",
       "local": {
-        "x": -68.5316,
+        "x": -20.5595,
         "y": 132,
-        "z": 14.7961
+        "z": 4.4388
       },
       "name": "Puerto de la Cruz",
       "place": "PPLA3",
@@ -641,7 +641,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2512196",
       "terrainStatus": "dem-cell",
@@ -658,9 +658,9 @@
       "countryCode": "ES",
       "id": "es-6355013",
       "local": {
-        "x": 213.5798,
+        "x": 64.0739,
         "y": 40,
-        "z": -41.4667
+        "z": -12.44
       },
       "name": "Puerto del Carmen",
       "place": "PPL",
@@ -672,7 +672,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-07-01",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "6355013",
       "terrainStatus": "dem-cell",
@@ -689,9 +689,9 @@
       "countryCode": "ES",
       "id": "es-2512186",
       "local": {
-        "x": 194.3233,
+        "x": 58.297,
         "y": 72,
-        "z": 5.5144
+        "z": 1.6543
       },
       "name": "Puerto del Rosario",
       "place": "PPLA3",
@@ -703,7 +703,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-07-02",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2512186",
       "terrainStatus": "dem-cell",
@@ -720,9 +720,9 @@
       "countryCode": "ES",
       "id": "es-2513026",
       "local": {
-        "x": 170.378,
+        "x": 51.1134,
         "y": 343,
-        "z": 22.1831
+        "z": 6.6549
       },
       "name": "Pájara",
       "place": "PPLA3",
@@ -734,7 +734,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-06-02",
+      "sectorId": "s-02-00",
       "source": "geonames-cities15000",
       "sourceId": "2513026",
       "terrainStatus": "dem-cell",
@@ -751,9 +751,9 @@
       "countryCode": "ES",
       "id": "es-2511994",
       "local": {
-        "x": -71.9442,
+        "x": -21.5833,
         "y": 781,
-        "z": 19.287
+        "z": 5.7861
       },
       "name": "Realejo Alto",
       "place": "PPL",
@@ -765,7 +765,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-02-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2511994",
       "terrainStatus": "dem-cell",
@@ -782,9 +782,9 @@
       "countryCode": "ES",
       "id": "es-2511440",
       "local": {
-        "x": 27.0577,
+        "x": 8.1173,
         "y": 1198,
-        "z": 69.4786
+        "z": 20.8436
       },
       "name": "San Bartolomé de Tirajana",
       "place": "PPL",
@@ -796,7 +796,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511440",
       "terrainStatus": "dem-cell",
@@ -813,9 +813,9 @@
       "countryCode": "ES",
       "id": "es-2511174",
       "local": {
-        "x": -39.5652,
+        "x": -11.8696,
         "y": 330,
-        "z": 9.0862
+        "z": 2.7258
       },
       "name": "Santa Cruz de Tenerife",
       "place": "PPLA",
@@ -827,7 +827,7 @@
       },
       "priority": 106,
       "protected": true,
-      "sectorId": "s-03-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511174",
       "terrainStatus": "dem-cell",
@@ -844,9 +844,9 @@
       "countryCode": "ES",
       "id": "es-2511150",
       "local": {
-        "x": 30.2435,
+        "x": 9.073,
         "y": 808,
-        "z": 70.9311
+        "z": 21.2793
       },
       "name": "Santa Lucía",
       "place": "PPL",
@@ -858,7 +858,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-04-03",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2511150",
       "terrainStatus": "dem-cell",
@@ -875,9 +875,9 @@
       "countryCode": "ES",
       "id": "es-2510725",
       "local": {
-        "x": -54.7744,
+        "x": -16.4323,
         "y": 771,
-        "z": 8.126
+        "z": 2.4378
       },
       "name": "Tacoronte",
       "place": "PPLA3",
@@ -889,7 +889,7 @@
       },
       "priority": 48,
       "protected": true,
-      "sectorId": "s-03-02",
+      "sectorId": "s-00-00",
       "source": "geonames-cities15000",
       "sourceId": "2510725",
       "terrainStatus": "dem-cell",
@@ -906,9 +906,9 @@
       "countryCode": "ES",
       "id": "es-2510542",
       "local": {
-        "x": 42.13,
+        "x": 12.639,
         "y": 171,
-        "z": 61.9639
+        "z": 18.5892
       },
       "name": "Telde",
       "place": "PPLA3",
@@ -920,7 +920,7 @@
       },
       "priority": 72,
       "protected": true,
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "source": "geonames-cities15000",
       "sourceId": "2510542",
       "terrainStatus": "dem-cell",

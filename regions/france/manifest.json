@@ -28,19 +28,19 @@
       "sha256": "16a4c3a9d3624b73b5d7f6008dc1b8b99e6bb7092959fdd5c76e811d5b3ff80d"
     },
     {
-      "bytes": 370341,
+      "bytes": 38993,
       "path": "sectors.json",
-      "sha256": "fa015f6eed5096c0ba2f2869dc84ceef6fd3ebd1fc8a4de49b3e6f3c48c470ba"
+      "sha256": "b51e8ae8d5f0a916300506563ecef5542024b488452862ff7ef60496be5e39b2"
     },
     {
-      "bytes": 346476,
+      "bytes": 345836,
       "path": "settlements.json",
-      "sha256": "e9d602aeadc61dce5a45a0f5f2a63a814bea942504499eaf24bc82a516bb554a"
+      "sha256": "bc5bad730d1516d0ee46fd3c31e59e512588fa5f1cd5eec5e8f5903806355004"
     },
     {
-      "bytes": 487680,
+      "bytes": 483863,
       "path": "objects.json",
-      "sha256": "97c951f1ae1412aa809b64961cf8a6201648e10ada6bdf7a9c125290590210b0"
+      "sha256": "be2bddc0e7e21e137ef10614fc48811f723003b268e6c01ab2e0f45d7ca512c1"
     },
     {
       "bytes": 147,
@@ -53,9 +53,9 @@
       "sha256": "0819e337af13e68ef2393d3203cc0140e6f14450ef38303bebed8db4d956238c"
     },
     {
-      "bytes": 1546,
+      "bytes": 1542,
       "path": "routes.json",
-      "sha256": "c7d8e7bee6f6c58a72dbef0ae242fc7b3ad457e3079860897436e70305b0147c"
+      "sha256": "5d463df2e7eaead8f76f205be7bc63a94126a718bf379e09769e4342f87a3a69"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 1087085,
+  "packageBytesWithoutManifest": 755733,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 77.11946418437198,
     "localBounds": {
-      "maxX": 588.0359144058364,
-      "maxZ": 561.2165999999997,
-      "minX": -588.0359144058364,
-      "minZ": -561.2166000000005
+      "maxX": 176.4107743217509,
+      "maxZ": 168.36497999999992,
+      "minX": -176.4107743217509,
+      "minZ": -168.36498000000014
     },
     "origin": {
       "lat": 46.15,
       "lon": 2.125
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 1
+    "unitsPerKm": 0.3
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/france.region.json",
-      "sha256": "0da0c5d76aade8bb82e0d8d62287386ed6814a7bd815896f3d53a2333f21c105"
+      "sha256": "3829b5b7481b4715d4719785201275f957c96bb1c72e215e1e213fcc7468dfe8"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/france/copernicus-dem-glo30.json",
@@ -202,15 +202,15 @@
     "id": "france",
     "name": "France métropolitaine",
     "status": "prototype",
-    "version": "0.25.0"
+    "version": "0.25.1"
   },
   "sectors": {
-    "active": 287,
-    "columns": 19,
+    "active": 35,
+    "columns": 6,
     "preloadRadius": 2,
-    "rows": 18,
+    "rows": 6,
     "sizeUnits": 64,
-    "total": 342
+    "total": 36
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,

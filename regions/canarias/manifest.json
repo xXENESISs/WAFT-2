@@ -28,19 +28,19 @@
       "sha256": "6b409c00928be91abbcb6711f0084c7556b1a30629cbbd17be595c31b70df56e"
     },
     {
-      "bytes": 38348,
+      "bytes": 6506,
       "path": "sectors.json",
-      "sha256": "e33518737e17c7c62812b64f18fee1475a512480f14c20286fc0f3de54d90055"
+      "sha256": "24b637bc998e2f705685e9368082041407b9c8e1ceb38f8904b342752621cd54"
     },
     {
-      "bytes": 23074,
+      "bytes": 23054,
       "path": "settlements.json",
-      "sha256": "2ef349efb4d150b210395b2a86538a4663e56d0aa922443d44f85de379ab3b8a"
+      "sha256": "8d45242fc0c0d7ebf5e97e6ea09b2f4650cddc8d533da40b4348771ee52da869"
     },
     {
-      "bytes": 31935,
+      "bytes": 31812,
       "path": "objects.json",
-      "sha256": "5a57a536bb49edd0972501867b8c8fe92143bbac0e80dd5b9e845ec3ac88250e"
+      "sha256": "88a83d83ffda4260babdfdf95b68362f0e0f35f44045f94abd6afd8dc127ea73"
     },
     {
       "bytes": 149,
@@ -55,7 +55,7 @@
     {
       "bytes": 1057,
       "path": "routes.json",
-      "sha256": "74566edd72df0e0ed98de6eba7118ae592d335a835c6437409253eeb743384be"
+      "sha256": "ad79fa9ff3589a8e7700f1e8b5e7f18848b66224693c437d26c24514812eb589"
     }
   ],
   "formatVersion": 1,
@@ -139,7 +139,7 @@
       "tiles": []
     }
   },
-  "packageBytesWithoutManifest": 261365,
+  "packageBytesWithoutManifest": 229523,
   "pendingStages": [
     "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
@@ -161,22 +161,22 @@
     "kmPerDegreeLat": 111.132,
     "kmPerDegreeLon": 97.78353013629234,
     "localBounds": {
-      "maxX": 259.1263548611747,
-      "maxZ": 127.80180000000024,
-      "minX": -259.1263548611747,
-      "minZ": -127.80179999999984
+      "maxX": 77.73790645835241,
+      "maxZ": 38.34054000000007,
+      "minX": -77.73790645835241,
+      "minZ": -38.340539999999955
     },
     "origin": {
       "lat": 28.55,
       "lon": -15.85
     },
     "type": "local-equirectangular",
-    "unitsPerKm": 1
+    "unitsPerKm": 0.3
   },
   "provenance": {
     "config": {
       "path": "world-generator/configs/canarias.region.json",
-      "sha256": "da425ad2b519faabd2965a070dc5df6e7192f396452f3c9f46b13cb3bd3c6646"
+      "sha256": "07044de09bbe872e85c2e18b23ec488166e3932640ba3649d37b5f7dc57df05d"
     },
     "demSnapshot": {
       "metadataPath": "world-generator/sources/canarias/copernicus-dem-glo30.json",
@@ -202,15 +202,15 @@
     "id": "canarias",
     "name": "Canarias",
     "status": "prototype",
-    "version": "0.25.0"
+    "version": "0.25.1"
   },
   "sectors": {
-    "active": 17,
-    "columns": 9,
+    "active": 6,
+    "columns": 3,
     "preloadRadius": 2,
-    "rows": 4,
+    "rows": 2,
     "sizeUnits": 64,
-    "total": 36
+    "total": 6
   },
   "settlementMarkers": {
     "fictionalWarImpact": true,

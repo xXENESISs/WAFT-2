@@ -26,16 +26,16 @@
       "arrivalHeadingDegrees": 35,
       "id": "atlantic-iberia",
       "local": {
-        "x": 41.0691,
+        "x": 12.3207,
         "y": 154,
-        "z": 50.0094
+        "z": 15.0028
       },
       "name": "Atlántico oriental · África/Iberia",
       "position": {
         "lat": 28.1,
         "lon": -15.43
       },
-      "sectorId": "s-04-02",
+      "sectorId": "s-01-00",
       "terrainStatus": "exact-cell",
       "type": "air"
     }

@@ -1,7 +1,7 @@
 {
   "binaryBytes": 9008,
-  "binarySha256": "a664ce0b17d1d32335ccd3f4e405a842fa0bdb195da5c5c123823427576f0991",
-  "buildId": "northwest-africa-preview-16e8f85ee3b6",
+  "binarySha256": "5a791f559463dcbad262bf6a478411073809378fad73c6d6ec5dd08c751b56c5",
+  "buildId": "northwest-africa-preview-49dd005bebb5",
   "counts": {
     "buildings": 186,
     "hotels": 0,
@@ -20,7 +20,7 @@
     "roadClasses": {}
   },
   "formatVersion": 1,
-  "inputsSha256": "16e8f85ee3b6afe7a1526fb1fbea83279cb9352518af1dbdc554ff9866f2c234",
+  "inputsSha256": "49dd005bebb511827c8ba1f89c04d42268168fc5aab0058787fca5f04ac970b6",
   "regionId": "northwest-africa",
   "valid": true
 }

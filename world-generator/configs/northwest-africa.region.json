@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "id": "northwest-africa",
   "name": "Noroeste de África",
-  "version": "0.25.0",
+  "version": "0.25.1",
   "status": "prototype",
   "continent": "Africa",
   "countryCodes": [
@@ -31,7 +31,7 @@
     },
     "projection": "local-equirectangular",
     "scale": {
-      "horizontalUnitsPerKm": 1,
+      "horizontalUnitsPerKm": 0.3,
       "verticalExaggeration": 1.9,
       "emptySpaceCompression": {
         "mode": "none",

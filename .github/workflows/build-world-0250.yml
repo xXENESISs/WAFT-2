@@ -1,9 +1,9 @@
-name: Build WAFT world 0.25.0 real scale + Africa
+name: Build WAFT world 0.25.1 compressed global scale + Africa
 
 on:
   push:
     branches:
-      - feat/world-0250-real-scale-africa-ground-labels
+      - feat/world-0251-global-compression
       - main
     paths:
       - .github/workflows/build-world-0250.yml
@@ -12,7 +12,7 @@ on:
       - world-generator/configs/canarias.region.json
       - world-generator/configs/northwest-africa.region.json
       - world-generator/overrides/northwest-africa.overrides.json
-      - world-generator/scripts/prepare-world-0250.mjs
+      - world-generator/scripts/prepare-world-0251.mjs
       - world-generator/scripts/import-copernicus-dem-glo90.py
       - world-generator/scripts/build-terrain-only-landcover.py
       - world-generator/scripts/build-region-v2.mjs
@@ -25,8 +25,11 @@ on:
       - mallorca-mobile/adventure-0210/iberia-world-0247.js
       - mallorca-mobile/adventure-0210/iberia-world-0249.js
       - mallorca-mobile/adventure-0210/iberia-world-0250.js
-      - mallorca-mobile/adventure-0210/verify-0250.mjs
-      - mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+      - mallorca-mobile/adventure-0210/verify-0251.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs
+      - regions/iberia/**
+      - regions/france/**
+      - regions/canarias/**
       - regions/northwest-africa/**
   workflow_dispatch:
 
@@ -34,7 +37,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: waft-world-0250-${{ github.ref }}
+  group: waft-world-0251-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -67,24 +70,24 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check numpy rasterio
           npm install --no-save --no-package-lock playwright-core@1.55.0
-      - name: Prepare 0.25.0 contracts
-        run: node world-generator/scripts/prepare-world-0250.mjs
+      - name: Prepare 0.25.1 contracts
+        run: node world-generator/scripts/prepare-world-0251.mjs
       - name: Syntax and region contracts
         run: |
-          node --check world-generator/scripts/prepare-world-0250.mjs
+          node --check world-generator/scripts/prepare-world-0251.mjs
           node --check world-generator/scripts/build-region-preview-v2.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check mallorca-mobile/adventure-0210/iberia-world-0245.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
-          node --check mallorca-mobile/adventure-0210/verify-0250.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs
+          node --check mallorca-mobile/adventure-0210/verify-0251.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs
           python -m py_compile world-generator/scripts/import-copernicus-dem-glo90.py
           python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
           python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
           node world-generator/scripts/validate-region.mjs
-      - name: Build scaled Europe and real Northwest Africa
+      - name: Build compressed Europe and real Northwest Africa
         shell: bash
         run: |
           for region in iberia france canarias northwest-africa; do
@@ -108,9 +111,9 @@ jobs:
             esac
             node world-generator/scripts/build-region-preview-v2.mjs "$region"
           done
-      - name: Verify 0.25.0 static world
-        run: node mallorca-mobile/adventure-0210/verify-0250.mjs
-      - name: Persist deterministic 0.25.0 world
+      - name: Verify 0.25.1 static world
+        run: node mallorca-mobile/adventure-0210/verify-0251.mjs
+      - name: Persist deterministic 0.25.1 world
         id: persist
         shell: bash
         run: |
@@ -131,29 +134,19 @@ jobs:
           git add world-generator/*-preview-build.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "WAFT 0.25.0 generated state is deterministic and current."
+            echo "WAFT 0.25.1 generated state is deterministic and current."
             exit 0
           fi
-          git commit -m "Build WAFT 0.25.0 real-scale Europe and Northwest Africa"
+          git commit -m "Build WAFT 0.25.1 compressed world"
           git push origin HEAD:${GITHUB_REF_NAME}
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Verify real world in Chromium
+      - name: Verify compressed world in Chromium
         if: steps.persist.outputs.changed != 'true'
         shell: bash
         run: |
-          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0250-http.log 2>&1 &
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0251-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          mkdir -p /tmp/waft-0250
-          node mallorca-mobile/adventure-0210/tools/verify-world-0250.mjs \
-            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}" \
-            /tmp/waft-0250
-      - name: Upload 0.25.0 visual evidence
-        if: always() && steps.persist.outputs.changed != 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: waft-0250-real-world-browser
-          path: /tmp/waft-0250/*.png
-          retention-days: 7
-          if-no-files-found: ignore
+          node mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs \
+            "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"

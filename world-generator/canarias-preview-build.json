@@ -1,7 +1,7 @@
 {
   "binaryBytes": 1520,
-  "binarySha256": "f2e7f4de4a16468511cb4cf82bd448d84545ee3782236258245ea18c6b92be76",
-  "buildId": "canarias-preview-f8bd69591f18",
+  "binarySha256": "5027458e722aebb14343925b388034b74ab33a9057760ccb1c1e7b07b46aa8ea",
+  "buildId": "canarias-preview-2948a1daa189",
   "counts": {
     "buildings": 30,
     "hotels": 0,
@@ -20,7 +20,7 @@
     "roadClasses": {}
   },
   "formatVersion": 1,
-  "inputsSha256": "f8bd69591f18e4d61df4fd6d6fc454871a088e296e2ed4a9a6bef08ded9a5f90",
+  "inputsSha256": "2948a1daa189d498478f009d50903c80b672c441595964cba3d2c2cda4a3acd7",
   "regionId": "canarias",
   "valid": true
 }

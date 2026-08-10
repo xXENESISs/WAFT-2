@@ -4,9 +4,9 @@
     "file": "northwest-africa-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "a664ce0b17d1d32335ccd3f4e405a842fa0bdb195da5c5c123823427576f0991"
+    "sha256": "5a791f559463dcbad262bf6a478411073809378fad73c6d6ec5dd08c751b56c5"
   },
-  "buildId": "northwest-africa-preview-16e8f85ee3b6",
+  "buildId": "northwest-africa-preview-49dd005bebb5",
   "counts": {
     "buildings": 186,
     "hotels": 0,
@@ -88,8 +88,8 @@
       "id": "subregion-atlas",
       "name": "Atlas",
       "terrainMeters": 1875,
-      "x": 47.463,
-      "z": 10.0019
+      "x": 14.2389,
+      "z": 3.0006
     },
     {
       "altitude": 56,
@@ -97,8 +97,8 @@
       "id": "subregion-ceuta",
       "name": "Ceuta",
       "terrainMeters": 79,
-      "x": 111.9748,
-      "z": -488.8919
+      "x": 33.5924,
+      "z": -146.6676
     },
     {
       "altitude": 60,
@@ -106,8 +106,8 @@
       "id": "subregion-tanger",
       "name": "Tánger",
       "terrainMeters": 109,
-      "x": 65.2332,
-      "z": -474.4781
+      "x": 19.57,
+      "z": -142.3434
     }
   ],
   "regionId": "northwest-africa",
@@ -1231,9 +1231,9 @@
     }
   ],
   "sources": {
-    "inputsSha256": "16e8f85ee3b6afe7a1526fb1fbea83279cb9352518af1dbdc554ff9866f2c234",
+    "inputsSha256": "49dd005bebb511827c8ba1f89c04d42268168fc5aab0058787fca5f04ac970b6",
     "landcoverSha256": "292528eade7edbabda39968f757e0a07c691f97601978b19835aa43dd8098407",
-    "regionManifestSha256": "a2f1d68bd5e77c0efde28812e5296a25074d84aa7f0ad84d87243108d8b77386",
+    "regionManifestSha256": "23c459dc197946e974984828498df34e65174e6eeb6bd10f533e5b573dfaf3c8",
     "terrainSha256": "98e5b7c95728cea724fcbc029f441b58d314bcca775e44030d135d8eae952b67"
   },
   "terrain": {
@@ -1241,10 +1241,10 @@
     "file": "../terrain.bin",
     "landcoverFile": "../landcover.bin",
     "localBounds": {
-      "maxX": 617.0193463040252,
-      "maxZ": 498.98267999999985,
-      "minX": -617.0193463040252,
-      "minZ": -498.98267999999985
+      "maxX": 185.10580389120756,
+      "maxZ": 149.69480399999995,
+      "minX": -185.10580389120756,
+      "minZ": -149.69480399999995
     },
     "rows": 416,
     "verticalScale": 0.013594

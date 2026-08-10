@@ -1,7 +1,7 @@
 {
   "binaryBytes": 22208,
-  "binarySha256": "b5fef9c9cffae9de3bff2d60dddec919e3a8822b3de6c08fcc3dc7a86fde409c",
-  "buildId": "france-preview-c7e406c3f22b",
+  "binarySha256": "f65eaca4267ca32e7500b8a04abf28bcb3a96dabeac1177413333e1048f7744a",
+  "buildId": "france-preview-72fbd2d15cab",
   "counts": {
     "buildings": 461,
     "hotels": 0,
@@ -20,7 +20,7 @@
     "roadClasses": {}
   },
   "formatVersion": 1,
-  "inputsSha256": "c7e406c3f22ba7ac897203ead390de8b6629a25c803adb5ac039f1b87615ab69",
+  "inputsSha256": "72fbd2d15cab7938ac05a81c51d6d770ecf9c94887a8f1cadbd9dcc7f54e7e1c",
   "regionId": "france",
   "valid": true
 }

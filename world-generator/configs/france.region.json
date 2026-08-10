@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "id": "france",
   "name": "France métropolitaine",
-  "version": "0.25.0",
+  "version": "0.25.1",
   "status": "prototype",
   "continent": "Europe",
   "countryCodes": [
@@ -27,7 +27,7 @@
     },
     "projection": "local-equirectangular",
     "scale": {
-      "horizontalUnitsPerKm": 1,
+      "horizontalUnitsPerKm": 0.3,
       "verticalExaggeration": 1.9,
       "emptySpaceCompression": {
         "mode": "none",

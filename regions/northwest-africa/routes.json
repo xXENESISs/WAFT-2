@@ -27,16 +27,16 @@
       "arrivalHeadingDegrees": 180,
       "id": "strait-north",
       "local": {
-        "x": 99.6724,
+        "x": 29.9017,
         "y": 355,
-        "z": -490.0921
+        "z": -147.0276
       },
       "name": "Estrecho · Ceuta/Tánger",
       "position": {
         "lat": 35.9,
         "lon": -5.45
       },
-      "sectorId": "s-11-00",
+      "sectorId": "s-03-00",
       "terrainStatus": "exact-cell",
       "type": "coast"
     },
@@ -44,16 +44,16 @@
       "arrivalHeadingDegrees": 180,
       "id": "melilla-north",
       "local": {
-        "x": 337.9367,
+        "x": 101.381,
         "y": 135,
-        "z": -422.3016
+        "z": -126.6905
       },
       "name": "Melilla/Rif",
       "position": {
         "lat": 35.29,
         "lon": -2.94
       },
-      "sectorId": "s-14-01",
+      "sectorId": "s-04-00",
       "terrainStatus": "exact-cell",
       "type": "coast"
     },
@@ -61,16 +61,16 @@
       "arrivalHeadingDegrees": 250,
       "id": "atlantic-canarias",
       "local": {
-        "x": -579.0489,
+        "x": -173.7147,
         "y": 0,
-        "z": 321.1715
+        "z": 96.3514
       },
       "name": "Atlántico oriental · Canarias",
       "position": {
         "lat": 28.6,
         "lon": -12.6
       },
-      "sectorId": "s-00-12",
+      "sectorId": "s-00-03",
       "terrainStatus": "nearest-land-cell",
       "type": "air"
     }

@@ -36,16 +36,16 @@
       "arrivalHeadingDegrees": 0,
       "id": "gibraltar-south",
       "local": {
-        "x": -190.363,
+        "x": -57.1089,
         "y": 340,
-        "z": 403.9648
+        "z": 121.1894
       },
       "name": "Gibraltar",
       "position": {
         "lat": 36.14,
         "lon": -5.35
       },
-      "sectorId": "s-05-13",
+      "sectorId": "s-01-03",
       "terrainStatus": "exact-cell",
       "type": "coast"
     },
@@ -53,16 +53,16 @@
       "arrivalHeadingDegrees": 0,
       "id": "pyrenees-france",
       "local": {
-        "x": 314.4198,
+        "x": 94.3259,
         "y": 349,
-        "z": -397.2969
+        "z": -119.1891
       },
       "name": "Frontera pirenaica · Francia",
       "position": {
         "lat": 43.35,
         "lon": 0.55
       },
-      "sectorId": "s-13-00",
+      "sectorId": "s-04-00",
       "terrainStatus": "exact-cell",
       "type": "land_border"
     },
@@ -70,16 +70,16 @@
       "arrivalHeadingDegrees": 210,
       "id": "atlantic-canarias",
       "local": {
-        "x": -348.6424,
+        "x": -104.5927,
         "y": 0,
-        "z": 419.5233
+        "z": 125.857
       },
       "name": "Atlántico oriental · Canarias",
       "position": {
         "lat": 36,
         "lon": -7.2
       },
-      "sectorId": "s-03-13",
+      "sectorId": "s-00-04",
       "terrainStatus": "nearest-land-cell",
       "type": "air"
     }

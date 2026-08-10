@@ -16,16 +16,16 @@
       "arrivalHeadingDegrees": 180,
       "id": "pyrenees-south",
       "local": {
-        "x": -121.4632,
+        "x": -36.4389,
         "y": 349,
-        "z": 311.1696
+        "z": 93.3509
       },
       "name": "Pyrénées · frontière sud",
       "position": {
         "lat": 43.35,
         "lon": 0.55
       },
-      "sectorId": "s-07-13",
+      "sectorId": "s-02-04",
       "terrainStatus": "exact-cell",
       "type": "land_border"
     },
@@ -33,16 +33,16 @@
       "arrivalHeadingDegrees": 170,
       "id": "bayonne-south",
       "local": {
-        "x": -277.2445,
+        "x": -83.1733,
         "y": 52,
-        "z": 295.6111
+        "z": 88.6833
       },
       "name": "Bayonne · côte basque",
       "position": {
         "lat": 43.49,
         "lon": -1.47
       },
-      "sectorId": "s-04-13",
+      "sectorId": "s-01-04",
       "terrainStatus": "exact-cell",
       "type": "land_border"
     },
@@ -50,16 +50,16 @@
       "arrivalHeadingDegrees": 185,
       "id": "perpignan-south",
       "local": {
-        "x": 58.9964,
+        "x": 17.6989,
         "y": 66,
-        "z": 383.4054
+        "z": 115.0216
       },
       "name": "Perpignan · Méditerranée",
       "position": {
         "lat": 42.7,
         "lon": 2.89
       },
-      "sectorId": "s-10-14",
+      "sectorId": "s-03-04",
       "terrainStatus": "exact-cell",
       "type": "land_border"
     }
