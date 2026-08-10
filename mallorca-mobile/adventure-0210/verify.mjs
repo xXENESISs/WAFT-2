@@ -86,7 +86,7 @@ for(const pattern of [
   /__WAFT_IBERIA_WORLD_0247_READY__/,
   /franceBorderLat/,/deepFrance/,
   /waftCityLabels0247/,/waftCity0247/,
-  /regions\/canarias\/manifest\.json/,/streamedRegion:'canarias'/,
+  /const base='\.\.\/\.\.\/regions\/canarias\/'/,/streamedRegion:'canarias'/,
   /WAFT_ATLANTIC_MESH_0247/,/streamedRegion:'atlantic-corridor'/,
   /atlanticDrawFrames/,/canDrawFrames/,
   /CANARIAS · \$\{canariasCities\.length\} NÚCLEOS · MUNDO CONTINUO/
