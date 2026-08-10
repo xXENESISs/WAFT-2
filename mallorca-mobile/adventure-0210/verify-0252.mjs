@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+const read=p=>fs.readFileSync(p,'utf8'),json=p=>JSON.parse(read(p)),need=(v,m)=>{if(!v)throw new Error(m)};
+const config=json('world-generator/configs/europe-atlas.region.json'),manifest=json('regions/europe-atlas/manifest.json'),sett=json('regions/europe-atlas/settlements.json'),objects=json('regions/europe-atlas/objects.json');
+const index=read('mallorca-mobile/adventure-0210/index.html'),runtime=read('mallorca-mobile/adventure-0210/europe-atlas-0252.js'),build=read('world-generator/scripts/build-region-v2.mjs');
+need(config.id==='europe-atlas'&&config.version==='0.25.2','atlas config version/id');
+need(JSON.stringify(config.geography.bounds)===JSON.stringify({west:-26,east:60,south:26,north:72.5}),'atlas rectangle bounds');
+need(Math.abs(config.geography.scale.horizontalUnitsPerKm-.30)<1e-9,'atlas horizontal scale');
+need(config.geography.scale.verticalExaggeration<=.7,'vertical exaggeration not reduced');
+need(config.generation.terrain.grid.columns===590&&config.generation.terrain.grid.rows===406,'atlas grid');
+const tri=(590-1)*(406-1)*2;need(tri===477090&&tri<=config.performance.budgets.visibleTriangles,'atlas triangle budget');
+need(index.includes("__WAFT_ADVENTURE_BUILD__='0.25.2'")&&index.includes('europe-atlas-0252.js'),'Adventure does not boot 0.25.2 atlas');
+need(runtime.includes('VERTICAL=.0024')&&runtime.includes("surfaceSource:'europe-atlas'"),'atlas runtime vertical/surface contract');
+for(const p of ['iberia-world-0245.js','iberia-world-0247.js','iberia-world-0249.js','iberia-world-0250.js'])need(read('mallorca-mobile/adventure-0210/'+p).includes('__WAFT_EUROPE_ATLAS_0252_ACTIVE__'),`old region layer ${p} lacks atlas guard`);
+need(build.includes("mode: demMetadata.mode ?? 'copernicus-dem-glo30'"),'generic terrain provenance missing');
+need(manifest.region.id==='europe-atlas'&&Math.abs(manifest.projection.unitsPerKm-.30)<.001,'atlas manifest');need(manifest.terrain.columns===590&&manifest.terrain.rows===406,'atlas manifest grid');need(manifest.terrain.elevationSource.mode==='mapzen-terrarium-z5','atlas elevation provenance');
+need((sett.items||[]).length>1200,'too few Europe/North Africa settlements');need((objects.items||[]).length>1100,'too few physical city markers');const codes=new Set((sett.items||[]).map(x=>x.countryCode));for(const cc of ['ES','PT','FR','DE','IT','GB','PL','MA'])need(codes.has(cc),`missing settlement country ${cc}`);for(const name of ['Ayódar','Peñíscola','Gibraltar'])need((sett.items||[]).some(x=>x.name===name&&x.specialMarker),`missing special ${name}`);
+console.log(JSON.stringify({valid:true,version:'0.25.2',bounds:config.geography.bounds,unitsPerKm:.30,verticalScale:.0024,triangles:tri,settlements:sett.items.length,objects:objects.items.length,countries:codes.size,maxElevationMeters:manifest.terrain.maximumElevationMeters},null,2));

@@ -1,0 +1,109 @@
+name: Build WAFT world 0.25.2 unified Europe atlas
+
+on:
+  push:
+    branches:
+      - feat/world-0252-unified-europe-atlas
+      - main
+    paths:
+      - .github/workflows/build-world-0252.yml
+      - .github/workflows/build-world-0250.yml
+      - world-generator/configs/europe-atlas.region.json
+      - world-generator/overrides/europe-atlas.overrides.json
+      - world-generator/scripts/prepare-world-0252.mjs
+      - world-generator/scripts/import-mapzen-terrarium-atlas.py
+      - world-generator/scripts/build-terrain-only-landcover.py
+      - world-generator/scripts/build-region-v2.mjs
+      - world-generator/scripts/build-settlement-markers-0244.py
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/europe-atlas-0252.js
+      - mallorca-mobile/adventure-0210/iberia-world-0244.js
+      - mallorca-mobile/adventure-0210/iberia-world-0245.js
+      - mallorca-mobile/adventure-0210/iberia-world-0246.js
+      - mallorca-mobile/adventure-0210/iberia-world-0247.js
+      - mallorca-mobile/adventure-0210/iberia-world-0249.js
+      - mallorca-mobile/adventure-0210/iberia-world-0250.js
+      - mallorca-mobile/adventure-0210/verify-0252.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs
+      - regions/europe-atlas/**
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: waft-world-0252-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache Mapzen terrain and Natural Earth
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/mapzen-terrarium
+          key: waft-mapzen-terrarium-z5-europe-0252-v1
+      - name: Cache GeoNames
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/geonames
+          key: waft-geonames-cities15000-2026-08-09-v2
+      - name: Install atlas and browser dependencies
+        run: |
+          python -m pip install --disable-pip-version-check numpy pillow
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Prepare unified 0.25.2 contracts
+        run: node world-generator/scripts/prepare-world-0252.mjs
+      - name: Syntax and config contracts
+        run: |
+          node --check world-generator/scripts/prepare-world-0252.mjs
+          node --check world-generator/scripts/build-region-v2.mjs
+          node --check mallorca-mobile/adventure-0210/europe-atlas-0252.js
+          node --check mallorca-mobile/adventure-0210/verify-0252.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs
+          python -m py_compile world-generator/scripts/import-mapzen-terrarium-atlas.py
+          python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
+          python -m py_compile world-generator/scripts/build-settlement-markers-0244.py
+          node world-generator/scripts/validate-region.mjs
+      - name: Build one rectangular Europe atlas
+        run: |
+          python world-generator/scripts/import-mapzen-terrarium-atlas.py europe-atlas
+          python world-generator/scripts/build-terrain-only-landcover.py europe-atlas
+          node world-generator/scripts/build-region-v2.mjs europe-atlas
+          python world-generator/scripts/build-settlement-markers-0244.py europe-atlas --countries AL,AD,AM,AT,AZ,BY,BE,BA,BG,HR,CY,CZ,DK,EE,FI,FR,GE,DE,GR,HU,IS,IE,IT,XK,LV,LI,LT,LU,MT,MD,MC,ME,NL,MK,NO,PL,PT,RO,RU,SM,RS,SK,SI,ES,SE,CH,TR,UA,GB,VA,GI,FO,MA,DZ,TN,LY,EG,EH --minimum-population 20000
+      - name: Verify unified Europe static world
+        run: node mallorca-mobile/adventure-0210/verify-0252.mjs
+      - name: Persist deterministic 0.25.2 atlas
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/build-world-0250.yml world-generator/configs/europe-atlas.region.json world-generator/overrides/europe-atlas.overrides.json world-generator/sources/europe-atlas world-generator/scripts/build-region-v2.mjs world-generator/scripts/build-settlement-markers-0244.py mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/iberia-world-0244.js mallorca-mobile/adventure-0210/iberia-world-0245.js mallorca-mobile/adventure-0210/iberia-world-0246.js mallorca-mobile/adventure-0210/iberia-world-0247.js mallorca-mobile/adventure-0210/iberia-world-0249.js mallorca-mobile/adventure-0210/iberia-world-0250.js regions/europe-atlas
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT 0.25.2 unified atlas is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Build WAFT 0.25.2 unified Europe atlas"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify one world in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0252-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
