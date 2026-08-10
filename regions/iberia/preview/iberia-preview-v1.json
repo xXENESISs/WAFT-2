@@ -1,21 +1,21 @@
 {
   "binary": {
-    "bytes": 17600,
+    "bytes": 17648,
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "eca7b25ccde3cb515e5ec4769c4f4a0bbd333102cb414362d44b932e376b31fd"
+    "sha256": "c3459094e5a13b3306aae6d224e56276b63730b07f3ee2025726c8ca8339317b"
   },
-  "buildId": "iberia-preview-dbb5c742e554",
+  "buildId": "iberia-preview-80461bd34dba",
   "counts": {
-    "buildings": 364,
+    "buildings": 365,
     "hotels": 0,
     "landmarks": 0,
-    "namedBuildings": 364,
+    "namedBuildings": 365,
     "roadSegments": 0,
     "roadVertices": 0,
     "selectedRoads": 0,
-    "settlements": 367
+    "settlements": 368
   },
   "display": {
     "buildingHorizontalExaggeration": 2.7,
@@ -25,7 +25,7 @@
   },
   "distributions": {
     "buildingKinds": {
-      "public": 364
+      "public": 365
     },
     "landmarkRepresentations": {},
     "roadClasses": {}
@@ -132,6 +132,12 @@
       "population": 24373
     },
     {
+      "id": "es-2522333",
+      "name": "Águilas",
+      "place": "PPLA3",
+      "population": 34533
+    },
+    {
       "id": "es-2522297",
       "name": "Alaquàs",
       "place": "PPLA3",
@@ -174,6 +180,12 @@
       "population": 41084
     },
     {
+      "id": "es-2522131",
+      "name": "Alcázar de San Juan",
+      "place": "PPLA3",
+      "population": 30686
+    },
+    {
       "id": "es-3130583",
       "name": "Alcobendas",
       "place": "PPLA3",
@@ -190,12 +202,6 @@
       "name": "Alcoy",
       "place": "PPLA3",
       "population": 61552
-    },
-    {
-      "id": "es-2522131",
-      "name": "Alcázar de San Juan",
-      "place": "PPLA3",
-      "population": 30686
     },
     {
       "id": "es-2522077",
@@ -378,6 +384,12 @@
       "population": 30000
     },
     {
+      "id": "es-3129136",
+      "name": "Ávila",
+      "place": "PPLA2",
+      "population": 57657
+    },
+    {
       "id": "es-3129135",
       "name": "Avilés",
       "place": "PPL",
@@ -480,6 +492,12 @@
       "population": 70450
     },
     {
+      "id": "es-2520968",
+      "name": "Bétera",
+      "place": "PPLA3",
+      "population": 20740
+    },
+    {
       "id": "es-3128026",
       "name": "Bilbao",
       "place": "PPLA2",
@@ -516,16 +534,16 @@
       "population": 34544
     },
     {
-      "id": "es-2520968",
-      "name": "Bétera",
-      "place": "PPLA3",
-      "population": 20740
-    },
-    {
       "id": "es-2520645",
       "name": "Cabra",
       "place": "PPLA3",
       "population": 21352
+    },
+    {
+      "id": "es-2520611",
+      "name": "Cáceres",
+      "place": "PPLA2",
+      "population": 96068
     },
     {
       "id": "es-2520600",
@@ -624,6 +642,12 @@
       "population": 213943
     },
     {
+      "id": "es-2520055",
+      "name": "Cártama",
+      "place": "PPLA3",
+      "population": 21313
+    },
+    {
       "id": "es-3125915",
       "name": "Castellar del Vallès",
       "place": "PPL",
@@ -702,6 +726,12 @@
       "population": 74743
     },
     {
+      "id": "es-2519367",
+      "name": "Coín",
+      "place": "PPLA3",
+      "population": 21866
+    },
+    {
       "id": "es-3124794",
       "name": "Collado-Villalba",
       "place": "PPL",
@@ -720,6 +750,12 @@
       "population": 22427
     },
     {
+      "id": "es-2519240",
+      "name": "Córdoba",
+      "place": "PPLA2",
+      "population": 325708
+    },
+    {
       "id": "es-2519233",
       "name": "Coria del Río",
       "place": "PPLA3",
@@ -736,12 +772,6 @@
       "name": "Coslada",
       "place": "PPLA3",
       "population": 81860
-    },
-    {
-      "id": "es-2519367",
-      "name": "Coín",
-      "place": "PPLA3",
-      "population": 21866
     },
     {
       "id": "es-2519110",
@@ -766,24 +796,6 @@
       "name": "Culleredo",
       "place": "PPLA3",
       "population": 30221
-    },
-    {
-      "id": "es-2520611",
-      "name": "Cáceres",
-      "place": "PPLA2",
-      "population": 96068
-    },
-    {
-      "id": "es-2520055",
-      "name": "Cártama",
-      "place": "PPLA3",
-      "population": 21313
-    },
-    {
-      "id": "es-2519240",
-      "name": "Córdoba",
-      "place": "PPLA2",
-      "population": 325708
     },
     {
       "id": "es-2518878",
@@ -814,6 +826,12 @@
       "name": "Durango",
       "place": "PPLA3",
       "population": 28229
+    },
+    {
+      "id": "es-2518770",
+      "name": "Écija",
+      "place": "PPLA3",
+      "population": 39882
     },
     {
       "id": "es-3123709",
@@ -1062,16 +1080,16 @@
       "population": 21324
     },
     {
-      "id": "es-2516336",
-      "name": "Javea",
-      "place": "PPL",
-      "population": 28016
-    },
-    {
       "id": "es-2516395",
       "name": "Jaén",
       "place": "PPLA2",
       "population": 113457
+    },
+    {
+      "id": "es-2516336",
+      "name": "Javea",
+      "place": "PPL",
+      "population": 28016
     },
     {
       "id": "es-2516326",
@@ -1164,16 +1182,16 @@
       "population": 31197
     },
     {
-      "id": "es-2515072",
-      "name": "Lepe",
-      "place": "PPLA3",
-      "population": 25886
-    },
-    {
       "id": "es-3118532",
       "name": "León",
       "place": "PPLA2",
       "population": 124772
+    },
+    {
+      "id": "es-2515072",
+      "name": "Lepe",
+      "place": "PPLA3",
+      "population": 25886
     },
     {
       "id": "es-2515045",
@@ -1194,16 +1212,16 @@
       "population": 140797
     },
     {
-      "id": "es-3118212",
-      "name": "Lloret de Mar",
-      "place": "PPLA3",
-      "population": 37350
-    },
-    {
       "id": "es-2515036",
       "name": "Llíria",
       "place": "PPL",
       "population": 22972
+    },
+    {
+      "id": "es-3118212",
+      "name": "Lloret de Mar",
+      "place": "PPLA3",
+      "population": 37350
     },
     {
       "id": "es-3118150",
@@ -1272,6 +1290,12 @@
       "population": 68110
     },
     {
+      "id": "es-2514256",
+      "name": "Málaga",
+      "place": "PPLA2",
+      "population": 592346
+    },
+    {
       "id": "es-2514197",
       "name": "Manises",
       "place": "PPLA3",
@@ -1302,6 +1326,12 @@
       "population": 156295
     },
     {
+      "id": "es-3117409",
+      "name": "Marín",
+      "place": "PPL",
+      "population": 25969
+    },
+    {
       "id": "es-3117331",
       "name": "Martorell",
       "place": "PPLA3",
@@ -1312,12 +1342,6 @@
       "name": "Martos",
       "place": "PPLA3",
       "population": 24655
-    },
-    {
-      "id": "es-3117409",
-      "name": "Marín",
-      "place": "PPL",
-      "population": 25969
     },
     {
       "id": "es-3117164",
@@ -1348,6 +1372,12 @@
       "name": "Melilla",
       "place": "PPLA",
       "population": 85985
+    },
+    {
+      "id": "es-2513917",
+      "name": "Mérida",
+      "place": "PPLA",
+      "population": 59857
     },
     {
       "id": "es-3116789",
@@ -1416,6 +1446,12 @@
       "population": 27844
     },
     {
+      "id": "es-3116025",
+      "name": "Móstoles",
+      "place": "PPLA3",
+      "population": 207095
+    },
+    {
       "id": "es-2513477",
       "name": "Motril",
       "place": "PPLA3",
@@ -1432,24 +1468,6 @@
       "name": "Mutxamel",
       "place": "PPL",
       "population": 22510
-    },
-    {
-      "id": "es-2514256",
-      "name": "Málaga",
-      "place": "PPLA2",
-      "population": 592346
-    },
-    {
-      "id": "es-2513917",
-      "name": "Mérida",
-      "place": "PPLA",
-      "population": 59857
-    },
-    {
-      "id": "es-3116025",
-      "name": "Móstoles",
-      "place": "PPLA3",
-      "population": 207095
     },
     {
       "id": "es-3115739",
@@ -1476,16 +1494,16 @@
       "population": 21811
     },
     {
-      "id": "es-2513195",
-      "name": "Novelda",
-      "place": "PPLA3",
-      "population": 27135
-    },
-    {
       "id": "es-2513222",
       "name": "Níjar",
       "place": "PPLA3",
       "population": 26516
+    },
+    {
+      "id": "es-2513195",
+      "name": "Novelda",
+      "place": "PPLA3",
+      "population": 27135
     },
     {
       "id": "es-3115177",
@@ -1908,6 +1926,12 @@
       "population": 32030
     },
     {
+      "id": "es-manual-sant-just-desvern",
+      "name": "Sant Just Desvern",
+      "place": "PPLA3",
+      "population": 21000
+    },
+    {
       "id": "es-3110143",
       "name": "Sant Pere de Ribes",
       "place": "PPL",
@@ -2118,6 +2142,12 @@
       "population": 34717
     },
     {
+      "id": "es-2510116",
+      "name": "Úbeda",
+      "place": "PPLA3",
+      "population": 34602
+    },
+    {
       "id": "es-2510073",
       "name": "Utrera",
       "place": "PPLA3",
@@ -2154,10 +2184,22 @@
       "population": 25092
     },
     {
+      "id": "es-2509769",
+      "name": "Vélez-Málaga",
+      "place": "PPLA3",
+      "population": 74190
+    },
+    {
       "id": "es-3106050",
       "name": "Vic",
       "place": "PPLA3",
       "population": 39844
+    },
+    {
+      "id": "es-2509650",
+      "name": "Vícar",
+      "place": "PPLA3",
+      "population": 22853
     },
     {
       "id": "es-3105976",
@@ -2244,28 +2286,16 @@
       "population": 28273
     },
     {
-      "id": "es-2509769",
-      "name": "Vélez-Málaga",
+      "id": "es-2516345",
+      "name": "Xàtiva",
       "place": "PPLA3",
-      "population": 74190
-    },
-    {
-      "id": "es-2509650",
-      "name": "Vícar",
-      "place": "PPLA3",
-      "population": 22853
+      "population": 29386
     },
     {
       "id": "es-2519466",
       "name": "Xirivella",
       "place": "PPL",
       "population": 30002
-    },
-    {
-      "id": "es-2516345",
-      "name": "Xàtiva",
-      "place": "PPLA3",
-      "population": 29386
     },
     {
       "id": "es-2509402",
@@ -2290,34 +2320,10 @@
       "name": "Zarautz",
       "place": "PPLA3",
       "population": 22627
-    },
-    {
-      "id": "es-2522333",
-      "name": "Águilas",
-      "place": "PPLA3",
-      "population": 34533
-    },
-    {
-      "id": "es-3129136",
-      "name": "Ávila",
-      "place": "PPLA2",
-      "population": 57657
-    },
-    {
-      "id": "es-2518770",
-      "name": "Écija",
-      "place": "PPLA3",
-      "population": 39882
-    },
-    {
-      "id": "es-2510116",
-      "name": "Úbeda",
-      "place": "PPLA3",
-      "population": 34602
     }
   ],
   "sources": {
-    "inputsSha256": "dbb5c742e55477615ea98cfee2edf72ab71573ae9eda1f73b8c7382c67492951",
+    "inputsSha256": "80461bd34dba69d073cfb3932773f98e25b38ce5567df4c7d106766acbc9ae3f",
     "landcoverSha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668",
     "regionManifestSha256": "2abdb460fb8c9418f4b65fe53b338bc17b89bcf7d66777cff449eff9c5de73ea",
     "terrainSha256": "3330513a236f9a959454e004305113831ef36cb02d8c9ee386dffa2d911966ef"

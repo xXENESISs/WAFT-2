@@ -18,12 +18,12 @@
   const ANCHOR={lat:42.66,lon:0.55};
   const PREFETCH_LAT=42.15;
   const REGION_SWITCH_LAT=42.78;
-  const LOD_MIN_LAT=43.54;
-  const FRANCE_SAMPLE_LAT=43.50;
-  const FULL_SWITCH_LAT=43.64;
-  const RESTORE_IBERIA_LAT=43.42;
-  const MORPH_START_LAT=43.30;
-  const MORPH_END_LAT=44.60;
+  const LOD_MIN_LAT=42.10;
+  const FRANCE_SAMPLE_LAT=42.65;
+  const FULL_SWITCH_LAT=43.20;
+  const RESTORE_IBERIA_LAT=42.98;
+  const MORPH_START_LAT=42.45;
+  const MORPH_END_LAT=43.30;
   const PAGE_INSTANCE_ID=window.__WAFT_PAGE_INSTANCE_0245__||(window.__WAFT_PAGE_INSTANCE_0245__=`waft-${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -108,7 +108,7 @@
     const positionBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer);gl.bufferData(gl.ARRAY_BUFFER,positions,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
     const colorBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,colorBuffer);gl.bufferData(gl.ARRAY_BUFFER,colors,gl.STATIC_DRAW);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);
     const indexBuffer=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);
-    return{vao,buffers:[positionBuffer,colorBuffer,indexBuffer],count:indexCount,triangles:indexCount/3,stride,minLat,mode:stride===1?'france-full':'france-lod',lift:stride===1?0:.025};
+    return{vao,buffers:[positionBuffer,colorBuffer,indexBuffer],count:indexCount,triangles:indexCount/3,stride,minLat,mode:stride===1?'france-full':'france-lod',lift:stride===1?0:-.08};
   }
   function disposeMesh(mesh){if(!mesh)return;try{if(mesh.vao)gl.deleteVertexArray(mesh.vao);for(const buffer of mesh.buffers||[])if(buffer)gl.deleteBuffer(buffer);}catch{} }
   function setMesh(mesh){disposeMesh(state.mesh);state.mesh=mesh;state.renderMode=mesh?.mode||'none';}
@@ -127,7 +127,7 @@
       if(terrain.columns!==landcover.columns||terrain.rows!==landcover.rows)throw new Error('France terrain/landcover incompatibles');
       if(manifest?.region?.id!=='france'||Number(manifest?.projection?.unitsPerKm)!==1.45)throw new Error('Manifest France incompatible con 0.24.5');
       state.manifest=manifest;state.terrain=terrain;state.landcover=landcover;state.franceBytes=terrainBuffer.byteLength+landcoverBuffer.byteLength;state.prefetched=true;
-      setMesh(buildMesh(5,LOD_MIN_LAT));state.phase='lod-ready';return true;
+      setMesh(buildMesh(4,LOD_MIN_LAT));state.phase='lod-ready';return true;
     })().catch(error=>{state.phase='error';state.error=String(error?.message||error);throw error;});
     return state.prefetchPromise;
   }
@@ -154,13 +154,13 @@
       const released=api.releaseRegionalTerrainGpu?.()||0;state.iberiaGpuReleased=released>0||Boolean(api.getState?.().adventureRegionalTerrainReleased);
       setMesh(null);setMesh(buildMesh(1,null));state.phase='france-full';state.activeRegion='france';
       const after=api.getState?.();state.transition=transitionSnapshot(before,after,'iberia-to-france');
-    }catch(error){try{api.restoreRegionalTerrainGpu?.();state.iberiaGpuReleased=false;if(!state.mesh)setMesh(buildMesh(5,LOD_MIN_LAT));}catch{}state.phase='error';state.error=String(error?.message||error);throw error;}
+    }catch(error){try{api.restoreRegionalTerrainGpu?.();state.iberiaGpuReleased=false;if(!state.mesh)setMesh(buildMesh(4,LOD_MIN_LAT));}catch{}state.phase='error';state.error=String(error?.message||error);throw error;}
   }
   function restoreIberiaOverlap(){
     if(!state.iberiaGpuReleased)return;
     const before=api.getState?.();
     try{
-      api.restoreRegionalTerrainGpu?.();state.iberiaGpuReleased=false;setMesh(buildMesh(5,LOD_MIN_LAT));state.phase='lod-ready';state.activeRegion='iberia';
+      api.restoreRegionalTerrainGpu?.();state.iberiaGpuReleased=false;setMesh(buildMesh(4,LOD_MIN_LAT));state.phase='lod-ready';state.activeRegion='iberia';
       state.transition=transitionSnapshot(before,api.getState?.(),'france-to-iberia');
     }catch(error){state.phase='error';state.error=String(error?.message||error);throw error;}
   }
