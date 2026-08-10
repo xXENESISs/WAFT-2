@@ -41,7 +41,23 @@ for(const id of ['iberia','france','canarias','northwest-africa']){
 }
 
 {
+  const p='mallorca-mobile/adventure-0210/iberia-world-0249.js';let s=read(p);
+  const oldDesired=`  const desiredHud=state=>{\n    if(!state?.position)return'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';\n    const g=geoFromWorld(state.position.x,state.position.z);\n    if(continuity.inCanarias?.(g))return'CANARIAS · MUNDO CONTINUO';\n    if(continuity.inFrance?.(g))return'FRANCE · MONDE CONTINU';\n    return'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';\n  };`;
+  const newDesired=`  const desiredHud=state=>{\n    const world250=window.WAFTWorld0250,version250=Boolean(window.__WAFT_IBERIA_WORLD_0250_READY__||world250);\n    if(!state?.position)return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.0':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';\n    const g=geoFromWorld(state.position.x,state.position.z);\n    if(world250?.inAfrica?.(g))return'NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.0';\n    if(continuity.inCanarias?.(g))return'CANARIAS · MUNDO CONTINUO';\n    if(continuity.inFrance?.(g))return'FRANCE · MONDE CONTINU';\n    return version250?'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.25.0':'PENÍNSULA IBÉRICA · EXPLORACIÓN 0.24.9';\n  };`;
+  if(s.includes(oldDesired))s=s.replace(oldDesired,newDesired);else if(!s.includes('world250?.inAfrica?.(g)'))throw new Error('0.24.9 HUD controller shape changed');
+  s=s.replace('  const normalizeVersionText=()=>{\n    for(const el of document.querySelectorAll',"  const normalizeVersionText=()=>{\n    if(window.__WAFT_IBERIA_WORLD_0250_READY__)return;\n    for(const el of document.querySelectorAll");
+  write(p,s);
+}
+
+{
+  const p='mallorca-mobile/adventure-0210/iberia-world-0250.js';let s=read(p);
+  s=s.replace('const LABEL_RANGE_KM=1.5,NEAREST_RANGE_KM=5.0,LABEL_MAX_AGL_M=320;','const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;');
+  if(!s.includes('const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;'))throw new Error('Arrival-only label range was not applied');
+  write(p,s);
+}
+
+{
   const p='mallorca-mobile/adventure-0210/index.html';let s=read(p);s=s.replace("window.__WAFT_ADVENTURE_BUILD__='0.24.6'","window.__WAFT_ADVENTURE_BUILD__='0.25.0'");
   if(!s.includes('iberia-world-0250.js')){const n='<script src="adventure-0210/iberia-world-0249.js?v=${encodeURIComponent(version)}"><\\/script>';if(!s.includes(n))throw new Error('0.24.9 bootstrap missing');s=s.replace(n,n+'<script src="adventure-0210/iberia-world-0250.js?v=${encodeURIComponent(version)}"><\\/script>');}write(p,s);
 }
-console.log('WAFT 0.25.0 preparation is deterministic.');
+console.log('WAFT 0.25.0 preparation is deterministic: 1.00 u/km, authoritative HUD, 150 m arrival labels, real NW Africa, no artificial Atlantic corridor.');
