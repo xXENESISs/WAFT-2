@@ -63,7 +63,12 @@
 
   const drawMesh=(m,ox=0,oy=0,oz=0)=>{if(!m?.vao)return;gl.uniform3f(uO,ox,oy,oz);gl.bindVertexArray(m.vao);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_INT,0);};
   const prev=plugin.afterWorldDraw?.bind(plugin);
-  plugin.afterWorldDraw=(now,eye,pv)=>{prev?.(now,eye,pv);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);for(const l of landmarks)drawMesh(meshes[l.kind],l.x,l.y,l.z);const ss=stream.getState?.();if(franceCitiesMesh&&ss?.prefetched&&Number(ss.geo?.lat)>42.62)drawMesh(franceCitiesMesh);gl.bindVertexArray(null);};
+  plugin.afterWorldDraw=(now,eye,pv)=>{
+    prev?.(now,eye,pv);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);
+    const pos=api.getState?.()?.position;
+    for(const l of landmarks){const near=pos&&Math.hypot(pos.x-l.x,pos.z-l.z)<35;if(near)gl.disable(gl.DEPTH_TEST);drawMesh(meshes[l.kind],l.x,l.y,l.z);if(near)gl.enable(gl.DEPTH_TEST);}
+    const ss=stream.getState?.();if(franceCitiesMesh&&ss?.prefetched&&Number(ss.geo?.lat)>42.62)drawMesh(franceCitiesMesh);gl.bindVertexArray(null);
+  };
 
   const hudTitle=document.getElementById('hudTitle'),originalHudTitle=hudTitle?.textContent||'';
   const refreshHint=()=>{for(const el of document.querySelectorAll('div,span,p')){if(el.children.length===0&&/mantén el joystick abajo en vuelo para entrar en picado/i.test(el.textContent||''))el.textContent='Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';}};
