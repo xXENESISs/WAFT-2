@@ -3,6 +3,7 @@ import fs from 'node:fs';
 const settlementsPath='regions/iberia/settlements.json';
 const objectsPath='regions/iberia/objects.json';
 const terrainPath='regions/iberia/terrain.bin';
+const manifestPath='regions/iberia/manifest.json';
 const data=JSON.parse(fs.readFileSync(settlementsPath,'utf8'));
 const items=Array.isArray(data.items)?data.items:[];
 const name='Sant Just Desvern',lat=41.3817,lon=2.0751,population=21000;
@@ -26,4 +27,14 @@ if(!objects.items.some(x=>x.name===name)){
   objects.items.push({areaM2:null,collisionMode:'none',footprint:[[x-h,z-h],[x+h,z-h],[x+h,z+h],[x-h,z+h],[x-h,z-h]],heightMeters:18,id:'marker-es-manual-sant-just-desvern',kind:'public',local:{x,y,z},name,position:{lat,lon},priority:48,roofWalkable:false,scaleY:1,sectorId:'manual-0246',source:'manual-0246',sourceId:'manual-sant-just-desvern',tags:{population:String(population),'waft:lore':'fictional','waft:nuclear_war_deaths':String(sant.warImpact.nuclearWarDeaths),'waft:population_tier':'small'},terrainStatus:'dem-cell'});
   objects.items.sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'es'));objects.generationStage='population-war-lore-markers-0246';fs.writeFileSync(objectsPath,JSON.stringify(objects,null,2)+'\n');
 }
-console.log(`${name}: settlement + physical marker ready (${population} inhabitants).`);
+
+if(fs.existsSync(manifestPath)){
+  const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
+  manifest.content=manifest.content||{};
+  manifest.content.settlements=items.length;
+  manifest.content.generatedBuildings=objects.items.length;
+  manifest.region=manifest.region||{};
+  manifest.region.version='0.24.6';
+  fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+}
+console.log(`${name}: settlement + physical marker ready (${population} inhabitants); manifest synchronized.`);
