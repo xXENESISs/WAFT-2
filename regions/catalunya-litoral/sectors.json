@@ -336,7 +336,9 @@
         "entryPoints": [
           "land-pirineus"
         ],
-        "landmarks": [],
+        "landmarks": [
+          "muralles-girona"
+        ],
         "ports": [],
         "roads": [],
         "settlements": [
@@ -1102,7 +1104,7 @@
         "buildings": [],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-w182384937"
+          "monestir-montserrat"
         ],
         "ports": [],
         "roads": [],
@@ -1392,7 +1394,9 @@
       "content": {
         "buildings": [],
         "entryPoints": [],
-        "landmarks": [],
+        "landmarks": [
+          "castell-tossa"
+        ],
         "ports": [],
         "roads": [],
         "settlements": [],
@@ -1717,9 +1721,10 @@
         "buildings": [],
         "entryPoints": [],
         "landmarks": [
-          "osm-landmark-r3298476",
-          "osm-landmark-r9194723",
-          "osm-landmark-w66713401"
+          "sagrada-familia",
+          "park-guell",
+          "catedral-barcelona",
+          "torre-glories"
         ],
         "ports": [],
         "roads": [],
@@ -2216,7 +2221,7 @@
           "port-barcelona"
         ],
         "landmarks": [
-          "osm-landmark-r19658818"
+          "castell-montjuic"
         ],
         "ports": [],
         "roads": [],
@@ -2475,7 +2480,7 @@
           "port-tarragona"
         ],
         "landmarks": [
-          "osm-landmark-w77502859"
+          "amfiteatre-tarragona"
         ],
         "ports": [],
         "roads": [],
