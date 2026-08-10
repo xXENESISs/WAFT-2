@@ -57,13 +57,22 @@
   // is a real water corridor so flight/swimming can continue between southern Iberia and the islands.
   const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 unavailable for Canarias 0.24.7');
-  let canTerrain=null,canCover=null,canManifest=null,canMesh=null,canPrefetch=null,canDrawFrames=0;
+  let canTerrain=null,canCover=null,canManifest=null,canMesh=null,canPrefetch=null,canDrawFrames=0,atlanticMesh=null,atlanticDrawFrames=0; // WAFT_ATLANTIC_MESH_0247
   const palette=[[.026,.17,.30],[.73,.61,.35],[.42,.43,.41],[.31,.47,.19],[.055,.29,.12],[.50,.53,.20],[.45,.44,.40],[.16,.39,.28],[.49,.40,.29],[.38,.56,.20]];
   const compile=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s)||'Canarias shader');return s;};
   const vs=compile(gl.VERTEX_SHADER,`#version 300 es\nlayout(location=0)in vec3 aP;layout(location=1)in vec3 aC;uniform mat4 uPV;uniform float uV;out vec3 vC;void main(){vC=aC;gl_Position=uPV*vec4(aP.x,aP.y*uV,aP.z,1.0);}`);
   const fs=compile(gl.FRAGMENT_SHADER,`#version 300 es\nprecision highp float;in vec3 vC;out vec4 o;void main(){o=vec4(vC,1.0);}`);
   const canProgram=gl.createProgram();gl.attachShader(canProgram,vs);gl.attachShader(canProgram,fs);gl.linkProgram(canProgram);gl.deleteShader(vs);gl.deleteShader(fs);if(!gl.getProgramParameter(canProgram,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(canProgram)||'Canarias program');
   const canPV=gl.getUniformLocation(canProgram,'uPV'),canV=gl.getUniformLocation(canProgram,'uV');
+  // A narrow Atlantic water corridor follows the ocean west of Morocco instead of painting a giant rectangle over Africa.
+  const atlanticEastLon=lat=>lat>=35?-5.05-(35.45-lat)*2.0:lat>=33?-5.95-(35-lat)*1.25:lat>=31?-8.45-(33-lat)*1.3:-11.05-(31-lat)*1.15;
+  const buildAtlanticMesh=()=>{
+    const lats=[35.45,35,33,31,29.35,27.25],pos=[],col=[],ind=[],water=[.026,.17,.30];
+    for(const lat of lats)for(const lon of [-19.6,atlanticEastLon(lat)]){const w=worldFromGeo(lat,lon);pos.push(w.x,-7.75,w.z);col.push(...water);}
+    for(let r=0;r<lats.length-1;r++){const a=r*2,b=a+1,c=a+2,d=a+3;ind.push(a,c,b,b,c,d);}
+    const vao=gl.createVertexArray();gl.bindVertexArray(vao);const pb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pos),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);const cb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,cb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(col),gl.STATIC_DRAW);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(ind),gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:ind.length,triangles:ind.length/3,buffers:[pb,cb,ib]};
+  };
+  atlanticMesh=buildAtlanticMesh();
   const parseTerrain=buffer=>{const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTHGT1')throw new Error(`Canarias terrain magic ${magic}`);const headerBytes=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{headerBytes,columns,rows,west:v.getFloat64(16,true),east:v.getFloat64(24,true),south:v.getFloat64(32,true),north:v.getFloat64(40,true),nodata:v.getInt32(56,true),elevations:new Int16Array(buffer,headerBytes,columns*rows)};};
   const parseCover=buffer=>{const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTLCV1')throw new Error(`Canarias cover magic ${magic}`);const headerBytes=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{columns,rows,classes:new Uint8Array(buffer,headerBytes,columns*rows)};};
   const buildCanMesh=()=>{
@@ -74,12 +83,12 @@
   };
   const prefetchCanarias=()=>canPrefetch||(canPrefetch=(async()=>{const base='../../regions/canarias/';const [m,tb,cb]=await Promise.all([fetch(new URL(base+'manifest.json',location.href),{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error('Canarias manifest '+r.status);return r.json();}),fetch(new URL(base+'terrain.bin',location.href),{cache:'force-cache'}).then(r=>r.arrayBuffer()),fetch(new URL(base+'landcover.bin',location.href),{cache:'force-cache'}).then(r=>r.arrayBuffer())]);canManifest=m;canTerrain=parseTerrain(tb);canCover=parseCover(cb);canMesh=buildCanMesh();return true;})());
   const sampleCanarias=(x,z)=>{if(!canTerrain)return null;const g=geoFromWorld(x,z),t=canTerrain;if(g.lat<t.south||g.lat>t.north||g.lon<t.west||g.lon>t.east)return null;const fx=(g.lon-t.west)/(t.east-t.west)*(t.columns-1),fz=(t.north-g.lat)/(t.north-t.south)*(t.rows-1),col=clamp(Math.round(fx),0,t.columns-1),row=clamp(Math.round(fz),0,t.rows-1),raw=t.elevations[row*t.columns+col],land=raw!==t.nodata;return{inside:true,land,water:!land,height:(land?raw:-8)*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'canarias',lat:g.lat,lon:g.lon};};
-  const sampleAtlantic=(x,z)=>{const g=geoFromWorld(x,z);if(g.lat>35.45||g.lat<29.35||g.lon>-5.05||g.lon<-19.6)return null;return{inside:true,land:false,water:true,height:-8*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'atlantic-corridor',lat:g.lat,lon:g.lon};};
+  const sampleAtlantic=(x,z)=>{const g=geoFromWorld(x,z);if(g.lat>35.45||g.lat<27.25||g.lon<-19.6||g.lon>atlanticEastLon(g.lat))return null;return{inside:true,land:false,water:true,height:-8*VERTICAL,waterHeight:-8*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:'atlantic-corridor',lat:g.lat,lon:g.lon};};
   const previousStreamSample=stream.sampleSurface?.bind(stream);
   if(previousStreamSample)stream.sampleSurface=(x,z)=>sampleCanarias(x,z)||sampleAtlantic(x,z)||previousStreamSample(x,z);
 
   const previousDraw=plugin.afterWorldDraw?.bind(plugin);
-  plugin.afterWorldDraw=(now,eye,pv)=>{previousDraw?.(now,eye,pv);const state=api.getState?.(),g=state?.position?geoFromWorld(state.position.x,state.position.z):null;if(!canMesh||!g||g.lat>31.6)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(canProgram);gl.uniformMatrix4fv(canPV,false,pv);gl.uniform1f(canV,VERTICAL);gl.bindVertexArray(canMesh.vao);gl.drawElements(gl.TRIANGLES,canMesh.count,gl.UNSIGNED_INT,0);gl.bindVertexArray(null);canDrawFrames++;};
+  plugin.afterWorldDraw=(now,eye,pv)=>{previousDraw?.(now,eye,pv);const state=api.getState?.(),g=state?.position?geoFromWorld(state.position.x,state.position.z):null;if(!g)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(canProgram);gl.uniformMatrix4fv(canPV,false,pv);gl.uniform1f(canV,VERTICAL);if(atlanticMesh&&g.lat<36.6&&g.lon<-4.5){gl.bindVertexArray(atlanticMesh.vao);gl.drawElements(gl.TRIANGLES,atlanticMesh.count,gl.UNSIGNED_INT,0);atlanticDrawFrames++;}if(canMesh&&g.lat<31.6){gl.bindVertexArray(canMesh.vao);gl.drawElements(gl.TRIANGLES,canMesh.count,gl.UNSIGNED_INT,0);canDrawFrames++;}gl.bindVertexArray(null);};
 
   let iberiaCities=[],franceCities=[],canariasCities=[];
   const loadJson=path=>fetch(new URL(path,location.href),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`${r.status} ${path}`);return r.json();});
@@ -106,6 +115,6 @@
   }
   setInterval(updateCityLabels,120);updateCityLabels();
 
-  window.WAFTWorldContinuity0247={version:'0.24.7',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null;return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased,iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames};}};
+  window.WAFTWorldContinuity0247={version:'0.24.7',geoFromWorld,worldFromGeo,inFrance,inCanarias,prefetchCanarias,getState:()=>{const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null;return{geo,inFrance:inFrance(geo),inCanarias:inCanarias(geo),deepFrance:deepFrance(geo),behindReleased,iberiaCities:iberiaCities.length,franceCities:franceCities.length,canariasCities:canariasCities.length,canariasReady:Boolean(canMesh),canariasTriangles:canMesh?.triangles||0,canDrawFrames,atlanticReady:Boolean(atlanticMesh),atlanticTriangles:atlanticMesh?.triangles||0,atlanticDrawFrames};}};
   window.__WAFT_IBERIA_WORLD_0247_READY__=true;
 })().catch(e=>{console.error('WAFT 0.24.7 failed',e);window.__WAFT_IBERIA_WORLD_0247_ERROR__=String(e?.message||e);});
