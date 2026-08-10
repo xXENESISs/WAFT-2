@@ -1,0 +1,357 @@
+{
+  "$schema": "../schema/region.schema.json",
+  "schemaVersion": 1,
+  "id": "europe-atlas",
+  "name": "Europa · Atlas continuo",
+  "version": "0.25.2",
+  "status": "prototype",
+  "continent": "Europe",
+  "countryCodes": [
+    "AL",
+    "AD",
+    "AM",
+    "AT",
+    "AZ",
+    "BY",
+    "BE",
+    "BA",
+    "BG",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "GE",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "XK",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "MD",
+    "MC",
+    "ME",
+    "NL",
+    "MK",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "RU",
+    "SM",
+    "RS",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "CH",
+    "TR",
+    "UA",
+    "GB",
+    "VA",
+    "GI",
+    "FO",
+    "MA",
+    "DZ",
+    "TN",
+    "LY",
+    "EG",
+    "EH"
+  ],
+  "aliases": [
+    "Europe Atlas",
+    "Europa",
+    "WAFT Europe continuous atlas"
+  ],
+  "geography": {
+    "bounds": {
+      "west": -26,
+      "east": 60,
+      "south": 26,
+      "north": 72.5
+    },
+    "origin": {
+      "lon": -3.125,
+      "lat": 39.775
+    },
+    "projection": "local-equirectangular",
+    "scale": {
+      "horizontalUnitsPerKm": 0.3,
+      "verticalExaggeration": 0.65,
+      "emptySpaceCompression": {
+        "mode": "none",
+        "factor": 1,
+        "preserveCoastline": true,
+        "anchorIds": []
+      }
+    },
+    "subregions": [
+      {
+        "id": "pyrenees",
+        "name": "Pirineos",
+        "type": "mountain",
+        "center": {
+          "lon": 0.55,
+          "lat": 42.66
+        },
+        "priority": 100
+      },
+      {
+        "id": "alps",
+        "name": "Alpes",
+        "type": "mountain",
+        "center": {
+          "lon": 10,
+          "lat": 46.5
+        },
+        "priority": 100
+      },
+      {
+        "id": "carpathians",
+        "name": "Cárpatos",
+        "type": "mountain",
+        "center": {
+          "lon": 24,
+          "lat": 47.2
+        },
+        "priority": 96
+      },
+      {
+        "id": "scandinavia",
+        "name": "Escandinavia",
+        "type": "mountain",
+        "center": {
+          "lon": 15,
+          "lat": 65
+        },
+        "priority": 94
+      },
+      {
+        "id": "atlas",
+        "name": "Atlas",
+        "type": "mountain",
+        "center": {
+          "lon": -5,
+          "lat": 32
+        },
+        "priority": 92
+      },
+      {
+        "id": "canary-islands",
+        "name": "Canarias",
+        "type": "island",
+        "center": {
+          "lon": -15.5,
+          "lat": 28.3
+        },
+        "priority": 92
+      }
+    ]
+  },
+  "sources": {
+    "terrain": {
+      "provider": "Mapzen terrain tiles / AWS Open Data",
+      "dataset": "Mapzen Terrain Tiles · Terrarium",
+      "license": "Source-dependent; see Mapzen terrain tile attribution",
+      "attribution": "Mapzen terrain tiles and contributing elevation datasets",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "cartography": {
+      "provider": "OpenStreetMap contributors",
+      "dataset": "OpenStreetMap",
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "landcover": {
+      "provider": "WAFT + Natural Earth",
+      "dataset": "Natural Earth 1:50m land mask with Mapzen elevations",
+      "license": "Natural Earth public domain; terrain attribution as above",
+      "attribution": "Natural Earth + Mapzen terrain tiles",
+      "resolutionMeters": null,
+      "cachePolicy": "build-cache"
+    },
+    "climate": {
+      "provider": "WorldClim",
+      "dataset": "WorldClim 2.1",
+      "license": "CC BY 4.0",
+      "attribution": "WorldClim global climate data",
+      "resolutionMeters": 1000,
+      "cachePolicy": "build-cache"
+    },
+    "landmarks": [
+      {
+        "provider": "OpenStreetMap contributors",
+        "dataset": "OpenStreetMap places and features",
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ],
+    "fauna": [
+      {
+        "provider": "GBIF",
+        "dataset": "GBIF occurrence records",
+        "license": "Record-dependent open licence",
+        "attribution": "GBIF.org and contributing datasets",
+        "resolutionMeters": null,
+        "cachePolicy": "build-cache"
+      }
+    ]
+  },
+  "generation": {
+    "terrain": {
+      "grid": {
+        "columns": 590,
+        "rows": 406
+      },
+      "lods": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "smoothingPasses": 2,
+      "coastalFlattening": true,
+      "maxWalkableSlopeDegrees": 52,
+      "seaLevelMeters": 0
+    },
+    "landcover": {
+      "ruleset": "europe-atlas-terrain-only-v1",
+      "fallbackBiome": "pasture",
+      "season": "dynamic",
+      "snowlineMeters": null
+    },
+    "transport": {
+      "includeRoadClasses": [],
+      "includeRailways": false,
+      "includeTrails": false,
+      "simplificationMeters": 150
+    },
+    "settlements": {
+      "maxCount": 0,
+      "minimumPopulation": 0,
+      "coastalTourismBoost": 0,
+      "profiles": [
+        "terrain-only"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "buildings": {
+      "useRealFootprints": false,
+      "proceduralFallback": false,
+      "minimumSpacingUnits": 0,
+      "maximumPerSector": 0,
+      "roofWalkable": false,
+      "collisionMode": "none",
+      "architectureProfiles": [
+        "terrain-only"
+      ],
+      "hotelDetection": false
+    },
+    "landmarks": {
+      "maximumCount": 0,
+      "minimumScore": 100,
+      "uniqueModelScore": 100,
+      "archetypeScore": 100,
+      "protectedRadiusUnits": 0,
+      "allowedTypes": [
+        "natural_landmark"
+      ],
+      "manualInclude": [],
+      "manualExcludeIds": []
+    },
+    "vegetation": {
+      "profiles": [
+        "terrain-only"
+      ],
+      "densityMultiplier": 0,
+      "minimumBuildingClearanceUnits": 0,
+      "instancing": true
+    },
+    "fauna": {
+      "ruleset": "europe-atlas-terrain-only-v1",
+      "maximumSpecies": 0,
+      "maximumActiveAnimals": 0,
+      "recordsSinceYear": 1990,
+      "minimumCoordinatePrecisionMeters": 10000,
+      "manualInclude": [],
+      "manualExcludeScientificNames": []
+    }
+  },
+  "travel": {
+    "entryPoints": [
+      {
+        "id": "atlas-origin",
+        "name": "Madrid · atlas continuo",
+        "position": {
+          "lon": -3.7038,
+          "lat": 40.4168
+        },
+        "type": "air",
+        "arrivalHeadingDegrees": 0
+      }
+    ],
+    "connections": []
+  },
+  "gameplay": {
+    "spawnPoints": [
+      {
+        "id": "madrid-atlas-test",
+        "position": {
+          "lon": -3.7038,
+          "lat": 40.4168
+        },
+        "role": "default"
+      }
+    ],
+    "reservedZones": [],
+    "contentTargets": {
+      "minimumLandmarks": 0,
+      "minimumFaunaZones": 0,
+      "maximumEmptyTravelSeconds": 9999
+    }
+  },
+  "performance": {
+    "targetProfile": "mobile-mid",
+    "sectorSizeUnits": 64,
+    "preloadRadiusSectors": 1,
+    "budgets": {
+      "downloadMb": 25,
+      "runtimeMemoryMb": 320,
+      "visibleTriangles": 480000,
+      "visibleObjects": 120,
+      "activeColliders": 20,
+      "textureMemoryMb": 36
+    }
+  },
+  "outputs": {
+    "directory": "regions/europe-atlas",
+    "manifest": "manifest.json",
+    "terrain": "terrain.bin",
+    "landcover": "landcover.bin",
+    "sectors": "sectors.json",
+    "settlements": "settlements.json",
+    "objects": "objects.json",
+    "landmarks": "landmarks.json",
+    "fauna": "fauna.json",
+    "routes": "routes.json"
+  },
+  "overrides": {
+    "file": "world-generator/overrides/europe-atlas.overrides.json",
+    "preserveOnRegenerate": true,
+    "failOnUnknownTarget": true
+  }
+}

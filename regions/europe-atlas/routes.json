@@ -1,0 +1,27 @@
+{
+  "connections": [],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 0,
+      "id": "atlas-origin",
+      "local": {
+        "x": -14.856,
+        "y": 706,
+        "z": -21.3974
+      },
+      "name": "Madrid · atlas continuo",
+      "position": {
+        "lat": 40.4168,
+        "lon": -3.7038
+      },
+      "sectorId": "s-08-16",
+      "terrainStatus": "exact-cell",
+      "type": "air"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "europe-atlas",
+  "roads": []
+}

@@ -1,9 +1,9 @@
-name: Verify World 2 Adventure 0.25.1
+name: Verify World 2 Adventure 0.25.2
 
 on:
   push:
     branches:
-      - feat/world-0251-global-compression
+      - feat/world-0252-unified-europe-atlas
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -14,8 +14,13 @@ on:
       - world-generator/configs/france.region.json
       - world-generator/configs/canarias.region.json
       - world-generator/configs/northwest-africa.region.json
+      - world-generator/configs/europe-atlas.region.json
       - world-generator/configs/world-streaming-topology.v1.json
-      - world-generator/scripts/prepare-world-0251.mjs
+      - world-generator/overrides/europe-atlas.overrides.json
+      - world-generator/scripts/prepare-world-0252.mjs
+      - world-generator/scripts/import-mapzen-terrarium-atlas.py
+      - world-generator/scripts/build-terrain-only-landcover.py
+      - world-generator/scripts/build-region-v2.mjs
       - world-generator/scripts/build-region-preview-v2.mjs
       - world-generator/scripts/ensure-iberia-settlements-0246.mjs
       - world-generator/scripts/smoke-iberia-terrain-0240.mjs
@@ -24,6 +29,7 @@ on:
       - regions/france/**
       - regions/canarias/**
       - regions/northwest-africa/**
+      - regions/europe-atlas/**
       - .github/workflows/verify-world2-adventure-0210.yml
   workflow_dispatch:
 
@@ -60,9 +66,11 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0247.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0249.js
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
-          node --check mallorca-mobile/adventure-0210/verify-0251.mjs
-          node --check mallorca-mobile/adventure-0210/tools/verify-world-0251.mjs
-          node --check world-generator/scripts/prepare-world-0251.mjs
+          node --check mallorca-mobile/adventure-0210/europe-atlas-0252.js
+          node --check mallorca-mobile/adventure-0210/verify-0252.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs
+          node --check world-generator/scripts/prepare-world-0252.mjs
+          node --check world-generator/scripts/build-region-v2.mjs
           node --check world-generator/scripts/build-region-preview-v2.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
           node --check world-generator/scripts/smoke-world-expansion-0244.mjs
@@ -74,11 +82,14 @@ jobs:
           node --check mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
           node --check mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node --check world-generator/scripts/smoke-iberia-terrain-0240.mjs
+          python3 -m py_compile world-generator/scripts/import-mapzen-terrarium-atlas.py
+          python3 -m py_compile world-generator/scripts/build-terrain-only-landcover.py
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/spain-region-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
-      - name: Verify 0.25.1 world contracts
+          node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/europe-atlas.region.json','utf8'))"
+      - name: Verify 0.25.2 unified world contracts
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/verify-0251.mjs
+        run: node mallorca-mobile/adventure-0210/verify-0252.mjs
       - name: Compile patched regional runtimes
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
@@ -100,11 +111,11 @@ jobs:
       - name: Verify ecological zones and fauna placement
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
-      - name: Verify Iberia and world foundation
+      - name: Verify Iberia history and unified atlas foundation
         working-directory: repo
         run: |
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.25.1 compresses the horizontal world to 0.30 u/km while preserving mountain height, gameplay parity, local labels, real Northwest Africa and continuous Atlantic travel.
+# 0.25.2 keeps the proven Adventure mechanics while replacing regional terrain swaps with one rectangular Europe + North Africa + Canarias base atlas at 0.30 u/km and proportional mountain height.

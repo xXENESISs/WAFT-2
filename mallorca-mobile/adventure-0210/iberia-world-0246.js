@@ -2,9 +2,9 @@
 (async()=>{
   if(window.__WAFT_IBERIA_WORLD_0246_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
-  for(let i=0;i<500&&(!window.WAFTRegionRuntime||!window.WAFTWorldStreaming0245);i++)await wait(40);
+  for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTWorldStreaming0245||(window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.WAFTEuropeAtlas0252?.getState?.().ready));i++)await wait(40);
   const api=window.WAFTRegionRuntime,plugin=window.WAFTAdventurePlugin,stream=window.WAFTWorldStreaming0245;
-  if(!api||!plugin||!stream)throw new Error('WAFT 0.24.6 runtime unavailable');
+  if(!api||!plugin||!stream)throw new Error('WAFT 0.25.2 runtime unavailable');
 
   const style=document.createElement('style');
   style.textContent=`#waftSpecialMarkers{display:none!important}#waftDive0246{position:fixed;right:max(142px,calc(env(safe-area-inset-right) + 142px));bottom:max(42px,calc(env(safe-area-inset-bottom) + 42px));z-index:45;width:92px;height:54px;border-radius:16px;border:2px solid #ffcf67;background:rgba(70,25,18,.91);color:#fff4d5;font:950 12px system-ui;box-shadow:0 8px 22px #0009;touch-action:none;user-select:none}#waftDive0246.active{transform:scale(.96);background:#8d2e20}#waftDive0246[hidden]{display:none!important}#waftFranceBadge0246{position:fixed;left:50%;top:max(12px,env(safe-area-inset-top));transform:translateX(-50%);z-index:42;padding:8px 13px;border-radius:13px;border:1px solid rgba(244,207,107,.58);background:rgba(9,27,34,.88);color:#ffe6a0;font:900 11px system-ui;letter-spacing:.055em;box-shadow:0 8px 25px #0008;pointer-events:none}#waftFranceBadge0246[hidden]{display:none!important}`;
@@ -19,7 +19,7 @@
   addEventListener('keyup',e=>{if(e.code==='ControlLeft'||e.code==='KeyC')setDive(false);});
 
   const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
-  if(!gl)throw new Error('WebGL2 unavailable for 0.24.6 world layer');
+  if(!gl)throw new Error('WebGL2 unavailable for 0.25.2 world layer');
   const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh)||'world shader');return sh;};
   const vs=compile(gl.VERTEX_SHADER,`#version 300 es\nlayout(location=0)in vec3 aP;layout(location=1)in vec3 aC;uniform mat4 uPV;uniform vec3 uO;out vec3 vC;void main(){vC=aC;gl_Position=uPV*vec4(aP+uO,1.0);}`);
   const fs=compile(gl.FRAGMENT_SHADER,`#version 300 es\nprecision highp float;in vec3 vC;out vec4 o;void main(){o=vec4(vC,1.0);}`);
@@ -63,7 +63,7 @@
     const want=new Map([['Gibraltar','gibraltar'],['Peñíscola','peniscola'],['Ayódar','ayodar']]);
     landmarks=(iberiaData.items||[]).filter(x=>want.has(x.name)).map(x=>{const px=Number(x.local.x),pz=Number(x.local.z),surface=api.sampleSurface?.(px,pz),fallback=(Number(x.local.y)||0)*.013594;return{kind:want.get(x.name),x:px,z:pz,y:Number.isFinite(surface?.height)?surface.height+.03:fallback+.03,name:x.name};});
     reset();const vertical=Number(api.metadata?.terrain?.verticalScale)||.013594;
-    for(const city of franceObjects.items||[]){
+    for(const city of (window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__?[]:(franceObjects.items||[]))){
       const lat=Number(city.position?.lat),lon=Number(city.position?.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
       const p=stream.worldFromGeo(lat,lon),pop=Number(city.tags?.population)||0,tier=pop>=250000?3:pop>=100000?2:pop>=50000?1:0,size=footprintSize(city),h=Math.max(.25,Math.min(1.25,(Number(city.heightMeters)||18)*vertical)),base=(Number(city.local?.y)||0)*vertical,col=tier>=2?[.92,.69,.25]:tier===1?[.82,.62,.25]:[.70,.55,.25];
       box(p.x,base+h*.5+.025,p.z,size.w,h,size.d,col);franceCityCount++;
@@ -87,4 +87,4 @@
 
   window.WAFTIberiaWorld0246={version:'0.24.8-hotfix',landmarks:()=>landmarks.map(x=>x.name),landmarkData:()=>landmarks.map(x=>({...x})),franceCityCount:()=>franceCityCount,diveButton:dive,setDive};
   window.__WAFT_IBERIA_WORLD_0246_READY__=true;
-})().catch(e=>{console.error('WAFT 0.24.6 failed',e);window.__WAFT_IBERIA_WORLD_0246_ERROR__=String(e?.message||e);});
+})().catch(e=>{console.error('WAFT 0.25.2 failed',e);window.__WAFT_IBERIA_WORLD_0246_ERROR__=String(e?.message||e);});

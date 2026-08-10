@@ -1,0 +1,42 @@
+{
+  "algorithmVersion": "terrain-only-v2",
+  "attribution": "Mapzen terrain tiles and contributing elevation datasets",
+  "binaryBytes": 239604,
+  "binaryFile": "esa-worldcover-2021-v200.bin",
+  "binarySha256": "2964e1e78f8fa7d2f92fab3b492eb9b99ad8862b3b212860643e7bd1ec2ff96c",
+  "classDistribution": {
+    "30": {
+      "cells": 134714,
+      "name": "Grassland placeholder",
+      "ratio": 0.56238624
+    },
+    "80": {
+      "cells": 104826,
+      "name": "Water",
+      "ratio": 0.43761376
+    }
+  },
+  "dataset": "WAFT terrain-only land/water mask derived from elevation source",
+  "datasetYear": 2021,
+  "distribution": "Derived build artifact",
+  "doi": null,
+  "formatVersion": 1,
+  "license": "Source-dependent; see Mapzen terrain tile attribution",
+  "nominalResolutionMeters": null,
+  "provider": "WAFT / source terrain provider",
+  "regionId": "europe-atlas",
+  "retrievedOn": "2026-08-10",
+  "sourceDocumentation": null,
+  "targetGrid": {
+    "bounds": {
+      "east": 60.0,
+      "north": 72.5,
+      "south": 26.0,
+      "west": -26.0
+    },
+    "columns": 590,
+    "method": "DEM elevation > 0",
+    "rows": 406
+  },
+  "tiles": []
+}

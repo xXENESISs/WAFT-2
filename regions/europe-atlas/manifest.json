@@ -1,0 +1,690 @@
+{
+  "budgets": {
+    "activeColliders": 20,
+    "downloadMb": 25,
+    "runtimeMemoryMb": 320,
+    "textureMemoryMb": 36,
+    "visibleObjects": 120,
+    "visibleTriangles": 480000
+  },
+  "content": {
+    "connections": 0,
+    "entryPoints": 1,
+    "faunaSpecies": 0,
+    "generatedBuildings": 6262,
+    "landmarks": 0,
+    "settlements": 6265
+  },
+  "deterministic": true,
+  "files": [
+    {
+      "bytes": 479144,
+      "path": "terrain.bin",
+      "sha256": "59a21b7dcd17ec7b371a0bc594c992cd914e996fe00aa1065bab6ccf27720dcd"
+    },
+    {
+      "bytes": 239604,
+      "path": "landcover.bin",
+      "sha256": "0075fe19100b5aea18a23ea93664afedc4100a187c3747e57d6f8794b73e8713"
+    },
+    {
+      "bytes": 948087,
+      "path": "sectors.json",
+      "sha256": "29f5db82bc96e4fa3a6219c1febb22e3fe78db6cb0c4078afa207a3d28c1d490"
+    },
+    {
+      "bytes": 4708108,
+      "path": "settlements.json",
+      "sha256": "fb668fcbd60ad660c4bb86bc76e1d424f2ca5c257dd35ff5aee45895a40762b9"
+    },
+    {
+      "bytes": 6674093,
+      "path": "objects.json",
+      "sha256": "8a5add32b0f7f010971449182acf7ac52508b99463fdc6660d9d49974300da08"
+    },
+    {
+      "bytes": 153,
+      "path": "landmarks.json",
+      "sha256": "682d592f17e3bcf6ba53323c4ce5ac5326597c7311a53398295736210064f717"
+    },
+    {
+      "bytes": 161,
+      "path": "fauna.json",
+      "sha256": "2b2564195efff6b31652656da3553e277c2658635f0335c460057da93e8db36d"
+    },
+    {
+      "bytes": 547,
+      "path": "routes.json",
+      "sha256": "baff7e21fd368c3043a44cb9ddff619abb1cccbb6d7050ecce194cf33b65a17a"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "dem-worldcover-bootstrap",
+  "generatorVersion": "0.2.0",
+  "landcover": {
+    "classDistribution": {
+      "0": 104826,
+      "6": 13583,
+      "9": 121131
+    },
+    "classes": [
+      {
+        "id": 0,
+        "key": "water",
+        "walkable": false
+      },
+      {
+        "id": 1,
+        "key": "beach",
+        "walkable": true
+      },
+      {
+        "id": 2,
+        "key": "coastal-rock",
+        "walkable": true
+      },
+      {
+        "id": 3,
+        "key": "mediterranean-scrub",
+        "walkable": true
+      },
+      {
+        "id": 4,
+        "key": "mediterranean-forest",
+        "walkable": true
+      },
+      {
+        "id": 5,
+        "key": "agricultural",
+        "walkable": true
+      },
+      {
+        "id": 6,
+        "key": "mountain-rock",
+        "walkable": true
+      },
+      {
+        "id": 7,
+        "key": "wetland",
+        "walkable": true
+      },
+      {
+        "id": 8,
+        "key": "urban",
+        "walkable": true
+      },
+      {
+        "id": 9,
+        "key": "pasture",
+        "walkable": true
+      }
+    ],
+    "externalWorldCoverImportPending": false,
+    "fallbackLandCells": 0,
+    "format": "WAFTLCV1",
+    "quality": "esa-worldcover-2021-v200",
+    "realClassifiedLandCells": 134714,
+    "source": {
+      "algorithmVersion": "terrain-only-v2",
+      "attribution": "Mapzen terrain tiles and contributing elevation datasets",
+      "dataset": "WAFT terrain-only land/water mask derived from elevation source",
+      "datasetYear": 2021,
+      "distribution": "Derived build artifact",
+      "doi": null,
+      "license": "Source-dependent; see Mapzen terrain tile attribution",
+      "nominalResolutionMeters": null,
+      "provider": "WAFT / source terrain provider",
+      "retrievedOn": "2026-08-10",
+      "snapshotSha256": "2964e1e78f8fa7d2f92fab3b492eb9b99ad8862b3b212860643e7bd1ec2ff96c",
+      "tiles": []
+    }
+  },
+  "packageBytesWithoutManifest": 1668050,
+  "pendingStages": [
+    "openstreetmap-settlements-buildings-and-routes",
+    "wikidata-landmark-ranking",
+    "gbif-fauna-candidates",
+    "procedural-vegetation-and-buildings"
+  ],
+  "projection": {
+    "axis": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "compression": {
+      "anchorIds": [],
+      "factor": 1,
+      "mode": "none",
+      "preserveCoastline": true
+    },
+    "kmPerDegreeLat": 111.132,
+    "kmPerDegreeLon": 85.55640544079021,
+    "localBounds": {
+      "maxX": 1620.2244280349648,
+      "maxZ": 459.25299,
+      "minX": -587.1308323374228,
+      "minZ": -1091.03841
+    },
+    "origin": {
+      "lat": 39.775,
+      "lon": -3.125
+    },
+    "type": "local-equirectangular",
+    "unitsPerKm": 0.3
+  },
+  "provenance": {
+    "config": {
+      "path": "world-generator/configs/europe-atlas.region.json",
+      "sha256": "91716df1cc8516547f9306f25a633477ecd4e87c6868e4f12840e2eeddaf6196"
+    },
+    "demSnapshot": {
+      "metadataPath": "world-generator/sources/europe-atlas/copernicus-dem-glo30.json",
+      "path": "world-generator/sources/europe-atlas/copernicus-dem-glo30.bin",
+      "sha256": "1442c6e1f85c5b8d2407f5bf6ae00c9db547685703aa3ba09d181a7934ee8b21"
+    },
+    "generatorSourcesSha256": "360b90dcb55ee5e26af8ba291440c07db46646d96de92401d1771cb678b21d96",
+    "overrides": {
+      "path": "world-generator/overrides/europe-atlas.overrides.json",
+      "sha256": "a9a5292538d4600f5843a666e09ace3d794f3936395d5c4439ad9789bf46f71e"
+    },
+    "worldCoverSnapshot": {
+      "metadataPath": "world-generator/sources/europe-atlas/esa-worldcover-2021-v200.json",
+      "path": "world-generator/sources/europe-atlas/esa-worldcover-2021-v200.bin",
+      "sha256": "2964e1e78f8fa7d2f92fab3b492eb9b99ad8862b3b212860643e7bd1ec2ff96c"
+    }
+  },
+  "region": {
+    "continent": "Europe",
+    "countryCodes": [
+      "AL",
+      "AD",
+      "AM",
+      "AT",
+      "AZ",
+      "BY",
+      "BE",
+      "BA",
+      "BG",
+      "HR",
+      "CY",
+      "CZ",
+      "DK",
+      "EE",
+      "FI",
+      "FR",
+      "GE",
+      "DE",
+      "GR",
+      "HU",
+      "IS",
+      "IE",
+      "IT",
+      "XK",
+      "LV",
+      "LI",
+      "LT",
+      "LU",
+      "MT",
+      "MD",
+      "MC",
+      "ME",
+      "NL",
+      "MK",
+      "NO",
+      "PL",
+      "PT",
+      "RO",
+      "RU",
+      "SM",
+      "RS",
+      "SK",
+      "SI",
+      "ES",
+      "SE",
+      "CH",
+      "TR",
+      "UA",
+      "GB",
+      "VA",
+      "GI",
+      "FO",
+      "MA",
+      "DZ",
+      "TN",
+      "LY",
+      "EG",
+      "EH"
+    ],
+    "id": "europe-atlas",
+    "name": "Europa · Atlas continuo",
+    "status": "prototype",
+    "version": "0.25.2"
+  },
+  "sectors": {
+    "active": 649,
+    "columns": 35,
+    "preloadRadius": 1,
+    "rows": 25,
+    "sizeUnits": 64,
+    "total": 875
+  },
+  "settlementMarkers": {
+    "fictionalWarImpact": true,
+    "manualPopulationExceptions": 3,
+    "minimumPopulation": 20000,
+    "source": {
+      "countries": [
+        "AD",
+        "AL",
+        "AM",
+        "AT",
+        "AZ",
+        "BA",
+        "BE",
+        "BG",
+        "BY",
+        "CH",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DZ",
+        "EE",
+        "EG",
+        "EH",
+        "ES",
+        "FI",
+        "FO",
+        "FR",
+        "GB",
+        "GE",
+        "GI",
+        "GR",
+        "HR",
+        "HU",
+        "IE",
+        "IS",
+        "IT",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MK",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "RS",
+        "RU",
+        "SE",
+        "SI",
+        "SK",
+        "SM",
+        "TN",
+        "TR",
+        "UA",
+        "VA",
+        "XK"
+      ],
+      "dataset": "cities15000",
+      "fictionalWarImpact": true,
+      "license": "GeoNames CC BY 4.0; WAFT manual metadata",
+      "minimumPopulation": 20000,
+      "provider": "GeoNames + WAFT manual exceptions",
+      "regionId": "europe-atlas",
+      "retrievedOn": "2026-08-09",
+      "url": "https://download.geonames.org/export/dump/cities15000.zip"
+    },
+    "tiers": {
+      "large": [
+        200000,
+        null
+      ],
+      "medium": [
+        50000,
+        199999
+      ],
+      "small": [
+        20000,
+        49999
+      ]
+    }
+  },
+  "terrain": {
+    "cells": 239540,
+    "columns": 590,
+    "elevationSource": {
+      "attribution": "Mapzen terrain tiles and contributing elevation datasets",
+      "dataset": "Mapzen Terrain Tiles · Terrarium",
+      "license": "Source-dependent; see Mapzen terrain tile attribution",
+      "mode": "mapzen-terrarium-z5",
+      "provider": "Mapzen terrain tiles / AWS Open Data",
+      "retrievedOn": "2026-08-10",
+      "snapshotSha256": "1442c6e1f85c5b8d2407f5bf6ae00c9db547685703aa3ba09d181a7934ee8b21",
+      "tiles": [
+        {
+          "bytes": 97640,
+          "id": "5/13/12",
+          "sha256": "a309f5e1ed4a4b29d37f71ebcd4191a0e658073dfe6d5476f1564e54d86af968"
+        },
+        {
+          "bytes": 85507,
+          "id": "5/13/6",
+          "sha256": "17a0659c1768aaf14838356c14a9dfdb268174df8c5085823f8517b619367c96"
+        },
+        {
+          "bytes": 74488,
+          "id": "5/13/7",
+          "sha256": "503330986f8a408adac1f4f2b239815a4aa31975f0a43b3c9a4ac6711edad0a0"
+        },
+        {
+          "bytes": 69022,
+          "id": "5/13/8",
+          "sha256": "32b9c2df0b5f040599fd8d1401b562c1a68b3d32a1b39db320510a456e401b2f"
+        },
+        {
+          "bytes": 93391,
+          "id": "5/14/12",
+          "sha256": "b8968bfdb9669a4feaf7755c24a84a03703586c389145540b9c8613334fe068f"
+        },
+        {
+          "bytes": 75947,
+          "id": "5/14/13",
+          "sha256": "3f1cb55c3c57071e61cbbaced9e7b569ba2ec239c603adacfff168bc207b0403"
+        },
+        {
+          "bytes": 64801,
+          "id": "5/14/6",
+          "sha256": "4800a271c2fda32a613005aa0abbf9d05256950dfed14938998b5b2b59d2f436"
+        },
+        {
+          "bytes": 63967,
+          "id": "5/14/7",
+          "sha256": "4ffc4e64c6b998784f47316997d88c6ef3ac1f2f44d54868aa3dea842e4fd711"
+        },
+        {
+          "bytes": 74941,
+          "id": "5/14/8",
+          "sha256": "621f1474a17dfd1882c93fc796908a067d41806a85344940f86d711cc48f5b71"
+        },
+        {
+          "bytes": 65306,
+          "id": "5/15/10",
+          "sha256": "9b661bb849997f0e07d9a0cb865d13487080922c80196cc59f1d434cfa889e5c"
+        },
+        {
+          "bytes": 83909,
+          "id": "5/15/11",
+          "sha256": "5881f5a357b94e401e8cf8900d79b840a01b7535cd22a3db45d9b4de324a44c6"
+        },
+        {
+          "bytes": 90118,
+          "id": "5/15/12",
+          "sha256": "dbb1ebb7c4c0e2f1a0c8bb51fceda9dab9bb6a007377d5e8a0d88a18ce08ee38"
+        },
+        {
+          "bytes": 64000,
+          "id": "5/15/13",
+          "sha256": "3bf066427fccf02d14c840f6960f1d159161b6886a22d4131c5f16712713c450"
+        },
+        {
+          "bytes": 76489,
+          "id": "5/15/6",
+          "sha256": "7fdce889d02447878a1a09198679af2f9ce7cba83ca2c6bbcce95d1a57786a8a"
+        },
+        {
+          "bytes": 72358,
+          "id": "5/15/8",
+          "sha256": "12e5011bfdc2b8b75a52c98b24c0393f1711c8ece3b39dd79377d23ded63829b"
+        },
+        {
+          "bytes": 71853,
+          "id": "5/15/9",
+          "sha256": "15037af80f6770a31c6e69d544eea9aa53c70cb658c39b549843f7028d96afaa"
+        },
+        {
+          "bytes": 52730,
+          "id": "5/16/10",
+          "sha256": "074643ffe3e245c5c59580f5dab16723e9cc01ea5dc46e3a55adba6be060c788"
+        },
+        {
+          "bytes": 87345,
+          "id": "5/16/11",
+          "sha256": "08bd81fcdfa625ce4e207063949420054024d8881a4dd72dee1297cbd83ff4bb"
+        },
+        {
+          "bytes": 82734,
+          "id": "5/16/12",
+          "sha256": "02a1df88ce7b28989cee2a94ff02b094474437b3c0967a0b22072534bbeea68c"
+        },
+        {
+          "bytes": 66010,
+          "id": "5/16/13",
+          "sha256": "d767b70ebc9c9d1a7dd1c704cab0f34f86f0c70b92719bb65ad47cbfb52f7d47"
+        },
+        {
+          "bytes": 69511,
+          "id": "5/16/8",
+          "sha256": "fe4b5dfaa4280a8c092d11ff99aba9cadc2db19a35e22cc1970ceeae31aa9e4a"
+        },
+        {
+          "bytes": 64117,
+          "id": "5/16/9",
+          "sha256": "3d1e8c873eb8fdbee512924f40f28b396114f0a9435afdd282d51522e6f55685"
+        },
+        {
+          "bytes": 59906,
+          "id": "5/17/10",
+          "sha256": "f8aeedef358c0636dabcf09a7ec22b65bb27cbef9dbe24a6d935eb5acf0fbd67"
+        },
+        {
+          "bytes": 84490,
+          "id": "5/17/11",
+          "sha256": "0898fa7319fa284b5626510d6ab7fabf033ded3feaad74166402a39da96d4e25"
+        },
+        {
+          "bytes": 91765,
+          "id": "5/17/12",
+          "sha256": "d84d1ea89076e1117f7cff3a3a6ef2af3a9c1828018ea45c679c3a6a59adc3ec"
+        },
+        {
+          "bytes": 62942,
+          "id": "5/17/13",
+          "sha256": "b0ec570143ec25367d49644415ac2c33b80b088aa4f298a109929fe1f5b9a253"
+        },
+        {
+          "bytes": 44718,
+          "id": "5/17/6",
+          "sha256": "07a2b45ea12b7f0a922dfaa808d83cd4ca29d130f915fbd1b70573d87ad01da4"
+        },
+        {
+          "bytes": 79122,
+          "id": "5/17/7",
+          "sha256": "a2f11e95590c12eb98e4e8d18da4dbdc2d750c46ede8cd61b58f8f28e48d8efc"
+        },
+        {
+          "bytes": 74571,
+          "id": "5/17/8",
+          "sha256": "7b8f73b28efcca92888e4633a2f1524900907784f5fe00965613862a15aa7273"
+        },
+        {
+          "bytes": 57294,
+          "id": "5/17/9",
+          "sha256": "537dcee43d9d2e89985c9c80e9a3954c6167eba4d1cf14406a50b971172ec38f"
+        },
+        {
+          "bytes": 49614,
+          "id": "5/18/10",
+          "sha256": "a22a906aa41f88c790a8d7d5bf0c4c8ce3f2696e32fbf2820863ed62f0ba4891"
+        },
+        {
+          "bytes": 78984,
+          "id": "5/18/11",
+          "sha256": "623e755f9809f7637deb945ac663ba04b328bc28c84c9ada4eb44aafa8434041"
+        },
+        {
+          "bytes": 94812,
+          "id": "5/18/12",
+          "sha256": "0ef6a8421496aaad54e6f9783ce698281cbd1d97800c4833b59b501b15c9cf9e"
+        },
+        {
+          "bytes": 66634,
+          "id": "5/18/13",
+          "sha256": "ee7a3720ea5d798d1bee38c48d6cb51b58da8b59aa0021cec63cd0c502213841"
+        },
+        {
+          "bytes": 40478,
+          "id": "5/18/6",
+          "sha256": "e43ad354c862f7fb47e6aa28e3a2f2fbf57387cdc0de06d27912070901397698"
+        },
+        {
+          "bytes": 68113,
+          "id": "5/18/7",
+          "sha256": "f77f2d25037f6eb157d590040eeb66b15026bc44e1218069856d3685ddd1ea69"
+        },
+        {
+          "bytes": 50889,
+          "id": "5/18/8",
+          "sha256": "0204bb152343f32d1d545a534dd7dc631c67d4884b4abd45cbc68ffa51f9f58d"
+        },
+        {
+          "bytes": 45636,
+          "id": "5/18/9",
+          "sha256": "a15bda7208e1b5fe2abf00306b6ab2ca7c163e3542ce37a09a3914fe211d64f8"
+        },
+        {
+          "bytes": 54592,
+          "id": "5/19/10",
+          "sha256": "bf1a88f47b072115360f1105e59f0429009e06711379182f1dc145773ca69358"
+        },
+        {
+          "bytes": 74368,
+          "id": "5/19/11",
+          "sha256": "8daa8b54ccdf200182f2476176ac34d8807871c87e4cb7c65343b24a5de8b6a2"
+        },
+        {
+          "bytes": 86415,
+          "id": "5/19/12",
+          "sha256": "f74a8b311353d7485bbcdd52767752ad79361914645e46b9b103708beea3b863"
+        },
+        {
+          "bytes": 77271,
+          "id": "5/19/13",
+          "sha256": "5d266b95c6822fd4efd01f447c727d09beb2a6b10308091caeea5c7d37ffd185"
+        },
+        {
+          "bytes": 43372,
+          "id": "5/19/7",
+          "sha256": "272c0f266bca250e40d7da0cd96e69beae470849f0037dbfa2aa624fda3ac150"
+        },
+        {
+          "bytes": 47725,
+          "id": "5/19/8",
+          "sha256": "4e753ef4f5d04a3cb2ab7627ae4399a2984f4a568606a5223292e590acfdb479"
+        },
+        {
+          "bytes": 48675,
+          "id": "5/19/9",
+          "sha256": "cbfea0ad6adfacf9faff282c1fd42b32d30593734c6e66aa16f94fa6cd745b5b"
+        },
+        {
+          "bytes": 59492,
+          "id": "5/20/10",
+          "sha256": "11f1ce6d873b53d4a92c89d3b072d6fde52c0db311127524966132eacfee66bf"
+        },
+        {
+          "bytes": 48704,
+          "id": "5/20/11",
+          "sha256": "a152edd6e77776af3f380e3a084c0bb47a00b3bc1dff16e0d5f35c6ba3a2a910"
+        },
+        {
+          "bytes": 85122,
+          "id": "5/20/12",
+          "sha256": "5b48460f9d2bfd75b1b0c00387e2d0b9298d348352609445e3c1e0db4d5d53c5"
+        },
+        {
+          "bytes": 68704,
+          "id": "5/20/13",
+          "sha256": "3fae157771f3d8f19c841dbfe349afa8a96f647b3e6e3905794f4bf3723f2194"
+        },
+        {
+          "bytes": 46642,
+          "id": "5/20/6",
+          "sha256": "761772baeef2933f48ef3d1dc3e6f111d14745d83e45f8d5a3a20cbf3642bdd1"
+        },
+        {
+          "bytes": 35640,
+          "id": "5/20/7",
+          "sha256": "b17042e831f2a56bc1edbcfef91286c2cb8ff31ccaef4ffd48d356bac862f38b"
+        },
+        {
+          "bytes": 50075,
+          "id": "5/20/8",
+          "sha256": "aec6b03db3a25090cc2df631c1014eb5f0ad19514173e0c70f9a24e81a6d07b4"
+        },
+        {
+          "bytes": 53637,
+          "id": "5/20/9",
+          "sha256": "371bf5a57f4b1471d5ae13eb20353889f0f14ddde793b0047daf1b89a5df36e9"
+        },
+        {
+          "bytes": 59699,
+          "id": "5/21/10",
+          "sha256": "17a3f9efed83ab6d69e44722d8c44c23bef686ca039f142be986a73618f2e996"
+        },
+        {
+          "bytes": 48071,
+          "id": "5/21/11",
+          "sha256": "7bba5df7f79529139ae19547ef1b0dac3a65f9a287e380f5ca4df27fd8093ab3"
+        },
+        {
+          "bytes": 76881,
+          "id": "5/21/12",
+          "sha256": "564cc7875cab0f8d27f4573d0c135c1302a2384d6d2ef22bea75c4cd14fcf758"
+        },
+        {
+          "bytes": 89253,
+          "id": "5/21/13",
+          "sha256": "f92015155e4c0dd68d2437db5697d10e03157845257a060623b70d900cf560ea"
+        },
+        {
+          "bytes": 36323,
+          "id": "5/21/6",
+          "sha256": "2bde0ef9081cf5109ed68b673333ff4d64bf6d329c1f3415a6f7ebe08ee7880f"
+        },
+        {
+          "bytes": 49874,
+          "id": "5/21/7",
+          "sha256": "e8e5040c5c281bc83fac33b1449d6c620611aaa243c2e7cee7376a241ad3124f"
+        },
+        {
+          "bytes": 60771,
+          "id": "5/21/8",
+          "sha256": "1204c1f822e1bac6e66bc27020f6583245302abe99fa6b33664bff2def048ed5"
+        },
+        {
+          "bytes": 57108,
+          "id": "5/21/9",
+          "sha256": "7b8f33e455e58003cea2adffec3cd59c9e257d45ae6e675a3c5dc7aaf6763469"
+        }
+      ]
+    },
+    "format": "WAFTHGT1",
+    "landCells": 134714,
+    "landMaskSource": "esa-worldcover-water-class",
+    "landRatio": 0.562386,
+    "maximumElevationMeters": 3541,
+    "meanElevationMeters": 432.578,
+    "minimumElevationMeters": 1,
+    "nodataElevation": -32768,
+    "rows": 406
+  }
+}

@@ -1,6 +1,6 @@
 'use strict';
 (async()=>{
-  if(window.__WAFT_IBERIA_WORLD_0245_READY__)return;
+  if(window.__WAFT_IBERIA_WORLD_0245_READY__||window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__)return;
 
   const waitFor=async(test,timeout=30000)=>{const start=performance.now();while(!test()){if(performance.now()-start>timeout)throw new Error('Timeout esperando runtime 0.24.5');await new Promise(r=>setTimeout(r,40));}};
   await waitFor(()=>window.WAFTRegionRuntime&&window.WAFTAdventurePlugin&&document.querySelector('canvas'));
@@ -11,7 +11,7 @@
   const gl=canvas.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 no disponible para streaming 0.24.5');
 
-  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.1';
+  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.2';
   const U=Number(api.metadata?.projection?.unitsPerKm)||.30;
   const I={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
   const LOD_MIN_LAT=43.62;

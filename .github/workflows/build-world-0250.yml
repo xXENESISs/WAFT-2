@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - feat/world-0251-global-compression
-      - main
     paths:
       - .github/workflows/build-world-0250.yml
       - world-generator/configs/iberia.region.json

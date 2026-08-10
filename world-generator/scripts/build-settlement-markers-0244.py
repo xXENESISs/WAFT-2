@@ -196,7 +196,7 @@ def main():
     countries = parse_countries(args.countries)
     zip_path = download()
     rows = read_geonames(zip_path, countries, config['geography']['bounds'], args.minimum_population, args.exclude_balearics)
-    if args.region_id == 'iberia':
+    if args.region_id in ('iberia', 'europe-atlas'):
         # Keep user's meaningful small places even though they deliberately sit below the regional 20k threshold.
         rows.extend(SPECIAL_IBERIA)
         for item in rows:

@@ -2,7 +2,7 @@
 """Create the minimal WAFTWCV1 land/water raster needed by build-region-v2.
 
 For terrain-only macro regions we deliberately avoid downloading multi-gigabyte
-10 m WorldCover tiles. Positive Copernicus DEM cells become generic grassland;
+10 m WorldCover tiles. Positive DEM cells become generic grassland;
 zero or missing cells become water. Detailed biome classification comes later.
 """
 from __future__ import annotations
@@ -51,15 +51,17 @@ def main():
     struct.pack_into("<d",header,32,bounds["south"]); struct.pack_into("<d",header,40,bounds["north"])
     struct.pack_into("<I",header,48,0); struct.pack_into("<I",header,52,count)
     struct.pack_into("<H",header,56,2021); struct.pack_into("<H",header,58,240)
-    struct.pack_into("<I",header,60,int(meta.get("nominalResolutionMeters",90)))
+    # 0 is the binary-contract sentinel for a source without one fixed nominal resolution.
+    nominal_resolution=meta.get("nominalResolutionMeters")
+    struct.pack_into("<I",header,60,int(nominal_resolution) if nominal_resolution is not None else 0)
     out=src/"esa-worldcover-2021-v200.bin"
     with out.open("wb") as f: f.write(header); f.write(classes)
     retrieved=meta.get("retrievedOn")
     out_meta={
-      "formatVersion":1,"regionId":a.region_id,"dataset":"WAFT terrain-only land/water mask derived from Copernicus DEM",
-      "datasetYear":2021,"algorithmVersion":"terrain-only-v1","provider":"WAFT / Copernicus Programme",
-      "distribution":"Derived build artifact","nominalResolutionMeters":meta.get("nominalResolutionMeters",90),"retrievedOn":retrieved,
-      "attribution":meta.get("attribution","Contains modified Copernicus DEM data"),"license":meta.get("license","Copernicus data policy"),
+      "formatVersion":1,"regionId":a.region_id,"dataset":"WAFT terrain-only land/water mask derived from elevation source",
+      "datasetYear":2021,"algorithmVersion":"terrain-only-v2","provider":"WAFT / source terrain provider",
+      "distribution":"Derived build artifact","nominalResolutionMeters":nominal_resolution,"retrievedOn":retrieved,
+      "attribution":meta.get("attribution","Contains modified terrain data"),"license":meta.get("license","See source terrain metadata"),
       "doi":None,"targetGrid":{"columns":columns,"rows":rows,"bounds":bounds,"method":"DEM elevation > 0"},
       "classDistribution":{"30":{"name":"Grassland placeholder","cells":land,"ratio":round(land/count,8)},"80":{"name":"Water","cells":water,"ratio":round(water/count,8)}},
       "tiles":[],"binaryFile":out.name,"binaryBytes":out.stat().st_size,"binarySha256":sha(out),
