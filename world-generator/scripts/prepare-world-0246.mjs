@@ -24,6 +24,10 @@ index=replace(index,
   "const iberiaVerticalNow=performance.now(),iberiaVerticalDt=state.iberiaDiveButton?Math.max(dt,Math.min(.18,(iberiaVerticalNow-(state.iberiaDiveLastStepAt||iberiaVerticalNow))/1000)):dt;state.iberiaDiveLastStepAt=iberiaVerticalNow;state.camera.y+=state.adventureFlightVy*iberiaVerticalDt;",
   'real-time explicit dive integration');
 index=replace(index,
+  "dive=bearded&&state.joyY>.55;speed=bearded?",
+  "dive=bearded&&(state.iberiaDiveButton||state.joyY>.55);speed=bearded?",
+  'explicit dive forward speed');
+index=replace(index,
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);",
   "if('boost'in modifiers)state.boost=Boolean(modifiers.boost);if('flightDive'in modifiers)state.iberiaDiveButton=Boolean(modifiers.flightDive);",
   'dive modifier api');
@@ -45,4 +49,4 @@ france=replace(france,"mode:stride===1?'france-full':'france-lod',lift:stride===
 
 fs.writeFileSync(indexPath,index);
 fs.writeFileSync(francePath,france);
-console.log('WAFT 0.24.6 prepared: low-FPS-stable explicit hard dive, physical landmark layer and hidden-under-Iberia France overlap.');
+console.log('WAFT 0.24.6 prepared: low-FPS-stable accelerated PICADO, physical landmark layer and hidden-under-Iberia France overlap.');
