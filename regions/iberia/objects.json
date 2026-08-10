@@ -2,7 +2,7 @@
   "discardedBuildings": {},
   "formatVersion": 1,
   "generatedBuildingsPending": false,
-  "generationStage": "population-war-lore-markers-0244",
+  "generationStage": "population-war-lore-markers-0246",
   "items": [
     {
       "areaM2": null,
@@ -156,6 +156,58 @@
         "population": "24373",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "17957",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          191.0492,
+          381.4356
+        ],
+        [
+          191.5692,
+          381.4356
+        ],
+        [
+          191.5692,
+          381.9556
+        ],
+        [
+          191.0492,
+          381.9556
+        ],
+        [
+          191.0492,
+          381.4356
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2522333",
+      "kind": "public",
+      "local": {
+        "x": 191.3092,
+        "y": 55,
+        "z": 381.6956
+      },
+      "name": "Águilas",
+      "position": {
+        "lat": 37.4063,
+        "lon": -1.58289
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-15-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2522333",
+      "tags": {
+        "population": "34533",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "23227",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -530,6 +582,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -10.5902,
+          61.7617
+        ],
+        [
+          -10.0702,
+          61.7617
+        ],
+        [
+          -10.0702,
+          62.2817
+        ],
+        [
+          -10.5902,
+          62.2817
+        ],
+        [
+          -10.5902,
+          61.7617
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2522131",
+      "kind": "public",
+      "local": {
+        "x": -10.3302,
+        "y": 718,
+        "z": 62.0217
+      },
+      "name": "Alcázar de San Juan",
+      "position": {
+        "lat": 39.39011,
+        "lon": -3.20827
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-12-11",
+      "source": "geonames-cities15000",
+      "sourceId": "2522131",
+      "tags": {
+        "population": "30686",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "19315",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -64.5536,
           -124.8953
         ],
@@ -678,58 +782,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "44521",
         "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -10.5902,
-          61.7617
-        ],
-        [
-          -10.0702,
-          61.7617
-        ],
-        [
-          -10.0702,
-          62.2817
-        ],
-        [
-          -10.5902,
-          62.2817
-        ],
-        [
-          -10.5902,
-          61.7617
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2522131",
-      "kind": "public",
-      "local": {
-        "x": -10.3302,
-        "y": 718,
-        "z": 62.0217
-      },
-      "name": "Alcázar de San Juan",
-      "position": {
-        "lat": 39.39011,
-        "lon": -3.20827
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-12-11",
-      "source": "geonames-cities15000",
-      "sourceId": "2522131",
-      "tags": {
-        "population": "30686",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "19315",
-        "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
     },
@@ -2300,6 +2352,59 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -195.8287,
+          -142.6654
+        ],
+        [
+          -194.8287,
+          -142.6654
+        ],
+        [
+          -194.8287,
+          -141.6654
+        ],
+        [
+          -195.8287,
+          -141.6654
+        ],
+        [
+          -195.8287,
+          -142.6654
+        ]
+      ],
+      "heightMeters": 54,
+      "id": "marker-es-3129136",
+      "kind": "public",
+      "local": {
+        "x": -195.3287,
+        "y": 1146,
+        "z": -142.1654
+      },
+      "name": "Ávila",
+      "position": {
+        "lat": 40.65724,
+        "lon": -4.69951
+      },
+      "priority": 86,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-09-07",
+      "source": "geonames-cities15000",
+      "sourceId": "3129136",
+      "tags": {
+        "population": "57657",
+        "waft:capital_level": "provincial",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "34271",
+        "waft:population_tier": "medium"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -347.7579,
           -609.491
         ],
@@ -3133,6 +3238,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          330.164,
+          29.3723
+        ],
+        [
+          330.684,
+          29.3723
+        ],
+        [
+          330.684,
+          29.8923
+        ],
+        [
+          330.164,
+          29.8923
+        ],
+        [
+          330.164,
+          29.3723
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2520968",
+      "kind": "public",
+      "local": {
+        "x": 330.424,
+        "y": 131,
+        "z": 29.6323
+      },
+      "name": "Bétera",
+      "position": {
+        "lat": 39.59111,
+        "lon": -0.46151
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-17-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2520968",
+      "tags": {
+        "population": "20740",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "12849",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           24.0966,
           -562.6945
         ],
@@ -3447,58 +3604,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          330.164,
-          29.3723
-        ],
-        [
-          330.684,
-          29.3723
-        ],
-        [
-          330.684,
-          29.8923
-        ],
-        [
-          330.164,
-          29.8923
-        ],
-        [
-          330.164,
-          29.3723
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2520968",
-      "kind": "public",
-      "local": {
-        "x": 330.424,
-        "y": 131,
-        "z": 29.6323
-      },
-      "name": "Bétera",
-      "position": {
-        "lat": 39.59111,
-        "lon": -0.46151
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-17-10",
-      "source": "geonames-cities15000",
-      "sourceId": "2520968",
-      "tags": {
-        "population": "20740",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "12849",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           -163.6502,
           370.7697
         ],
@@ -3543,6 +3648,59 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "9218",
         "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          -403.3422,
+          47.6023
+        ],
+        [
+          -402.3422,
+          47.6023
+        ],
+        [
+          -402.3422,
+          48.6023
+        ],
+        [
+          -403.3422,
+          48.6023
+        ],
+        [
+          -403.3422,
+          47.6023
+        ]
+      ],
+      "heightMeters": 54,
+      "id": "marker-es-2520611",
+      "kind": "public",
+      "local": {
+        "x": -402.8422,
+        "y": 475,
+        "z": 48.1023
+      },
+      "name": "Cáceres",
+      "position": {
+        "lat": 39.47649,
+        "lon": -6.37224
+      },
+      "priority": 86,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-06-10",
+      "source": "geonames-cities15000",
+      "sourceId": "2520611",
+      "tags": {
+        "population": "96068",
+        "waft:capital_level": "provincial",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "53809",
+        "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
     },
@@ -4384,6 +4542,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -187.3339,
+          493.5288
+        ],
+        [
+          -186.8139,
+          493.5288
+        ],
+        [
+          -186.8139,
+          494.0488
+        ],
+        [
+          -187.3339,
+          494.0488
+        ],
+        [
+          -187.3339,
+          493.5288
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2520055",
+      "kind": "public",
+      "local": {
+        "x": -187.0739,
+        "y": 389,
+        "z": 493.7888
+      },
+      "name": "Cártama",
+      "position": {
+        "lat": 36.71068,
+        "lon": -4.63297
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2520055",
+      "tags": {
+        "population": "21313",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "8268",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           645.8687,
           -297.0293
         ],
@@ -5063,6 +5273,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -202.645,
+          501.7809
+        ],
+        [
+          -202.125,
+          501.7809
+        ],
+        [
+          -202.125,
+          502.3009
+        ],
+        [
+          -202.645,
+          502.3009
+        ],
+        [
+          -202.645,
+          501.7809
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2519367",
+      "kind": "public",
+      "local": {
+        "x": -202.385,
+        "y": 316,
+        "z": 502.0409
+      },
+      "name": "Coín",
+      "position": {
+        "lat": 36.65947,
+        "lon": -4.75639
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-09-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2519367",
+      "tags": {
+        "population": "21866",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "11600",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -109.5726,
           -139.0113
         ],
@@ -5219,6 +5481,59 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -205.0946,
+          302.8218
+        ],
+        [
+          -203.7346,
+          302.8218
+        ],
+        [
+          -203.7346,
+          304.1818
+        ],
+        [
+          -205.0946,
+          304.1818
+        ],
+        [
+          -205.0946,
+          302.8218
+        ]
+      ],
+      "heightMeters": 58,
+      "id": "marker-es-2519240",
+      "kind": "public",
+      "local": {
+        "x": -204.4146,
+        "y": 194,
+        "z": 303.5018
+      },
+      "name": "Córdoba",
+      "position": {
+        "lat": 37.89155,
+        "lon": -4.77275
+      },
+      "priority": 100,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-09-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2519240",
+      "tags": {
+        "population": "325708",
+        "waft:capital_level": "provincial",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "302174",
+        "waft:population_tier": "large"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -363.6347,
           400.5534
         ],
@@ -5367,58 +5682,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "68146",
         "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -202.645,
-          501.7809
-        ],
-        [
-          -202.125,
-          501.7809
-        ],
-        [
-          -202.125,
-          502.3009
-        ],
-        [
-          -202.645,
-          502.3009
-        ],
-        [
-          -202.645,
-          501.7809
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2519367",
-      "kind": "public",
-      "local": {
-        "x": -202.385,
-        "y": 316,
-        "z": 502.0409
-      },
-      "name": "Coín",
-      "position": {
-        "lat": 36.65947,
-        "lon": -4.75639
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-09-17",
-      "source": "geonames-cities15000",
-      "sourceId": "2519367",
-      "tags": {
-        "population": "21866",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "11600",
-        "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
     },
@@ -5628,164 +5891,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "20106",
         "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -403.3422,
-          47.6023
-        ],
-        [
-          -402.3422,
-          47.6023
-        ],
-        [
-          -402.3422,
-          48.6023
-        ],
-        [
-          -403.3422,
-          48.6023
-        ],
-        [
-          -403.3422,
-          47.6023
-        ]
-      ],
-      "heightMeters": 54,
-      "id": "marker-es-2520611",
-      "kind": "public",
-      "local": {
-        "x": -402.8422,
-        "y": 475,
-        "z": 48.1023
-      },
-      "name": "Cáceres",
-      "position": {
-        "lat": 39.47649,
-        "lon": -6.37224
-      },
-      "priority": 86,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-06-10",
-      "source": "geonames-cities15000",
-      "sourceId": "2520611",
-      "tags": {
-        "population": "96068",
-        "waft:capital_level": "provincial",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "53809",
-        "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -187.3339,
-          493.5288
-        ],
-        [
-          -186.8139,
-          493.5288
-        ],
-        [
-          -186.8139,
-          494.0488
-        ],
-        [
-          -187.3339,
-          494.0488
-        ],
-        [
-          -187.3339,
-          493.5288
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2520055",
-      "kind": "public",
-      "local": {
-        "x": -187.0739,
-        "y": 389,
-        "z": 493.7888
-      },
-      "name": "Cártama",
-      "position": {
-        "lat": 36.71068,
-        "lon": -4.63297
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-09-17",
-      "source": "geonames-cities15000",
-      "sourceId": "2520055",
-      "tags": {
-        "population": "21313",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "8268",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -205.0946,
-          302.8218
-        ],
-        [
-          -203.7346,
-          302.8218
-        ],
-        [
-          -203.7346,
-          304.1818
-        ],
-        [
-          -205.0946,
-          304.1818
-        ],
-        [
-          -205.0946,
-          302.8218
-        ]
-      ],
-      "heightMeters": 58,
-      "id": "marker-es-2519240",
-      "kind": "public",
-      "local": {
-        "x": -204.4146,
-        "y": 194,
-        "z": 303.5018
-      },
-      "name": "Córdoba",
-      "position": {
-        "lat": 37.89155,
-        "lon": -4.77275
-      },
-      "priority": 100,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-09-14",
-      "source": "geonames-cities15000",
-      "sourceId": "2519240",
-      "tags": {
-        "population": "325708",
-        "waft:capital_level": "provincial",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "302174",
-        "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
     },
@@ -6046,6 +6151,58 @@
         "population": "28229",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "18469",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          -243.1136,
+          359.5365
+        ],
+        [
+          -242.5936,
+          359.5365
+        ],
+        [
+          -242.5936,
+          360.0565
+        ],
+        [
+          -243.1136,
+          360.0565
+        ],
+        [
+          -243.1136,
+          359.5365
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2518770",
+      "kind": "public",
+      "local": {
+        "x": -242.8536,
+        "y": 156,
+        "z": 359.7965
+      },
+      "name": "Écija",
+      "position": {
+        "lat": 37.5422,
+        "lon": -5.0826
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-08-15",
+      "source": "geonames-cities15000",
+      "sourceId": "2518770",
+      "tags": {
+        "population": "39882",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "18689",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -8141,58 +8298,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          408.094,
-          159.5391
-        ],
-        [
-          408.614,
-          159.5391
-        ],
-        [
-          408.614,
-          160.0591
-        ],
-        [
-          408.094,
-          160.0591
-        ],
-        [
-          408.094,
-          159.5391
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2516336",
-      "kind": "public",
-      "local": {
-        "x": 408.354,
-        "y": 95,
-        "z": 159.7991
-      },
-      "name": "Javea",
-      "position": {
-        "lat": 38.78333,
-        "lon": 0.16667
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-18-12",
-      "source": "geonames-cities15000",
-      "sourceId": "2516336",
-      "tags": {
-        "population": "28016",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "15715",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           -83.0325,
           322.7142
         ],
@@ -8238,6 +8343,58 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "92685",
         "waft:population_tier": "medium"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          408.094,
+          159.5391
+        ],
+        [
+          408.614,
+          159.5391
+        ],
+        [
+          408.614,
+          160.0591
+        ],
+        [
+          408.094,
+          160.0591
+        ],
+        [
+          408.094,
+          159.5391
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2516336",
+      "kind": "public",
+      "local": {
+        "x": 408.354,
+        "y": 95,
+        "z": 159.7991
+      },
+      "name": "Javea",
+      "position": {
+        "lat": 38.78333,
+        "lon": 0.16667
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-18-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2516336",
+      "tags": {
+        "population": "28016",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "15715",
+        "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
     },
@@ -9026,58 +9183,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -506.3286,
-          405.8453
-        ],
-        [
-          -505.8086,
-          405.8453
-        ],
-        [
-          -505.8086,
-          406.3653
-        ],
-        [
-          -506.3286,
-          406.3653
-        ],
-        [
-          -506.3286,
-          405.8453
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2515072",
-      "kind": "public",
-      "local": {
-        "x": -506.0686,
-        "y": 45,
-        "z": 406.1053
-      },
-      "name": "Lepe",
-      "position": {
-        "lat": 37.25482,
-        "lon": -7.20433
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-04-16",
-      "source": "geonames-cities15000",
-      "sourceId": "2515072",
-      "tags": {
-        "population": "25886",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "11256",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           -303.8585,
           -455.7293
         ],
@@ -9123,6 +9228,58 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "69829",
         "waft:population_tier": "medium"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          -506.3286,
+          405.8453
+        ],
+        [
+          -505.8086,
+          405.8453
+        ],
+        [
+          -505.8086,
+          406.3653
+        ],
+        [
+          -506.3286,
+          406.3653
+        ],
+        [
+          -506.3286,
+          405.8453
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2515072",
+      "kind": "public",
+      "local": {
+        "x": -506.0686,
+        "y": 45,
+        "z": 406.1053
+      },
+      "name": "Lepe",
+      "position": {
+        "lat": 37.25482,
+        "lon": -7.20433
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-04-16",
+      "source": "geonames-cities15000",
+      "sourceId": "2515072",
+      "tags": {
+        "population": "25886",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "11256",
+        "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
     },
@@ -9288,58 +9445,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          740.4397,
-          -310.4459
-        ],
-        [
-          740.9597,
-          -310.4459
-        ],
-        [
-          740.9597,
-          -309.9259
-        ],
-        [
-          740.4397,
-          -309.9259
-        ],
-        [
-          740.4397,
-          -310.4459
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-3118212",
-      "kind": "public",
-      "local": {
-        "x": 740.6997,
-        "y": 61,
-        "z": -310.1859
-      },
-      "name": "Lloret de Mar",
-      "position": {
-        "lat": 41.69993,
-        "lon": 2.84565
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-24-05",
-      "source": "geonames-cities15000",
-      "sourceId": "3118212",
-      "tags": {
-        "population": "37350",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "27498",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           313.2526,
           23.2763
         ],
@@ -9383,6 +9488,58 @@
         "population": "22972",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "15509",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          740.4397,
+          -310.4459
+        ],
+        [
+          740.9597,
+          -310.4459
+        ],
+        [
+          740.9597,
+          -309.9259
+        ],
+        [
+          740.4397,
+          -309.9259
+        ],
+        [
+          740.4397,
+          -310.4459
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-3118212",
+      "kind": "public",
+      "local": {
+        "x": 740.6997,
+        "y": 61,
+        "z": -310.1859
+      },
+      "name": "Lloret de Mar",
+      "position": {
+        "lat": 41.69993,
+        "lon": 2.84565
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-24-05",
+      "source": "geonames-cities15000",
+      "sourceId": "3118212",
+      "tags": {
+        "population": "37350",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "27498",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -9967,6 +10124,59 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -161.3757,
+          491.5812
+        ],
+        [
+          -160.0157,
+          491.5812
+        ],
+        [
+          -160.0157,
+          492.9412
+        ],
+        [
+          -161.3757,
+          492.9412
+        ],
+        [
+          -161.3757,
+          491.5812
+        ]
+      ],
+      "heightMeters": 58,
+      "id": "marker-es-2514256",
+      "kind": "public",
+      "local": {
+        "x": -160.6957,
+        "y": 159,
+        "z": 492.2612
+      },
+      "name": "Málaga",
+      "position": {
+        "lat": 36.72016,
+        "lon": -4.42034
+      },
+      "priority": 100,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2514256",
+      "tags": {
+        "population": "592346",
+        "waft:capital_level": "provincial",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "556949",
+        "waft:population_tier": "large"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           329.9184,
           45.4413
         ],
@@ -10227,6 +10437,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -692.0453,
+          -421.8784
+        ],
+        [
+          -691.5253,
+          -421.8784
+        ],
+        [
+          -691.5253,
+          -421.3584
+        ],
+        [
+          -692.0453,
+          -421.3584
+        ],
+        [
+          -692.0453,
+          -421.8784
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-3117409",
+      "kind": "public",
+      "local": {
+        "x": -691.7853,
+        "y": 383,
+        "z": -421.6184
+      },
+      "name": "Marín",
+      "position": {
+        "lat": 42.39145,
+        "lon": -8.70136
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-01-03",
+      "source": "geonames-cities15000",
+      "sourceId": "3117409",
+      "tags": {
+        "population": "25969",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "16295",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           626.924,
           -274.0425
         ],
@@ -10322,58 +10584,6 @@
         "population": "24655",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "18447",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -692.0453,
-          -421.8784
-        ],
-        [
-          -691.5253,
-          -421.8784
-        ],
-        [
-          -691.5253,
-          -421.3584
-        ],
-        [
-          -692.0453,
-          -421.3584
-        ],
-        [
-          -692.0453,
-          -421.8784
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-3117409",
-      "kind": "public",
-      "local": {
-        "x": -691.7853,
-        "y": 383,
-        "z": -421.6184
-      },
-      "name": "Marín",
-      "position": {
-        "lat": 42.39145,
-        "lon": -8.70136
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-01-03",
-      "source": "geonames-cities15000",
-      "sourceId": "3117409",
-      "tags": {
-        "population": "25969",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "16295",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -10635,6 +10845,59 @@
         "waft:capital_level": "regional",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "46503",
+        "waft:population_tier": "medium"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          -399.8248,
+          137.475
+        ],
+        [
+          -398.5848,
+          137.475
+        ],
+        [
+          -398.5848,
+          138.715
+        ],
+        [
+          -399.8248,
+          138.715
+        ],
+        [
+          -399.8248,
+          137.475
+        ]
+      ],
+      "heightMeters": 72,
+      "id": "marker-es-2513917",
+      "kind": "public",
+      "local": {
+        "x": -399.2048,
+        "y": 254,
+        "z": 138.095
+      },
+      "name": "Mérida",
+      "position": {
+        "lat": 38.91802,
+        "lon": -6.34292
+      },
+      "priority": 106,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-06-12",
+      "source": "geonames-cities15000",
+      "sourceId": "2513917",
+      "tags": {
+        "population": "59857",
+        "waft:capital_level": "regional",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "42212",
         "waft:population_tier": "medium"
       },
       "terrainStatus": "dem-cell"
@@ -11216,6 +11479,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -92.4771,
+          -88.8791
+        ],
+        [
+          -91.1171,
+          -88.8791
+        ],
+        [
+          -91.1171,
+          -87.5191
+        ],
+        [
+          -92.4771,
+          -87.5191
+        ],
+        [
+          -92.4771,
+          -88.8791
+        ]
+      ],
+      "heightMeters": 58,
+      "id": "marker-es-3116025",
+      "kind": "public",
+      "local": {
+        "x": -91.7971,
+        "y": 684,
+        "z": -88.1991
+      },
+      "name": "Móstoles",
+      "position": {
+        "lat": 40.32234,
+        "lon": -3.86496
+      },
+      "priority": 100,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-11-08",
+      "source": "geonames-cities15000",
+      "sourceId": "3116025",
+      "tags": {
+        "population": "207095",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "175825",
+        "waft:population_tier": "large"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -49.1619,
           486.9264
         ],
@@ -11365,164 +11680,6 @@
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "10029",
         "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -161.3757,
-          491.5812
-        ],
-        [
-          -160.0157,
-          491.5812
-        ],
-        [
-          -160.0157,
-          492.9412
-        ],
-        [
-          -161.3757,
-          492.9412
-        ],
-        [
-          -161.3757,
-          491.5812
-        ]
-      ],
-      "heightMeters": 58,
-      "id": "marker-es-2514256",
-      "kind": "public",
-      "local": {
-        "x": -160.6957,
-        "y": 159,
-        "z": 492.2612
-      },
-      "name": "Málaga",
-      "position": {
-        "lat": 36.72016,
-        "lon": -4.42034
-      },
-      "priority": 100,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-10-17",
-      "source": "geonames-cities15000",
-      "sourceId": "2514256",
-      "tags": {
-        "population": "592346",
-        "waft:capital_level": "provincial",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "556949",
-        "waft:population_tier": "large"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -399.8248,
-          137.475
-        ],
-        [
-          -398.5848,
-          137.475
-        ],
-        [
-          -398.5848,
-          138.715
-        ],
-        [
-          -399.8248,
-          138.715
-        ],
-        [
-          -399.8248,
-          137.475
-        ]
-      ],
-      "heightMeters": 72,
-      "id": "marker-es-2513917",
-      "kind": "public",
-      "local": {
-        "x": -399.2048,
-        "y": 254,
-        "z": 138.095
-      },
-      "name": "Mérida",
-      "position": {
-        "lat": 38.91802,
-        "lon": -6.34292
-      },
-      "priority": 106,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-06-12",
-      "source": "geonames-cities15000",
-      "sourceId": "2513917",
-      "tags": {
-        "population": "59857",
-        "waft:capital_level": "regional",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "42212",
-        "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -92.4771,
-          -88.8791
-        ],
-        [
-          -91.1171,
-          -88.8791
-        ],
-        [
-          -91.1171,
-          -87.5191
-        ],
-        [
-          -92.4771,
-          -87.5191
-        ],
-        [
-          -92.4771,
-          -88.8791
-        ]
-      ],
-      "heightMeters": 58,
-      "id": "marker-es-3116025",
-      "kind": "public",
-      "local": {
-        "x": -91.7971,
-        "y": 684,
-        "z": -88.1991
-      },
-      "name": "Móstoles",
-      "position": {
-        "lat": 40.32234,
-        "lon": -3.86496
-      },
-      "priority": 100,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-11-08",
-      "source": "geonames-cities15000",
-      "sourceId": "3116025",
-      "tags": {
-        "population": "207095",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "175825",
-        "waft:population_tier": "large"
       },
       "terrainStatus": "dem-cell"
     },
@@ -11739,58 +11896,6 @@
       "collisionMode": "none",
       "footprint": [
         [
-          292.1753,
-          223.7604
-        ],
-        [
-          292.6953,
-          223.7604
-        ],
-        [
-          292.6953,
-          224.2804
-        ],
-        [
-          292.1753,
-          224.2804
-        ],
-        [
-          292.1753,
-          223.7604
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2513195",
-      "kind": "public",
-      "local": {
-        "x": 292.4353,
-        "y": 269,
-        "z": 224.0204
-      },
-      "name": "Novelda",
-      "position": {
-        "lat": 38.38479,
-        "lon": -0.76773
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-17-13",
-      "source": "geonames-cities15000",
-      "sourceId": "2513195",
-      "tags": {
-        "population": "27135",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "12932",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
           113.7544,
           452.2976
         ],
@@ -11834,6 +11939,58 @@
         "population": "26516",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "15541",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          292.1753,
+          223.7604
+        ],
+        [
+          292.6953,
+          223.7604
+        ],
+        [
+          292.6953,
+          224.2804
+        ],
+        [
+          292.1753,
+          224.2804
+        ],
+        [
+          292.1753,
+          223.7604
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2513195",
+      "kind": "public",
+      "local": {
+        "x": 292.4353,
+        "y": 269,
+        "z": 224.0204
+      },
+      "name": "Novelda",
+      "position": {
+        "lat": 38.38479,
+        "lon": -0.76773
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-17-13",
+      "source": "geonames-cities15000",
+      "sourceId": "2513195",
+      "tags": {
+        "population": "27135",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "12932",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -15437,6 +15594,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          644.8477,
+          -259.16589999999997
+        ],
+        [
+          645.3677,
+          -259.16589999999997
+        ],
+        [
+          645.3677,
+          -258.6459
+        ],
+        [
+          644.8477,
+          -258.6459
+        ],
+        [
+          644.8477,
+          -259.16589999999997
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-manual-sant-just-desvern",
+      "kind": "public",
+      "local": {
+        "x": 645.1077,
+        "y": 237,
+        "z": -258.9059
+      },
+      "name": "Sant Just Desvern",
+      "position": {
+        "lat": 41.3817,
+        "lon": 2.0751
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "manual-0246",
+      "source": "manual-0246",
+      "sourceId": "manual-sant-just-desvern",
+      "tags": {
+        "population": "21000",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "11550",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           607.483,
           -239.6275
         ],
@@ -17265,6 +17474,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -30.7159,
+          283.626
+        ],
+        [
+          -30.1959,
+          283.626
+        ],
+        [
+          -30.1959,
+          284.146
+        ],
+        [
+          -30.7159,
+          284.146
+        ],
+        [
+          -30.7159,
+          283.626
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2510116",
+      "kind": "public",
+      "local": {
+        "x": -30.4559,
+        "y": 792,
+        "z": 283.886
+      },
+      "name": "Úbeda",
+      "position": {
+        "lat": 38.01328,
+        "lon": -3.3705
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-12-14",
+      "source": "geonames-cities15000",
+      "sourceId": "2510116",
+      "tags": {
+        "population": "34602",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "16265",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           -329.9061,
           416.9104
         ],
@@ -17579,6 +17840,58 @@
       "collisionMode": "none",
       "footprint": [
         [
+          -121.7054,
+          482.0261
+        ],
+        [
+          -120.8654,
+          482.0261
+        ],
+        [
+          -120.8654,
+          482.8661
+        ],
+        [
+          -121.7054,
+          482.8661
+        ],
+        [
+          -121.7054,
+          482.0261
+        ]
+      ],
+      "heightMeters": 34,
+      "id": "marker-es-2509769",
+      "kind": "public",
+      "local": {
+        "x": -121.2854,
+        "y": 152,
+        "z": 482.4461
+      },
+      "name": "Vélez-Málaga",
+      "position": {
+        "lat": 36.78107,
+        "lon": -4.10266
+      },
+      "priority": 72,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-10-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2509769",
+      "tags": {
+        "population": "74190",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "53818",
+        "waft:population_tier": "medium"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
           667.1482,
           -347.5391
         ],
@@ -17622,6 +17935,58 @@
         "population": "39844",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "28815",
+        "waft:population_tier": "small"
+      },
+      "terrainStatus": "dem-cell"
+    },
+    {
+      "areaM2": null,
+      "collisionMode": "none",
+      "footprint": [
+        [
+          59.5689,
+          474.0517
+        ],
+        [
+          60.0889,
+          474.0517
+        ],
+        [
+          60.0889,
+          474.5717
+        ],
+        [
+          59.5689,
+          474.5717
+        ],
+        [
+          59.5689,
+          474.0517
+        ]
+      ],
+      "heightMeters": 18,
+      "id": "marker-es-2509650",
+      "kind": "public",
+      "local": {
+        "x": 59.8289,
+        "y": 758,
+        "z": 474.3117
+      },
+      "name": "Vícar",
+      "position": {
+        "lat": 36.83155,
+        "lon": -2.64273
+      },
+      "priority": 48,
+      "roofWalkable": false,
+      "scaleY": 1,
+      "sectorId": "s-13-17",
+      "source": "geonames-cities15000",
+      "sourceId": "2509650",
+      "tags": {
+        "population": "22853",
+        "waft:lore": "fictional",
+        "waft:nuclear_war_deaths": "12605",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -18359,101 +18724,49 @@
       "collisionMode": "none",
       "footprint": [
         [
-          -121.7054,
-          482.0261
+          323.0915,
+          126.1683
         ],
         [
-          -120.8654,
-          482.0261
+          323.6115,
+          126.1683
         ],
         [
-          -120.8654,
-          482.8661
+          323.6115,
+          126.6883
         ],
         [
-          -121.7054,
-          482.8661
+          323.0915,
+          126.6883
         ],
         [
-          -121.7054,
-          482.0261
-        ]
-      ],
-      "heightMeters": 34,
-      "id": "marker-es-2509769",
-      "kind": "public",
-      "local": {
-        "x": -121.2854,
-        "y": 152,
-        "z": 482.4461
-      },
-      "name": "Vélez-Málaga",
-      "position": {
-        "lat": 36.78107,
-        "lon": -4.10266
-      },
-      "priority": 72,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-10-17",
-      "source": "geonames-cities15000",
-      "sourceId": "2509769",
-      "tags": {
-        "population": "74190",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "53818",
-        "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          59.5689,
-          474.0517
-        ],
-        [
-          60.0889,
-          474.0517
-        ],
-        [
-          60.0889,
-          474.5717
-        ],
-        [
-          59.5689,
-          474.5717
-        ],
-        [
-          59.5689,
-          474.0517
+          323.0915,
+          126.1683
         ]
       ],
       "heightMeters": 18,
-      "id": "marker-es-2509650",
+      "id": "marker-es-2516345",
       "kind": "public",
       "local": {
-        "x": 59.8289,
-        "y": 758,
-        "z": 474.3117
+        "x": 323.3515,
+        "y": 306,
+        "z": 126.4283
       },
-      "name": "Vícar",
+      "name": "Xàtiva",
       "position": {
-        "lat": 36.83155,
-        "lon": -2.64273
+        "lat": 38.99042,
+        "lon": -0.51852
       },
       "priority": 48,
       "roofWalkable": false,
       "scaleY": 1,
-      "sectorId": "s-13-17",
+      "sectorId": "s-17-12",
       "source": "geonames-cities15000",
-      "sourceId": "2509650",
+      "sourceId": "2516345",
       "tags": {
-        "population": "22853",
+        "population": "29386",
         "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "12605",
+        "waft:nuclear_war_deaths": "19954",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -18506,58 +18819,6 @@
         "population": "30002",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "21929",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          323.0915,
-          126.1683
-        ],
-        [
-          323.6115,
-          126.1683
-        ],
-        [
-          323.6115,
-          126.6883
-        ],
-        [
-          323.0915,
-          126.6883
-        ],
-        [
-          323.0915,
-          126.1683
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2516345",
-      "kind": "public",
-      "local": {
-        "x": 323.3515,
-        "y": 306,
-        "z": 126.4283
-      },
-      "name": "Xàtiva",
-      "position": {
-        "lat": 38.99042,
-        "lon": -0.51852
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-17-12",
-      "source": "geonames-cities15000",
-      "sourceId": "2516345",
-      "tags": {
-        "population": "29386",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "19954",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"
@@ -18768,215 +19029,6 @@
         "population": "22627",
         "waft:lore": "fictional",
         "waft:nuclear_war_deaths": "13672",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          191.0492,
-          381.4356
-        ],
-        [
-          191.5692,
-          381.4356
-        ],
-        [
-          191.5692,
-          381.9556
-        ],
-        [
-          191.0492,
-          381.9556
-        ],
-        [
-          191.0492,
-          381.4356
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2522333",
-      "kind": "public",
-      "local": {
-        "x": 191.3092,
-        "y": 55,
-        "z": 381.6956
-      },
-      "name": "Águilas",
-      "position": {
-        "lat": 37.4063,
-        "lon": -1.58289
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-15-16",
-      "source": "geonames-cities15000",
-      "sourceId": "2522333",
-      "tags": {
-        "population": "34533",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "23227",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -195.8287,
-          -142.6654
-        ],
-        [
-          -194.8287,
-          -142.6654
-        ],
-        [
-          -194.8287,
-          -141.6654
-        ],
-        [
-          -195.8287,
-          -141.6654
-        ],
-        [
-          -195.8287,
-          -142.6654
-        ]
-      ],
-      "heightMeters": 54,
-      "id": "marker-es-3129136",
-      "kind": "public",
-      "local": {
-        "x": -195.3287,
-        "y": 1146,
-        "z": -142.1654
-      },
-      "name": "Ávila",
-      "position": {
-        "lat": 40.65724,
-        "lon": -4.69951
-      },
-      "priority": 86,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-09-07",
-      "source": "geonames-cities15000",
-      "sourceId": "3129136",
-      "tags": {
-        "population": "57657",
-        "waft:capital_level": "provincial",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "34271",
-        "waft:population_tier": "medium"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -243.1136,
-          359.5365
-        ],
-        [
-          -242.5936,
-          359.5365
-        ],
-        [
-          -242.5936,
-          360.0565
-        ],
-        [
-          -243.1136,
-          360.0565
-        ],
-        [
-          -243.1136,
-          359.5365
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2518770",
-      "kind": "public",
-      "local": {
-        "x": -242.8536,
-        "y": 156,
-        "z": 359.7965
-      },
-      "name": "Écija",
-      "position": {
-        "lat": 37.5422,
-        "lon": -5.0826
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-08-15",
-      "source": "geonames-cities15000",
-      "sourceId": "2518770",
-      "tags": {
-        "population": "39882",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "18689",
-        "waft:population_tier": "small"
-      },
-      "terrainStatus": "dem-cell"
-    },
-    {
-      "areaM2": null,
-      "collisionMode": "none",
-      "footprint": [
-        [
-          -30.7159,
-          283.626
-        ],
-        [
-          -30.1959,
-          283.626
-        ],
-        [
-          -30.1959,
-          284.146
-        ],
-        [
-          -30.7159,
-          284.146
-        ],
-        [
-          -30.7159,
-          283.626
-        ]
-      ],
-      "heightMeters": 18,
-      "id": "marker-es-2510116",
-      "kind": "public",
-      "local": {
-        "x": -30.4559,
-        "y": 792,
-        "z": 283.886
-      },
-      "name": "Úbeda",
-      "position": {
-        "lat": 38.01328,
-        "lon": -3.3705
-      },
-      "priority": 48,
-      "roofWalkable": false,
-      "scaleY": 1,
-      "sectorId": "s-12-14",
-      "source": "geonames-cities15000",
-      "sourceId": "2510116",
-      "tags": {
-        "population": "34602",
-        "waft:lore": "fictional",
-        "waft:nuclear_war_deaths": "16265",
         "waft:population_tier": "small"
       },
       "terrainStatus": "dem-cell"

@@ -1,17 +1,17 @@
 {
   "binary": {
-    "bytes": 17616,
+    "bytes": 17648,
     "file": "iberia-preview-v1.bin",
     "headerBytes": 80,
     "magic": "WAFTRPV1",
-    "sha256": "6cb94d39abb14857b6efcd62618c3ea04f253d6609c3bb0dccb706df9512a0f2"
+    "sha256": "c3459094e5a13b3306aae6d224e56276b63730b07f3ee2025726c8ca8339317b"
   },
-  "buildId": "iberia-preview-e537453a4e34",
+  "buildId": "iberia-preview-80461bd34dba",
   "counts": {
-    "buildings": 364,
+    "buildings": 365,
     "hotels": 0,
     "landmarks": 0,
-    "namedBuildings": 364,
+    "namedBuildings": 365,
     "roadSegments": 0,
     "roadVertices": 0,
     "selectedRoads": 0,
@@ -25,7 +25,7 @@
   },
   "distributions": {
     "buildingKinds": {
-      "public": 364
+      "public": 365
     },
     "landmarkRepresentations": {},
     "roadClasses": {}
@@ -2323,7 +2323,7 @@
     }
   ],
   "sources": {
-    "inputsSha256": "e537453a4e3433bb3753ee7b3e8bac02c3de8820aeeb6a7f2e0a84472216d5e0",
+    "inputsSha256": "80461bd34dba69d073cfb3932773f98e25b38ce5567df4c7d106766acbc9ae3f",
     "landcoverSha256": "7520dd10dc190690f6058e8cbdbe7695a3fccefbe691fc7d542bd7a8325ba668",
     "regionManifestSha256": "2abdb460fb8c9418f4b65fe53b338bc17b89bcf7d66777cff449eff9c5de73ea",
     "terrainSha256": "3330513a236f9a959454e004305113831ef36cb02d8c9ee386dffa2d911966ef"
