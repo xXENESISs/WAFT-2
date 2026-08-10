@@ -70,7 +70,7 @@ atlas.performance={targetProfile:'mobile-mid',sectorSizeUnits:64,preloadRadiusSe
 atlas.outputs={directory:'regions/europe-atlas',manifest:'manifest.json',terrain:'terrain.bin',landcover:'landcover.bin',sectors:'sectors.json',settlements:'settlements.json',objects:'objects.json',landmarks:'landmarks.json',fauna:'fauna.json',routes:'routes.json'};
 atlas.overrides={file:'world-generator/overrides/europe-atlas.overrides.json',preserveOnRegenerate:true,failOnUnknownTarget:true};
 write('world-generator/configs/europe-atlas.region.json',JSON.stringify(atlas,null,2)+'\n');
-if(!fs.existsSync(path.join(root,'world-generator/overrides/europe-atlas.overrides.json')))write('world-generator/overrides/europe-atlas.overrides.json',JSON.stringify({formatVersion:1,regionId:'europe-atlas',operations:[]},null,2)+'\n');
+if(!fs.existsSync(path.join(root,'world-generator/overrides/europe-atlas.overrides.json')))write('world-generator/overrides/europe-atlas.overrides.json',JSON.stringify({$schema:'../schema/region-overrides.schema.json',schemaVersion:1,regionId:'europe-atlas',operations:[]},null,2)+'\n');
 
 patch('world-generator/scripts/build-region-v2.mjs',s=>{const old="mode: 'copernicus-dem-glo30',";if(!s.includes(old)&&!s.includes("mode: demMetadata.mode ?? 'copernicus-dem-glo30',"))throw new Error('build-region-v2 elevation mode anchor missing');return s.replace(old,"mode: demMetadata.mode ?? 'copernicus-dem-glo30',");});
 patch('world-generator/scripts/build-settlement-markers-0244.py',s=>{const old="if args.region_id == 'iberia':";if(!s.includes(old)&&!s.includes("if args.region_id in ('iberia', 'europe-atlas'):"))throw new Error('settlement special anchor missing');return s.replace(old,"if args.region_id in ('iberia', 'europe-atlas'):");});
