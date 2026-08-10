@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 
+// WAFT 0.24.5 global static verification: parity + real Iberia/France streaming contracts.
 const here=path.dirname(new URL(import.meta.url).pathname);
 const mobile=path.resolve(here,'..');
 const read=name=>fs.readFileSync(path.join(here,name),'utf8');
