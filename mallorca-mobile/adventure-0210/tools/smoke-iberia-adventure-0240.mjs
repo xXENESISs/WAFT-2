@@ -3,7 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
-// Deterministic head verification: generated 0.24.4 package must remain current.
+// Deterministic head verification: generated 0.24.5 package must remain current.
 const here=path.dirname(new URL(import.meta.url).pathname);
 const adventure=path.resolve(here,'..');
 const root=path.resolve(adventure,'../..');
@@ -14,9 +14,11 @@ const index=fs.readFileSync(path.join(adventure,'index.html'),'utf8');
 const explorer=fs.readFileSync(path.join(adventure,'iberia-explorer-0242.js'),'utf8');
 const polish=fs.readFileSync(path.join(adventure,'iberia-polish-0243.js'),'utf8');
 const world=fs.readFileSync(path.join(adventure,'iberia-world-0244.js'),'utf8');
+const stream=fs.readFileSync(path.join(adventure,'iberia-world-0245.js'),'utf8');
 const preview=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/preview/iberia-preview-v1.json'),'utf8'));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/manifest.json'),'utf8'));
 const settlements=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/settlements.json'),'utf8'));
+const objects=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/objects.json'),'utf8'));
 
 for(const pattern of [
   /requestedRegion==='iberia'/,
@@ -29,16 +31,21 @@ for(const pattern of [
   /WAFT_IBERIA_EXPLORER_0242/,
   /WAFT_IBERIA_POLISH_0243/,
   /WAFT_IBERIA_WORLD_0244/,
-  /__WAFT_ADVENTURE_BUILD__='0\.24\.4'/,
+  /WAFT_IBERIA_WORLD_0245/,
+  /__WAFT_ADVENTURE_BUILD__='0\.24\.5'/,
   /iberia-explorer-0242\.js/,
   /iberia-polish-0243\.js/,
   /iberia-world-0244\.js/,
+  /iberia-world-0245\.js/,
   /state\.joyY>\.55/,
   /targetDiveVy=-\(30\+28\*diveAmount\)/,
-  /Math\.max\(42\.0,state\.adventureFlightFlap\*2\.4\)/,
-  /state\.iberiaFlapMomentum=\.42/,
-  /Math\.min\(44,state\.adventureFlightVy\)/,
-  /else state\.adventureFlightVy=0/,
+  /Math\.max\(72\.0,state\.adventureFlightFlap\*3\.6\)/,
+  /state\.camera\.y\+=4\.0/,
+  /state\.iberiaFlapUntil=performance\.now\(\)\+380/,
+  /Math\.min\(72,state\.adventureFlightVy\)/,
+  /state\.adventureFlightVy=0/,
+  /releaseRegionalTerrainGpu/,
+  /restoreRegionalTerrainGpu/,
   /if\(window\.__WAFT_ADVENTURE_REGION__!=='iberia'\)state\.respawnQueued = true/
 ])assert.match(index,pattern,`Iberia index bootstrap missing ${pattern}`);
 
@@ -62,25 +69,27 @@ for(const pattern of [
   /iberia: 'Península Ibérica'/,
   /waft\.adventure\.integration\.0240\.iberia/,
   /Explora Iberia · mantén el joystick abajo en vuelo para entrar en picado/,
-  /Península Ibérica · EXPLORACIÓN 0\.24\.4/,
+  /Península Ibérica · EXPLORACIÓN 0\.24\.5/,
   /REGION_ID === 'iberia'\) \{ game\.npc=null; game\.animals=\[\]/
 ])assert.match(captured[0],pattern,`Iberia gameplay patch missing ${pattern}`);
 assert.match(loader,/__WAFT_IBERIA_TERRAIN_0240_READY__/);
 for(const pattern of [/iberia-bearded-vulture/,/Quebrantahuesos/,/Gypaetus barbatus/,/LUGARES · 20K\+/,/__WAFT_IBERIA_EXPLORER_0242_READY__/])assert.match(explorer,pattern,`Iberia explorer missing ${pattern}`);
 for(const pattern of [/__WAFT_IBERIA_POLISH_0243_READY__/,/#help,#waftFlightTelemetry/,/ALT — · LAT — · LON —/,/flightMountReady=true/,/requestAnimationFrame\(followBird\)/])assert.match(polish,pattern,`Iberia polish missing ${pattern}`);
 for(const pattern of [/__WAFT_IBERIA_WORLD_0244_READY__/,/LUGARES · PRE-GUERRA/,/nuclearWarDeaths/,/christmas-tree/,/waftCastleIcon/,/flightFlap:12/,/regions\/france\/manifest\.json/])assert.match(world,pattern,`Iberia world layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0245_READY__/,/regions\/france\/terrain\.bin/,/regions\/france\/landcover\.bin/,/france-full/,/france-lod/,/streamedRegion:'france'/,/iberiaGpuReleased/])assert.match(stream,pattern,`Iberia-France streaming layer missing ${pattern}`);
 
 assert.equal(preview.regionId,'iberia');
 assert.ok(preview.counts.settlements>=365);
-assert.equal(preview.counts.buildings,preview.counts.settlements);
-assert.equal(preview.counts.namedBuildings,preview.counts.settlements);
+const manualExceptions=Number(manifest.settlementMarkers.manualPopulationExceptions||0);
+assert.equal(preview.counts.buildings,preview.counts.settlements-manualExceptions);
+assert.equal(preview.counts.namedBuildings,preview.counts.buildings);
 assert.equal(preview.counts.hotels,0);
 assert.equal(preview.counts.landmarks,0);
 assert.equal(preview.counts.roadSegments,0);
 assert.equal(preview.terrain.verticalScale,0.013594);
 assert.ok(preview.presets.some(item=>item.id==='overview'&&item.altitude===980));
 assert.equal(manifest.content.faunaSpecies,0);
-assert.equal(manifest.content.generatedBuildings,manifest.content.settlements);
+assert.equal(manifest.content.generatedBuildings,manifest.content.settlements-manualExceptions);
 assert.equal(manifest.content.landmarks,0);
 assert.equal(manifest.content.settlements,preview.counts.settlements);
 assert.equal(manifest.settlementMarkers.minimumPopulation,20000);
@@ -90,9 +99,14 @@ assert.ok(manifest.terrain.maximumElevationMeters>=3400);
 assert.equal(manifest.projection.unitsPerKm,1.45);
 assert.ok(manifest.projection.localBounds.maxX>900,'Expanded east edge must include Menorca without shrinking Iberia scale');
 const byName=new Map(settlements.items.map(item=>[item.name,item]));
-for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla'])assert.ok(byName.has(name),`${name} missing from Iberia 0.24.4 atlas`);
+for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla'])assert.ok(byName.has(name),`${name} missing from Iberia 0.24.5 atlas`);
 assert.equal(byName.get('Ayódar').specialMarker,'christmas-tree');
 assert.equal(byName.get('Peñíscola').specialMarker,'castle');
 for(const name of ['Ayódar','Peñíscola','Gibraltar','Ceuta','Melilla'])assert.equal(byName.get(name).warImpact?.fictional,true,`${name} war lore must remain explicitly fictional`);
+for(const name of ['Ayódar','Peñíscola','Gibraltar']){
+  const place=byName.get(name);
+  assert.ok(place?.specialMarker,`${name} must remain a special local landmark`);
+  assert.ok(!objects.items.some(item=>String(item.sourceId)===String(place.sourceId)),`${name} must not become a generic needle/building again`);
+}
 
-console.log(`WAFT 0.24.4 Iberia world: ${preview.counts.settlements} regional/special markers, Menorca + Gibraltar/Ceuta/Melilla, sharp bearded-vulture flap with quick level recovery and streaming foundation present.`);
+console.log(`WAFT 0.24.5 Iberia world: ${preview.counts.settlements} regional/special markers, ${preview.counts.buildings} generic buildings, Menorca + Gibraltar/Ceuta/Melilla, deterministic bearded-vulture flight and real France terrain streaming present.`);
