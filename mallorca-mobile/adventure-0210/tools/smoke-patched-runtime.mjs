@@ -51,7 +51,6 @@ for(const test of [
     /queueAdventureJump\(velocity,options=\{\}\)/,
     /plugin-loader\.js/,
     /__WAFT_ADVENTURE_BUILD__='0\.25\.2'/,
-    /WAFT_ATLAS_CORE_SUPPRESSION_0252/,
     /releaseRegionalTerrainGpu/,
     /restoreRegionalTerrainGpu/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
@@ -65,4 +64,4 @@ for(const test of [
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
   console.log(`${test.id}: optimized patched 0.25.2 runtime compiled (${written.length} chars)`);
 }
-console.log('Both existing World 2 regional runtimes survive the 0.25.2 atlas bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths, GPU hooks and World 1 parity.');
+console.log('Both existing World 2 regional runtimes survive the 0.25.2 bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths, GPU hooks and World 1 parity.');
