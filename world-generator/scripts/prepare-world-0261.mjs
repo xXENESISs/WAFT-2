@@ -37,8 +37,17 @@ if(r.includes(oldEstimator))r=r.replace(oldEstimator,newEstimator);else if(!r.in
 if(!r.includes('WAFT_SPHERICAL_UI_CLEAN_0261')){
   const anchor="  if(!api||!plugin||!gl)throw new Error('WAFT 0.26.1 spherical runtime unavailable');\n";
   if(!r.includes(anchor))throw new Error('WAFT 0.26.1 spherical UI cleanup anchor missing');
-  const clean=`\n  // WAFT_SPHERICAL_UI_CLEAN_0261: regional navigation/UI cannot follow a floating origin around the planet.\n  const sphericalUiStyle=document.createElement('style');\n  sphericalUiStyle.id='waftSphericalUiClean0261';\n  sphericalUiStyle.textContent='#waftIberiaAtlas,#waftSpecialMarkers,#waftStreamHint,#presets,#waftWorldLabels0249,#waftFranceBadge0246,#waftRegionBadge0247{display:none!important}';\n  document.head.appendChild(sphericalUiStyle);\n`;
+  const clean=`\n  // WAFT_SPHERICAL_UI_CLEAN_0261: regional navigation/UI cannot follow a floating origin around the planet.\n  const sphericalUiStyle=document.createElement('style');\n  sphericalUiStyle.id='waftSphericalUiClean0261';\n  sphericalUiStyle.textContent='#waftIberiaAtlas,#waftSpecialMarkers,#waftStreamHint,#presets,#waftWorldLabels0249,#waftFranceBadge0246,#waftRegionBadge0247,#waftProgress{display:none!important}';\n  document.head.appendChild(sphericalUiStyle);\n`;
   r=r.replace(anchor,anchor+clean);
+}else{
+  r=r.replace('#waftRegionBadge0247{display:none!important}', '#waftRegionBadge0247,#waftProgress{display:none!important}');
 }
 fs.writeFileSync(runtimePath,r);
+
+const visiblePath=path.join(root,'mallorca-mobile/adventure-0210/iberia-world-0246.js');
+let v=fs.readFileSync(visiblePath,'utf8');
+const oldHint="el.textContent='Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';";
+const newHint="el.textContent=window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__?'Explora el mundo · ALETEAR para subir · PICADO ↓ para descender rápido.':'Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';";
+if(v.includes(oldHint))v=v.replace(oldHint,newHint);else if(!v.includes(newHint))throw new Error('WAFT 0.26.1 Adventure hint anchor missing');
+fs.writeFileSync(visiblePath,v);
 console.log('WAFT 0.26.1 spherical bootstrap prepared.');
