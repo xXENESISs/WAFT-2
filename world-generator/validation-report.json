@@ -1,6 +1,6 @@
 {
   "validatorVersion": 1,
-  "generatedAt": "2026-08-11T00:45:50.745Z",
+  "generatedAt": "2026-08-11T00:52:39.004Z",
   "valid": true,
   "schema": "world-generator/schema/region.schema.json",
   "configs": [
@@ -84,6 +84,24 @@
         "manualSpecies": 0,
         "entryPoints": 3,
         "connections": 1
+      }
+    },
+    {
+      "file": "world-generator/configs/global-atlas.region.json",
+      "id": "global-atlas",
+      "version": "0.26.0",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "/travel/connections: region is isolated from the world graph"
+      ],
+      "summary": {
+        "subregions": 9,
+        "manualSettlements": 0,
+        "manualLandmarks": 0,
+        "manualSpecies": 0,
+        "entryPoints": 1,
+        "connections": 0
       }
     },
     {
