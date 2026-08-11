@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - feat/world-0260-global-atlas
-      - main
     paths:
       - .github/workflows/build-world-0260.yml
       - world-generator/configs/global-atlas.region.json
