@@ -255,9 +255,9 @@
         const sphericalClamp='if(!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__&&!streamedWorldSurface?.inside){';
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
-        const sphericalFar="perspective(projection, Math.PI / 3, canvas.width / canvas.height, .12, state.worldMode === 'local' ? 2400 : (window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__ ? Math.max(1800,Math.min(10000,1800+Math.max(0,state.camera.y)*1.6)) : 1450));";
-        const farPattern=/perspective\(projection,\s*Math\.PI\s*\/\s*3,\s*canvas\.width\s*\/\s*canvas\.height,\s*\.12,\s*state\.worldMode\s*===\s*['"]local['"]\s*\?\s*2400\s*:\s*1450\s*\);/;
-        if(farPattern.test(source))source=source.replace(farPattern,sphericalFar);
+        const regionalFarTail="state.worldMode === 'local' ? 2400 : 1450";
+        const sphericalFarTail="state.worldMode === 'local' ? 2400 : (window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__ ? Math.max(1800,Math.min(10000,1800+Math.max(0,state.camera.y)*1.6)) : 1450)";
+        if(source.includes(regionalFarTail))source=source.replaceAll(regionalFarTail,sphericalFarTail);
         else if(!source.includes('window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__ ? Math.max(1800'))throw new Error('WAFT 0.26.1 adaptive spherical far-plane anchor missing');
       }
       document.open();document.write(source);document.close();
