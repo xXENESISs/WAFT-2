@@ -19,6 +19,7 @@ const continuity247=fs.readFileSync(path.join(adventure,'iberia-world-0247.js'),
 const world250=fs.readFileSync(path.join(adventure,'iberia-world-0250.js'),'utf8');
 const atlas252=fs.readFileSync(path.join(adventure,'europe-atlas-0252.js'),'utf8');
 const global260=fs.readFileSync(path.join(adventure,'global-atlas-0260.js'),'utf8');
+const spherical261=fs.readFileSync(path.join(adventure,'spherical-world-0261.js'),'utf8');
 const preview=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/preview/iberia-preview-v1.json'),'utf8'));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/manifest.json'),'utf8'));
 const settlements=JSON.parse(fs.readFileSync(path.join(root,'regions/iberia/settlements.json'),'utf8'));
@@ -28,9 +29,9 @@ const globalManifest=JSON.parse(fs.readFileSync(path.join(root,'regions/global-a
 for(const pattern of [
   /requestedRegion==='iberia'/,/iberia:'\.\.\/region-runtime-catalunya-litoral-003\.html'/,/replaceAll\('catalunya-litoral','iberia'\)/,
   /WAFT_IBERIA_RUNTIME_0241/,/WAFT_IBERIA_EXPLORER_0242/,/WAFT_IBERIA_POLISH_0243/,/WAFT_IBERIA_WORLD_0244/,/WAFT_IBERIA_WORLD_0245/,
-  /__WAFT_ADVENTURE_BUILD__='0\.26\.0'/,/global-atlas-0260\.js/,/__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,/europe-atlas-0252\.js/,/WAFT_ATLAS_CORE_SUPPRESSION_0252/,/WAFT_GLOBAL_POSITION_API_0260/,/setRegionalPosition\(x,z,y=null\)/,/iberia-world-0246\.js/,/iberia-world-0247\.js/,/iberia-world-0250\.js/,/WAFT_WORLD_BOUNDS_0247/,
+  /__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,/spherical-world-0261\.js/,/__WAFT_SPHERICAL_WORLD_0261_ACTIVE__/,/WAFT_SPHERICAL_BOOTSTRAP_0261/,/global-atlas-0260\.js/,/__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,/europe-atlas-0252\.js/,/WAFT_ATLAS_CORE_SUPPRESSION_0252/,/WAFT_GLOBAL_POSITION_API_0260/,/setRegionalPosition\(x,z,y=null\)/,/iberia-world-0246\.js/,/iberia-world-0247\.js/,/iberia-world-0250\.js/,/WAFT_WORLD_BOUNDS_0247/,
   /state\.iberiaDiveButton\|\|state\.joyY>\.55/,/state\.iberiaDiveButton\)state\.adventureFlightVy=-58/,/iberiaVerticalDt/,
-  /'flightDive'in modifiers/,/releaseRegionalTerrainGpu/,/restoreRegionalTerrainGpu/
+  /boosted\?116:104/,/inputLength>\.93\?92/,/'flightDive'in modifiers/,/releaseRegionalTerrainGpu/,/restoreRegionalTerrainGpu/
 ])assert.match(index,pattern,`Iberia/bootstrap contract missing ${pattern}`);
 
 const captured=[],errors=[];
@@ -63,12 +64,13 @@ for(const pattern of [
   /__WAFT_EUROPE_ATLAS_0252_ACTIVE__/
 ])assert.match(stream245,pattern,`legacy geographic layer contract missing ${pattern}`);
 assert.doesNotMatch(stream245,/const U=1\.45;|FULL_SWITCH_LAT|REGION_SWITCH_LAT|MORPH_START_LAT|franceLocalX/,'obsolete France scale/transition survived');
-for(const pattern of [/__WAFT_IBERIA_WORLD_0246_READY__/,/PICADO ↓/,/#waftSpecialMarkers\{display:none!important\}/,/regions\/france\/objects\.json/,/franceCityCount/,/footprintSize/,/stream\.nearFrance/,/stream\.inFranceGeo/])assert.match(visible246,pattern,`visible layer missing ${pattern}`);
+for(const pattern of [/__WAFT_IBERIA_WORLD_0246_READY__/,/PICADO ↓/,/#waftSpecialMarkers\{display:none!important\}/,/regions\/france\/objects\.json/,/franceCityCount/,/footprintSize/,/stream\.nearFrance/,/stream\.inFranceGeo/,/__WAFT_SPHERICAL_WORLD_0261_ACTIVE__/])assert.match(visible246,pattern,`visible layer missing ${pattern}`);
 for(const pattern of [/__WAFT_IBERIA_WORLD_0247_READY__/,/atlasSystem:'shared-iberia'/,/floatingCityLabels:false/,/WAFT_WORLD_ATLAS_PROVIDER/,/streamedRegion:'canarias'/,/atlanticMesh=null/,/__WAFT_EUROPE_ATLAS_0252_ACTIVE__/])assert.match(continuity247,pattern,`continuity compatibility layer missing ${pattern}`);
 assert.doesNotMatch(continuity247,/streamedRegion:'atlantic-corridor'|const getMarker=city=>|function updateCityLabels/,'obsolete corridor/floating city renderer survived');
 for(const pattern of [/__WAFT_IBERIA_WORLD_0250_READY__/,/LABEL_RANGE_KM=\.15/,/NEAREST_RANGE_KM=1\.0/,/LABEL_MAX_AGL_M=320/,/northwest-africa/,/streamedRegion:'atlantic-ocean'/,/waftWorldLabels0250/,/#waftWorldLabels0249,#waftNearest0249\{display:none!important\}/,/__WAFT_EUROPE_ATLAS_0252_ACTIVE__/])assert.match(world250,pattern,`legacy real-world layer contract missing ${pattern}`);
 for(const pattern of [/europe-atlas-single-surface/,/inFranceGeo:\(\)=>false/,/VERTICAL=\.0028/,/B=\{west:-26,east:60,south:26,north:72\.5\}/,/WAFT_WORLD_ATLAS_PROVIDER/,/releaseRegionalTerrainGpu/,/WAFT_RELIEF_0253/])assert.match(atlas252,pattern,`Europe detail atlas missing ${pattern}`);
-for(const pattern of [/global-atlas-single-surface/,/VERTICAL=\.0028/,/B=\{west:-180,east:180,south:-90,north:90\}/,/WORLD_WIDTH/,/wrapLon/,/state\.wraps\+\+/,/regions\/global-atlas/,/regions\/europe-atlas/,/window\.WAFTEuropeAtlas0252=window\.WAFTGlobalAtlas0260/])assert.match(global260,pattern,`0.26.0 global atlas missing ${pattern}`);
+for(const pattern of [/global-atlas-single-surface/,/VERTICAL=\.0028/,/B=\{west:-180,east:180,south:-90,north:90\}/,/WORLD_WIDTH/,/wrapLon/,/state\.wraps\+\+/,/regions\/global-atlas/,/regions\/europe-atlas/,/window\.WAFTEuropeAtlas0252=window\.WAFTGlobalAtlas0260/])assert.match(global260,pattern,`0.26.0 fallback global atlas missing ${pattern}`);
+for(const pattern of [/EARTH_KM=6371\.0088/,/PATCH_N=241/,/PATCH_HALF=900/,/RECENTER=480/,/speed\*6,180,700/,/spherical-local-tangent/,/normalizeGeo/,/destination=\(origin,bearingRad,distanceKm\)/,/floatingOriginShifts/,/WAFT_SPHERICAL_UI_CLEAN_0261/])assert.match(spherical261,pattern,`0.26.1 spherical world missing ${pattern}`);
 
 assert.equal(preview.regionId,'iberia');
 assert.ok(preview.counts.settlements>=483,`Expected >=483 settlements, got ${preview.counts.settlements}`);
@@ -88,4 +90,4 @@ assert.ok(objects.items.some(x=>x.name==='Sant Just Desvern'),'Sant Just physica
 assert.ok(settlements.items.filter(x=>x.countryCode==='PT').length>=100,'Portugal coverage regressed');
 for(const name of ['Ayódar','Peñíscola','Gibraltar']){const place=byName.get(name);assert.ok(place?.specialMarker,`${name} must remain special`);assert.ok(!objects.items.some(item=>String(item.sourceId)===String(place.sourceId)),`${name} must not become a generic needle again`);}
 
-console.log(`WAFT 0.26.0 preserves the proven Iberia mechanics and Europe detail while the Global Atlas owns one continuous planetary surface with Pacific wrap.`);
+console.log('WAFT 0.26.1 preserves the proven Iberia/Europe mechanics while one spherical logical world provides curved local terrain, polar continuity, Pacific continuity, floating origin and high-speed directional prefetch.');
