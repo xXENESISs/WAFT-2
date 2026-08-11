@@ -2,6 +2,7 @@ import fs from 'node:fs';
 const need=(v,m)=>{if(!v)throw new Error(m)};
 const index=fs.readFileSync('mallorca-mobile/adventure-0210/index.html','utf8');
 const runtime=fs.readFileSync('mallorca-mobile/adventure-0210/spherical-world-0261.js','utf8');
+const legacyWorld=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0246.js','utf8');
 need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.26.1'"),'build is not 0.26.1');
 need(index.includes('WAFT_SPHERICAL_BOOTSTRAP_0261'),'spherical bootstrap missing');
 need(index.includes('spherical-world-0261.js'),'spherical runtime is not loaded');
@@ -14,5 +15,7 @@ need(runtime.includes("renderMode:'spherical-local-tangent'"),'spherical local t
 need(runtime.includes("streamedRegion:'spherical-world'")||runtime.includes("activeRegion:'spherical-world'"),'spherical stream identity missing');
 need(runtime.includes('destination=(origin,bearingRad,distanceKm)'),'great-circle destination missing');
 need(runtime.includes('normalizeGeo=(lat,lon)'),'polar normalization missing');
+need(runtime.includes('WAFT_SPHERICAL_UI_CLEAN_0261')&&runtime.includes('#waftIberiaAtlas')&&runtime.includes('#waftSpecialMarkers')&&runtime.includes('#presets'),'spherical stale regional UI suppression missing');
+need(legacyWorld.includes('if(window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__)return;'),'legacy Iberia physical landmark renderer is not suppressed');
 need(!runtime.includes('gl.uniform1f(tOffsetX,WORLD_WIDTH)'),'legacy Pacific plane-copy renderer leaked into 0.26.1');
-console.log(JSON.stringify({valid:true,version:'0.26.1',horizontalScale:.33,terrainPatchTriangles:115200,vultureCruise:92,vultureDive:104,vultureDiveBoost:116,prefetchSeconds:6},null,2));
+console.log(JSON.stringify({valid:true,version:'0.26.1',horizontalScale:.33,terrainPatchTriangles:115200,vultureCruise:92,vultureDive:104,vultureDiveBoost:116,prefetchSeconds:6,staleRegionalUi:false},null,2));
