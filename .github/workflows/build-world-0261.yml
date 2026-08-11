@@ -1,0 +1,80 @@
+name: Build WAFT world 0.26.1 Spherical Topology
+
+on:
+  push:
+    branches:
+      - feat/world-0261-spherical-topology
+      - main
+    paths:
+      - .github/workflows/build-world-0261.yml
+      - world-generator/scripts/prepare-world-0261.mjs
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/spherical-world-0261.js
+      - mallorca-mobile/adventure-0210/verify-0261.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-spherical-world-0261.mjs
+      - regions/global-atlas/**
+      - regions/europe-atlas/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waft-world-0261-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  spherical-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browser dependency
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Prepare spherical world 0.26.1
+        run: node world-generator/scripts/prepare-world-0261.mjs
+      - name: Syntax and spherical contracts
+        run: |
+          node --check world-generator/scripts/prepare-world-0261.mjs
+          node --check mallorca-mobile/adventure-0210/spherical-world-0261.js
+          node --check mallorca-mobile/adventure-0210/verify-0261.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-spherical-world-0261.mjs
+          node mallorca-mobile/adventure-0210/verify-0261.mjs
+      - name: Persist deterministic spherical runtime
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/spherical-world-0261.js
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT 0.26.1 spherical runtime is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Prepare WAFT 0.26.1 spherical runtime"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify spherical traversal in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0261-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-spherical-world-0261.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
+      - name: Upload spherical visual checkpoints
+        if: steps.persist.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: waft-spherical-world-0261-visuals
+          path: artifacts/world-0261/*.png
+          if-no-files-found: error
