@@ -7,6 +7,7 @@ need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.26.1'"),'build is not 0.
 need(index.includes('WAFT_SPHERICAL_BOOTSTRAP_0261'),'spherical bootstrap missing');
 need(index.includes('spherical-world-0261.js'),'spherical runtime is not loaded');
 need(index.includes('boosted?116:104')&&index.includes('inputLength<.06?48')&&index.includes('inputLength>.93?92')&&index.includes('inputLength>.70?76:60'),'bearded-vulture x2 horizontal speeds missing');
+need(index.includes("regionalFarTail=\"state.worldMode === 'local' ? 2400 : 1450\"")&&index.includes('Math.max(1800,Math.min(10000,1800+Math.max(0,state.camera.y)*1.6))'),'adaptive spherical far plane missing');
 need(runtime.includes('EARTH_KM=6371.0088')&&runtime.includes('EARTH_U=EARTH_KM*U'),'spherical radius missing');
 need(runtime.includes('PATCH_N=241')&&runtime.includes('PATCH_HALF=900'),'local terrain window contract missing');
 need(runtime.includes('speed*6,180,700')||runtime.includes('Math.max(commanded,state.speedEstimate)*6,180,700'),'directional high-speed prefetch missing');
@@ -21,4 +22,4 @@ need(runtime.includes('FAST_PATCH_N=121')&&runtime.includes('HIGH_PATCH_N=81'),'
 need(runtime.includes('WAFT_SPHERICAL_UI_CLEAN_0261')&&runtime.includes('#waftIberiaAtlas')&&runtime.includes('#waftSpecialMarkers')&&runtime.includes('#presets'),'spherical stale regional UI suppression missing');
 need(legacyWorld.includes('if(window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__)return;'),'legacy Iberia physical landmark renderer is not suppressed');
 need(!runtime.includes('gl.uniform1f(tOffsetX,WORLD_WIDTH)'),'legacy Pacific plane-copy renderer leaked into 0.26.1');
-console.log(JSON.stringify({valid:true,version:'0.26.1',horizontalScale:.33,terrainPatchTriangles:115200,globalGlobeTriangles:25600,vultureCruise:92,vultureDive:104,vultureDiveBoost:116,prefetchSeconds:6,staleRegionalUi:false},null,2));
+console.log(JSON.stringify({valid:true,version:'0.26.1',horizontalScale:.33,terrainPatchTriangles:115200,globalGlobeTriangles:25600,vultureCruise:92,vultureDive:104,vultureDiveBoost:116,prefetchSeconds:6,adaptiveFarPlane:true,staleRegionalUi:false},null,2));
