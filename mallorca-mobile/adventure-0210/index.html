@@ -251,10 +251,10 @@
         window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
         source=source.replaceAll('adventure-0210/global-atlas-0260.js','adventure-0210/spherical-world-0261.js');
         source=source.replaceAll('window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;','window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;');
-        const clampOld="      state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));\n      state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));";
-        const clampNew="      if(!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__){\n        state.camera.x = Math.max(bounds.minX, Math.min(bounds.maxX, state.camera.x));\n        state.camera.z = Math.max(bounds.minZ, Math.min(bounds.maxZ, state.camera.z));\n      }";
-        if(source.includes(clampOld))source=source.replace(clampOld,clampNew);
-        else if(!source.includes('!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__'))throw new Error('WAFT 0.26.1 terrain bounds clamp anchor missing');
+        const dynamicClamp='if(!streamedWorldSurface?.inside){';
+        const sphericalClamp='if(!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__&&!streamedWorldSurface?.inside){';
+        if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
+        else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
       }
       document.open();document.write(source);document.close();
     } catch(error) {
