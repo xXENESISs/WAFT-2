@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - feat/world-0253-scale-relief
-      - main
     paths:
       - .github/workflows/build-world-0253.yml
       - .github/workflows/build-world-0252.yml
