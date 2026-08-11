@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+const need=(v,m)=>{if(!v)throw new Error(m)};
+const index=fs.readFileSync('mallorca-mobile/adventure-0210/index.html','utf8');
+const runtime=fs.readFileSync('mallorca-mobile/adventure-0210/spherical-world-0261.js','utf8');
+need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.26.1'"),'build is not 0.26.1');
+need(index.includes('WAFT_SPHERICAL_BOOTSTRAP_0261'),'spherical bootstrap missing');
+need(index.includes('spherical-world-0261.js'),'spherical runtime is not loaded');
+need(index.includes('boosted?116:104')&&index.includes('inputLength<.06?48')&&index.includes('inputLength>.93?92')&&index.includes('inputLength>.70?76:60'),'bearded-vulture x2 horizontal speeds missing');
+need(runtime.includes('EARTH_KM=6371.0088')&&runtime.includes('EARTH_U=EARTH_KM*U'),'spherical radius missing');
+need(runtime.includes('PATCH_N=241')&&runtime.includes('PATCH_HALF=900'),'local terrain window contract missing');
+need(runtime.includes('speed*6,180,700'),'directional high-speed prefetch missing');
+need(runtime.includes('RECENTER=480'),'floating origin threshold missing');
+need(runtime.includes("renderMode:'spherical-local-tangent'"),'spherical local tangent mode missing');
+need(runtime.includes("streamedRegion:'spherical-world'")||runtime.includes("activeRegion:'spherical-world'"),'spherical stream identity missing');
+need(runtime.includes('destination=(origin,bearingRad,distanceKm)'),'great-circle destination missing');
+need(runtime.includes('normalizeGeo=(lat,lon)'),'polar normalization missing');
+need(!runtime.includes('gl.uniform1f(tOffsetX,WORLD_WIDTH)'),'legacy Pacific plane-copy renderer leaked into 0.26.1');
+console.log(JSON.stringify({valid:true,version:'0.26.1',horizontalScale:.33,terrainPatchTriangles:115200,vultureCruise:92,vultureDive:104,vultureDiveBoost:116,prefetchSeconds:6},null,2));
