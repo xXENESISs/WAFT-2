@@ -1,0 +1,27 @@
+{
+  "connections": [],
+  "entryPoints": [
+    {
+      "arrivalHeadingDegrees": 0,
+      "id": "global-origin",
+      "local": {
+        "x": 172.9309,
+        "y": 86,
+        "z": 5.6844
+      },
+      "name": "Mallorca · mundo continuo",
+      "position": {
+        "lat": 39.62,
+        "lon": 3
+      },
+      "sectorId": "s-53-19",
+      "terrainStatus": "exact-cell",
+      "type": "air"
+    }
+  ],
+  "formatVersion": 1,
+  "generationStage": "manual-travel-entry-points",
+  "ports": [],
+  "regionId": "global-atlas",
+  "roads": []
+}

@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1,
+  "generatedBuildingsPending": true,
+  "generationStage": "reserved-zones-only",
+  "items": [],
+  "overrideOperations": [],
+  "regionId": "global-atlas",
+  "reservedZones": []
+}

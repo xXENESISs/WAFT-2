@@ -11,7 +11,7 @@
   const gl=canvas.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 no disponible para streaming 0.24.5');
 
-  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.3';
+  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.26.0';
   const U=Number(api.metadata?.projection?.unitsPerKm)||.30;
   const I={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
   const LOD_MIN_LAT=43.62;
