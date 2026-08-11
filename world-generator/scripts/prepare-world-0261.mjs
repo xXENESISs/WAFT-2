@@ -21,7 +21,13 @@ if(!s.includes('WAFT_SPHERICAL_BOOTSTRAP_0261')){
   s=s.replace(marker,inject+marker);
 }
 
-// The old global runtime may still be present as generated bootstrap text. 0.26.1 owns the world.
 s=s.replaceAll('MUNDO · CONTINUO 0.26.0','MUNDO · ESFÉRICO 0.26.1');
 fs.writeFileSync(full,s);
+
+const runtimePath=path.join(root,'mallorca-mobile/adventure-0210/spherical-world-0261.js');
+let r=fs.readFileSync(runtimePath,'utf8');
+r=r.replace("originGeo:legacyGeo(start.x,start.z)","originGeo:{lat:legacyP.lat0,lon:legacyP.lon0}");
+r=r.replace("api.releaseRegionalTerrainGpu?.();api.setRegionalPosition?.(0,0,start.y);rebuildPatch(true);","api.releaseRegionalTerrainGpu?.();rebuildPatch(true);");
+r=r.replace("if(Math.abs(wrapLon(newGeo.lon-oldLon))>150)state.datelineCrossings++;if(Math.sign(oldLat)!==Math.sign(newGeo.lat)&&Math.abs(oldLat)>75&&Math.abs(newGeo.lat)>75)state.poleCrossings++;","const lonJump=Math.abs(wrapLon(newGeo.lon-oldLon));if(lonJump>90&&Math.abs(oldLat)>70&&Math.abs(newGeo.lat)>70)state.poleCrossings++;else if(lonJump>150)state.datelineCrossings++;");
+fs.writeFileSync(runtimePath,r);
 console.log('WAFT 0.26.1 spherical bootstrap prepared.');
