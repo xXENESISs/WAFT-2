@@ -11,7 +11,7 @@
   // WAFT_SPHERICAL_UI_CLEAN_0261: regional navigation/UI cannot follow a floating origin around the planet.
   const sphericalUiStyle=document.createElement('style');
   sphericalUiStyle.id='waftSphericalUiClean0261';
-  sphericalUiStyle.textContent='#waftIberiaAtlas,#waftSpecialMarkers,#waftStreamHint,#presets,#waftWorldLabels0249,#waftFranceBadge0246,#waftRegionBadge0247{display:none!important}';
+  sphericalUiStyle.textContent='#waftIberiaAtlas,#waftSpecialMarkers,#waftStreamHint,#presets,#waftWorldLabels0249,#waftFranceBadge0246,#waftRegionBadge0247,#waftProgress{display:none!important}';
   document.head.appendChild(sphericalUiStyle);
 
   const U=.33,VERTICAL=.0028,WATER_METERS=-20,EARTH_KM=6371.0088,EARTH_U=EARTH_KM*U;
