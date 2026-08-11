@@ -255,6 +255,10 @@
         const sphericalClamp='if(!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__&&!streamedWorldSurface?.inside){';
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
+        const regionalFar="perspective(projection, Math.PI / 3, canvas.width / canvas.height, .12, state.worldMode === 'local' ? 2400 : 1450);";
+        const sphericalFar="perspective(projection, Math.PI / 3, canvas.width / canvas.height, .12, state.worldMode === 'local' ? 2400 : (window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__ ? Math.max(1800,Math.min(10000,1800+Math.max(0,state.camera.y)*1.6)) : 1450));";
+        if(source.includes(regionalFar))source=source.replaceAll(regionalFar,sphericalFar);
+        else if(!source.includes(sphericalFar))throw new Error('WAFT 0.26.1 adaptive spherical far-plane anchor missing');
       }
       document.open();document.write(source);document.close();
     } catch(error) {
