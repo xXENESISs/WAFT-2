@@ -97,3 +97,10 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
           node mallorca-mobile/adventure-0210/tools/verify-world-0260.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
+      - name: Upload global visual checkpoints
+        if: steps.persist.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: waft-global-atlas-0260-visuals
+          path: artifacts/world-0260/*.png
+          if-no-files-found: error
