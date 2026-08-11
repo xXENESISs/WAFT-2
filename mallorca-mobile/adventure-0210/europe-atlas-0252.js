@@ -1,11 +1,11 @@
 'use strict';
 (async()=>{
-  if(window.__WAFT_EUROPE_ATLAS_0252_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
+  if(window.__WAFT_EUROPE_ATLAS_0252_READY__||window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
   window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__=true;
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTAdventurePlugin||!document.querySelector('canvas'));i++)await wait(40);
   const api=window.WAFTRegionRuntime,plugin=window.WAFTAdventurePlugin,canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
-  if(!api||!plugin||!gl)throw new Error('WAFT 0.25.3 unified Europe atlas runtime unavailable');
+  if(!api||!plugin||!gl)throw new Error('WAFT 0.26.0 unified Europe atlas runtime unavailable');
 
   const U=.33,VERTICAL=.0028,WATER_METERS=-20;
   const P={lat0:39.775,lon0:-3.125,kmLat:111.132,kmLon:85.55640544079021};
@@ -30,7 +30,7 @@
   function parseTerrain(buffer){const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTHGT1')throw new Error(`Europe atlas terrain magic ${magic}`);const h=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{headerBytes:h,columns,rows,west:v.getFloat64(16,true),east:v.getFloat64(24,true),south:v.getFloat64(32,true),north:v.getFloat64(40,true),nodata:v.getInt32(56,true),elevations:new Int16Array(buffer,h,columns*rows)};}
   function parseCover(buffer){const v=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));if(magic!=='WAFTLCV1')throw new Error(`Europe atlas cover magic ${magic}`);const h=v.getUint16(10,true),columns=v.getUint16(12,true),rows=v.getUint16(14,true);return{columns,rows,classes:new Uint8Array(buffer,h,columns*rows)};}
   const palette=[[.026,.17,.30],[.73,.61,.35],[.42,.43,.41],[.31,.47,.19],[.055,.29,.12],[.50,.53,.20],[.45,.44,.40],[.16,.39,.28],[.49,.40,.29],[.38,.56,.20]];
-  const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh)||'0.25.3 shader');return sh;};
+  const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh)||'0.26.0 shader');return sh;};
   const terrainVs=compile(gl.VERTEX_SHADER,`#version 300 es\nlayout(location=0)in vec3 aP;layout(location=1)in vec3 aN;layout(location=2)in vec3 aC;uniform mat4 uPV;out vec3 vN;out vec3 vC;out vec3 vW;void main(){vW=vec3(aP.x,aP.y*${VERTICAL.toFixed(6)},aP.z);vN=aN;vC=aC;gl_Position=uPV*vec4(vW,1.0);}`);
   const terrainFs=compile(gl.FRAGMENT_SHADER,`#version 300 es\nprecision highp float;in vec3 vN;in vec3 vC;in vec3 vW;uniform vec3 uEye;out vec4 o;void main(){vec3 light=normalize(vec3(-.42,.86,.28));/*WAFT_RELIEF_0253*/float nd=max(dot(normalize(vN),light),0.0);float slope=1.0-clamp(normalize(vN).y,0.0,1.0);float elev=clamp((vW.y-.20)/7.5,0.0,1.0);float d=.50+.44*nd-.08*slope;float fog=smoothstep(650.0,1450.0,distance(vW.xz,uEye.xz));vec3 mountain=mix(vC,vec3(.47,.45,.41),elev*.52);vec3 c=mountain*d;o=vec4(mix(c,vec3(.39,.555,.655),fog*.78),1.0);}`);
   const terrainProgram=gl.createProgram();gl.attachShader(terrainProgram,terrainVs);gl.attachShader(terrainProgram,terrainFs);gl.linkProgram(terrainProgram);gl.deleteShader(terrainVs);gl.deleteShader(terrainFs);if(!gl.getProgramParameter(terrainProgram,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(terrainProgram)||'Europe atlas terrain program');const tPV=gl.getUniformLocation(terrainProgram,'uPV'),tEye=gl.getUniformLocation(terrainProgram,'uEye');
@@ -63,7 +63,7 @@
 
   const previousDraw=plugin.afterWorldDraw?.bind(plugin);
   plugin.afterWorldDraw=(now,eye,pv)=>{previousDraw?.(now,eye,pv);if(!state.ready||!state.mesh)return;const player=api.getState?.(),pos=player?.position;if(pos){state.lastGeo=geoFromWorld(pos.x,pos.z);rebuildCities(pos.x,pos.z);}gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(terrainProgram);gl.uniformMatrix4fv(tPV,false,pv);gl.uniform3f(tEye,...eye);gl.bindVertexArray(state.mesh.vao);gl.drawElements(gl.TRIANGLES,state.mesh.count,gl.UNSIGNED_INT,0);state.drawFrames++;if(state.cityMesh){gl.useProgram(cityProgram);gl.uniformMatrix4fv(cPV,false,pv);gl.bindVertexArray(state.cityMesh.vao);gl.drawArrays(gl.TRIANGLES,0,state.cityMesh.count);}gl.bindVertexArray(null);};
-  function updateHud(){if(!state.ready)return;const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null,title=document.getElementById('hudTitle'),stats=document.getElementById('hudStats');if(title)title.textContent='EUROPA · MUNDO CONTINUO 0.25.3';if(stats&&geo)stats.textContent=`ATLAS ÚNICO · ${state.visibleCities} edificios cercanos / ${state.objects.length.toLocaleString('es-ES')} · ${Math.round(state.triangles/1000)}k tri`;const coords=document.getElementById('waftIberiaCoords');if(coords&&geo)coords.textContent=`ALT ${Math.round((s?.position?.y||0)/VERTICAL)} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;}
+  function updateHud(){if(!state.ready)return;const s=api.getState?.(),geo=s?.position?geoFromWorld(s.position.x,s.position.z):null,title=document.getElementById('hudTitle'),stats=document.getElementById('hudStats');if(title)title.textContent='EUROPA · MUNDO CONTINUO 0.26.0';if(stats&&geo)stats.textContent=`ATLAS ÚNICO · ${state.visibleCities} edificios cercanos / ${state.objects.length.toLocaleString('es-ES')} · ${Math.round(state.triangles/1000)}k tri`;const coords=document.getElementById('waftIberiaCoords');if(coords&&geo)coords.textContent=`ALT ${Math.round((s?.position?.y||0)/VERTICAL)} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;}
 
   window.WAFTEuropeAtlas0252={getState:()=>({...state,terrain:state.terrain?{columns:state.terrain.columns,rows:state.terrain.rows,west:state.terrain.west,east:state.terrain.east,south:state.terrain.south,north:state.terrain.north}:null,mesh:state.mesh?{triangles:state.mesh.triangles}:null,cityMesh:state.cityMesh?{count:state.cityMesh.count}:null}),worldFromGeo,geoFromWorld,sampleSurface,rebuildCities};
   try{

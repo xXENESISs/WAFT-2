@@ -4,11 +4,11 @@
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let i=0;i<600&&(!window.WAFTRegionRuntime||!window.WAFTWorldStreaming0245||!window.WAFTWorldContinuity0247);i++)await wait(40);
   const api=window.WAFTRegionRuntime,stream=window.WAFTWorldStreaming0245,continuity=window.WAFTWorldContinuity0247,plugin=window.WAFTAdventurePlugin;
-  if(!api||!stream||!continuity||!plugin)throw new Error('WAFT 0.25.3 runtime unavailable');
+  if(!api||!stream||!continuity||!plugin)throw new Error('WAFT 0.26.0 runtime unavailable');
   const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
-  if(!gl)throw new Error('WebGL2 unavailable for WAFT 0.25.3');
+  if(!gl)throw new Error('WebGL2 unavailable for WAFT 0.26.0');
 
-  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.25.3';
+  const VERSION=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.26.0';
   const VERTICAL=Number(api.metadata?.terrain?.verticalScale)||.013594;
   const U=Number(api.metadata?.projection?.unitsPerKm)||.30;
   const LABEL_RANGE_KM=.15,NEAREST_RANGE_KM=1.0,LABEL_MAX_AGL_M=320;
@@ -112,10 +112,10 @@
     for(const entry of items){if(shown>=nodes.length||entry.d>LABEL_RANGE_KM||!allowAltitude)break;const place=entry.x,surf=stream.sampleSurface?.(place._world.x,place._world.z);if(!surf?.inside||!surf.land)continue;const p=project(place._world.x,surf.height+.42,place._world.z);if(!p||overlaps(p,boxes))continue;const node=nodes[shown++];node.style.left=`${p.x}px`;node.style.top=`${p.y}px`;node.querySelector('b').textContent=place.name;node.querySelector('small').textContent=`${fmt(place.population)} hab ☠️`;node.classList.add('visible');
     }
     for(let i=shown;i<nodes.length;i++)nodes[i].classList.remove('visible');state.shownLabels=shown;state.lastSurface=under;
-    const hud=document.getElementById('hudTitle');if(hud&&inAfrica(g))hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.25.3';
+    const hud=document.getElementById('hudTitle');if(hud&&inAfrica(g))hud.textContent='NOROESTE DE ÁFRICA · MUNDO CONTINUO 0.26.0';
   };
   setInterval(updateLabels,120);updateLabels();
 
-  window.WAFTWorld0250={version:'0.25.3',inAfrica,inAtlantic,prefetchAfrica,sampleAfrica,sampleOcean,getState:()=>({phase:state.phase,scale:U,africaReady:Boolean(state.mesh),africaTriangles:state.mesh?.triangles||0,africaDrawFrames:state.drawFrames,oceanTriangles:state.ocean?.triangles||0,oceanDrawFrames:state.oceanFrames,africaBytes:state.bytes,africaSettlements:state.settlements.length,shownLabels:state.shownLabels,nearest:state.nearest?.name||null,labelRangeKm:LABEL_RANGE_KM,nearestRangeKm:NEAREST_RANGE_KM,labelMaxAglM:LABEL_MAX_AGL_M,geo:state.lastGeo,error:state.error})};
+  window.WAFTWorld0250={version:'0.26.0',inAfrica,inAtlantic,prefetchAfrica,sampleAfrica,sampleOcean,getState:()=>({phase:state.phase,scale:U,africaReady:Boolean(state.mesh),africaTriangles:state.mesh?.triangles||0,africaDrawFrames:state.drawFrames,oceanTriangles:state.ocean?.triangles||0,oceanDrawFrames:state.oceanFrames,africaBytes:state.bytes,africaSettlements:state.settlements.length,shownLabels:state.shownLabels,nearest:state.nearest?.name||null,labelRangeKm:LABEL_RANGE_KM,nearestRangeKm:NEAREST_RANGE_KM,labelMaxAglM:LABEL_MAX_AGL_M,geo:state.lastGeo,error:state.error})};
   window.__WAFT_IBERIA_WORLD_0250_READY__=true;
-})().catch(e=>{console.error('WAFT 0.25.3 failed',e);window.__WAFT_IBERIA_WORLD_0250_ERROR__=String(e?.message||e);});
+})().catch(e=>{console.error('WAFT 0.26.0 failed',e);window.__WAFT_IBERIA_WORLD_0250_ERROR__=String(e?.message||e);});
