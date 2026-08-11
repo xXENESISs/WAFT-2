@@ -11,6 +11,7 @@ on:
       - world-generator/overrides/global-atlas.overrides.json
       - world-generator/scripts/prepare-world-0260.mjs
       - world-generator/scripts/tune-global-atlas-0260.mjs
+      - world-generator/scripts/fix-global-pacific-0260.mjs
       - world-generator/scripts/import-mapzen-terrarium-atlas.py
       - world-generator/scripts/import-mapzen-terrarium-global.py
       - world-generator/scripts/build-terrain-only-landcover.py
@@ -59,10 +60,12 @@ jobs:
         run: |
           node world-generator/scripts/prepare-world-0260.mjs
           node world-generator/scripts/tune-global-atlas-0260.mjs
+          node world-generator/scripts/fix-global-pacific-0260.mjs
       - name: Syntax and config contracts
         run: |
           node --check world-generator/scripts/prepare-world-0260.mjs
           node --check world-generator/scripts/tune-global-atlas-0260.mjs
+          node --check world-generator/scripts/fix-global-pacific-0260.mjs
           node --check world-generator/scripts/build-region-v2.mjs
           node --check mallorca-mobile/adventure-0210/global-atlas-0260.js
           node --check mallorca-mobile/adventure-0210/verify-0260.mjs
