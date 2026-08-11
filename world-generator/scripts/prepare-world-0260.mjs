@@ -75,6 +75,7 @@ runtime=runtime.replaceAll('0.25.3',VERSION)
   .replaceAll('europe-atlas','global-atlas')
   .replaceAll('Europe atlas','Global atlas')
   .replaceAll('EUROPA · MUNDO CONTINUO 0.26.0','MUNDO · CONTINUO 0.26.0');
+runtime=runtime.replace(/  if\(window\.__WAFT_GLOBAL_ATLAS_0260_READY__[^\n]*\)return;/,"  if(window.__WAFT_GLOBAL_ATLAS_0260_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;");
 const projectionOld=`  const B={west:-26,east:60,south:26,north:72.5};\n  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));\n  const worldFromGeo=(lat,lon)=>({x:(Number(lon)-P.lon0)*P.kmLon*U,z:-(Number(lat)-P.lat0)*P.kmLat*U});\n  const geoFromWorld=(x,z)=>({lat:P.lat0-Number(z)/(P.kmLat*U),lon:P.lon0+Number(x)/(P.kmLon*U)});\n  const inBounds=g=>Boolean(g&&g.lon>=B.west&&g.lon<=B.east&&g.lat>=B.south&&g.lat<=B.north);`;
 const projectionNew=`  const B={west:-180,east:180,south:-90,north:90};\n  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));\n  const wrapLon=lon=>{const n=Number(lon);if(!Number.isFinite(n))return 0;return ((n+180)%360+360)%360-180;};\n  const worldFromGeo=(lat,lon)=>({x:(Number(lon)-P.lon0)*P.kmLon*U,z:-(Number(lat)-P.lat0)*P.kmLat*U});\n  const geoFromWorldRaw=(x,z)=>({lat:P.lat0-Number(z)/(P.kmLat*U),lon:P.lon0+Number(x)/(P.kmLon*U)});\n  const geoFromWorld=(x,z)=>{const g=geoFromWorldRaw(x,z);return{lat:g.lat,lon:wrapLon(g.lon)};};\n  const WORLD_WEST_X=worldFromGeo(0,B.west).x,WORLD_EAST_X=worldFromGeo(0,B.east).x,WORLD_WIDTH=WORLD_EAST_X-WORLD_WEST_X;\n  const inBounds=g=>Boolean(g&&g.lat>=B.south&&g.lat<=B.north&&Number.isFinite(g.lon));`;
 if(!runtime.includes(projectionOld))throw new Error('Global projection anchor missing');
@@ -113,6 +114,9 @@ patch('mallorca-mobile/adventure-0210/index.html',s=>{
   s=s.replaceAll('state.buildings&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__','state.buildings&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__');
   s=s.replaceAll('state.landmarks&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__','state.landmarks&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__');
   s=s.replaceAll('state.settlements&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__','state.settlements&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__');
+  const dup='&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__';
+  const one='&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__';
+  while(s.includes(dup))s=s.replaceAll(dup,one);
   const writeMarker='      document.open();document.write(source);document.close();';
   if(!s.includes('WAFT_GLOBAL_POSITION_API_0260')){
     if(!s.includes(writeMarker))throw new Error('Global position API document.write anchor missing');
