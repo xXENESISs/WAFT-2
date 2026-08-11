@@ -1,6 +1,6 @@
 'use strict';
 (async()=>{
-  if(window.__WAFT_GLOBAL_ATLAS_0260_READY__||window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
+  if(window.__WAFT_GLOBAL_ATLAS_0260_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
   window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTAdventurePlugin||!document.querySelector('canvas'));i++)await wait(40);
