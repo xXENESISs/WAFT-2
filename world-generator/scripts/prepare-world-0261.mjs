@@ -42,6 +42,13 @@ if(!r.includes('WAFT_SPHERICAL_UI_CLEAN_0261')){
 }else{
   r=r.replace('#waftRegionBadge0247{display:none!important}', '#waftRegionBadge0247,#waftProgress{display:none!important}');
 }
+const objectiveText="Explora el mundo · ALETEAR para subir · PICADO ↓ para descender rápido.";
+if(!r.includes(objectiveText)){
+  const hudAnchor="function updateHud(){if(!state.ready)return;const title=document.getElementById('hudTitle')";
+  const hudReplacement=`function updateHud(){if(!state.ready)return;const objective=document.getElementById('waftObjective');if(objective)objective.textContent='${objectiveText}';const title=document.getElementById('hudTitle')`;
+  if(!r.includes(hudAnchor))throw new Error('WAFT 0.26.1 objective HUD anchor missing');
+  r=r.replace(hudAnchor,hudReplacement);
+}
 fs.writeFileSync(runtimePath,r);
 
 const visiblePath=path.join(root,'mallorca-mobile/adventure-0210/iberia-world-0246.js');
