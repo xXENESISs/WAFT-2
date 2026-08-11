@@ -81,7 +81,7 @@
   };
 
   const hudTitle=document.getElementById('hudTitle'),originalHudTitle=hudTitle?.textContent||'';
-  const refreshHint=()=>{for(const el of document.querySelectorAll('div,span,p')){if(el.children.length===0&&/mantén el joystick abajo en vuelo para entrar en picado/i.test(el.textContent||''))el.textContent='Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';}};
+  const refreshHint=()=>{for(const el of document.querySelectorAll('div,span,p')){if(el.children.length===0&&/mantén el joystick abajo en vuelo para entrar en picado/i.test(el.textContent||''))el.textContent=window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__?'Explora el mundo · ALETEAR para subir · PICADO ↓ para descender rápido.':'Explora Iberia · ALETEAR para subir · PICADO ↓ para descender rápido.';}};
   refreshHint();
   setInterval(()=>{const mounted=isBird();dive.hidden=!mounted;if(!mounted)setDive(false);const s=stream.getState?.(),inFrance=stream.inFranceGeo?.(s?.geo)??s?.activeRegion==='france';franceBadge.hidden=!inFrance;if(inFrance)franceBadge.textContent=`FRANCE · ${franceCityCount||461} VILLES · TERRAIN CONTINU`;if(hudTitle){if(inFrance)hudTitle.textContent='FRANCE 001 · MONDE CONTINU';else if(hudTitle.textContent==='FRANCE 001 · MONDE CONTINU')hudTitle.textContent=originalHudTitle;}refreshHint();},220);
 
