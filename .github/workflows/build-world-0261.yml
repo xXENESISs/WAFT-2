@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/world-0261-spherical-topology
+      - fix/high-altitude-earth-v2
       - main
     paths:
       - .github/workflows/build-world-0261.yml
