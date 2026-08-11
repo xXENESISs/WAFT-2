@@ -74,7 +74,7 @@
   const drawMesh=(m,ox=0,oy=0,oz=0)=>{if(!m?.vao)return;gl.uniform3f(uO,ox,oy,oz);gl.bindVertexArray(m.vao);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_INT,0);};
   const prev=plugin.afterWorldDraw?.bind(plugin);
   plugin.afterWorldDraw=(now,eye,pv)=>{
-    prev?.(now,eye,pv);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);
+    prev?.(now,eye,pv);if(window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__)return;gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.useProgram(prog);gl.uniformMatrix4fv(uPV,false,pv);
     const pos=api.getState?.()?.position;
     for(const l of landmarks){const near=pos&&Math.hypot(pos.x-l.x,pos.z-l.z)<35;if(near)gl.disable(gl.DEPTH_TEST);drawMesh(meshes[l.kind],l.x,l.y,l.z);if(near)gl.enable(gl.DEPTH_TEST);}
     const ss=stream.getState?.(),nearFrance=stream.nearFrance?.(ss?.geo,.55)??false;if(franceCitiesMesh&&ss?.prefetched&&nearFrance)drawMesh(franceCitiesMesh);gl.bindVertexArray(null);
