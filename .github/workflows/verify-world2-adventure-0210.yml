@@ -22,6 +22,7 @@ on:
       - world-generator/scripts/prepare-world-0252.mjs
       - world-generator/scripts/prepare-world-0253.mjs
       - world-generator/scripts/prepare-world-0260.mjs
+      - world-generator/scripts/tune-global-atlas-0260.mjs
       - world-generator/scripts/import-mapzen-terrarium-atlas.py
       - world-generator/scripts/import-mapzen-terrarium-global.py
       - world-generator/scripts/build-terrain-only-landcover.py
@@ -84,6 +85,7 @@ jobs:
           node --check world-generator/scripts/prepare-world-0252.mjs
           node --check world-generator/scripts/prepare-world-0253.mjs
           node --check world-generator/scripts/prepare-world-0260.mjs
+          node --check world-generator/scripts/tune-global-atlas-0260.mjs
           node --check world-generator/scripts/build-region-v2.mjs
           node --check world-generator/scripts/build-region-preview-v2.mjs
           node --check world-generator/scripts/ensure-iberia-settlements-0246.mjs
@@ -134,4 +136,4 @@ jobs:
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.26.0 keeps Europe detail intact while one global macro surface owns -180..180 / -90..90 and wraps continuously across the Pacific.
+# 0.26.0 keeps Europe detail intact through a local detail sector while one global macro surface owns -180..180 / -90..90 and wraps continuously across the Pacific.
