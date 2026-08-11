@@ -234,10 +234,10 @@
       if(regionId==='iberia'){
         // WAFT_ATLAS_CORE_SUPPRESSION_0252: the old Iberia renderer remains the boot engine only.
         source=source.replace("const currentAdventureBuildings=()=>state.worldMode==='local'?localAssets.preview?.buildings:streamer.active;","const currentAdventureBuildings=()=>state.worldMode==='local'?localAssets.preview?.buildings:((window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__||window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__)?[]:streamer.active);");
-        source=source.replace('if (state.roads) { gl.useProgram(roadProgram);','if (state.roads&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(roadProgram);');
-        source=source.replace('if (state.buildings) { gl.useProgram(buildingProgram);','if (state.buildings&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(buildingProgram);');
-        source=source.replace('if (state.landmarks) { gl.useProgram(landmarkProgram);','if (state.landmarks&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(landmarkProgram);');
-        source=source.replace('if (state.settlements) { gl.useProgram(settlementProgram);','if (state.settlements&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(settlementProgram);');
+        source=source.replace('if (state.roads) { gl.useProgram(roadProgram);','if (state.roads&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(roadProgram);');
+        source=source.replace('if (state.buildings) { gl.useProgram(buildingProgram);','if (state.buildings&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(buildingProgram);');
+        source=source.replace('if (state.landmarks) { gl.useProgram(landmarkProgram);','if (state.landmarks&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(landmarkProgram);');
+        source=source.replace('if (state.settlements) { gl.useProgram(settlementProgram);','if (state.settlements&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__) { gl.useProgram(settlementProgram);');
       }
       // WAFT_GLOBAL_POSITION_API_0260: bounded world coordinates + Pacific wrap.
       if(regionId==='iberia'){
