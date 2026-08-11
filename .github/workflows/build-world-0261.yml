@@ -10,6 +10,8 @@ on:
       - world-generator/scripts/prepare-world-0261.mjs
       - mallorca-mobile/adventure-0210/index.html
       - mallorca-mobile/adventure-0210/spherical-world-0261.js
+      - mallorca-mobile/adventure-0210/iberia-world-0244.js
+      - mallorca-mobile/adventure-0210/iberia-world-0246.js
       - mallorca-mobile/adventure-0210/verify-0261.mjs
       - mallorca-mobile/adventure-0210/tools/verify-spherical-world-0261.mjs
       - regions/global-atlas/**
