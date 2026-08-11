@@ -1,9 +1,9 @@
-name: Verify World 2 Adventure 0.26.0
+name: Verify World 2 Adventure 0.26.1
 
 on:
   push:
     branches:
-      - feat/world-0260-global-atlas
+      - feat/world-0261-spherical-topology
       - main
     paths:
       - mallorca-mobile/adventure-0210/**
@@ -22,6 +22,7 @@ on:
       - world-generator/scripts/prepare-world-0252.mjs
       - world-generator/scripts/prepare-world-0253.mjs
       - world-generator/scripts/prepare-world-0260.mjs
+      - world-generator/scripts/prepare-world-0261.mjs
       - world-generator/scripts/tune-global-atlas-0260.mjs
       - world-generator/scripts/import-mapzen-terrarium-atlas.py
       - world-generator/scripts/import-mapzen-terrarium-global.py
@@ -38,7 +39,7 @@ on:
       - regions/europe-atlas/**
       - regions/global-atlas/**
       - .github/workflows/verify-world2-adventure-0210.yml
-      - .github/workflows/build-world-0260.yml
+      - .github/workflows/build-world-0261.yml
   workflow_dispatch:
 
 permissions:
@@ -76,15 +77,19 @@ jobs:
           node --check mallorca-mobile/adventure-0210/iberia-world-0250.js
           node --check mallorca-mobile/adventure-0210/europe-atlas-0252.js
           node --check mallorca-mobile/adventure-0210/global-atlas-0260.js
+          node --check mallorca-mobile/adventure-0210/spherical-world-0261.js
           node --check mallorca-mobile/adventure-0210/verify-0252.mjs
           node --check mallorca-mobile/adventure-0210/verify-0253.mjs
           node --check mallorca-mobile/adventure-0210/verify-0260.mjs
+          node --check mallorca-mobile/adventure-0210/verify-0261.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-0252.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-0253.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-world-0260.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-spherical-world-0261.mjs
           node --check world-generator/scripts/prepare-world-0252.mjs
           node --check world-generator/scripts/prepare-world-0253.mjs
           node --check world-generator/scripts/prepare-world-0260.mjs
+          node --check world-generator/scripts/prepare-world-0261.mjs
           node --check world-generator/scripts/tune-global-atlas-0260.mjs
           node --check world-generator/scripts/build-region-v2.mjs
           node --check world-generator/scripts/build-region-preview-v2.mjs
@@ -105,9 +110,11 @@ jobs:
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/world-streaming-topology.v1.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/europe-atlas.region.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('world-generator/configs/global-atlas.region.json','utf8'))"
-      - name: Verify 0.26.0 global world contracts
+      - name: Verify 0.26.1 spherical world contracts
         working-directory: repo
-        run: node mallorca-mobile/adventure-0210/verify-0260.mjs
+        run: |
+          node world-generator/scripts/prepare-world-0261.mjs
+          node mallorca-mobile/adventure-0210/verify-0261.mjs
       - name: Compile patched regional runtimes
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
@@ -129,11 +136,11 @@ jobs:
       - name: Verify ecological zones and fauna placement
         working-directory: repo
         run: node mallorca-mobile/adventure-0210/tools/smoke-ecology-0239.mjs
-      - name: Verify Iberia history and Global Atlas foundation
+      - name: Verify Iberia history and spherical-world foundation
         working-directory: repo
         run: |
           node world-generator/scripts/smoke-iberia-terrain-0240.mjs
           node mallorca-mobile/adventure-0210/tools/smoke-iberia-adventure-0240.mjs
           node world-generator/scripts/smoke-world-expansion-0244.mjs
 
-# 0.26.0 keeps Europe detail intact through a local detail sector while one global macro surface owns -180..180 / -90..90 and wraps continuously across the Pacific.
+# 0.26.1 keeps one spherical logical planet while only a curved local tangent terrain window stays resident around the player; fast mounted flight drives directional prefetch and floating-origin recentering.
