@@ -16,7 +16,7 @@
 
   const U=.33,VERTICAL=.0028,WATER_METERS=-20,EARTH_KM=6371.0088,EARTH_U=EARTH_KM*U;
   const DEG=Math.PI/180,RAD=180/Math.PI;
-  const PATCH_N=241,PATCH_HALF=900,FAR_INNER=680,FAR_OUTER=1800,FAR_RINGS=48,FAR_SEGMENTS=256,RECENTER=480,REBUILD_DISTANCE=170;
+  const PATCH_N=241,PATCH_HALF=900,FAR_INNER=120,FAR_OUTER=2200,FAR_RINGS=24,FAR_SEGMENTS=160,RECENTER=480,REBUILD_DISTANCE=170;
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   const wrapLon=lon=>((Number(lon)+180)%360+360)%360-180;
   const normalizeGeo=(lat,lon)=>{
@@ -96,7 +96,7 @@
     const ind=new Uint32Array(rings*segments*6);let q=0;for(let r=0;r<rings;r++)for(let c=0;c<segments;c++){const a=r*stride+c,b=a+1,d=a+stride,e=d+1;ind[q++]=a;ind[q++]=d;ind[q++]=b;ind[q++]=b;ind[q++]=d;ind[q++]=e;}
     return meshFromArrays(pos,norm,col,ind,{cx,cz,inner:FAR_INNER,outer:FAR_OUTER});
   }
-  function rebuildPatch(force=false){const s=api.getState?.(),pos=s?.position;if(!pos||!state.ready)return;const h=Number(s.playerFacing)||0,desiredLead=clamp(state.speedEstimate*6,180,700),dc=state.mesh?Math.hypot(pos.x-state.lastBuildPlayer.x,pos.z-state.lastBuildPlayer.z):Infinity,dh=Math.abs(Math.atan2(Math.sin(h-state.lastBuildHeading),Math.cos(h-state.lastBuildHeading))),age=performance.now()-state.lastBuildAt;if(!force&&dc<REBUILD_DISTANCE&&dh<.30&&age<2600)return;const next=buildPatch(pos.x,pos.z,h,state.speedEstimate),far=buildFarAnnulus(next.cx,next.cz);disposeMesh(state.mesh);disposeMesh(state.farMesh);state.mesh=next;state.farMesh=far;state.triangles=next.triangles;state.prefetchLead=desiredLead;state.lastBuildPlayer={x:pos.x,z:pos.z};state.lastBuildHeading=h;state.lastBuildAt=performance.now();state.patchRebuilds++;}
+  function rebuildPatch(force=false){const s=api.getState?.(),pos=s?.position;if(!pos||!state.ready)return;const h=Number(s.playerFacing)||0,desiredLead=clamp(state.speedEstimate*6,180,700),dc=state.mesh?Math.hypot(pos.x-state.lastBuildPlayer.x,pos.z-state.lastBuildPlayer.z):Infinity,dh=Math.abs(Math.atan2(Math.sin(h-state.lastBuildHeading),Math.cos(h-state.lastBuildHeading))),age=performance.now()-state.lastBuildAt;if(!force&&dc<REBUILD_DISTANCE&&dh<.30&&age<2600)return;const next=buildPatch(pos.x,pos.z,h,state.speedEstimate);disposeMesh(state.mesh);state.mesh=next;if(force||!state.farMesh){const far=buildFarAnnulus(0,0);disposeMesh(state.farMesh);state.farMesh=far;}state.triangles=next.triangles;state.prefetchLead=desiredLead;state.lastBuildPlayer={x:pos.x,z:pos.z};state.lastBuildHeading=h;state.lastBuildAt=performance.now();state.patchRebuilds++;}
 
   function maybeRecenter(){const s=api.getState?.(),pos=s?.position;if(!pos||Math.hypot(pos.x,pos.z)<RECENTER)return false;const oldOrigin={...state.originGeo},newGeo=geoFromLocal(pos.x,pos.z),h=Number(s.playerFacing)||0,forwardGeo=geoFromLocal(pos.x+Math.sin(h)*2,pos.z+Math.cos(h)*2),geoBearing=bearing(newGeo,forwardGeo),newHeading=Math.atan2(Math.sin(Math.PI-geoBearing),Math.cos(Math.PI-geoBearing));const oldLon=oldOrigin.lon,oldLat=oldOrigin.lat;state.originGeo=newGeo;const lonJump=Math.abs(wrapLon(newGeo.lon-oldLon));if(lonJump>90&&Math.abs(oldLat)>70&&Math.abs(newGeo.lat)>70)state.poleCrossings++;else if(lonJump>150)state.datelineCrossings++;api.setRegionalPosition?.(0,0,pos.y);api.setHeading?.(newHeading);state.floatingOriginShifts++;state.lastBuildPlayer={x:Infinity,z:Infinity};rebuildPatch(true);return true;}
 
