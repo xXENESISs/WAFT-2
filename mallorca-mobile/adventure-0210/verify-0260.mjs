@@ -18,8 +18,8 @@ need(runtime.includes('WORLD_WIDTH')&&runtime.includes('wrapLon')&&runtime.inclu
 need(runtime.includes('uOffsetX')&&runtime.includes('state.pacificCopies++'),'Pacific visual wrap missing');
 need(runtime.includes("const B={west:-180,east:180,south:-90,north:90}"),'runtime global bounds');
 need(runtime.includes('WAFT_GLOBAL_DETAIL_STREAM_0260')&&runtime.includes('rebuildEuropeDetail'),'streamed Europe detail missing');
-need(runtime.includes("streamedRegion:'global-atlas-europe-detail'")&&runtime.includes('uDetailEnabled'),'detail surface replacement missing');
-need(runtime.includes("../../regions/global-atlas/")&&runtime.includes("../../regions/europe-atlas/terrain.bin")&&runtime.includes("../../regions/europe-atlas/landcover.bin"),'global terrain + Europe detail sources missing');
+need(runtime.includes("sampleFromTerrain(state.europeTerrain,x,z,'global-atlas-europe-detail')")&&runtime.includes('uDetailEnabled'),'detail surface replacement missing');
+need(runtime.includes("const base='../../regions/global-atlas/',detailBase='../../regions/europe-atlas/'")&&runtime.includes("loadBuffer(detailBase+'terrain.bin')")&&runtime.includes("loadBuffer(detailBase+'landcover.bin')"),'global terrain + Europe detail sources missing');
 need(runtime.includes('window.WAFTEuropeAtlas0252=window.WAFTGlobalAtlas0260'),'Europe compatibility alias missing');
 need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.26.0'"),'Adventure 0.26.0 bootstrap missing');
 need(index.includes('global-atlas-0260.js')&&index.includes('__WAFT_GLOBAL_ATLAS_0260_ACTIVE__'),'Global atlas bootstrap missing');
