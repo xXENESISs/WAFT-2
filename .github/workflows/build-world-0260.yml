@@ -1,0 +1,99 @@
+name: Build WAFT world 0.26.0 Global Atlas
+
+on:
+  push:
+    branches:
+      - feat/world-0260-global-atlas
+      - main
+    paths:
+      - .github/workflows/build-world-0260.yml
+      - world-generator/configs/global-atlas.region.json
+      - world-generator/overrides/global-atlas.overrides.json
+      - world-generator/scripts/prepare-world-0260.mjs
+      - world-generator/scripts/import-mapzen-terrarium-atlas.py
+      - world-generator/scripts/import-mapzen-terrarium-global.py
+      - world-generator/scripts/build-terrain-only-landcover.py
+      - world-generator/scripts/build-region-v2.mjs
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/global-atlas-0260.js
+      - mallorca-mobile/adventure-0210/europe-atlas-0252.js
+      - mallorca-mobile/adventure-0210/verify-0260.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-world-0260.mjs
+      - regions/global-atlas/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waft-world-0260-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  global-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache global terrain source
+        uses: actions/cache@v4
+        with:
+          path: world-generator/.cache/mapzen-terrarium
+          key: waft-mapzen-terrarium-z4-global-0260-v1
+      - name: Install atlas and browser dependencies
+        run: |
+          python -m pip install --disable-pip-version-check numpy pillow
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Prepare global world 0.26.0
+        run: node world-generator/scripts/prepare-world-0260.mjs
+      - name: Syntax and config contracts
+        run: |
+          node --check world-generator/scripts/prepare-world-0260.mjs
+          node --check world-generator/scripts/build-region-v2.mjs
+          node --check mallorca-mobile/adventure-0210/global-atlas-0260.js
+          node --check mallorca-mobile/adventure-0210/verify-0260.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-world-0260.mjs
+          python -m py_compile world-generator/scripts/import-mapzen-terrarium-global.py
+          python -m py_compile world-generator/scripts/build-terrain-only-landcover.py
+          node world-generator/scripts/validate-region.mjs
+      - name: Build planet macro terrain
+        run: |
+          python world-generator/scripts/import-mapzen-terrarium-global.py global-atlas
+          python world-generator/scripts/build-terrain-only-landcover.py global-atlas
+          node world-generator/scripts/build-region-v2.mjs global-atlas
+      - name: Verify static global contracts
+        run: node mallorca-mobile/adventure-0210/verify-0260.mjs
+      - name: Persist deterministic global atlas
+        id: persist
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add world-generator/configs/global-atlas.region.json world-generator/overrides/global-atlas.overrides.json world-generator/scripts/import-mapzen-terrarium-global.py mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/global-atlas-0260.js mallorca-mobile/adventure-0210/europe-atlas-0252.js mallorca-mobile/adventure-0210/iberia-world-0244.js mallorca-mobile/adventure-0210/iberia-world-0245.js mallorca-mobile/adventure-0210/iberia-world-0246.js mallorca-mobile/adventure-0210/iberia-world-0247.js mallorca-mobile/adventure-0210/iberia-world-0249.js mallorca-mobile/adventure-0210/iberia-world-0250.js regions/global-atlas
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "WAFT 0.26.0 Global Atlas is deterministic and current."
+            exit 0
+          fi
+          git commit -m "Build WAFT 0.26.0 Global Atlas"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify planet traversal in Chromium
+        if: steps.persist.outputs.changed != 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0260-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-world-0260.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&v=ci-${GITHUB_SHA}"
