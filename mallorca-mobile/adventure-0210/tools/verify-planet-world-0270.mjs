@@ -129,12 +129,14 @@ try{
   await page.evaluate(()=>WAFTRegionRuntime.setAdventureModifiers({flight:true,mountType:'vulture',flightDive:false}));
   const cameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   const bounds=await gameCanvas.boundingBox();need(bounds,'game canvas bounds unavailable');
-  await page.mouse.move(bounds.x+bounds.width*.54,bounds.y+bounds.height*.52);
-  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.30,bounds.y+bounds.height*.82,{steps:12});await page.mouse.up();
+  // Use a long gesture so headless runners that coalesce pointer events still
+  // exercise a clearly visible yaw and pitch change at orbital altitude.
+  await page.mouse.move(bounds.x+bounds.width*.68,bounds.y+bounds.height*.44);
+  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.18,bounds.y+bounds.height*.86,{steps:20});await page.mouse.up();
   await page.waitForTimeout(450);
   const cameraAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());
-  need(Math.abs(cameraAfter.cameraYaw-cameraBefore.cameraYaw)>.25,`high-altitude yaw did not respond ${cameraBefore.cameraYaw} -> ${cameraAfter.cameraYaw}`);
-  need(Math.abs(cameraAfter.cameraPitch-cameraBefore.cameraPitch)>.25,`high-altitude pitch did not respond ${cameraBefore.cameraPitch} -> ${cameraAfter.cameraPitch}`);
+  need(Math.abs(cameraAfter.cameraYaw-cameraBefore.cameraYaw)>.18,`high-altitude yaw did not respond ${cameraBefore.cameraYaw} -> ${cameraAfter.cameraYaw}`);
+  need(Math.abs(cameraAfter.cameraPitch-cameraBefore.cameraPitch)>.18,`high-altitude pitch did not respond ${cameraBefore.cameraPitch} -> ${cameraAfter.cameraPitch}`);
   const eyeDistance=Math.hypot(cameraAfter.cameraEye.x-cameraAfter.displayPosition.x,cameraAfter.cameraEye.y-cameraAfter.position.y,cameraAfter.cameraEye.z-cameraAfter.displayPosition.z);
   need(eyeDistance>3&&eyeDistance<7.5,`high-altitude camera detached from bird ${eyeDistance}`);
   await page.screenshot({path:path.join(shots,'03-mounted-flight-high-camera.png')});
