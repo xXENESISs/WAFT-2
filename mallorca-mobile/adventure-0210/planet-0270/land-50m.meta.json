@@ -1,0 +1,17 @@
+{
+  "schema": "waft-land-polygons-v1",
+  "scale": "1:50m",
+  "polygons": 1421,
+  "rings": 1422,
+  "points": 60669,
+  "bytes": 519492,
+  "sha256": "78a380ba10db8888705e1525b020ce9c147983e6a0aa0bab1f64fc6a071ecc80",
+  "source": {
+    "name": "Natural Earth 50m land",
+    "repository": "https://github.com/nvkelso/natural-earth-vector",
+    "path": "geojson/ne_50m_land.geojson",
+    "blob": "c412c52b5286ba727dcb7047ecd6080bcbeb8298",
+    "license": "public-domain"
+  },
+  "sourceSha256": "e874b27a51d146452be360cafb3cc50c86001074a67d534113e6534682f9826b"
+}
