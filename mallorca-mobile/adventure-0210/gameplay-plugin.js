@@ -583,12 +583,6 @@
     showToast('Has desmontado');
   }
 
-  function planetEntityInRange(entity, playerPosition, radius) {
-    if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__) return true;
-    if (!entity || !playerPosition) return false;
-    return Math.hypot((Number(entity.x)||0)-playerPosition.x,(Number(entity.z)||0)-playerPosition.z) <= radius;
-  }
-
   function updateAnimals(dt, now) {
     const api = runtime();
     const playerPosition = api?.getState?.()?.position;
@@ -652,6 +646,12 @@
       const floor = surface?.land ? surface.height : surface?.waterHeight || animal.y || 0;
       animal.y = animal.flying ? floor + 2.1 : floor;
     }
+  }
+
+  function planetEntityInRange(entity, playerPosition, radius) {
+    if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__) return true;
+    if (!entity || !playerPosition) return false;
+    return Math.hypot((Number(entity.x)||0)-playerPosition.x,(Number(entity.z)||0)-playerPosition.z) <= radius;
   }
 
   function updateInteraction(playerState) {

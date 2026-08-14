@@ -286,14 +286,14 @@ replaceRequired(
   'regional entity draw telemetry'
 );
 replaceRequired(
-`  function updateAnimals(dt, now) {`,
+`  function updateInteraction(playerState) {`,
 `  function planetEntityInRange(entity, playerPosition, radius) {
     if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__) return true;
     if (!entity || !playerPosition) return false;
     return Math.hypot((Number(entity.x)||0)-playerPosition.x,(Number(entity.z)||0)-playerPosition.z) <= radius;
   }
 
-  function updateAnimals(dt, now) {`,
+  function updateInteraction(playerState) {`,
   'planet entity distance gate'
 );
 replaceRequired(

@@ -32,6 +32,7 @@ need(runtime.includes('uOrigin')&&runtime.includes('tangentFrame(state.originGeo
 need(runtime.includes('recenterAtCurrentPosition:()=>maybeRecenter(true)'),'floating-origin identity test hook is missing');
 need(runtime.includes('rebaseRegionalEntities')&&runtime.includes('localFromGeoAt'),'regional entities are not preserved across floating-origin shifts');
 need(gameplay.includes('planetEntityInRange')&&gameplay.includes('regionalEntitiesDrawn'),'distant regional entity culling is missing');
+need(gameplay.indexOf('function planetEntityInRange')>gameplay.indexOf('function updateAnimals')&&gameplay.indexOf('function planetEntityInRange')<gameplay.indexOf('function updateInteraction'),'the plugin loader would erase the planet entity culling helper');
 need(runtime.includes('surfaceHash')&&runtime.includes('terrainFingerprint')&&runtime.includes('anchorTileSnapshot'),'terrain topology fingerprint is missing');
 need(runtime.includes('parseLandMask')&&runtime.includes('vectorLand')&&runtime.includes("coastlineScale:'50m'"),'vector coastline runtime is missing');
 need(landMask.subarray(0,8).toString()==='WAFTLND1'&&landMask.readUInt32LE(12)===1421&&landMask.readUInt32LE(20)===60669,'50m land-mask header is invalid');
