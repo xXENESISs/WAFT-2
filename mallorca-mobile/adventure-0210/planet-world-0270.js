@@ -162,9 +162,12 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     for(let row=TILE_RESOLUTION-2;row>0;row--)boundary.push(row*TILE_RESOLUTION);
     const vertexCount=baseCount+boundary.length;
     const positions=new Float32Array(vertexCount*3),normals=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3);
+    let surfaceHash=2166136261;
+    const hashByte=value=>{surfaceHash^=value&255;surfaceHash=Math.imul(surfaceHash,16777619)>>>0;};
     for(let index=0;index<baseCount;index++){
       const offset=index*3,direction=[grid.directions[offset],grid.directions[offset+1],grid.directions[offset+2]],geo=core.unitToLatLon(direction),sample=sampleGeo(geo);
       const radial=EARTH_U+(sample.land?sample.meters:WATER_METERS)*VERTICAL,color=palette[sample.cover]||palette[sample.land?3:0];
+      const heightCode=Math.round(sample.land?sample.meters:WATER_METERS);hashByte(sample.land?1:0);hashByte(sample.cover);hashByte(heightCode);hashByte(heightCode>>8);
       positions[offset]=direction[0]*radial;positions[offset+1]=direction[1]*radial;positions[offset+2]=direction[2]*radial;
       normals[offset]=direction[0];normals[offset+1]=direction[1];normals[offset+2]=direction[2];
       colors[offset]=color[0];colors[offset+1]=color[1];colors[offset+2]=color[2];
@@ -187,7 +190,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     const add=(slot,data)=>{const buffer=gl.createBuffer();buffers.push(buffer);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);gl.enableVertexAttribArray(slot);gl.vertexAttribPointer(slot,3,gl.FLOAT,false,0,0);};
     add(0,positions);add(1,normals);add(2,colors);
     const indexBuffer=gl.createBuffer();buffers.push(indexBuffer);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);
-    return{key:core.tileKey(tile),tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},vao,buffers,count:indices.length,triangles:indices.length/3,lastUsed:performance.now()};
+    return{key:core.tileKey(tile),tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},vao,buffers,count:indices.length,triangles:indices.length/3,surfaceHash:surfaceHash.toString(16).padStart(8,'0'),lastUsed:performance.now()};
   }
 
   function enqueue(tile,prefetch=false){
@@ -305,13 +308,22 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(objective)objective.textContent='Renderer planetario experimental · ALETEAR para subir · PICADO ↓ para descender.';
   }
 
+  function terrainFingerprint(){
+    let hash=2166136261;
+    for(const key of [...state.desired.keys()].sort()){
+      const token=`${key}:${state.cache.get(key)?.surfaceHash||'missing'};`;
+      for(let index=0;index<token.length;index++){const code=token.charCodeAt(index);hash^=code&255;hash=Math.imul(hash,16777619)>>>0;hash^=code>>8;hash=Math.imul(hash,16777619)>>>0;}
+    }
+    return hash.toString(16).padStart(8,'0');
+  }
+
   const compat={
     worldFromGeo:(lat,lon)=>localFromGeo(lat,lon),geoFromWorld:(x,z)=>geoFromLocal(x,z),sampleSurface,
     getState:()=>({ready:state.ready,phase:state.phase,activeRegion:'planet-world',renderMode:'cube-sphere-quadtree',prefetched:state.ready,atlasReady:state.ready,atlasTriangles:state.visibleTriangles,atlasDrawFrames:state.drawFrames,atlasVerticalScale:VERTICAL,geo:state.lastGeo,error:state.error,speedEstimate:state.speedEstimate,prefetchLead:state.prefetchLead,floatingOriginShifts:state.floatingOriginShifts,poleCrossings:state.poleCrossings,datelineCrossings:state.datelineCrossings,visibleTiles:state.renderKeys.length,desiredTiles:state.desired.size,cacheTiles:state.cache.size}),
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort()}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint()}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{

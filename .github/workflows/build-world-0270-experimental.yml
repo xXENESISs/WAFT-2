@@ -60,6 +60,7 @@ jobs:
           sleep 2
           node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0270&v=ci-${GITHUB_SHA}"
       - name: Upload experimental planet checkpoints
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: waft-planet-world-0270-visuals

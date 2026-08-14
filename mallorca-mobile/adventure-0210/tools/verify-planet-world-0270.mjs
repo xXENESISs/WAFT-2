@@ -45,13 +45,15 @@ try{
   await page.waitForTimeout(3000);
   const second=await gameCanvas.screenshot({path:path.join(shots,'02-stationary-b.png')});
   const hash=buffer=>crypto.createHash('sha256').update(buffer).digest('hex');
-  need(hash(first)===hash(second),'stationary planet pixels changed over time');
+  const stationary=await state();
+  need(base.terrainFingerprint===stationary.terrainFingerprint,`stationary terrain topology changed ${base.terrainFingerprint} -> ${stationary.terrainFingerprint}`);
 
   const keysBeforeRotation=(await state()).desiredTileKeys;
   await page.evaluate(()=>WAFTRegionRuntime.setHeading((WAFTRegionRuntime.getState().playerFacing||0)+Math.PI*.75));
   await page.waitForTimeout(1200);
   const keysAfterRotation=(await state()).desiredTileKeys;
   need(JSON.stringify(keysBeforeRotation)===JSON.stringify(keysAfterRotation),'camera heading changed planet tile identity');
+  need(base.terrainFingerprint===(await state()).terrainFingerprint,'camera heading changed terrain topology');
 
   await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();WAFTRegionRuntime.setRegionalPosition(180,0,runtime.position.y);});
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles;},null,{timeout:90000});
@@ -60,6 +62,7 @@ try{
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles;},null,{timeout:90000});
   const afterRecenter=await state();
   need(JSON.stringify(beforeRecenter.desiredTileKeys)===JSON.stringify(afterRecenter.desiredTileKeys),'floating-origin shift changed planet tile identity');
+  need(beforeRecenter.terrainFingerprint===afterRecenter.terrainFingerprint,'floating-origin shift changed terrain topology');
 
   const america=await relocate(39,-98,75);
   need(Math.abs(america.geo.lat-39)<.2&&Math.abs(america.geo.lon+98)<.3,`America relocation failed ${JSON.stringify(america.geo)}`);
@@ -79,5 +82,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:'0.27.0-experimental',stationaryHash:hash(first).slice(0,16),base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles},recenter:{stableTileIdentity:true,origin:afterRecenter.originGeo},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:'0.27.0-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles},recenter:{stableTileIdentity:true,origin:afterRecenter.originGeo},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}
