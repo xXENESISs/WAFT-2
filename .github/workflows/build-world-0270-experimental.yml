@@ -1,6 +1,17 @@
 name: Verify WAFT world 0.27.1 experimental planet
 
 on:
+  pull_request:
+    paths:
+      - .github/workflows/build-world-0270-experimental.yml
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/planet-world-0270.js
+      - mallorca-mobile/adventure-0210/planet-0270/**
+      - mallorca-mobile/adventure-0210/verify-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - world-generator/scripts/prepare-world-0261.mjs
+      - world-generator/scripts/build-planet-land-mask-0270.mjs
   push:
     branches:
       - main
