@@ -5,8 +5,29 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/build-waft-regions.yml
-      - world-generator/**
+      - world-generator/configs/baleares.region.json
+      - world-generator/configs/source-registry.json
+      - world-generator/schema/**
+      - world-generator/overrides/baleares/**
+      - world-generator/sources/baleares/**
+      - world-generator/lib/projection.mjs
+      - world-generator/lib/legacy-baleares-source.mjs
+      - world-generator/lib/binary-formats.mjs
+      - world-generator/scripts/build-region.mjs
+      - world-generator/scripts/apply-copernicus-dem.mjs
+      - world-generator/scripts/apply-esa-worldcover.mjs
+      - world-generator/scripts/apply-openstreetmap.mjs
+      - world-generator/scripts/apply-wikidata-landmarks.mjs
+      - world-generator/scripts/import-copernicus-dem.py
+      - world-generator/scripts/import-esa-worldcover.py
+      - world-generator/scripts/import-openstreetmap.py
+      - world-generator/scripts/import-wikidata-landmarks.py
+      - world-generator/scripts/validate-region.mjs
+      - world-generator/scripts/verify-region-package.mjs
+      - world-generator/scripts/verify-copernicus-dem.mjs
+      - world-generator/scripts/verify-esa-worldcover.mjs
+      - world-generator/scripts/verify-openstreetmap.mjs
+      - world-generator/scripts/verify-wikidata-landmarks.mjs
       - mallorca-mobile/waft-0158.html
   workflow_dispatch:
 
