@@ -319,8 +319,15 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
 
   function anchorTileSnapshot(){
     const runtime=api.getState?.(),position=runtime?.position;if(!position)return null;
-    const geo=geoFromLocal(position.x,position.z),tile=core.tileContainingLatLon(geo.lat,geo.lon,MAX_LEVEL),key=core.tileKey(tile),mesh=state.cache.get(key);
-    return{key,surfaceHash:mesh?.surfaceHash||null,lat:geo.lat,lon:geo.lon};
+    const geo=geoFromLocal(position.x,position.z);
+    let tile=null,key=null;
+    for(let level=MAX_LEVEL;level>=0;level--){
+      const candidate=core.tileContainingLatLon(geo.lat,geo.lon,level),candidateKey=core.tileKey(candidate);
+      if(state.desired.has(candidateKey)){tile=candidate;key=candidateKey;break;}
+    }
+    if(!tile){tile=core.tileContainingLatLon(geo.lat,geo.lon,0);key=core.tileKey(tile);}
+    const mesh=state.cache.get(key);
+    return{key,level:tile.level,resident:Boolean(mesh),surfaceHash:mesh?.surfaceHash||null,lat:geo.lat,lon:geo.lon};
   }
 
   const compat={
