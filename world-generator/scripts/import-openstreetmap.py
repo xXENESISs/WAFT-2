@@ -14,8 +14,8 @@ import urllib.request
 
 try:
     import osmium
-except ImportError as exc:
-    raise SystemExit('pyosmium is required: python -m pip install osmium') from exc
+except ImportError:
+    osmium = None
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_URLS = {
@@ -312,7 +312,7 @@ def osm_identifier(prefix, object_id):
     return f'{prefix}{int(object_id)}'
 
 
-class OSMCollector(osmium.SimpleHandler):
+class OSMCollector(osmium.SimpleHandler if osmium else object):
     def __init__(self, bounds, road_simplification_m):
         super().__init__()
         self.bounds = bounds
@@ -574,6 +574,8 @@ def main():
     if snapshot_path.exists() and metadata_path.exists() and not args.force:
         print(json.dumps({'regionId': args.region_id, 'status': 'reused', 'snapshot': str(snapshot_path.relative_to(ROOT))}, sort_keys=True))
         return
+    if osmium is None:
+        raise SystemExit('pyosmium is required to create a new snapshot: python -m pip install osmium')
 
     cache_directory = ROOT / 'world-generator' / '.cache' / 'openstreetmap'
     pbf_path = cache_directory / f'{args.region_id}.osm.pbf'
