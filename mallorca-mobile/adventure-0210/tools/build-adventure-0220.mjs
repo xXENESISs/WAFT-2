@@ -16,6 +16,15 @@ function replaceRegexRequired(pattern, replacement, label) {
 }
 
 replaceRequired("window.__WAFT_ADVENTURE_BUILD__ || '0.21.0'", "window.__WAFT_ADVENTURE_BUILD__ || '0.22.0'", 'build id');
+replaceRequired(
+`    hideBaseCharacter: true,
+    afterWorldDraw(now, eye, pv) {`,
+`    hideBaseCharacter: true,
+    rebaseRegionalEntities(project) { renderer.rebaseRegionalEntities(project); },
+    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0 }; },
+    afterWorldDraw(now, eye, pv) {`,
+  'floating-origin entity API'
+);
 replaceRequired("top.innerHTML = '<button id=\"waftAuto\" type=\"button\">AUTO</button><button id=\"waftCheckpoints\" type=\"button\">PUNTOS</button><button id=\"waftSave\" type=\"button\">GUARDAR</button>';", "top.innerHTML = '<button id=\"waftAuto\" type=\"button\">AUTO</button><button id=\"waftCheckpoints\" type=\"button\">RUTA</button><button id=\"waftSave\" type=\"button\">GUARDAR</button>';", 'route button');
 replaceRequired(
   "#waftJump{--charge:0;position:fixed;z-index:27;right:max(20px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));width:88px;height:88px;border-radius:50%;padding:0;background:radial-gradient(circle,#245d70 0 57%,transparent 59%),conic-gradient(#f2c766 calc(var(--charge)*1turn),#ffffff25 0);font-size:12px}#waftJump.charging{transform:scale(calc(.98 + var(--charge)*.07));filter:brightness(1.18)}",
@@ -154,8 +163,13 @@ replaceRegexRequired(
 /  function updateAnimals\(dt, now\) \{[\s\S]*?\n  function updateInteraction\(playerState\) \{/,
 `  function updateAnimals(dt, now) {
     const api = runtime();
+    const playerPosition = api?.getState?.()?.position;
     for (const animal of game.animals) {
       if (animal.hidden) continue;
+      // Regional fauna is deliberately local. Once the planet's floating origin has
+      // moved on, neither animate nor sample terrain for entities hundreds of units
+      // behind the player.
+      if (!planetEntityInRange(animal, playerPosition, 220)) continue;
       if (animal.fleeing) {
         animal.fleeTime += dt;
         animal.yaw += Math.sin(now * .002) * .025;
@@ -256,9 +270,55 @@ replaceRequired(
 `      for (const animal of game.animals) if (!animal.hidden) drawAnimal(this, animal, now);
       if (game.npc) drawNpc(this, game.npc, now);`,
 `      drawCheckpointRoute(this);
-      for (const animal of game.animals) if (!animal.hidden) drawAnimal(this, animal, now);
-      if (game.npc) drawNpc(this, game.npc, now);`,
+      const visibleAnimals = game.animals.filter(animal => !animal.hidden && planetEntityInRange(animal, player.position, 180));
+      const visibleNpc = game.npc && planetEntityInRange(game.npc, player.position, 180) ? game.npc : null;
+      this.regionalEntitiesDrawn = visibleAnimals.length + (visibleNpc ? 1 : 0);
+      for (const animal of visibleAnimals) drawAnimal(this, animal, now);
+      if (visibleNpc) drawNpc(this, visibleNpc, now);`,
   'checkpoint renderer hook'
+);
+replaceRequired(
+`  const renderer = {
+    ready: false,`,
+`  const renderer = {
+    ready: false,
+    regionalEntitiesDrawn: 0,`,
+  'regional entity draw telemetry'
+);
+replaceRequired(
+`  function updateInteraction(playerState) {`,
+`  function planetEntityInRange(entity, playerPosition, radius) {
+    if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__) return true;
+    if (!entity || !playerPosition) return false;
+    return Math.hypot((Number(entity.x)||0)-playerPosition.x,(Number(entity.z)||0)-playerPosition.z) <= radius;
+  }
+
+  function updateInteraction(playerState) {`,
+  'planet entity distance gate'
+);
+replaceRequired(
+`    render(now, eye, pv) {`,
+`    rebaseRegionalEntities(project) {
+      if (typeof project !== 'function') return;
+      const entities = [...game.animals, game.npc, ...game.checkpoints].filter(Boolean);
+      for (const entity of entities) {
+        if (!Number.isFinite(Number(entity.x)) || !Number.isFinite(Number(entity.z))) continue;
+        const angleKey = Number.isFinite(Number(entity.yaw)) ? 'yaw' : Number.isFinite(Number(entity.heading)) ? 'heading' : null;
+        const next = project(Number(entity.x), Number(entity.z), angleKey ? Number(entity[angleKey]) : null);
+        if (!next || !Number.isFinite(next.x) || !Number.isFinite(next.z)) continue;
+        entity.x = next.x; entity.z = next.z;
+        if (angleKey && Number.isFinite(next.heading)) entity[angleKey] = next.heading;
+        if (Number.isFinite(Number(entity.originX)) && Number.isFinite(Number(entity.originZ))) {
+          const nextOrigin = project(Number(entity.originX), Number(entity.originZ), null);
+          if (nextOrigin && Number.isFinite(nextOrigin.x) && Number.isFinite(nextOrigin.z)) {
+            entity.originX = nextOrigin.x; entity.originZ = nextOrigin.z;
+          }
+        }
+      }
+      game.previousPlayer = null;
+    },
+    render(now, eye, pv) {`,
+  'floating-origin entity rebase hook'
 );
 replaceRequired(
 `  function drawMesh(renderer, mesh, model, color) {

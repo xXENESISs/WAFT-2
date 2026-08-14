@@ -8,6 +8,7 @@ import {
   latLonToUnit,
   parentTile,
   parseTileKey,
+  selectFixedQuadtreeTiles,
   selectVisibleTiles,
   tileBounds,
   tileContainingLatLon,
@@ -113,6 +114,51 @@ const orbitalSelection = selectVisibleTiles({ ...selectionOptions, altitude: 420
 assert.ok(orbitalSelection.tiles.length > 0, 'orbital camera sees no planet tiles');
 assert.ok(orbitalSelection.tiles.length < firstSelection.tiles.length, 'orbital view should use fewer tiles than ground view');
 
+const fixedPlanOptions = {
+  baseLevel: 3,
+  zones: [
+    { name: 'europe', lat: 52, lon: 10, radians: .43, level: 4 },
+    { name: 'iberia', lat: 40, lon: -3, radians: .13, level: 6 }
+  ]
+};
+const fixedPlan = selectFixedQuadtreeTiles(fixedPlanOptions);
+const repeatedFixedPlan = selectFixedQuadtreeTiles(fixedPlanOptions);
+const fixedKeys = fixedPlan.tiles.map(tileKey);
+assert.deepEqual(repeatedFixedPlan.tiles.map(tileKey), fixedKeys, 'fixed geographic quadtree changed between builds');
+assert.equal(fixedKeys.length, 705, `unexpected fixed planet tile count: ${fixedKeys.length}`);
+assert.equal(new Set(fixedKeys).size, fixedKeys.length, 'fixed planet returned duplicate tile IDs');
+assert.ok(fixedPlan.tiles.some(tile => tile.level === 3), 'fixed planet lost its global base');
+assert.ok(fixedPlan.tiles.some(tile => tile.level === 6), 'fixed planet lost Iberia refinement');
+assert.ok(fixedPlan.stats.balanceRefinements > 0, 'fixed planet did not balance refinement boundaries');
+const fixedKeySet = new Set(fixedKeys);
+for (const tile of fixedPlan.tiles) {
+  let ancestor = parentTile(tile);
+  while (ancestor) {
+    assert.ok(!fixedKeySet.has(tileKey(ancestor)), `fixed plan overlaps ${tileKey(ancestor)} and ${tileKey(tile)}`);
+    ancestor = parentTile(ancestor);
+  }
+}
+for (let lat = -90; lat <= 90; lat += 5) {
+  for (let lon = -180; lon < 180; lon += 5) {
+    let containing = tileContainingLatLon(lat, lon, 6), matches = 0;
+    while (containing) {
+      if (fixedKeySet.has(tileKey(containing))) matches++;
+      containing = parentTile(containing);
+    }
+    assert.equal(matches, 1, `fixed planet coverage at ${lat},${lon} resolved to ${matches} leaves`);
+  }
+}
+const fixedBounds = fixedPlan.tiles.map(tile => ({ ...tile, ...tileBounds(tile) }));
+for (let leftIndex = 0; leftIndex < fixedBounds.length; leftIndex++) {
+  for (let rightIndex = leftIndex + 1; rightIndex < fixedBounds.length; rightIndex++) {
+    const left = fixedBounds[leftIndex], right = fixedBounds[rightIndex];
+    if (left.face !== right.face) continue;
+    const vertical = (Math.abs(left.u1 - right.u0) < 1e-12 || Math.abs(right.u1 - left.u0) < 1e-12) && Math.min(left.v1, right.v1) - Math.max(left.v0, right.v0) > 1e-12;
+    const horizontal = (Math.abs(left.v1 - right.v0) < 1e-12 || Math.abs(right.v1 - left.v0) < 1e-12) && Math.min(left.u1, right.u1) - Math.max(left.u0, right.u0) > 1e-12;
+    if (vertical || horizontal) assert.ok(Math.abs(left.level - right.level) <= 1, `unbalanced fixed neighbours ${tileKey(left)} and ${tileKey(right)}`);
+  }
+}
+
 const altitudeBudgets = {};
 for (const altitude of [1.5, 50, 300, 1000, 4200]) {
   const selection = selectVisibleTiles({ ...selectionOptions, altitude });
@@ -134,12 +180,14 @@ for (const altitude of [1.5, 50, 300, 1000, 4200]) {
 
 console.log(JSON.stringify({
   valid: true,
-  version: '0.27.1-experimental',
+  version: '0.27.2-experimental',
   faces: FACE_NAMES.length,
   groundTiles: firstSelection.tiles.length,
   orbitalTiles: orbitalSelection.tiles.length,
   groundMaxLevel: Math.max(...firstSelection.tiles.map(tile => tile.level)),
   visitedNodes: firstSelection.stats.visited,
   stableTileHash: stableHash.slice(0, 16),
-  altitudeBudgets
+  altitudeBudgets,
+  fixedPlanetTiles: fixedKeys.length,
+  fixedPlanetHash: crypto.createHash('sha256').update(fixedKeys.join(';')).digest('hex').slice(0, 16)
 }, null, 2));

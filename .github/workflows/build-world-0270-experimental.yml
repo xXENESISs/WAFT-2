@@ -1,15 +1,17 @@
-name: Verify WAFT world 0.27.1 experimental planet
+name: Verify WAFT world 0.27.2 experimental planet
 
 on:
   pull_request:
     paths:
       - .github/workflows/build-world-0270-experimental.yml
       - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/gameplay-plugin.js
       - mallorca-mobile/adventure-0210/planet-world-0270.js
       - mallorca-mobile/adventure-0210/planet-0270/**
       - mallorca-mobile/adventure-0210/verify-0270.mjs
       - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
       - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
       - world-generator/scripts/prepare-world-0261.mjs
       - world-generator/scripts/build-planet-land-mask-0270.mjs
   push:
@@ -19,11 +21,13 @@ on:
     paths:
       - .github/workflows/build-world-0270-experimental.yml
       - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/gameplay-plugin.js
       - mallorca-mobile/adventure-0210/planet-world-0270.js
       - mallorca-mobile/adventure-0210/planet-0270/**
       - mallorca-mobile/adventure-0210/verify-0270.mjs
       - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
       - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
       - world-generator/scripts/prepare-world-0261.mjs
       - world-generator/scripts/build-planet-land-mask-0270.mjs
   workflow_dispatch:
@@ -52,6 +56,8 @@ jobs:
       - name: Syntax and planet contracts
         run: |
           node --check mallorca-mobile/adventure-0210/planet-world-0270.js
+          node --check mallorca-mobile/adventure-0210/gameplay-plugin.js
+          node --check mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
           node --check mallorca-mobile/adventure-0210/planet-0270/cube-sphere-core.mjs
           node --check mallorca-mobile/adventure-0210/verify-0270.mjs
           node --check mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
@@ -59,6 +65,8 @@ jobs:
           node --check world-generator/scripts/build-planet-land-mask-0270.mjs
           node mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
           node mallorca-mobile/adventure-0210/verify-0270.mjs
+          node mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+          git diff --exit-code -- mallorca-mobile/adventure-0210/gameplay-plugin.js
       - name: Preserve the public 0.26.1 contracts
         run: |
           node world-generator/scripts/prepare-world-0261.mjs
@@ -88,7 +96,7 @@ jobs:
             sleep 5
           done
           if [ "$ready" != true ]; then
-            echo "GitHub Pages did not expose the 0.27.1 entry point in time." >&2
+            echo "GitHub Pages did not expose the 0.27.2 entry point in time." >&2
             exit 1
           fi
           node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"

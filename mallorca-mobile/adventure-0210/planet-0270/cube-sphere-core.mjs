@@ -161,6 +161,64 @@ export function childTiles(tile) {
   ];
 }
 
+export function selectFixedQuadtreeTiles(options = {}) {
+  const baseLevel = clamp(Math.trunc(Number(options.baseLevel) || 0), 0, 20);
+  const zones = (Array.isArray(options.zones) ? options.zones : []).map((zone, index) => {
+    const level = clamp(Math.trunc(Number(zone?.level) || baseLevel), baseLevel, 20);
+    const radians = clamp(Number(zone?.radians) || 0, 0, Math.PI);
+    const lat = clamp(Number(zone?.lat) || 0, -90, 90);
+    const lon = Number(zone?.lon) || 0;
+    return { name: String(zone?.name || `zone-${index}`), level, radians, unit: latLonToUnit(lat, lon) };
+  });
+  const selected = [];
+  let visited = 0;
+  let refined = 0;
+
+  const visit = tile => {
+    visited++;
+    const center = tileCenterUnit(tile);
+    const angularRadius = tileAngularRadius(tile);
+    let targetLevel = baseLevel;
+    for (const zone of zones) {
+      const angularDistance = Math.acos(clamp(dot(center, zone.unit), -1, 1));
+      if (angularDistance <= zone.radians + angularRadius) targetLevel = Math.max(targetLevel, zone.level);
+    }
+    if (tile.level < targetLevel) {
+      refined++;
+      for (const child of childTiles(tile)) visit(child);
+      return;
+    }
+    selected.push({ ...tile, angularRadius, center });
+  };
+
+  for (let face = 0; face < FACE_NAMES.length; face++) visit({ face, level: 0, x: 0, y: 0 });
+  let balanced = selected.map(tile => ({ face: tile.face, level: tile.level, x: tile.x, y: tile.y }));
+  let balancePasses = 0;
+  let balanceRefinements = 0;
+  for (; balancePasses < 24; balancePasses++) {
+    const bounds = balanced.map(tile => ({ ...tile, ...tileBounds(tile) }));
+    const refineKeys = new Set();
+    for (let leftIndex = 0; leftIndex < bounds.length; leftIndex++) {
+      for (let rightIndex = leftIndex + 1; rightIndex < bounds.length; rightIndex++) {
+        const left = bounds[leftIndex];
+        const right = bounds[rightIndex];
+        if (left.face !== right.face || Math.abs(left.level - right.level) <= 1) continue;
+        const vertical = (Math.abs(left.u1 - right.u0) < 1e-12 || Math.abs(right.u1 - left.u0) < 1e-12)
+          && Math.min(left.v1, right.v1) - Math.max(left.v0, right.v0) > 1e-12;
+        const horizontal = (Math.abs(left.v1 - right.v0) < 1e-12 || Math.abs(right.v1 - left.v0) < 1e-12)
+          && Math.min(left.u1, right.u1) - Math.max(left.u0, right.u0) > 1e-12;
+        if (vertical || horizontal) refineKeys.add(tileKey(left.level < right.level ? left : right));
+      }
+    }
+    if (!refineKeys.size) break;
+    balanceRefinements += refineKeys.size;
+    balanced = balanced.flatMap(tile => refineKeys.has(tileKey(tile)) ? childTiles(tile) : [tile]);
+  }
+  const tiles = balanced.map(tile => ({ ...tile, angularRadius: tileAngularRadius(tile), center: tileCenterUnit(tile) }));
+  tiles.sort((a, b) => a.level - b.level || a.face - b.face || a.y - b.y || a.x - b.x);
+  return { tiles, stats: { visited, refined, baseLevel, zones: zones.length, balancePasses, balanceRefinements } };
+}
+
 export function buildTileGrid(tile, resolution = 17) {
   const bounds = tileBounds(tile);
   const size = Number(resolution);
