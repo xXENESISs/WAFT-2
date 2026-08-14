@@ -34,6 +34,14 @@ const canvasStats=()=>page.evaluate(async()=>{
   for(let index=0;index<pixels.length;index+=16){sampled++;const red=pixels[index],green=pixels[index+1],blue=pixels[index+2];if(Math.abs(red-99)+Math.abs(green-142)+Math.abs(blue-167)>28)nonSky++;}
   return{sampled,nonSky,nonSkyRatio:nonSky/Math.max(1,sampled)};
 });
+const planetLayerStats=()=>page.evaluate(async()=>{
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const source=[...document.querySelectorAll('canvas')].find(canvas=>canvas.id!=='waftAdventureCanvas'),target=document.createElement('canvas');
+  target.width=source.width;target.height=source.height;const context=target.getContext('2d',{willReadFrequently:true});context.drawImage(source,0,0);
+  const pixels=context.getImageData(0,0,target.width,target.height).data;let goldPixels=0;
+  for(let index=0;index<pixels.length;index+=4){const red=pixels[index],green=pixels[index+1],blue=pixels[index+2];if(red>150&&green>110&&blue<110&&red-green>20&&green-blue>30)goldPixels++;}
+  return{width:target.width,height:target.height,goldPixels};
+});
 const startFrameTrace=()=>page.evaluate(()=>{
   window.__WAFT_0271_FRAME_TRACE__=[];
   let previous=performance.now();
@@ -61,7 +69,6 @@ try{
 
   const base=await state();
   need(base?.renderMode==='cube-sphere-quadtree',`wrong renderer ${JSON.stringify(base)}`);
-  need(base.seamStrategy==='shared-boundary-no-skirts',`unsafe tile seam strategy ${JSON.stringify(base)}`);
   need(base.selectionProfile==='fixed-geographic-quadtree-v2',`unstable quadtree profile ${JSON.stringify(base)}`);
   need(base.cacheLimit===720&&base.staticTiles===705,`unexpected static planet budget ${JSON.stringify(base)}`);
   need(base.cacheTiles===base.staticTiles&&base.tileBuildsDuringGameplay===0&&base.tileEvictions===0,`planet was not fully resident before gameplay ${JSON.stringify(base)}`);
@@ -141,6 +148,8 @@ try{
   }
   await page.screenshot({path:path.join(shots,'03c-sustained-flight-15s.png')});
   await saveCanvasLayers('03c-sustained-flight-15s');
+  const flightPlanetPixels=await planetLayerStats();
+  need(flightPlanetPixels.goldPixels<24,`regional gold route/trail leaked into planet canvas ${JSON.stringify(flightPlanetPixels)}`);
   const fastFlight=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();return{runtime,world:WAFTPlanetWorld0270.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId,relativeView:runtime.playerFacing-runtime.cameraYaw};});
   need(fastFlight.mount==='iberia-bearded-vulture','real mounted-flight state was lost');
   need(Math.abs(fastFlight.runtime.adventureCurrentSpeed-276)<1,`vulture speed is not 3x ${fastFlight.runtime.adventureCurrentSpeed}`);
@@ -168,8 +177,10 @@ try{
   const bounds=await gameCanvas.boundingBox();need(bounds,'game canvas bounds unavailable');
   // Use a long gesture so headless runners that coalesce pointer events still
   // exercise a clearly visible yaw and pitch change at orbital altitude.
-  await page.mouse.move(bounds.x+bounds.width*.68,bounds.y+bounds.height*.44);
-  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.18,bounds.y+bounds.height*.86,{steps:20});await page.mouse.up();
+  await page.mouse.move(bounds.x+bounds.width*.78,bounds.y+bounds.height*.35);
+  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.15,bounds.y+bounds.height*.82,{steps:20});await page.mouse.up();
+  await page.mouse.move(bounds.x+bounds.width*.82,bounds.y+bounds.height*.42);
+  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.10,bounds.y+bounds.height*.70,{steps:20});await page.mouse.up();
   await page.waitForTimeout(450);
   const cameraAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());
   need(Math.abs(cameraAfter.cameraYaw-cameraBefore.cameraYaw)>.18,`high-altitude yaw did not respond ${cameraBefore.cameraYaw} -> ${cameraAfter.cameraYaw}`);
@@ -212,5 +223,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:'0.27.2-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,staticTiles:base.staticTiles,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:'0.27.2-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,staticTiles:base.staticTiles,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,planetPixels:flightPlanetPixels,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}

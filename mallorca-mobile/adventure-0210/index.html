@@ -266,6 +266,9 @@
           source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");
           source=source.replace("hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';");
           source=source.replace("if (state.worldMode === 'regional') streamer.update(state.camera.x, state.camera.z);","if (state.worldMode === 'regional') {if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update(state.camera.x,state.camera.z);else{state.activeBuildings=0;state.loadedCells=0;}}");
+          source=source.replace("recordTravelMovement(travelBeforeX, travelBeforeZ, travelMoveResult, swimmingBeforeMove);","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)recordTravelMovement(travelBeforeX,travelBeforeZ,travelMoveResult,swimmingBeforeMove);");
+          source=source.replaceAll("if (state.worldMode === 'regional' && travelRouteVertexCount > 0)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelRouteVertexCount > 0)");
+          source=source.replaceAll("if (state.worldMode === 'regional' && travelTrailVertexCount > 1)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelTrailVertexCount > 1)");
         }
       }
       document.open();document.write(source);document.close();
