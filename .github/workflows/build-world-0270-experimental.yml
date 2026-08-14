@@ -62,6 +62,25 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
           node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0270&v=ci-${GITHUB_SHA}"
+      - name: Verify the deployed GitHub Pages planet
+        if: github.ref_name == 'main'
+        shell: bash
+        run: |
+          target="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0270&v=${GITHUB_SHA}"
+          ready=false
+          for attempt in $(seq 1 36); do
+            if curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "$target" >/tmp/waft-0270-public.html && \
+               grep -q "params.get('renderer')==='0270'" /tmp/waft-0270-public.html; then
+              ready=true
+              break
+            fi
+            sleep 5
+          done
+          if [ "$ready" != true ]; then
+            echo "GitHub Pages did not expose the 0.27.0 entry point in time." >&2
+            exit 1
+          fi
+          node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"
       - name: Upload experimental planet checkpoints
         if: always()
         uses: actions/upload-artifact@v4
