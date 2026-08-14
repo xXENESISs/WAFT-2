@@ -35,7 +35,7 @@ const frameTrace=()=>page.evaluate(()=>{
   return{samples:values.length,p50:percentile(.50),p95:percentile(.95),p99:percentile(.99),max:values.at(-1)||0,over100:values.filter(value=>value>100).length};
 });
 const relocate=async(lat,lon,y=55)=>{
-  await page.evaluate(({lat,lon,y})=>{const point=WAFTPlanetWorld0270.worldFromGeo(lat,lon);WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(point.x,point.z,y);},{lat,lon,y});
+  await page.evaluate(({lat,lon,y})=>{const point=WAFTPlanetWorld0270.worldFromGeo(lat,lon);WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(point.x,point.z,y);WAFTPlanetWorld0270.refreshSelection();},{lat,lon,y});
   await page.waitForTimeout(1200);
   return page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270.getState();return{geo:WAFTPlanetWorld0270.geoFromWorld(runtime.position.x,runtime.position.z),runtime,world,surface:WAFTPlanetWorld0270.sampleSurface(runtime.position.x,runtime.position.z)};});
 };
@@ -70,7 +70,7 @@ try{
   need(base.terrainFingerprint===(await state()).terrainFingerprint,'camera heading changed terrain topology');
 
   const lodBeforeMove=(await state()).lodUpdates;
-  await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();WAFTRegionRuntime.setRegionalPosition(180,0,runtime.position.y);});
+  await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();WAFTRegionRuntime.setRegionalPosition(180,0,runtime.position.y);WAFTPlanetWorld0270.refreshSelection();});
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
   const beforeRecenter=await state();
   const recentered=await page.evaluate(()=>WAFTPlanetWorld0270.recenterAtCurrentPosition());need(recentered,'forced floating-origin recenter did not run');
@@ -111,9 +111,9 @@ try{
   const altitudeProbe=await page.evaluate(async()=>{
     const runtime=WAFTRegionRuntime.getState(),x=runtime.position.x,z=runtime.position.z;
     const waitAnchor=async()=>{for(let attempt=0;attempt<180;attempt++){const value=WAFTPlanetWorld0270.getState();if(value.anchorTile?.surfaceHash)return value;await new Promise(resolve=>setTimeout(resolve,50));}throw new Error('local anchor tile did not become resident');};
-    WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(x,z,55);
+    WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(x,z,55);WAFTPlanetWorld0270.refreshSelection();
     await new Promise(resolve=>setTimeout(resolve,350));const low=await waitAnchor();
-    WAFTRegionRuntime.setRegionalPosition(x,z,900);
+    WAFTRegionRuntime.setRegionalPosition(x,z,900);WAFTPlanetWorld0270.refreshSelection();
     await new Promise(resolve=>setTimeout(resolve,350));const high=await waitAnchor();
     return{low:low.anchorTile,high:high.anchorTile,desiredLow:low.desiredTiles,desiredHigh:high.desiredTiles};
   });
