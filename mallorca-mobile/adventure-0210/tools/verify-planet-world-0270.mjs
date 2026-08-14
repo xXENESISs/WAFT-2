@@ -38,6 +38,7 @@ try{
 
   const base=await state();
   need(base?.renderMode==='cube-sphere-quadtree',`wrong renderer ${JSON.stringify(base)}`);
+  need(base.coastlineScale==='50m'&&base.coastlinePolygons===1421,`vector coastline unavailable ${JSON.stringify({scale:base.coastlineScale,polygons:base.coastlinePolygons})}`);
   need(base.visibleTiles>0&&base.atlasTriangles>0,'planet has no visible geometry');
   need(base.desiredTileKeys.length===new Set(base.desiredTileKeys).size,'duplicate planet tile IDs');
   const gameCanvas=page.locator('canvas').first();
@@ -66,13 +67,16 @@ try{
   need(beforeRecenter.anchorTile?.surfaceHash&&beforeRecenter.anchorTile.surfaceHash===afterRecenter.anchorTile?.surfaceHash,`floating-origin shift changed local terrain topology ${JSON.stringify(beforeRecenter.anchorTile)} -> ${JSON.stringify(afterRecenter.anchorTile)}`);
   need(Math.abs(beforeRecenter.anchorTile.lat-afterRecenter.anchorTile.lat)<1e-8&&Math.abs(beforeRecenter.anchorTile.lon-afterRecenter.anchorTile.lon)<1e-8,'floating-origin shift changed geographic position');
 
+  const bermuda=await page.evaluate(()=>{const world=WAFTPlanetWorld0270,island=world.worldFromGeo(32.3,-64.75),ocean=world.worldFromGeo(32.3,-65);return{island:world.sampleSurface(island.x,island.z),ocean:world.sampleSurface(ocean.x,ocean.z)};});
+  need(bermuda.island.land&&!bermuda.ocean.land,`50m island coastline failed ${JSON.stringify(bermuda)}`);
+
   const america=await relocate(39,-98,75);
   need(Math.abs(america.geo.lat-39)<.2&&Math.abs(america.geo.lon+98)<.3,`America relocation failed ${JSON.stringify(america.geo)}`);
   need(america.surface?.streamedRegion==='planet-global','America did not use global source');
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles&&world.visibleTiles>0;},null,{timeout:90000});
   await page.screenshot({path:path.join(shots,'03-america.png')});
 
-  const orbit=await relocate(39,-98,4200);
+  const orbit=await relocate(32.3,-64.75,4200);
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles&&world.visibleTiles>0;},null,{timeout:90000});
   const orbitState=await state();need(orbitState.atlasTriangles>0,'orbital planet disappeared');
   const orbitPixels=await canvasStats();need(orbitPixels.nonSkyRatio>.01,`orbital planet is not visible ${JSON.stringify(orbitPixels)}`);

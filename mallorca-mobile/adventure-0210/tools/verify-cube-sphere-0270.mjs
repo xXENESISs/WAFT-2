@@ -94,7 +94,7 @@ const selectionOptions = {
   cameraDirection: latLonToUnit(39.775, -3.125),
   radius: 2102.432904,
   altitude: 1.5,
-  minLevel: 1,
+  minLevel: 2,
   maxLevel: 8,
   resolution: 17,
   viewportHeight: 720,

@@ -24,7 +24,7 @@
   const DEG=Math.PI/180;
   const RAD=180/Math.PI;
   const TILE_RESOLUTION=17;
-  const MIN_LEVEL=1;
+  const MIN_LEVEL=2;
   const MAX_LEVEL=8;
   const TARGET_ERROR_PIXELS=28;
   const RECENTER_DISTANCE=240;
@@ -71,7 +71,7 @@
   const legacyOrigin={lat:39.775,lon:-3.125};
   const state={
     ready:false,phase:'boot',error:null,originGeo:restoredLocation?normalizeGeo(restoredLocation.lat,restoredLocation.lon):legacyOrigin,
-    terrain:null,cover:null,europeTerrain:null,europeCover:null,cache:new Map(),desired:new Map(),prefetch:new Map(),queue:[],queued:new Set(),renderKeys:[],
+    terrain:null,cover:null,europeTerrain:null,europeCover:null,landMask:null,cache:new Map(),desired:new Map(),prefetch:new Map(),queue:[],queued:new Set(),renderKeys:[],
     drawFrames:0,visibleTriangles:0,tileBuilds:0,tileEvictions:0,lodUpdates:0,floatingOriginShifts:0,poleCrossings:0,datelineCrossings:0,
     speedEstimate:0,prefetchLead:180,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0
   };
@@ -104,6 +104,51 @@
     const headerBytes=view.getUint16(10,true),columns=view.getUint16(12,true),rows=view.getUint16(14,true);
     return{columns,rows,classes:new Uint8Array(buffer,headerBytes,columns*rows)};
   }
+  function parseLandMask(buffer){
+    const view=new DataView(buffer),magic=new TextDecoder().decode(new Uint8Array(buffer,0,8));
+    if(magic!=='WAFTLND1')throw new Error(`land mask magic ${magic}`);
+    const headerBytes=view.getUint16(10,true),polygonCount=view.getUint32(12,true),polygons=[];let offset=headerBytes;
+    for(let polygonIndex=0;polygonIndex<polygonCount;polygonIndex++){
+      const west=view.getFloat32(offset,true),east=view.getFloat32(offset+4,true),south=view.getFloat32(offset+8,true),north=view.getFloat32(offset+12,true),ringCount=view.getUint16(offset+16,true),rings=[];offset+=20;
+      for(let ringIndex=0;ringIndex<ringCount;ringIndex++){
+        const pointCount=view.getUint32(offset,true),points=new Float32Array(pointCount*2);offset+=4;
+        for(let pointIndex=0;pointIndex<points.length;pointIndex++){points[pointIndex]=view.getFloat32(offset,true);offset+=4;}
+        rings.push(points);
+      }
+      polygons.push({west,east,south,north,rings});
+    }
+    const columns=72,rows=36,cells=Array.from({length:columns*rows},()=>[]);
+    for(const polygon of polygons){
+      const column0=clamp(Math.floor((polygon.west+180)/5),0,columns-1),column1=clamp(Math.floor((polygon.east+180)/5),0,columns-1);
+      const row0=clamp(Math.floor((polygon.south+90)/5),0,rows-1),row1=clamp(Math.floor((polygon.north+90)/5),0,rows-1);
+      for(let row=row0;row<=row1;row++)for(let column=column0;column<=column1;column++)cells[row*columns+column].push(polygon);
+    }
+    return{polygons,cells,columns,rows,lastPolygon:null};
+  }
+  function ringContains(ring,lon,lat){
+    let inside=false;
+    for(let index=0,previous=ring.length-2;index<ring.length;previous=index,index+=2){
+      const xi=ring[index],yi=ring[index+1],xj=ring[previous],yj=ring[previous+1];
+      if((yi>lat)!==(yj>lat)&&lon<(xj-xi)*(lat-yi)/(yj-yi)+xi)inside=!inside;
+    }
+    return inside;
+  }
+  function polygonContains(polygon,lon,lat){
+    let inside=false;
+    for(const ring of polygon.rings)if(ringContains(ring,lon,lat))inside=!inside;
+    return inside;
+  }
+  function vectorLand(geo){
+    const mask=state.landMask;if(!mask)return null;
+    const cached=mask.lastPolygon;
+    if(cached&&geo.lon>=cached.west&&geo.lon<=cached.east&&geo.lat>=cached.south&&geo.lat<=cached.north&&polygonContains(cached,geo.lon,geo.lat))return true;
+    const column=clamp(Math.floor((geo.lon+180)/5),0,mask.columns-1),row=clamp(Math.floor((geo.lat+90)/5),0,mask.rows-1);
+    for(const polygon of mask.cells[row*mask.columns+column]){
+      if(polygon===cached||geo.lon<polygon.west||geo.lon>polygon.east||geo.lat<polygon.south||geo.lat>polygon.north)continue;
+      if(polygonContains(polygon,geo.lon,geo.lat)){mask.lastPolygon=polygon;return true;}
+    }
+    mask.lastPolygon=null;return false;
+  }
   const inDataset=(terrain,geo)=>terrain&&geo.lat>=terrain.south&&geo.lat<=terrain.north&&geo.lon>=terrain.west&&geo.lon<=terrain.east;
   function sampleDataset(terrain,cover,geo){
     if(!inDataset(terrain,geo))return null;
@@ -120,7 +165,11 @@
     const ci=clamp(Math.round(fx),0,terrain.columns-1),ri=clamp(Math.round(fz),0,terrain.rows-1);
     return{land:true,meters,cover:cover?.classes?.[ri*terrain.columns+ci]??3};
   }
-  const sampleGeo=geo=>sampleDataset(state.europeTerrain,state.europeCover,geo)||sampleDataset(state.terrain,state.cover,geo)||{land:false,meters:WATER_METERS,cover:0};
+  const sampleGeo=geo=>{
+    const base=sampleDataset(state.europeTerrain,state.europeCover,geo)||sampleDataset(state.terrain,state.cover,geo)||{land:false,meters:WATER_METERS,cover:0},land=vectorLand(geo);
+    if(land===null||land===base.land)return base;
+    return land?{land:true,meters:0,cover:3}:{land:false,meters:WATER_METERS,cover:0};
+  };
   const sampleSurface=(x,z)=>{
     const geo=geoFromLocal(x,z),sample=sampleGeo(geo),height=(sample.land?sample.meters:WATER_METERS)*VERTICAL;
     return{inside:true,land:sample.land,water:!sample.land,height,waterHeight:WATER_METERS*VERTICAL,normal:{x:0,y:1,z:0},slopeAngle:0,streamedRegion:inDataset(state.europeTerrain,geo)?'planet-europe-detail':'planet-global',lat:geo.lat,lon:geo.lon};
@@ -336,13 +385,13 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot()}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{
     state.phase='loading';const globalBase='../../regions/global-atlas/',europeBase='../../regions/europe-atlas/';
-    const [globalTerrain,globalCover,europeTerrain,europeCover]=await Promise.all([loadBuffer(globalBase+'terrain.bin'),loadBuffer(globalBase+'landcover.bin'),loadBuffer(europeBase+'terrain.bin'),loadBuffer(europeBase+'landcover.bin')]);
-    state.terrain=parseTerrain(globalTerrain);state.cover=parseCover(globalCover);state.europeTerrain=parseTerrain(europeTerrain);state.europeCover=parseCover(europeCover);
+    const [globalTerrain,globalCover,europeTerrain,europeCover,landMask]=await Promise.all([loadBuffer(globalBase+'terrain.bin'),loadBuffer(globalBase+'landcover.bin'),loadBuffer(europeBase+'terrain.bin'),loadBuffer(europeBase+'landcover.bin'),loadBuffer('./planet-0270/land-50m.bin')]);
+    state.terrain=parseTerrain(globalTerrain);state.cover=parseCover(globalCover);state.europeTerrain=parseTerrain(europeTerrain);state.europeCover=parseCover(europeCover);state.landMask=parseLandMask(landMask);
     const runtime=api.getState?.(),position=runtime?.position;
     if(restoredLocation&&position)api.setRegionalPosition?.(0,0,Number.isFinite(restoredLocation.localYUnits)?restoredLocation.localYUnits:position.y);
     if(restoredLocation&&Number.isFinite(restoredLocation.heading))api.setHeading?.(restoredLocation.heading);
