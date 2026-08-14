@@ -10,7 +10,7 @@ This directory contains the planet-fixed foundation that will replace the player
 - GPU positions are planet-fixed ECEF values. Floating-origin changes update the tangent-frame uniforms, not tile topology.
 - Missing child tiles render through an already-resident parent. A partial child set never leaves a hole.
 - A pinned Natural Earth 1:50m land mask defines coast topology; raster terrain supplies height and cover without deciding the shoreline.
-- Orbital views keep at least quadtree level 2 resident, preserving recognizable coast silhouettes within the mobile triangle budget.
+- Orbital views keep at least quadtree level 3 resident, preserving recognizable coast silhouettes within the mobile triangle budget.
 - The public 0.26.1 renderer remains the default until the experimental renderer passes stability and mobile budgets.
 
 Launch the experimental renderer with:

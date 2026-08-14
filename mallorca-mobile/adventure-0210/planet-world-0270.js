@@ -24,7 +24,7 @@
   const DEG=Math.PI/180;
   const RAD=180/Math.PI;
   const TILE_RESOLUTION=17;
-  const MIN_LEVEL=2;
+  const MIN_LEVEL=3;
   const MAX_LEVEL=8;
   const TARGET_ERROR_PIXELS=28;
   const RECENTER_DISTANCE=240;

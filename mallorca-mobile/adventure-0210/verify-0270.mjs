@@ -16,7 +16,7 @@ need(index.includes("experimentalPlanet?'adventure-0210/planet-world-0270.js':'a
 need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.27.0-experimental'"),'experimental build identity is missing');
 need(index.includes('planetOrbitBlend')&&index.includes('-2102.432904*planetOrbitBlend'),'orbital camera transition is missing');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
-need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=2')&&runtime.includes('MAX_LEVEL=8')&&runtime.includes('TARGET_ERROR_PIXELS=28'),'tile geometry or LOD budget contract is missing');
+need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=8')&&runtime.includes('TARGET_ERROR_PIXELS=28'),'tile geometry or LOD budget contract is missing');
 need(runtime.includes('cache:new Map()')&&runtime.includes('nearestReadyAncestor'),'persistent tile cache or parent fallback is missing');
 need(runtime.includes('state.prefetchLead')&&runtime.includes('predicted=destination'),'directional tile prefetch is missing');
 need(runtime.includes("SAVE_KEY='waft.adventure.0210.planet-location.v1'")&&runtime.includes('saveGeographicPosition'),'geographic save contract is missing');
