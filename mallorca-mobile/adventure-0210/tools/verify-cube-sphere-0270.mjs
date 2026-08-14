@@ -134,7 +134,7 @@ for (const altitude of [1.5, 50, 300, 1000, 4200]) {
 
 console.log(JSON.stringify({
   valid: true,
-  version: '0.27.0-experimental',
+  version: '0.27.1-experimental',
   faces: FACE_NAMES.length,
   groundTiles: firstSelection.tiles.length,
   orbitalTiles: orbitalSelection.tiles.length,
