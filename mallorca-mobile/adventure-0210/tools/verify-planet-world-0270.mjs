@@ -117,7 +117,7 @@ try{
   const altitudeProbe=await page.evaluate(async()=>{
     const runtime=WAFTRegionRuntime.getState(),x=runtime.position.x,z=runtime.position.z;
     const waitAnchor=async()=>{for(let attempt=0;attempt<180;attempt++){const value=WAFTPlanetWorld0270.getState();if(value.anchorTile?.surfaceHash)return value;await new Promise(resolve=>setTimeout(resolve,50));}throw new Error('local anchor tile did not become resident');};
-    WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(x,z,55);WAFTPlanetWorld0270.refreshSelection();
+    WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setAdventureModifiers({flight:false});WAFTRegionRuntime.setRegionalPosition(x,z,55);WAFTPlanetWorld0270.refreshSelection();
     await new Promise(resolve=>setTimeout(resolve,350));const low=await waitAnchor();
     WAFTRegionRuntime.setRegionalPosition(x,z,900);WAFTPlanetWorld0270.refreshSelection();
     await new Promise(resolve=>setTimeout(resolve,350));const high=await waitAnchor();
@@ -126,6 +126,7 @@ try{
   need(altitudeProbe.low?.key===altitudeProbe.high?.key,`flapping altitude changed local tile identity ${JSON.stringify(altitudeProbe)}`);
   need(altitudeProbe.low?.surfaceHash&&altitudeProbe.low.surfaceHash===altitudeProbe.high?.surfaceHash,`flapping altitude changed terrain surface ${JSON.stringify(altitudeProbe)}`);
 
+  await page.evaluate(()=>WAFTRegionRuntime.setAdventureModifiers({flight:true,mountType:'vulture',flightDive:false}));
   const cameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   const bounds=await gameCanvas.boundingBox();need(bounds,'game canvas bounds unavailable');
   await page.mouse.move(bounds.x+bounds.width*.54,bounds.y+bounds.height*.52);
