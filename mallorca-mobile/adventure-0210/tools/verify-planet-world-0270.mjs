@@ -159,6 +159,9 @@ try{
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles&&world.visibleTiles>0;},null,{timeout:90000});
   const orbitState=await state();need(orbitState.atlasTriangles>0,'orbital planet disappeared');
   const orbitPixels=await canvasStats();need(orbitPixels.nonSkyRatio>.01,`orbital planet is not visible ${JSON.stringify(orbitPixels)}`);
+  // Move away from the upper pitch clamp before testing the opposite orbital
+  // gesture; the preceding high-altitude drag can legitimately end at 1.46.
+  await page.mouse.move(bounds.x+bounds.width*.52,bounds.y+bounds.height*.86);await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.52,bounds.y+bounds.height*.38,{steps:12});await page.mouse.up();await page.waitForTimeout(250);
   const orbitCameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   await page.mouse.move(bounds.x+bounds.width*.52,bounds.y+bounds.height*.48);await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.52,bounds.y+bounds.height*.90,{steps:10});await page.mouse.up();await page.waitForTimeout(350);
   const orbitCameraAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());
