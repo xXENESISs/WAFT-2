@@ -21,6 +21,7 @@
     const errorBox = document.getElementById('error');
     const params = new URLSearchParams(location.search);
     const requestedRegion=params.get('region');
+    const experimentalPlanet=params.get('renderer')==='0270';
     const regionId=requestedRegion==='iberia'?'iberia':requestedRegion==='catalunya-litoral'?'catalunya-litoral':'baleares';
     const builds={baleares:'../region-runtime-baleares-013.html','catalunya-litoral':'../region-runtime-catalunya-litoral-003.html',iberia:'../region-runtime-catalunya-litoral-003.html'};
     const version = params.get('v') || 'waft-adventure-0233';
@@ -249,12 +250,20 @@
       if(regionId==='iberia'){
         window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;
         window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
-        source=source.replaceAll('adventure-0210/global-atlas-0260.js','adventure-0210/spherical-world-0261.js');
-        source=source.replaceAll('window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;','window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;');
+        if(experimentalPlanet)window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;
+        const worldRuntime=experimentalPlanet?'adventure-0210/planet-world-0270.js':'adventure-0210/spherical-world-0261.js';
+        const worldFlags=experimentalPlanet?'window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;':'window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;';
+        source=source.replaceAll('adventure-0210/global-atlas-0260.js',worldRuntime);
+        source=source.replaceAll('window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;',worldFlags);
         const dynamicClamp='if(!streamedWorldSurface?.inside){';
         const sphericalClamp='if(!window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__&&!streamedWorldSurface?.inside){';
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
+        if(experimentalPlanet){
+          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.0-experimental'");
+          source=source.replace("perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06, state.worldMode === 'local' ? 2400 : 1450);","perspective(projection,Math.PI/3,canvas.width/canvas.height,Math.max(.12,Math.min(8,state.camera.y*.0005)),state.worldMode==='local'?2400:12000);");
+          source=source.replace("const center=[target[0],target[1]+.18+lookUpLift,target[2]];","const planetOrbitBlend=Math.max(0,Math.min(1,(state.camera.y-320)/900));const center=[target[0],(target[1]+.18+lookUpLift)*(1-planetOrbitBlend)-2102.432904*planetOrbitBlend,target[2]];");
+        }
       }
       document.open();document.write(source);document.close();
     } catch(error) {
