@@ -95,17 +95,17 @@ try{
   });
   await page.waitForTimeout(300);
   await startFrameTrace();
-  const flightOrientationBefore=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw};});
+  const flightOrientationBefore=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw};});
   const flapButton=page.locator('#waftJump');
   for(let flap=0;flap<4;flap++){await flapButton.click({timeout:10000});await page.waitForTimeout(320);}
   await page.waitForTimeout(450);
-  const fastFlight=await page.evaluate(()=>({runtime:WAFTRegionRuntime.getState(),world:WAFTPlanetWorld0270.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId}));
+  const fastFlight=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),worldApi=WAFTPlanetWorld0270,geo=worldApi.geoFromWorld(runtime.position.x,runtime.position.z),ahead=worldApi.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{runtime,world:worldApi.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId,course,relativeView:runtime.playerFacing-runtime.cameraYaw};});
   need(fastFlight.mount==='iberia-bearded-vulture','real mounted-flight state was lost');
   need(Math.abs(fastFlight.runtime.adventureCurrentSpeed-276)<1,`vulture speed is not 3x ${fastFlight.runtime.adventureCurrentSpeed}`);
-  const headingDelta=Math.atan2(Math.sin(fastFlight.runtime.playerFacing-flightOrientationBefore.heading),Math.cos(fastFlight.runtime.playerFacing-flightOrientationBefore.heading));
-  need(Math.abs(headingDelta)<.03,`floating origin changed flight direction by ${headingDelta}`);
-  const passiveCameraYawDelta=Math.atan2(Math.sin(fastFlight.runtime.cameraYaw-flightOrientationBefore.cameraYaw),Math.cos(fastFlight.runtime.cameraYaw-flightOrientationBefore.cameraYaw));
-  need(Math.abs(passiveCameraYawDelta)<.01,`flight changed camera direction by ${passiveCameraYawDelta}`);
+  const courseDelta=Math.atan2(Math.sin(fastFlight.course-flightOrientationBefore.course),Math.cos(fastFlight.course-flightOrientationBefore.course));
+  need(Math.abs(courseDelta)<.03,`floating origin changed geographic flight direction by ${courseDelta}`);
+  const relativeCameraDelta=Math.atan2(Math.sin(fastFlight.relativeView-flightOrientationBefore.relativeView),Math.cos(fastFlight.relativeView-flightOrientationBefore.relativeView));
+  need(Math.abs(relativeCameraDelta)<.01,`floating origin changed bird/camera alignment by ${relativeCameraDelta}`);
   need(fastFlight.world.cacheTiles<=fastFlight.world.cacheLimit,`flight cache overflow ${fastFlight.world.cacheTiles}/${fastFlight.world.cacheLimit}`);
 
   const altitudeProbe=await page.evaluate(async()=>{
@@ -162,5 +162,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:'0.27.1-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles,cacheLimit:base.cacheLimit,selectionProfile:base.selectionProfile},recenter:{stableTileIdentity:true,stableHeading:true,stableCameraDirection:true,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,headingDelta,passiveCameraYawDelta,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:'0.27.1-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles,cacheLimit:base.cacheLimit,selectionProfile:base.selectionProfile},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,courseDelta,relativeCameraDelta,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}
