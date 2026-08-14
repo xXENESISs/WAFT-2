@@ -29,7 +29,6 @@
   const RECENTER_DISTANCE=240;
   const STATIC_TILE_LIMIT=720;
   const STATIC_BOOT_BATCH=8;
-  const SKIRT_DEPTH=.22;
   // The quadtree is selected once from geographic content zones and fully uploaded before
   // gameplay. Player movement, flapping, camera rotation and floating-origin shifts can only
   // cull these immutable leaves; they can never rebuild or replace their physical geometry.
@@ -211,13 +210,10 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
   }
   function createTileMesh(tile){
     const grid=core.buildTileGrid(tile,TILE_RESOLUTION),baseCount=TILE_RESOLUTION*TILE_RESOLUTION;
-    const boundary=[];
-    for(let column=0;column<TILE_RESOLUTION;column++)boundary.push(column);
-    for(let row=1;row<TILE_RESOLUTION;row++)boundary.push(row*TILE_RESOLUTION+TILE_RESOLUTION-1);
-    for(let column=TILE_RESOLUTION-2;column>=0;column--)boundary.push((TILE_RESOLUTION-1)*TILE_RESOLUTION+column);
-    for(let row=TILE_RESOLUTION-2;row>0;row--)boundary.push(row*TILE_RESOLUTION);
-    const vertexCount=baseCount+boundary.length;
-    const positions=new Float32Array(vertexCount*3),normals=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3);
+    // Every fixed leaf shares its boundary samples with its permanent neighbours. The old
+    // renderer extruded a wall around every tile anyway; viewed edge-on, those unnecessary
+    // walls became the long gold lines crossing the sea and sky during mounted flight.
+    const positions=new Float32Array(baseCount*3),normals=new Float32Array(baseCount*3),colors=new Float32Array(baseCount*3);
     let surfaceHash=2166136261;
     const hashByte=value=>{surfaceHash^=value&255;surfaceHash=Math.imul(surfaceHash,16777619)>>>0;};
     for(let index=0;index<baseCount;index++){
@@ -228,20 +224,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
       normals[offset]=direction[0];normals[offset+1]=direction[1];normals[offset+2]=direction[2];
       colors[offset]=color[0];colors[offset+1]=color[1];colors[offset+2]=color[2];
     }
-    for(let index=0;index<boundary.length;index++){
-      const source=boundary[index]*3,target=(baseCount+index)*3,direction=[grid.directions[source],grid.directions[source+1],grid.directions[source+2]];
-      const radial=Math.hypot(positions[source],positions[source+1],positions[source+2])-SKIRT_DEPTH;
-      positions[target]=direction[0]*radial;positions[target+1]=direction[1]*radial;positions[target+2]=direction[2]*radial;
-      normals[target]=normals[source];normals[target+1]=normals[source+1];normals[target+2]=normals[source+2];
-      colors[target]=colors[source]*.72;colors[target+1]=colors[source+1]*.72;colors[target+2]=colors[source+2]*.72;
-    }
-    const indices=new Uint16Array(grid.indices.length+boundary.length*6);
-    indices.set(grid.indices);
-    let cursor=grid.indices.length;
-    for(let index=0;index<boundary.length;index++){
-      const next=(index+1)%boundary.length,a=boundary[index],b=boundary[next],c=baseCount+index,d=baseCount+next;
-      indices[cursor++]=a;indices[cursor++]=c;indices[cursor++]=b;indices[cursor++]=b;indices[cursor++]=c;indices[cursor++]=d;
-    }
+    const indices=grid.indices;
     const vao=gl.createVertexArray();gl.bindVertexArray(vao);const buffers=[];
     const add=(slot,data)=>{const buffer=gl.createBuffer();buffers.push(buffer);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);gl.enableVertexAttribArray(slot);gl.vertexAttribPointer(slot,3,gl.FLOAT,false,0,0);};
     add(0,positions);add(1,normals);add(2,colors);
@@ -380,7 +363,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
 
   const compat={
     worldFromGeo:(lat,lon)=>localFromGeo(lat,lon),geoFromWorld:(x,z)=>geoFromLocal(x,z),sampleSurface,
-    getState:()=>({ready:state.ready,phase:state.phase,activeRegion:'planet-world',renderMode:'cube-sphere-quadtree',prefetched:state.ready,atlasReady:state.ready,atlasTriangles:state.visibleTriangles,atlasDrawFrames:state.drawFrames,atlasVerticalScale:VERTICAL,geo:state.lastGeo,error:state.error,speedEstimate:state.speedEstimate,prefetchLead:state.prefetchLead,floatingOriginShifts:state.floatingOriginShifts,poleCrossings:state.poleCrossings,datelineCrossings:state.datelineCrossings,visibleTiles:state.renderKeys.length,desiredTiles:state.desired.size,cacheTiles:state.cache.size}),
+    getState:()=>({ready:state.ready,phase:state.phase,activeRegion:'planet-world',renderMode:'cube-sphere-quadtree',seamStrategy:'shared-boundary-no-skirts',prefetched:state.ready,atlasReady:state.ready,atlasTriangles:state.visibleTriangles,atlasDrawFrames:state.drawFrames,atlasVerticalScale:VERTICAL,geo:state.lastGeo,error:state.error,speedEstimate:state.speedEstimate,prefetchLead:state.prefetchLead,floatingOriginShifts:state.floatingOriginShifts,poleCrossings:state.poleCrossings,datelineCrossings:state.datelineCrossings,visibleTiles:state.renderKeys.length,desiredTiles:state.desired.size,cacheTiles:state.cache.size}),
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};

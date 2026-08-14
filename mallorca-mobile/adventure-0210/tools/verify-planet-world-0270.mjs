@@ -15,6 +15,17 @@ page.on('pageerror',error=>errors.push(error.message));
 page.on('console',message=>{if(['error','warning'].includes(message.type()))consoleLines.push(`${message.type()}: ${message.text()}`);});
 
 const state=()=>page.evaluate(()=>window.WAFTPlanetWorld0270?.getState?.()||null);
+const saveCanvasLayers=async label=>{
+  const layers=await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>{
+    const base=[...document.querySelectorAll('canvas')].find(canvas=>canvas.id!=='waftAdventureCanvas');
+    const overlay=document.getElementById('waftAdventureCanvas');
+    resolve({base:base?.toDataURL('image/png')||null,overlay:overlay?.toDataURL('image/png')||null});
+  })));
+  for(const [name,dataUrl] of Object.entries(layers)){
+    need(dataUrl?.startsWith('data:image/png;base64,'),`${label} ${name} canvas capture failed`);
+    fs.writeFileSync(path.join(shots,`${label}-${name}.png`),Buffer.from(dataUrl.split(',')[1],'base64'));
+  }
+};
 const canvasStats=()=>page.evaluate(async()=>{
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
   const source=document.querySelector('canvas'),target=document.createElement('canvas');target.width=source.width;target.height=source.height;
@@ -50,6 +61,7 @@ try{
 
   const base=await state();
   need(base?.renderMode==='cube-sphere-quadtree',`wrong renderer ${JSON.stringify(base)}`);
+  need(base.seamStrategy==='shared-boundary-no-skirts',`unsafe tile seam strategy ${JSON.stringify(base)}`);
   need(base.selectionProfile==='fixed-geographic-quadtree-v2',`unstable quadtree profile ${JSON.stringify(base)}`);
   need(base.cacheLimit===720&&base.staticTiles===705,`unexpected static planet budget ${JSON.stringify(base)}`);
   need(base.cacheTiles===base.staticTiles&&base.tileBuildsDuringGameplay===0&&base.tileEvictions===0,`planet was not fully resident before gameplay ${JSON.stringify(base)}`);
@@ -128,6 +140,7 @@ try{
     if(sample===39)await page.screenshot({path:path.join(shots,'03b-sustained-flight-10s.png')});
   }
   await page.screenshot({path:path.join(shots,'03c-sustained-flight-15s.png')});
+  await saveCanvasLayers('03c-sustained-flight-15s');
   const fastFlight=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();return{runtime,world:WAFTPlanetWorld0270.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId,relativeView:runtime.playerFacing-runtime.cameraYaw};});
   need(fastFlight.mount==='iberia-bearded-vulture','real mounted-flight state was lost');
   need(Math.abs(fastFlight.runtime.adventureCurrentSpeed-276)<1,`vulture speed is not 3x ${fastFlight.runtime.adventureCurrentSpeed}`);
@@ -164,6 +177,7 @@ try{
   const eyeDistance=Math.hypot(cameraAfter.cameraEye.x-cameraAfter.displayPosition.x,cameraAfter.cameraEye.y-cameraAfter.position.y,cameraAfter.cameraEye.z-cameraAfter.displayPosition.z);
   need(eyeDistance>3&&eyeDistance<7.5,`high-altitude camera detached from bird ${eyeDistance}`);
   await page.screenshot({path:path.join(shots,'03-mounted-flight-high-camera.png')});
+  await saveCanvasLayers('03-mounted-flight-high-camera');
   const performanceResult=await frameTrace();
   need(performanceResult.samples>60,`insufficient frame samples ${JSON.stringify(performanceResult)}`);
   need(performanceResult.p95<=120&&performanceResult.max<300&&performanceResult.over100/performanceResult.samples<.12,`flight frame-time budget failed ${JSON.stringify(performanceResult)}`);

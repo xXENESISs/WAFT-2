@@ -22,6 +22,7 @@ need(index.includes('cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacin
 need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textContent"),'regional HUD can still overwrite the planet telemetry');
 need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update"),'regional building streaming still runs during planetary flight');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
+need(runtime.includes("seamStrategy:'shared-boundary-no-skirts'")&&!runtime.includes('SKIRT_DEPTH'),'screen-spanning tile skirts are still enabled');
 need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=6')&&runtime.includes('STATIC_REFINEMENT_ZONES=Object.freeze'),'fixed planet geometry contract is missing');
 need(runtime.includes('STATIC_TILE_LIMIT=720')&&runtime.includes('STATIC_BOOT_BATCH=8'),'static planet memory or boot budget is missing');
 need(runtime.includes('cache:new Map()')&&runtime.includes('buildStaticPlanet')&&runtime.includes('selectFixedQuadtreeTiles'),'immutable geographic quadtree is missing');
