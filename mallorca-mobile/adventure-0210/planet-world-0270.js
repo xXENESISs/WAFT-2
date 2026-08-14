@@ -6,7 +6,7 @@
   window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;
   window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
 
-  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.27.1';
+  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.27.2';
   const core=await import(`./planet-0270/cube-sphere-core.mjs?v=${encodeURIComponent(scriptVersion)}`);
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTAdventurePlugin||!document.querySelector('canvas'));i++)await wait(40);
@@ -14,7 +14,7 @@
   const plugin=window.WAFTAdventurePlugin;
   const canvas=document.querySelector('canvas');
   const gl=canvas?.getContext('webgl2');
-  if(!api||!plugin||!gl)throw new Error('WAFT 0.27.1 experimental planet runtime unavailable');
+  if(!api||!plugin||!gl)throw new Error('WAFT 0.27.2 experimental planet runtime unavailable');
 
   const U=.33;
   const VERTICAL=.0028;
@@ -25,22 +25,17 @@
   const RAD=180/Math.PI;
   const TILE_RESOLUTION=17;
   const MIN_LEVEL=3;
-  const MAX_LEVEL=8;
+  const MAX_LEVEL=6;
   const RECENTER_DISTANCE=240;
-  const CACHE_LIMIT=384;
-  const BUILDS_PER_FRAME=1;
-  const BUILD_TIME_BUDGET_MS=3.5;
-  const PREFETCH_TILE_LIMIT=24;
+  const STATIC_TILE_LIMIT=720;
+  const STATIC_BOOT_BATCH=8;
   const SKIRT_DEPTH=.22;
-  // Refinement is tied to fixed geographic rings, never to flap altitude or camera rotation.
-  // Only the outer level-3 horizon expands while climbing, so nearby physical terrain cannot
-  // swap between coarse and detailed shapes merely because the bird moves vertically.
-  const DETAIL_RINGS=Object.freeze([
-    Object.freeze({radians:.008,level:8}),
-    Object.freeze({radians:.020,level:7}),
-    Object.freeze({radians:.050,level:6}),
-    Object.freeze({radians:.110,level:5}),
-    Object.freeze({radians:.240,level:4})
+  // The quadtree is selected once from geographic content zones and fully uploaded before
+  // gameplay. Player movement, flapping, camera rotation and floating-origin shifts can only
+  // cull these immutable leaves; they can never rebuild or replace their physical geometry.
+  const STATIC_REFINEMENT_ZONES=Object.freeze([
+    Object.freeze({name:'europe',lat:52,lon:10,radians:.43,level:4}),
+    Object.freeze({name:'iberia',lat:40,lon:-3,radians:.13,level:6})
   ]);
   const SAVE_KEY='waft.adventure.0210.planet-location.v1';
   const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
@@ -81,9 +76,10 @@
   const legacyOrigin={lat:39.775,lon:-3.125};
   const state={
     ready:false,phase:'boot',error:null,originGeo:restoredLocation?normalizeGeo(restoredLocation.lat,restoredLocation.lon):legacyOrigin,
-    terrain:null,cover:null,europeTerrain:null,europeCover:null,landMask:null,cache:new Map(),desired:new Map(),prefetch:new Map(),queue:[],queued:new Set(),renderKeys:[],
+    terrain:null,cover:null,europeTerrain:null,europeCover:null,landMask:null,cache:new Map(),desired:new Map(),prefetch:new Map(),staticTiles:[],renderKeys:[],
     drawFrames:0,visibleTriangles:0,tileBuilds:0,tileEvictions:0,lodUpdates:0,floatingOriginShifts:0,poleCrossings:0,datelineCrossings:0,
-    speedEstimate:0,prefetchLead:180,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0,lastBuildMs:0,maxBuildMs:0,maxCacheTiles:0
+    speedEstimate:0,prefetchLead:0,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0,lastBuildMs:0,maxBuildMs:0,maxCacheTiles:0,
+    readyTileBuilds:0,staticPlanHash:null,staticGeometryHash:null,staticBuildMs:0
   };
 
   const geoFromLocal=(x,z)=>{
@@ -252,54 +248,26 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     return{key:core.tileKey(tile),tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},vao,buffers,count:indices.length,triangles:indices.length/3,surfaceHash:surfaceHash.toString(16).padStart(8,'0'),lastUsed:performance.now()};
   }
 
-  function enqueue(tile,prefetch=false){
-    const key=core.tileKey(tile);
-    if(state.cache.has(key)||state.queued.has(key))return;
-    state.queued.add(key);state.queue.push({key,tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},prefetch});
-  }
-  function processBuildQueue(){
-    const started=performance.now();let built=0;
-    while(built<BUILDS_PER_FRAME&&state.queue.length&&performance.now()-started<BUILD_TIME_BUDGET_MS){
-      const item=state.queue.shift();state.queued.delete(item.key);
-      if(state.cache.has(item.key))continue;
-      const mesh=createTileMesh(item.tile);state.cache.set(item.key,mesh);state.tileBuilds++;built++;
+  const hashTokens=tokens=>{
+    let hash=2166136261;
+    for(const token of tokens)for(let index=0;index<token.length;index++){const code=token.charCodeAt(index);hash^=code&255;hash=Math.imul(hash,16777619)>>>0;hash^=code>>8;hash=Math.imul(hash,16777619)>>>0;}
+    return hash.toString(16).padStart(8,'0');
+  };
+  async function buildStaticPlanet(){
+    const plan=core.selectFixedQuadtreeTiles({baseLevel:MIN_LEVEL,zones:STATIC_REFINEMENT_ZONES});
+    if(plan.tiles.length>STATIC_TILE_LIMIT)throw new Error(`static planet budget ${plan.tiles.length}/${STATIC_TILE_LIMIT}`);
+    state.staticTiles=plan.tiles.map(tile=>({face:tile.face,level:tile.level,x:tile.x,y:tile.y,center:tile.center,angularRadius:tile.angularRadius}));
+    state.staticPlanHash=hashTokens(state.staticTiles.map(tile=>`${core.tileKey(tile)};`));
+    const allStarted=performance.now();
+    for(let index=0;index<state.staticTiles.length;index++){
+      const started=performance.now(),tile=state.staticTiles[index],mesh=createTileMesh(tile);
+      state.cache.set(mesh.key,mesh);state.tileBuilds++;
+      state.lastBuildMs=performance.now()-started;state.maxBuildMs=Math.max(state.maxBuildMs,state.lastBuildMs);state.maxCacheTiles=Math.max(state.maxCacheTiles,state.cache.size);
+      if((index+1)%STATIC_BOOT_BATCH===0)await wait(0);
     }
-    state.lastBuildMs=performance.now()-started;state.maxBuildMs=Math.max(state.maxBuildMs,state.lastBuildMs);state.maxCacheTiles=Math.max(state.maxCacheTiles,state.cache.size);
-  }
-  function nearestReadyAncestor(tile){
-    let current={face:tile.face,level:tile.level,x:tile.x,y:tile.y};
-    while(current){const key=core.tileKey(current);if(state.cache.has(key))return key;current=core.parentTile(current);}
-    return null;
-  }
-  function hasAncestorIn(set,key){
-    let tile=core.parentTile(core.parseTileKey(key));
-    while(tile){if(set.has(core.tileKey(tile)))return true;tile=core.parentTile(tile);}
-    return false;
-  }
-  function resolveRenderKeys(){
-    const candidates=new Set();
-    for(const tile of state.desired.values()){
-      const key=nearestReadyAncestor(tile);if(key)candidates.add(key);
-    }
-    const ordered=[...candidates].sort((a,b)=>core.parseTileKey(a).level-core.parseTileKey(b).level||a.localeCompare(b));
-    const resolved=new Set();
-    for(const key of ordered)if(!hasAncestorIn(resolved,key))resolved.add(key);
-    state.renderKeys=[...resolved];
-  }
-  function evictCache(){
-    if(state.cache.size<=CACHE_LIMIT)return;
-    const renderKeys=new Set(state.renderKeys),desiredKeys=new Set(state.desired.keys());
-    const remove=meshes=>{
-      for(const mesh of meshes.sort((a,b)=>a.lastUsed-b.lastUsed||b.tile.level-a.tile.level||a.key.localeCompare(b.key))){
-        if(state.cache.size<=CACHE_LIMIT)break;
-        state.cache.delete(mesh.key);disposeMesh(mesh);state.tileEvictions++;
-      }
-    };
-    // Old and speculative tiles go first. Desired resident tiles are retained whenever possible;
-    // render tiles and the six roots are never evicted, so the planet cannot disappear mid-frame.
-    remove([...state.cache.values()].filter(mesh=>mesh.tile.level>0&&!renderKeys.has(mesh.key)&&!desiredKeys.has(mesh.key)));
-    if(state.cache.size>CACHE_LIMIT)remove([...state.cache.values()].filter(mesh=>mesh.tile.level>0&&!renderKeys.has(mesh.key)));
-    state.maxCacheTiles=Math.max(state.maxCacheTiles,state.cache.size);
+    state.staticBuildMs=performance.now()-allStarted;
+    state.staticGeometryHash=hashTokens([...state.cache.values()].sort((a,b)=>a.key.localeCompare(b.key)).map(mesh=>`${mesh.key}:${mesh.surfaceHash};`));
+    state.readyTileBuilds=state.tileBuilds;
   }
 
   function updateSpeed(now){
@@ -309,41 +277,25 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
       const dt=Math.max(.001,(now-state.lastFrameAt)/1000),instant=clamp(haversineKm(state.lastGeo,geo)*U/dt,0,420),target=Math.max(commanded,instant);
       state.speedEstimate+= (target-state.speedEstimate)*(1-Math.exp(-dt*(target>state.speedEstimate?10:3.5)));
     }else state.speedEstimate=commanded;
-    state.lastGeo=geo;state.lastFrameAt=now;state.prefetchLead=clamp(Math.max(commanded,state.speedEstimate)*4.5,180,900);
+    state.lastGeo=geo;state.lastFrameAt=now;state.prefetchLead=0;
   }
   const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
-  const detailLevelForDistance=angularDistance=>{
-    for(const ring of DETAIL_RINGS)if(angularDistance<=ring.radians)return ring.level;
-    return MIN_LEVEL;
-  };
   function selectionFor(geo,altitude){
     const cameraDirection=core.latLonToUnit(geo.lat,geo.lon),safeAltitude=Math.max(.8,Number(altitude)||0),horizonAngle=Math.acos(clamp(EARTH_U/(EARTH_U+safeAltitude),-1,1)),selected=[];
-    const visit=tile=>{
-      const center=core.tileCenterUnit(tile),angularRadius=core.tileAngularRadius(tile),angularDistance=Math.acos(clamp(dot(cameraDirection,center),-1,1));
-      if(angularDistance>horizonAngle+angularRadius+.015)return;
-      const targetLevel=detailLevelForDistance(Math.max(0,angularDistance-angularRadius));
-      if(tile.level<MIN_LEVEL||(tile.level<targetLevel&&tile.level<MAX_LEVEL)){for(const child of core.childTiles(tile))visit(child);return;}
-      selected.push({...tile,angularDistance,angularRadius});
-    };
-    for(let face=0;face<core.FACE_NAMES.length;face++)visit({face,level:0,x:0,y:0});
+    for(const tile of state.staticTiles){
+      const angularDistance=Math.acos(clamp(dot(cameraDirection,tile.center),-1,1));
+      if(angularDistance<=horizonAngle+tile.angularRadius+.015)selected.push({...tile,angularDistance});
+    }
     selected.sort((a,b)=>a.level-b.level||a.face-b.face||a.y-b.y||a.x-b.x);
     return selected;
   }
   function updateSelection(now,force=false){
-    if(!force&&now-state.lastSelectionAt<240)return;
+    if(!force&&now-state.lastSelectionAt<120)return;
     const runtime=api.getState?.(),position=runtime?.position;if(!position)return;
     const geo=geoFromLocal(position.x,position.z),altitude=Math.max(.8,Number(position.y)||0);
-    const visible=selectionFor(geo,altitude),heading=Number(runtime.playerFacing)||0;
-    const predicted=destination(geo,Math.PI-heading,state.prefetchLead/U),predictedTiles=selectionFor(predicted,altitude);
+    const visible=selectionFor(geo,altitude);
     state.desired=new Map(visible.map(tile=>[core.tileKey(tile),tile]));
-    const predictedMaxLevel=predictedTiles.reduce((maximum,tile)=>Math.max(maximum,tile.level),0);
-    const prefetch=predictedTiles.filter(tile=>tile.level>=Math.max(MIN_LEVEL,predictedMaxLevel-2)&&!state.desired.has(core.tileKey(tile))).sort((a,b)=>a.angularDistance-b.angularDistance||b.level-a.level||core.tileKey(a).localeCompare(core.tileKey(b))).slice(0,PREFETCH_TILE_LIMIT);
-    state.prefetch=new Map(prefetch.map(tile=>[core.tileKey(tile),tile]));
-    const wanted=new Set([...state.desired.keys(),...state.prefetch.keys()]);
-    state.queue=state.queue.filter(item=>wanted.has(item.key));state.queued=new Set(state.queue.map(item=>item.key));
-    for(const tile of visible)enqueue(tile,false);
-    for(const tile of prefetch)enqueue(tile,true);
-    state.queue.sort((a,b)=>Number(a.prefetch)-Number(b.prefetch)||a.tile.level-b.tile.level||a.key.localeCompare(b.key));
+    state.renderKeys=[...state.desired.keys()];state.prefetch.clear();
     state.lastSelectionAt=now;state.lodUpdates++;
   }
 
@@ -371,7 +323,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
   const previousDraw=plugin.afterWorldDraw?.bind(plugin);
   plugin.afterWorldDraw=(now,eye,pv)=>{
     if(!window.__WAFT_PLANET_DEBUG_ISOLATE__)previousDraw?.(now,eye,pv);if(!state.ready)return;
-    updateSpeed(now);maybeRecenter();updateSelection(now);processBuildQueue();resolveRenderKeys();evictCache();
+    updateSpeed(now);maybeRecenter();updateSelection(now);
     const frame=core.tangentFrame(state.originGeo.lat,state.originGeo.lon),origin=frame.up.map(component=>component*EARTH_U);
     gl.enable(gl.DEPTH_TEST);gl.disable(gl.CULL_FACE);gl.depthMask(true);gl.useProgram(program);gl.uniformMatrix4fv(uniforms.pv,false,pv);gl.uniform3f(uniforms.eye,...eye);
     gl.uniform3f(uniforms.origin,...origin);gl.uniform3f(uniforms.east,...frame.east);gl.uniform3f(uniforms.north,...frame.north);gl.uniform3f(uniforms.up,...frame.up);
@@ -386,8 +338,8 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(!state.ready)return;
     const runtime=api.getState?.(),position=runtime?.position,geo=position?geoFromLocal(position.x,position.z):state.originGeo;
     const title=document.getElementById('hudTitle'),stats=document.getElementById('hudStats'),coords=document.getElementById('waftIberiaCoords'),objective=document.getElementById('waftObjective');
-    if(title)title.textContent='MUNDO · PLANETA 0.27.1 EXP';
-    if(stats)stats.textContent=`CUBE-SPHERE · ${Math.round(state.visibleTriangles/1000)}k tri · ${state.renderKeys.length}/${state.desired.size} tiles · caché ${state.cache.size}`;
+    if(title)title.textContent='MUNDO · PLANETA 0.27.2 EXP';
+    if(stats)stats.textContent=`CUBE-SPHERE FIJA · ${Math.round(state.visibleTriangles/1000)}k tri · ${state.renderKeys.length}/${state.staticTiles.length} tiles`;
     if(coords)coords.textContent=`ALT ${Math.round((position?.y||0)/VERTICAL)} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;
     if(objective)objective.textContent='Renderer planetario experimental · ALETEAR para subir · PICADO ↓ para descender.';
   }
@@ -420,7 +372,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,cacheLimit:CACHE_LIMIT,buildQueue:state.queue.length,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionProfile:'stable-geographic-rings-v1',detailRings:DETAIL_RINGS.map(ring=>({...ring}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileBuildsDuringGameplay:Math.max(0,state.tileBuilds-state.readyTileBuilds),tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:0,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,cacheLimit:STATIC_TILE_LIMIT,buildQueue:0,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionProfile:'fixed-geographic-quadtree-v2',staticTiles:state.staticTiles.length,staticPlanHash:state.staticPlanHash,staticGeometryHash:state.staticGeometryHash,staticBuildMs:state.staticBuildMs,refinementZones:STATIC_REFINEMENT_ZONES.map(zone=>({...zone}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true)};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{
@@ -430,7 +382,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     const runtime=api.getState?.(),position=runtime?.position;
     if(restoredLocation&&position)api.setRegionalPosition?.(0,0,Number.isFinite(restoredLocation.localYUnits)?restoredLocation.localYUnits:position.y);
     if(restoredLocation&&Number.isFinite(restoredLocation.heading))api.setHeading?.(restoredLocation.heading);
-    for(let face=0;face<core.FACE_NAMES.length;face++){const tile={face,level:0,x:0,y:0},mesh=createTileMesh(tile);state.cache.set(mesh.key,mesh);state.tileBuilds++;}
+    state.phase='building-static-planet';await buildStaticPlanet();
     state.ready=true;state.phase='ready';api.releaseRegionalTerrainGpu?.();updateSelection(performance.now(),true);window.__WAFT_PLANET_WORLD_0270_READY__=true;window.__WAFT_GLOBAL_ATLAS_0260_READY__=true;
     updateHud();setInterval(updateHud,250);setInterval(saveGeographicPosition,5000);addEventListener('beforeunload',saveGeographicPosition);document.addEventListener('visibilitychange',()=>{if(document.hidden)saveGeographicPosition();});
   }catch(error){state.error=String(error?.stack||error);state.phase='error';console.error(error);}

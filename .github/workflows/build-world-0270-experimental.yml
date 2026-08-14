@@ -1,4 +1,4 @@
-name: Verify WAFT world 0.27.1 experimental planet
+name: Verify WAFT world 0.27.2 experimental planet
 
 on:
   pull_request:
@@ -88,7 +88,7 @@ jobs:
             sleep 5
           done
           if [ "$ready" != true ]; then
-            echo "GitHub Pages did not expose the 0.27.1 entry point in time." >&2
+            echo "GitHub Pages did not expose the 0.27.2 entry point in time." >&2
             exit 1
           fi
           node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"

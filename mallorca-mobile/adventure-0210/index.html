@@ -260,7 +260,7 @@
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
         if(experimentalPlanet){
-          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.1-experimental'");
+          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.2-experimental'");
           source=source.replace("perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06, state.worldMode === 'local' ? 2400 : 1450);","perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);");
           source=source.replace("speed=bearded?(dive?(boosted?116:104):(inputLength<.06?48:(boosted||inputLength>.93?92:inputLength>.70?76:60)))","speed=bearded?(dive?(boosted?348:312):(inputLength<.06?144:(boosted||inputLength>.93?276:inputLength>.70?228:180)))");
           source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");

@@ -1,4 +1,4 @@
-# WAFT planet renderer 0.27.1 (experimental)
+# WAFT planet renderer 0.27.2 (experimental)
 
 This directory contains the planet-fixed foundation that will replace the player-centred terrain patch after it has passed visual and mobile validation.
 
@@ -8,11 +8,11 @@ This directory contains the planet-fixed foundation that will replace the player
 - Tile vertices are derived from fixed cube-face coordinates, never from player position, camera heading or elapsed time.
 - All six faces use one cube-sphere hierarchy from ground level to orbit.
 - GPU positions are planet-fixed ECEF values. Floating-origin changes update the tangent-frame uniforms, not tile topology.
-- Missing child tiles render through an already-resident parent. A partial child set never leaves a hole.
-- LOD refinement follows fixed geographic distance rings. Flapping and camera rotation cannot change nearby tile levels; climbing only reveals additional coarse horizon tiles.
-- The resident cache is hard-limited to 384 tiles, speculative prefetch to 24 tiles and foreground construction to one tile per frame.
+- The complete geographic quadtree is selected once from fixed content zones and uploaded before gameplay begins.
+- The global base is level 3, Europe is permanently refined to level 4 and Iberia to level 6. These levels depend on geography, never on the player or camera.
+- Flight performs no mesh builds, parent/child replacements or cache evictions. Movement only culls already-resident immutable leaves.
 - A pinned Natural Earth 1:50m land mask defines coast topology; raster terrain supplies height and cover without deciding the shoreline.
-- Orbital views keep at least quadtree level 3 resident, preserving recognizable coast silhouettes within the mobile triangle budget.
+- Orbital views use the same prebuilt geometry as ground flight, preserving the exact coastline and terrain silhouette.
 - The high-altitude view remains a coherent third-person camera with a fixed near plane; no automatic Earth-centre target can rotate or clip the mounted bird.
 - Experimental bearded-vulture forward, coast and dive speeds are exactly three times the 0.27.0 first-delivery values.
 - The public 0.26.1 renderer remains the default until the experimental renderer passes stability and mobile budgets.
@@ -36,6 +36,6 @@ node mallorca-mobile/adventure-0210/verify-0270.mjs
 
 ## Deliberately deferred
 
-- Worker-based tile decoding and packed immutable tile files.
-- Exact neighbour LOD balancing. The first vertical slice uses skirts plus parent fallback.
-- Automated browser coast-mask comparison and physical Android profiling.
+- Packed immutable tile files to move the one-time boot construction offline.
+- Exact edge stitching between fixed refinement zones; the current immutable tree uses skirts at its permanent LOD boundaries.
+- Physical Android profiling.
