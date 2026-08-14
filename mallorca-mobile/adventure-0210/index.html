@@ -264,6 +264,8 @@
           source=source.replace("perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06, state.worldMode === 'local' ? 2400 : 1450);","perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);");
           source=source.replace("speed=bearded?(dive?(boosted?116:104):(inputLength<.06?48:(boosted||inputLength>.93?92:inputLength>.70?76:60)))","speed=bearded?(dive?(boosted?348:312):(inputLength<.06?144:(boosted||inputLength>.93?276:inputLength>.70?228:180)))");
           source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");
+          source=source.replace("hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';");
+          source=source.replace("if (state.worldMode === 'regional') streamer.update(state.camera.x, state.camera.z);","if (state.worldMode === 'regional') {if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update(state.camera.x,state.camera.z);else{state.activeBuildings=0;state.loadedCells=0;}}");
         }
       }
       document.open();document.write(source);document.close();

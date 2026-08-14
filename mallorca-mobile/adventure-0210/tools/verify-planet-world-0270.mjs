@@ -77,10 +77,12 @@ try{
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
   const beforeRecenter=await state();
   const beforeRecenterOrientation=await orientationState();
+  const entityGeographyBefore=await page.evaluate(()=>Object.fromEntries((window.__WAFT_INTERNAL_GAME__?.animals||[]).map(animal=>[animal.id,WAFTPlanetWorld0270.geoFromWorld(animal.x,animal.z)])));
   const recentered=await page.evaluate(()=>WAFTPlanetWorld0270.recenterAtCurrentPosition());need(recentered,'forced floating-origin recenter did not run');
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},beforeRecenter.lodUpdates,{timeout:90000});
   const afterRecenter=await state();
   const afterRecenterOrientation=await orientationState();
+  const entityGeographyAfter=await page.evaluate(()=>Object.fromEntries((window.__WAFT_INTERNAL_GAME__?.animals||[]).map(animal=>[animal.id,WAFTPlanetWorld0270.geoFromWorld(animal.x,animal.z)])));
   need(beforeRecenter.anchorTile?.key===afterRecenter.anchorTile?.key,`floating-origin shift changed anchor tile ${beforeRecenter.anchorTile?.key} -> ${afterRecenter.anchorTile?.key}`);
   need(beforeRecenter.anchorTile?.surfaceHash&&beforeRecenter.anchorTile.surfaceHash===afterRecenter.anchorTile?.surfaceHash,`floating-origin shift changed local terrain topology ${JSON.stringify(beforeRecenter.anchorTile)} -> ${JSON.stringify(afterRecenter.anchorTile)}`);
   need(Math.abs(beforeRecenter.anchorTile.lat-afterRecenter.anchorTile.lat)<1e-8&&Math.abs(beforeRecenter.anchorTile.lon-afterRecenter.anchorTile.lon)<1e-8,'floating-origin shift changed geographic position');
@@ -88,6 +90,11 @@ try{
   const recenterCameraDelta=Math.atan2(Math.sin(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView),Math.cos(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView));
   need(Math.abs(recenterCourseDelta)<.003,`floating-origin shift changed geographic course by ${recenterCourseDelta}`);
   need(Math.abs(recenterCameraDelta)<.003,`floating-origin shift changed bird/camera alignment by ${recenterCameraDelta}`);
+  for(const [id,before] of Object.entries(entityGeographyBefore)){
+    const after=entityGeographyAfter[id];need(after,`floating-origin shift lost regional entity ${id}`);
+    const drift=Math.hypot(after.lat-before.lat,after.lon-before.lon);
+    need(drift<1e-5,`floating-origin shift moved regional entity ${id} geographically by ${drift}`);
+  }
 
   const bermuda=await page.evaluate(()=>{const world=WAFTPlanetWorld0270,island=world.worldFromGeo(32.3,-64.75),ocean=world.worldFromGeo(32.3,-65);return{island:world.sampleSurface(island.x,island.z),ocean:world.sampleSurface(ocean.x,ocean.z)};});
   need(bermuda.island.land&&!bermuda.ocean.land,`50m island coastline failed ${JSON.stringify(bermuda)}`);
@@ -128,6 +135,8 @@ try{
   need(Math.abs(relativeCameraDelta)<.01,`floating origin changed bird/camera alignment by ${relativeCameraDelta}`);
   need(fastFlight.world.floatingOriginShifts>flightOrientationBefore.originShifts,`real flight did not cross a floating origin ${flightOrientationBefore.originShifts} -> ${fastFlight.world.floatingOriginShifts}`);
   need(fastFlight.world.cacheTiles===fastFlight.world.staticTiles,`flight lost immutable planet tiles ${fastFlight.world.cacheTiles}/${fastFlight.world.staticTiles}`);
+  const overlayAfterFlight=await page.evaluate(()=>WAFTAdventurePlugin.getRendererState?.());
+  need(overlayAfterFlight?.regionalEntitiesDrawn===0,`distant regional entities leaked into planetary flight render ${JSON.stringify(overlayAfterFlight)}`);
 
   const altitudeProbe=await page.evaluate(async()=>{
     const runtime=WAFTRegionRuntime.getState(),x=runtime.position.x,z=runtime.position.z;

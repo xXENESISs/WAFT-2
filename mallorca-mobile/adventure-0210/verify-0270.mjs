@@ -4,6 +4,7 @@ import fs from 'node:fs';
 const need=(condition,message)=>{if(!condition)throw new Error(message);};
 const index=fs.readFileSync('mallorca-mobile/adventure-0210/index.html','utf8');
 const runtime=fs.readFileSync('mallorca-mobile/adventure-0210/planet-world-0270.js','utf8');
+const gameplay=fs.readFileSync('mallorca-mobile/adventure-0210/gameplay-plugin.js','utf8');
 const core=fs.readFileSync('mallorca-mobile/adventure-0210/planet-0270/cube-sphere-core.mjs','utf8');
 const prepare=fs.readFileSync('world-generator/scripts/prepare-world-0261.mjs','utf8');
 const validateWorkflow=fs.readFileSync('.github/workflows/validate-waft-regions.yml','utf8');
@@ -18,6 +19,8 @@ need(index.includes("perspective(projection,Math.PI/3,canvas.width/canvas.height
 need(!index.includes('source=source.replace("const center=[target[0],target[1]+.18+lookUpLift,target[2]];"'),'automatic planet-centre camera override is still active');
 need(index.includes('boosted?348:312')&&index.includes('inputLength>.93?276:inputLength>.70?228:180'),'experimental vulture speed is not exactly 3x');
 need(index.includes('cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:'),'camera pitch telemetry is missing');
+need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textContent"),'regional HUD can still overwrite the planet telemetry');
+need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update"),'regional building streaming still runs during planetary flight');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
 need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=6')&&runtime.includes('STATIC_REFINEMENT_ZONES=Object.freeze'),'fixed planet geometry contract is missing');
 need(runtime.includes('STATIC_TILE_LIMIT=720')&&runtime.includes('STATIC_BOOT_BATCH=8'),'static planet memory or boot budget is missing');
@@ -27,6 +30,8 @@ need(!runtime.includes('processBuildQueue')&&!runtime.includes('nearestReadyAnce
 need(runtime.includes("SAVE_KEY='waft.adventure.0210.planet-location.v1'")&&runtime.includes('saveGeographicPosition'),'geographic save contract is missing');
 need(runtime.includes('uOrigin')&&runtime.includes('tangentFrame(state.originGeo.lat,state.originGeo.lon)'),'ECEF-to-local tangent transform is missing');
 need(runtime.includes('recenterAtCurrentPosition:()=>maybeRecenter(true)'),'floating-origin identity test hook is missing');
+need(runtime.includes('rebaseRegionalEntities')&&runtime.includes('localFromGeoAt'),'regional entities are not preserved across floating-origin shifts');
+need(gameplay.includes('planetEntityInRange')&&gameplay.includes('regionalEntitiesDrawn'),'distant regional entity culling is missing');
 need(runtime.includes('surfaceHash')&&runtime.includes('terrainFingerprint')&&runtime.includes('anchorTileSnapshot'),'terrain topology fingerprint is missing');
 need(runtime.includes('parseLandMask')&&runtime.includes('vectorLand')&&runtime.includes("coastlineScale:'50m'"),'vector coastline runtime is missing');
 need(landMask.subarray(0,8).toString()==='WAFTLND1'&&landMask.readUInt32LE(12)===1421&&landMask.readUInt32LE(20)===60669,'50m land-mask header is invalid');

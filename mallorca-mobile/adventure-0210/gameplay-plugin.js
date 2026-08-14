@@ -38,6 +38,8 @@
 
   const plugin = window.WAFTAdventurePlugin = {
     hideBaseCharacter: true,
+    rebaseRegionalEntities(project) { renderer.rebaseRegionalEntities(project); },
+    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0 }; },
     afterWorldDraw(now, eye, pv) {
       if (!game.initialized || !renderer.ready) return;
       updateFrame(now);
@@ -581,10 +583,21 @@
     showToast('Has desmontado');
   }
 
+  function planetEntityInRange(entity, playerPosition, radius) {
+    if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__) return true;
+    if (!entity || !playerPosition) return false;
+    return Math.hypot((Number(entity.x)||0)-playerPosition.x,(Number(entity.z)||0)-playerPosition.z) <= radius;
+  }
+
   function updateAnimals(dt, now) {
     const api = runtime();
+    const playerPosition = api?.getState?.()?.position;
     for (const animal of game.animals) {
       if (animal.hidden) continue;
+      // Regional fauna is deliberately local. Once the planet's floating origin has
+      // moved on, neither animate nor sample terrain for entities hundreds of units
+      // behind the player.
+      if (!planetEntityInRange(animal, playerPosition, 220)) continue;
       if (animal.fleeing) {
         animal.fleeTime += dt;
         animal.yaw += Math.sin(now * .002) * .025;
@@ -717,6 +730,7 @@
 
   const renderer = {
     ready: false,
+    regionalEntitiesDrawn: 0,
     canvas: null,
     gl: null,
     program: null,
@@ -751,6 +765,25 @@
       const height = Math.max(1, Math.floor(innerHeight*dpr));
       if (this.canvas.width !== width || this.canvas.height !== height) { this.canvas.width=width;this.canvas.height=height;this.gl.viewport(0,0,width,height); }
     },
+    rebaseRegionalEntities(project) {
+      if (typeof project !== 'function') return;
+      const entities = [...game.animals, game.npc, ...game.checkpoints].filter(Boolean);
+      for (const entity of entities) {
+        if (!Number.isFinite(Number(entity.x)) || !Number.isFinite(Number(entity.z))) continue;
+        const angleKey = Number.isFinite(Number(entity.yaw)) ? 'yaw' : Number.isFinite(Number(entity.heading)) ? 'heading' : null;
+        const next = project(Number(entity.x), Number(entity.z), angleKey ? Number(entity[angleKey]) : null);
+        if (!next || !Number.isFinite(next.x) || !Number.isFinite(next.z)) continue;
+        entity.x = next.x; entity.z = next.z;
+        if (angleKey && Number.isFinite(next.heading)) entity[angleKey] = next.heading;
+        if (Number.isFinite(Number(entity.originX)) && Number.isFinite(Number(entity.originZ))) {
+          const nextOrigin = project(Number(entity.originX), Number(entity.originZ), null);
+          if (nextOrigin && Number.isFinite(nextOrigin.x) && Number.isFinite(nextOrigin.z)) {
+            entity.originX = nextOrigin.x; entity.originZ = nextOrigin.z;
+          }
+        }
+      }
+      game.previousPlayer = null;
+    },
     render(now, eye, pv) {
       const gl = this.gl;
       const api = runtime();
@@ -760,8 +793,11 @@
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
       gl.useProgram(this.program); gl.uniformMatrix4fv(this.uniforms.pv,false,pv); gl.uniform3f(this.uniforms.camera,eye[0],eye[1],eye[2]);
       drawCheckpointRoute(this);
-      for (const animal of game.animals) if (!animal.hidden) drawAnimal(this, animal, now);
-      if (game.npc) drawNpc(this, game.npc, now);
+      const visibleAnimals = game.animals.filter(animal => !animal.hidden && planetEntityInRange(animal, player.position, 180));
+      const visibleNpc = game.npc && planetEntityInRange(game.npc, player.position, 180) ? game.npc : null;
+      this.regionalEntitiesDrawn = visibleAnimals.length + (visibleNpc ? 1 : 0);
+      for (const animal of visibleAnimals) drawAnimal(this, animal, now);
+      if (visibleNpc) drawNpc(this, visibleNpc, now);
       const mounted = game.animals.find(item => item.id === game.mountedAnimalId);
       if (mounted) {
         const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing };

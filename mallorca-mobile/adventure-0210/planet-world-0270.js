@@ -87,12 +87,13 @@
     if(distanceUnits<1e-8)return{...state.originGeo};
     return destination(state.originGeo,Math.atan2(Number(x)||0,-(Number(z)||0)),distanceUnits/U);
   };
-  const localFromGeo=(lat,lon)=>{
+  const localFromGeoAt=(origin,lat,lon)=>{
     const geo=normalizeGeo(lat,lon);
-    const distance=haversineKm(state.originGeo,geo)*U;
-    const direction=bearing(state.originGeo,geo);
+    const distance=haversineKm(origin,geo)*U;
+    const direction=bearing(origin,geo);
     return{x:Math.sin(direction)*distance,z:-Math.cos(direction)*distance};
   };
+  const localFromGeo=(lat,lon)=>localFromGeoAt(state.originGeo,lat,lon);
 
   const loadBuffer=path=>fetch(new URL(path,location.href),{cache:'force-cache'}).then(response=>{
     if(!response.ok)throw new Error(`${response.status} ${path}`);
@@ -313,6 +314,17 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(!position||(!force&&Math.hypot(position.x,position.z)<RECENTER_DISTANCE))return false;
     const old={...state.originGeo},next=geoFromLocal(position.x,position.z),heading=Number(runtime.playerFacing)||0;
     const forward=geoFromLocal(position.x+Math.sin(heading)*2,position.z+Math.cos(heading)*2),nextHeading=Math.atan2(Math.sin(Math.PI-bearing(next,forward)),Math.cos(Math.PI-bearing(next,forward)));
+    // Adventure fauna, NPCs and route points live in the regional tangent plane. Reproject
+    // them before changing that plane so cylinders cannot stretch across the screen and
+    // nearby content keeps the same geographic position after a floating-origin shift.
+    plugin.rebaseRegionalEntities?.((x,z,yaw)=>{
+      const geo=geoFromLocal(x,z),local=localFromGeoAt(next,geo.lat,geo.lon);
+      if(Number.isFinite(yaw)){
+        const aheadGeo=geoFromLocal(x+Math.sin(yaw)*2,z+Math.cos(yaw)*2),ahead=localFromGeoAt(next,aheadGeo.lat,aheadGeo.lon);
+        local.heading=Math.atan2(ahead.x-local.x,ahead.z-local.z);
+      }
+      return local;
+    });
     state.originGeo=next;
     const lonJump=Math.abs(wrapLon(next.lon-old.lon));
     if(lonJump>90&&Math.abs(old.lat)>70&&Math.abs(next.lat)>70)state.poleCrossings++;
