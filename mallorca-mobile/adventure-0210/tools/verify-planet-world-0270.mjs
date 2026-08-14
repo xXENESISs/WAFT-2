@@ -34,6 +34,7 @@ const frameTrace=()=>page.evaluate(()=>{
   const percentile=p=>values[Math.min(values.length-1,Math.floor(values.length*p))]||0;
   return{samples:values.length,p50:percentile(.50),p95:percentile(.95),p99:percentile(.99),max:values.at(-1)||0,over100:values.filter(value=>value>100).length};
 });
+const orientationState=()=>page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw,originShifts:world.getState().floatingOriginShifts};});
 const relocate=async(lat,lon,y=55)=>{
   await page.evaluate(({lat,lon,y})=>{const point=WAFTPlanetWorld0270.worldFromGeo(lat,lon);WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(point.x,point.z,y);WAFTPlanetWorld0270.refreshSelection();},{lat,lon,y});
   await page.waitForTimeout(1200);
@@ -73,12 +74,18 @@ try{
   await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();WAFTRegionRuntime.setRegionalPosition(180,0,runtime.position.y);WAFTPlanetWorld0270.refreshSelection();});
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
   const beforeRecenter=await state();
+  const beforeRecenterOrientation=await orientationState();
   const recentered=await page.evaluate(()=>WAFTPlanetWorld0270.recenterAtCurrentPosition());need(recentered,'forced floating-origin recenter did not run');
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},beforeRecenter.lodUpdates,{timeout:90000});
   const afterRecenter=await state();
+  const afterRecenterOrientation=await orientationState();
   need(beforeRecenter.anchorTile?.key===afterRecenter.anchorTile?.key,`floating-origin shift changed anchor tile ${beforeRecenter.anchorTile?.key} -> ${afterRecenter.anchorTile?.key}`);
   need(beforeRecenter.anchorTile?.surfaceHash&&beforeRecenter.anchorTile.surfaceHash===afterRecenter.anchorTile?.surfaceHash,`floating-origin shift changed local terrain topology ${JSON.stringify(beforeRecenter.anchorTile)} -> ${JSON.stringify(afterRecenter.anchorTile)}`);
   need(Math.abs(beforeRecenter.anchorTile.lat-afterRecenter.anchorTile.lat)<1e-8&&Math.abs(beforeRecenter.anchorTile.lon-afterRecenter.anchorTile.lon)<1e-8,'floating-origin shift changed geographic position');
+  const recenterCourseDelta=Math.atan2(Math.sin(afterRecenterOrientation.course-beforeRecenterOrientation.course),Math.cos(afterRecenterOrientation.course-beforeRecenterOrientation.course));
+  const recenterCameraDelta=Math.atan2(Math.sin(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView),Math.cos(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView));
+  need(Math.abs(recenterCourseDelta)<.003,`floating-origin shift changed geographic course by ${recenterCourseDelta}`);
+  need(Math.abs(recenterCameraDelta)<.003,`floating-origin shift changed bird/camera alignment by ${recenterCameraDelta}`);
 
   const bermuda=await page.evaluate(()=>{const world=WAFTPlanetWorld0270,island=world.worldFromGeo(32.3,-64.75),ocean=world.worldFromGeo(32.3,-65);return{island:world.sampleSurface(island.x,island.z),ocean:world.sampleSurface(ocean.x,ocean.z)};});
   need(bermuda.island.land&&!bermuda.ocean.land,`50m island coastline failed ${JSON.stringify(bermuda)}`);
@@ -95,17 +102,16 @@ try{
   });
   await page.waitForTimeout(300);
   await startFrameTrace();
-  const flightOrientationBefore=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw};});
+  const flightOrientationBefore=await orientationState();
   const flapButton=page.locator('#waftJump');
   for(let flap=0;flap<4;flap++){await flapButton.click({timeout:10000});await page.waitForTimeout(320);}
   await page.waitForTimeout(450);
-  const fastFlight=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),worldApi=WAFTPlanetWorld0270,geo=worldApi.geoFromWorld(runtime.position.x,runtime.position.z),ahead=worldApi.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{runtime,world:worldApi.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId,course,relativeView:runtime.playerFacing-runtime.cameraYaw};});
+  const fastFlight=await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();return{runtime,world:WAFTPlanetWorld0270.getState(),mount:window.__WAFT_INTERNAL_GAME__?.mountedAnimalId,relativeView:runtime.playerFacing-runtime.cameraYaw};});
   need(fastFlight.mount==='iberia-bearded-vulture','real mounted-flight state was lost');
   need(Math.abs(fastFlight.runtime.adventureCurrentSpeed-276)<1,`vulture speed is not 3x ${fastFlight.runtime.adventureCurrentSpeed}`);
-  const courseDelta=Math.atan2(Math.sin(fastFlight.course-flightOrientationBefore.course),Math.cos(fastFlight.course-flightOrientationBefore.course));
-  need(Math.abs(courseDelta)<.03,`floating origin changed geographic flight direction by ${courseDelta}`);
   const relativeCameraDelta=Math.atan2(Math.sin(fastFlight.relativeView-flightOrientationBefore.relativeView),Math.cos(fastFlight.relativeView-flightOrientationBefore.relativeView));
   need(Math.abs(relativeCameraDelta)<.01,`floating origin changed bird/camera alignment by ${relativeCameraDelta}`);
+  need(fastFlight.world.floatingOriginShifts>flightOrientationBefore.originShifts,`real flight did not cross a floating origin ${flightOrientationBefore.originShifts} -> ${fastFlight.world.floatingOriginShifts}`);
   need(fastFlight.world.cacheTiles<=fastFlight.world.cacheLimit,`flight cache overflow ${fastFlight.world.cacheTiles}/${fastFlight.world.cacheLimit}`);
 
   const altitudeProbe=await page.evaluate(async()=>{
@@ -162,5 +168,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:'0.27.1-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles,cacheLimit:base.cacheLimit,selectionProfile:base.selectionProfile},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,courseDelta,relativeCameraDelta,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:'0.27.1-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,cacheTiles:base.cacheTiles,cacheLimit:base.cacheLimit,selectionProfile:base.selectionProfile},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}
