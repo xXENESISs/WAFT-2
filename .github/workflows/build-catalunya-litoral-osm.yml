@@ -3,12 +3,10 @@ name: Build Catalunya litoral OpenStreetMap
 on:
   push:
     paths:
-      - .github/workflows/build-catalunya-litoral-osm.yml
       - world-generator/sources/catalunya-litoral/copernicus-dem-glo30.bin
       - world-generator/sources/catalunya-litoral/esa-worldcover-2021-v200.bin
       - world-generator/configs/source-registry.json
       - world-generator/scripts/import-openstreetmap-v2.py
-      - world-generator/scripts/import-openstreetmap.py
       - world-generator/scripts/apply-openstreetmap.mjs
       - world-generator/scripts/apply-openstreetmap-v2.mjs
       - world-generator/scripts/compact-region-package.mjs
