@@ -1,6 +1,17 @@
-name: Verify WAFT world 0.27.0 experimental planet
+name: Verify WAFT world 0.27.1 experimental planet
 
 on:
+  pull_request:
+    paths:
+      - .github/workflows/build-world-0270-experimental.yml
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/planet-world-0270.js
+      - mallorca-mobile/adventure-0210/planet-0270/**
+      - mallorca-mobile/adventure-0210/verify-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - world-generator/scripts/prepare-world-0261.mjs
+      - world-generator/scripts/build-planet-land-mask-0270.mjs
   push:
     branches:
       - main
@@ -32,7 +43,7 @@ jobs:
       - name: Check out exact branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -77,7 +88,7 @@ jobs:
             sleep 5
           done
           if [ "$ready" != true ]; then
-            echo "GitHub Pages did not expose the 0.27.0 entry point in time." >&2
+            echo "GitHub Pages did not expose the 0.27.1 entry point in time." >&2
             exit 1
           fi
           node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"

@@ -6,7 +6,7 @@
   window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;
   window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
 
-  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.27.0';
+  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.27.1';
   const core=await import(`./planet-0270/cube-sphere-core.mjs?v=${encodeURIComponent(scriptVersion)}`);
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTAdventurePlugin||!document.querySelector('canvas'));i++)await wait(40);
@@ -14,7 +14,7 @@
   const plugin=window.WAFTAdventurePlugin;
   const canvas=document.querySelector('canvas');
   const gl=canvas?.getContext('webgl2');
-  if(!api||!plugin||!gl)throw new Error('WAFT 0.27.0 experimental planet runtime unavailable');
+  if(!api||!plugin||!gl)throw new Error('WAFT 0.27.1 experimental planet runtime unavailable');
 
   const U=.33;
   const VERTICAL=.0028;
@@ -26,12 +26,22 @@
   const TILE_RESOLUTION=17;
   const MIN_LEVEL=3;
   const MAX_LEVEL=8;
-  const TARGET_ERROR_PIXELS=28;
   const RECENTER_DISTANCE=240;
-  const CACHE_LIMIT=512;
-  const BUILDS_PER_FRAME=3;
-  const PREFETCH_TILE_LIMIT=128;
-  const SKIRT_DEPTH=.9;
+  const CACHE_LIMIT=384;
+  const BUILDS_PER_FRAME=1;
+  const BUILD_TIME_BUDGET_MS=3.5;
+  const PREFETCH_TILE_LIMIT=24;
+  const SKIRT_DEPTH=.22;
+  // Refinement is tied to fixed geographic rings, never to flap altitude or camera rotation.
+  // Only the outer level-3 horizon expands while climbing, so nearby physical terrain cannot
+  // swap between coarse and detailed shapes merely because the bird moves vertically.
+  const DETAIL_RINGS=Object.freeze([
+    Object.freeze({radians:.008,level:8}),
+    Object.freeze({radians:.020,level:7}),
+    Object.freeze({radians:.050,level:6}),
+    Object.freeze({radians:.110,level:5}),
+    Object.freeze({radians:.240,level:4})
+  ]);
   const SAVE_KEY='waft.adventure.0210.planet-location.v1';
   const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
   const wrapLon=lon=>((Number(lon)+180)%360+360)%360-180;
@@ -73,7 +83,7 @@
     ready:false,phase:'boot',error:null,originGeo:restoredLocation?normalizeGeo(restoredLocation.lat,restoredLocation.lon):legacyOrigin,
     terrain:null,cover:null,europeTerrain:null,europeCover:null,landMask:null,cache:new Map(),desired:new Map(),prefetch:new Map(),queue:[],queued:new Set(),renderKeys:[],
     drawFrames:0,visibleTriangles:0,tileBuilds:0,tileEvictions:0,lodUpdates:0,floatingOriginShifts:0,poleCrossings:0,datelineCrossings:0,
-    speedEstimate:0,prefetchLead:180,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0
+    speedEstimate:0,prefetchLead:180,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0,lastBuildMs:0,maxBuildMs:0,maxCacheTiles:0
   };
 
   const geoFromLocal=(x,z)=>{
@@ -248,12 +258,13 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     state.queued.add(key);state.queue.push({key,tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},prefetch});
   }
   function processBuildQueue(){
-    let built=0;
-    while(built<BUILDS_PER_FRAME&&state.queue.length){
+    const started=performance.now();let built=0;
+    while(built<BUILDS_PER_FRAME&&state.queue.length&&performance.now()-started<BUILD_TIME_BUDGET_MS){
       const item=state.queue.shift();state.queued.delete(item.key);
       if(state.cache.has(item.key))continue;
       const mesh=createTileMesh(item.tile);state.cache.set(item.key,mesh);state.tileBuilds++;built++;
     }
+    state.lastBuildMs=performance.now()-started;state.maxBuildMs=Math.max(state.maxBuildMs,state.lastBuildMs);state.maxCacheTiles=Math.max(state.maxCacheTiles,state.cache.size);
   }
   function nearestReadyAncestor(tile){
     let current={face:tile.face,level:tile.level,x:tile.x,y:tile.y};
@@ -277,22 +288,46 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
   }
   function evictCache(){
     if(state.cache.size<=CACHE_LIMIT)return;
-    const protectedKeys=new Set([...state.renderKeys,...state.desired.keys(),...state.prefetch.keys()]);
-    const candidates=[...state.cache.values()].filter(mesh=>mesh.tile.level>0&&!protectedKeys.has(mesh.key)).sort((a,b)=>a.lastUsed-b.lastUsed);
-    while(state.cache.size>CACHE_LIMIT&&candidates.length){const mesh=candidates.shift();state.cache.delete(mesh.key);disposeMesh(mesh);state.tileEvictions++;}
+    const renderKeys=new Set(state.renderKeys),desiredKeys=new Set(state.desired.keys());
+    const remove=meshes=>{
+      for(const mesh of meshes.sort((a,b)=>a.lastUsed-b.lastUsed||b.tile.level-a.tile.level||a.key.localeCompare(b.key))){
+        if(state.cache.size<=CACHE_LIMIT)break;
+        state.cache.delete(mesh.key);disposeMesh(mesh);state.tileEvictions++;
+      }
+    };
+    // Old and speculative tiles go first. Desired resident tiles are retained whenever possible;
+    // render tiles and the six roots are never evicted, so the planet cannot disappear mid-frame.
+    remove([...state.cache.values()].filter(mesh=>mesh.tile.level>0&&!renderKeys.has(mesh.key)&&!desiredKeys.has(mesh.key)));
+    if(state.cache.size>CACHE_LIMIT)remove([...state.cache.values()].filter(mesh=>mesh.tile.level>0&&!renderKeys.has(mesh.key)));
+    state.maxCacheTiles=Math.max(state.maxCacheTiles,state.cache.size);
   }
 
   function updateSpeed(now){
     const runtime=api.getState?.(),position=runtime?.position;if(!position)return;
     const geo=geoFromLocal(position.x,position.z),commanded=Math.abs(Number(runtime.adventureCurrentSpeed)||0);
     if(state.lastGeo){
-      const dt=Math.max(.001,(now-state.lastFrameAt)/1000),instant=clamp(haversineKm(state.lastGeo,geo)*U/dt,0,180),target=Math.max(commanded,instant);
+      const dt=Math.max(.001,(now-state.lastFrameAt)/1000),instant=clamp(haversineKm(state.lastGeo,geo)*U/dt,0,420),target=Math.max(commanded,instant);
       state.speedEstimate+= (target-state.speedEstimate)*(1-Math.exp(-dt*(target>state.speedEstimate?10:3.5)));
     }else state.speedEstimate=commanded;
-    state.lastGeo=geo;state.lastFrameAt=now;state.prefetchLead=clamp(Math.max(commanded,state.speedEstimate)*6,180,700);
+    state.lastGeo=geo;state.lastFrameAt=now;state.prefetchLead=clamp(Math.max(commanded,state.speedEstimate)*4.5,180,900);
   }
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  const detailLevelForDistance=angularDistance=>{
+    for(const ring of DETAIL_RINGS)if(angularDistance<=ring.radians)return ring.level;
+    return MIN_LEVEL;
+  };
   function selectionFor(geo,altitude){
-    return core.selectVisibleTiles({cameraDirection:core.latLonToUnit(geo.lat,geo.lon),radius:EARTH_U,altitude:Math.max(.8,altitude),minLevel:MIN_LEVEL,maxLevel:MAX_LEVEL,resolution:TILE_RESOLUTION,viewportHeight:canvas.height||720,fovY:Math.PI/3,targetPixels:TARGET_ERROR_PIXELS}).tiles;
+    const cameraDirection=core.latLonToUnit(geo.lat,geo.lon),safeAltitude=Math.max(.8,Number(altitude)||0),horizonAngle=Math.acos(clamp(EARTH_U/(EARTH_U+safeAltitude),-1,1)),selected=[];
+    const visit=tile=>{
+      const center=core.tileCenterUnit(tile),angularRadius=core.tileAngularRadius(tile),angularDistance=Math.acos(clamp(dot(cameraDirection,center),-1,1));
+      if(angularDistance>horizonAngle+angularRadius+.015)return;
+      const targetLevel=detailLevelForDistance(Math.max(0,angularDistance-angularRadius));
+      if(tile.level<MIN_LEVEL||(tile.level<targetLevel&&tile.level<MAX_LEVEL)){for(const child of core.childTiles(tile))visit(child);return;}
+      selected.push({...tile,angularDistance,angularRadius});
+    };
+    for(let face=0;face<core.FACE_NAMES.length;face++)visit({face,level:0,x:0,y:0});
+    selected.sort((a,b)=>a.level-b.level||a.face-b.face||a.y-b.y||a.x-b.x);
+    return selected;
   }
   function updateSelection(now,force=false){
     if(!force&&now-state.lastSelectionAt<240)return;
@@ -302,7 +337,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     const predicted=destination(geo,Math.PI-heading,state.prefetchLead/U),predictedTiles=selectionFor(predicted,altitude);
     state.desired=new Map(visible.map(tile=>[core.tileKey(tile),tile]));
     const predictedMaxLevel=predictedTiles.reduce((maximum,tile)=>Math.max(maximum,tile.level),0);
-    const prefetch=predictedTiles.filter(tile=>tile.level>=Math.max(2,predictedMaxLevel-1)&&!state.desired.has(core.tileKey(tile))).sort((a,b)=>a.angularDistance-b.angularDistance||b.level-a.level||core.tileKey(a).localeCompare(core.tileKey(b))).slice(0,PREFETCH_TILE_LIMIT);
+    const prefetch=predictedTiles.filter(tile=>tile.level>=Math.max(MIN_LEVEL,predictedMaxLevel-2)&&!state.desired.has(core.tileKey(tile))).sort((a,b)=>a.angularDistance-b.angularDistance||b.level-a.level||core.tileKey(a).localeCompare(core.tileKey(b))).slice(0,PREFETCH_TILE_LIMIT);
     state.prefetch=new Map(prefetch.map(tile=>[core.tileKey(tile),tile]));
     const wanted=new Set([...state.desired.keys(),...state.prefetch.keys()]);
     state.queue=state.queue.filter(item=>wanted.has(item.key));state.queued=new Set(state.queue.map(item=>item.key));
@@ -351,7 +386,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(!state.ready)return;
     const runtime=api.getState?.(),position=runtime?.position,geo=position?geoFromLocal(position.x,position.z):state.originGeo;
     const title=document.getElementById('hudTitle'),stats=document.getElementById('hudStats'),coords=document.getElementById('waftIberiaCoords'),objective=document.getElementById('waftObjective');
-    if(title)title.textContent='MUNDO · PLANETA 0.27.0 EXP';
+    if(title)title.textContent='MUNDO · PLANETA 0.27.1 EXP';
     if(stats)stats.textContent=`CUBE-SPHERE · ${Math.round(state.visibleTriangles/1000)}k tri · ${state.renderKeys.length}/${state.desired.size} tiles · caché ${state.cache.size}`;
     if(coords)coords.textContent=`ALT ${Math.round((position?.y||0)/VERTICAL)} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;
     if(objective)objective.textContent='Renderer planetario experimental · ALETEAR para subir · PICADO ↓ para descender.';
@@ -385,7 +420,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,cacheLimit:CACHE_LIMIT,buildQueue:state.queue.length,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionProfile:'stable-geographic-rings-v1',detailRings:DETAIL_RINGS.map(ring=>({...ring}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true)};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{

@@ -1,4 +1,4 @@
-# WAFT planet renderer 0.27.0 (experimental)
+# WAFT planet renderer 0.27.1 (experimental)
 
 This directory contains the planet-fixed foundation that will replace the player-centred terrain patch after it has passed visual and mobile validation.
 
@@ -9,8 +9,12 @@ This directory contains the planet-fixed foundation that will replace the player
 - All six faces use one cube-sphere hierarchy from ground level to orbit.
 - GPU positions are planet-fixed ECEF values. Floating-origin changes update the tangent-frame uniforms, not tile topology.
 - Missing child tiles render through an already-resident parent. A partial child set never leaves a hole.
+- LOD refinement follows fixed geographic distance rings. Flapping and camera rotation cannot change nearby tile levels; climbing only reveals additional coarse horizon tiles.
+- The resident cache is hard-limited to 384 tiles, speculative prefetch to 24 tiles and foreground construction to one tile per frame.
 - A pinned Natural Earth 1:50m land mask defines coast topology; raster terrain supplies height and cover without deciding the shoreline.
 - Orbital views keep at least quadtree level 3 resident, preserving recognizable coast silhouettes within the mobile triangle budget.
+- The high-altitude view remains a coherent third-person camera with a fixed near plane; no automatic Earth-centre target can rotate or clip the mounted bird.
+- Experimental bearded-vulture forward, coast and dive speeds are exactly three times the 0.27.0 first-delivery values.
 - The public 0.26.1 renderer remains the default until the experimental renderer passes stability and mobile budgets.
 
 Launch the experimental renderer with:

@@ -11,12 +11,16 @@ const buildRegionsWorkflow=fs.readFileSync('.github/workflows/build-waft-regions
 const landMask=fs.readFileSync('mallorca-mobile/adventure-0210/planet-0270/land-50m.bin');
 const landMetadata=JSON.parse(fs.readFileSync('mallorca-mobile/adventure-0210/planet-0270/land-50m.meta.json','utf8'));
 
-need(index.includes("params.get('renderer')==='0270'"),'0.27.0 experimental flag is missing');
+need(index.includes("params.get('renderer')==='0270'"),'0.27.1 experimental flag is missing');
 need(index.includes("experimentalPlanet?'adventure-0210/planet-world-0270.js':'adventure-0210/spherical-world-0261.js'"),'0.26.1 is not preserved as the default renderer');
-need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.27.0-experimental'"),'experimental build identity is missing');
-need(index.includes('planetOrbitBlend')&&index.includes('-2102.432904*planetOrbitBlend'),'orbital camera transition is missing');
+need(index.includes("window.__WAFT_ADVENTURE_BUILD__='0.27.1-experimental'"),'experimental build identity is missing');
+need(index.includes("perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);"),'stable high-altitude camera projection is missing');
+need(!index.includes('source=source.replace("const center=[target[0],target[1]+.18+lookUpLift,target[2]];"'),'automatic planet-centre camera override is still active');
+need(index.includes('boosted?348:312')&&index.includes('inputLength>.93?276:inputLength>.70?228:180'),'experimental vulture speed is not exactly 3x');
+need(index.includes('cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:'),'camera pitch telemetry is missing');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
-need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=8')&&runtime.includes('TARGET_ERROR_PIXELS=28'),'tile geometry or LOD budget contract is missing');
+need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=8')&&runtime.includes('DETAIL_RINGS=Object.freeze'),'tile geometry or stable geographic LOD contract is missing');
+need(runtime.includes('CACHE_LIMIT=384')&&runtime.includes('BUILDS_PER_FRAME=1')&&runtime.includes('PREFETCH_TILE_LIMIT=24'),'frame or cache budget contract is missing');
 need(runtime.includes('cache:new Map()')&&runtime.includes('nearestReadyAncestor'),'persistent tile cache or parent fallback is missing');
 need(runtime.includes('state.prefetchLead')&&runtime.includes('predicted=destination'),'directional tile prefetch is missing');
 need(runtime.includes("SAVE_KEY='waft.adventure.0210.planet-location.v1'")&&runtime.includes('saveGeographicPosition'),'geographic save contract is missing');
@@ -27,8 +31,8 @@ need(runtime.includes('parseLandMask')&&runtime.includes('vectorLand')&&runtime.
 need(landMask.subarray(0,8).toString()==='WAFTLND1'&&landMask.readUInt32LE(12)===1421&&landMask.readUInt32LE(20)===60669,'50m land-mask header is invalid');
 need(landMetadata.schema==='waft-land-polygons-v1'&&landMetadata.source?.blob==='c412c52b5286ba727dcb7047ecd6080bcbeb8298','50m land-mask provenance is missing');
 need(crypto.createHash('sha256').update(landMask).digest('hex')===landMetadata.sha256,'50m land-mask checksum does not match metadata');
-need(!runtime.includes('age<2600'),'time-based terrain rebuild leaked into 0.27.0');
-need(!runtime.includes('lastBuildHeading'),'heading-based terrain rebuild leaked into 0.27.0');
+need(!runtime.includes('age<2600'),'time-based terrain rebuild leaked into 0.27.1');
+need(!runtime.includes('lastBuildHeading'),'heading-based terrain rebuild leaked into 0.27.1');
 need(core.includes("FACE_NAMES = Object.freeze(['px', 'nx', 'py', 'ny', 'pz', 'nz'])"),'six cube faces are missing');
 need(core.includes('selectVisibleTiles')&&core.includes('projectedError'),'screen-space LOD selection is missing');
 need(prepare.includes("const experimentalPlanet=params.get('renderer')==='0270';")&&prepare.includes("const worldRuntime=experimentalPlanet?"),'0.26.1 prepare would erase the experimental renderer');
@@ -37,11 +41,14 @@ need(/push:\n\s+branches:\n\s+- main\n\s+paths:/.test(buildRegionsWorkflow),'reg
 
 console.log(JSON.stringify({
   valid:true,
-  version:'0.27.0-experimental',
+  version:'0.27.1-experimental',
   defaultRenderer:'0.26.1',
   experimentalRenderer:'cube-sphere-quadtree',
   planetFixedTiles:true,
   geographicSave:true,
   timedRebuild:false,
-  headingRebuild:false
+  headingRebuild:false,
+  stableGeographicLod:true,
+  vultureSpeedMultiplier:3,
+  cacheLimit:384
 },null,2));
