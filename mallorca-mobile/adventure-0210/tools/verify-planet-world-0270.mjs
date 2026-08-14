@@ -54,7 +54,7 @@ try{
   need(base.cacheLimit===720&&base.staticTiles===705,`unexpected static planet budget ${JSON.stringify(base)}`);
   need(base.cacheTiles===base.staticTiles&&base.tileBuildsDuringGameplay===0&&base.tileEvictions===0,`planet was not fully resident before gameplay ${JSON.stringify(base)}`);
   need(base.coastlineScale==='50m'&&base.coastlinePolygons===1421,`vector coastline unavailable ${JSON.stringify({scale:base.coastlineScale,polygons:base.coastlinePolygons})}`);
-  need(base.visibleTiles>0&&base.atlasTriangles>0,'planet has no visible geometry');
+  need(base.visibleTiles>0&&base.atlasTriangles>0,`planet has no visible geometry: ${JSON.stringify({base,pageErrors:errors,console:consoleLines})}`);
   need(base.residentDesiredTiles===base.desiredTiles&&base.renderTileKeys.length===base.desiredTiles,'initial planet coverage is incomplete');
   need(base.desiredTileKeys.length===new Set(base.desiredTileKeys).size,'duplicate planet tile IDs');
   const gameCanvas=page.locator('canvas').first();
