@@ -317,13 +317,19 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     return hash.toString(16).padStart(8,'0');
   }
 
+  function anchorTileSnapshot(){
+    const runtime=api.getState?.(),position=runtime?.position;if(!position)return null;
+    const geo=geoFromLocal(position.x,position.z),tile=core.tileContainingLatLon(geo.lat,geo.lon,MAX_LEVEL),key=core.tileKey(tile),mesh=state.cache.get(key);
+    return{key,surfaceHash:mesh?.surfaceHash||null,lat:geo.lat,lon:geo.lon};
+  }
+
   const compat={
     worldFromGeo:(lat,lon)=>localFromGeo(lat,lon),geoFromWorld:(x,z)=>geoFromLocal(x,z),sampleSurface,
     getState:()=>({ready:state.ready,phase:state.phase,activeRegion:'planet-world',renderMode:'cube-sphere-quadtree',prefetched:state.ready,atlasReady:state.ready,atlasTriangles:state.visibleTriangles,atlasDrawFrames:state.drawFrames,atlasVerticalScale:VERTICAL,geo:state.lastGeo,error:state.error,speedEstimate:state.speedEstimate,prefetchLead:state.prefetchLead,floatingOriginShifts:state.floatingOriginShifts,poleCrossings:state.poleCrossings,datelineCrossings:state.datelineCrossings,visibleTiles:state.renderKeys.length,desiredTiles:state.desired.size,cacheTiles:state.cache.size}),
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint()}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:[...state.prefetch.keys()].filter(key=>state.cache.has(key)).length,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot()}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true)};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{

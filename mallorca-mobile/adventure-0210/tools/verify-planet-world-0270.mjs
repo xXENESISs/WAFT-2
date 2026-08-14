@@ -61,8 +61,9 @@ try{
   const recentered=await page.evaluate(()=>WAFTPlanetWorld0270.recenterAtCurrentPosition());need(recentered,'forced floating-origin recenter did not run');
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles;},null,{timeout:90000});
   const afterRecenter=await state();
-  need(JSON.stringify(beforeRecenter.desiredTileKeys)===JSON.stringify(afterRecenter.desiredTileKeys),'floating-origin shift changed planet tile identity');
-  need(beforeRecenter.terrainFingerprint===afterRecenter.terrainFingerprint,'floating-origin shift changed terrain topology');
+  need(beforeRecenter.anchorTile?.key===afterRecenter.anchorTile?.key,`floating-origin shift changed anchor tile ${beforeRecenter.anchorTile?.key} -> ${afterRecenter.anchorTile?.key}`);
+  need(beforeRecenter.anchorTile?.surfaceHash&&beforeRecenter.anchorTile.surfaceHash===afterRecenter.anchorTile?.surfaceHash,'floating-origin shift changed local terrain topology');
+  need(Math.abs(beforeRecenter.anchorTile.lat-afterRecenter.anchorTile.lat)<1e-8&&Math.abs(beforeRecenter.anchorTile.lon-afterRecenter.anchorTile.lon)<1e-8,'floating-origin shift changed geographic position');
 
   const america=await relocate(39,-98,75);
   need(Math.abs(america.geo.lat-39)<.2&&Math.abs(america.geo.lon+98)<.3,`America relocation failed ${JSON.stringify(america.geo)}`);

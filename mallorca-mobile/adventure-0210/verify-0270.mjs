@@ -19,7 +19,7 @@ need(runtime.includes('state.prefetchLead')&&runtime.includes('predicted=destina
 need(runtime.includes("SAVE_KEY='waft.adventure.0210.planet-location.v1'")&&runtime.includes('saveGeographicPosition'),'geographic save contract is missing');
 need(runtime.includes('uOrigin')&&runtime.includes('tangentFrame(state.originGeo.lat,state.originGeo.lon)'),'ECEF-to-local tangent transform is missing');
 need(runtime.includes('recenterAtCurrentPosition:()=>maybeRecenter(true)'),'floating-origin identity test hook is missing');
-need(runtime.includes('surfaceHash')&&runtime.includes('terrainFingerprint'),'terrain topology fingerprint is missing');
+need(runtime.includes('surfaceHash')&&runtime.includes('terrainFingerprint')&&runtime.includes('anchorTileSnapshot'),'terrain topology fingerprint is missing');
 need(!runtime.includes('age<2600'),'time-based terrain rebuild leaked into 0.27.0');
 need(!runtime.includes('lastBuildHeading'),'heading-based terrain rebuild leaked into 0.27.0');
 need(core.includes("FACE_NAMES = Object.freeze(['px', 'nx', 'py', 'ny', 'pz', 'nz'])"),'six cube faces are missing');
