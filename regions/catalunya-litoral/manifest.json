@@ -7,13 +7,28 @@
     "visibleObjects": 2800,
     "visibleTriangles": 480000
   },
+  "cartography": {
+    "attribution": "© OpenStreetMap contributors",
+    "dataset": "OpenStreetMap regional extract",
+    "distribution": "Geofabrik",
+    "license": "ODbL 1.0",
+    "osmTimestamp": "2026-08-02T20:21:48Z",
+    "pbfSha256": "318a5805be404c4a43f051c5e7c55760e606553f4545414f9e6501df03a1bda2",
+    "provider": "OpenStreetMap contributors",
+    "retrievedOn": "2026-08-03",
+    "snapshotSha256": "cb6726fa0ffbf4daeb56b0341916d7383d906bd936f71a2aeaab4dd1d9ab2b08",
+    "sourceUrl": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"
+  },
   "content": {
     "connections": 3,
     "entryPoints": 5,
     "faunaSpecies": 9,
-    "generatedBuildings": 0,
-    "landmarks": 9,
-    "settlements": 10
+    "generatedBuildings": 3534,
+    "hotels": 597,
+    "landmarks": 100,
+    "ports": 93,
+    "roads": 124461,
+    "settlements": 90
   },
   "deterministic": true,
   "files": [
@@ -28,24 +43,24 @@
       "sha256": "2519610dce15a6506ec5e2e22020d62f409440f261a3cb6bc8500caddd581f8b"
     },
     {
-      "bytes": 74277,
+      "bytes": 2928125,
       "path": "sectors.json",
-      "sha256": "ae4c3d1b66d1a33b2f4dc71a4752c6693344a284001bb6054ef43fa707d5415a"
+      "sha256": "1547bb9520e321bbb06d715b9b25ff62aa11d0f7e353bce076d8fb3d400b1ce4"
     },
     {
-      "bytes": 3075,
+      "bytes": 59474,
       "path": "settlements.json",
-      "sha256": "f1d14828a2c1be1a15061b299cac8ec9bfc3c8f66d3c747a26494e125ddf94f8"
+      "sha256": "c7ec17c6b77181c35ef50a512ec26b7a5d2f4320398255414ff8e25ce6aaabcc"
     },
     {
-      "bytes": 1690,
+      "bytes": 2549179,
       "path": "objects.json",
-      "sha256": "2318467ddb3f9c0306642d1cf39fc481434c55b08675b87876107320dd1b37a0"
+      "sha256": "dcd74f7e7457f8237473c8215ec01d78f0b245f2ddd052908b4c08358da2e984"
     },
     {
-      "bytes": 3931,
+      "bytes": 75958,
       "path": "landmarks.json",
-      "sha256": "fb7aaa74a3c2c8c1a7fa64e3439b2f6582d10bb4814361835d588785c0efd8ff"
+      "sha256": "f584832247c288beb14492d5a690e4c1281fb4d847ffd9b6a5a92f0607f8f235"
     },
     {
       "bytes": 10664,
@@ -53,13 +68,13 @@
       "sha256": "81206e7e1d40a37ed7c3896dbb920a6ed391af89c9cf0a15fcaf593473d4ee24"
     },
     {
-      "bytes": 2774,
+      "bytes": 44727538,
       "path": "routes.json",
-      "sha256": "54138fd053f4bbe58eac7809d1c0fe12baac14cd6854ec85dc528d980cd98ee6"
+      "sha256": "a2d356d65a138efe5235fac3844766d01ef83347e605230e57c941db14d52d05"
     }
   ],
   "formatVersion": 1,
-  "generationStage": "dem-worldcover-bootstrap",
+  "generationStage": "openstreetmap-physical-network",
   "generatorVersion": "0.2.0",
   "landcover": {
     "classDistribution": {
@@ -167,9 +182,12 @@
       ]
     }
   },
-  "packageBytesWithoutManifest": 686363,
+  "packageBytesWithoutManifest": 50940890,
+  "packageEncoding": {
+    "deterministic": true,
+    "json": "compact-utf8-v1"
+  },
   "pendingStages": [
-    "openstreetmap-settlements-buildings-and-routes",
     "wikidata-landmark-ranking",
     "gbif-fauna-candidates",
     "procedural-vegetation-and-buildings"
@@ -212,6 +230,11 @@
       "sha256": "e3d82f36f4192cc8562409c34b555d3f2bd84727dc9ac6783d55e9c07b400af6"
     },
     "generatorSourcesSha256": "360b90dcb55ee5e26af8ba291440c07db46646d96de92401d1771cb678b21d96",
+    "openStreetMapSnapshot": {
+      "metadataPath": "world-generator/sources/catalunya-litoral/openstreetmap-extract.json",
+      "path": "world-generator/sources/catalunya-litoral/openstreetmap-extract.json.gz",
+      "sha256": "cb6726fa0ffbf4daeb56b0341916d7383d906bd936f71a2aeaab4dd1d9ab2b08"
+    },
     "overrides": {
       "path": "world-generator/overrides/catalunya-litoral.overrides.json",
       "sha256": "a36bc08b928705e9752fdd7543954b21d42a565f7e9df9bce63d006e04bcc7a6"
