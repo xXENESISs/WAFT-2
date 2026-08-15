@@ -129,6 +129,7 @@
     };`, 'cámara contra terreno');
 
       replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', `    const movePlayer = (dx, dz) => {
+      if(window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.camera.x+=dx;state.camera.z+=dz;return{moved:Math.hypot(dx,dz),waterSteps:0,landSteps:0};}
       if(!state.adventureFlight&&!state.adventureWaterJump&&state.adventureMountType!=='shark')resolveBuildingOverlap();
       const distance = Math.hypot(dx, dz);`, 'solape');
       replaceOne('      const steps = Math.max(1, Math.ceil(distance / .12));', `      const adventureStepSize=state.adventureFlight?.72:state.adventureWaterJump?.52:state.adventureMountType==='shark'?.28:.16;
@@ -280,6 +281,11 @@
           source=source.replace("recordTravelMovement(travelBeforeX, travelBeforeZ, travelMoveResult, swimmingBeforeMove);","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)recordTravelMovement(travelBeforeX,travelBeforeZ,travelMoveResult,swimmingBeforeMove);");
           source=source.replaceAll("if (state.worldMode === 'regional' && travelRouteVertexCount > 0)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelRouteVertexCount > 0)");
           source=source.replaceAll("if (state.worldMode === 'regional' && travelTrailVertexCount > 1)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelTrailVertexCount > 1)");
+          source=source.replace("const aheadTerrain = inputLength > .001","const aheadTerrain = !state.adventureFlight && inputLength > .001");
+          source=source.replace("if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional') runtimeControls.refreshLocalProximity();");
+          source=source.replace("state.travelAutoSaveClock += dt;","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)state.travelAutoSaveClock += dt;");
+          source=source.replace("if (state.travelAutoSaveClock >= 5) {","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.travelAutoSaveClock >= 5) {");
+          source=source.replace("if (nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }");
         }
       }
       document.open();document.write(source);document.close();
