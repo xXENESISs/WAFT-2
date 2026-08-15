@@ -105,12 +105,18 @@ try{
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
   const beforeRecenter=await state();
   const beforeRecenterOrientation=await orientationState();
-  const entityGeographyBefore=await page.evaluate(()=>Object.fromEntries((window.__WAFT_INTERNAL_GAME__?.animals||[]).map(animal=>[animal.id,WAFTPlanetWorld0270.geoFromWorld(animal.x,animal.z)])));
-  const recentered=await page.evaluate(()=>WAFTPlanetWorld0270.recenterAtCurrentPosition());need(recentered,'forced floating-origin recenter did not run');
+  // Snapshot the entities and apply the rebase in one browser task. Animals are
+  // live simulation objects; comparing again after the LOD wait would measure
+  // their legitimate movement as if it were floating-origin drift.
+  const entityRecenter=await page.evaluate(()=>{
+    const geography=()=>Object.fromEntries((window.__WAFT_INTERNAL_GAME__?.animals||[]).map(animal=>[animal.id,WAFTPlanetWorld0270.geoFromWorld(animal.x,animal.z)]));
+    const before=geography(),recentered=WAFTPlanetWorld0270.recenterAtCurrentPosition(),after=geography();
+    return{before,recentered,after};
+  });
+  need(entityRecenter.recentered,'forced floating-origin recenter did not run');
   await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},beforeRecenter.lodUpdates,{timeout:90000});
   const afterRecenter=await state();
   const afterRecenterOrientation=await orientationState();
-  const entityGeographyAfter=await page.evaluate(()=>Object.fromEntries((window.__WAFT_INTERNAL_GAME__?.animals||[]).map(animal=>[animal.id,WAFTPlanetWorld0270.geoFromWorld(animal.x,animal.z)])));
   need(beforeRecenter.anchorTile?.key===afterRecenter.anchorTile?.key,`floating-origin shift changed anchor tile ${beforeRecenter.anchorTile?.key} -> ${afterRecenter.anchorTile?.key}`);
   need(beforeRecenter.anchorTile?.surfaceHash&&beforeRecenter.anchorTile.surfaceHash===afterRecenter.anchorTile?.surfaceHash,`floating-origin shift changed local terrain topology ${JSON.stringify(beforeRecenter.anchorTile)} -> ${JSON.stringify(afterRecenter.anchorTile)}`);
   need(Math.abs(beforeRecenter.anchorTile.lat-afterRecenter.anchorTile.lat)<1e-8&&Math.abs(beforeRecenter.anchorTile.lon-afterRecenter.anchorTile.lon)<1e-8,'floating-origin shift changed geographic position');
@@ -118,8 +124,8 @@ try{
   const recenterCameraDelta=Math.atan2(Math.sin(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView),Math.cos(afterRecenterOrientation.relativeView-beforeRecenterOrientation.relativeView));
   need(Math.abs(recenterCourseDelta)<.003,`floating-origin shift changed geographic course by ${recenterCourseDelta}`);
   need(Math.abs(recenterCameraDelta)<.003,`floating-origin shift changed bird/camera alignment by ${recenterCameraDelta}`);
-  for(const [id,before] of Object.entries(entityGeographyBefore)){
-    const after=entityGeographyAfter[id];need(after,`floating-origin shift lost regional entity ${id}`);
+  for(const [id,before] of Object.entries(entityRecenter.before)){
+    const after=entityRecenter.after[id];need(after,`floating-origin shift lost regional entity ${id}`);
     const drift=Math.hypot(after.lat-before.lat,after.lon-before.lon);
     need(drift<1e-5,`floating-origin shift moved regional entity ${id} geographically by ${drift}`);
   }
