@@ -47,6 +47,10 @@
     }
   };
 
+  function frameRuntimeState(api) {
+    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
+  }
+
   function injectUi() {
     const style = document.createElement('style');
     style.textContent = `
@@ -581,10 +585,6 @@
     api?.setAdventureModifiers?.({ ...BASE_SPEEDS, boost: false, flight: false });
     updateMountUi();
     showToast('Has desmontado');
-  }
-
-  function frameRuntimeState(api) {
-    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
   }
 
   function updateAnimals(dt, now) {
