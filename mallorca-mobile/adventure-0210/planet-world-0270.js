@@ -1,12 +1,15 @@
 'use strict';
 (async()=>{
   if(window.__WAFT_PLANET_WORLD_0270_READY__||window.__WAFT_ADVENTURE_REGION__!=='iberia')return;
-  if(new URLSearchParams(location.search).get('renderer')!=='0270')return;
+  const requestedRenderer=new URLSearchParams(location.search).get('renderer');
+  if(requestedRenderer!=='0270'&&requestedRenderer!=='0274')return;
+  const smoothPlanet=requestedRenderer==='0274';
   window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;
+  if(smoothPlanet)window.__WAFT_PLANET_WORLD_0274_ACTIVE__=true;
   window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;
   window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
 
-  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||'0.27.3';
+  const scriptVersion=new URL(document.currentScript?.src||location.href).searchParams.get('v')||(smoothPlanet?'0.27.4':'0.27.3');
   const core=await import(`./planet-0270/cube-sphere-core.mjs?v=${encodeURIComponent(scriptVersion)}`);
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   for(let i=0;i<750&&(!window.WAFTRegionRuntime||!window.WAFTAdventurePlugin||!document.querySelector('canvas'));i++)await wait(40);
@@ -14,7 +17,10 @@
   const plugin=window.WAFTAdventurePlugin;
   const canvas=document.querySelector('canvas');
   const gl=canvas?.getContext('webgl2');
-  if(!api||!plugin||!gl)throw new Error('WAFT 0.27.3 experimental planet runtime unavailable');
+  if(!api||!plugin||!gl)throw new Error(`WAFT ${smoothPlanet?'0.27.4':'0.27.3'} experimental planet runtime unavailable`);
+  const rendererInfo=gl.getExtension('WEBGL_debug_renderer_info');
+  const gpuRenderer=String(rendererInfo?gl.getParameter(rendererInfo.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER));
+  const softwareRenderer=/SwiftShader|llvmpipe|software rasterizer/i.test(gpuRenderer);
 
   const U=.33;
   const VERTICAL=.0028;
@@ -26,7 +32,10 @@
   const TILE_RESOLUTION=17;
   const MIN_LEVEL=3;
   const MAX_LEVEL=6;
-  const RECENTER_DISTANCE=240;
+  // 0.27.4 rebases before the camera matrices are calculated. Keeping the
+  // tangent origin under the player prevents spherical sagitta from building up
+  // and then snapping the terrain several units at a time.
+  const RECENTER_DISTANCE=smoothPlanet?8:240;
   const STATIC_TILE_LIMIT=720;
   const STATIC_BOOT_BATCH=8;
   const LAND_EDGE_BIN_DEGREES=.25;
@@ -81,7 +90,8 @@
     terrain:null,cover:null,europeTerrain:null,europeCover:null,landMask:null,cache:new Map(),batchCache:new Map(),desired:new Map(),prefetch:new Map(),staticTiles:[],renderKeys:[],renderBatchKeys:[],renderMeshes:[],
     drawFrames:0,visibleTriangles:0,tileBuilds:0,tileEvictions:0,lodUpdates:0,floatingOriginShifts:0,poleCrossings:0,datelineCrossings:0,
     speedEstimate:0,prefetchLead:0,lastGeo:null,lastFrameAt:performance.now(),lastSelectionAt:0,lastSaveAt:0,lastBuildMs:0,maxBuildMs:0,maxCacheTiles:0,
-    readyTileBuilds:0,staticPlanHash:null,staticGeometryHash:null,staticBuildMs:0,drawCalls:0,selectionMs:0,maxSelectionMs:0
+    readyTileBuilds:0,staticPlanHash:null,staticGeometryHash:null,staticBuildMs:0,drawCalls:0,selectionMs:0,maxSelectionMs:0,
+    cameraFrameMismatches:0,lastPreCameraAt:0,lastRecenterDistance:0,maxRecenterDistance:0
   };
   const runtimeState=()=>api.getPlanetFrameState?.()||api.getState?.();
 
@@ -202,13 +212,13 @@
     return shader;
   };
   const vertexShader=compile(gl.VERTEX_SHADER,`#version 300 es
-layout(location=0)in vec3 aP;layout(location=1)in vec3 aN;layout(location=2)in vec3 aC;
+layout(location=0)in vec3 aP;layout(location=2)in vec3 aC;
 uniform mat4 uPV;uniform vec3 uOrigin;uniform vec3 uEast;uniform vec3 uNorth;uniform vec3 uUp;
-out vec3 vN;out vec3 vC;out vec3 vW;
-void main(){vec3 rel=aP-uOrigin;vW=vec3(dot(rel,uEast),dot(rel,uUp),-dot(rel,uNorth));vN=normalize(vec3(dot(aN,uEast),dot(aN,uUp),-dot(aN,uNorth)));vC=aC;gl_Position=uPV*vec4(vW,1.0);}`);
+out vec3 vC;
+void main(){vec3 rel=aP-uOrigin;vec3 local=vec3(dot(rel,uEast),dot(rel,uUp),-dot(rel,uNorth));vC=aC;gl_Position=uPV*vec4(local,1.0);}`);
   const fragmentShader=compile(gl.FRAGMENT_SHADER,`#version 300 es
-precision highp float;in vec3 vN;in vec3 vC;in vec3 vW;uniform vec3 uEye;uniform float uFogFar;out vec4 o;
-void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(vN),light),0.0);float slope=1.0-clamp(normalize(vN).y,0.0,1.0);float shade=.48+.48*nd-.06*slope;float fog=smoothstep(uFogFar*.62,uFogFar,distance(vW,uEye));o=vec4(mix(vC*shade,vec3(.25,.43,.56),fog*.72),1.0);}`);
+precision mediump float;in vec3 vC;out vec4 o;
+void main(){o=vec4(vC,1.0);}`);
   const program=gl.createProgram();
   gl.attachShader(program,vertexShader);gl.attachShader(program,fragmentShader);gl.linkProgram(program);
   gl.deleteShader(vertexShader);gl.deleteShader(fragmentShader);
@@ -223,23 +233,27 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     try{gl.deleteVertexArray(mesh.vao);for(const buffer of mesh.buffers)gl.deleteBuffer(buffer);}catch{}
   }
   function createTileGeometry(tile){
-    const grid=core.buildTileGrid(tile,TILE_RESOLUTION),baseCount=TILE_RESOLUTION*TILE_RESOLUTION;
+    // CPU rasterizers cannot sustain the hardware mesh density. They receive
+    // the same immutable 705-tile planet and coastline data, but with the
+    // lowest per-tile tessellation; hardware keeps the full visual profile.
+    const resolution=smoothPlanet?(softwareRenderer?2:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3):TILE_RESOLUTION;
+    const grid=core.buildTileGrid(tile,resolution),baseCount=resolution*resolution;
     const boundary=[];
-    for(let column=0;column<TILE_RESOLUTION;column++)boundary.push(column);
-    for(let row=1;row<TILE_RESOLUTION;row++)boundary.push(row*TILE_RESOLUTION+TILE_RESOLUTION-1);
-    for(let column=TILE_RESOLUTION-2;column>=0;column--)boundary.push((TILE_RESOLUTION-1)*TILE_RESOLUTION+column);
-    for(let row=TILE_RESOLUTION-2;row>0;row--)boundary.push(row*TILE_RESOLUTION);
+    for(let column=0;column<resolution;column++)boundary.push(column);
+    for(let row=1;row<resolution;row++)boundary.push(row*resolution+resolution-1);
+    for(let column=resolution-2;column>=0;column--)boundary.push((resolution-1)*resolution+column);
+    for(let row=resolution-2;row>0;row--)boundary.push(row*resolution);
     const vertexCount=baseCount+boundary.length;
     const positions=new Float32Array(vertexCount*3),normals=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3);
     let surfaceHash=2166136261;
     const hashByte=value=>{surfaceHash^=value&255;surfaceHash=Math.imul(surfaceHash,16777619)>>>0;};
     for(let index=0;index<baseCount;index++){
       const offset=index*3,direction=[grid.directions[offset],grid.directions[offset+1],grid.directions[offset+2]],geo=core.unitToLatLon(direction),sample=sampleGeo(geo);
-      const radial=EARTH_U+(sample.land?sample.meters:WATER_METERS)*VERTICAL,color=palette[sample.cover]||palette[sample.land?3:0];
+      const radial=EARTH_U+(sample.land?sample.meters:WATER_METERS)*VERTICAL,color=palette[sample.cover]||palette[sample.land?3:0],sun=Math.max(0,direction[0]*-.42+direction[1]*.86+direction[2]*.28),shade=.48+.48*sun;
       const heightCode=Math.round(sample.land?sample.meters:WATER_METERS);hashByte(sample.land?1:0);hashByte(sample.cover);hashByte(heightCode);hashByte(heightCode>>8);
       positions[offset]=direction[0]*radial;positions[offset+1]=direction[1]*radial;positions[offset+2]=direction[2]*radial;
       normals[offset]=direction[0];normals[offset+1]=direction[1];normals[offset+2]=direction[2];
-      colors[offset]=color[0];colors[offset+1]=color[1];colors[offset+2]=color[2];
+      colors[offset]=color[0]*shade;colors[offset+1]=color[1]*shade;colors[offset+2]=color[2]*shade;
     }
     for(let index=0;index<boundary.length;index++){
       const source=boundary[index]*3,target=(baseCount+index)*3,direction=[grid.directions[source],grid.directions[source+1],grid.directions[source+2]];
@@ -255,7 +269,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
       const next=(index+1)%boundary.length,a=boundary[index],b=boundary[next],c=baseCount+index,d=baseCount+next;
       indices[cursor++]=a;indices[cursor++]=c;indices[cursor++]=b;indices[cursor++]=b;indices[cursor++]=c;indices[cursor++]=d;
     }
-    return{key:tile.key||core.tileKey(tile),tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},positions,normals,colors,indices,vertexCount,triangles:indices.length/3,surfaceHash:surfaceHash.toString(16).padStart(8,'0')};
+    return{key:tile.key||core.tileKey(tile),tile:{face:tile.face,level:tile.level,x:tile.x,y:tile.y},resolution,positions,normals,colors,indices,vertexCount,triangles:indices.length/3,surfaceHash:surfaceHash.toString(16).padStart(8,'0')};
   }
   function uploadBatchMesh(key,geometries){
     const vertexCount=geometries.reduce((total,geometry)=>total+geometry.vertexCount,0),indexCount=geometries.reduce((total,geometry)=>total+geometry.indices.length,0);
@@ -283,7 +297,8 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(plan.tiles.length>STATIC_TILE_LIMIT)throw new Error(`static planet budget ${plan.tiles.length}/${STATIC_TILE_LIMIT}`);
     state.staticTiles=plan.tiles.map(tile=>{
       const shift=tile.level-MIN_LEVEL,batchTile={face:tile.face,level:MIN_LEVEL,x:tile.x>>shift,y:tile.y>>shift},visibilityRadius=Math.min(Math.PI,tile.angularRadius+.015);
-      return{face:tile.face,level:tile.level,x:tile.x,y:tile.y,key:core.tileKey(tile),batchKey:core.tileKey(batchTile),center:tile.center,angularRadius:tile.angularRadius,visibilityCos:Math.cos(visibilityRadius),visibilitySin:Math.sin(visibilityRadius)};
+      const batchKey=smoothPlanet?'planet/full':core.tileKey(batchTile);
+      return{face:tile.face,level:tile.level,x:tile.x,y:tile.y,key:core.tileKey(tile),batchKey,center:tile.center,angularRadius:tile.angularRadius,visibilityCos:Math.cos(visibilityRadius),visibilitySin:Math.sin(visibilityRadius)};
     });
     state.staticPlanHash=hashTokens(state.staticTiles.map(tile=>`${core.tileKey(tile)};`));
     const allStarted=performance.now(),batchGeometries=new Map();
@@ -319,11 +334,14 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     return selected;
   }
   function updateSelection(now,force=false){
+    if(smoothPlanet&&state.renderMeshes.length){state.lastSelectionAt=now;return;}
     if(!force&&now-state.lastSelectionAt<120)return;
     const runtime=runtimeState(),position=runtime?.position;if(!position)return;
     const started=performance.now();
     const geo=geoFromLocal(position.x,position.z),altitude=Math.max(.8,Number(position.y)||0);
-    const visible=selectionFor(geo,altitude);
+    // 0.27.4 always renders the same immutable full-planet mesh. No camera,
+    // movement or altitude change is allowed to swap terrain underneath the user.
+    const visible=smoothPlanet?state.staticTiles:selectionFor(geo,altitude);
     state.desired=new Map(visible.map(tile=>[tile.key,tile]));
     state.renderKeys=visible.map(tile=>tile.key);state.renderBatchKeys=[...new Set(visible.map(tile=>tile.batchKey))];state.renderMeshes=state.renderBatchKeys.map(key=>state.batchCache.get(key)).filter(Boolean);state.prefetch.clear();
     state.selectionMs=performance.now()-started;state.maxSelectionMs=Math.max(state.maxSelectionMs,state.selectionMs);
@@ -341,9 +359,15 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
   }
   function maybeRecenter(force=false){
     const runtime=runtimeState(),position=runtime?.position;
-    if(!position||(!force&&Math.hypot(position.x,position.z)<RECENTER_DISTANCE))return false;
-    const old={...state.originGeo},next=geoFromLocal(position.x,position.z),heading=Number(runtime.playerFacing)||0;
-    const forward=geoFromLocal(position.x+Math.sin(heading)*2,position.z+Math.cos(heading)*2),nextHeading=Math.atan2(Math.sin(Math.PI-bearing(next,forward)),Math.cos(Math.PI-bearing(next,forward)));
+    const recenterDistance=position?Math.hypot(position.x,position.z):0;
+    if(!position||(!force&&recenterDistance<RECENTER_DISTANCE))return false;
+    state.lastRecenterDistance=recenterDistance;state.maxRecenterDistance=Math.max(state.maxRecenterDistance,recenterDistance);
+    const old={...state.originGeo},next=geoFromLocal(position.x,position.z),heading=Number(runtime.playerFacing)||0,cameraYaw=Number(runtime.cameraYaw)||0;
+    const reprojectAngle=angle=>{
+      const aheadGeo=geoFromLocal(position.x+Math.sin(angle)*2,position.z+Math.cos(angle)*2),ahead=localFromGeoAt(next,aheadGeo.lat,aheadGeo.lon);
+      return Math.atan2(ahead.x,ahead.z);
+    };
+    const nextHeading=reprojectAngle(heading),nextCameraYaw=reprojectAngle(cameraYaw);
     // Adventure fauna, NPCs and route points live in the regional tangent plane. Reproject
     // them before changing that plane so cylinders cannot stretch across the screen and
     // nearby content keeps the same geographic position after a floating-origin shift.
@@ -359,15 +383,30 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     const lonJump=Math.abs(wrapLon(next.lon-old.lon));
     if(lonJump>90&&Math.abs(old.lat)>70&&Math.abs(next.lat)>70)state.poleCrossings++;
     else if(lonJump>150)state.datelineCrossings++;
-    api.setRegionalPosition?.(0,0,position.y);api.setHeading?.(nextHeading);state.floatingOriginShifts++;updateSelection(performance.now(),true);return true;
+    if(smoothPlanet&&api.rebasePlanetFrame)api.rebasePlanetFrame(0,0,position.y,nextHeading,nextCameraYaw);
+    else{api.setRegionalPosition?.(0,0,position.y);api.setHeading?.(nextHeading);}
+    state.floatingOriginShifts++;
+    if(!smoothPlanet)updateSelection(performance.now(),true);
+    return true;
+  }
+
+  function beforeCameraFrame(now){
+    if(!smoothPlanet||!state.ready)return false;
+    state.lastPreCameraAt=Number(now)||performance.now();
+    updateSpeed(state.lastPreCameraAt);
+    return maybeRecenter(false);
   }
 
   const previousDraw=plugin.afterWorldDraw?.bind(plugin);
   plugin.afterWorldDraw=(now,eye,pv)=>{
     if(!window.__WAFT_PLANET_DEBUG_ISOLATE__)previousDraw?.(now,eye,pv);if(!state.ready)return;
-    updateSpeed(now);maybeRecenter();updateSelection(now);
+    if(!smoothPlanet){updateSpeed(now);maybeRecenter();updateSelection(now);}
+    else{
+      const runtime=runtimeState(),distance=Math.hypot(Number(runtime?.position?.x)||0,Number(runtime?.position?.z)||0);
+      if(distance>RECENTER_DISTANCE+.01)state.cameraFrameMismatches++;
+    }
     const frame=core.tangentFrame(state.originGeo.lat,state.originGeo.lon),origin=frame.up.map(component=>component*EARTH_U);
-    gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.FRONT);gl.depthMask(true);gl.useProgram(program);gl.uniformMatrix4fv(uniforms.pv,false,pv);gl.uniform3f(uniforms.eye,...eye);
+    gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.FRONT);gl.disable(gl.BLEND);gl.depthMask(true);gl.useProgram(program);gl.uniformMatrix4fv(uniforms.pv,false,pv);gl.uniform3f(uniforms.eye,...eye);
     gl.uniform3f(uniforms.origin,...origin);gl.uniform3f(uniforms.east,...frame.east);gl.uniform3f(uniforms.north,...frame.north);gl.uniform3f(uniforms.up,...frame.up);
     const runtime=runtimeState(),altitude=Math.max(0,Number(runtime?.position?.y)||0);gl.uniform1f(uniforms.fogFar,Math.max(1200,1500+altitude*1.6));
     let triangles=0,drawCalls=0;
@@ -380,7 +419,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     if(!state.ready)return;
     const runtime=runtimeState(),position=runtime?.position,geo=position?geoFromLocal(position.x,position.z):state.originGeo;
     const title=document.getElementById('hudTitle'),stats=document.getElementById('hudStats'),coords=document.getElementById('waftIberiaCoords'),objective=document.getElementById('waftObjective');
-    if(title)title.textContent='MUNDO · PLANETA 0.27.3 EXP';
+    if(title)title.textContent=smoothPlanet?'MUNDO · PLANETA 0.27.4 FLUIDO':'MUNDO · PLANETA 0.27.3 EXP';
     if(stats)stats.textContent=`CUBE-SPHERE FIJA · ${Math.round(state.visibleTriangles/1000)}k tri · ${state.renderKeys.length}/${state.staticTiles.length} tiles`;
     if(coords)coords.textContent=`ALT ${Math.round((position?.y||0)/VERTICAL)} m · LAT ${geo.lat.toFixed(4)} · LON ${geo.lon.toFixed(4)}`;
     if(objective)objective.textContent='Renderer planetario experimental · ALETEAR para subir · PICADO ↓ para descender.';
@@ -414,7 +453,7 @@ void main(){vec3 light=normalize(vec3(-.42,.86,.28));float nd=max(dot(normalize(
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileBuildsDuringGameplay:Math.max(0,state.tileBuilds-state.readyTileBuilds),tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:0,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),renderBatchKeys:[...state.renderBatchKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,coastlineEdgeBins:LAND_EDGE_BIN_COUNT,cacheLimit:STATIC_TILE_LIMIT,buildQueue:0,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionMs:state.selectionMs,maxSelectionMs:state.maxSelectionMs,drawCalls:state.drawCalls,selectionProfile:'fixed-geographic-quadtree-v3',staticTiles:state.staticTiles.length,staticBatches:state.batchCache.size,staticPlanHash:state.staticPlanHash,staticGeometryHash:state.staticGeometryHash,staticBuildMs:state.staticBuildMs,refinementZones:STATIC_REFINEMENT_ZONES.map(zone=>({...zone}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true)};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileBuildsDuringGameplay:Math.max(0,state.tileBuilds-state.readyTileBuilds),tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:0,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),renderBatchKeys:[...state.renderBatchKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,coastlineEdgeBins:LAND_EDGE_BIN_COUNT,cacheLimit:STATIC_TILE_LIMIT,buildQueue:0,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionMs:state.selectionMs,maxSelectionMs:state.maxSelectionMs,drawCalls:state.drawCalls,selectionProfile:smoothPlanet?'fixed-full-planet-v4':'fixed-geographic-quadtree-v3',staticTiles:state.staticTiles.length,staticBatches:state.batchCache.size,staticPlanHash:state.staticPlanHash,staticGeometryHash:state.staticGeometryHash,staticBuildMs:state.staticBuildMs,smoothPlanet,softwareRenderer,gpuRenderer,cameraFrameMismatches:state.cameraFrameMismatches,lastPreCameraAt:state.lastPreCameraAt,lastRecenterDistance:state.lastRecenterDistance,maxRecenterDistance:state.maxRecenterDistance,refinementZones:STATIC_REFINEMENT_ZONES.map(zone=>({...zone}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true),beforeCameraFrame};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{

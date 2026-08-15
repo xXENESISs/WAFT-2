@@ -14,7 +14,8 @@ const boot=bootScripts[0];
 for(const test of [
   {id:'baleares',search:'',file:'region-runtime-baleares-013.html'},
   {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'},
-  {id:'iberia-planet',search:'?region=iberia&renderer=0270',file:'region-runtime-catalunya-litoral-003.html',experimental:true}
+  {id:'iberia-planet',search:'?region=iberia&renderer=0270',file:'region-runtime-catalunya-litoral-003.html',experimental:true},
+  {id:'iberia-smooth-planet',search:'?region=iberia&renderer=0274',file:'region-runtime-catalunya-litoral-003.html',experimental:true,smooth:true}
 ]){
   const runtimeSource=fs.readFileSync(path.join(mobile,test.file),'utf8');
   let written='';
@@ -54,11 +55,10 @@ for(const test of [
     /releaseRegionalTerrainGpu/,
     /restoreRegionalTerrainGpu/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
-  assert.match(written,test.experimental?/__WAFT_ADVENTURE_BUILD__='0\.27\.3-experimental'/:/__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,`${test.id}: wrong build identity`);
+  assert.match(written,test.smooth?/__WAFT_ADVENTURE_BUILD__='0\.27\.4-experimental'/:test.experimental?/__WAFT_ADVENTURE_BUILD__='0\.27\.3-experimental'/:/__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,`${test.id}: wrong build identity`);
   if(test.experimental){
     for(const pattern of [
       /__WAFT_PLANET_WORLD_0270_ACTIVE__=true/,
-      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
       /if\(!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__\)streamer\.update/,
       /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.camera\.x\+=dx;state\.camera\.z\+=dz/,
       /state\.roads&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
@@ -67,6 +67,19 @@ for(const test of [
       /boosted\?348:312/,
       /cameraPitch: state\.pitch/
     ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+    assert.match(written,test.smooth
+      ? /if\(window\.__WAFT_PLANET_WORLD_0274_ACTIVE__\|\|window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/
+      : /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
+    `${test.id}: wrong planet camera collision path`);
+    if(test.smooth){
+      for(const pattern of [
+        /__WAFT_PLANET_WORLD_0274_ACTIVE__=true/,
+        /canvas\.getContext\('webgl2',\{antialias:false,alpha:false,powerPreference:'high-performance'\}\)/,
+        /SwiftShader\/i\.test\(String\(waftGpuName\)\)\?\.25:\.45/,
+        /WAFTPlanetWorld0270\?\.beforeCameraFrame\?\.\(now\)/,
+        /rebasePlanetFrame\(x,z,y,playerFacing,cameraYaw\)/
+      ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+    }
   }
   assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
   assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
@@ -76,7 +89,7 @@ for(const test of [
   const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match=>match[1]).filter(Boolean);
   assert.ok(scripts.length>=3,`${test.id}: expected runtime, Adventure bootstrap and UI safety scripts`);
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
-  console.log(`${test.id}: optimized patched ${test.experimental?'0.27.3':'0.26.1'} runtime compiled (${written.length} chars)`);
+  console.log(`${test.id}: optimized patched ${test.smooth?'0.27.4':test.experimental?'0.27.3':'0.26.1'} runtime compiled (${written.length} chars)`);
 }
 
 {
@@ -102,4 +115,4 @@ for(const test of [
   new vm.Script(patchedGameplay,{filename:'patched-gameplay-plugin.js'});
   console.log('Adventure plugin loader patched and compiled the generated gameplay runtime.');
 }
-console.log('Existing World 2 runtimes and the 0.27.3 planet patch compile while retaining the shared 0.26.1 contracts.');
+console.log('Existing World 2 runtimes and the immutable 0.27.3/0.27.4 planet patches compile while retaining the shared 0.26.1 contracts.');

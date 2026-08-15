@@ -21,7 +21,9 @@
     const errorBox = document.getElementById('error');
     const params = new URLSearchParams(location.search);
     const requestedRegion=params.get('region');
-    const experimentalPlanet=params.get('renderer')==='0270';
+    const requestedRenderer=params.get('renderer');
+    const smoothPlanet=requestedRenderer==='0274';
+    const experimentalPlanet=requestedRenderer==='0270'||smoothPlanet;
     const regionId=requestedRegion==='iberia'?'iberia':requestedRegion==='catalunya-litoral'?'catalunya-litoral':'baleares';
     const builds={baleares:'../region-runtime-baleares-013.html','catalunya-litoral':'../region-runtime-catalunya-litoral-003.html',iberia:'../region-runtime-catalunya-litoral-003.html'};
     const version = params.get('v') || 'waft-adventure-0233';
@@ -255,7 +257,7 @@
           source=source.replace(getStateAnchor,getPlanetState);
         }
         const positionAnchor="      setInput(x, y) { state.joyX = Math.max(-1, Math.min(1, Number(x) || 0)); state.joyY = Math.max(-1, Math.min(1, Number(y) || 0)); },";
-        const positionReplacement="      setRegionalPosition(x,z,y=null) { state.camera.x=Number(x)||0; state.camera.z=Number(z)||0; if(Number.isFinite(Number(y)))state.camera.y=Number(y); return { ...state.camera }; },\n"+positionAnchor;
+        const positionReplacement="      setRegionalPosition(x,z,y=null) { state.camera.x=Number(x)||0; state.camera.z=Number(z)||0; if(Number.isFinite(Number(y)))state.camera.y=Number(y); return { ...state.camera }; },\n      rebasePlanetFrame(x,z,y,playerFacing,cameraYaw) { state.camera.x=Number(x)||0; state.camera.z=Number(z)||0; if(Number.isFinite(Number(y)))state.camera.y=Number(y); if(Number.isFinite(Number(playerFacing)))state.playerFacing=Number(playerFacing); if(Number.isFinite(Number(cameraYaw)))state.yaw=Number(cameraYaw); return true; },\n      setCameraOrbit(yaw,pitch=null) { if(Number.isFinite(Number(yaw)))state.yaw=Number(yaw); if(Number.isFinite(Number(pitch)))state.pitch=Math.max(-1.05,Math.min(1.46,Number(pitch))); return {yaw:state.yaw,pitch:state.pitch}; },\n"+positionAnchor;
         if(!source.includes('setRegionalPosition(x,z,y=null)'))source=source.replace(positionAnchor,positionReplacement);
       }
       // WAFT_SPHERICAL_BOOTSTRAP_0261: local tangent terrain + floating origin.
@@ -263,8 +265,9 @@
         window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;
         window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;
         if(experimentalPlanet)window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;
+        if(smoothPlanet)window.__WAFT_PLANET_WORLD_0274_ACTIVE__=true;
         const worldRuntime=experimentalPlanet?'adventure-0210/planet-world-0270.js':'adventure-0210/spherical-world-0261.js';
-        const worldFlags=experimentalPlanet?'window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;':'window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;';
+        const worldFlags=smoothPlanet?'window.__WAFT_PLANET_WORLD_0274_ACTIVE__=true;window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;':experimentalPlanet?'window.__WAFT_PLANET_WORLD_0270_ACTIVE__=true;window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;':'window.__WAFT_SPHERICAL_WORLD_0261_ACTIVE__=true;window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;';
         source=source.replaceAll('adventure-0210/global-atlas-0260.js',worldRuntime);
         source=source.replaceAll('window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__=true;',worldFlags);
         const dynamicClamp='if(!streamedWorldSurface?.inside){';
@@ -272,7 +275,7 @@
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
         if(experimentalPlanet){
-          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.3-experimental'");
+          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'",smoothPlanet?"window.__WAFT_ADVENTURE_BUILD__='0.27.4-experimental'":"window.__WAFT_ADVENTURE_BUILD__='0.27.3-experimental'");
           source=source.replace("perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06, state.worldMode === 'local' ? 2400 : 1450);","perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);");
           source=source.replace("speed=bearded?(dive?(boosted?116:104):(inputLength<.06?48:(boosted||inputLength>.93?92:inputLength>.70?76:60)))","speed=bearded?(dive?(boosted?348:312):(inputLength<.06?144:(boosted||inputLength>.93?276:inputLength>.70?228:180)))");
           source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");
@@ -286,6 +289,14 @@
           source=source.replace("state.travelAutoSaveClock += dt;","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)state.travelAutoSaveClock += dt;");
           source=source.replace("if (state.travelAutoSaveClock >= 5) {","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.travelAutoSaveClock >= 5) {");
           source=source.replace("if (nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }");
+          if(smoothPlanet){
+            source=source.replace("const gl = canvas.getContext('webgl2', { antialias:true, alpha:false, powerPreference:'high-performance' });","const gl=canvas.getContext('webgl2',{antialias:false,alpha:false,powerPreference:'high-performance'});");
+            source=source.replace("const dpr = Math.min(1.65, devicePixelRatio || 1);","const waftGpuExt=gl.getExtension('WEBGL_debug_renderer_info'),waftGpuName=waftGpuExt?gl.getParameter(waftGpuExt.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),dpr=Math.min(/SwiftShader/i.test(String(waftGpuName))?.25:.45,devicePixelRatio||1);window.__WAFT_RENDER_SCALE_0274__=dpr;");
+            source=source.replace("if(window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.cameraBlocked=false;return desired;}","if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__||window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.cameraBlocked=false;return desired;}");
+            source=source.replace("<script>window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__=true;<\/script>","");
+            for(const legacy of['iberia-polish-0243','iberia-world-0244','europe-atlas-0252','iberia-world-0245','iberia-world-0247','iberia-world-0249','iberia-world-0250'])source=source.replaceAll(`<script src="adventure-0210/${legacy}`,`<script type="application/x-waft-disabled" src="adventure-0210/${legacy}`);
+            source=source.replace("      const displayPosition = toDisplayXZ(state.camera.x, state.camera.z);","      window.WAFTPlanetWorld0270?.beforeCameraFrame?.(now);\n      const displayPosition = toDisplayXZ(state.camera.x, state.camera.z);");
+          }
         }
       }
       document.open();document.write(source);document.close();
