@@ -161,11 +161,7 @@ replaceRegexRequired(
 
 replaceRegexRequired(
 /  function updateAnimals\(dt, now\) \{[\s\S]*?\n  function updateInteraction\(playerState\) \{/,
-`  function frameRuntimeState(api) {
-    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
-  }
-
-  function updateAnimals(dt, now) {
+`  function updateAnimals(dt, now) {
     const api = runtime();
     const playerPosition = frameRuntimeState(api)?.position;
     for (const animal of game.animals) {
@@ -232,6 +228,15 @@ replaceRegexRequired(
 
   function updateInteraction(playerState) {`,
   'animal movement'
+);
+replaceRequired(
+`  function injectUi() {`,
+`  function frameRuntimeState(api) {
+    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
+  }
+
+  function injectUi() {`,
+  'allocation-free runtime state helper'
 );
 replaceRequired(
 `      const player = api?.getState?.();
