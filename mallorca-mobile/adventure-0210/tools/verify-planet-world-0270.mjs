@@ -50,8 +50,10 @@ const planetLayerStats=()=>page.evaluate(async()=>{
 });
 const startFrameTrace=()=>page.evaluate(()=>{
   window.__WAFT_0271_FRAME_TRACE__=[];
+  const generation=(window.__WAFT_0271_FRAME_TRACE_GENERATION__||0)+1;
+  window.__WAFT_0271_FRAME_TRACE_GENERATION__=generation;
   let previous=performance.now();
-  const tick=now=>{window.__WAFT_0271_FRAME_TRACE__.push(now-previous);previous=now;if(window.__WAFT_0271_FRAME_TRACE__.length<1200)requestAnimationFrame(tick);};
+  const tick=now=>{if(window.__WAFT_0271_FRAME_TRACE_GENERATION__!==generation)return;window.__WAFT_0271_FRAME_TRACE__.push(now-previous);previous=now;if(window.__WAFT_0271_FRAME_TRACE__.length<1200)requestAnimationFrame(tick);};
   requestAnimationFrame(tick);
 });
 const frameTrace=()=>page.evaluate(()=>{
@@ -77,6 +79,14 @@ const require60Fps=(label,result)=>{
   }
   const baselineOver34=saturatedSceneBaseline.over34/Math.max(1,saturatedSceneBaseline.samples),resultOver34=result.over34/Math.max(1,result.samples);
   need(result.p50<=saturatedSceneBaseline.p50+1.2&&result.p95<=saturatedSceneBaseline.p95+1.2&&result.max<=Math.max(100,saturatedSceneBaseline.max+35)&&resultOver34<=baselineOver34+.04,`${label}: movement or camera added frame spikes beyond the stationary runner scene ${JSON.stringify({runnerBaseline,saturatedSceneBaseline,result})}`);
+};
+const establishMountedSceneBaseline=result=>{
+  need(result.samples>90,`mounted idle: insufficient frame samples ${JSON.stringify(result)}`);
+  const absolute60=result.p95<=20.5&&result.max<100&&result.over34/result.samples<.04;
+  if(absolute60){saturatedSceneBaseline=null;return;}
+  if(!allowSaturatedRunner)throw new Error(`mounted idle: 60 FPS frame-time budget failed ${JSON.stringify({runnerBaseline,result})}`);
+  need(result.p95<=55&&result.max<100,`mounted idle: saturated runner cannot establish a bounded mounted-scene baseline ${JSON.stringify({runnerBaseline,result})}`);
+  saturatedSceneBaseline=result;
 };
 const orientationState=()=>page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw,originShifts:world.getState().floatingOriginShifts};});
 const relocate=async(lat,lon,y=55)=>{
@@ -246,6 +256,10 @@ try{
     }
   });
   await page.evaluate(()=>WAFTRegionRuntime.setInput(0,0));
+  await startFrameTrace();
+  await page.waitForTimeout(4000);
+  const mountedIdleFrames=await frameTrace();
+  if(smoothPlanet)establishMountedSceneBaseline(mountedIdleFrames);
   const cameraTerrainBefore=await state();
   await startFrameTrace();
   await continuousCameraOrbit();
@@ -324,5 +338,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:expectedVersion,profile,runnerBaseline,stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16),frames:stationaryFrames},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,drawCalls:base.drawCalls,staticTiles:base.staticTiles,staticBatches:base.staticBatches,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs,maxSelectionMs:base.maxSelectionMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo,maxDistance:afterRecenter.maxRecenterDistance},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),maxDrawCalls:Math.max(...sustainedFlight.map(sample=>sample.drawCalls)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,planetPixels:flightPlanetPixels,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance,frames:cameraFrames},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:expectedVersion,profile,runnerBaseline,stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16),frames:stationaryFrames},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,drawCalls:base.drawCalls,staticTiles:base.staticTiles,staticBatches:base.staticBatches,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs,maxSelectionMs:base.maxSelectionMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo,maxDistance:afterRecenter.maxRecenterDistance},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),maxDrawCalls:Math.max(...sustainedFlight.map(sample=>sample.drawCalls)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,planetPixels:flightPlanetPixels,altitudeInvariant:altitudeProbe,mountedIdleFrames,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance,frames:cameraFrames},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}

@@ -108,5 +108,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: waft-planet-world-0270-visuals
-          path: artifacts/world-0270/*.png
+          path: artifacts/world-0270-*/*.png
           if-no-files-found: error
