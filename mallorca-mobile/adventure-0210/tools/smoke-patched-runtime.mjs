@@ -93,7 +93,8 @@ for(const test of [
   new vm.Script(loader,{filename:'plugin-loader-smoke.js'}).runInContext(context);
   for(let i=0;i<100&&!patchedGameplay&&!context.__WAFT_ADVENTURE_0210_ERROR__;i++)await new Promise(resolve=>setTimeout(resolve,5));
   assert.equal(context.__WAFT_ADVENTURE_0210_ERROR__,undefined,`plugin loader failed: ${context.__WAFT_ADVENTURE_0210_ERROR__}`);
-  assert.match(patchedGameplay,/const state=frameRuntimeState\(api\)/,'plugin loader did not retain the allocation-free frame state');
+  assert.match(patchedGameplay,/function frameRuntimeState\(api\)/,'plugin loader erased the allocation-free frame state helper');
+  assert.match(patchedGameplay,/const state=frameRuntimeState\(api\)/,'plugin loader did not retain the allocation-free frame state call');
   new vm.Script(patchedGameplay,{filename:'patched-gameplay-plugin.js'});
   console.log('Adventure plugin loader patched and compiled the generated gameplay runtime.');
 }
