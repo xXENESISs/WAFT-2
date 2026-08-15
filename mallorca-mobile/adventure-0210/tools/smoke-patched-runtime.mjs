@@ -74,4 +74,27 @@ for(const test of [
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
   console.log(`${test.id}: optimized patched ${test.experimental?'0.27.3':'0.26.1'} runtime compiled (${written.length} chars)`);
 }
+
+{
+  const loader=fs.readFileSync(path.join(adventure,'plugin-loader.js'),'utf8');
+  let patchedGameplay='';
+  const document={currentScript:{src:'https://example.test/adventure-0210/plugin-loader.js?v=smoke'},getElementById(){return null;}};
+  const context={
+    console,document,URL,window:null,globalThis:null,innerWidth:1280,
+    __WAFT_ADVENTURE_REGION__:'iberia',
+    fetch:async value=>{
+      const name=path.basename(new URL(String(value)).pathname);
+      const source=fs.readFileSync(path.join(adventure,name),'utf8');
+      return{ok:true,status:200,text:async()=>source};
+    },
+    eval(source){patchedGameplay=String(source);}
+  };
+  context.window=context;context.globalThis=context;vm.createContext(context);
+  new vm.Script(loader,{filename:'plugin-loader-smoke.js'}).runInContext(context);
+  for(let i=0;i<100&&!patchedGameplay&&!context.__WAFT_ADVENTURE_0210_ERROR__;i++)await new Promise(resolve=>setTimeout(resolve,5));
+  assert.equal(context.__WAFT_ADVENTURE_0210_ERROR__,undefined,`plugin loader failed: ${context.__WAFT_ADVENTURE_0210_ERROR__}`);
+  assert.match(patchedGameplay,/const state=frameRuntimeState\(api\)/,'plugin loader did not retain the allocation-free frame state');
+  new vm.Script(patchedGameplay,{filename:'patched-gameplay-plugin.js'});
+  console.log('Adventure plugin loader patched and compiled the generated gameplay runtime.');
+}
 console.log('Existing World 2 runtimes and the 0.27.3 planet patch compile while retaining the shared 0.26.1 contracts.');
