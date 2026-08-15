@@ -13,7 +13,8 @@ const boot=bootScripts[0];
 
 for(const test of [
   {id:'baleares',search:'',file:'region-runtime-baleares-013.html'},
-  {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'}
+  {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'},
+  {id:'iberia-planet',search:'?region=iberia&renderer=0270',file:'region-runtime-catalunya-litoral-003.html',experimental:true}
 ]){
   const runtimeSource=fs.readFileSync(path.join(mobile,test.file),'utf8');
   let written='';
@@ -50,10 +51,23 @@ for(const test of [
     /isAdventureVisible/,
     /queueAdventureJump\(velocity,options=\{\}\)/,
     /plugin-loader\.js/,
-    /__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,
     /releaseRegionalTerrainGpu/,
     /restoreRegionalTerrainGpu/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+  assert.match(written,test.experimental?/__WAFT_ADVENTURE_BUILD__='0\.27\.3-experimental'/:/__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,`${test.id}: wrong build identity`);
+  if(test.experimental){
+    for(const pattern of [
+      /__WAFT_PLANET_WORLD_0270_ACTIVE__=true/,
+      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
+      /if\(!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__\)streamer\.update/,
+      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.camera\.x\+=dx;state\.camera\.z\+=dz/,
+      /state\.roads&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
+      /state\.buildings&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
+      /!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > \.45/,
+      /boosted\?348:312/,
+      /cameraPitch: state\.pitch/
+    ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+  }
   assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
   assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
   assert.doesNotMatch(written,/const center = \[target\[0\], target\[1\] \+ \.18, target\[2\]\];/);
@@ -62,6 +76,30 @@ for(const test of [
   const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match=>match[1]).filter(Boolean);
   assert.ok(scripts.length>=3,`${test.id}: expected runtime, Adventure bootstrap and UI safety scripts`);
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
-  console.log(`${test.id}: optimized patched 0.26.1 runtime compiled (${written.length} chars)`);
+  console.log(`${test.id}: optimized patched ${test.experimental?'0.27.3':'0.26.1'} runtime compiled (${written.length} chars)`);
 }
-console.log('Both existing World 2 regional runtimes survive the 0.26.1 bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths, GPU hooks and World 1 parity.');
+
+{
+  const loader=fs.readFileSync(path.join(adventure,'plugin-loader.js'),'utf8');
+  let patchedGameplay='';
+  const document={currentScript:{src:'https://example.test/adventure-0210/plugin-loader.js?v=smoke'},getElementById(){return null;}};
+  const context={
+    console,document,URL,window:null,globalThis:null,innerWidth:1280,
+    __WAFT_ADVENTURE_REGION__:'iberia',
+    fetch:async value=>{
+      const name=path.basename(new URL(String(value)).pathname);
+      const source=fs.readFileSync(path.join(adventure,name),'utf8');
+      return{ok:true,status:200,text:async()=>source};
+    },
+    eval(source){patchedGameplay=String(source);}
+  };
+  context.window=context;context.globalThis=context;vm.createContext(context);
+  new vm.Script(loader,{filename:'plugin-loader-smoke.js'}).runInContext(context);
+  for(let i=0;i<100&&!patchedGameplay&&!context.__WAFT_ADVENTURE_0210_ERROR__;i++)await new Promise(resolve=>setTimeout(resolve,5));
+  assert.equal(context.__WAFT_ADVENTURE_0210_ERROR__,undefined,`plugin loader failed: ${context.__WAFT_ADVENTURE_0210_ERROR__}`);
+  assert.match(patchedGameplay,/function frameRuntimeState\(api\)/,'plugin loader erased the allocation-free frame state helper');
+  assert.match(patchedGameplay,/const state=frameRuntimeState\(api\)/,'plugin loader did not retain the allocation-free frame state call');
+  new vm.Script(patchedGameplay,{filename:'patched-gameplay-plugin.js'});
+  console.log('Adventure plugin loader patched and compiled the generated gameplay runtime.');
+}
+console.log('Existing World 2 runtimes and the 0.27.3 planet patch compile while retaining the shared 0.26.1 contracts.');

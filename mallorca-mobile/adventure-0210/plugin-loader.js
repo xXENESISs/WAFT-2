@@ -75,7 +75,7 @@
     `    const state = api?.getState?.();
     if (!state) return;
     const dt = Math.min(.05, Math.max(0, (now - game.lastFrameAt) / 1000));`,
-    `    const state=api?.getState?.();
+    `    const state=frameRuntimeState(api);
     if(!state)return;
     if(state.adventureMountEject==='shark-land'&&mountedAnimal()?.type==='shark'){dismountAnimal('shark-land');return;}
     const dt=Math.min(.05,Math.max(0,(now-game.lastFrameAt)/1000));`,

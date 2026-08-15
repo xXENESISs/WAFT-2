@@ -21,7 +21,7 @@ replaceRequired(
     afterWorldDraw(now, eye, pv) {`,
 `    hideBaseCharacter: true,
     rebaseRegionalEntities(project) { renderer.rebaseRegionalEntities(project); },
-    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0 }; },
+    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext) }; },
     afterWorldDraw(now, eye, pv) {`,
   'floating-origin entity API'
 );
@@ -163,7 +163,7 @@ replaceRegexRequired(
 /  function updateAnimals\(dt, now\) \{[\s\S]*?\n  function updateInteraction\(playerState\) \{/,
 `  function updateAnimals(dt, now) {
     const api = runtime();
-    const playerPosition = api?.getState?.()?.position;
+    const playerPosition = frameRuntimeState(api)?.position;
     for (const animal of game.animals) {
       if (animal.hidden) continue;
       // Regional fauna is deliberately local. Once the planet's floating origin has
@@ -229,6 +229,22 @@ replaceRegexRequired(
   function updateInteraction(playerState) {`,
   'animal movement'
 );
+replaceRequired(
+`  function injectUi() {`,
+`  function frameRuntimeState(api) {
+    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
+  }
+
+  function injectUi() {`,
+  'allocation-free runtime state helper'
+);
+replaceRequired(
+`      const player = api?.getState?.();
+      if (!player) return;`,
+`      const player = frameRuntimeState(api);
+      if (!player) return;`,
+  'allocation-free planet render state'
+);
 
 replaceRequired(
 `      const label = animal.mountable ? 'MONTAR ' + animal.name.toUpperCase() : 'OBSERVAR ' + animal.name.toUpperCase();
@@ -282,8 +298,61 @@ replaceRequired(
     ready: false,`,
 `  const renderer = {
     ready: false,
-    regionalEntitiesDrawn: 0,`,
+    regionalEntitiesDrawn: 0,
+    sharedWorldContext: false,`,
   'regional entity draw telemetry'
+);
+replaceRequired(
+`      this.canvas = document.getElementById('waftAdventureCanvas');
+      const gl = this.canvas.getContext('webgl2', { alpha: true, antialias: true, premultipliedAlpha: false });`,
+`      const overlayCanvas=document.getElementById('waftAdventureCanvas');
+      this.sharedWorldContext=Boolean(window.__WAFT_PLANET_WORLD_0270_ACTIVE__);
+      this.canvas=this.sharedWorldContext?[...document.querySelectorAll('canvas')].find(canvas=>canvas!==overlayCanvas):overlayCanvas;
+      if(this.sharedWorldContext&&overlayCanvas)overlayCanvas.style.display='none';
+      const gl=this.sharedWorldContext?this.canvas?.getContext('webgl2'):this.canvas?.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:false});`,
+  'single WebGL context for planet renderer'
+);
+replaceRequired(
+`    resize() {
+      const dpr = Math.min(1.65, devicePixelRatio || 1);`,
+`    resize() {
+      if(this.sharedWorldContext)return;
+      const dpr = Math.min(1.65, devicePixelRatio || 1);`,
+  'shared planet canvas resize guard'
+);
+replaceRequired(
+`      this.resize();
+      gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+      gl.useProgram(this.program);`,
+`      this.resize();
+      if(!this.sharedWorldContext){gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);}
+      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+      gl.useProgram(this.program);`,
+  'shared planet canvas clear guard'
+);
+replaceRequired(
+`  const M = {
+    identity(){return new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])},`,
+`  const matrixPool=[];
+  const M = {
+    cursor:0,
+    reset(){this.cursor=0},
+    next(){let matrix=matrixPool[this.cursor];if(!matrix)matrixPool[this.cursor]=matrix=new Float32Array(16);this.cursor++;return matrix},
+    identity(){const matrix=this.next();matrix.fill(0);matrix[0]=matrix[5]=matrix[10]=matrix[15]=1;return matrix},`,
+  'pooled renderer matrices'
+);
+replaceRequired(
+`    multiply(a,b){const out=new Float32Array(16);`,
+`    multiply(a,b){const out=this.next();`,
+  'pooled matrix multiplication'
+);
+replaceRequired(
+`      if (!player) return;
+      this.resize();`,
+`      if (!player) return;
+      M.reset();
+      this.resize();`,
+  'matrix pool frame reset'
 );
 replaceRequired(
 `  function updateInteraction(playerState) {`,

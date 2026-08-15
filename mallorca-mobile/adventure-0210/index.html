@@ -120,6 +120,7 @@
     };`, 'colisión/oclusión');
 
       replaceOne(/    const resolveThirdPersonCamera = \(target, desired\) => \{[\s\S]*?      return last;\n    \};/, `    const resolveThirdPersonCamera=(target,desired)=>{
+      if(window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.cameraBlocked=false;return desired;}
       const deltaX=desired[0]-target[0],deltaY=desired[1]-target[1],deltaZ=desired[2]-target[2],desiredDistance=Math.hypot(deltaX,deltaY,deltaZ)||1;
       const minimumDistance=Math.min(.28,desiredDistance*.055),minimumT=minimumDistance/desiredDistance;let last=[target[0]+deltaX*minimumT,target[1]+deltaY*minimumT,target[2]+deltaZ*minimumT],blocked=false;
       const steps=Math.max(12,Math.min(24,Math.ceil(desiredDistance/.28)));
@@ -128,6 +129,7 @@
     };`, 'cámara contra terreno');
 
       replaceOne('    const movePlayer = (dx, dz) => {\n      const distance = Math.hypot(dx, dz);', `    const movePlayer = (dx, dz) => {
+      if(window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.camera.x+=dx;state.camera.z+=dz;return{moved:Math.hypot(dx,dz),waterSteps:0,landSteps:0};}
       if(!state.adventureFlight&&!state.adventureWaterJump&&state.adventureMountType!=='shark')resolveBuildingOverlap();
       const distance = Math.hypot(dx, dz);`, 'solape');
       replaceOne('      const steps = Math.max(1, Math.ceil(distance / .12));', `      const adventureStepSize=state.adventureFlight?.72:state.adventureWaterJump?.52:state.adventureMountType==='shark'?.28:.16;
@@ -242,6 +244,16 @@
       }
       // WAFT_GLOBAL_POSITION_API_0260: bounded world coordinates + Pacific wrap.
       if(regionId==='iberia'){
+        const planetFrameApiAnchor='    window.WAFTRegionRuntime = {';
+        const planetFrameApi=`    const waftPlanetFrameState={position:{x:0,y:0,z:0},displayPosition:{x:0,y:0,z:0},cameraEye:{x:0,y:0,z:0},playerFacing:0,cameraYaw:0,cameraPitch:0,adventureCurrentSpeed:0,swimming:false,worldMode:'regional',grounded:false,cameraBlocked:false};\n`+planetFrameApiAnchor;
+        if(!source.includes('getPlanetFrameState()')){
+          if(!source.includes(planetFrameApiAnchor))throw new Error('WAFT 0.27.3 planet frame-state object anchor missing');
+          source=source.replace(planetFrameApiAnchor,planetFrameApi);
+          const getStateAnchor='      getState() { const displayPosition = toDisplayXZ(state.camera.x, state.camera.z); return {';
+          const getPlanetState=`      getPlanetFrameState(){const frame=waftPlanetFrameState,position=frame.position,display=frame.displayPosition,eye=frame.cameraEye;position.x=state.camera.x;position.y=state.camera.y;position.z=state.camera.z;display.x=state.localCenter.x+(state.camera.x-state.localCenter.x)*state.worldScale;display.y=state.camera.y;display.z=state.localCenter.z+(state.camera.z-state.localCenter.z)*state.worldScale;eye.x=state.cameraEye.x;eye.y=state.cameraEye.y;eye.z=state.cameraEye.z;frame.playerFacing=state.playerFacing;frame.cameraYaw=state.yaw;frame.cameraPitch=state.pitch;frame.adventureCurrentSpeed=state.adventureCurrentSpeed;frame.swimming=state.swimming;frame.worldMode=state.worldMode;frame.grounded=state.grounded;frame.cameraBlocked=state.cameraBlocked;return frame;},\n`+getStateAnchor;
+          if(!source.includes(getStateAnchor))throw new Error('WAFT 0.27.3 planet frame-state method anchor missing');
+          source=source.replace(getStateAnchor,getPlanetState);
+        }
         const positionAnchor="      setInput(x, y) { state.joyX = Math.max(-1, Math.min(1, Number(x) || 0)); state.joyY = Math.max(-1, Math.min(1, Number(y) || 0)); },";
         const positionReplacement="      setRegionalPosition(x,z,y=null) { state.camera.x=Number(x)||0; state.camera.z=Number(z)||0; if(Number.isFinite(Number(y)))state.camera.y=Number(y); return { ...state.camera }; },\n"+positionAnchor;
         if(!source.includes('setRegionalPosition(x,z,y=null)'))source=source.replace(positionAnchor,positionReplacement);
@@ -260,7 +272,7 @@
         if(source.includes(dynamicClamp))source=source.replaceAll(dynamicClamp,sphericalClamp);
         else if(!source.includes(sphericalClamp))throw new Error('WAFT 0.26.1 dynamic terrain bounds clamp anchor missing');
         if(experimentalPlanet){
-          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.2-experimental'");
+          source=source.replace("window.__WAFT_ADVENTURE_BUILD__='0.26.1'","window.__WAFT_ADVENTURE_BUILD__='0.27.3-experimental'");
           source=source.replace("perspective(projection, Math.PI / 3, canvas.width / canvas.height, .06, state.worldMode === 'local' ? 2400 : 1450);","perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);");
           source=source.replace("speed=bearded?(dive?(boosted?116:104):(inputLength<.06?48:(boosted||inputLength>.93?92:inputLength>.70?76:60)))","speed=bearded?(dive?(boosted?348:312):(inputLength<.06?144:(boosted||inputLength>.93?276:inputLength>.70?228:180)))");
           source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");
@@ -269,6 +281,11 @@
           source=source.replace("recordTravelMovement(travelBeforeX, travelBeforeZ, travelMoveResult, swimmingBeforeMove);","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)recordTravelMovement(travelBeforeX,travelBeforeZ,travelMoveResult,swimmingBeforeMove);");
           source=source.replaceAll("if (state.worldMode === 'regional' && travelRouteVertexCount > 0)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelRouteVertexCount > 0)");
           source=source.replaceAll("if (state.worldMode === 'regional' && travelTrailVertexCount > 1)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelTrailVertexCount > 1)");
+          source=source.replace("const aheadTerrain = inputLength > .001","const aheadTerrain = !state.adventureFlight && inputLength > .001");
+          source=source.replace("if (state.worldMode === 'regional') runtimeControls.refreshLocalProximity();","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional') runtimeControls.refreshLocalProximity();");
+          source=source.replace("state.travelAutoSaveClock += dt;","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)state.travelAutoSaveClock += dt;");
+          source=source.replace("if (state.travelAutoSaveClock >= 5) {","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.travelAutoSaveClock >= 5) {");
+          source=source.replace("if (nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }");
         }
       }
       document.open();document.write(source);document.close();

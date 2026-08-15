@@ -39,13 +39,17 @@
   const plugin = window.WAFTAdventurePlugin = {
     hideBaseCharacter: true,
     rebaseRegionalEntities(project) { renderer.rebaseRegionalEntities(project); },
-    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0 }; },
+    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext) }; },
     afterWorldDraw(now, eye, pv) {
       if (!game.initialized || !renderer.ready) return;
       updateFrame(now);
       renderer.render(now, eye, pv);
     }
   };
+
+  function frameRuntimeState(api) {
+    return window.__WAFT_PLANET_WORLD_0270_ACTIVE__ ? api?.getPlanetFrameState?.() || api?.getState?.() : api?.getState?.();
+  }
 
   function injectUi() {
     const style = document.createElement('style');
@@ -585,7 +589,7 @@
 
   function updateAnimals(dt, now) {
     const api = runtime();
-    const playerPosition = api?.getState?.()?.position;
+    const playerPosition = frameRuntimeState(api)?.position;
     for (const animal of game.animals) {
       if (animal.hidden) continue;
       // Regional fauna is deliberately local. Once the planet's floating origin has
@@ -731,6 +735,7 @@
   const renderer = {
     ready: false,
     regionalEntitiesDrawn: 0,
+    sharedWorldContext: false,
     canvas: null,
     gl: null,
     program: null,
@@ -738,8 +743,11 @@
     cylinder: null,
     uniforms: null,
     init() {
-      this.canvas = document.getElementById('waftAdventureCanvas');
-      const gl = this.canvas.getContext('webgl2', { alpha: true, antialias: true, premultipliedAlpha: false });
+      const overlayCanvas=document.getElementById('waftAdventureCanvas');
+      this.sharedWorldContext=Boolean(window.__WAFT_PLANET_WORLD_0270_ACTIVE__);
+      this.canvas=this.sharedWorldContext?[...document.querySelectorAll('canvas')].find(canvas=>canvas!==overlayCanvas):overlayCanvas;
+      if(this.sharedWorldContext&&overlayCanvas)overlayCanvas.style.display='none';
+      const gl=this.sharedWorldContext?this.canvas?.getContext('webgl2'):this.canvas?.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:false});
       if (!gl) { console.warn('No overlay WebGL2'); return; }
       this.gl = gl;
       const vertex = `#version 300 es
@@ -760,6 +768,7 @@
       this.ready = true;
     },
     resize() {
+      if(this.sharedWorldContext)return;
       const dpr = Math.min(1.65, devicePixelRatio || 1);
       const width = Math.max(1, Math.floor(innerWidth*dpr));
       const height = Math.max(1, Math.floor(innerHeight*dpr));
@@ -787,10 +796,12 @@
     render(now, eye, pv) {
       const gl = this.gl;
       const api = runtime();
-      const player = api?.getState?.();
+      const player = frameRuntimeState(api);
       if (!player) return;
+      M.reset();
       this.resize();
-      gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+      if(!this.sharedWorldContext){gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);}
+      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
       gl.useProgram(this.program); gl.uniformMatrix4fv(this.uniforms.pv,false,pv); gl.uniform3f(this.uniforms.camera,eye[0],eye[1],eye[2]);
       drawCheckpointRoute(this);
       const visibleAnimals = game.animals.filter(animal => !animal.hidden && planetEntityInRange(animal, player.position, 180));
@@ -814,9 +825,13 @@
   function createCylinder(gl,segments){const values=[],indices=[];for(let ring=0;ring<2;ring++){const y=ring-.5;for(let i=0;i<=segments;i++){const a=i/segments*Math.PI*2,x=Math.cos(a),z=Math.sin(a);values.push(x,y,z,x,0,z)}}for(let i=0;i<segments;i++){const a=i,b=i+1,c=segments+1+i,d=c+1;indices.push(a,c,b,b,c,d)}return uploadMesh(gl,new Float32Array(values),new Uint16Array(indices))}
   function uploadMesh(gl,vertices,indices){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vb);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:indices.length}}
 
+  const matrixPool=[];
   const M = {
-    identity(){return new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])},
-    multiply(a,b){const out=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)out[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];return out},
+    cursor:0,
+    reset(){this.cursor=0},
+    next(){let matrix=matrixPool[this.cursor];if(!matrix)matrixPool[this.cursor]=matrix=new Float32Array(16);this.cursor++;return matrix},
+    identity(){const matrix=this.next();matrix.fill(0);matrix[0]=matrix[5]=matrix[10]=matrix[15]=1;return matrix},
+    multiply(a,b){const out=this.next();for(let c=0;c<4;c++)for(let r=0;r<4;r++)out[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];return out},
     t(x,y,z){const m=this.identity();m[12]=x;m[13]=y;m[14]=z;return m},
     s(x,y,z){const m=this.identity();m[0]=x;m[5]=y;m[10]=z;return m},
     ry(a){const c=Math.cos(a),s=Math.sin(a),m=this.identity();m[0]=c;m[2]=-s;m[8]=s;m[10]=c;return m},
