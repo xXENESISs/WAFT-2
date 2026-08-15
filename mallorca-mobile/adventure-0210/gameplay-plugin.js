@@ -39,7 +39,7 @@
   const plugin = window.WAFTAdventurePlugin = {
     hideBaseCharacter: true,
     rebaseRegionalEntities(project) { renderer.rebaseRegionalEntities(project); },
-    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext) }; },
+    getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext), instanceDrawCalls: renderer.instanceDrawCalls || 0 }; },
     afterWorldDraw(now, eye, pv) {
       if (!game.initialized || !renderer.ready) return;
       updateFrame(now);
@@ -742,6 +742,8 @@
     sphere: null,
     cylinder: null,
     uniforms: null,
+    smoothPlanet: false,
+    instanceDrawCalls: 0,
     init() {
       const overlayCanvas=document.getElementById('waftAdventureCanvas');
       this.sharedWorldContext=Boolean(window.__WAFT_PLANET_WORLD_0270_ACTIVE__);
@@ -750,16 +752,23 @@
       const gl=this.sharedWorldContext?this.canvas?.getContext('webgl2'):this.canvas?.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:false});
       if (!gl) { console.warn('No overlay WebGL2'); return; }
       this.gl = gl;
-      const vertex = `#version 300 es
+      this.smoothPlanet=Boolean(window.__WAFT_PLANET_WORLD_0274_ACTIVE__);
+      const vertex = this.smoothPlanet?`#version 300 es
+        layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aColor;
+        uniform mat4 uPV;out vec3 vColor;
+        void main(){vColor=aColor;gl_Position=uPV*vec4(aPosition,1.0);}`:`#version 300 es
         layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aNormal;
         uniform mat4 uPV;uniform mat4 uModel;out vec3 vNormal;out vec3 vWorld;
         void main(){vec4 world=uModel*vec4(aPosition,1.0);vWorld=world.xyz;vNormal=normalize(mat3(uModel)*aNormal);gl_Position=uPV*world;}`;
-      const fragment = `#version 300 es
+      const fragment = this.smoothPlanet?`#version 300 es
+        precision mediump float;in vec3 vColor;out vec4 outColor;
+        void main(){outColor=vec4(vColor,1.0);}`:`#version 300 es
         precision highp float;in vec3 vNormal;in vec3 vWorld;uniform vec3 uColor;uniform vec3 uCamera;out vec4 outColor;
         void main(){vec3 n=normalize(vNormal);float sun=max(dot(n,normalize(vec3(.38,.90,.24))),0.0);float fill=.38+.25*max(n.y,0.0);float rim=pow(1.0-max(dot(n,normalize(uCamera-vWorld)),0.0),2.0)*.15;outColor=vec4(uColor*(fill+sun*.55)+rim,1.0);}`;
       this.program = createProgram(gl, vertex, fragment);
-      this.sphere = createSphere(gl, 14, 9);
-      this.cylinder = createCylinder(gl, 12);
+      this.sphere = createSphere(gl, this.smoothPlanet?6:14, this.smoothPlanet?4:9);
+      this.cylinder = createCylinder(gl, this.smoothPlanet?5:12);
+      if(this.smoothPlanet)setupDynamicCharacter(gl,this);
       this.uniforms = {
         pv: gl.getUniformLocation(this.program,'uPV'), model: gl.getUniformLocation(this.program,'uModel'),
         color: gl.getUniformLocation(this.program,'uColor'), camera: gl.getUniformLocation(this.program,'uCamera')
@@ -799,9 +808,10 @@
       const player = frameRuntimeState(api);
       if (!player) return;
       M.reset();
+      if(this.smoothPlanet){this.sphere.instanceCount=0;this.cylinder.instanceCount=0;this.instanceDrawCalls=0;}
       this.resize();
       if(!this.sharedWorldContext){gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);}
-      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);if(this.smoothPlanet)gl.disable(gl.BLEND);else{gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);}
       gl.useProgram(this.program); gl.uniformMatrix4fv(this.uniforms.pv,false,pv); gl.uniform3f(this.uniforms.camera,eye[0],eye[1],eye[2]);
       drawCheckpointRoute(this);
       const visibleAnimals = game.animals.filter(animal => !animal.hidden && planetEntityInRange(animal, player.position, 180));
@@ -811,10 +821,12 @@
       if (visibleNpc) drawNpc(this, visibleNpc, now);
       const mounted = game.animals.find(item => item.id === game.mountedAnimalId);
       if (mounted) {
-        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing };
+        const compactVulture=this.smoothPlanet&&mounted.type==='vulture';
+        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing, renderScale:compactVulture?.75:1 };
         drawAnimal(this, visual, now, true);
-        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05);
+        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05,compactVulture?.82:1);
       } else drawPenguin(this, player, now, 0);
+      if(this.smoothPlanet)flushDynamicCharacter(this);
       gl.bindVertexArray(null);
     }
   };
@@ -823,7 +835,31 @@
   function createProgram(gl,vertex,fragment){const p=gl.createProgram();gl.attachShader(p,compile(gl,gl.VERTEX_SHADER,vertex));gl.attachShader(p,compile(gl,gl.FRAGMENT_SHADER,fragment));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p}
   function createSphere(gl,segments,rings){const values=[],indices=[];for(let r=0;r<=rings;r++){const v=r/rings,theta=v*Math.PI,st=Math.sin(theta),ct=Math.cos(theta);for(let s=0;s<=segments;s++){const u=s/segments,phi=u*Math.PI*2,nx=Math.cos(phi)*st,ny=ct,nz=Math.sin(phi)*st;values.push(nx,ny,nz,nx,ny,nz)}}for(let r=0;r<rings;r++)for(let s=0;s<segments;s++){const a=r*(segments+1)+s,b=a+segments+1;indices.push(a,b,a+1,b,b+1,a+1)}return uploadMesh(gl,new Float32Array(values),new Uint16Array(indices))}
   function createCylinder(gl,segments){const values=[],indices=[];for(let ring=0;ring<2;ring++){const y=ring-.5;for(let i=0;i<=segments;i++){const a=i/segments*Math.PI*2,x=Math.cos(a),z=Math.sin(a);values.push(x,y,z,x,0,z)}}for(let i=0;i<segments;i++){const a=i,b=i+1,c=segments+1+i,d=c+1;indices.push(a,c,b,b,c,d)}return uploadMesh(gl,new Float32Array(values),new Uint16Array(indices))}
-  function uploadMesh(gl,vertices,indices){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vb);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:indices.length}}
+  function uploadMesh(gl,vertices,indices){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vb);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:indices.length,vertices,indices}}
+  function setupDynamicCharacter(gl,renderer){
+    for(const mesh of[renderer.sphere,renderer.cylinder]){mesh.instanceCapacity=256;mesh.instanceCount=0;mesh.instanceData=new Float32Array(mesh.instanceCapacity*20);}
+    renderer.dynamicData=new Float32Array(524288);renderer.dynamicVao=gl.createVertexArray();renderer.dynamicBuffer=gl.createBuffer();gl.bindVertexArray(renderer.dynamicVao);gl.bindBuffer(gl.ARRAY_BUFFER,renderer.dynamicBuffer);gl.bufferData(gl.ARRAY_BUFFER,renderer.dynamicData.byteLength,gl.STREAM_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);gl.bindVertexArray(null);
+  }
+  function growInstanceMesh(mesh){mesh.instanceCapacity*=2;const data=new Float32Array(mesh.instanceCapacity*20);data.set(mesh.instanceData);mesh.instanceData=data;}
+  function queueInstance(renderer,mesh,model,color){
+    if(mesh.instanceCount>=mesh.instanceCapacity)growInstanceMesh(mesh);
+    const offset=mesh.instanceCount*20;mesh.instanceData.set(model,offset);mesh.instanceData[offset+16]=color[0];mesh.instanceData[offset+17]=color[1];mesh.instanceData[offset+18]=color[2];mesh.instanceData[offset+19]=1;mesh.instanceCount++;
+  }
+  function flushDynamicCharacter(renderer){
+    const output=renderer.dynamicData;let cursor=0;
+    for(const mesh of[renderer.sphere,renderer.cylinder])for(let instance=0;instance<mesh.instanceCount;instance++){
+      const matrixOffset=instance*20,m=mesh.instanceData,red=m[matrixOffset+16],green=m[matrixOffset+17],blue=m[matrixOffset+18],vertices=mesh.vertices,indices=mesh.indices;
+      for(let index=0;index<indices.length;index++){
+        const source=indices[index]*6,x=vertices[source],y=vertices[source+1],z=vertices[source+2],light=.56+.44*Math.max(0,vertices[source+4]);
+        if(cursor+6>output.length)throw new Error('0.27.4 dynamic character vertex budget exceeded');
+        output[cursor++]=m[matrixOffset]*x+m[matrixOffset+4]*y+m[matrixOffset+8]*z+m[matrixOffset+12];
+        output[cursor++]=m[matrixOffset+1]*x+m[matrixOffset+5]*y+m[matrixOffset+9]*z+m[matrixOffset+13];
+        output[cursor++]=m[matrixOffset+2]*x+m[matrixOffset+6]*y+m[matrixOffset+10]*z+m[matrixOffset+14];
+        output[cursor++]=red*light;output[cursor++]=green*light;output[cursor++]=blue*light;
+      }
+    }
+    if(!cursor)return;const gl=renderer.gl;gl.bindVertexArray(renderer.dynamicVao);gl.bindBuffer(gl.ARRAY_BUFFER,renderer.dynamicBuffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,output.subarray(0,cursor));gl.drawArrays(gl.TRIANGLES,0,cursor/6);renderer.instanceDrawCalls=1;
+  }
 
   const matrixPool=[];
   const M = {
@@ -841,6 +877,7 @@
   };
 
   function drawMesh(renderer, mesh, model, color) {
+    if(renderer.smoothPlanet){queueInstance(renderer,mesh,model,color);return;}
     const gl=renderer.gl;gl.uniformMatrix4fv(renderer.uniforms.model,false,model);gl.uniform3f(renderer.uniforms.color,color[0],color[1],color[2]);gl.bindVertexArray(mesh.vao);gl.drawElements(gl.TRIANGLES,mesh.count,gl.UNSIGNED_SHORT,0);
   }
   function drawCheckpointRoute(r) {
@@ -867,11 +904,20 @@
   function drawSphere(r,base,x,y,z,sx,sy,sz,color,rot=null){drawMesh(r,r.sphere,M.compose(base,M.t(x,y,z),rot||M.identity(),M.s(sx,sy,sz)),color)}
   function drawCylinderPart(r,base,x,y,z,sx,sy,sz,color,rot=null){drawMesh(r,r.cylinder,M.compose(base,M.t(x,y,z),rot||M.identity(),M.s(sx,sy,sz)),color)}
 
-  function drawPenguin(r, state, now, mountedOffset=0) {
+  function drawPenguin(r, state, now, mountedOffset=0,visualScale=1) {
     const display=state.displayPosition;
     const baseY=state.position.y-(state.swimming?.46:.82)+mountedOffset;
     const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming;
-    const base=worldBase(display.x,baseY,display.z,state.playerFacing,.70);
+    const base=worldBase(display.x,baseY,display.z,state.playerFacing,.70*visualScale);
+    if(r.smoothPlanet&&mountedOffset>0){
+      drawSphere(r,base,0,.82,0,.43,.68,.34,[.035,.055,.065]);
+      drawSphere(r,base,0,.84,.24,.30,.50,.12,[.88,.89,.83]);
+      drawSphere(r,base,0,1.42,.02,.39,.40,.37,[.035,.05,.058]);
+      drawSphere(r,base,0,1.38,.34,.22,.19,.20,[.77,.48,.12]);
+      drawSphere(r,base,-.43,.88,.02,.13,.48,.09,[.028,.045,.052],M.rz(.20+step*.28));
+      drawSphere(r,base,.43,.88,.02,.13,.48,.09,[.028,.045,.052],M.rz(-.20-step*.28));
+      return;
+    }
     drawSphere(r,base,0,.82,0,.43,.68,.34,[.035,.055,.065],swim?M.rx(-.38):null);
     drawSphere(r,base,0,.84,.24,.30,.50,.12,[.88,.89,.83],swim?M.rx(-.38):null);
     drawSphere(r,base,0,1.42,.02,.39,.40,.37,[.035,.05,.058]);
@@ -887,7 +933,7 @@
 
   function drawNpc(r,npc,now){const api=runtime(),display=api.regionalToDisplay(npc.x,npc.z),surface=api.sampleSurface(npc.x,npc.z),base=worldBase(display.x,surface.height,display.z,npc.yaw,.72),wave=Math.sin(now*.002)*.08;drawSphere(r,base,0,.82,0,.30,.52,.24,[.25,.48,.44]);drawSphere(r,base,0,1.38,0,.30,.30,.28,[.67,.48,.34]);drawCylinderPart(r,base,-.33,.78,wave,.09,.72,.09,[.67,.48,.34],M.rz(.15));drawCylinderPart(r,base,.33,.78,-wave,.09,.72,.09,[.67,.48,.34],M.rz(-.15));drawCylinderPart(r,base,-.16,.25,0,.11,.52,.11,[.16,.24,.25]);drawCylinderPart(r,base,.16,.25,0,.11,.52,.11,[.16,.24,.25])}
 
-  function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){
+  function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);switch(a.type){
     case'lizard':drawSphere(r,base,0,.12,0,.12,.10,.42,[.34,.50,.22]);drawSphere(r,base,0,.14,.39,.13,.11,.18,[.42,.58,.25]);drawSphere(r,base,0,.10,-.47,.07,.06,.48,[.31,.45,.19]);break;
     case'gineta':drawQuadruped(r,base,[.35,.30,.24],[.15,.12,.10],.62,.34,.95);drawSphere(r,base,0,.43,-.78,.10,.10,.75,[.28,.25,.22],M.rx(.18));break;
     case'myotragus':drawQuadruped(r,base,[.50,.39,.25],[.16,.12,.08],.72,.45,1.05);drawSphere(r,base,0,.82,.70,.28,.28,.34,[.57,.45,.29]);drawCylinderPart(r,base,-.17,1.08,.66,.04,.30,.04,[.72,.67,.55],M.rz(-.25));drawCylinderPart(r,base,.17,1.08,.66,.04,.30,.04,[.72,.67,.55],M.rz(.25));break;

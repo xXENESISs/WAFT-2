@@ -84,6 +84,17 @@
       const flap=airborne?Math.sin(now*.009+a.phase)*(.18+.18*Math.max(0,1-speed)):.035;
       const oriented=mounted&&state?M.compose(base,M.rx(state.terrainPitch||0),M.rz(-(state.terrainRoll||0))):base;
       const dark=[.105,.092,.074],dark2=[.155,.132,.10],cream=[.77,.65,.48],rust=[.58,.31,.15],head=[.84,.72,.54],black=[.025,.022,.019],gold=[.80,.57,.20];
+      if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__){
+        drawSphere(r,oriented,0,.43,0,.46,.48,.92,cream);
+        drawSphere(r,oriented,0,.54,.56,.31,.34,.40,rust);
+        drawSphere(r,oriented,0,.62,.91,.25,.25,.30,head);
+        drawSphere(r,oriented,0,.59,1.15,.13,.10,.22,gold);
+        for(const side of[-1,1]){
+          drawSphere(r,oriented,side*.92,.45,-.06,1.18,.07,.50,dark,M.rz(side*(-.17-flap)));
+          drawSphere(r,oriented,side*1.82,.40,-.22,.82,.045,.29,dark2,M.rz(side*(-.25-flap*.7)));
+        }
+        return;
+      }
       drawSphere(r,oriented,0,.43,0,.46,.48,.92,cream);
       drawSphere(r,oriented,0,.54,.54,.31,.34,.38,rust);
       drawSphere(r,oriented,0,.62,.88,.25,.25,.28,head);
@@ -142,6 +153,11 @@
     }
     if(!window.WAFTRegionRuntime||!window.__WAFT_INTERNAL_GAME__)throw new Error('Iberia Explorer: runtime unavailable');
     document.getElementById('down')?.remove();
+    if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__){
+      addBird();document.getElementById('waftIberiaPlaces')?.remove();document.getElementById('waftFlightTelemetry')?.remove();
+      window.WAFTIberiaExplorer={version:'0.27.4-light',birdId:BIRD_ID,getState:()=>({settlements:0,bird:window.__WAFT_INTERNAL_GAME__.animals.find(item=>item.id===BIRD_ID)||null,panelOpen:false}),mountBird:()=>window.WAFTAdventure?.mount?.(BIRD_ID)};
+      window.__WAFT_IBERIA_EXPLORER_0242_READY__=true;return;
+    }
     await loadSettlements();
     addBird();updatePlaces();updateFlightTelemetry();
     setInterval(updatePlaces,350);setInterval(updateFlightTelemetry,100);

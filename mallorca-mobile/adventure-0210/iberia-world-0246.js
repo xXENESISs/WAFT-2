@@ -18,6 +18,13 @@
   addEventListener('keydown',e=>{if((e.code==='ControlLeft'||e.code==='KeyC')&&!e.repeat)setDive(true);});
   addEventListener('keyup',e=>{if(e.code==='ControlLeft'||e.code==='KeyC')setDive(false);});
 
+  if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__){
+    dive.hidden=false;
+    window.WAFTIberiaWorld0246={version:'0.27.4-light',landmarks:()=>[],landmarkData:()=>[],franceCityCount:()=>0,diveButton:dive,setDive};
+    window.__WAFT_IBERIA_WORLD_0246_READY__=true;
+    return;
+  }
+
   const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');
   if(!gl)throw new Error('WebGL2 unavailable for 0.26.0 world layer');
   const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh)||'world shader');return sh;};

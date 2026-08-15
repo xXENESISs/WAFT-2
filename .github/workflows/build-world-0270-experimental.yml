@@ -92,7 +92,7 @@ jobs:
           ready=false
           for attempt in $(seq 1 36); do
             if curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "$target" >/tmp/waft-0270-public.html && \
-               grep -q "params.get('renderer')==='0270'" /tmp/waft-0270-public.html; then
+               grep -q "requestedRenderer==='0270'||smoothPlanet" /tmp/waft-0270-public.html; then
               ready=true
               break
             fi

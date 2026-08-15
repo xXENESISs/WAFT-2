@@ -464,5 +464,137 @@ replaceRequired(
   'checkpoint ui update'
 );
 
-fs.writeFileSync(path.join(root, 'gameplay-plugin.js'), source);
-console.log(`Built gameplay-plugin.js: ${Buffer.byteLength(source)} bytes`);
+// 0.27.4 keeps the complete cube-sphere immutable and spends one draw call on
+// the mounted character. Keep these changes in the deterministic builder so a
+// deployment can never regenerate the older multi-draw renderer.
+replaceRequired(
+  "getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext) }; },",
+  "getRendererState() { return { regionalEntitiesDrawn: renderer.regionalEntitiesDrawn || 0, sharedWorldContext: Boolean(renderer.sharedWorldContext), instanceDrawCalls: renderer.instanceDrawCalls || 0 }; },",
+  '0.27.4 character draw telemetry'
+);
+replaceRequired(
+`    cylinder: null,
+    uniforms: null,`,
+`    cylinder: null,
+    uniforms: null,
+    smoothPlanet: false,
+    instanceDrawCalls: 0,`,
+  '0.27.4 renderer state'
+);
+replaceRequired(
+  "      this.gl = gl;\n      const vertex = `#version 300 es\n        layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aNormal;\n        uniform mat4 uPV;uniform mat4 uModel;out vec3 vNormal;out vec3 vWorld;\n        void main(){vec4 world=uModel*vec4(aPosition,1.0);vWorld=world.xyz;vNormal=normalize(mat3(uModel)*aNormal);gl_Position=uPV*world;}`;",
+  "      this.gl = gl;\n      this.smoothPlanet=Boolean(window.__WAFT_PLANET_WORLD_0274_ACTIVE__);\n      const vertex = this.smoothPlanet?`#version 300 es\n        layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aColor;\n        uniform mat4 uPV;out vec3 vColor;\n        void main(){vColor=aColor;gl_Position=uPV*vec4(aPosition,1.0);}`:`#version 300 es\n        layout(location=0) in vec3 aPosition;layout(location=1) in vec3 aNormal;\n        uniform mat4 uPV;uniform mat4 uModel;out vec3 vNormal;out vec3 vWorld;\n        void main(){vec4 world=uModel*vec4(aPosition,1.0);vWorld=world.xyz;vNormal=normalize(mat3(uModel)*aNormal);gl_Position=uPV*world;}`;",
+  '0.27.4 lightweight character vertex shader'
+);
+replaceRequired(
+  "      const fragment = `#version 300 es\n        precision highp float;in vec3 vNormal;in vec3 vWorld;uniform vec3 uColor;uniform vec3 uCamera;out vec4 outColor;\n        void main(){vec3 n=normalize(vNormal);float sun=max(dot(n,normalize(vec3(.38,.90,.24))),0.0);float fill=.38+.25*max(n.y,0.0);float rim=pow(1.0-max(dot(n,normalize(uCamera-vWorld)),0.0),2.0)*.15;outColor=vec4(uColor*(fill+sun*.55)+rim,1.0);}`;",
+  "      const fragment = this.smoothPlanet?`#version 300 es\n        precision mediump float;in vec3 vColor;out vec4 outColor;\n        void main(){outColor=vec4(vColor,1.0);}`:`#version 300 es\n        precision highp float;in vec3 vNormal;in vec3 vWorld;uniform vec3 uColor;uniform vec3 uCamera;out vec4 outColor;\n        void main(){vec3 n=normalize(vNormal);float sun=max(dot(n,normalize(vec3(.38,.90,.24))),0.0);float fill=.38+.25*max(n.y,0.0);float rim=pow(1.0-max(dot(n,normalize(uCamera-vWorld)),0.0),2.0)*.15;outColor=vec4(uColor*(fill+sun*.55)+rim,1.0);}`;",
+  '0.27.4 lightweight character fragment shader'
+);
+replaceRequired(
+`      this.sphere = createSphere(gl, 14, 9);
+      this.cylinder = createCylinder(gl, 12);`,
+`      this.sphere = createSphere(gl, this.smoothPlanet?6:14, this.smoothPlanet?4:9);
+      this.cylinder = createCylinder(gl, this.smoothPlanet?5:12);
+      if(this.smoothPlanet)setupDynamicCharacter(gl,this);`,
+  '0.27.4 low-poly character meshes'
+);
+replaceRequired(
+`      M.reset();
+      this.resize();`,
+`      M.reset();
+      if(this.smoothPlanet){this.sphere.instanceCount=0;this.cylinder.instanceCount=0;this.instanceDrawCalls=0;}
+      this.resize();`,
+  '0.27.4 character batch reset'
+);
+replaceRequired(
+  "      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);",
+  "      gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.depthMask(true);if(this.smoothPlanet)gl.disable(gl.BLEND);else{gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);}",
+  '0.27.4 opaque character batch'
+);
+replaceRequired(
+`      if (mounted) {
+        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing };
+        drawAnimal(this, visual, now, true);
+        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05);
+      } else drawPenguin(this, player, now, 0);
+      gl.bindVertexArray(null);`,
+`      if (mounted) {
+        const compactVulture=this.smoothPlanet&&mounted.type==='vulture';
+        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing, renderScale:compactVulture?.75:1 };
+        drawAnimal(this, visual, now, true);
+        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05,compactVulture?.82:1);
+      } else drawPenguin(this, player, now, 0);
+      if(this.smoothPlanet)flushDynamicCharacter(this);
+      gl.bindVertexArray(null);`,
+  '0.27.4 compact mounted character batch'
+);
+replaceRequired(
+`  function uploadMesh(gl,vertices,indices){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vb);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:indices.length}}`,
+`  function uploadMesh(gl,vertices,indices){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vb);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,count:indices.length,vertices,indices}}
+  function setupDynamicCharacter(gl,renderer){
+    for(const mesh of[renderer.sphere,renderer.cylinder]){mesh.instanceCapacity=256;mesh.instanceCount=0;mesh.instanceData=new Float32Array(mesh.instanceCapacity*20);}
+    renderer.dynamicData=new Float32Array(524288);renderer.dynamicVao=gl.createVertexArray();renderer.dynamicBuffer=gl.createBuffer();gl.bindVertexArray(renderer.dynamicVao);gl.bindBuffer(gl.ARRAY_BUFFER,renderer.dynamicBuffer);gl.bufferData(gl.ARRAY_BUFFER,renderer.dynamicData.byteLength,gl.STREAM_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);gl.bindVertexArray(null);
+  }
+  function growInstanceMesh(mesh){mesh.instanceCapacity*=2;const data=new Float32Array(mesh.instanceCapacity*20);data.set(mesh.instanceData);mesh.instanceData=data;}
+  function queueInstance(renderer,mesh,model,color){
+    if(mesh.instanceCount>=mesh.instanceCapacity)growInstanceMesh(mesh);
+    const offset=mesh.instanceCount*20;mesh.instanceData.set(model,offset);mesh.instanceData[offset+16]=color[0];mesh.instanceData[offset+17]=color[1];mesh.instanceData[offset+18]=color[2];mesh.instanceData[offset+19]=1;mesh.instanceCount++;
+  }
+  function flushDynamicCharacter(renderer){
+    const output=renderer.dynamicData;let cursor=0;
+    for(const mesh of[renderer.sphere,renderer.cylinder])for(let instance=0;instance<mesh.instanceCount;instance++){
+      const matrixOffset=instance*20,m=mesh.instanceData,red=m[matrixOffset+16],green=m[matrixOffset+17],blue=m[matrixOffset+18],vertices=mesh.vertices,indices=mesh.indices;
+      for(let index=0;index<indices.length;index++){
+        const source=indices[index]*6,x=vertices[source],y=vertices[source+1],z=vertices[source+2],light=.56+.44*Math.max(0,vertices[source+4]);
+        if(cursor+6>output.length)throw new Error('0.27.4 dynamic character vertex budget exceeded');
+        output[cursor++]=m[matrixOffset]*x+m[matrixOffset+4]*y+m[matrixOffset+8]*z+m[matrixOffset+12];
+        output[cursor++]=m[matrixOffset+1]*x+m[matrixOffset+5]*y+m[matrixOffset+9]*z+m[matrixOffset+13];
+        output[cursor++]=m[matrixOffset+2]*x+m[matrixOffset+6]*y+m[matrixOffset+10]*z+m[matrixOffset+14];
+        output[cursor++]=red*light;output[cursor++]=green*light;output[cursor++]=blue*light;
+      }
+    }
+    if(!cursor)return;const gl=renderer.gl;gl.bindVertexArray(renderer.dynamicVao);gl.bindBuffer(gl.ARRAY_BUFFER,renderer.dynamicBuffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,output.subarray(0,cursor));gl.drawArrays(gl.TRIANGLES,0,cursor/6);renderer.instanceDrawCalls=1;
+  }`,
+  '0.27.4 one-draw character batch'
+);
+replaceRequired(
+`  function drawMesh(renderer, mesh, model, color) {
+    const gl=renderer.gl;`,
+`  function drawMesh(renderer, mesh, model, color) {
+    if(renderer.smoothPlanet){queueInstance(renderer,mesh,model,color);return;}
+    const gl=renderer.gl;`,
+  '0.27.4 queued character parts'
+);
+replaceRequired(
+  '  function drawPenguin(r, state, now, mountedOffset=0) {',
+  '  function drawPenguin(r, state, now, mountedOffset=0,visualScale=1) {',
+  '0.27.4 compact rider signature'
+);
+replaceRequired(
+`    const base=worldBase(display.x,baseY,display.z,state.playerFacing,.70);
+    drawSphere(r,base,0,.82,0,.43,.68,.34,[.035,.055,.065],swim?M.rx(-.38):null);`,
+`    const base=worldBase(display.x,baseY,display.z,state.playerFacing,.70*visualScale);
+    if(r.smoothPlanet&&mountedOffset>0){
+      drawSphere(r,base,0,.82,0,.43,.68,.34,[.035,.055,.065]);
+      drawSphere(r,base,0,.84,.24,.30,.50,.12,[.88,.89,.83]);
+      drawSphere(r,base,0,1.42,.02,.39,.40,.37,[.035,.05,.058]);
+      drawSphere(r,base,0,1.38,.34,.22,.19,.20,[.77,.48,.12]);
+      drawSphere(r,base,-.43,.88,.02,.13,.48,.09,[.028,.045,.052],M.rz(.20+step*.28));
+      drawSphere(r,base,.43,.88,.02,.13,.48,.09,[.028,.045,.052],M.rz(-.20-step*.28));
+      return;
+    }
+    drawSphere(r,base,0,.82,0,.43,.68,.34,[.035,.055,.065],swim?M.rx(-.38):null);`,
+  '0.27.4 compact rider geometry'
+);
+replaceRequired(
+  'base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){',
+  'base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);switch(a.type){',
+  '0.27.4 mount visual scale'
+);
+
+const outputPath = process.env.WAFT_BUILD_OUTPUT
+  ? path.resolve(process.env.WAFT_BUILD_OUTPUT)
+  : path.join(root, 'gameplay-plugin.js');
+fs.writeFileSync(outputPath, source);
+console.log(`Built ${path.basename(outputPath)}: ${Buffer.byteLength(source)} bytes`);

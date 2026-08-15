@@ -1,0 +1,133 @@
+name: Verify WAFT world 0.27.4 smooth planet
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/build-world-0274-smooth-planet.yml
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/gameplay-plugin.js
+      - mallorca-mobile/adventure-0210/plugin-loader.js
+      - mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+      - mallorca-mobile/adventure-0210/iberia-world-0246.js
+      - mallorca-mobile/adventure-0210/planet-world-0270.js
+      - mallorca-mobile/adventure-0210/planet-0270/**
+      - mallorca-mobile/adventure-0210/verify-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+      - mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - world-generator/scripts/prepare-world-0261.mjs
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/build-world-0274-smooth-planet.yml
+      - mallorca-mobile/adventure-0210/index.html
+      - mallorca-mobile/adventure-0210/gameplay-plugin.js
+      - mallorca-mobile/adventure-0210/plugin-loader.js
+      - mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+      - mallorca-mobile/adventure-0210/iberia-world-0246.js
+      - mallorca-mobile/adventure-0210/planet-world-0270.js
+      - mallorca-mobile/adventure-0210/planet-0270/**
+      - mallorca-mobile/adventure-0210/verify-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+      - mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
+      - mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+      - world-generator/scripts/prepare-world-0261.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: waft-world-0274-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  immutable-smooth-planet:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browser dependency
+        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Verify source and deterministic generation
+        run: |
+          node --check mallorca-mobile/adventure-0210/planet-world-0270.js
+          node --check mallorca-mobile/adventure-0210/gameplay-plugin.js
+          node --check mallorca-mobile/adventure-0210/plugin-loader.js
+          node --check mallorca-mobile/adventure-0210/iberia-explorer-0242.js
+          node --check mallorca-mobile/adventure-0210/iberia-world-0246.js
+          node --check mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+          node --check mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs
+          node mallorca-mobile/adventure-0210/tools/verify-cube-sphere-0270.mjs
+          node mallorca-mobile/adventure-0210/verify-0270.mjs
+          node mallorca-mobile/adventure-0210/tools/build-adventure-0220.mjs
+          git diff --exit-code -- mallorca-mobile/adventure-0210/gameplay-plugin.js
+          node world-generator/scripts/prepare-world-0261.mjs
+          git diff --exit-code -- mallorca-mobile/adventure-0210/index.html mallorca-mobile/adventure-0210/spherical-world-0261.js mallorca-mobile/adventure-0210/iberia-world-0246.js
+          node mallorca-mobile/adventure-0210/verify-0261.mjs
+          node mallorca-mobile/adventure-0210/tools/smoke-patched-runtime.mjs
+      - name: Verify desktop camera and movement at 60 FPS
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/waft-0274-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-${GITHUB_SHA}"
+      - name: Verify mobile camera and movement at 60 FPS
+        shell: bash
+        run: |
+          python3 -m http.server 8001 --bind 127.0.0.1 >/tmp/waft-0274-mobile-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          WAFT_PROFILE=mobile node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8001/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-mobile-${GITHUB_SHA}"
+      - name: Verify deployed GitHub Pages release
+        if: github.ref_name == 'main'
+        shell: bash
+        run: |
+          target="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=${GITHUB_SHA}"
+          runtime="https://xxenesiss.github.io/WAFT-2/mallorca-mobile/adventure-0210/planet-world-0270.js?v=${GITHUB_SHA}"
+          ready=false
+          for attempt in $(seq 1 48); do
+            if curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "$target" >/tmp/waft-0274-public.html && \
+               curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "$runtime" >/tmp/waft-0274-public.js && \
+               grep -q "0.27.4-experimental" /tmp/waft-0274-public.html && \
+               grep -q "fixed-full-planet-v4" /tmp/waft-0274-public.js; then
+              ready=true
+              break
+            fi
+            sleep 5
+          done
+          if [ "$ready" != true ]; then
+            echo "GitHub Pages did not expose the 0.27.4 release in time." >&2
+            exit 1
+          fi
+          verify_profile() {
+            profile="$1"
+            for attempt in 1 2 3; do
+              if WAFT_PROFILE="$profile" node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"; then
+                return 0
+              fi
+              sleep 10
+            done
+            return 1
+          }
+          verify_profile desktop
+          verify_profile mobile
+      - name: Upload smooth-planet checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: waft-planet-world-0274-visuals-${{ github.run_attempt }}
+          path: artifacts/world-0274-*/*.png
+          if-no-files-found: error

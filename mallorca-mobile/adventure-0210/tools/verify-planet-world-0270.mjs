@@ -4,13 +4,18 @@ import path from 'node:path';
 import { chromium } from 'playwright-core';
 
 const need=(condition,message)=>{if(!condition)throw new Error(message);};
-const chrome=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(fs.existsSync);
+const chrome=[process.env.WAFT_CHROME,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].filter(Boolean).find(fs.existsSync);
 if(!chrome)throw new Error('Chrome missing');
 const url=process.argv[2];
 if(!url)throw new Error('URL missing');
-const shots=path.resolve('artifacts/world-0270');fs.mkdirSync(shots,{recursive:true});
+const requestedRenderer=new URL(url).searchParams.get('renderer');
+const smoothPlanet=requestedRenderer==='0274';
+const expectedVersion=smoothPlanet?'0.27.4-experimental':'0.27.3-experimental';
+const profile=process.env.WAFT_PROFILE==='mobile'?'mobile':'desktop';
+const mobile=profile==='mobile';
+const shots=path.resolve(`artifacts/world-${smoothPlanet?'0274':'0270'}-${profile}`);fs.mkdirSync(shots,{recursive:true});
 const browser=await chromium.launch({executablePath:chrome,headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--ignore-gpu-blocklist','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
-const page=await browser.newPage({viewport:{width:1394,height:654}}),errors=[],consoleLines=[];
+const page=await browser.newPage(mobile?{viewport:{width:844,height:390},isMobile:true,hasTouch:true,deviceScaleFactor:1}:{viewport:{width:1394,height:654},deviceScaleFactor:1}),errors=[],consoleLines=[];
 page.on('pageerror',error=>errors.push(error.message));
 page.on('console',message=>{if(['error','warning'].includes(message.type()))consoleLines.push(`${message.type()}: ${message.text()}`);});
 
@@ -45,14 +50,18 @@ const planetLayerStats=()=>page.evaluate(async()=>{
 const startFrameTrace=()=>page.evaluate(()=>{
   window.__WAFT_0271_FRAME_TRACE__=[];
   let previous=performance.now();
-  const tick=now=>{window.__WAFT_0271_FRAME_TRACE__.push(now-previous);previous=now;if(window.__WAFT_0271_FRAME_TRACE__.length<900)requestAnimationFrame(tick);};
+  const tick=now=>{window.__WAFT_0271_FRAME_TRACE__.push(now-previous);previous=now;if(window.__WAFT_0271_FRAME_TRACE__.length<1200)requestAnimationFrame(tick);};
   requestAnimationFrame(tick);
 });
 const frameTrace=()=>page.evaluate(()=>{
   const values=(window.__WAFT_0271_FRAME_TRACE__||[]).filter(value=>Number.isFinite(value)&&value>=0).sort((a,b)=>a-b);
   const percentile=p=>values[Math.min(values.length-1,Math.floor(values.length*p))]||0;
-  return{samples:values.length,p50:percentile(.50),p95:percentile(.95),p99:percentile(.99),max:values.at(-1)||0,over100:values.filter(value=>value>100).length};
+  return{samples:values.length,p50:percentile(.50),p95:percentile(.95),p99:percentile(.99),max:values.at(-1)||0,over20:values.filter(value=>value>20).length,over34:values.filter(value=>value>34).length,over50:values.filter(value=>value>50).length,over100:values.filter(value=>value>100).length};
 });
+const require60Fps=(label,result)=>{
+  need(result.samples>90,`${label}: insufficient frame samples ${JSON.stringify(result)}`);
+  need(result.p95<=20.5&&result.max<100&&result.over34/result.samples<.04,`${label}: 60 FPS frame-time budget failed ${JSON.stringify(result)}`);
+};
 const orientationState=()=>page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw,originShifts:world.getState().floatingOriginShifts};});
 const relocate=async(lat,lon,y=55)=>{
   await page.evaluate(({lat,lon,y})=>{const point=WAFTPlanetWorld0270.worldFromGeo(lat,lon);WAFTRegionRuntime.setInput(0,0);WAFTRegionRuntime.setRegionalPosition(point.x,point.z,y);WAFTPlanetWorld0270.refreshSelection();},{lat,lon,y});
@@ -74,15 +83,20 @@ try{
 
   const base=await state();
   need(base?.renderMode==='cube-sphere-quadtree',`wrong renderer ${JSON.stringify(base)}`);
-  need(base.selectionProfile==='fixed-geographic-quadtree-v3',`unstable quadtree profile ${JSON.stringify(base)}`);
+  need(base.selectionProfile===(smoothPlanet?'fixed-full-planet-v4':'fixed-geographic-quadtree-v3'),`unstable quadtree profile ${JSON.stringify(base)}`);
   need(base.cacheLimit===720&&base.staticTiles===705,`unexpected static planet budget ${JSON.stringify(base)}`);
-  need(base.staticBatches===384&&base.coastlineEdgeBins===720,`planet batching or coastline acceleration missing ${JSON.stringify(base)}`);
+  need(base.staticBatches===(smoothPlanet?1:384)&&base.coastlineEdgeBins===720,`planet batching or coastline acceleration missing ${JSON.stringify(base)}`);
   need(base.cacheTiles===base.staticTiles&&base.tileBuildsDuringGameplay===0&&base.tileEvictions===0,`planet was not fully resident before gameplay ${JSON.stringify(base)}`);
   need(base.coastlineScale==='50m'&&base.coastlinePolygons===1421,`vector coastline unavailable ${JSON.stringify({scale:base.coastlineScale,polygons:base.coastlinePolygons})}`);
   need(base.visibleTiles>0&&base.atlasTriangles>0,`planet has no visible geometry: ${JSON.stringify({base,pageErrors:errors,console:consoleLines})}`);
   need(base.residentDesiredTiles===base.desiredTiles&&base.renderTileKeys.length===base.desiredTiles,'initial planet coverage is incomplete');
   need(base.desiredTileKeys.length===new Set(base.desiredTileKeys).size,'duplicate planet tile IDs');
   need(base.drawCalls===base.renderBatchKeys.length&&base.drawCalls<base.visibleTiles,`planet tiles were not batched into fewer draw calls ${JSON.stringify(base)}`);
+  if(smoothPlanet){
+    need(base.smoothPlanet&&base.desiredTiles===705&&base.renderTileKeys.length===705,`0.27.4 did not lock the complete physical planet ${JSON.stringify(base)}`);
+    need(base.renderBatchKeys.length===1&&base.drawCalls===1,`0.27.4 did not collapse the planet to one immutable draw ${JSON.stringify(base)}`);
+    need(base.cameraFrameMismatches===0,`camera/terrain frame mismatch during boot ${JSON.stringify(base)}`);
+  }
   const rendererSetup=await page.evaluate(()=>({renderer:WAFTAdventurePlugin.getRendererState?.(),overlayDisplay:getComputedStyle(document.getElementById('waftAdventureCanvas')).display}));
   need(rendererSetup.renderer?.sharedWorldContext&&rendererSetup.overlayDisplay==='none',`planet still uses two full-screen WebGL contexts ${JSON.stringify(rendererSetup)}`);
   const gameCanvas=page.locator('canvas').first();
@@ -92,6 +106,10 @@ try{
   const hash=buffer=>crypto.createHash('sha256').update(buffer).digest('hex');
   const stationary=await state();
   need(base.terrainFingerprint===stationary.terrainFingerprint,`stationary terrain topology changed ${base.terrainFingerprint} -> ${stationary.terrainFingerprint}`);
+  await startFrameTrace();
+  await page.waitForTimeout(4000);
+  const stationaryFrames=await frameTrace();
+  if(smoothPlanet)require60Fps('stationary',stationaryFrames);
 
   const keysBeforeRotation=(await state()).desiredTileKeys;
   await page.evaluate(()=>WAFTRegionRuntime.setHeading((WAFTRegionRuntime.getState().playerFacing||0)+Math.PI*.75));
@@ -100,9 +118,10 @@ try{
   need(JSON.stringify(keysBeforeRotation)===JSON.stringify(keysAfterRotation),'camera heading changed planet tile identity');
   need(base.terrainFingerprint===(await state()).terrainFingerprint,'camera heading changed terrain topology');
 
-  const lodBeforeMove=(await state()).lodUpdates;
+  const beforeMove=await state(),lodBeforeMove=beforeMove.lodUpdates;
   await page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState();WAFTRegionRuntime.setRegionalPosition(180,0,runtime.position.y);WAFTPlanetWorld0270.refreshSelection();});
-  await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
+  if(smoothPlanet)await page.waitForFunction(shifts=>{const world=WAFTPlanetWorld0270.getState(),runtime=WAFTRegionRuntime.getState();return world.floatingOriginShifts>shifts&&Math.hypot(runtime.position.x,runtime.position.z)<.01&&world.residentDesiredTiles===705&&Boolean(world.anchorTile?.surfaceHash);},beforeMove.floatingOriginShifts,{timeout:90000});
+  else await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},lodBeforeMove,{timeout:90000});
   const beforeRecenter=await state();
   const beforeRecenterOrientation=await orientationState();
   // Snapshot the entities and apply the rebase in one browser task. Animals are
@@ -114,7 +133,8 @@ try{
     return{before,recentered,after};
   });
   need(entityRecenter.recentered,'forced floating-origin recenter did not run');
-  await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},beforeRecenter.lodUpdates,{timeout:90000});
+  if(smoothPlanet)await page.waitForFunction(shifts=>WAFTPlanetWorld0270.getState().floatingOriginShifts>shifts,beforeRecenter.floatingOriginShifts,{timeout:90000});
+  else await page.waitForFunction(lod=>{const world=WAFTPlanetWorld0270.getState();return world.lodUpdates>lod&&world.residentDesiredTiles===world.desiredTiles&&Boolean(world.anchorTile?.surfaceHash);},beforeRecenter.lodUpdates,{timeout:90000});
   const afterRecenter=await state();
   const afterRecenterOrientation=await orientationState();
   need(beforeRecenter.anchorTile?.key===afterRecenter.anchorTile?.key,`floating-origin shift changed anchor tile ${beforeRecenter.anchorTile?.key} -> ${afterRecenter.anchorTile?.key}`);
@@ -146,6 +166,7 @@ try{
   await page.waitForTimeout(300);
   const flightOrientationBefore=await orientationState();
   const flightGeometryBefore=await state();
+  const fixedFlightBatches=flightGeometryBefore.renderBatchKeys.join('|');
   const flapButton=page.locator('#waftJump');
   for(let flap=0;flap<4;flap++){await flapButton.click({timeout:10000});await page.waitForTimeout(320);}
   const sustainedFlight=[];
@@ -153,10 +174,15 @@ try{
     if(sample>0&&sample%15===0)await flapButton.click({timeout:10000});
     await page.waitForTimeout(250);
     const world=await state();
-    sustainedFlight.push({desired:world.desiredTiles,resident:world.residentDesiredTiles,rendered:world.renderTileKeys.length,batches:world.renderBatchKeys.length,drawCalls:world.drawCalls,builds:world.tileBuildsDuringGameplay,evictions:world.tileEvictions,queue:world.buildQueue,hash:world.staticGeometryHash,visible:world.visibleTiles});
+    sustainedFlight.push({desired:world.desiredTiles,resident:world.residentDesiredTiles,rendered:world.renderTileKeys.length,batches:world.renderBatchKeys.length,batchKeys:world.renderBatchKeys.join('|'),drawCalls:world.drawCalls,builds:world.tileBuildsDuringGameplay,evictions:world.tileEvictions,queue:world.buildQueue,hash:world.staticGeometryHash,visible:world.visibleTiles,cameraFrameMismatches:world.cameraFrameMismatches});
     need(world.residentDesiredTiles===world.desiredTiles&&world.renderTileKeys.length===world.desiredTiles,`sustained flight exposed incomplete planet coverage at sample ${sample}: ${JSON.stringify(world)}`);
     need(world.tileBuildsDuringGameplay===0&&world.tileEvictions===0&&world.buildQueue===0,`sustained flight mutated planet geometry at sample ${sample}: ${JSON.stringify(world)}`);
     need(world.staticGeometryHash===flightGeometryBefore.staticGeometryHash,`sustained flight changed the physical planet at sample ${sample}`);
+    if(smoothPlanet){
+      need(world.desiredTiles===705&&world.renderTileKeys.length===705&&world.renderBatchKeys.length===1&&world.drawCalls===1,`sustained flight changed the complete 0.27.4 render set at sample ${sample}: ${JSON.stringify(world)}`);
+      need(world.renderBatchKeys.join('|')===fixedFlightBatches,`sustained flight swapped physical face batches at sample ${sample}`);
+      need(world.cameraFrameMismatches===0,`sustained flight rebased after camera calculation at sample ${sample}: ${JSON.stringify(world)}`);
+    }
     if(sample===19)await page.screenshot({path:path.join(shots,'03a-sustained-flight-5s.png')});
     if(sample===39)await page.screenshot({path:path.join(shots,'03b-sustained-flight-10s.png')});
   }
@@ -174,9 +200,11 @@ try{
   need(Math.abs(relativeCameraDelta)<.01,`floating origin changed bird/camera alignment by ${relativeCameraDelta}`);
   need(fastFlight.world.floatingOriginShifts>flightOrientationBefore.originShifts,`real flight did not cross a floating origin ${flightOrientationBefore.originShifts} -> ${fastFlight.world.floatingOriginShifts}`);
   need(fastFlight.world.cacheTiles===fastFlight.world.staticTiles,`flight lost immutable planet tiles ${fastFlight.world.cacheTiles}/${fastFlight.world.staticTiles}`);
+  if(smoothPlanet)need(fastFlight.world.cameraFrameMismatches===0,`flight produced camera/terrain frame mismatches ${JSON.stringify(fastFlight.world)}`);
   const overlayAfterFlight=await page.evaluate(()=>WAFTAdventurePlugin.getRendererState?.());
   need(overlayAfterFlight?.regionalEntitiesDrawn===0,`distant regional entities leaked into planetary flight render ${JSON.stringify(overlayAfterFlight)}`);
   need(overlayAfterFlight?.sharedWorldContext,`mounted flight stopped sharing the planet WebGL context ${JSON.stringify(overlayAfterFlight)}`);
+  if(smoothPlanet)need(overlayAfterFlight?.instanceDrawCalls<=2,`mounted bird still uses more than two character draw calls ${JSON.stringify(overlayAfterFlight)}`);
 
   const altitudeProbe=await page.evaluate(async()=>{
     const runtime=WAFTRegionRuntime.getState(),x=runtime.position.x,z=runtime.position.z;
@@ -191,9 +219,28 @@ try{
   need(altitudeProbe.low?.surfaceHash&&altitudeProbe.low.surfaceHash===altitudeProbe.high?.surfaceHash,`flapping altitude changed terrain surface ${JSON.stringify(altitudeProbe)}`);
 
   await page.evaluate(()=>WAFTRegionRuntime.setAdventureModifiers({flight:true,mountType:'vulture',flightDive:false}));
-  const cameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   const bounds=await gameCanvas.boundingBox();need(bounds,'game canvas bounds unavailable');
   const drag=async(x0,y0,x1,y1)=>{await page.mouse.move(bounds.x+bounds.width*x0,bounds.y+bounds.height*y0);await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*x1,bounds.y+bounds.height*y1,{steps:18});await page.mouse.up();await page.waitForTimeout(90);};
+  const continuousCameraOrbit=()=>page.evaluate(async()=>{
+    const initial=WAFTRegionRuntime.getState();
+    for(let step=1;step<=240;step++){
+      await new Promise(resolve=>requestAnimationFrame(resolve));
+      const phase=step/240*Math.PI*4;
+      WAFTRegionRuntime.setCameraOrbit(initial.cameraYaw+Math.sin(phase)*1.15,initial.cameraPitch+Math.sin(phase*.5)*.18);
+    }
+  });
+  await page.evaluate(()=>WAFTRegionRuntime.setInput(0,0));
+  const cameraTerrainBefore=await state();
+  await startFrameTrace();
+  await continuousCameraOrbit();
+  const cameraFrames=await frameTrace(),cameraTerrainAfter=await state();
+  if(smoothPlanet){
+    require60Fps('continuous camera rotation',cameraFrames);
+    need(cameraTerrainAfter.terrainFingerprint===cameraTerrainBefore.terrainFingerprint,'continuous camera rotation changed terrain topology');
+    need(cameraTerrainAfter.renderBatchKeys.join('|')===cameraTerrainBefore.renderBatchKeys.join('|'),'continuous camera rotation swapped physical terrain batches');
+    need(cameraTerrainAfter.cameraFrameMismatches===0,`continuous camera rotation produced a frame mismatch ${JSON.stringify(cameraTerrainAfter)}`);
+  }
+  const cameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   // Keep the assertion strict but repeat a single-axis gesture when a headless
   // runner coalesces most pointer events. Horizontal motion cannot be hidden by
   // a pitch clamp, and the vertical baseline is deliberately moved off both clamps.
@@ -209,12 +256,20 @@ try{
   need(eyeDistance>3&&eyeDistance<7.5,`high-altitude camera detached from bird ${eyeDistance}`);
   await page.screenshot({path:path.join(shots,'03-mounted-flight-high-camera.png')});
   await saveCanvasLayers('03-mounted-flight-high-camera');
+  const movementTerrainBefore=await state();
   await page.evaluate(()=>WAFTRegionRuntime.setInput(0,-1));
   await startFrameTrace();
   await page.waitForTimeout(8000);
-  const performanceResult=await frameTrace();
-  need(performanceResult.samples>90,`insufficient frame samples ${JSON.stringify(performanceResult)}`);
-  need(performanceResult.p95<=80&&performanceResult.max<220&&performanceResult.over100/performanceResult.samples<.04,`smooth-flight frame-time budget failed ${JSON.stringify(performanceResult)}`);
+  const performanceResult=await frameTrace(),movementTerrainAfter=await state();
+  if(smoothPlanet){
+    require60Fps('continuous movement',performanceResult);
+    need(movementTerrainAfter.terrainFingerprint===movementTerrainBefore.terrainFingerprint,'continuous movement changed terrain topology');
+    need(movementTerrainAfter.renderBatchKeys.join('|')===movementTerrainBefore.renderBatchKeys.join('|'),'continuous movement swapped physical terrain batches');
+    need(movementTerrainAfter.cameraFrameMismatches===0,`continuous movement produced a camera/terrain frame mismatch ${JSON.stringify(movementTerrainAfter)}`);
+  }else{
+    need(performanceResult.samples>90,`insufficient frame samples ${JSON.stringify(performanceResult)}`);
+    need(performanceResult.p95<=80&&performanceResult.max<220&&performanceResult.over100/performanceResult.samples<.04,`smooth-flight frame-time budget failed ${JSON.stringify(performanceResult)}`);
+  }
   await page.evaluate(()=>{
     const game=window.__WAFT_INTERNAL_GAME__,bird=game?.animals?.find?.(animal=>animal.id==='iberia-bearded-vulture');
     if(bird)bird.hidden=false;if(game)game.mountedAnimalId=null;
@@ -253,5 +308,5 @@ try{
   need(save?.schemaVersion===1&&Math.abs(save.lat-10)<.2&&save.lon>179.2,`geographic save failed ${JSON.stringify(save)}`);
   need(errors.length===0,`Page errors: ${errors.join(' | ')}; console=${consoleLines.join(' | ')}`);
 
-  console.log(JSON.stringify({valid:true,version:'0.27.3-experimental',stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16)},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,drawCalls:base.drawCalls,staticTiles:base.staticTiles,staticBatches:base.staticBatches,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs,maxSelectionMs:base.maxSelectionMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),maxDrawCalls:Math.max(...sustainedFlight.map(sample=>sample.drawCalls)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,planetPixels:flightPlanetPixels,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
+  console.log(JSON.stringify({valid:true,version:expectedVersion,profile,stationary:{terrainFingerprint:base.terrainFingerprint,firstPixelHash:hash(first).slice(0,16),secondPixelHash:hash(second).slice(0,16),frames:stationaryFrames},base:{visibleTiles:base.visibleTiles,triangles:base.atlasTriangles,drawCalls:base.drawCalls,staticTiles:base.staticTiles,staticBatches:base.staticBatches,cacheTiles:base.cacheTiles,selectionProfile:base.selectionProfile,staticPlanHash:base.staticPlanHash,staticGeometryHash:base.staticGeometryHash,staticBuildMs:base.staticBuildMs,maxSelectionMs:base.maxSelectionMs},recenter:{stableTileIdentity:true,stableGeographicCourse:true,stableCameraAlignment:true,courseDelta:recenterCourseDelta,cameraDelta:recenterCameraDelta,origin:afterRecenter.originGeo,maxDistance:afterRecenter.maxRecenterDistance},flight:{speed:fastFlight.runtime.adventureCurrentSpeed,originShifts:fastFlight.world.floatingOriginShifts-flightOrientationBefore.originShifts,relativeCameraDelta,coverageSamples:sustainedFlight.length,minVisible:Math.min(...sustainedFlight.map(sample=>sample.visible)),maxVisible:Math.max(...sustainedFlight.map(sample=>sample.visible)),maxDrawCalls:Math.max(...sustainedFlight.map(sample=>sample.drawCalls)),gameplayTileBuilds:fastFlight.world.tileBuildsDuringGameplay,tileEvictions:fastFlight.world.tileEvictions,planetPixels:flightPlanetPixels,altitudeInvariant:altitudeProbe,camera:{yawBefore:cameraBefore.cameraYaw,yawAfter:cameraAfter.cameraYaw,pitchBefore:cameraBefore.cameraPitch,pitchAfter:cameraAfter.cameraPitch,eyeDistance,frames:cameraFrames},frames:performanceResult},america:america.geo,orbit:{visibleTiles:orbitState.visibleTiles,triangles:orbitState.atlasTriangles,pixels:orbitPixels,cameraPitch:orbitCameraAfter.cameraPitch},north:north.geo,dateline:dateline.geo,save:{lat:save.lat,lon:save.lon},pageErrors:errors,console:consoleLines},null,2));
 }finally{await browser.close();}

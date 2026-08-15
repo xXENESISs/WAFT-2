@@ -82,23 +82,25 @@
     'expulsión de tintorera en tierra'
   );
 
-  replaceOne("function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",
-    "function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=mounted?a.y:(a.flying?a.y:(surface?.height??a.y)),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){",'transformada de montura');
-  replaceOne('base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);switch(a.type){','base=worldBase(display.x,baseY+bob,display.z,a.yaw,1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){','renderizador de fauna');
+  replaceOne("function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=a.flying?a.y:(surface?.height??a.y),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);switch(a.type){",
+    "function drawAnimal(r,a,now,mounted=false){const api=runtime(),display=api.regionalToDisplay(a.x,a.z),surface=api.sampleSurface(a.x,a.z),baseY=mounted?a.y:(a.flying?a.y:(surface?.height??a.y)),bob=mounted?Math.abs(Math.sin(now*.012))*.04:Math.sin(now*.002+a.phase)*.018,base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);switch(a.type){",'transformada de montura');
+  replaceOne('base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);switch(a.type){','base=worldBase(display.x,baseY+bob,display.z,a.yaw,Number(a.renderScale)||1);if(window.WAFTAnimalRenderer0230){return window.WAFTAnimalRenderer0230({r,a,now,mounted,api,display,surface,baseY,bob,base,drawSphere,drawCylinderPart,M});}switch(a.type){','renderizador de fauna');
 
-  replaceOne('  function drawPenguin(r, state, now, mountedOffset=0) {\n    const display=state.displayPosition;\n    const baseY=state.position.y-(state.swimming?.46:.82)+mountedOffset;\n    const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming;',
-    `  function drawPenguin(r,state,now,mountedOffset=0,mountType=null){
+  replaceOne('  function drawPenguin(r, state, now, mountedOffset=0,visualScale=1) {\n    const display=state.displayPosition;\n    const baseY=state.position.y-(state.swimming?.46:.82)+mountedOffset;\n    const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming;',
+    `  function drawPenguin(r,state,now,mountedOffset=0,visualScale=1,mountType=null){
     const display=state.displayPosition,eyeOffset=mountType==='shark'?0.46:(state.swimming?0.46:0.82);
     const baseY=state.position.y-eyeOffset+mountedOffset;
     const speed=Math.min(1,game.playerSpeed/4.5),phase=now*.011,step=Math.sin(phase)*speed,swim=state.swimming&&!mountType;`, 'jinete sobre montura');
   replaceOne(
-    `        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing };
+    `        const compactVulture=this.smoothPlanet&&mounted.type==='vulture';
+        const visual = { ...mounted, x: player.position.x, z: player.position.z, y: player.position.y - (player.swimming ? .46 : .82), yaw: player.playerFacing, renderScale:compactVulture?.75:1 };
         drawAnimal(this, visual, now, true);
-        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05);`,
+        drawPenguin(this, player, now, mounted.type === 'shark' ? .85 : 1.05,compactVulture?.82:1);`,
     `        const mountedEye=mounted.type==='shark'?0.46:0.82;
-        const visual={...mounted,x:player.position.x,z:player.position.z,y:player.position.y-mountedEye,yaw:player.playerFacing,landed:false,flying:mounted.type==='vulture'};
+        const compactVulture=this.smoothPlanet&&mounted.type==='vulture';
+        const visual={...mounted,x:player.position.x,z:player.position.z,y:player.position.y-mountedEye,yaw:player.playerFacing,landed:false,flying:mounted.type==='vulture',renderScale:compactVulture?.75:1};
         drawAnimal(this,visual,now,true);
-        drawPenguin(this,player,now,mounted.type==='shark'?0.52:(mounted.type==='goat'?0.78:0.82),mounted.type);`,
+        drawPenguin(this,player,now,mounted.type==='shark'?0.52:(mounted.type==='goat'?0.78:0.82),compactVulture?.82:1,mounted.type);`,
     'render conjunto de montura'
   );
 
