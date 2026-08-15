@@ -59,7 +59,6 @@ for(const test of [
   if(test.experimental){
     for(const pattern of [
       /__WAFT_PLANET_WORLD_0270_ACTIVE__=true/,
-      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
       /if\(!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__\)streamer\.update/,
       /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.camera\.x\+=dx;state\.camera\.z\+=dz/,
       /state\.roads&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
@@ -68,6 +67,10 @@ for(const test of [
       /boosted\?348:312/,
       /cameraPitch: state\.pitch/
     ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+    assert.match(written,test.smooth
+      ? /if\(window\.__WAFT_PLANET_WORLD_0274_ACTIVE__\|\|window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/
+      : /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
+    `${test.id}: wrong planet camera collision path`);
     if(test.smooth){
       for(const pattern of [
         /__WAFT_PLANET_WORLD_0274_ACTIVE__=true/,

@@ -34,6 +34,7 @@ need(index.includes("!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock >
 need(index.includes("waftGpuExt=gl.getExtension('WEBGL_debug_renderer_info')")&&index.includes("/SwiftShader/i.test(String(waftGpuName))?.25:.45")&&index.includes('__WAFT_RENDER_SCALE_0274__=dpr'),'0.27.4 bounded hardware/software render scale is missing');
 need(index.includes("'iberia-polish-0243','iberia-world-0244','europe-atlas-0252','iberia-world-0245','iberia-world-0247','iberia-world-0249','iberia-world-0250'")&&index.includes('application/x-waft-disabled'),'0.27.4 still boots legacy terrain and label timers');
 need(index.includes("canvas.getContext('webgl2',{antialias:false,alpha:false,powerPreference:'high-performance'})"),'0.27.4 still spends the frame budget on multisample antialiasing');
+need(index.includes("if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__||window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.cameraBlocked=false;return desired;}"),'0.27.4 still performs the legacy multi-probe camera collision sweep');
 need(index.includes('window.WAFTPlanetWorld0270?.beforeCameraFrame?.(now);'),'0.27.4 still rebases after calculating the camera');
 need(index.includes('rebasePlanetFrame(x,z,y,playerFacing,cameraYaw)'),'0.27.4 cannot preserve independent bird and camera headings during a rebase');
 need(index.includes('setCameraOrbit(yaw,pitch=null)'),'0.27.4 camera performance harness cannot rotate without pointer-driver overhead');
