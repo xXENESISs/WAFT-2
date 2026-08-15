@@ -27,10 +27,20 @@ const preparedInject=inject
   .replace("perspective(projection,Math.PI/3,canvas.width/canvas.height,Math.max(.12,Math.min(8,state.camera.y*.0005)),state.worldMode==='local'?2400:12000);","perspective(projection,Math.PI/3,canvas.width/canvas.height,.06,state.worldMode==='local'?2400:12000);")
   .replace('          source=source.replace("const center=[target[0],target[1]+.18+lookUpLift,target[2]];","const planetOrbitBlend=Math.max(0,Math.min(1,(state.camera.y-320)/900));const center=[target[0],(target[1]+.18+lookUpLift)*(1-planetOrbitBlend)-2102.432904*planetOrbitBlend,target[2]];");\n','')
   .replace('        }\n      }\n',`          source=source.replace("speed=bearded?(dive?(boosted?116:104):(inputLength<.06?48:(boosted||inputLength>.93?92:inputLength>.70?76:60)))","speed=bearded?(dive?(boosted?348:312):(inputLength<.06?144:(boosted||inputLength>.93?276:inputLength>.70?228:180)))");\n          source=source.replace("cameraYaw: state.yaw, playerFacing:","cameraYaw: state.yaw, cameraPitch: state.pitch, playerFacing:");\n          source=source.replace("hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textContent = modeLabel + ' · ' + state.activeBuildings.toLocaleString('es-ES') + ' edificios / ' + visibleTotal.toLocaleString('es-ES') + ' · ' + state.loadedCells + ' lotes · ' + state.fps + ' FPS';");\n          source=source.replace("if (state.worldMode === 'regional') streamer.update(state.camera.x, state.camera.z);","if (state.worldMode === 'regional') {if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update(state.camera.x,state.camera.z);else{state.activeBuildings=0;state.loadedCells=0;}}");\n          source=source.replace("recordTravelMovement(travelBeforeX, travelBeforeZ, travelMoveResult, swimmingBeforeMove);","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)recordTravelMovement(travelBeforeX,travelBeforeZ,travelMoveResult,swimmingBeforeMove);");\n          source=source.replaceAll("if (state.worldMode === 'regional' && travelRouteVertexCount > 0)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelRouteVertexCount > 0)");\n          source=source.replaceAll("if (state.worldMode === 'regional' && travelTrailVertexCount > 1)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelTrailVertexCount > 1)");\n        }\n      }\n`);
-if(oldBootstrap.test(s))s=s.replace(oldBootstrap,preparedInject);
+const planetRuntimeGuardAnchor='          source=source.replaceAll("if (state.worldMode === \'regional\' && travelTrailVertexCount > 1)","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === \'regional\' && travelTrailVertexCount > 1)");\n';
+const planetRuntimeGuards=[
+  '          source=source.replace("const aheadTerrain = inputLength > .001","const aheadTerrain = !state.adventureFlight && inputLength > .001");',
+  '          source=source.replace("if (state.worldMode === \'regional\') runtimeControls.refreshLocalProximity();","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === \'regional\') runtimeControls.refreshLocalProximity();");',
+  '          source=source.replace("state.travelAutoSaveClock += dt;","if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)state.travelAutoSaveClock += dt;");',
+  '          source=source.replace("if (state.travelAutoSaveClock >= 5) {","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.travelAutoSaveClock >= 5) {");',
+  '          source=source.replace("if (nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }","if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > .45) { nearestClock = 0; nearestUpdate(); updateTravelPanel(); }");'
+].join('\n')+'\n';
+if(!preparedInject.includes(planetRuntimeGuardAnchor))throw new Error('WAFT 0.27.3 planet runtime guard anchor missing');
+const optimizedInject=preparedInject.replace(planetRuntimeGuardAnchor,planetRuntimeGuardAnchor+planetRuntimeGuards);
+if(oldBootstrap.test(s))s=s.replace(oldBootstrap,optimizedInject);
 else if(!s.includes('WAFT_SPHERICAL_BOOTSTRAP_0261')){
   if(!s.includes(marker))throw new Error('WAFT 0.26.1 document.write anchor missing');
-  s=s.replace(marker,preparedInject+marker);
+  s=s.replace(marker,optimizedInject+marker);
 }
 
 s=s.replaceAll('MUNDO · CONTINUO 0.26.0','MUNDO · ESFÉRICO 0.26.1');
