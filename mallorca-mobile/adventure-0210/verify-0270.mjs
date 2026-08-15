@@ -26,6 +26,9 @@ need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)hudStats.textC
 need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)streamer.update"),'regional building streaming still runs during planetary flight');
 need(index.includes("if(!window.__WAFT_PLANET_WORLD_0270_ACTIVE__)recordTravelMovement"),'regional travel trail still mutates during planetary flight');
 need(index.includes("if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelRouteVertexCount > 0)")&&index.includes("if (!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional' && travelTrailVertexCount > 1)"),'regional gold route geometry still draws during planetary flight');
+need(index.includes("if(window.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state.adventureFlight){state.camera.x+=dx;state.camera.z+=dz;return{moved:Math.hypot(dx,dz),waterSteps:0,landSteps:0};}"),'planetary flight still ray-marches regional movement collisions');
+need(['roads','buildings','landmarks','settlements'].every(layer=>index.includes(`state.${layer}&&!window.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__`)),'regional GPU layers still render behind the planet');
+need(index.includes("!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > .45")&&index.includes("!window.__WAFT_PLANET_WORLD_0270_ACTIVE__ && state.worldMode === 'regional') runtimeControls.refreshLocalProximity"),'regional proximity and panel work still creates periodic planet spikes');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
 need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=6')&&runtime.includes('STATIC_REFINEMENT_ZONES=Object.freeze'),'fixed planet geometry contract is missing');
 need(runtime.includes('STATIC_TILE_LIMIT=720')&&runtime.includes('STATIC_BOOT_BATCH=8'),'static planet memory or boot budget is missing');
@@ -74,6 +77,7 @@ console.log(JSON.stringify({
   sharedWebglContext:true,
   pooledCharacterMatrices:true,
   reusableFrameState:true,
+  baseRegionalLayersSuppressed:true,
   gameplayTileBuilds:0,
   gameplayTileEvictions:0,
   vultureSpeedMultiplier:3,
