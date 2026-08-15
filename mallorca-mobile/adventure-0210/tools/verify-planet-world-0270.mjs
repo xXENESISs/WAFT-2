@@ -224,6 +224,10 @@ try{
   const orbit=await relocate(32.3,-64.75,4200);
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270.getState();return world.residentDesiredTiles===world.desiredTiles&&world.visibleTiles>0;},null,{timeout:90000});
   const orbitState=await state();need(orbitState.atlasTriangles>0,'orbital planet disappeared');
+  let orbitView=await page.evaluate(()=>WAFTRegionRuntime.getState());
+  for(let attempt=0;attempt<4&&orbitView.cameraPitch<.35;attempt++){await drag(.52,.22,.52,.78);orbitView=await page.evaluate(()=>WAFTRegionRuntime.getState());}
+  need(orbitView.cameraPitch>=.35,`orbital camera could not look back toward the planet ${orbitView.cameraPitch}`);
+  await page.screenshot({path:path.join(shots,'05-orbit-visible.png')});
   const orbitPixels=await canvasStats();need(orbitPixels.nonSkyRatio>.01,`orbital planet is not visible ${JSON.stringify(orbitPixels)}`);
   // Move away from the upper pitch clamp before testing the opposite orbital
   // gesture; the preceding high-altitude drag can legitimately end at 1.46.
