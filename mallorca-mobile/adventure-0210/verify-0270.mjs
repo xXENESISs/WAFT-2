@@ -5,6 +5,7 @@ const need=(condition,message)=>{if(!condition)throw new Error(message);};
 const index=fs.readFileSync('mallorca-mobile/adventure-0210/index.html','utf8');
 const runtime=fs.readFileSync('mallorca-mobile/adventure-0210/planet-world-0270.js','utf8');
 const gameplay=fs.readFileSync('mallorca-mobile/adventure-0210/gameplay-plugin.js','utf8');
+const pluginLoader=fs.readFileSync('mallorca-mobile/adventure-0210/plugin-loader.js','utf8');
 const core=fs.readFileSync('mallorca-mobile/adventure-0210/planet-0270/cube-sphere-core.mjs','utf8');
 const prepare=fs.readFileSync('world-generator/scripts/prepare-world-0261.mjs','utf8');
 const validateWorkflow=fs.readFileSync('.github/workflows/validate-waft-regions.yml','utf8');
@@ -43,6 +44,7 @@ need(gameplay.includes('planetEntityInRange')&&gameplay.includes('regionalEntiti
 need(gameplay.includes('sharedWorldContext')&&gameplay.includes("overlayCanvas.style.display='none'"),'planet still creates a second full-screen WebGL renderer');
 need(gameplay.includes('const matrixPool=[]')&&gameplay.includes('M.reset()'),'mounted character matrices still allocate every frame');
 need(gameplay.includes('function frameRuntimeState(api)')&&runtime.includes('const runtimeState=()=>api.getPlanetFrameState'),'planet hot paths still request full regional state snapshots');
+need(gameplay.includes('    const state = api?.getState?.();')&&pluginLoader.includes('    `    const state=frameRuntimeState(api);'),'plugin loader cannot apply the allocation-free frame state without breaking Adventure startup');
 need(gameplay.indexOf('function planetEntityInRange')>gameplay.indexOf('function updateAnimals')&&gameplay.indexOf('function planetEntityInRange')<gameplay.indexOf('function updateInteraction'),'the plugin loader would erase the planet entity culling helper');
 need(runtime.includes('surfaceHash')&&runtime.includes('terrainFingerprint')&&runtime.includes('anchorTileSnapshot'),'terrain topology fingerprint is missing');
 need(runtime.includes('parseLandMask')&&runtime.includes('vectorLand')&&runtime.includes("coastlineScale:'50m'"),'vector coastline runtime is missing');
