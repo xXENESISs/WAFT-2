@@ -34,7 +34,7 @@ need(runtime.includes("selectionProfile:'fixed-geographic-quadtree-v3'")&&runtim
 need(!runtime.includes('processBuildQueue')&&!runtime.includes('nearestReadyAncestor')&&!runtime.includes('evictCache'),'flight-time tile churn is still active');
 need(runtime.includes('LAND_EDGE_BIN_DEGREES=.25')&&runtime.includes('edgeBins.get(bin)'),'coastline point tests are still linear in polygon size');
 need(runtime.includes('batchCache:new Map()')&&runtime.includes('uploadBatchMesh')&&runtime.includes('renderBatchKeys'),'static planet tiles are not geographically batched');
-need(runtime.includes('gl.disable(gl.CULL_FACE)'),'planet must render both cube-sphere windings after the shared character renderer enables culling');
+need(runtime.includes('gl.enable(gl.CULL_FACE);gl.cullFace(gl.FRONT)'),'planet must restore its inverse cube-sphere winding after the shared character renderer');
 need(!runtime.includes('floatingOriginShifts++;saveGeographicPosition()')&&runtime.includes('setInterval(saveGeographicPosition,30000)'),'synchronous saves still run during floating-origin flight');
 need(runtime.includes("SAVE_KEY='waft.adventure.0210.planet-location.v1'")&&runtime.includes('saveGeographicPosition'),'geographic save contract is missing');
 need(runtime.includes('uOrigin')&&runtime.includes('tangentFrame(state.originGeo.lat,state.originGeo.lon)'),'ECEF-to-local tangent transform is missing');
