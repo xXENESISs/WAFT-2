@@ -46,7 +46,7 @@ need(!runtime.includes('processBuildQueue')&&!runtime.includes('nearestReadyAnce
 need(runtime.includes('LAND_EDGE_BIN_DEGREES=.25')&&runtime.includes('edgeBins.get(bin)'),'coastline point tests are still linear in polygon size');
 need(runtime.includes('batchCache:new Map()')&&runtime.includes('uploadBatchMesh')&&runtime.includes('renderBatchKeys'),'static planet tiles are not geographically batched');
 need(runtime.includes("const batchKey=smoothPlanet?'planet/full'")&&runtime.includes('const visible=smoothPlanet?state.staticTiles:selectionFor'),'0.27.4 can still swap physical terrain while moving');
-need(runtime.includes('softwareRenderer?3:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3')&&runtime.includes('/SwiftShader|llvmpipe|software rasterizer/i'),'0.27.4 hardware/software static geometry budgets are missing');
+need(runtime.includes('softwareRenderer?2:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3')&&runtime.includes('/SwiftShader|llvmpipe|software rasterizer/i'),'0.27.4 hardware/software static geometry budgets are missing');
 need(runtime.includes('precision mediump float;in vec3 vC;out vec4 o;')&&runtime.includes('void main(){o=vec4(vC,1.0);}`'),'0.27.4 still performs per-fragment planet lighting and fog');
 need(runtime.includes('RECENTER_DISTANCE=smoothPlanet?8:240')&&runtime.includes('function beforeCameraFrame(now)'),'0.27.4 bounded pre-camera tangent rebase is missing');
 need(runtime.includes('nextHeading=reprojectAngle(heading),nextCameraYaw=reprojectAngle(cameraYaw)')&&runtime.includes('api.rebasePlanetFrame(0,0,position.y,nextHeading,nextCameraYaw)'),'0.27.4 rebase still resets the camera behind the bird');

@@ -236,7 +236,7 @@ void main(){o=vec4(vC,1.0);}`);
     // CPU rasterizers cannot sustain the hardware mesh density. They receive
     // the same immutable 705-tile planet and coastline data, but with the
     // lowest per-tile tessellation; hardware keeps the full visual profile.
-    const resolution=smoothPlanet?(softwareRenderer?3:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3):TILE_RESOLUTION;
+    const resolution=smoothPlanet?(softwareRenderer?2:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3):TILE_RESOLUTION;
     const grid=core.buildTileGrid(tile,resolution),baseCount=resolution*resolution;
     const boundary=[];
     for(let column=0;column<resolution;column++)boundary.push(column);
