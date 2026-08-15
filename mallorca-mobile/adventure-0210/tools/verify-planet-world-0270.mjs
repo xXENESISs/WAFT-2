@@ -184,16 +184,18 @@ try{
   await page.evaluate(()=>WAFTRegionRuntime.setAdventureModifiers({flight:true,mountType:'vulture',flightDive:false}));
   const cameraBefore=await page.evaluate(()=>WAFTRegionRuntime.getState());
   const bounds=await gameCanvas.boundingBox();need(bounds,'game canvas bounds unavailable');
-  // Use a long gesture so headless runners that coalesce pointer events still
-  // exercise a clearly visible yaw and pitch change at orbital altitude.
-  await page.mouse.move(bounds.x+bounds.width*.78,bounds.y+bounds.height*.35);
-  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.15,bounds.y+bounds.height*.82,{steps:20});await page.mouse.up();
-  await page.mouse.move(bounds.x+bounds.width*.82,bounds.y+bounds.height*.42);
-  await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*.10,bounds.y+bounds.height*.70,{steps:20});await page.mouse.up();
-  await page.waitForTimeout(450);
-  const cameraAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());
-  need(Math.abs(cameraAfter.cameraYaw-cameraBefore.cameraYaw)>.18,`high-altitude yaw did not respond ${cameraBefore.cameraYaw} -> ${cameraAfter.cameraYaw}`);
-  need(Math.abs(cameraAfter.cameraPitch-cameraBefore.cameraPitch)>.18,`high-altitude pitch did not respond ${cameraBefore.cameraPitch} -> ${cameraAfter.cameraPitch}`);
+  const drag=async(x0,y0,x1,y1)=>{await page.mouse.move(bounds.x+bounds.width*x0,bounds.y+bounds.height*y0);await page.mouse.down();await page.mouse.move(bounds.x+bounds.width*x1,bounds.y+bounds.height*y1,{steps:18});await page.mouse.up();await page.waitForTimeout(90);};
+  // Keep the assertion strict but repeat a single-axis gesture when a headless
+  // runner coalesces most pointer events. Horizontal motion cannot be hidden by
+  // a pitch clamp, and the vertical baseline is deliberately moved off both clamps.
+  let cameraYawAfter=cameraBefore;
+  for(let attempt=0;attempt<4&&Math.abs(cameraYawAfter.cameraYaw-cameraBefore.cameraYaw)<=.18;attempt++){await drag(.74,.54,.26,.54);cameraYawAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());}
+  need(Math.abs(cameraYawAfter.cameraYaw-cameraBefore.cameraYaw)>.18,`high-altitude yaw did not respond ${cameraBefore.cameraYaw} -> ${cameraYawAfter.cameraYaw}`);
+  await drag(.52,.82,.52,.20);await drag(.52,.82,.52,.20);
+  const cameraPitchLow=await page.evaluate(()=>WAFTRegionRuntime.getState());
+  let cameraAfter=cameraPitchLow;
+  for(let attempt=0;attempt<4&&cameraAfter.cameraPitch-cameraPitchLow.cameraPitch<=.18;attempt++){await drag(.52,.22,.52,.78);cameraAfter=await page.evaluate(()=>WAFTRegionRuntime.getState());}
+  need(cameraAfter.cameraPitch-cameraPitchLow.cameraPitch>.18,`high-altitude pitch did not respond ${cameraPitchLow.cameraPitch} -> ${cameraAfter.cameraPitch}`);
   const eyeDistance=Math.hypot(cameraAfter.cameraEye.x-cameraAfter.displayPosition.x,cameraAfter.cameraEye.y-cameraAfter.position.y,cameraAfter.cameraEye.z-cameraAfter.displayPosition.z);
   need(eyeDistance>3&&eyeDistance<7.5,`high-altitude camera detached from bird ${eyeDistance}`);
   await page.screenshot({path:path.join(shots,'03-mounted-flight-high-camera.png')});
