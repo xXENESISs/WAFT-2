@@ -713,7 +713,7 @@
 
   function updateFrame(now) {
     const api = runtime();
-    const state = frameRuntimeState(api);
+    const state = api?.getState?.();
     if (!state) return;
     const dt = Math.min(.05, Math.max(0, (now - game.lastFrameAt) / 1000));
     game.lastFrameAt = now;
