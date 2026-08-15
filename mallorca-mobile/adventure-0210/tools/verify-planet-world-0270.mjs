@@ -62,7 +62,12 @@ const relocate=async(lat,lon,y=55)=>{
 
 try{
   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:120000});need(response?.ok(),`HTTP ${response?.status()}`);
-  await page.waitForFunction(()=>window.__WAFT_PLANET_WORLD_0270_READY__&&window.WAFTPlanetWorld0270?.getState?.().ready,null,{timeout:90000});
+  try{
+    await page.waitForFunction(()=>window.__WAFT_PLANET_WORLD_0270_READY__&&window.WAFTPlanetWorld0270?.getState?.().ready,null,{timeout:90000});
+  }catch(error){
+    const boot=await page.evaluate(()=>({world:window.WAFTPlanetWorld0270?.getState?.()||null,ready:Boolean(window.__WAFT_PLANET_WORLD_0270_READY__)})).catch(()=>null);
+    throw new Error(`planet readiness failed: ${JSON.stringify({boot,pageErrors:errors,console:consoleLines,cause:String(error)})}`);
+  }
   await page.evaluate(()=>{window.__WAFT_PLANET_DEBUG_ISOLATE__=true;WAFTAdventurePlugin.hideBaseCharacter=true;});
   await page.waitForFunction(()=>{const world=WAFTPlanetWorld0270?.getState?.();return world?.desiredTiles>0&&world.residentDesiredTiles===world.desiredTiles&&world.renderTileKeys.length===world.desiredTiles;},null,{timeout:90000});
   await page.waitForTimeout(500);
