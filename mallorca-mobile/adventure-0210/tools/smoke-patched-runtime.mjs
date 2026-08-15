@@ -60,6 +60,10 @@ for(const test of [
       /__WAFT_PLANET_WORLD_0270_ACTIVE__=true/,
       /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
       /if\(!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__\)streamer\.update/,
+      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.camera\.x\+=dx;state\.camera\.z\+=dz/,
+      /state\.roads&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
+      /state\.buildings&&!window\.__WAFT_EUROPE_ATLAS_0252_ACTIVE__&&!window\.__WAFT_GLOBAL_ATLAS_0260_ACTIVE__/,
+      /!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__ && nearestClock > \.45/,
       /boosted\?348:312/,
       /cameraPitch: state\.pitch/
     ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
