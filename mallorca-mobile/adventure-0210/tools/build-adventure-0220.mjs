@@ -234,15 +234,6 @@ replaceRegexRequired(
   'animal movement'
 );
 replaceRequired(
-`  function updateFrame(now) {
-    const api = runtime();
-    const state = api?.getState?.();`,
-`  function updateFrame(now) {
-    const api = runtime();
-    const state = frameRuntimeState(api);`,
-  'allocation-free planet update state'
-);
-replaceRequired(
 `      const player = api?.getState?.();
       if (!player) return;`,
 `      const player = frameRuntimeState(api);
