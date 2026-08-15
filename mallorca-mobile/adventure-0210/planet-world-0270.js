@@ -18,6 +18,9 @@
   const canvas=document.querySelector('canvas');
   const gl=canvas?.getContext('webgl2');
   if(!api||!plugin||!gl)throw new Error(`WAFT ${smoothPlanet?'0.27.4':'0.27.3'} experimental planet runtime unavailable`);
+  const rendererInfo=gl.getExtension('WEBGL_debug_renderer_info');
+  const gpuRenderer=String(rendererInfo?gl.getParameter(rendererInfo.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER));
+  const softwareRenderer=/SwiftShader|llvmpipe|software rasterizer/i.test(gpuRenderer);
 
   const U=.33;
   const VERTICAL=.0028;
@@ -230,7 +233,10 @@ void main(){o=vec4(vC,1.0);}`);
     try{gl.deleteVertexArray(mesh.vao);for(const buffer of mesh.buffers)gl.deleteBuffer(buffer);}catch{}
   }
   function createTileGeometry(tile){
-    const resolution=smoothPlanet?(tile.level>=6?9:tile.level===5?7:tile.level===4?5:3):TILE_RESOLUTION;
+    // CPU rasterizers cannot sustain the hardware mesh density. They receive
+    // the same immutable 705-tile planet and coastline data, but with the
+    // lowest per-tile tessellation; hardware keeps the full visual profile.
+    const resolution=smoothPlanet?(softwareRenderer?3:tile.level>=6?9:tile.level===5?7:tile.level===4?5:3):TILE_RESOLUTION;
     const grid=core.buildTileGrid(tile,resolution),baseCount=resolution*resolution;
     const boundary=[];
     for(let column=0;column<resolution;column++)boundary.push(column);
@@ -447,7 +453,7 @@ void main(){o=vec4(vC,1.0);}`);
     prefetchFrance:async()=>true,nearFrance:()=>false,inFranceGeo:()=>false,franceSouthLat:()=>42.3
   };
   window.WAFTWorldStreaming0245=compat;window.WAFTWorldContinuity0247={getState:compat.getState,prefetchCanarias:async()=>true,inCanarias:()=>false};
-  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileBuildsDuringGameplay:Math.max(0,state.tileBuilds-state.readyTileBuilds),tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:0,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),renderBatchKeys:[...state.renderBatchKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,coastlineEdgeBins:LAND_EDGE_BIN_COUNT,cacheLimit:STATIC_TILE_LIMIT,buildQueue:0,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionMs:state.selectionMs,maxSelectionMs:state.maxSelectionMs,drawCalls:state.drawCalls,selectionProfile:smoothPlanet?'fixed-full-planet-v4':'fixed-geographic-quadtree-v3',staticTiles:state.staticTiles.length,staticBatches:state.batchCache.size,staticPlanHash:state.staticPlanHash,staticGeometryHash:state.staticGeometryHash,staticBuildMs:state.staticBuildMs,smoothPlanet,cameraFrameMismatches:state.cameraFrameMismatches,lastPreCameraAt:state.lastPreCameraAt,lastRecenterDistance:state.lastRecenterDistance,maxRecenterDistance:state.maxRecenterDistance,refinementZones:STATIC_REFINEMENT_ZONES.map(zone=>({...zone}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true),beforeCameraFrame};
+  window.WAFTPlanetWorld0270={getState:()=>({...compat.getState(),originGeo:{...state.originGeo},tileBuilds:state.tileBuilds,tileBuildsDuringGameplay:Math.max(0,state.tileBuilds-state.readyTileBuilds),tileEvictions:state.tileEvictions,lodUpdates:state.lodUpdates,prefetchTiles:state.prefetch.size,residentDesiredTiles:[...state.desired.keys()].filter(key=>state.cache.has(key)).length,residentPrefetchTiles:0,desiredTileKeys:[...state.desired.keys()].sort(),renderTileKeys:[...state.renderKeys].sort(),renderBatchKeys:[...state.renderBatchKeys].sort(),terrainFingerprint:terrainFingerprint(),anchorTile:anchorTileSnapshot(),coastlineScale:'50m',coastlinePolygons:state.landMask?.polygons.length||0,coastlineEdgeBins:LAND_EDGE_BIN_COUNT,cacheLimit:STATIC_TILE_LIMIT,buildQueue:0,lastBuildMs:state.lastBuildMs,maxBuildMs:state.maxBuildMs,maxCacheTiles:state.maxCacheTiles,selectionMs:state.selectionMs,maxSelectionMs:state.maxSelectionMs,drawCalls:state.drawCalls,selectionProfile:smoothPlanet?'fixed-full-planet-v4':'fixed-geographic-quadtree-v3',staticTiles:state.staticTiles.length,staticBatches:state.batchCache.size,staticPlanHash:state.staticPlanHash,staticGeometryHash:state.staticGeometryHash,staticBuildMs:state.staticBuildMs,smoothPlanet,softwareRenderer,gpuRenderer,cameraFrameMismatches:state.cameraFrameMismatches,lastPreCameraAt:state.lastPreCameraAt,lastRecenterDistance:state.lastRecenterDistance,maxRecenterDistance:state.maxRecenterDistance,refinementZones:STATIC_REFINEMENT_ZONES.map(zone=>({...zone}))}),worldFromGeo:compat.worldFromGeo,geoFromWorld:compat.geoFromWorld,sampleSurface,destination,normalizeGeo,saveGeographicPosition,recenterAtCurrentPosition:()=>maybeRecenter(true),refreshSelection:()=>updateSelection(performance.now(),true),beforeCameraFrame};
   window.WAFTGlobalAtlas0260=window.WAFTPlanetWorld0270;
 
   try{
