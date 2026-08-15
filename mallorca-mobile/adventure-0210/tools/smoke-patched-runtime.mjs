@@ -13,7 +13,8 @@ const boot=bootScripts[0];
 
 for(const test of [
   {id:'baleares',search:'',file:'region-runtime-baleares-013.html'},
-  {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'}
+  {id:'catalunya-litoral',search:'?region=catalunya-litoral',file:'region-runtime-catalunya-litoral-003.html'},
+  {id:'iberia-planet',search:'?region=iberia&renderer=0270',file:'region-runtime-catalunya-litoral-003.html',experimental:true}
 ]){
   const runtimeSource=fs.readFileSync(path.join(mobile,test.file),'utf8');
   let written='';
@@ -50,10 +51,19 @@ for(const test of [
     /isAdventureVisible/,
     /queueAdventureJump\(velocity,options=\{\}\)/,
     /plugin-loader\.js/,
-    /__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,
     /releaseRegionalTerrainGpu/,
     /restoreRegionalTerrainGpu/
   ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+  assert.match(written,test.experimental?/__WAFT_ADVENTURE_BUILD__='0\.27\.3-experimental'/:/__WAFT_ADVENTURE_BUILD__='0\.26\.1'/,`${test.id}: wrong build identity`);
+  if(test.experimental){
+    for(const pattern of [
+      /__WAFT_PLANET_WORLD_0270_ACTIVE__=true/,
+      /if\(window\.__WAFT_PLANET_WORLD_0270_ACTIVE__&&state\.adventureFlight\)\{state\.cameraBlocked=false;return desired;\}/,
+      /if\(!window\.__WAFT_PLANET_WORLD_0270_ACTIVE__\)streamer\.update/,
+      /boosted\?348:312/,
+      /cameraPitch: state\.pitch/
+    ])assert.match(written,pattern,`${test.id}: missing ${pattern}`);
+  }
   assert.doesNotMatch(written,/state\.pitch = Math\.max\(-\.12, Math\.min\(\.72, state\.pitch - dy/);
   assert.doesNotMatch(written,/minimumDistance = Math\.min\(1\.05, desiredDistance \* \.30\)/);
   assert.doesNotMatch(written,/const center = \[target\[0\], target\[1\] \+ \.18, target\[2\]\];/);
@@ -62,6 +72,6 @@ for(const test of [
   const scripts=[...written.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match=>match[1]).filter(Boolean);
   assert.ok(scripts.length>=3,`${test.id}: expected runtime, Adventure bootstrap and UI safety scripts`);
   for(const source of scripts)new vm.Script(source,{filename:`patched-${test.id}.js`});
-  console.log(`${test.id}: optimized patched 0.26.1 runtime compiled (${written.length} chars)`);
+  console.log(`${test.id}: optimized patched ${test.experimental?'0.27.3':'0.26.1'} runtime compiled (${written.length} chars)`);
 }
-console.log('Both existing World 2 regional runtimes survive the 0.26.1 bootstrap while retaining spatial building queries, adaptive movement/camera probes, UI close paths, GPU hooks and World 1 parity.');
+console.log('Existing World 2 runtimes and the 0.27.3 planet patch compile while retaining the shared 0.26.1 contracts.');
