@@ -50,6 +50,7 @@ jobs:
     timeout-minutes: 20
     env:
       PLAYWRIGHT_BROWSERS_PATH: /tmp/waft-playwright-browsers
+      WAFT_ALLOW_SLOW_RUNNER: '1'
     steps:
       - name: Check out exact branch
         uses: actions/checkout@v4

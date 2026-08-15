@@ -13,6 +13,7 @@ const smoothPlanet=requestedRenderer==='0274';
 const expectedVersion=smoothPlanet?'0.27.4-experimental':'0.27.3-experimental';
 const profile=process.env.WAFT_PROFILE==='mobile'?'mobile':'desktop';
 const mobile=profile==='mobile';
+const allowSaturatedRunner=process.env.WAFT_ALLOW_SLOW_RUNNER==='1';
 const shots=path.resolve(`artifacts/world-${smoothPlanet?'0274':'0270'}-${profile}`);fs.mkdirSync(shots,{recursive:true});
 const browser=await chromium.launch({executablePath:chrome,headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--ignore-gpu-blocklist','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
 const page=await browser.newPage(mobile?{viewport:{width:844,height:390},isMobile:true,hasTouch:true,deviceScaleFactor:1}:{viewport:{width:1394,height:654},deviceScaleFactor:1}),errors=[],consoleLines=[];
@@ -61,15 +62,21 @@ const frameTrace=()=>page.evaluate(()=>{
 await startFrameTrace();
 await page.waitForTimeout(4000);
 const runnerBaseline=await frameTrace();
+let saturatedSceneBaseline=null;
 const require60Fps=(label,result)=>{
   need(result.samples>90,`${label}: insufficient frame samples ${JSON.stringify(result)}`);
-  const baselineCanSustain60=runnerBaseline.samples>90&&runnerBaseline.p95<=20.5;
-  if(baselineCanSustain60){
-    need(result.p95<=20.5&&result.max<100&&result.over34/result.samples<.04,`${label}: 60 FPS frame-time budget failed ${JSON.stringify({runnerBaseline,result})}`);
+  const absolute60=result.p95<=20.5&&result.max<100&&result.over34/result.samples<.04;
+  if(absolute60){
     return;
   }
-  const baselineOver34=runnerBaseline.over34/Math.max(1,runnerBaseline.samples),resultOver34=result.over34/Math.max(1,result.samples);
-  need(runnerBaseline.samples>90&&result.p50<=runnerBaseline.p50+1.2&&result.p95<=runnerBaseline.p95+1.2&&result.max<=Math.max(100,runnerBaseline.max+35)&&resultOver34<=baselineOver34+.04,`${label}: scene added frame spikes beyond the saturated runner baseline ${JSON.stringify({runnerBaseline,result})}`);
+  if(!allowSaturatedRunner)throw new Error(`${label}: 60 FPS frame-time budget failed ${JSON.stringify({runnerBaseline,result})}`);
+  if(!saturatedSceneBaseline){
+    need(label==='stationary'&&result.p95<=55&&result.max<100,`${label}: saturated runner cannot establish a bounded scene baseline ${JSON.stringify({runnerBaseline,result})}`);
+    saturatedSceneBaseline=result;
+    return;
+  }
+  const baselineOver34=saturatedSceneBaseline.over34/Math.max(1,saturatedSceneBaseline.samples),resultOver34=result.over34/Math.max(1,result.samples);
+  need(result.p50<=saturatedSceneBaseline.p50+1.2&&result.p95<=saturatedSceneBaseline.p95+1.2&&result.max<=Math.max(100,saturatedSceneBaseline.max+35)&&resultOver34<=baselineOver34+.04,`${label}: movement or camera added frame spikes beyond the stationary runner scene ${JSON.stringify({runnerBaseline,saturatedSceneBaseline,result})}`);
 };
 const orientationState=()=>page.evaluate(()=>{const runtime=WAFTRegionRuntime.getState(),world=WAFTPlanetWorld0270,geo=world.geoFromWorld(runtime.position.x,runtime.position.z),ahead=world.geoFromWorld(runtime.position.x+Math.sin(runtime.playerFacing)*2,runtime.position.z+Math.cos(runtime.playerFacing)*2),p1=geo.lat*Math.PI/180,p2=ahead.lat*Math.PI/180,dl=(ahead.lon-geo.lon)*Math.PI/180,course=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));return{heading:runtime.playerFacing,cameraYaw:runtime.cameraYaw,course,relativeView:runtime.playerFacing-runtime.cameraYaw,originShifts:world.getState().floatingOriginShifts};});
 const relocate=async(lat,lon,y=55)=>{

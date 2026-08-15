@@ -39,7 +39,7 @@ need(index.includes("if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__||window.__WAFT_
 need(index.includes('window.WAFTPlanetWorld0270?.beforeCameraFrame?.(now);'),'0.27.4 still rebases after calculating the camera');
 need(index.includes('rebasePlanetFrame(x,z,y,playerFacing,cameraYaw)'),'0.27.4 cannot preserve independent bird and camera headings during a rebase');
 need(index.includes('setCameraOrbit(yaw,pitch=null)'),'0.27.4 camera performance harness cannot rotate without pointer-driver overhead');
-need(browserVerifier.includes('const runnerBaseline=await frameTrace();')&&browserVerifier.includes('scene added frame spikes beyond the saturated runner baseline'),'hosted-runner frame calibration is missing');
+need(browserVerifier.includes('const runnerBaseline=await frameTrace();')&&browserVerifier.includes("const allowSaturatedRunner=process.env.WAFT_ALLOW_SLOW_RUNNER==='1';")&&browserVerifier.includes('movement or camera added frame spikes beyond the stationary runner scene'),'hosted-runner frame calibration is missing');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
 need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=6')&&runtime.includes('STATIC_REFINEMENT_ZONES=Object.freeze'),'fixed planet geometry contract is missing');
 need(runtime.includes('STATIC_TILE_LIMIT=720')&&runtime.includes('STATIC_BOOT_BATCH=8'),'static planet memory or boot budget is missing');
