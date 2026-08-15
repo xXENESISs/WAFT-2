@@ -48,6 +48,8 @@ jobs:
   immutable-smooth-planet:
     runs-on: ubuntu-22.04
     timeout-minutes: 20
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: /tmp/waft-playwright-browsers
     steps:
       - name: Check out exact branch
         uses: actions/checkout@v4
@@ -56,8 +58,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install browser dependency
-        run: npm install --no-save --no-package-lock playwright-core@1.55.0
+      - name: Install pinned browser dependency
+        run: |
+          npm install --no-save --no-package-lock playwright-core@1.55.0
+          node node_modules/playwright-core/cli.js install --only-shell chromium
       - name: Verify source and deterministic generation
         run: |
           node --check mallorca-mobile/adventure-0210/planet-world-0270.js
@@ -82,7 +86,9 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-${GITHUB_SHA}"
+          WAFT_CHROME=$(find "$PLAYWRIGHT_BROWSERS_PATH" -type f -path '*/chrome-linux/headless_shell' -print -quit)
+          test -x "$WAFT_CHROME"
+          WAFT_CHROME="$WAFT_CHROME" node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8000/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-${GITHUB_SHA}"
       - name: Verify mobile camera and movement at 60 FPS
         shell: bash
         run: |
@@ -90,7 +96,9 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           sleep 2
-          WAFT_PROFILE=mobile node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8001/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-mobile-${GITHUB_SHA}"
+          WAFT_CHROME=$(find "$PLAYWRIGHT_BROWSERS_PATH" -type f -path '*/chrome-linux/headless_shell' -print -quit)
+          test -x "$WAFT_CHROME"
+          WAFT_PROFILE=mobile WAFT_CHROME="$WAFT_CHROME" node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "http://127.0.0.1:8001/mallorca-mobile/adventure-0210/index.html?region=iberia&renderer=0274&v=ci-mobile-${GITHUB_SHA}"
       - name: Verify deployed GitHub Pages release
         if: github.ref_name == 'main'
         shell: bash
@@ -114,8 +122,10 @@ jobs:
           fi
           verify_profile() {
             profile="$1"
+            WAFT_CHROME=$(find "$PLAYWRIGHT_BROWSERS_PATH" -type f -path '*/chrome-linux/headless_shell' -print -quit)
+            test -x "$WAFT_CHROME"
             for attempt in 1 2 3; do
-              if WAFT_PROFILE="$profile" node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"; then
+              if WAFT_PROFILE="$profile" WAFT_CHROME="$WAFT_CHROME" node mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs "$target"; then
                 return 0
               fi
               sleep 10
