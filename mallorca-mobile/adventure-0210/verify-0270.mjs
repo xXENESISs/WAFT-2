@@ -8,6 +8,7 @@ const gameplay=fs.readFileSync('mallorca-mobile/adventure-0210/gameplay-plugin.j
 const iberiaExplorer=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-explorer-0242.js','utf8');
 const iberiaWorld=fs.readFileSync('mallorca-mobile/adventure-0210/iberia-world-0246.js','utf8');
 const pluginLoader=fs.readFileSync('mallorca-mobile/adventure-0210/plugin-loader.js','utf8');
+const browserVerifier=fs.readFileSync('mallorca-mobile/adventure-0210/tools/verify-planet-world-0270.mjs','utf8');
 const core=fs.readFileSync('mallorca-mobile/adventure-0210/planet-0270/cube-sphere-core.mjs','utf8');
 const prepare=fs.readFileSync('world-generator/scripts/prepare-world-0261.mjs','utf8');
 const validateWorkflow=fs.readFileSync('.github/workflows/validate-waft-regions.yml','utf8');
@@ -38,6 +39,7 @@ need(index.includes("if(window.__WAFT_PLANET_WORLD_0274_ACTIVE__||window.__WAFT_
 need(index.includes('window.WAFTPlanetWorld0270?.beforeCameraFrame?.(now);'),'0.27.4 still rebases after calculating the camera');
 need(index.includes('rebasePlanetFrame(x,z,y,playerFacing,cameraYaw)'),'0.27.4 cannot preserve independent bird and camera headings during a rebase');
 need(index.includes('setCameraOrbit(yaw,pitch=null)'),'0.27.4 camera performance harness cannot rotate without pointer-driver overhead');
+need(browserVerifier.includes('const runnerBaseline=await frameTrace();')&&browserVerifier.includes('scene added frame spikes beyond the saturated runner baseline'),'hosted-runner frame calibration is missing');
 need(runtime.includes("renderMode:'cube-sphere-quadtree'"),'cube-sphere runtime identity is missing');
 need(runtime.includes('TILE_RESOLUTION=17')&&runtime.includes('MIN_LEVEL=3')&&runtime.includes('MAX_LEVEL=6')&&runtime.includes('STATIC_REFINEMENT_ZONES=Object.freeze'),'fixed planet geometry contract is missing');
 need(runtime.includes('STATIC_TILE_LIMIT=720')&&runtime.includes('STATIC_BOOT_BATCH=8'),'static planet memory or boot budget is missing');
